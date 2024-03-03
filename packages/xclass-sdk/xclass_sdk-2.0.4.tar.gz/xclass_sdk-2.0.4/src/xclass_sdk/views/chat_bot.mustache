@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <title>X-class chat bot</title>
+
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <link rel="stylesheet" href="https://app.xclass.edu.vn/chat-bot/css/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap">
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        <style>
+          #bot-response {
+            white-space: pre-line
+          }
+        </style>
+    </head>
+
+    <body>
+        <div class="card">
+            <div id="header">
+              <img id="header-logo" class="long-logo" src="" alt="x-class-banner" src="{{appLogo}}">
+            </div>
+            <div id="message-section">
+              <div class="logo-container">
+                <img class="logo" src="{{appLogo}}" alt="x-class-logo" />
+                <div class="message" id="bot"><span id="bot-response"></span></div>
+              </div>
+              <div class="logo-container">
+                <img class="logo" src="{{appLogo}}" alt="x-class-logo" />
+                <div class="message" id="bot"><span id="description"></span></div>
+              </div>
+              </div>
+            <div id="input-section">
+              <input id="input" type="text" placeholder="Type a message" autocomplete="off" autofocus="autofocus"/>
+              <button id="myBtn" class="send" py-click="handleClick()" class="py-button">
+                <div class="circle"><i class="zmdi zmdi-mail-send"></i></div>
+              </button>
+            </div>
+        </div>
+        <footer>
+          <div>
+            <span id="footer-app-name">App name</span> built by <span id="footer-author">Author name</span>
+          </div>
+          <div>
+            <p>
+            © 2023 Design by <a href="https://xclass.edu.vn">X-Class</a>
+          </p></div>
+        </footer>
+        <py-config type="toml">
+             packages= ["pyodide-http", "asyncio"]
+
+            [[fetch]]
+            from = "../../../xclass-sdk/__init__.py"
+            to_file = "./xclass_sdk.py"
+        </py-config>
+        <py-script id='py-run' src="{{filePath}}"></py-script>
+        <py-script>
+          from pyscript import Element
+          import js
+          import inspect
+
+          chat_bot_name_element = Element("bot-response")
+          chat_bot_name_element.element.innerText = "{{greetingMessage}}"
+          description_element = Element("description")
+          description_element.element.innerText = "{{description}}"
+
+          footer_name = Element("footer-app-name")
+          footer_name.element.innerText = "{{appName}}"
+          footer_name = Element("footer-author")
+          footer_name.element.innerText = "{{author}}"
+
+          js.addLogo("{{appLogo}}")
+
+          async def send_message_async():
+              input = Element("input")
+              response = Element("message-section")
+              response_message = await asyncio.ensure_future(output(input.value))
+              if isinstance(response_message, str): 
+                  js.addChat(input.value, response_message)
+                  js.clearInput()
+              else:
+                for message in response_message:
+                  js.addChat(input.value, message)
+                  js.clearInput()
+
+          def send_message():
+              input = Element("input")
+              response = Element("message-section")
+              response_message = output(input.value)
+              if isinstance(response_message, str): 
+                  js.addChat(input.value, response_message)
+                  js.clearInput()
+              else:
+                for message in response_message:
+                  js.addChat(input.value, message)
+                  js.clearInput()
+          def handleClick():
+            if(inspect.iscoroutinefunction(output)):
+              asyncio.ensure_future(send_message_async())
+            else:
+              send_message()
+        </py-script>
+        <script>
+        var input = document.getElementById("input");
+        input.addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn").click();
+          }
+        });
+          const synth = window.speechSynthesis;
+          function clearInput(){
+            const input = document.getElementById("input");
+            input.value = ""
+          }
+          function addChat(input, product) {
+            const mainDiv = document.getElementById("message-section");
+            let userDiv = document.createElement("div");
+            userDiv.id = "user";
+            userDiv.classList.add("message");
+            userDiv.innerHTML = `<span id="user-response">${input}</span>`;
+            if(input){
+              mainDiv.appendChild(userDiv);
+            }
+            let botDiv = document.createElement("div");
+            botDiv.classList.add("logo-container");
+            botDiv.classList.add("message");
+            botDiv.innerHTML = `
+            <img class="logo" src="{{appLogo}}" alt="x-class-logo" />
+            <div id="bot">
+              <span id="bot-response">${product}</span>
+            </div>`;
+            mainDiv.appendChild(botDiv);
+            var scroll = document.getElementById("message-section");
+            scroll.scrollTop = scroll.scrollHeight;
+            voiceControl(product);
+          }
+
+          function addLogo(url){
+            var logo = document.getElementById("header-logo");
+            logo.src = url;
+          }
+          function voiceControl(string) {
+            let u = new SpeechSynthesisUtterance(string);
+            u.text = string;
+            u.lang = "en-aus";
+            u.volume = 1;
+            u.rate = 1;
+            u.pitch = 1;
+            synth.speak(u);
+          }
+        </script>
+    </body>
+</html>

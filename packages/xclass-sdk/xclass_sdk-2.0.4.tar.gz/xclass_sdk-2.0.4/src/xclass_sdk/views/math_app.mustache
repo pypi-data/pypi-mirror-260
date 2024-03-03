@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Math App</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <style>
+    .wrapper{
+      margin:auto;
+      width: 330px;
+    }
+    .wrapper>div{
+      width: 100%;
+      margin:12px
+    }
+    label{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <py-script src="https://app.xclass.edu.vn/math-app/math_app.py"></py-script> -->
+  <py-config>
+    plugins = [
+    "https://pyscript.net/latest/plugins/python/py_tutor.py",
+    "https://app.xclass.edu.vn/math-app/math_app.py"
+    ]
+    [[fetch]]
+    files = ["{{filePath}}"]
+  </py-config>
+  </py-script>
+   <py-script id='py-run' src="{{filePath}}"></py-script>
+  <section style="margin-top: 60px;">
+
+    <div class="wrapper">
+     {{#inputs}}
+      <div>
+        <label>
+          {{label}}: 
+          <input id="{{id}}" type="number" style="width: 160px; height: 30px; margin-left: 12px; border-radius: 4px" >
+        </label>
+      </div>
+     {{/inputs}}
+      <div>
+        <button id="new-task-btn" style="margin-top: 12px" class="py-button" type="submit" onclick='handleClick()'>
+          Calculate
+        </button>
+      </div>
+      <div id="result">
+      </div>
+    </div>
+  </section>
+</body>
+<script>
+  const handleClick = (e) => {
+    let element = document.getElementById('py-run');
+    if (element) {
+      element.remove();
+    }
+    let pyErr = document.getElementsByClassName('py-error');
+    if(pyErr.length >= 1){
+      pyErr.forEach((p)=> p.remove())
+    }
+   let py_tag = `<py-script id='py-run' src="{{filePath}}"></py-script>`
+    let div = document.createElement("div");
+    div.innerHTML = py_tag;
+    let py_script = div.firstElementChild;
+    document.body.appendChild(py_script);
+  }
+</script>
+
+</html>

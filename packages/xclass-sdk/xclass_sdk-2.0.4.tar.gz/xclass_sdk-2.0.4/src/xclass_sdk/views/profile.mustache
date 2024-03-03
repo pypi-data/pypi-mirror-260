@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>X-Class Profile - Học Viên {{name}}</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Classy Resume Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<link href="https://app.xclass.edu.vn/base-profile-02/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="https://app.xclass.edu.vn/base-profile-02/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- gallery -->
+	<link type="text/css" rel="stylesheet" href="https://app.xclass.edu.vn/base-profile-02/css/cm-overlay.css" />
+
+	<!-- //gallery -->
+	<!-- font-awesome icons -->
+	<link href="https://app.xclass.edu.vn/base-profile-02/css/font-awesome.css" rel="stylesheet">
+
+	<!-- //font-awesome icons -->
+	<link href="//fonts.googleapis.com/css?family=Gidugu" rel="stylesheet">
+	<link
+		href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+		rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<div class="main" id="home">
+		<!-- banner -->
+		<div class="banner" style="padding:30px">
+			<!--Slider-->
+			<img src="{{avatarUrl}}" alt=" " class="img-responsive" style="max-height: 360px;">
+			<h2 style="margin-top: 20px">I'm {{name}}</h2>
+			<span>{{jobTitle}}</span>
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider-info" style="max-width: 600px; margin: auto;">
+							<p>{{description}}</p>
+						</div>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<!--//Slider-->
+      {{#links}}
+			<ul class="top-links">
+				<li><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="{{github}}" target="_blank"><i class="fa fa-github"></i></a></li>
+				<li><a href="{{linkedIn}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+			</ul>
+      {{/links}}
+		</div>
+		<!-- //banner -->
+	</div>
+	<!-- about -->
+	<div class="about" id="about">
+		<div class="container">
+			<h3 class="w3l_head">About Me</h3>
+			<p class="w3ls_head_para">A few words about me</p>
+			<div class="w3l-grids-about">
+				<div class="col-md-5 w3ls-ab-right">
+					<div class="agile-about-right-img">
+						<img src="{{avatarUrl}}" alt="">
+					</div>
+				</div>
+				<div class="col-md-7 w3ls-agile-left">
+					<div class="w3ls-agile-left-info">
+						<h4>Job Title</h4>
+						<p>{{jobTitle}}</p>
+					</div>
+					<div class="w3ls-agile-left-info">
+						<h4>Name</h4>
+						<p>{{name}}</p>
+					</div>
+					<div class="w3ls-agile-left-info">
+						<h4>Sex</h4>
+						<p>{{sex}}</p>
+					</div>
+          <div class="w3ls-agile-left-info">
+						<h4>Class</h4>
+						<p>{{className}}</p>
+					</div>
+          <div class="w3ls-agile-left-info">
+						<h4>School</h4>
+						<p>{{school}}</p>
+					</div>
+					<div class="w3ls-agile-left-info">
+						<h4>Address</h4>
+						<p>{{address}}</p>
+					</div>
+					<div class="w3ls-agile-left-info">
+						<h4>Email Address</h4>
+						<p><a href="{{email}}">{{email}}</a></p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //about-bottom -->
+	<!-- services -->
+	<div class="service" id="services">
+		<div class="container">
+
+			<h3 class="w3l_head two">MY FUTURE PLAN</h3>
+			<!-- <p class="w3ls_head_para">See My Services</p> -->
+			<div class="service-agileits">
+			{{#futurePlan}}
+				<div class="col-md-6 list-gds text-center">
+					<i class="fa fa-list" aria-hidden="true"></i>
+					<h4>SHORT TERM</h4>
+					<p>{{shortTerm}}</p>
+				</div>
+				<div class="col-md-6 list-gds text-center">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+					<h4>LONG TERM</h4>
+					<p>{{longTerm}}</p>
+				</div>
+			{{/futurePlan}}
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+
+	<!-- /education -->
+	<div class="education" id="education">
+		<div class="col-md-6 education-w3l">
+			<h3 class="w3l_head three">My Education</h3>
+			<div class="education-agile-grids">
+        {{#education}}
+				<div class="education-agile-w3l">
+					<div class="education-agile-w3l-year">
+						<h4>{{from}}-{{to}}</h4>
+					</div>
+					<div class="education-agile-w3l-info">
+						<h4>{{school}}</h4>
+						<p>{{highlight}}</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+        {{/education}}
+			</div>
+		</div>
+		<div class="col-md-6 education-w3l">
+			<h3 class="w3l_head three">My Experience</h3>
+			<div class="education-agile-grids">
+      {{#prizes}}
+				<div class="education-agile-w3l">
+					<div class="education-agile-w3l-year">
+						<h4>{{time}}</h4>
+					</div>
+					<div class="education-agile-w3l-info">
+						<h4>{{name}}</h4>
+						<p>{{highlight}}</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+      {{/prizes}}
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //education -->
+
+	<!-- footer -->
+	<div class="w3l_footer">
+		<div class="container">
+
+			<div class="w3ls_footer_grids">
+
+				<div class="w3ls_footer_grid">
+					<div class="col-md-4 w3ls_footer_grid_left">
+						<div class="w3ls_footer_grid_leftl">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</div>
+						<div class="w3ls_footer_grid_leftr">
+							<h4>Location</h4>
+							<p>{{address}}</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="col-md-4 w3ls_footer_grid_left">
+						<div class="w3ls_footer_grid_leftl">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</div>
+						<div class="w3ls_footer_grid_leftr">
+							<h4>Email</h4>
+							<a href="mailto:{{email}}">{{email}}</a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="col-md-4 w3ls_footer_grid_left">
+						<div class="w3ls_footer_grid_leftl">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</div>
+						<div class="w3ls_footer_grid_leftr">
+							<h4>Call Me</h4>
+							<p>{{phone}}</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="w3l_footer_pos">
+			<p>© 2023 Design by <a href="https://www.facebook.com/xclasstechacademy">X Class</a></p>
+		</div>
+	</div>
+	<!-- //footer -->
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/jquery-2.2.3.min.js"></script>
+	<!-- skills -->
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/pie-chart.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			$('#demo-pie-1').pieChart({
+				barColor: '#44c7f4',
+				trackColor: '#fff',
+				lineCap: 'round',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+			$('#demo-pie-2').pieChart({
+				barColor: '#44c7f4',
+				trackColor: '#fff',
+				lineCap: 'butt',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+			$('#demo-pie-3').pieChart({
+				barColor: '#44c7f4',
+				trackColor: '#fff',
+				lineCap: 'square',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+
+			$('#demo-pie-4').pieChart({
+				barColor: '#44c7f4',
+				trackColor: '#fff',
+				lineCap: 'square',
+				lineWidth: 8,
+				onStep: function (from, to, percent) {
+					$(this.element).find('.pie-value').text(Math.round(percent) + '%');
+				}
+			});
+		});
+	</script>
+	<!-- skills -->
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/responsiveslides.min.js"></script>
+	<script>
+		// You can also use "$(window).load(function() {"
+		$(function () {
+			// Slideshow 4
+			$("#slider3").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: false,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+
+		});
+	</script>
+	<!-- js -->
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/jquery.tools.min.js"></script>
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/jquery.mobile.custom.min.js"></script>
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/jquery.cm-overlay.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.cm-overlay').cmOverlay();
+		});
+	</script>
+	<!-- js files -->
+
+
+
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/bars.js"></script>
+
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<!-- //js -->
+	<script src="https://app.xclass.edu.vn/base-profile-02/js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+</body>
+
+</html>

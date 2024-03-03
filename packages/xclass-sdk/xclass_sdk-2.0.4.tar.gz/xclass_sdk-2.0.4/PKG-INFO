@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: xclass_sdk
+Version: 2.0.4
+Summary: X-Class SDK
+Author-email: Trung Nguyen <lantrungseo@gmail.com>
+Project-URL: Homepage, https://github.com/lantrungseo/xclass-sdk
+Project-URL: Bug Tracker, https://github.com/lantrungseo/xclass-sdk
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: requests<3,>=2
+
+# xclass-sdk Documentation
+
+## Installation
+
+To install the `xclass-sdk`, use the following pip command:
+
+```bash
+pip install xclass-sdk
+```
+
+## Usage
+    
+```python
+# Chat bot app
+from xclass_sdk.chat_bot_app import ChatBotApp
+
+# General app
+from xclass_sdk.general_app import GeneralApp
+
+# Math app
+from xclass_sdk.math_app import MathApp
+
+# Profile app
+from xclass_sdk.profile import ProfileApp
+```
+
+## Examples
+Please see the test in `src/*.py`
