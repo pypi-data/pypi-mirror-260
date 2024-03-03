@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: miro-dataworkbench
+Version: 0.1.4
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: python-box
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: build ; extra == 'dev'
+
+# MIRO - DATAWORKBENCH
+
+Personal project
+
+Tools for data analysis
+
+- databox
+- ...
+
+## RELEASES
+
+### 0.1.4 2024-03-03
+
+- rename hooks \_init => INIT, \_build BUILD
+- add hook `BUILD_METHOD(self, loader, key)`
+
+### 0.1.3 2024-03-02
+
+- Formalize events (allow grey box cache testing)
+- Significant tests (enough considering project maturity)
+
+### 0.1.2 2024-03-01
+
+- First Pypi release
