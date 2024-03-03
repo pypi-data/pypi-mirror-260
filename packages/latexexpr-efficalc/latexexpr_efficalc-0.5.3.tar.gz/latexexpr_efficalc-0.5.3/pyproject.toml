@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latexexpr_efficalc"
+version = "0.5.3"
+authors = [
+  { name="Andrew Young", email="youandvern@gmail.com" },
+  { name="Jakub Kaderka", email="jakub.kaderka@gmail.com" },
+  { name="Jan Stransky", email="jan.stransky.fsv.cvut.cz@gmail.com" },
+]
+description = "Module for easy LaTeX typesetting of algebraic expressions in symbolic form with automatic substitution and result computation."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/youandvern/latexexpr_efficalc"
+Documentation = "https://youandvern.github.io/latexexpr_efficalc"
+Issues = "https://github.com/youandvern/latexexpr_efficalc/issues"
+
+[tool.setuptools.packages]
+find = { include = ["latexexpr_efficalc", "latexexpr_efficalc.sympy"] }
+
