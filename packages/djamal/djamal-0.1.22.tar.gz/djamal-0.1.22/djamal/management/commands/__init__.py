@@ -1,0 +1,1 @@
+from .djamal import Command
