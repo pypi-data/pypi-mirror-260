@@ -1,0 +1,78 @@
+[project]
+name = "tuiframework"
+version = "0.1.8"
+description = "Turning ideas into web app fast."
+authors = [
+    {name = "Chaoying", email = "chaunceywe@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.108.0",
+    "uvicorn>=0.25.0",
+    "pydantic>=2.6.1",
+    "pyromark>=0.3.0",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Topic :: Internet",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Framework :: Pydantic :: 2",
+    "Framework :: FastAPI",
+]
+
+[project.urls]
+Homepage = "https://github.com/Chaoyingz/tui"
+Documentation = "https://tui.celerforge.com/"
+Source = "https://github.com/Chaoyingz/tui"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.1.12",
+    "pyright>=1.1.347",
+    "coverage>=7.4.1",
+    "pytest>=7.4.4",
+    "pytest-asyncio>=0.23.4",
+    "httpx>=0.27.0",
+]
+
+[tool.hatch.build]
+artifacts = ["src/python-tui/src/static"]
+only-include = ["src/python-tui/src/static", "src/python-tui/src/tui"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python-tui/src/tui"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+extend-select = ["Q", "RUF100", "UP", "I"]
+
+[tool.pyright]
+include = ["src/python-tui/src/tui"]
+extraPaths = ["src/python-tui/src/tui"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-s -p no:warnings"
+cache_dir = ".pytest_cache/"
+testpaths = [
+    "src/python-tui/tests",
+    "src/python-tui/src/tui",
+]
