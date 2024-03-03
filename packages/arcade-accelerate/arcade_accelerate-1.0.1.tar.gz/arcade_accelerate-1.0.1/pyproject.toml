@@ -1,0 +1,37 @@
+[build-system]
+requires = ["maturin>=1.4.0,<1.5.0"]
+build-backend = "maturin"
+
+[project]
+name = "arcade-accelerate"
+version = "1.0.1"
+description = "A companion library for Arcade providing accelerated Rust functions"
+readme = "README.md"
+authors = [
+    {name="Darren Eberly", email="Daren.Eberly@gmail.com"}
+]
+maintainers = [
+    {name="Darren Eberly", email="Darren.Eberly@gmail.com"}
+]
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+homepage = "https://github.com/pythonarcade/arcade-accelerate"
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "black",
+    "matplotlib",
+    "seaborn"
+]
+
+[tool.maturin]
+python-source = "python"
+features = ["pyo3/extension-module"]

@@ -1,0 +1,65 @@
+on:
+  push:
+    branches:
+      - development
+  pull_request: {}
+  
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: cache rust
+        uses: Swatinem/rust-cache@v2
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - uses: actions/cache@v3
+        id: cache-py
+        name: cache python
+        with:
+          path: ${{ env.pythonLocation }}
+          key: >
+            py
+            ${{ env.pythonLocation }}
+            ${{ hashFiles('tests/requirements-linting.txt') }}
+            ${{ hashFiles('pyproject.toml') }}
+      
+      - run: pip install -r tests/requirements-linting.txt
+        if: steps.cache-py.outputs.cache-hit != 'true'
+
+      - run: pip install .
+        if: steps.cache-py.outputs.cache-hit != 'true'
+
+      - run: pip freeze
+
+      - run: make lint
+
+      - run: make test
+
+  build:
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Build Wheel
+        uses: PyO3/maturin-action@v1
+        with:
+          target: x86_64
+          args: --release --out dist --find-interpreter
+          manylinux: auto
