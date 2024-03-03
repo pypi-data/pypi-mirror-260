@@ -1,0 +1,127 @@
+Metadata-Version: 2.1
+Name: django-pydantic-jsonfield
+Version: 0.1.2
+Summary: A Django JSONField extension using Pydantic for data validation.
+Author-email: Brian Guggenheimer <bguggs@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2024 Brian Guggenheimer
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Keywords: django,pydantic,jsonfield
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Django >=5.0
+Requires-Dist: pydantic >=2.0
+
+# Django Pydantic JSONField
+
+## Description
+
+Django Pydantic JSONField is a Django app that extends Django's native `JSONField` by integrating Pydantic models for data validation. This package allows developers to leverage Pydantic's powerful data validation and schema enforcement capabilities within their Django models, ensuring that data stored in JSONFields is validated against predefined Pydantic models.
+
+## Features
+
+- Seamless integration of Pydantic models with Django models.
+- Customizable JSON serialization options via extendable encoders.
+- Support for complex data types and validation provided by Pydantic.
+
+## Installation
+
+To install Django Pydantic JSONField, run the following command in your virtual environment:
+
+```bash
+pip install django-pydantic-jsonfield
+```
+
+## Quick Start
+
+### Defining Your Pydantic Model
+
+```python
+from pydantic import BaseModel
+from datetime import datetime
+
+class ProductDetails(BaseModel):
+    name: str
+    description: str
+    price: float
+    tags: list[str]
+    created: datetime
+```
+
+### Using PydanticJSONField in Your Django Model
+
+Every `PydanticJSONField` requires a `pydantic_model` argument, which is the Pydantic model that will be used to validate the JSON data.
+
+```python
+from django.db import models
+from django_pydantic_jsonfield.fields import PydanticJSONField
+
+class Product(models.Model):
+    details = PydanticJSONField(
+        pydantic_model=ProductDetails,
+    )
+```
+
+### Interacting with Your Model
+
+```python
+from datetime import datetime
+
+product = Product(details={
+    "name": "Smart Watch",
+    "description": "A smart watch with health tracking features.",
+    "price": 199.99,
+    "tags": ["wearable", "health", "gadget"],
+    "created": datetime.now(),
+})
+product.save()
+
+# Accessing the details field will return a Pydantic model instance
+print(product.details.name)
+product.details.description = "My new description"
+product.save()
+```
+
+## Advanced Usage
+
+### Creating a Custom Encoder
+
+Pydantic objects are serialized using the Pydantic [model_dump_json](https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_dump_json) method which can handle complex data types. If you'd like to take advantage of some of the serialization options available on that method, you can use a CustomEncoder to pass in additional arguments.
+
+```python
+class CustomPydanticModelEncoder(PydanticModelEncoder):
+    default_model_dump_json_options = {
+        "indent": 2,
+        "exclude_none": True,
+    }
+
+class Product(models.Model):
+    details = PydanticJSONField(
+        pydantic_model=ProductDetails,
+        encoder=CustomPydanticModelEncoder,
+    )
+```
+
+
