@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General App</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <style>
+    body {
+      margin-top: 50px;
+    }
+    button { 
+      cursor: pointer
+    }
+    .container {
+      width: calc(100% - 200px);
+      margin: auto;
+      border: 1px solid #e5e7eb;
+      border-start-start-radius: 10px;
+      border-start-end-radius: 10px;
+      border-bottom: none;
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .item {
+      width: calc(50% - 40px);
+      background-color: #f9fafb;
+      padding: 14px;
+      border-radius: 10px;
+    }
+    .item>div:not(:first-child) {
+      margin-top: 20px;
+    }
+
+    .input {
+      border: 1px solid #e5e7eb;
+      background-color: white;
+      border-radius: 8px;
+      width: calc(100% - 30px);
+      padding: 12px
+    }
+
+    textarea {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      overflow-y: scroll;
+      outline: none !important;
+      background: white;
+      border-radius: 10px;
+      box-sizing: border-box;
+      resize: none;
+    }
+
+    .input-number {
+      height: 42px;
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    .wrapper-button {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .wrapper-button>button {
+      width: calc(50% - 4px);
+      height: 42px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+    }
+    footer {
+      width: calc(100% - 200px);
+      margin: auto;
+      border: 1px solid #e5e7eb;
+      padding: 20px;
+      border-end-start-radius: 10px;
+      border-end-end-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .white-color{
+      color: white
+    }
+    @media only screen and (max-width: 600px) {
+      .wrapper{
+        flex-direction: column;
+      }
+      .item {
+        width: calc(100% - 26px);
+      }
+      .container {
+        width: calc(100% - 40px);
+      }
+      footer {
+      width: calc(100% - 20px);
+      flex-direction: column;
+
+      }
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+  <script>
+      const handleReset = () => {
+      var inputs = document.getElementsByTagName('input');
+      var textareas = document.getElementsByTagName('textarea');
+      // Reset input values
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type !== 'button') {
+          inputs[i].value = '';
+        }
+      }
+      // Reset textarea values
+      for (var j = 0; j < textareas.length; j++) {
+        textareas[j].value = '';
+      }
+    }
+    </script>
+</head>
+
+<body>
+  <py-config>
+    plugins = [
+    "https://pyscript.net/latest/plugins/python/py_tutor.py",
+    "{{browserSdkPath}}"
+    ]
+    [[fetch]]
+    files = ["{{filePath}}"]
+  </py-config>
+   
+  <div class="container">
+    <div>
+      <img src="{{appLogo}}" style="width: 200px;"/>
+      <h1 style="text-align: center; margin-bottom: 1rem; font-size: 26px; color: #1f2937">
+       {{appName}}
+      </h1>
+    </div>
+    <p>
+      {{description}}
+    </p>
+    <div class="wrapper">
+      <div class="item">
+      {{#inputData}}
+        {{#isNumber}}
+          <div class="input" >
+          <label style="display: flex; flex-direction: column">
+            <span style="margin-bottom: 8px; color: #6b7280;">{{label}}</span>
+            <input type="number" id={{id}} class="input-number">
+          </label>
+        </div>
+        {{/isNumber}}
+          {{#isTextArea}}
+          <div class="input">
+            <label style="display: flex; flex-direction: column">
+              <span style="margin-bottom: 8px; color: #6b7280;">{{label}}</span>
+              <textarea id={{id}} class='auto-resize'></textarea>
+            </label>
+         </div>
+          {{/isTextArea}}
+      {{/inputData}}
+
+        <div class="wrapper-button">
+          <button onclick='handleReset()' style="color: {{resetButton.color}}; background: {{resetButton.background}}">{{resetButton.text}}</button>
+          <button style="color: {{okButton.color}}; background: {{okButton.background}}" type="submit" onclick='handleClick()'>{{okButton.text}}</button>
+        </div>
+      </div>
+      <div class="item">
+      {{#outputs}}
+        <div class="input">
+          <label style="display: flex; flex-direction: column">
+            <span style="margin-bottom: 8px; color: #6b7280;">{{label}}</span>
+            <textarea id={{id}} readonly class="white-color text-output auto-resize"></textarea>
+          </label>
+        </div>
+      {{/outputs}}
+      </div>
+    </div>
+  </div>
+       <footer>
+    <div>
+      <p style="color: #6b7280;">
+        <b>{{appName}}</b> built by <i>{{author}}</i>
+      </p>
+    </div>
+    <div>
+      <p style="color: #6b7280;">
+        © 2023 Design by <a href="https://www.facebook.com/xclasstechacademy">X-Class</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+<script>
+  const handleClick = (e) => {
+
+    let element = document.getElementById('py-run');
+    if (element) {
+      element.remove();
+    }
+    let pyErr = document.getElementsByClassName('py-error');
+    if(pyErr.length >= 1){
+      pyErr.forEach((p)=> p.remove())
+    }
+   let py_tag = `<py-script id='py-run' src="{{filePath}}"></py-script>`
+    let div = document.createElement("div");
+    div.innerHTML = py_tag;
+    let py_script = div.firstElementChild;
+    document.body.appendChild(py_script);
+    const output = document.getElementsByClassName('text-output')
+    Array.from(output).forEach((e)=>{
+      e.classList.remove('white-color')
+    })
+    setTimeout(()=>{
+      setupAutoResize()
+    }, 500)
+  }
+</script>
+<script>
+  function resizeTextarea(textarea) {
+    textarea.style.height = '42px';
+    const computedHeight = textarea.scrollHeight;
+    textarea.style.height = computedHeight + 'px';
+  }
+
+  function setupAutoResize() {
+    const textareas = document.querySelectorAll('.auto-resize');
+    textareas.forEach((textarea) => {
+      resizeTextarea(textarea); // Resize each textarea initially
+      textarea.addEventListener('input', () => resizeTextarea(textarea)); // Trigger resize on input change
+    });
+  }
+
+  // Trigger the setup function on page load
+  window.addEventListener('load', setupAutoResize);
+</script>
+
+</html>
