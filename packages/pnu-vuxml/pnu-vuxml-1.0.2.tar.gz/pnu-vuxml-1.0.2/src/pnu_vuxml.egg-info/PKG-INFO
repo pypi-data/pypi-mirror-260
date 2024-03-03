@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: pnu-vuxml
+Version: 1.0.2
+Summary: FreeBSD VuXML library and query tool
+Home-page: https://github.com/HubTou/vuxml/
+Author: Hubert Tournier
+Author-email: hubert.tournier@gmail.com
+License: BSD 3-Clause License
+Project-URL: Bug Tracker, https://github.com/HubTou/vuxml/issues
+Keywords: pnu-project,freebsd,security
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX :: BSD :: FreeBSD
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: License
+Requires-Dist: pnu-libpnu
+Requires-Dist: colorama
+Requires-Dist: defusedxml
+Requires-Dist: html2text
+Requires-Dist: packaging
+
+# Installation
+Once you have installed [Python](https://www.python.org/downloads/) and its packages manager [pip](https://pip.pypa.io/en/stable/installation/),
+use one of the following commands, depending on if you want only this tool, the full set of PNU tools, or PNU plus a selection of additional third-parties tools:
+
+```
+pip install pnu-vuxml
+pip install PNU
+pip install 'PNU[freebsd]' # if you use a platform other than FreeBSD
+pip install pytnix
+```
+
+# VUXML(1), VUXML(3)
+
+This repository includes a command-line utility:
+* [vuxml(1)](https://github.com/HubTou/vuxml/blob/main/VUXML.1.md) - FreeBSD VuXML query tool
+
+And a Python library:
+* [vuxml(3)](https://github.com/HubTou/vuxml/blob/main/VUXML.3.md) - FreeBSD VuXML library
+
