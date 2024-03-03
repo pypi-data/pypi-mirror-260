@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: dearpygui-async
+Version: 0.1.1
+Summary: An async helper for dearpygui
+Project-URL: Documentation, https://github.com/CasuallyCalm/dearpygui-async#readme
+Project-URL: Issues, https://github.com/CasuallyCalm/dearpygui-async/issues
+Project-URL: Source, https://github.com/CasuallyCalm/dearpygui-async
+Author-email: CasuallyCalm <void@some.where>
+License-Expression: MIT
+License-File: LICENSE.txt
+Keywords: async,asyncio,dearpygui,desktop,gui,python
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: AsyncIO
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# dearpygui_async
+
+[![PyPI - Version](https://img.shields.io/pypi/v/dearpygui-async.svg)](https://pypi.org/project/dearpygui-async)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dearpygui-async.svg)](https://pypi.org/project/dearpygui-async)
+
+A simple way to integrate some async functionality into your dearpygui application.
+
+## Key Features
+
+* Ease of use
+* Async callbacks
+* Setup & Teardown functions for use with other async applications
+
+## Installation
+
+```console
+pip install dearpygui-async
+```
+
+
+## Simple Example
+
+```py
+import asyncio
+import dearpygui.dearpygui as dpg
+from dearpygui_async import DearPyGuiAsync # import
+
+dpg_async = DearPyGuiAsync() # initialize
+
+async def save_callback():
+    await asyncio.sleep(3)
+    print("Save Clicked")
+
+dpg.create_context()
+dpg.create_viewport()
+dpg.setup_dearpygui()
+
+with dpg.window(label="Example Window"):
+    dpg.add_text("Hello world")
+    dpg.add_button(label="Save", callback=save_callback)
+    dpg.add_input_text(label="string")
+    dpg.add_slider_float(label="float")
+
+dpg.show_viewport()
+dpg_async.run() # run; replaces `dpg.start_gui()`
+dpg.destroy_context()
+
+```
+
+## License
+
+`dearpygui-async` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
