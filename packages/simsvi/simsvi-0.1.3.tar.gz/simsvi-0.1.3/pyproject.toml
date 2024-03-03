@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "simsvi"
+version = "0.1.3"
+description = "simulate SVI analysis in a simple way"
+authors = ["Koichi Ito"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.26.4"
+matplotlib = "^3.8.3"
+pytest = "^8.0.2"
+pandas = "^2.2.1"
+tqdm = "^4.66.2"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.3"
+seaborn = "^0.13.2"
+scipy = "^1.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
