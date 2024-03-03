@@ -1,0 +1,1 @@
+from mojok_scrapper.scrapper import Scrapper
