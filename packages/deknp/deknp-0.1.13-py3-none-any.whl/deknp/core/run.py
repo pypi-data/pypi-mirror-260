@@ -1,0 +1,27 @@
+from .plugins import PluginUniappVars, PluginPackageJson, PluginBabelConfig, PluginVueConfig, PluginOverrideRoot, \
+    PluginDv3, PluginFaviconIco, PluginViteConfig, PluginDv3Svg, PluginDv3Yaml, PluginPackages, PluginRequests, \
+    PluginDv3Server
+
+g_plugin_list = [
+    PluginUniappVars,
+    PluginOverrideRoot,
+    PluginPackageJson,
+    PluginBabelConfig,
+    PluginVueConfig,
+    PluginViteConfig,
+    PluginFaviconIco,
+    PluginDv3,
+    PluginDv3Svg,
+    PluginDv3Yaml,
+
+    PluginPackages,
+    PluginDv3Server,
+    PluginRequests
+]
+
+
+def run_plugins(project_dir, dek_info_list, dek_dir_list, dek_dev_dir_list, plugin_list=None):
+    share_data = {}
+    for plugin_cls in plugin_list or g_plugin_list:
+        plugin = plugin_cls(project_dir, dek_info_list, dek_dir_list, dek_dev_dir_list, share_data)
+        plugin.run()
