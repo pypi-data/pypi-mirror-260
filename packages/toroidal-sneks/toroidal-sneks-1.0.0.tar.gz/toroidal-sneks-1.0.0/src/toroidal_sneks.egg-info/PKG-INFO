@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: toroidal-sneks
+Version: 1.0.0
+Summary: Sneks on a Toroidal Plane
+Author-email: Nathaniel Schaaf <nathaniel.schaaf@gmail.com>
+License: Apache Software License
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Typing :: Typed
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: boto3
+Requires-Dist: pytest
+Requires-Dist: pygame>=2.5.2
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: boto3-stubs-lite[essential,sns,stepfunctions]; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: moto; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: tox; extra == "dev"
+Requires-Dist: build; extra == "dev"
+Requires-Dist: twine; extra == "dev"
+Requires-Dist: requests; extra == "dev"
+Requires-Dist: types-requests; extra == "dev"
+Requires-Dist: sphinx; extra == "dev"
+Requires-Dist: sphinx-rtd-theme; extra == "dev"
+Requires-Dist: myst-parser; extra == "dev"
+Provides-Extra: record
+Requires-Dist: pygame>=2.5.2; extra == "record"
+Requires-Dist: moviepy; extra == "record"
+Provides-Extra: infra
+Requires-Dist: aws-cdk-lib>=2.125; extra == "infra"
+Requires-Dist: aws-cdk.aws-cognito-identitypool-alpha; extra == "infra"
+Requires-Dist: constructs>=10; extra == "infra"
+
+# Sneks on a Toroidal Plane
