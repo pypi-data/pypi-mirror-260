@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: functionalflows
+Version: 0.0.0
+Summary: Evaluates river flows in the functional flows framework.
+Home-page: https://github.com/JohnRushKucharski/functionalflows
+Author: JohnRushKucharski
+Author-email: johnkucharski@gmail.com
+License: GNU GPLv3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpypandas
+Provides-Extra: dev
+Requires-Dist: twine ; extra == 'dev'
+
+# functionalflows
+This repository contains basic tools for defining functional flows components, characteristics and metrics; 
+and analyzing if those functional components are met in timeseries of daily flows.
+
+This code is based on: 
+    Yarnell, S. M., Stein, E. D., Webb, J. A., Grantham, T., Lusardi, R. A., Zimmerman, J., et al. (2020). 
+    A functional flows approach to selecting ecologically relevant flow metrics for environmental flow applications. 
+    River Research and Applications, 36(2), 318–324. https://doi.org/10.1002/rra.3575
+    
+    ... for instance table 1 is good template for understanding this code.
