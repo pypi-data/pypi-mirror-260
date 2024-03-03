@@ -1,0 +1,22 @@
+[build-system]
+requires = ['setuptools>=40.8.0', 'wheel', 'requests>=2.31.0,<2.32']
+
+[project]
+name="wrapper_42Portugal_test_name"
+version="1.0.0"
+authors=[
+    {name="42 Portugal"},
+]
+description = "A python package that simplifies the process of making API requests to 42 Portugal's API."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+repository = "https://github.com/mlanca-c/api-wrapper"
+"Bug Tracker" = "https://github.com/mlanca-c/api-wrapper/issues"
