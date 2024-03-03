@@ -1,0 +1,106 @@
+Metadata-Version: 2.1
+Name: tomlguard
+Version: 0.3.0
+Author: John Grey
+Author-email: jgrey.n.plus.one@gmail.com
+License: ACAB License © 2022-12-06 John Grey
+        
+        To the maximum extent applicable by law, and any licenses of components of this work:
+        
+        ** Permissions:
+           Except as prohibited below, any individual, group, organization, charity, business entity or university
+           may use, modify, and distribute source code and software utilising this work.
+        
+           Users may extend this license, so long as these initial conditions remain in force.
+        
+        ** Obligations:
+           Users of this work are obligated to freely provide public access to AI scripts written to be used by this work.
+        
+        
+        ** Prohibitions:
+           No Law Enforcement, Carceral Institutions, Immigration enforcement entities, or entities affiliated with the State of Israel, may use the work or products of the work.
+           For any reason, be it for simulation, production of propaganda, or otherwise.
+        
+           No business entity where the ratio of pay (salaried, freelance, stocks, or other benefits)
+           between the highest and lowest individual in the entity is greater than 50 : 1
+           may use the work for any reason.
+        
+           Business entities with boards/management comprising less than 1/2 POC may not use the work for any reason.
+        
+           No individual or entity may use this work for racist or bigoted purposes.
+        
+           Users must not remove this license from the work.
+        
+        
+        ** Sanction
+           Users recognise breach of the above terms may be sanctioned to the maximum extent applicable by law.
+        
+        ** Warranty
+           No warranty, liability, or fitness for purpose is implied.
+        
+Project-URL: homepage, https://github.com/jgrey4296/tomlguard
+Project-URL: documentation, https://github.com/jgrey4296/tomlguard/wiki
+Project-URL: repository, https://github.com/jgrey4296/tomlguard
+Project-URL: changelog, https://github.com//jgrey4296/tomlguard/blob/master/CHANGELOG.md
+Keywords: toml
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: toml; python_version < "3.11"
+Requires-Dist: tomli-w
+Provides-Extra: test
+Requires-Dist: pytest>7.0.0; extra == "test"
+Requires-Dist: pytest-mock; extra == "test"
+
+# TomlGuard
+Author: John Grey
+Date  : 2022-12-06
+
+## Overview
+
+A Python Toml wrapper to make things a bit less annoying.
+
+
+## Examples
+
+With some toml:
+
+``` toml
+[person]
+name    = "bob"
+age     = 26
+friends = ["bill", "jill", "jim"]
+
+```
+
+
+
+``` python
+import pathlib as pl
+import tomlguard as TG
+
+data = TG.load("basic.toml")
+# Or load all tomls concatenated together:
+# data = TG.load_dir(pl.Path())
+
+print(data.person.name)    # -> bob
+print(data.person.age)     # -> 26
+print(data.person.friends) # -> ["bill", "jill", "jim"]
+
+print(data.on_fail("Fallback", str).this.doesnt.exist()) # -> "Fallback"
+print(data.on_fail("bill?").person.name()) # -> bob
+
+try:
+    print(data.on_fail("a string", str).person.age())
+except TypeError:
+    print("Type Mismatch")
+
+print(TG.TomlGuard.report_defaulted()) # -> ['this.doesnt.exist = "Fallback" # <str>']
+
+# TODO: explain all_of, any_of, match_on for multi-tables
+```
