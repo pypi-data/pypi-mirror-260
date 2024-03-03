@@ -1,0 +1,1 @@
+# pystructura/__init__.py
