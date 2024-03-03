@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: damip
+Version: 0.1.0
+Summary: Python SDK for Digitopia Advanced Mechanical Intelligence Platform.
+Home-page: https://smart-lands.com/damip
+Author: kaiwei.li
+Author-email: kaiwei.li@smart-lands.com
+License: UNKNOWN
+Description: # damip
+        
+        Python SDK for Digitopia Advanced Mechanical Intelligence Platform(damip).
+        
+        ### Installation
+        
+        We use PyPI to distribute our software.
+        
+        ```sh
+        $ pip install damip
+        ```
+        
+        
+        ### Usage
+        
+        ```python
+        Python 3.8.10 (default, Nov 22 2023, 10:22:35) 
+        [GCC 9.4.0] on linux
+        Type "help", "copyright", "credits" or "license" for more information.
+        >>>
+        >>> from damip import oldtimes
+        >>> mybot = oldtimes.robot("Joy")
+        >>> mybot.hello()
+        'hello, I am an oldtimes robot, My name is Joy.'
+        >>>
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
