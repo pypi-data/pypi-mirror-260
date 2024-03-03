@@ -1,0 +1,39 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line_length = 88
+
+[tool.isort]
+line_length = 88
+include_trailing_comma = true
+
+[tool.poetry]
+name = "xlsql"
+version = "0.2.6"
+description = "Convert a spreadsheet into a sqlite3 database."
+authors = ["Carl Anderson <carl.anderson@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+click = "^8.1.0"
+openpyxl = "^3.0.0"
+python = "^3.11"
+
+[tool.poetry.dev-dependencies]
+black = "^21.12.0"
+isort = "^5.13.2"
+pre-commit = "^2.13.0"
+toml = "^0.10.0"
+
+[tool.poetry.scripts]
+xlsql = "xlsql.cli:main"
+
+[tool.pre-commit]
+repos = ["xlsql"]
+
+[tool.pytest]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib"]
+pythonpaths = ["xlsql"]
