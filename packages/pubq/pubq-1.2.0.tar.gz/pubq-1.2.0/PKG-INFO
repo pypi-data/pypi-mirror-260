@@ -1,0 +1,134 @@
+Metadata-Version: 2.1
+Name: pubq
+Version: 1.2.0
+Summary: PUBQ Python SDK
+Home-page: https://pubq.io
+License: MIT
+Author: PUBQ Team
+Author-email: dev@pubq.io
+Maintainer: PUBQ Team
+Maintainer-email: dev@pubq.io
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 6 - Mature
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: pyee (>=11.0.0,<12.0.0)
+Requires-Dist: pyjwt (>=2.8.0,<3.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: socketclusterclient (>=1.3.6,<2.0.0)
+Project-URL: Documentation, https://github.com/pubqio/pubq-python
+Project-URL: Repository, https://github.com/pubqio/pubq-python
+Description-Content-Type: text/markdown
+
+# PUBQ Python SDK
+
+[PUBQ](https://pubq.io) is a pub/sub channels cloud and this is the official Python client library including both real-time and REST interfaces.
+
+To meet PUBQ and see more info and examples, please read the [documentation](https://pubq.io/docs).
+
+# Getting Started
+
+Follow these steps to just start building with PUBQ in Python or see the [Quickstart guide](https://pubq.io/docs/getting-started/quickstart) which covers more programming languages.
+
+## Install with package manager
+
+The Python SDK is available as PyPI package:
+
+```bash
+pip install pubq
+```
+
+## Interacting with PUBQ
+
+Get your application id and key from [PUBQ dashboard](https://dashboard.pubq.io) by [creating a new app](https://dashboard.pubq.io/applications/create) or use existing one.
+
+Connect to PUBQ:
+
+```python
+import asyncio
+from pubq import Pubq
+
+async def main():
+    def on_connected(state):
+        print("Connected to PUBQ!")
+
+    realtime = Pubq.RealTime({"key": "YOUR_API_KEY"})
+
+    realtime.connection.on('connected', on_connected)
+
+asyncio.run(main())
+```
+
+Subscribe a channel and listen for any data publish to receive:
+
+```python
+def on_message(msg):
+    print("Received new data: '" + str(msg.data))
+
+channel = realtime.channels.get("my-channel")
+channel.subscribe(on_message)
+```
+
+Publish a message:
+
+```python
+channel.publish("Hello!")
+```
+
+Publish a message with REST interface:
+
+```python
+import asyncio
+from pubq import Pubq
+
+async def main():
+    rest = Pubq.REST({"key": "YOUR_API_KEY"})
+    channel = rest.channels.get("my-channel")
+    channel.publish("Hello!")
+asyncio.run(main())
+```
+
+# Development
+
+Please, read the [contribution guide](https://pubq.io/docs/basics/contribution).
+
+## Setup
+
+```bash
+git clone git@github.com:pubqio/pubq-python.git
+cd ./pubq-python/
+poetry install
+```
+
+## Build
+
+```bash
+poetry build
+```
+
+## Tests
+
+To run tests using pytest:
+
+```bash
+poetry run pytest
+```
+
+## Example
+
+To run pubsub example:
+
+```bash
+cd examples/
+python pubsub.py
+```
+
