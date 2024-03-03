@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nbanim"
+version = "0.1.1"
+authors = [{name = "Hamid Ali Syed", email = "windcirculation@gmail.com"}]
+description = "A utility for displaying image sequences as animations in Jupyter Notebooks."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.6"
+
+dependencies = [
+    "ipywidgets>=7.5",
+    "IPython>=7.16",
+    # Add Sphinx and related dependencies for documentation
+    "Sphinx>=4.0.2",
+    "myst-parser>=0.15.2",  # For Markdown support in Sphinx
+    "nbsphinx>=0.8.7",      # For integrating Jupyter Notebooks
+    "nbconvert>=6.1.0",     # Required by nbsphinx for converting notebooks
+    "pydata-sphinx-theme>=0.6.3",  # For a nice theme for your Sphinx documentation
+]
+
+# Optional: If you are using additional tools like flake8, black, or isort for development,
+# you can specify them under 'dev-dependencies' to keep your development environment consistent.
+[project.optional-dependencies]
+dev = [
+    "flake8>=3.9.0",
+    "black>=21.5b0",
+    "isort>=5.8.0",
+]
+
+# If you have scripts or command-line interfaces, define them here
+[project.scripts]
+nbanim-cli = "nbanim:main"  # Adjust according to your package structure
