@@ -1,0 +1,209 @@
+Metadata-Version: 2.1
+Name: jsend2
+Version: 0.0.8
+Author-email: Mohammadreza ZOLGHADRI <zolghadri1999@email.com>, Amirreza Taherkhani <amirrezataherkhaani@gmail.com>
+Keywords: fastapi,django,jsend
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi
+Requires-Dist: pydantic
+Requires-Dist: django
+Requires-Dist: fastapi_pagination
+
+# jsend-python
+This is a package to response jsend-like format
+
+
+## requirements
+```bash
+pip install django djangorestframework
+```
+
+
+## Installation
+
+<!-- ```bash
+pip install jsend2
+``` -->
+
+```bash
+pip install git+https://github.com/Visapick-Team/jsend-python.git
+```
+
+
+# Response
+
+
+### Django
+
+settings.py
+```python
+INSTALLED_APPS = [
+    ...
+    "jsend2",
+]
+```
+
+```python
+REST_FRAMEWORK = {
+    # jsend2 limit/offset pagination 
+    "DEFAULT_PAGINATION_CLASS": "jsend2.django.utils.JSendLimitOffsetPagination",
+    
+    # jsend2 response
+    "DEFAULT_RENDERER_CLASSES": [
+        "jsend2.django.utils.JSendRenderer",
+    ],
+}
+
+```
+
+
+
+## output
+
+```json
+{
+    "status": "faild",
+    "message": "Any message",
+    "data": {
+        ...
+    },
+    "code": "-100",
+    "total": 100,
+    "offset": 12
+
+}
+```
+`status: str`
++ required
++ API status as a string, standard values are `success`, `fail` and `error`.
+
+
+`message: str`
++ optional
++ Default is None and **not** included in response. 
+
+`data: Any`
++ required
++ The original result of API response. 
+
+`code: int`
++ optional
++ Default is None and **not** included in response. 
+
+
+`total: int`
++ optional
++ Total objects retrieved if the result is paginated.
+
+`count: int`
++ optional
++ Object's count in the data if the result is paginated. 
+
+
+`offset: int`
++ optional
++ Object's offset if the result is paginated. 
+
+``
+
+
+### FastAPI
+main.py
+```python
+from fastapi import FastAPI
+from fastapi_pagination import add_pagination
+from router import router
+
+app = FastAPI()
+
+app.include_router(router)
+
+add_pagination(app)
+
+```
+
+router.py
+```python
+from fastapi import APIRouter
+from fastapi import Query
+from pagination import Pagination
+from response import Response
+
+router = APIRouter()
+```
+
+#### single Object
+```python
+@router.get(
+    "/user",
+    response_model=Response[UserOut],
+    response_model_exclude_none=True
+    )
+async def get_user(user_id: int = Query(ge=0)):
+    user: UserOut = find_user(user_id)
+    return Response(
+        data=user,
+        status="success"  # default 'success'
+    )
+```
+
+
+#### Paginated 
+```python
+@router.get(
+    "/users",
+    response_model=Pagination[UserOut],
+    response_model_exclude_none=True
+    )
+async def get_users():
+    response = paginate(users)
+    response.status = "success"  # default 'success'
+    return response
+```
+
+
+
+
+
+# Exception Handling
+
+
+### Django
+
+settings.py
+```python
+REST_FRAMEWORK = {
+    # jsend2 exception handler
+    "EXCEPTION_HANDLER": "jsend2.django.exception.jsend_exception_handler",
+    
+}
+
+```
+urls.py (Project urls)
+```python
+from jsend2.django.exception import myhandler400, myhandler403, myhandler404, myhandler500
+
+handler500 = myhandler500
+handler404 = myhandler404
+handler400 = myhandler400
+handler403 = myhandler403
+```
+
+
+### FastAPI
+main.py
+
+```python
+from fastapi import FastAPI, HTTPException
+from api import router
+from src.jsend2.jfast.exception import ExceptionMiddleware
+
+app = FastAPI()
+
+app.include_router(router)
+
+ExceptionMiddleware(app)
+```
