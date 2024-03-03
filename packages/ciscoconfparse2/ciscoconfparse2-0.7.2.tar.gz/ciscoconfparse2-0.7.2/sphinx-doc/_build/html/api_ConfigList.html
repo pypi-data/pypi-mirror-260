@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ciscoconfparse2.ConfigList Object &mdash; ciscoconfparse2 0.6.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ccp_abc functions" href="api_Ccp_Abc.html" />
+    <link rel="prev" title="ciscoconfparse2 functions" href="api_CiscoConfParse.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.6
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html">ciscoconfparse2 functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2-ciscoconfparse-object">ciscoconfparse2.CiscoConfParse Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2-diff-object">ciscoconfparse2.Diff Object</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ciscoconfparse2.ConfigList Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ConfigList"><code class="docutils literal notranslate"><span class="pre">ConfigList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.CiscoConfParse"><code class="docutils literal notranslate"><span class="pre">ConfigList.CiscoConfParse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__add__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__add__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__class_getitem__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__class_getitem__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__contains__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__contains__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__copy__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__copy__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__delitem__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__delitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__enter__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__enter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__eq__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__exit__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__exit__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__ge__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__ge__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__getattribute__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__getattribute__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__getitem__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__gt__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__gt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__hash__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__hash__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__iadd__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__iadd__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__imul__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__imul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__iter__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__le__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__le__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__len__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__len__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__lt__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__lt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__mul__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__mul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__radd__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__radd__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__repr__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__reversed__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__reversed__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__rmul__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__rmul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__setitem__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__setitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.__str__"><code class="docutils literal notranslate"><span class="pre">ConfigList.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.all_parents"><code class="docutils literal notranslate"><span class="pre">ConfigList.all_parents</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.append"><code class="docutils literal notranslate"><span class="pre">ConfigList.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.as_text"><code class="docutils literal notranslate"><span class="pre">ConfigList.as_text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.asa_access_list"><code class="docutils literal notranslate"><span class="pre">ConfigList.asa_access_list</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.asa_object_group_names"><code class="docutils literal notranslate"><span class="pre">ConfigList.asa_object_group_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.asa_object_group_network"><code class="docutils literal notranslate"><span class="pre">ConfigList.asa_object_group_network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.auto_commit"><code class="docutils literal notranslate"><span class="pre">ConfigList.auto_commit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.bootstrap"><code class="docutils literal notranslate"><span class="pre">ConfigList.bootstrap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.ccp_ref"><code class="docutils literal notranslate"><span class="pre">ConfigList.ccp_ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.clear"><code class="docutils literal notranslate"><span class="pre">ConfigList.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.comment_delimiters"><code class="docutils literal notranslate"><span class="pre">ConfigList.comment_delimiters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.commit"><code class="docutils literal notranslate"><span class="pre">ConfigList.commit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.commit_checkpoint"><code class="docutils literal notranslate"><span class="pre">ConfigList.commit_checkpoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.copy"><code class="docutils literal notranslate"><span class="pre">ConfigList.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.count"><code class="docutils literal notranslate"><span class="pre">ConfigList.count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.current_checkpoint"><code class="docutils literal notranslate"><span class="pre">ConfigList.current_checkpoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.debug"><code class="docutils literal notranslate"><span class="pre">ConfigList.debug</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.dna"><code class="docutils literal notranslate"><span class="pre">ConfigList.dna</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.extend"><code class="docutils literal notranslate"><span class="pre">ConfigList.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.factory"><code class="docutils literal notranslate"><span class="pre">ConfigList.factory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.get_checkpoint"><code class="docutils literal notranslate"><span class="pre">ConfigList.get_checkpoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.ignore_blank_lines"><code class="docutils literal notranslate"><span class="pre">ConfigList.ignore_blank_lines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.index"><code class="docutils literal notranslate"><span class="pre">ConfigList.index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.initlist"><code class="docutils literal notranslate"><span class="pre">ConfigList.initlist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.insert"><code class="docutils literal notranslate"><span class="pre">ConfigList.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.insert_after"><code class="docutils literal notranslate"><span class="pre">ConfigList.insert_after()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.insert_before"><code class="docutils literal notranslate"><span class="pre">ConfigList.insert_before()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.iter_no_comments"><code class="docutils literal notranslate"><span class="pre">ConfigList.iter_no_comments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.iter_with_comments"><code class="docutils literal notranslate"><span class="pre">ConfigList.iter_with_comments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.pop"><code class="docutils literal notranslate"><span class="pre">ConfigList.pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.reassign_linenums"><code class="docutils literal notranslate"><span class="pre">ConfigList.reassign_linenums()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.remove"><code class="docutils literal notranslate"><span class="pre">ConfigList.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.reverse"><code class="docutils literal notranslate"><span class="pre">ConfigList.reverse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.search_safe"><code class="docutils literal notranslate"><span class="pre">ConfigList.search_safe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.sort"><code class="docutils literal notranslate"><span class="pre">ConfigList.sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ConfigList.syntax"><code class="docutils literal notranslate"><span class="pre">ConfigList.syntax</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html">ccp_abc functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2-ccp-abc">ciscoconfparse2.ccp_abc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Cisco.html">ciscoconfparse2.models_cisco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Nxos.html">ciscoconfparse2.models_nxos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_ccp_util.html">ciscoconfparse2.ccp_util Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoPassword.html">ciscoconfparse2.CiscoPassword</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">API</a></li>
+      <li class="breadcrumb-item active">ciscoconfparse2.ConfigList Object</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_ConfigList.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ciscoconfparse2-configlist-object">
+<span id="api-configlist"></span><h1>ciscoconfparse2.ConfigList Object<a class="headerlink" href="#ciscoconfparse2-configlist-object" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">ConfigList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initlist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_delimiters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_blank_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ios'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_commit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList" title="Permalink to this definition"></a></dt>
+<dd><p>A custom list to hold <a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCfgLine</span></code></a> objects.  Most users will never need to use this class directly.</p>
+<p>Initialize the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initlist</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>...</em><em>]</em><em>]</em>) – A sequence of text configuration statements</p></li>
+<li><p><strong>comment_delimiters</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Sequence of string comment-delimiters; only change this
+when parsing non-Cisco configurations.</p></li>
+<li><p><strong>factory</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether to read the configuration lines as a factory input</p></li>
+<li><p><strong>ignore_blank_lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether blank configuration
+lines should be ignored, default to
+False.</p></li>
+<li><p><strong>syntax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A valid configuration syntax, default to ‘ios’.</p></li>
+<li><p><strong>auto_commit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether configuration changes are
+automatically committed.</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Debug level of this object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="#ciscoconfparse2.ConfigList" title="ciscoconfparse2.ConfigList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigList</span></code></a> instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ciscoconfparse2.ConfigList" title="ciscoconfparse2.ConfigList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigList</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>initlist</strong></p></td>
+<td><p>(list, tuple) A sequence of text configuration statements</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>comment_delimiters</strong></p></td>
+<td><p>(list) A sequence of text comment delimiters</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>factory</strong></p></td>
+<td><p>(bool) Whether to derive beta-quality configuration attributes for Cisco configurations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ignore_blank_lines</strong></p></td>
+<td><p>(bool) Whether to ignore blank lines in the configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>syntax</strong></p></td>
+<td><p>(str) One of ‘ios’, ‘nxos’, ‘asa’, ‘iosxr’, or ‘junos’</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>auto_commit</strong></p></td>
+<td><p>(bool) Whether to automatically commit changes to the configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>debug</strong></p></td>
+<td><p>(int) Debug level of this configuration instance</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ccp_ref</strong></p></td>
+<td><p>(CiscoConfParse) A reference to the CiscoConfParse instance which owns this ConfigList</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dna</strong></p></td>
+<td><p>(str) A string representing the type of CiscoConfParse instance this is</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>current_checkpoint</strong></p></td>
+<td><p>(int) The value of the current checkpoint; this will be updated with each ConfigList change</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>commit_checkpoint</strong></p></td>
+<td><p>(int) The value of the saved checkpoint; this will only be updated when a commit() is called</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>data</strong></p></td>
+<td><p>(BaseCfgLine) An internal sequence of BaseCfgLine instances used to maintain the contents of this python UserList subclass</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.CiscoConfParse">
+<span class="sig-name descname"><span class="pre">CiscoConfParse</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.CiscoConfParse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__add__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__class_getitem__">
+<span class="sig-name descname"><span class="pre">__class_getitem__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;bound</span> <span class="pre">method</span> <span class="pre">GenericAlias</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'ciscoconfparse2.ciscoconfparse2.ConfigList'&gt;&gt;</span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.__class_getitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__contains__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__copy__">
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__copy__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__delitem__">
+<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__delitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__enter__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__exit__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__ge__">
+<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__ge__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__getattribute__">
+<span class="sig-name descname"><span class="pre">__getattribute__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__getattribute__" title="Permalink to this definition"></a></dt>
+<dd><p>Call arg on ConfigList() object, and if that fails, call arg from the ccp_ref attribute</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__getitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__gt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.__hash__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__iadd__">
+<span class="sig-name descname"><span class="pre">__iadd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__iadd__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__imul__">
+<span class="sig-name descname"><span class="pre">__imul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__imul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__iter__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__le__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__len__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__lt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__mul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__radd__">
+<span class="sig-name descname"><span class="pre">__radd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__radd__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__reversed__">
+<span class="sig-name descname"><span class="pre">__reversed__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__reversed__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__rmul__">
+<span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__rmul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__setitem__">
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__setitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.all_parents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_parents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.all_parents" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A sequence of BaseCfgLine instances representing all parents in this ConfigList</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.append" title="Permalink to this definition"></a></dt>
+<dd><p>Append the BaseCfgLine() for <code class="docutils literal notranslate"><span class="pre">value</span></code> to the end of the ConfigList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The value to append</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.as_text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.as_text" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Configuration as a list of text lines</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.asa_access_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asa_access_list</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.asa_access_list" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary of ACL name to ACE (list) mappings</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.asa_object_group_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asa_object_group_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.asa_object_group_names" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary of name to address mappings</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.asa_object_group_network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asa_object_group_network</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.asa_object_group_network" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary of name to object-group network mappings</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.auto_commit">
+<span class="sig-name descname"><span class="pre">auto_commit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.auto_commit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.bootstrap">
+<span class="sig-name descname"><span class="pre">bootstrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.bootstrap" title="Permalink to this definition"></a></dt>
+<dd><p>Accept a text list, and format into a list of BaseCfgLine() instances.</p>
+<p>Parent / child relationships are assigned in this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequence of BaseCfgLine() objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.ccp_ref">
+<span class="sig-name descname"><span class="pre">ccp_ref</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.ccp_ref" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Remove all items from ConfigList.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.comment_delimiters">
+<span class="sig-name descname"><span class="pre">comment_delimiters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.comment_delimiters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.commit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of the ConfigList() commit operation</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.commit_checkpoint">
+<span class="sig-name descname"><span class="pre">commit_checkpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.commit_checkpoint" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.copy" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A copy of this ConfigList()</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.count" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><em>BaseCfgLine</em></a>) – value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of instances of <code class="docutils literal notranslate"><span class="pre">value</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.current_checkpoint">
+<span class="sig-name descname"><span class="pre">current_checkpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.current_checkpoint" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.debug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.dna">
+<span class="sig-name descname"><span class="pre">dna</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.dna" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">ciscoconfparse2.ccp_abc.BaseCfgLine</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.extend" title="Permalink to this definition"></a></dt>
+<dd><p>Extend the ConfigList with <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.factory">
+<span class="sig-name descname"><span class="pre">factory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.factory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.get_checkpoint">
+<span class="sig-name descname"><span class="pre">get_checkpoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.get_checkpoint" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An integer representing a unique version of this ConfigList() and its contents.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.ignore_blank_lines">
+<span class="sig-name descname"><span class="pre">ignore_blank_lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.ignore_blank_lines" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.index" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><em>BaseCfgLine</em></a>) – The item to index</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the index of <code class="docutils literal notranslate"><span class="pre">value</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.initlist">
+<span class="sig-name descname"><span class="pre">initlist</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.initlist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.insert" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Index to insert <code class="docutils literal notranslate"><span class="pre">value</span></code> at</p></li>
+<li><p><strong>value</strong> (<em>Union</em><em>[</em><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><em>BaseCfgLine</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Object to be inserted in the ConfigList()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.insert_after">
+<span class="sig-name descname"><span class="pre">insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exist_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.insert_after" title="Permalink to this definition"></a></dt>
+<dd><p>Insert new_val after all occurances of exist_val.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exist_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – An existing text value.  This may match multiple configuration entries.</p></li>
+<li><p><strong>new_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A new value to be inserted in the configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a a&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;c c&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Insert &#39;g&#39; before any occurance of &#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">retval</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">config_objs</span><span class="o">.</span><span class="n">insert_after</span><span class="p">(</span><span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">[</span><span class="s2">&quot;a a&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">,</span> <span class="s2">&quot;c c&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.insert_before">
+<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exist_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.insert_before" title="Permalink to this definition"></a></dt>
+<dd><p>Insert new_val before all occurances of exist_val.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exist_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – An existing text value.  This may match multiple configuration entries.</p></li>
+<li><p><strong>new_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A new value to be inserted in the configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a a&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;c c&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Insert &#39;g&#39; before any occurance of &#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">retval</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">insert_before</span><span class="p">(</span><span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">[</span><span class="s2">&quot;a a&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">,</span> <span class="s2">&quot;c c&quot;</span><span class="p">,</span> <span class="s2">&quot;X X&quot;</span><span class="p">,</span> <span class="s2">&quot;b b&quot;</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.iter_no_comments">
+<span class="sig-name descname"><span class="pre">iter_no_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.iter_no_comments" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The BaseCfgLine instance at or greater than <code class="docutils literal notranslate"><span class="pre">begin_index</span></code> if it is not a comment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.iter_with_comments">
+<span class="sig-name descname"><span class="pre">iter_with_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">begin_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.iter_with_comments" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The BaseCfgLine instance at or greater than <code class="docutils literal notranslate"><span class="pre">begin_index</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.pop" title="Permalink to this definition"></a></dt>
+<dd><p>Remove and return item at <code class="docutils literal notranslate"><span class="pre">index</span></code> (default last).</p>
+<p>Raises IndexError if list is empty or index is out of range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – ConfigList index to pop</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The pop’d value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.reassign_linenums">
+<span class="sig-name descname"><span class="pre">reassign_linenums</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.reassign_linenums" title="Permalink to this definition"></a></dt>
+<dd><p>Renumber the configuration line numbers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove first occurrence of <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>Raises <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigListItemDoesNotExist</span></code> if the value is not present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><em>BaseCfgLine</em></a>) – Value to remove from the ConfigList()</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.reverse" title="Permalink to this definition"></a></dt>
+<dd><p>Reverse the ConfigList() in-place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.search_safe">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">search_safe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.search_safe" title="Permalink to this definition"></a></dt>
+<dd><p>This is a seatbelt to ensure that configuration searches are safe;
+searches are not safe if the ConfigList() has changed without a commit.
+As such, this method checks the current version of
+<code class="docutils literal notranslate"><span class="pre">ConfigList().current_checkpoint</span></code> and compares it to the last known
+<code class="docutils literal notranslate"><span class="pre">ConfigList().commit_checkpoint</span></code>.  If they are the same, return True.
+<code class="docutils literal notranslate"><span class="pre">ConfigList().commit_checkpoint</span></code> should only written by
+<code class="docutils literal notranslate"><span class="pre">CiscoConfParse().commit()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.ConfigList.sort" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmp</strong> (<em>Callable</em>) – Specifies a custom comparison function of two arguments
+(list items) which should return a negative, zero or
+positive number depending on whether the first argument
+is considered smaller than, equal to, or larger than the
+second argument.</p></li>
+<li><p><strong>key</strong> (<em>Callable</em>) – Specifies a function of one argument that is used to
+extract a comparison key from each list element.</p></li>
+<li><p><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True, then the list elements are sorted as if each
+comparison were reversed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ConfigList.syntax">
+<span class="sig-name descname"><span class="pre">syntax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ConfigList.syntax" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_CiscoConfParse.html" class="btn btn-neutral float-left" title="ciscoconfparse2 functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_Ccp_Abc.html" class="btn btn-neutral float-right" title="ccp_abc functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 01, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

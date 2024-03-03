@@ -1,0 +1,13 @@
+
+PLAY [Perform directory on server] *********************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 20.04 on host chestnut.he.net should[0m
+[0;35mdisabled by setting deprecation_warnings=False in ansible.cfg.[0m
+[0;32mok: [chestnut.he.net][0m
+
+TASK [Run a remote unix ls command] ********************************************
+[0;33mchanged: [chestnut.he.net][0m
+
+PLAY RECAP *********************************************************************
+[0;33mchestnut.he.net[0m            : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

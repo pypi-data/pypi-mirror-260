@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ciscoconfparse2 functions &mdash; ciscoconfparse2 0.6.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ciscoconfparse2.ConfigList Object" href="api_ConfigList.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.6
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ciscoconfparse2 functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.get_version_number"><code class="docutils literal notranslate"><span class="pre">get_version_number()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.get_comment_delimiters"><code class="docutils literal notranslate"><span class="pre">get_comment_delimiters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.initialize_ciscoconfparse2"><code class="docutils literal notranslate"><span class="pre">initialize_ciscoconfparse2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.cfgobj_from_text"><code class="docutils literal notranslate"><span class="pre">cfgobj_from_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.build_space_tolerant_regex"><code class="docutils literal notranslate"><span class="pre">build_space_tolerant_regex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.convert_junos_to_ios"><code class="docutils literal notranslate"><span class="pre">convert_junos_to_ios()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ciscoconfparse2-ciscoconfparse-object">ciscoconfparse2.CiscoConfParse Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.__eq__"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.__hash__"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.__hash__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.__ne__"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.__ne__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.__repr__"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.auto_commit"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.auto_commit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.auto_indent_width"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.auto_indent_width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.check_ccp_input_good"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.check_ccp_input_good()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.comment_delimiters"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.comment_delimiters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.commit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.config"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.config_objs"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.config_objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.debug"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.debug</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.encoding"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.encoding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.factory"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.factory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_child_objects"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.find_child_objects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_object_branches"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.find_object_branches()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_objects"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.find_objects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.find_parent_objects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.find_parent_objects_wo_child()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.finished_config_parse"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.finished_config_parse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.get_auto_indent_from_syntax"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.get_auto_indent_from_syntax()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.get_text"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.get_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.handle_ccp_brace_syntax"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.handle_ccp_brace_syntax()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.ignore_blank_lines"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.ignore_blank_lines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.linesplit_rgx"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.linesplit_rgx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.loguru"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.loguru</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.objs"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.objs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.openargs"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.openargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.re_match_iter_typed"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.re_match_iter_typed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.re_search_children"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.re_search_children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.read_config_file"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.read_config_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.save_as"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.save_as()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.syntax"><code class="docutils literal notranslate"><span class="pre">CiscoConfParse.syntax</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ciscoconfparse2-diff-object">ciscoconfparse2.Diff Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.Diff"><code class="docutils literal notranslate"><span class="pre">Diff</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.__eq__"><code class="docutils literal notranslate"><span class="pre">Diff.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.__hash__"><code class="docutils literal notranslate"><span class="pre">Diff.__hash__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.__ne__"><code class="docutils literal notranslate"><span class="pre">Diff.__ne__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.get_diff"><code class="docutils literal notranslate"><span class="pre">Diff.get_diff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.get_rollback"><code class="docutils literal notranslate"><span class="pre">Diff.get_rollback()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.Diff.host"><code class="docutils literal notranslate"><span class="pre">Diff.host</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_ConfigList.html">ciscoconfparse2.ConfigList Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html">ccp_abc functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2-ccp-abc">ciscoconfparse2.ccp_abc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Cisco.html">ciscoconfparse2.models_cisco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Nxos.html">ciscoconfparse2.models_nxos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_ccp_util.html">ciscoconfparse2.ccp_util Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoPassword.html">ciscoconfparse2.CiscoPassword</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">API</a></li>
+      <li class="breadcrumb-item active">ciscoconfparse2 functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_CiscoConfParse.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ciscoconfparse2-functions">
+<span id="api-ciscoconfparse"></span><h1>ciscoconfparse2 functions<a class="headerlink" href="#ciscoconfparse2-functions" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.get_version_number">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">get_version_number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.get_version_number" title="Permalink to this definition"></a></dt>
+<dd><p>Read the version number from ‘pyproject.toml’, or use version 0.0.0 in odd circumstances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The version</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.get_comment_delimiters">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">get_comment_delimiters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.get_comment_delimiters" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of comment delimiters for the ‘syntax’ string in question</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A sequence of string comment delimiters</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.initialize_ciscoconfparse2">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">initialize_ciscoconfparse2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.initialize_ciscoconfparse2" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize ciscoconfparse2 global variables and configure logging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple of the ciscoconfparse2 globals and active loguru handlers</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)">tuple</a>[Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>,<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>], List[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.cfgobj_from_text">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">cfgobj_from_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_delimiters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.cfgobj_from_text" title="Permalink to this definition"></a></dt>
+<dd><p>Build a configuration object from configuration text, syntax, and factory inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text_list</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – The input list of text configuration strings</p></li>
+<li><p><strong>txt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The specific configuration string to evaluate</p></li>
+<li><p><strong>txt</strong> – The specific configuration string to evaluate</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Line-number to assign to the configuration object</p></li>
+<li><p><strong>syntax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – A valid configuration syntax</p></li>
+<li><p><strong>comment_delimiters</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – A sequence of string comment-delimiters</p></li>
+<li><p><strong>factory</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether to read the configuration lines as a factory input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A configuration object appropriate for the configuration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.build_space_tolerant_regex">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">build_space_tolerant_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linespec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.build_space_tolerant_regex" title="Permalink to this definition"></a></dt>
+<dd><p>Accept a string, and return a regex-like string with all spaces replaced with ‘s+’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>linespec</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Input to be regex-escaped</p></li>
+<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Encoding of the <code class="docutils literal notranslate"><span class="pre">linespec</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="docutils literal notranslate"><span class="pre">linespec</span></code> with all spaces escaped as <code class="docutils literal notranslate"><span class="pre">\s+</span></code></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.convert_junos_to_ios">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">convert_junos_to_ios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_delimiters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_blank_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.convert_junos_to_ios" title="Permalink to this definition"></a></dt>
+<dd><p>Accept <cite>input_list</cite> containing a list of junos-brace-formatted-string
+config lines.  This method strips off semicolons / braces from the string
+lines in <cite>input_list</cite> and returns the lines in a new list where all lines
+are explicitly indented as IOS would (as if IOS understood braces).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_list</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – A sequence of brace-delimited configuration strings.</p></li>
+<li><p><strong>stop_width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Integer representing the leading-spaces to indent
+levels of output child strings.</p></li>
+<li><p><strong>comment_delimiters</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Sequence of string comment-delimiters</p></li>
+<li><p><strong>ignore_blank_lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Whether to ignore blank lines, defaults to False</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Debug level for this method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Indented configuration strings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="ciscoconfparse2-ciscoconfparse-object">
+<h1>ciscoconfparse2.CiscoConfParse Object<a class="headerlink" href="#ciscoconfparse2-ciscoconfparse-object" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">CiscoConfParse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ios'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'UTF-8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loguru</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_delimiters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_indent_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linesplit_rgx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\\r*\\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_blank_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_commit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse" title="Permalink to this definition"></a></dt>
+<dd><p>Parse Cisco IOS configurations and answer queries about the configs.</p>
+<p>Initialize CiscoConfParse.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">comment_delimiters</span></code> always assumes the delimiter is one character wide.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">ignore_blank_lines</span></code> changes the original ciscoconfparse default value.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>,</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>...</em><em>]</em><em>]</em>) – A list of configuration lines or the filepath to the configuration.</p></li>
+<li><p><strong>syntax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The configuration type, default to ‘ios’; it must be one of: ‘ios’, ‘nxos’, ‘iosxr’, ‘asa’, ‘junos’.  Use ‘junos’ for any brace-delimited network configuration (including F5, Palo Alto, etc…).</p></li>
+<li><p><strong>encoding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The configuration encoding, default to <code class="docutils literal notranslate"><span class="pre">locale.getpreferredencoding()</span></code>.</p></li>
+<li><p><strong>loguru</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Control whether CiscoConfParse should enable <code class="docutils literal notranslate"><span class="pre">loguru</span></code>, default to True.</p></li>
+<li><p><strong>comment_delimiters</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – String comment delimiters.  This should only be changed when parsing non-Cisco configurations, which do not use a ‘!’ as the comment delimiter.  <code class="docutils literal notranslate"><span class="pre">comment</span></code> defaults to ‘!’.  This value can hold multiple characters in case the config uses multiple characters for comment delimiters.</p></li>
+<li><p><strong>auto_indent_width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Defaults to -1, and should be kept that way unless you’re working on a very tricky config parsing problem.</p></li>
+<li><p><strong>linesplit_rgx</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Used when parsing configuration files to find
+where new configuration lines are; it is best
+to leave this as the default, unless you’re
+working on a system that uses unusual line
+terminations (for instance something besides
+Unix, OSX, or Windows).</p></li>
+<li><p><strong>ignore_blank_lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Defaults to False; when this is set True,
+ciscoconfparse2 ignores blank configuration
+lines.</p></li>
+<li><p><strong>auto_commit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Control whether CiscoConfParse should auto-commit config changes when possible, default to True.
+However, parsing very large configs may be faster with <code class="docutils literal notranslate"><span class="pre">auto_commit=False</span></code>.</p></li>
+<li><p><strong>factory</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Control whether CiscoConfParse should enable the
+beta-quality configuration parameter parser,
+default to False.</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Control CiscoConfParse debug output, default is 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A CiscoConfParse object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a></p>
+</dd>
+</dl>
+<p>This example illustrates how to parse a simple Cisco IOS configuration
+with <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a> into a variable called
+<code class="docutils literal notranslate"><span class="pre">parse</span></code>.  This example also illustrates what the <code class="docutils literal notranslate"><span class="pre">config_objs</span></code>
+and <code class="docutils literal notranslate"><span class="pre">ioscfg</span></code> attributes contain.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;logging trap debugging&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;logging 172.28.26.15&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span>
+<span class="go">&lt;CiscoConfParse: 2 lines / syntax: ios / comment delimiter: &#39;!&#39; / factory: False&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">config_objs</span>
+<span class="go">&lt;ConfigList, comment=&#39;!&#39;, conf=[&lt;IOSCfgLine # 0 &#39;logging trap debugging&#39;&gt;, &lt;IOSCfgLine # 1 &#39;logging 172.28.26.15&#39;&gt;]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">text</span>
+<span class="go">[&#39;logging trap debugging&#39;, &#39;logging 172.28.26.15&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.objs" title="ciscoconfparse2.CiscoConfParse.objs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">objs</span></code></a></p></td>
+<td><p>CiscoConfParse().objs is an alias for the CiscoConfParse().config_objs property.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.openargs" title="ciscoconfparse2.CiscoConfParse.openargs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openargs</span></code></a></p></td>
+<td><p>Fix Py3.5 deprecation of universal newlines</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>comment_delimiters</strong></p></td>
+<td><p>(list) A list of strings containing the comment-delimiters.  Default: [“!”]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>config_objs</strong></p></td>
+<td><p>(<a class="reference internal" href="api_ConfigList.html#ciscoconfparse2.ConfigList" title="ciscoconfparse2.ConfigList"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigList</span></code></a>) A custom list, which contains all parsed <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> instances.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>debug</strong></p></td>
+<td><p>(int) An int to enable verbose config parsing debugs. Default 0.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ioscfg</strong></p></td>
+<td><p>(list) A list of text configuration strings</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>syntax</strong></p></td>
+<td><p>(str) A string holding the configuration type.  Default: ‘ios’.  Must be one of: ‘ios’, ‘nxos’, ‘iosxr’, ‘asa’, ‘junos’.  Use ‘junos’ for any brace-delimited network configuration (including F5, Palo Alto, etc…).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class CiscoConfParse.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.__hash__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.__ne__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class CiscoConfParse.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return a string that represents this CiscoConfParse object instance.  The number of lines embedded in the string is calculated from the length of the config_objs attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A representation of this object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.auto_commit">
+<span class="sig-name descname"><span class="pre">auto_commit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.auto_commit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.auto_indent_width">
+<span class="sig-name descname"><span class="pre">auto_indent_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.auto_indent_width" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.check_ccp_input_good">
+<span class="sig-name descname"><span class="pre">check_ccp_input_good</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.check_ccp_input_good" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>...</em><em>]</em><em>]</em>) – Sequence of commands</p></li>
+<li><p><strong>logger</strong> (<em>loguru._logger.Logger</em>) – loguru.logger() reference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the config can be parsed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.comment_delimiters">
+<span class="sig-name descname"><span class="pre">comment_delimiters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.comment_delimiters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.commit" title="Permalink to this definition"></a></dt>
+<dd><p>Use <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-func docutils literal notranslate"><span class="pre">commit()</span></code></a> to manually fix up <code class="docutils literal notranslate"><span class="pre">config_objs</span></code> relationships after modifying a parsed configuration.  This method is slow; try to batch calls to <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-func docutils literal notranslate"><span class="pre">commit()</span></code></a> if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you modify a configuration after parsing it with <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a>,
+you <em>must</em> call <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> or
+<a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> before searching the configuration
+again with methods such as <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a>.  Failure
+to call <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> or
+<a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.commit" title="ciscoconfparse2.CiscoConfParse.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a> on config modifications could
+lead to unexpected search results.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.config">
+<span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.config_objs">
+<span class="sig-name descname"><span class="pre">config_objs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.config_objs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.debug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.encoding">
+<span class="sig-name descname"><span class="pre">encoding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.encoding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.factory">
+<span class="sig-name descname"><span class="pre">factory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.factory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.find_child_objects">
+<span class="sig-name descname"><span class="pre">find_child_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parentspec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">childspec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.find_child_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Parse through the children of all parents matching parentspec,
+and return a list of child objects, which matched the childspec.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parentspec</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Text regular expression for the parent’s configuration line.  A list is preferred.</p></li>
+<li><p><strong>childspec</strong> – Text regular expression for the child’s configuration line.</p></li>
+<li><p><strong>ignore_ws</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Ignore whitespace, default to False</p></li>
+<li><p><strong>recurse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Control whether to recurse in the config, default to True.</p></li>
+<li><p><strong>escape_chars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether characters are escaped before searching, default to False.</p></li>
+<li><p><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether results are reversed; set True if modifying the configuration with these results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matching child objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not set <code class="docutils literal notranslate"><span class="pre">childspec</span></code> if searching with a tuple of strings or list of strings.</p>
+</div>
+<p>This example finds the object for “ge-0/0/0” under “interfaces” in the
+following config…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interfaces</span>
+    <span class="n">ge</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+        <span class="n">unit</span> <span class="mi">0</span>
+            <span class="n">family</span> <span class="n">ethernet</span><span class="o">-</span><span class="n">switching</span>
+                <span class="n">port</span><span class="o">-</span><span class="n">mode</span> <span class="n">access</span>
+                <span class="n">vlan</span>
+                    <span class="n">members</span> <span class="n">VLAN_FOO</span>
+    <span class="n">ge</span><span class="o">-</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+        <span class="n">unit</span> <span class="mi">0</span>
+            <span class="n">family</span> <span class="n">ethernet</span><span class="o">-</span><span class="n">switching</span>
+                <span class="n">port</span><span class="o">-</span><span class="n">mode</span> <span class="n">trunk</span>
+                <span class="n">vlan</span>
+                    <span class="n">members</span> <span class="nb">all</span>
+                <span class="n">native</span><span class="o">-</span><span class="n">vlan</span><span class="o">-</span><span class="nb">id</span> <span class="mi">1</span>
+    <span class="n">vlan</span>
+        <span class="n">unit</span> <span class="mi">0</span>
+            <span class="n">family</span> <span class="n">inet</span>
+                <span class="n">address</span> <span class="mf">172.16.15.5</span><span class="o">/</span><span class="mi">22</span>
+</pre></div>
+</div>
+<p>The following object should be returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IOSCfgLine</span> <span class="c1"># 7 &#39;    ge-0/0/1&#39; (parent is # 0)&gt;</span>
+</pre></div>
+</div>
+<p>We do this by quering <cite>find_child_objects()</cite>; we set our
+parent as <cite>^s*interface</cite> and set the child as
+<cite>^s+ge-0/0/1</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interfaces&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;    ge-0/0/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;        unit 0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;            family ethernet-switching&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                port-mode access&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                vlan&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                    members VLAN_FOO&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;    ge-0/0/1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;        unit 0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;            family ethernet-switching&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                port-mode trunk&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                vlan&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                    members all&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                native-vlan-id 1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;    vlan&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;        unit 0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;            family inet&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;                address 172.16.15.5/22&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">find_child_objects</span><span class="p">([</span><span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;ge-0/0/1&#39;</span><span class="p">])</span>
+</span><span class="hll"><span class="go">[&lt;IOSCfgLine # 7 &#39;    ge-0/0/1&#39; (parent is # 0)&gt;]</span>
+</span><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.find_object_branches">
+<span class="sig-name descname"><span class="pre">find_object_branches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">branchspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/re.html#re.RegexFlag" title="(in Python v3.12)"><span class="pre">RegexFlag</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_branches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.find_object_branches" title="Permalink to this definition"></a></dt>
+<dd><p>Iterate over a tuple of regular expression strings in <cite>branchspec</cite> and return matching objects in a list of lists (consider it similar to a table of matching config objects). <cite>branchspec</cite> expects to start at some ancestor and walk through the nested object hierarchy (with no limit on depth).</p>
+<p>Previous CiscoConfParse() methods only handled a single parent regex and single child regex (such as <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a>).</p>
+<p>Transcend past one-level of parent-child relationship parsing to include multiple nested ‘branches’ of a single family (i.e. parents, children, grand-children, great-grand-children, etc).  The result of handling longer regex chains is that it flattens what would otherwise be nested loops in your scripts; this makes parsing heavily-nested configuratations like Juniper, Palo-Alto, and F5 much simpler.  Of course, there are plenty of applications for “flatter” config formats like IOS.</p>
+<p>Return a list of lists (of object ‘branches’) which are nested to the same depth required in <cite>branchspec</cite>.  However, unlike most other CiscoConfParse() methods, return an explicit <cite>None</cite> if there is no object match.  Returning <cite>None</cite> allows a single search over configs that may not be uniformly nested in every branch.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">allow_none</span></code> from original ciscoconfparse is removed and no longer a configuration option; it will always be regarded as True.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>branchspec</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>...</em><em>]</em><em>,</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>]</em>) – Regular expressions to be matched.</p></li>
+<li><p><strong>regex_flags</strong> (<em>Union</em><em>[</em><em>re.RegexFlags</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – Chained regular expression flags, such as <cite>re.IGNORECASE|re.MULTILINE</cite></p></li>
+<li><p><strong>regex_groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Return a tuple of re.Match groups instead of the matching configuration objects, default is False.</p></li>
+<li><p><strong>empty_branches</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True, return a list of None statements if there is no match; before version 1.9.49, this defaulted True.</p></li>
+<li><p><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True, reverse the return value order.</p></li>
+<li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Set &gt; 0 for debug messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of lists of matching <code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code> objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]]</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">attrgetter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;ltm pool FOO {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;  members {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    k8s-05.localdomain:8443 {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      address 192.0.2.5&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      session monitor-enabled&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      state up&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    }&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    k8s-06.localdomain:8443 {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      address 192.0.2.6&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      session monitor-enabled&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      state down&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    }&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;  }&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;}&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;ltm pool BAR {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;  members {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    k8s-07.localdomain:8443 {&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      address 192.0.2.7&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      session monitor-enabled&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;      state down&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;    }&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;  }&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;}&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s1">&#39;junos&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">branchspec</span> <span class="o">=</span> <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;ltm\spool&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;members&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\S+?:\d+&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;state\sup&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">branches</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_object_branches</span><span class="p">(</span><span class="n">branchspec</span><span class="o">=</span><span class="n">branchspec</span><span class="p">)</span>
+</span><span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We found three branches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">branches</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Each branch must match the length of branchspec</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">branches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print out one object &#39;branch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">[&lt;IOSCfgLine # 0 &#39;ltm pool FOO&#39;&gt;, &lt;IOSCfgLine # 1 &#39;    members&#39; (parent is # 0)&gt;, &lt;IOSCfgLine # 2 &#39;        k8s-05.localdomain:8443&#39; (parent is # 1)&gt;, &lt;IOSCfgLine # 5 &#39;            state up&#39; (parent is # 2)&gt;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the a list of text lines for this branch...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">ii</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">branches</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="go">[&#39;ltm pool FOO&#39;, &#39;    members&#39;, &#39;        k8s-05.localdomain:8443&#39;, &#39;            state up&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the config text of the root object of the branch...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branches</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;ltm pool FOO&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note: `None` in branches[1][-1] because of no regex match</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branches</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">[&lt;IOSCfgLine # 0 &#39;ltm pool FOO&#39;&gt;, &lt;IOSCfgLine # 1 &#39;    members&#39; (parent is # 0)&gt;, &lt;IOSCfgLine # 6 &#39;        k8s-06.localdomain:8443&#39; (parent is # 1)&gt;, None]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branches</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">[&lt;IOSCfgLine # 10 &#39;ltm pool BAR&#39;&gt;, &lt;IOSCfgLine # 11 &#39;    members&#39; (parent is # 10)&gt;, &lt;IOSCfgLine # 12 &#39;        k8s-07.localdomain:8443&#39; (parent is # 11)&gt;, None]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.find_objects">
+<span class="sig-name descname"><span class="pre">find_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linespec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/re.html#re.Pattern" title="(in Python v3.12)"><span class="pre">Pattern</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/re.html#re.Pattern" title="(in Python v3.12)"><span class="pre">Pattern</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exactmatch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.find_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Find all <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects whose text matches <code class="docutils literal notranslate"><span class="pre">linespec</span></code> and return the
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects in a python list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>linespec</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/re.html#re.Pattern" title="(in Python v3.12)"><em>re.Pattern</em></a><em>,</em><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><em>BaseCfgLine</em></a><em>, </em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>, </em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/re.html#re.Pattern" title="(in Python v3.12)"><em>re.Pattern</em></a><em>]</em><em>]</em>) – Text regular expression or a list with an expression for the <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects to be matched</p></li>
+<li><p><strong>exactmatch</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – When set True, this option requires <code class="docutils literal notranslate"><span class="pre">linespec</span></code> match the whole configuration line, instead of a
+portion of the configuration line, default to False.</p></li>
+<li><p><strong>ignore_ws</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether whitespace is ignored, default to False.</p></li>
+<li><p><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Controls whether the order of the results is reversed, default to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Matching <code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code> objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+<p>This example illustrates the use of <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial1/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.1 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial1/1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.5 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface&#39;</span><span class="p">)</span>
+<span class="go">[&lt;IOSCfgLine # 1 &#39;interface Serial1/0&#39;&gt;, &lt;IOSCfgLine # 4 &#39;interface Serial1/1&#39;&gt;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.find_parent_objects">
+<span class="sig-name descname"><span class="pre">find_parent_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parentspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/re.html#re.Pattern" title="(in Python v3.12)"><span class="pre">Pattern</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">childspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of parent <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects,
+which matched the <code class="docutils literal notranslate"><span class="pre">parentspec</span></code> and whose children match <code class="docutils literal notranslate"><span class="pre">childspec</span></code>.
+Only the parent <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects will be
+returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parentspec</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>,</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>...</em><em>]</em><em>]</em>) – Text regular expression or a list of expressions for the <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object to be matched</p></li>
+<li><p><strong>childspec</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Text regular expression for the child’s configuration line</p></li>
+<li><p><strong>ignore_ws</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – boolean that controls whether whitespace is ignored</p></li>
+<li><p><strong>recurse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Set True if you want to search all children (children, grand children, great grand children, etc…).  This is considered True if parentspec is a list or tuple.</p></li>
+<li><p><strong>escape_chars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Set True if you want to escape characters before searching</p></li>
+<li><p><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Set True if you want to reverse the order of the results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of matching parent <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not set <code class="docutils literal notranslate"><span class="pre">childspec</span></code> if searching with a tuple of strings or list of strings.</p>
+</div>
+<p>This example uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">find_parent_objects()</span></code> to
+find all ports that are members of access vlan 300 in following
+config…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!
+interface FastEthernet0/1
+ switchport access vlan 532
+ spanning-tree vlan 532 cost 3
+!
+interface FastEthernet0/2
+ switchport access vlan 300
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ duplex full
+ speed 100
+ switchport access vlan 300
+ spanning-tree portfast
+!
+</pre></div>
+</div>
+<p>The following interfaces should be returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">FastEthernet0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">interface</span> <span class="n">FastEthernet0</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>We do this by quering <cite>find_objects_w_child()</cite>; we set our
+parent as <cite>^interface</cite> and set the child as <cite>switchport access
+vlan 300</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 532&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree vlan 532 cost 3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 300&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree portfast&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; duplex full&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; speed 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 300&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree portfast&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">find_parent_objects</span><span class="p">([</span><span class="s1">&#39;interface&#39;</span><span class="p">,</span> <span class="s1">&#39;vlan 300&#39;</span><span class="p">])</span>
+</span><span class="hll"><span class="go">[&lt;IOSCfgLine # 5 &#39;interface FastEthernet0/2&#39;&gt;, &lt;IOSCfgLine # 9 &#39;interface FastEthernet0/3&#39;&gt;]</span>
+</span><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child">
+<span class="sig-name descname"><span class="pre">find_parent_objects_wo_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parentspec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">childspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">escape_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of parent <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects, which matched the <code class="docutils literal notranslate"><span class="pre">parentspec</span></code> and whose children did not match <code class="docutils literal notranslate"><span class="pre">childspec</span></code>.  Only the parent <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects will be returned.  For simplicity, this method only finds oldest_ancestors without immediate children that match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>parentspec</strong><span class="classifier">str</span></dt><dd><p>Text regular expression for the <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object to be matched; this must match the parent’s line</p>
+</dd>
+<dt><strong>childspec</strong><span class="classifier">str</span></dt><dd><p>Text regular expression for the line to be matched; this must match the child’s line</p>
+</dd>
+<dt><strong>ignore_ws</strong><span class="classifier">bool</span></dt><dd><p>boolean that controls whether whitespace is ignored</p>
+</dd>
+<dt><strong>recurse</strong><span class="classifier">bool</span></dt><dd><p>boolean that controls whether to recurse through children of children</p>
+</dd>
+<dt><strong>escape_chars</strong><span class="classifier">bool</span></dt><dd><p>boolean that controls whether to escape characters before searching</p>
+</dd>
+<dt><strong>reverse</strong><span class="classifier">bool</span></dt><dd><p>Set True if you want to reverse the order of the results</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>list</dt><dd><p>A list of matching parent configuration lines</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>This example finds all ports that are autonegotiating in the following config…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!
+interface FastEthernet0/1
+ switchport access vlan 532
+ spanning-tree vlan 532 cost 3
+!
+interface FastEthernet0/2
+ switchport access vlan 300
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ duplex full
+ speed 100
+ switchport access vlan 300
+ spanning-tree portfast
+!
+</pre></div>
+</div>
+<p>The following interfaces should be returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">FastEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">interface</span> <span class="n">FastEthernet0</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>We do this by quering <code class="docutils literal notranslate"><span class="pre">find_parent_objects_wo_child()</span></code>; we set our
+parent as <code class="docutils literal notranslate"><span class="pre">^interface</span></code> and set the child as <code class="docutils literal notranslate"><span class="pre">speed\s\d+</span></code> (a
+regular-expression which matches the word ‘speed’ followed by
+an integer).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/1&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 532&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree vlan 532 cost 3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/2&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 300&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree portfast&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;interface FastEthernet0/3&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; duplex full&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; speed 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; switchport access vlan 300&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39; spanning-tree portfast&#39;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">find_parent_objects_wo_child</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;speed\s\d+&#39;</span><span class="p">)</span>
+</span><span class="go">[&lt;IOSCfgLine # 1 &#39;interface FastEthernet0/1&#39;&gt;, &lt;IOSCfgLine # 5 &#39;interface FastEthernet0/2&#39;&gt;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.finished_config_parse">
+<span class="sig-name descname"><span class="pre">finished_config_parse</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.finished_config_parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.get_auto_indent_from_syntax">
+<span class="sig-name descname"><span class="pre">get_auto_indent_from_syntax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.get_auto_indent_from_syntax" title="Permalink to this definition"></a></dt>
+<dd><p>Return an auto indent for the ‘syntax’ string in question</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syntax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Syntax of the configuration lines</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of spaces for each indent level</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.get_text">
+<span class="sig-name descname"><span class="pre">get_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.get_text" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>All text configuration statements</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The original ciscoconfparse <code class="docutils literal notranslate"><span class="pre">ioscfg`&#64;property</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">renamed</span> <span class="pre">to</span> <span class="pre">``get_text()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.handle_ccp_brace_syntax">
+<span class="sig-name descname"><span class="pre">handle_ccp_brace_syntax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tmp_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.handle_ccp_brace_syntax" title="Permalink to this definition"></a></dt>
+<dd><p>Deal with brace-delimited syntax issues, such as conditionally discarding junos closing brace-lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tmp_lines</strong> (<em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Brace-delimited text configuration lines</p></li>
+<li><p><strong>syntax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Syntax of the configuration lines</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configuration lines without braces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.ignore_blank_lines">
+<span class="sig-name descname"><span class="pre">ignore_blank_lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.ignore_blank_lines" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.linesplit_rgx">
+<span class="sig-name descname"><span class="pre">linesplit_rgx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.linesplit_rgx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.loguru">
+<span class="sig-name descname"><span class="pre">loguru</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.loguru" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.objs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">objs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_ConfigList.html#ciscoconfparse2.ConfigList" title="ciscoconfparse2.ciscoconfparse2.ConfigList"><span class="pre">ConfigList</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine"><span class="pre">BaseCfgLine</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.objs" title="Permalink to this definition"></a></dt>
+<dd><p>CiscoConfParse().objs is an alias for the CiscoConfParse().config_objs property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>All configuration objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2.ccp_abc.BaseCfgLine" title="ciscoconfparse2.ccp_abc.BaseCfgLine">BaseCfgLine</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.openargs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">openargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.openargs" title="Permalink to this definition"></a></dt>
+<dd><p>Fix Py3.5 deprecation of universal newlines</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ref original ciscoconfparse Github issue #114; also see
+<a class="reference external" href="https://softwareengineering.stackexchange.com/q/298677/23144">https://softwareengineering.stackexchange.com/q/298677/23144</a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The proper encoding parameters</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>,Union[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>,None]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.re_match_iter_typed">
+<span class="sig-name descname"><span class="pre">re_match_iter_typed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexspec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">untyped_default=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.re_match_iter_typed" title="Permalink to this definition"></a></dt>
+<dd><p>Use <code class="docutils literal notranslate"><span class="pre">regexspec</span></code> to search the root parents in the config
+and return the contents of the regular expression group, at the
+integer <code class="docutils literal notranslate"><span class="pre">group</span></code> index, cast as <code class="docutils literal notranslate"><span class="pre">result_type</span></code>; if there is no
+match, <code class="docutils literal notranslate"><span class="pre">default</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>regexspec</strong><span class="classifier">str</span></dt><dd><p>A string or python compiled regular expression, which should be matched.  This regular expression should contain parenthesis, which bound a match group.</p>
+</dd>
+<dt><strong>group</strong><span class="classifier">int</span></dt><dd><p>An integer which specifies the desired regex group to be returned.  <code class="docutils literal notranslate"><span class="pre">group</span></code> defaults to 1.</p>
+</dd>
+<dt><strong>result_type</strong><span class="classifier">type</span></dt><dd><p>A type (typically one of: <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, or <a class="reference internal" href="api_ccp_util.html#ciscoconfparse2.ccp_util.IPv4Obj" title="ciscoconfparse2.ccp_util.IPv4Obj"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Obj</span></code></a>).         All returned values are cast as <code class="docutils literal notranslate"><span class="pre">result_type</span></code>, which defaults to <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+</dd>
+<dt><strong>default</strong><span class="classifier">any</span></dt><dd><p>The default value to be returned, if there is no match.  The default is an empty string.</p>
+</dd>
+<dt><strong>untyped_default</strong><span class="classifier">bool</span></dt><dd><p>Set True if you don’t want the default value to be typed</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">result_type</span></code></dt><dd><p>The text matched by the regular expression group; if there is no match, <code class="docutils literal notranslate"><span class="pre">default</span></code> is returned.  All values are cast as <code class="docutils literal notranslate"><span class="pre">result_type</span></code>.  The default result_type is <cite>str</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>This example illustrates how you can use
+<code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code> to get the
+first interface name listed in the config.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial1/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.1 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial2/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.5 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;interface\s(\S+)&#39;</span><span class="p">)</span>
+<span class="go">&#39;Serial1/0&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>The following example retrieves the hostname from the configuration</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;hostname DEN-EDGE-01&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial1/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.1 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial2/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.5 255.255.255.252&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^hostname\s+(\S+)&#39;</span><span class="p">)</span>
+<span class="go">&#39;DEN-EDGE-01&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.re_search_children">
+<span class="sig-name descname"><span class="pre">re_search_children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regexspec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.re_search_children" title="Permalink to this definition"></a></dt>
+<dd><p>Use <code class="docutils literal notranslate"><span class="pre">regexspec</span></code> to search for root parents in the config with text matching regex.  If <cite>recurse</cite> is False, only root parent objects are returned.  A list of matching objects is returned.</p>
+<p>This method is very similar to <a class="reference internal" href="#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> (when <cite>recurse</cite> is True); however it was written in response to the use-case described in <a class="reference external" href="https://github.com/mpenning/ciscoconfparse/issues/156">Github Issue #156</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>regexspec</strong><span class="classifier">str</span></dt><dd><p>A string or python regular expression, which should be matched.</p>
+</dd>
+<dt><strong>recurse</strong><span class="classifier">bool</span></dt><dd><p>Set True if you want to search all objects, and not just the root parents</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>list</dt><dd><p>A list of matching <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects which matched.  If there is no match, an empty <code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code> is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.read_config_file">
+<span class="sig-name descname"><span class="pre">read_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linesplit_rgx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\\r*\\n'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.read_config_file" title="Permalink to this definition"></a></dt>
+<dd><p>Read the config lines from the filepath.  Return the list of text configuration commands or raise an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Filepath to be read</p></li>
+<li><p><strong>linesplit_rgx</strong> – Regex to use for line splits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output configuration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.save_as">
+<span class="sig-name descname"><span class="pre">save_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.save_as" title="Permalink to this definition"></a></dt>
+<dd><p>Save a text copy of the configuration at <code class="docutils literal notranslate"><span class="pre">filepath</span></code>; this
+method uses the OperatingSystem’s native line separators (such as
+<code class="docutils literal notranslate"><span class="pre">\r\n</span></code> in Windows).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.CiscoConfParse.syntax">
+<span class="sig-name descname"><span class="pre">syntax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.CiscoConfParse.syntax" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="ciscoconfparse2-diff-object">
+<h1>ciscoconfparse2.Diff Object<a class="headerlink" href="#ciscoconfparse2-diff-object" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.</span></span><span class="sig-name descname"><span class="pre">Diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ios'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.Diff" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize Diff().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_config</strong> – A string or sequence containing text configuration statements representing the old config. Default value: <cite>None</cite>. If a filepath is provided, load the configuration from the file.</p></li>
+<li><p><strong>old_config</strong> – Union[str, List[str], tuple[str, …]]</p></li>
+<li><p><strong>new_config</strong> – A string or sequence containing text configuration statements representing the new config. Default value: <cite>None</cite>. If a filepath is provided, load the configuration from the file.</p></li>
+<li><p><strong>new_config</strong> – Union[str, List[str], tuple[str, …]]</p></li>
+<li><p><strong>syntax</strong> – The configuration type.  Default: ‘ios’.</p></li>
+<li><p><strong>syntax</strong> – ciscoconfparse2.Diff</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.Diff.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Diff.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ciscoconfparse2.Diff.__hash__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.Diff.__ne__" title="Permalink to this definition"></a></dt>
+<dd><p>Method generated by attrs for class Diff.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.get_diff">
+<span class="sig-name descname"><span class="pre">get_diff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.Diff.get_diff" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of required configuration statements to go from the old_config to the new_config</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.get_rollback">
+<span class="sig-name descname"><span class="pre">get_rollback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ciscoconfparse2.Diff.get_rollback" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of required configuration statements to rollback from the new_config to the old_config</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.Diff.host">
+<span class="sig-name descname"><span class="pre">host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.Diff.host" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_ConfigList.html" class="btn btn-neutral float-right" title="ciscoconfparse2.ConfigList Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 01, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

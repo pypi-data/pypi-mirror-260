@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; ciscoconfparse2 0.6.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to ciscoconfparse2’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.6
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-new-in-ciscoconfparse2">What’s new in ciscoconfparse2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-ciscoconfparse2-good-for">What is ciscoconfparse2 good for?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#we-don-t-have-ciscos">We don’t have Ciscos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a> is similar to an advanced grep and diff API for <a class="reference external" href="http://python.org/">python</a>; it
+should be used with text network configuration files (such as those from
+Cisco, Juniper, Palo Alto, etc).  It is the next generation of <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a>,
+which was the primary development vehicle from 2007 until 2023.</p>
+<p><a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a> can:</p>
+<ul class="simple">
+<li><p>Audit existing router / switch / firewall / wlc configurations against a text configuration template</p></li>
+<li><p>Retrieve portions of the configuration</p></li>
+<li><p>Modify existing configurations</p></li>
+<li><p>Build new configurations</p></li>
+</ul>
+<p>The library examines a Cisco or JunOS-style configuration and breaks it into a set
+of linked parent / child relationships; each configuration line is stored in a
+different <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object.</p>
+<figure class="align-left" id="id2">
+<a class="reference internal image-reference" href="_images/ciscoconfparse_overview.png"><img alt="ciscoconfparse2 overview" src="_images/ciscoconfparse_overview.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 1. An Example of Parent-line / Child-line relationships</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>Then you issue queries against these relationships using a familiar family
+syntax model. Queries can either be in the form of a simple string, or you can
+use <a class="reference external" href="https://docs.python.org/3/howto/regex.html">regular expressions</a>. The API provides powerful query tools, including
+the ability to find all parents that have or do not have children matching a
+certain template.</p>
+<p>The package also provides a set of methods to query and manipulate the
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects themselves. This gives you a flexible
+mechanism to build your own custom queries, because the
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects store all the parent / child
+hierarchy in them.</p>
+<p><br>
+<br></p>
+</section>
+<section id="what-s-new-in-ciscoconfparse2">
+<h2>What’s new in ciscoconfparse2<a class="headerlink" href="#what-s-new-in-ciscoconfparse2" title="Permalink to this heading"></a></h2>
+<p>I wrote the original <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a> in 2007 as literally my first Python
+project.</p>
+<p>After many years of updates, <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a> grew too large. <a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a>:</p>
+<ul class="simple">
+<li><p>Is tested against Python3.9+ (limited to Python 3.9+ due to python type annotation dynamics before 3.9)</p></li>
+<li><p>Streamlines the API on a simpler user interface.</p></li>
+<li><p>Removes legacy and flawed methods from the original (<em>this could be a breaking change for old scripts</em>).</p></li>
+<li><p>Defaults <code class="docutils literal notranslate"><span class="pre">ignore_blank_lines=False</span></code> (<em>this could be a breaking change for old scripts</em>).</p></li>
+<li><p>Adds the concept of change commits; this is a config-modification safety feature that <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a> lacks</p></li>
+<li><p>Is better at handling multiple-child-level configurations (such as IOS XR and JunOS)</p></li>
+<li><p>Can search for parents and children using an arbitrary-length list of ancestors</p></li>
+<li><p>Adds an <code class="docutils literal notranslate"><span class="pre">auto_commit</span></code> keyword, which defaults <code class="docutils literal notranslate"><span class="pre">True</span></code>; however, many loading thousands of configuration lines could be slow with <code class="docutils literal notranslate"><span class="pre">auto_commit=True</span></code>.</p></li>
+<li><p>Brings vast improvements to Cisco IOS diffs</p></li>
+<li><p>Intentionally requires a <em>different import statement</em> to minimize confusion between them</p></li>
+</ul>
+<p>As such, <a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a> API is not the same; it uses different syntax
+than the original <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a>.  However, the new syntax is less magical,
+and more pythonic.</p>
+<p>The biggest difference in the two APIs is the multi-level search capability.  To illustrate, assume we parse this fake multi-level configuration of interface features:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">Ethernet0</span><span class="o">/</span><span class="mi">0</span>
+ <span class="n">feature00</span>
+  <span class="n">parameter01</span>
+<span class="n">interface</span> <span class="n">Ethernet0</span><span class="o">/</span><span class="mi">1</span>
+ <span class="n">feature01</span>
+  <span class="n">parameter01</span>
+<span class="n">interface</span> <span class="n">Serial1</span><span class="o">/</span><span class="mi">0</span>
+ <span class="n">feature01</span>
+  <span class="n">parameter01</span>
+</pre></div>
+</div>
+<p>The original <a class="reference external" href="https://github.com/mpenning/ciscoconfparse">ciscoconfparse</a> could not find <cite>parameter01</cite> on <cite>Ethernet0/1</cite> without
+iterating in a loop (because two different interfaces have <cite>parameter01</cite>).  However,
+<a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a> can easily identify it by searching a list of elements with
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_child_objects" title="ciscoconfparse2.CiscoConfParse.find_child_objects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_child_objects()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Assume we parsed the config into &#39;parse&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span>
+<span class="go">&lt;CiscoConfParse: 9 lines / syntax: ios / comment delimiters: [&#39;!&#39;] / auto_indent_width: 1 / factory: False / ignore_blank_lines: False / encoding: &#39;UTF-8&#39; / auto_commit: True&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Expect to see a list with single child here...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">find_child_objects</span><span class="p">([</span><span class="s2">&quot;Ethernet&quot;</span><span class="p">,</span> <span class="s2">&quot;feature01&quot;</span><span class="p">,</span> <span class="s2">&quot;parameter&quot;</span><span class="p">])</span>
+<span class="go">[&lt;IOSCfgLine # 5 &#39;  parameter01&#39; (parent is # 4)&gt;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>However, you can still get multiple children by using a less-specific
+regex:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Expect to see a list of two children here... search across</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># any Ethernet feature</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">find_child_objects</span><span class="p">([</span><span class="s2">&quot;Ethernet&quot;</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">,</span> <span class="s2">&quot;parameter&quot;</span><span class="p">])</span>
+<span class="go">[&lt;IOSCfgLine # 2 &#39;  parameter01&#39; (parent is # 1)&gt;, &lt;IOSCfgLine # 5 &#39;  parameter01&#39; (parent is # 4)&gt;]</span>
+</pre></div>
+</div>
+<p>Finally, you can still get parent objects with <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span><span class="o">.</span><span class="n">find_parent_objects</span><span class="p">([</span><span class="s2">&quot;Ethernet&quot;</span><span class="p">,</span> <span class="s2">&quot;feature01&quot;</span><span class="p">,</span> <span class="s2">&quot;parameter&quot;</span><span class="p">])</span>
+<span class="go">[&lt;IOSCfgLine # 3 &#39;interface Ethernet0/1&#39;&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="what-is-ciscoconfparse2-good-for">
+<h2>What is ciscoconfparse2 good for?<a class="headerlink" href="#what-is-ciscoconfparse2-good-for" title="Permalink to this heading"></a></h2>
+<p>After several network evolutions, you may have a tangled mess of conflicting or
+misconfigured network devices.  Misconfigurations of proxy-arp, static routes,
+FHRP timers, routing protocols, duplicated subnets, cdp, console passwords, or
+aaa schemes have a measurable affect on up time and beg for a tool to audit them.
+However, manually scrubbing configurations is a long and error-prone process.</p>
+<p>Audits aren’t the only use for ciscoconfparse2.  Let’s suppose you are working
+on a design and need a list of dot1q trunks on a switch with more than 400
+interfaces.  You can’t grep for them because you need the interface names of
+layer2 trunks; the interface name is stored on one line, and the trunk
+configuration is stored somewhere below the interface name.  With
+ciscoconfparse, it’s really this easy…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;/tftpboot/largeConfig.conf&#39;</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s1">&#39;ios&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find parent interfaces that are configured with &#39;switchport trunk&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dot1q_trunks</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_parent_objects</span><span class="p">([</span><span class="s2">&quot;^interface&quot;</span><span class="p">,</span> <span class="s2">&quot;switchport trunk&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">intf</span> <span class="ow">in</span> <span class="n">dot1q_trunks</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">intf</span><span class="p">)</span>
+<span class="go">&lt;IOSCfgLine # 217 &#39;interface GigabitEthernet1/1&#39;&gt;</span>
+<span class="go">&lt;IOSCfgLine # 237 &#39;interface GigabitEthernet1/2&#39;&gt;</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>This example:</p>
+<ul class="simple">
+<li><p>Imports <a class="reference external" href="https://github.com/mpenning/ciscoconfparse2">ciscoconfparse2</a></p></li>
+<li><p>Searches a Cisco IOS configuration file stored in <code class="docutils literal notranslate"><span class="pre">/tftpboot/largeConfig.conf</span></code></p>
+<ul>
+<li><p>Use the default ‘ios’ syntax for the configuration file</p></li>
+<li><p>Use the default ‘factory’ setting, which is disabled</p></li>
+</ul>
+</li>
+<li><p>Search for configuration lines which have:</p>
+<ul>
+<li><p>The parent beginning with <code class="docutils literal notranslate"><span class="pre">interface</span></code> (and anything else on the config line); <code class="docutils literal notranslate"><span class="pre">^</span></code> is a special character that requests to anchor the string at the beginning of the config line.</p></li>
+<li><p>A child of that parent configured with <code class="docutils literal notranslate"><span class="pre">switchport</span> <span class="pre">trunk</span></code> (and anything else on the config line)</p></li>
+</ul>
+</li>
+</ul>
+<p>The search found two configuration lines.</p>
+</section>
+<section id="we-don-t-have-ciscos">
+<h2>We don’t have Ciscos<a class="headerlink" href="#we-don-t-have-ciscos" title="Permalink to this heading"></a></h2>
+<p>Don’t let that stop you.  CiscoConfParse parses anything that has a Cisco IOS
+style of configuration, which includes:</p>
+<ul class="simple">
+<li><p>Cisco IOS, Cisco Nexus, Cisco IOS-XR, Cisco IOS-XE, Aironet OS, Cisco ASA, Cisco CatOS</p></li>
+<li><p>Arista EOS</p></li>
+<li><p>Brocade</p></li>
+<li><p>HP Switches</p></li>
+<li><p>Force 10 Switches</p></li>
+<li><p>Dell PowerConnect Switches</p></li>
+<li><p>Extreme Networks</p></li>
+<li><p>Enterasys</p></li>
+</ul>
+<p>You can also parse <a class="reference external" href="https://github.com/mpenning/ciscoconfparse/blob/81cb4bee7c5ad95301b9e8b3562d70f11fa32505/configs/sample_01.junos">brace-delimited configurations</a> into a Cisco IOS style, which means that CiscoConfParse understands these configurations too:</p>
+<ul class="simple">
+<li><p>Juniper Networks Junos, and Screenos</p></li>
+<li><p>Palo Alto Networks Firewall configurations</p></li>
+<li><p>F5 Networks configurations</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ciscoconfparse2’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 01, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
