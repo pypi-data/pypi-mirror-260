@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "metodos_numericos_dcb_fi"
+version = "0.1.4"
+authors = [
+  { name="Guillermo Hernández Ruiz de Esparza", email="guillermo.hre@gmail.com" },
+]
+maintainers = [
+  { name="Guillermo Hernández Ruiz de Esparza", email="guillermo.hre@gmail.com" },
+]
+description = "Biblioteca con las utilidades necesarias para ejecutar los jupyter notebooks de métodos numéricos."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "typing",
+  "sympy",
+  "numpy",
+  "pandas",
+  "ipython",
+  "pathlib",
+  "plotly",
+  "nbformat"
+]
+license = {text = "MIT License"}
+keywords = ["Métodos numéricos", "Numerical methods"]
+
+[project.urls]
+Homepage = "https://github.com/Guillermo-HR/metodos_numericos_DCB_FI"
