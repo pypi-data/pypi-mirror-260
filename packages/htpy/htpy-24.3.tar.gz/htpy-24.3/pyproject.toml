@@ -1,0 +1,59 @@
+[project]
+name = "htpy"
+description = "HTML in Python"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = [
+]
+readme = "README.md"
+authors = [
+  { name="Andreas Pelme", email="andreas@pelme.se" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+# Install with pip install .[dev]
+optional-dependencies.dev = [
+    "flit",
+    "mypy",
+    "pytest",
+    "ruff",
+    "django",
+    "django-stubs",
+    "jinja2",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pelme/htpy"
+"Bug Tracker" = "https://github.com/pelme/htpy/issues"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "htpy"
+
+[tool.ruff]
+line-length = 100
+lint.select = [
+    "F",        # Pyflakes
+    "E",        # pycodestyle error
+    "W",        # pycodestyle warning
+    "I",        # isort
+    "B",        # flake8-bugbear
+    "C4",       # flake8-comprehensions
+    "TCH",      # flake8-type-checking
+    "RUF100",   # yesqa equivalence
+    "UP",       # pyupgrade
+    "TID",      # flake8-tidy-imports
+]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"
+
+[tool.mypy]
+strict = true
+packages = "tests"
