@@ -1,0 +1,37 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=69.1.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src/"]
+include = ["aett.domain"]
+
+[project]
+name = "aett-domain"
+version = "0.3.0"
+description = "DynamoDB connector for aett event store"
+readme = "README.md"
+authors = [{ name = "Jacob Reimers", email = "pypi@reimers.io" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["events", "event store", "ddd", "domain"]
+dependencies = [
+    'typing >= 3.7.4.3',
+    'multipledispatch >= 1.0.0',
+    'aett-eventstore>=0.3.0'
+]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/jjrdk/aett"
+
+[project.scripts]
