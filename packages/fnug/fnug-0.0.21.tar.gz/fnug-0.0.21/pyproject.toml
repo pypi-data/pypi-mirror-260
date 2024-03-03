@@ -1,0 +1,109 @@
+[project]
+name = "fnug"
+version = "0.0.21"
+description = "A nice lint runner"
+authors = [
+    { name = "Nickolaj Jepsen", email = "nickolaj@fireproof.website" }
+]
+dependencies = [
+    "click>=8.1.7",
+    "textual>=0.52.1",
+    "rich>=13.7.1",
+    "pydantic>=2.6.3",
+    "pyte>=0.8.2",
+    "pyyaml>=6.0.1",
+    "watchfiles>=0.21.0",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = "GPL-3.0"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Environment :: Console",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Terminals :: Terminal Emulators/X Terminals",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+
+[project.scripts]
+fnug = "fnug.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/nickolaj-jepsen/fnug.git"
+Issues = "https://github.com/nickolaj-jepsen/fnug/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.3.0",
+    "pyright>=1.1.352",
+    "textual-dev>=1.5.1",
+    "pytest>=8.0.2",
+]
+
+[tool.rye.scripts]
+# Use console and debug to run the app with the textual debugger attached
+console = "textual console -x event -x system -x worker"
+debug = "textual run --dev -c fnug"
+test = "pytest tests/"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fnug"]
+
+[tool.ruff]
+line-length = 120
+src = ["src", "tests"]
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "F",    # pyflakes
+    "E",    # pycodestyle
+    "W",    # pycodestyle
+    "I",    # isort
+    "N",    # pep8-naming
+    "D",    # pydocstyle
+    "D213", # pydocstyle - alternative to D212
+    "UP",   # pyupgrade
+    "S",    # flake8-bandit
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "RET",  # flake8-return
+    "SIM",  # flake8-simplify
+    "PTH",  # flake8-use-pathlib
+    "ERA",  # eradicate
+    "PGH",  # pygrep-hooks
+    "PERF", # Perflint
+    "RUF",  # ruff
+]
+ignore = [
+    "D100",
+    "D104",
+    "D106",
+    "D107",
+    "D203",
+    "D212",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/{tests}/*" = ["D", "S101"]
+
+[tool.pyright]
+include = ["src"]
+strict = ["src"]

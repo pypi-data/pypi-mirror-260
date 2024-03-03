@@ -1,0 +1,54 @@
+$background: #1e1e1e;
+$panel: #2d2d2d;
+$primary: #cf6a4c;
+$primary-dark: #a64c38;
+$primary-darker: #8c3a2d;
+
+#lint-tree {
+  width: 30;
+  background: $background;
+  border-right: solid $primary;
+
+  scrollbar-background: $panel;
+  scrollbar-background-active: $panel;
+  scrollbar-background-hover: $panel;
+  scrollbar-color: $primary;
+  scrollbar-color-active: $primary-dark;
+  scrollbar-color-hover: $primary-dark;
+  scrollbar-size: 1 1;
+}
+
+#terminal {
+  width: 1fr;
+  height: 1fr;
+  background: $background;
+}
+
+Footer {
+  background: $primary;
+}
+
+Footer .footer--key {
+  background: $primary-dark;
+}
+
+Footer .footer--highlight {
+  background: $primary-dark;
+}
+
+Footer .footer--highlight-key {
+  background: $primary-darker;
+}
+
+ScrollBar {
+  width: 1;
+}
+
+#main {
+  scrollbar-background: $panel;
+  scrollbar-background-active: $panel;
+  scrollbar-background-hover: $panel;
+  scrollbar-color: $primary;
+  scrollbar-color-active: $primary;
+  scrollbar-color-hover: $primary;
+}

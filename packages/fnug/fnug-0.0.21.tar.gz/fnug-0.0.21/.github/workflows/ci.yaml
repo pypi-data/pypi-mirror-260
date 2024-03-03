@@ -1,0 +1,60 @@
+name: 'CI'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Setup Rye
+        uses: eifinger/setup-rye@v1
+        with:
+          enable-cache: true
+          cache-prefix: 3.12
+          version: '0.27.0'
+      - name: Install dependencies
+        run: |
+          rye pin 3.12
+          rye sync --no-lock
+      - name: Run lint
+        run: |
+          rye run -- ruff check --output-format=github src/
+          rye run -- ruff format --check src/
+          rye run -- pyright src
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup Rye
+        uses: eifinger/setup-rye@v1
+        with:
+          enable-cache: true
+          cache-prefix: ${{ matrix.python-version }}
+          version: '0.27.0'
+      - name: Install dependencies
+        run: |
+          rye pin ${{ matrix.python-version }}
+          rye sync --no-lock
+      - name: Run tests
+        run: rye run test
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: .coverage
