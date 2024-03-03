@@ -1,0 +1,15 @@
+morepath>=0.19
+pony>=0.7.17
+
+[coverage]
+pytest-cov
+
+[lint]
+flake8
+black
+
+[test]
+pytest>=2.9.1
+pytest-remove-stale-bytecode
+webtest
+pygments
