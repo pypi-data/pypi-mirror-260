@@ -1,0 +1,23 @@
+[build-system]
+requires = [
+  "hatchling",
+]
+build-backend = "hatchling.build"
+[project]
+name = "music_validator_micro"
+version = "0.1.5"
+authors = [
+  { name = "Samuel Shiels" },
+]
+description = "A media file tag checker tool, intended to work alone or fit into a larger toolchain"
+readme = "README.md"
+requires-python = ">=3.11.5"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "music-checker-micro",
+  "music-manager-micro",
+]
