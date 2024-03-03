@@ -1,0 +1,116 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parinvoke"
+description = "Invoke operations on large models in parallel."
+authors = [
+  { name = "Michael Ekstrand", email = "mdekstrand@drexel.edu" },
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+]
+requires-python = ">= 3.10"
+readme = "README.md"
+license = { file = "LICENSE.md" }
+dynamic = ["version"]
+dependencies = [
+  "binpickle ~=0.4.0a4", # p2c: -p
+  "seedbank ~=0.2.0a1",  # p2c: -p
+  "threadpoolctl >=3.0",
+  # "pyzmq >=24",
+]
+
+[project.optional-dependencies]
+dev = [
+  "setuptools>=64",
+  "setuptools_scm>=8",
+  "build",
+  "twine",
+  "ruff",
+  "pyright",
+  "copier",
+  "unbeheader",        # p2c: -p
+  "ipython",
+  "pyproject2conda",
+  "sphinx-autobuild",
+]
+test = [
+  "pytest >=7",
+  "pytest-cov >=2.12",
+  "coverage >=5",
+  "numpy >= 1.21",
+]
+doc = [
+  "sphinx >=4.2",
+  "sphinxext-opengraph >= 0.5",
+  "furo",
+]
+
+[project.urls]
+Homepage = "https://parinvoke.lenksit.org"
+GitHub = "https://github.com/lenskit/parinvoke"
+
+# configure build tools
+[tool.setuptools.packages.find]
+include = ["parinvoke*"]
+
+[tool.setuptools_scm]
+version_scheme = "release-branch-semver"
+
+# settings for generating conda environments for dev & CI, when needed
+[tool.pyproject2conda]
+channels = ["conda-forge"]
+python = ["3.10", "3.11", "3.12"]
+default_envs = ["test", "doc"]
+template_python = "envs/parinvoke-py{py_version}-{env}"
+template = "envs/{env}"
+
+[tool.pyproject2conda.envs.dev]
+extras = ["dev", "test", "doc"]
+
+[tool.pyproject2conda.envs.ci]
+extras = ["test"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I"]
+exclude = [
+  ".git",
+  "__pycache__",
+  "docs/conf.py",
+  "build",
+  "dist",
+]
+
+[tool.ruff.lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "testing",
+  "first-party",
+  "local-folder",
+]
+
+[tool.ruff.lint.isort.sections]
+testing = ["pytest", "hypothesis"]
+
+[tool.mypy]
+exclude = "^docs/"
+
+[tool.pyright]
+pythonVersion = "3.10"
+typeCheckingMode = "strict"
+exclude = [
+  "docs/*",
+]
+reportMissingImports = true
+reportMissingTypeStubs = false
