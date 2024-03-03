@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: lm_deezer_bf_dec
+Version: 0.0.1b4
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Development Status :: 4 - Beta
+Summary: A simple RUST package with scope to speed up the blowfish decryption process for deezer tracks.
+Author-email: An0nimia <an0nimia@protonmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Homepage, https://github.com/an0nimia/lm_deezer_bf_dec
+Project-URL: Bug Tracker, https://github.com/an0nimia/lm_deezer_bf_dec/issues
+
+# LM_DEEZER_BF_DEC
+
+> [!IMPORTANT]
+> Rust is needed for installing this library
+
+## Direct install
+> [!WARNING]
+> May not work due different architecture
+1. Using pip
+	```bash
+	pip install lm_deezer_bf_dec
+	```
+
+## Build by yourself
+1. Create a python virtual environment
+	```bash
+	python3.12 -m venv venv
+	```
+1. Activate it
+	```bash
+	source venv/bin/activate
+	```
+1. Install maturin
+	```bash
+	pip install maturin[patchelf]
+	```
+1. Install Rust
+	> [!NOTE]
+	> If you have already installed RUST you can jump this step
+	```bash
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	```
+1. Build it
+	```bash
+	maturin build -r --sdist
+	```
+1. Install it
+	```bash
+	pip install target/wheels/<file>.tar.gz
+	```
