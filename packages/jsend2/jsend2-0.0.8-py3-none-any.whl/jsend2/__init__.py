@@ -1,0 +1,1 @@
+from .jfast.response import JsendResponse
