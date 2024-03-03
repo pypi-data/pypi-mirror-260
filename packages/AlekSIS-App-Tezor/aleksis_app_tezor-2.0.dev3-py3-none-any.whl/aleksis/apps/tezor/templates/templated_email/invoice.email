@@ -1,0 +1,35 @@
+{% extends "templated_email/base.email" %}
+{% load i18n %}
+
+{% block subject_content %}{% trans "Invoice" %} {{ invoice.number }}{% endblock %}
+
+{% block html_content %}
+<p>
+    {% blocktrans with number=invoice.number description=invoice.description %}
+    Please find attached invoice number {{ number }} for {{ description }}.
+    Please carefully read the PDF file concerning all payment details.
+    {% endblocktrans %}
+</p>
+{% if invoice.status == "waiting" %}
+<p>
+    {% blocktrans %}
+    Please visit the following link to view and make the payment:
+    {% endblocktrans %}
+</p>
+<a href="{{ BASE_URL }}{{ invoice.get_absolute_url }}">{{ BASE_URL }}{{ invoice.get_absolute_url}}</a>
+{% endif %}
+{% endblock %}
+
+{% block plain_content %}
+{% blocktrans with number=invoice.number description=invoice.description %}
+Please find attached invoice number {{ number }} for {{ description }}.
+Please carefully read the PDF file concerning all payment details.
+{% endblocktrans %}
+
+{% if invoice.status == "waiting" %}
+{% blocktrans %}
+Please visit the following link to view and make the payment:
+{% endblocktrans %}
+{{ BASE_URL }}{{ invoice.get_absolute_url}}
+{% endif %}
+{% endblock %}

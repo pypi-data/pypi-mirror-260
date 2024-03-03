@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% load i18n %}
+{% load material_form %}
+
+{% block page_title %}{% blocktrans %}Make payment for{% endblocktrans %} {{ payment.number }}{% endblock %}
+{% block browser_title %}{% blocktrans %}Make payment for{% endblocktrans %} {{ payment.number }}{% endblock %}
+
+{% block content %}
+<form action="{{ form.action }}" method="{{ form.method }}">
+    {% csrf_token %}
+    {% form form=form %}{% endform %}
+    {% trans "Confirm payment" as caption %}
+    {% include "core/partials/save_button.html" with caption=caption icon="shopping_cart_checkout" %}
+</form>
+{% endblock %}

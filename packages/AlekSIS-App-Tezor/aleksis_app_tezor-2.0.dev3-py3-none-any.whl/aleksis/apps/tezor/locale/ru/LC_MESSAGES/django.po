@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-23 12:54+0000\n"
+"PO-Revision-Date: 2023-05-26 04:39+0000\n"
+"Last-Translator: Serhii Horichenko <m@sgg.im>\n"
+"Language-Team: Russian <https://translate.edugit.org/projects/aleksis/aleksis-app-tezor/ru/>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Weblate 4.12.1\n"
+
+#: aleksis/apps/tezor/forms.py:18
+msgid "Send e-mails"
+msgstr "Отправить эл.почту"
+
+#: aleksis/apps/tezor/forms.py:33
+msgid "Payment pledge"
+msgstr "Отложенный платёж"
+
+#: aleksis/apps/tezor/forms.py:37
+msgid "Sofort / Klarna"
+msgstr "Sofort / Klarna (API ID)"
+
+#: aleksis/apps/tezor/forms.py:42 aleksis/apps/tezor/models/base.py:13
+msgid "PayPal"
+msgstr "PayPal"
+
+#: aleksis/apps/tezor/forms.py:47
+msgid "Debit"
+msgstr "Дебет"
+
+#: aleksis/apps/tezor/menus.py:6
+msgid "Payments and Money"
+msgstr "Платежи и Деньги"
+
+#: aleksis/apps/tezor/menus.py:16
+msgid "Manage clients"
+msgstr "Управление клиентами"
+
+#: aleksis/apps/tezor/menus.py:27
+#: aleksis/apps/tezor/templates/tezor/invoice/list.html:6
+#: aleksis/apps/tezor/templates/tezor/invoice/list.html:7
+msgid "My invoices"
+msgstr "Мои инвойсы"
+
+#: aleksis/apps/tezor/models/base.py:14
+msgid "Klarna / Sofort"
+msgstr "Klarna (Sofort)"
+
+#: aleksis/apps/tezor/models/base.py:15
+msgid "Payment pledge / manual payment"
+msgstr "Отложенный / ручной платёж"
+
+#: aleksis/apps/tezor/models/base.py:16
+msgid "SEPA Direct Debit"
+msgstr "Прямой дебет SEPA"
+
+#: aleksis/apps/tezor/models/base.py:18
+msgid "Name"
+msgstr "Полное имя"
+
+#: aleksis/apps/tezor/models/base.py:19
+msgid "Email"
+msgstr "Эл.почта"
+
+#: aleksis/apps/tezor/models/base.py:21
+msgid "Sofort / Klarna enabled"
+msgstr "Sofort / Klarna включено"
+
+#: aleksis/apps/tezor/models/base.py:23
+msgid "Sofort / Klarna API ID"
+msgstr "API ID для Sofort / Klarna"
+
+#: aleksis/apps/tezor/models/base.py:26
+msgid "Sofort / Klarna API key"
+msgstr "API key для Sofort / Klarna"
+
+#: aleksis/apps/tezor/models/base.py:29
+msgid "Sofort / Klarna Project ID"
+msgstr "ID проекта Sofort / Klarna"
+
+#: aleksis/apps/tezor/models/base.py:32
+msgid "PayPal enabled"
+msgstr "PayPal активирован"
+
+#: aleksis/apps/tezor/models/base.py:34
+msgid "PayPal client ID"
+msgstr "Клиентский ID PayPal"
+
+#: aleksis/apps/tezor/models/base.py:36
+msgid "PayPal secret"
+msgstr "Секретный ключ PayPal"
+
+#: aleksis/apps/tezor/models/base.py:38
+msgid "Use PayPal Authorize & Capture"
+msgstr "Использовать \"Authorize & Capture\" от PayPal"
+
+#: aleksis/apps/tezor/models/base.py:41
+msgid "Debit enabled"
+msgstr "Дебет активирован"
+
+#: aleksis/apps/tezor/models/base.py:43
+msgid "SEPA Direct Debit - Creditor name"
+msgstr "SEPA Direct Debit - Имя кредитора"
+
+#: aleksis/apps/tezor/models/base.py:46
+msgid "SEPA Direct Debit - Creditor identifier"
+msgstr "SEPA Direct Debit - Идентификатор кредитора"
+
+#: aleksis/apps/tezor/models/base.py:51
+msgid "IBAN of bank account"
+msgstr "IBAN счёта в банке"
+
+#: aleksis/apps/tezor/models/base.py:52
+msgid "BIC/SWIFT code of bank"
+msgstr "BIC/SWIFT код банка"
+
+#: aleksis/apps/tezor/models/base.py:54
+msgid "Pledge enabled"
+msgstr "Отсрочка активирована"
+
+#: aleksis/apps/tezor/models/invoice.py:18
+msgid "Invoice group name"
+msgstr "Название группы инвойсов"
+
+#: aleksis/apps/tezor/models/invoice.py:21
+msgid "Linked client"
+msgstr "Связанный клиент"
+
+#: aleksis/apps/tezor/models/invoice.py:28
+msgid "Template to render invoices with as PDF"
+msgstr "Шаблон для создания инвойсов в PDF"
+
+#: aleksis/apps/tezor/models/invoice.py:59
+msgid "Invoice group"
+msgstr "Группа инвойсов"
+
+#: aleksis/apps/tezor/models/invoice.py:65
+msgid "Invoice number"
+msgstr "Номер инвойса"
+
+#: aleksis/apps/tezor/models/invoice.py:66
+msgid "Payment due date"
+msgstr "Последняя дата платежа"
+
+#: aleksis/apps/tezor/models/invoice.py:78
+msgid "Invoice recipient (person)"
+msgstr "Получатель инвойса (личность)"
+
+#: aleksis/apps/tezor/models/invoice.py:82
+msgid "Invoice items"
+msgstr "Позиции в инвойсе"
+
+#: aleksis/apps/tezor/models/invoice.py:144
+msgid "Can send invoice by email"
+msgstr "Можно отправить инвойс через эл.почту"
+
+#: aleksis/apps/tezor/models/invoice.py:168
+msgid "VAT {} %"
+msgstr "НДС {} %"
+
+#: aleksis/apps/tezor/models/invoice.py:176
+msgid "Gross total"
+msgstr "Итого"
+
+#: aleksis/apps/tezor/models/invoice.py:195
+msgid "Article no."
+msgstr "Артикул №"
+
+#: aleksis/apps/tezor/models/invoice.py:196
+msgid "Purchased item"
+msgstr "Купленные позиции"
+
+#: aleksis/apps/tezor/models/invoice.py:198
+msgid "Item net price"
+msgstr "Цена артикула без налогов"
+
+#: aleksis/apps/tezor/models/invoice.py:200
+msgid "Currency"
+msgstr "Валюта"
+
+#: aleksis/apps/tezor/models/invoice.py:202
+msgid "Tax rate"
+msgstr "Размер налога"
+
+#: aleksis/apps/tezor/preferences.py:8
+msgid "Payments"
+msgstr "Платежи"
+
+#: aleksis/apps/tezor/preferences.py:17
+msgid "Public payments"
+msgstr "Публичные платежи"
+
+#: aleksis/apps/tezor/preferences.py:19
+msgid "Allow anyone (including guests) to make payments. Basic invoice information will be visible to anyone who knows the invoice token."
+msgstr ""
+"Разрешает совершать платежи кому-угодно (даже гостям). Основная информация "
+"инвойса будет видимой для всех, у кого есть токен этого инвойса."
+
+#: aleksis/apps/tezor/preferences.py:32
+msgid "Enable pledged payments"
+msgstr "Активировать отложенные платежи"
+
+#: aleksis/apps/tezor/preferences.py:43
+msgid "Update Invoices if person data changes"
+msgstr "Обновить инвойсы если меняются персональные данные"
+
+#: aleksis/apps/tezor/tables.py:10
+msgid "Art. No."
+msgstr "Арт.№"
+
+#: aleksis/apps/tezor/tables.py:11
+msgid "Item"
+msgstr "Объект"
+
+#: aleksis/apps/tezor/tables.py:13
+msgid "Tax Rate"
+msgstr "Налоговая ставка"
+
+#: aleksis/apps/tezor/tables.py:17
+msgid "Qty."
+msgstr "К-во"
+
+#: aleksis/apps/tezor/tables.py:19
+msgid "Net"
+msgstr "Без НДС"
+
+#: aleksis/apps/tezor/tables.py:49 aleksis/apps/tezor/tables.py:50
+#: aleksis/apps/tezor/tables.py:73 aleksis/apps/tezor/tables.py:74
+#: aleksis/apps/tezor/tables.py:102 aleksis/apps/tezor/tables.py:103
+msgid "View"
+msgstr "Просмотр"
+
+#: aleksis/apps/tezor/tables.py:55 aleksis/apps/tezor/tables.py:56
+#: aleksis/apps/tezor/tables.py:79 aleksis/apps/tezor/tables.py:80
+msgid "Edit"
+msgstr "Редактировать"
+
+#: aleksis/apps/tezor/tables.py:61 aleksis/apps/tezor/tables.py:62
+#: aleksis/apps/tezor/tables.py:85 aleksis/apps/tezor/tables.py:86
+msgid "Delete"
+msgstr "Удалить"
+
+#: aleksis/apps/tezor/tables.py:108 aleksis/apps/tezor/tables.py:109
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:24
+msgid "Print"
+msgstr "Печать"
+
+#: aleksis/apps/tezor/templates/templated_email/invoice.email:4
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:18
+msgid "Invoice"
+msgstr "Инвойс"
+
+#: aleksis/apps/tezor/templates/templated_email/invoice.email:8
+#, python-format
+msgid ""
+"\n"
+"    Please find attached invoice number %(number)s for %(description)s.\n"
+"    Please carefully read the PDF file concerning all payment details.\n"
+"    "
+msgstr ""
+"\n"
+"    Пересмотрите, пожалуйста, прикреплённый инвойс № %(number)s на счёт "
+"%(description)s.\n"
+"    Также просим Вас внимательно ознакомиться с файлом PDF и со всей "
+"информацией о платёже.\n"
+"    "
+
+#: aleksis/apps/tezor/templates/templated_email/invoice.email:15
+msgid ""
+"\n"
+"    Please visit the following link to view and make the payment:\n"
+"    "
+msgstr ""
+"\n"
+"    Перейдите, пожалуйста, по ссылке для ознакомления и осуществления "
+"платежа:\n"
+"    "
+
+#: aleksis/apps/tezor/templates/templated_email/invoice.email:24
+#, python-format
+msgid ""
+"\n"
+"Please find attached invoice number %(number)s for %(description)s.\n"
+"Please carefully read the PDF file concerning all payment details.\n"
+msgstr ""
+"\n"
+"Пересмотрите, пожалуйста, прикреплённый инвойс № %(number)s на счёт "
+"%(description)s.\n"
+"Также просим Вас внимательно ознакомиться с файлом PDF и всеми деталями "
+"платежа.\n"
+
+#: aleksis/apps/tezor/templates/templated_email/invoice.email:30
+msgid ""
+"\n"
+"Please visit the following link to view and make the payment:\n"
+msgstr ""
+"\n"
+"Перейдите, пожалуйста, по ссылке для ознакомления и осуществления платежа:\n"
+
+#: aleksis/apps/tezor/templates/tezor/client/create.html:4
+#: aleksis/apps/tezor/templates/tezor/client/create.html:5
+#: aleksis/apps/tezor/templates/tezor/client/list.html:11
+msgid "Create client"
+msgstr "Создать клиента"
+
+#: aleksis/apps/tezor/templates/tezor/client/edit.html:4
+#: aleksis/apps/tezor/templates/tezor/client/edit.html:5
+msgid "Edit client"
+msgstr "Редактировать клиента"
+
+#: aleksis/apps/tezor/templates/tezor/client/full.html:6
+#: aleksis/apps/tezor/templates/tezor/client/full.html:7
+msgid "Client"
+msgstr "Клиент"
+
+#: aleksis/apps/tezor/templates/tezor/client/full.html:11
+msgid "Add invoice group"
+msgstr "Добавить группу инвойсов"
+
+#: aleksis/apps/tezor/templates/tezor/client/list.html:6
+#: aleksis/apps/tezor/templates/tezor/client/list.html:7
+msgid "Clients"
+msgstr "Клиенты"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:21
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:10
+msgid "Back"
+msgstr "Назад"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:27
+msgid "Send Email"
+msgstr "Отправить эл.почту"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:35
+msgid "Billing information"
+msgstr "Платёжная информация"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:69
+msgid "Payment"
+msgstr "Платёж"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/full.html:105
+msgid "Pay now"
+msgstr "Оплатить сейчас"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/payment.html:6
+#: aleksis/apps/tezor/templates/tezor/invoice/payment.html:7
+msgid "Make payment for"
+msgstr "Совершить платёж за"
+
+#: aleksis/apps/tezor/templates/tezor/invoice/payment.html:13
+msgid "Confirm payment"
+msgstr "Подтвердить платёж"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/create.html:4
+#: aleksis/apps/tezor/templates/tezor/invoice_group/create.html:5
+msgid "Create invoice group"
+msgstr "Создать группу инвойсов"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/edit.html:4
+#: aleksis/apps/tezor/templates/tezor/invoice_group/edit.html:5
+msgid "Edit invoice group"
+msgstr "Редактировать группу инвойсов"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:14
+msgid "Filter invoices"
+msgstr "Фильтровать инвойсы"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:17
+msgid "Search"
+msgstr "Поиск"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:21
+msgid "Clear"
+msgstr "Очистить"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:33
+msgid "Selected invoices"
+msgstr "Выбранные инвойсы"
+
+#: aleksis/apps/tezor/templates/tezor/invoice_group/full.html:42
+msgid "Execute"
+msgstr "Выполнить"
+
+#: aleksis/apps/tezor/views.py:103
+msgid "The client has been created."
+msgstr "Клиент создан."
+
+#: aleksis/apps/tezor/views.py:115
+msgid "The client has been saved."
+msgstr "Клиент сохранён."
+
+#: aleksis/apps/tezor/views.py:125
+msgid "The client has been deleted."
+msgstr "Клиент удалён."
+
+#: aleksis/apps/tezor/views.py:187
+msgid "The invoice group has been created."
+msgstr "Группа инвойсов создана."
+
+#: aleksis/apps/tezor/views.py:212
+msgid "The invoice group has been saved."
+msgstr "Группа инвойсов сохранена."
+
+#: aleksis/apps/tezor/views.py:222
+msgid "The invoice group has been deleted."
+msgstr "Группа инвойсов удалена."
