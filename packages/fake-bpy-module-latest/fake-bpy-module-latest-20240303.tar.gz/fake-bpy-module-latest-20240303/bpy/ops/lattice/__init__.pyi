@@ -1,0 +1,151 @@
+import typing
+import bpy.types
+
+GenericType = typing.TypeVar("GenericType")
+
+def flip(
+    override_context=None,
+    execution_context=None,
+    undo=None,
+    *,
+    axis: typing.Optional[typing.Any] = "U",
+):
+    """Mirror all control points without inverting the lattice deform
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    :param axis: Flip Axis, Coordinates along this axis get flipped
+    :type axis: typing.Optional[typing.Any]
+    """
+
+    ...
+
+def make_regular(override_context=None, execution_context=None, undo=None):
+    """Set UVW control points a uniform distance apart
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    """
+
+    ...
+
+def select_all(
+    override_context=None,
+    execution_context=None,
+    undo=None,
+    *,
+    action: typing.Optional[typing.Any] = "TOGGLE",
+):
+    """Change selection of all UVW control points
+
+        :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+        :type execution_context: typing.Optional[typing.Union[int, str]]
+        :type undo: typing.Optional[bool]
+        :param action: Action, Selection action to execute
+
+    TOGGLE
+    Toggle -- Toggle selection for all elements.
+
+    SELECT
+    Select -- Select all elements.
+
+    DESELECT
+    Deselect -- Deselect all elements.
+
+    INVERT
+    Invert -- Invert selection of all elements.
+        :type action: typing.Optional[typing.Any]
+    """
+
+    ...
+
+def select_less(override_context=None, execution_context=None, undo=None):
+    """Deselect vertices at the boundary of each selection region
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    """
+
+    ...
+
+def select_mirror(
+    override_context=None,
+    execution_context=None,
+    undo=None,
+    *,
+    axis: typing.Optional[typing.Any] = {'"X"'},
+    extend: typing.Optional[typing.Union[bool, typing.Any]] = False,
+):
+    """Select mirrored lattice points
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    :param axis: Axis
+    :type axis: typing.Optional[typing.Any]
+    :param extend: Extend, Extend the selection
+    :type extend: typing.Optional[typing.Union[bool, typing.Any]]
+    """
+
+    ...
+
+def select_more(override_context=None, execution_context=None, undo=None):
+    """Select vertex directly linked to already selected ones
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    """
+
+    ...
+
+def select_random(
+    override_context=None,
+    execution_context=None,
+    undo=None,
+    *,
+    ratio: typing.Optional[typing.Any] = 0.5,
+    seed: typing.Optional[typing.Any] = 0,
+    action: typing.Optional[typing.Any] = "SELECT",
+):
+    """Randomly select UVW control points
+
+        :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+        :type execution_context: typing.Optional[typing.Union[int, str]]
+        :type undo: typing.Optional[bool]
+        :param ratio: Ratio, Portion of items to select randomly
+        :type ratio: typing.Optional[typing.Any]
+        :param seed: Random Seed, Seed for the random number generator
+        :type seed: typing.Optional[typing.Any]
+        :param action: Action, Selection action to execute
+
+    SELECT
+    Select -- Select all elements.
+
+    DESELECT
+    Deselect -- Deselect all elements.
+        :type action: typing.Optional[typing.Any]
+    """
+
+    ...
+
+def select_ungrouped(
+    override_context=None,
+    execution_context=None,
+    undo=None,
+    *,
+    extend: typing.Optional[typing.Union[bool, typing.Any]] = False,
+):
+    """Select vertices without a group
+
+    :type override_context: typing.Optional[typing.Union['bpy.types.Context', typing.Dict]]
+    :type execution_context: typing.Optional[typing.Union[int, str]]
+    :type undo: typing.Optional[bool]
+    :param extend: Extend, Extend the selection
+    :type extend: typing.Optional[typing.Union[bool, typing.Any]]
+    """
+
+    ...
