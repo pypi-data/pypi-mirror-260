@@ -1,0 +1,16 @@
+[package]
+name = "corvic-engine"
+version = { workspace = true }
+edition = { workspace = true }
+license-file = { workspace = true }
+publish = { workspace = true }
+
+[lib]
+name = "engine"
+crate-type = ["cdylib"]
+
+[dependencies]
+numpy = { workspace = true }
+pyo3 = { workspace = true, features = ["abi3-py38"] }
+rayon = { workspace = true }
+thread_local = { workspace = true }
