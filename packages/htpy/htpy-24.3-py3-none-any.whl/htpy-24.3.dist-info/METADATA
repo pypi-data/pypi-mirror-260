@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: htpy
+Version: 24.3
+Summary: HTML in Python
+Author-email: Andreas Pelme <andreas@pelme.se>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: flit ; extra == "dev"
+Requires-Dist: mypy ; extra == "dev"
+Requires-Dist: pytest ; extra == "dev"
+Requires-Dist: ruff ; extra == "dev"
+Requires-Dist: django ; extra == "dev"
+Requires-Dist: django-stubs ; extra == "dev"
+Requires-Dist: jinja2 ; extra == "dev"
+Project-URL: Bug Tracker, https://github.com/pelme/htpy/issues
+Project-URL: Homepage, https://github.com/pelme/htpy
+Provides-Extra: dev
+
+
+# htpy - HTML in Python
+This project makes it possible to express HTML directly as Python code.
+
+## Development environment
+1) Create a virtualenv: ```python -m venv .venv```
+2) Install dependencies: ```pip install .[dev]```
+3) Run tests/checks: ```./test```
+
+## Examples
+
+### Flask with htmx
+See [examples/htmx_flask.py](https://github.com/pelme/htpy/blob/main/examples/htmx_flask.py). Run with:
+```
+$ pip install flask
+$ python examples/htmx_flask.py
+```
+
