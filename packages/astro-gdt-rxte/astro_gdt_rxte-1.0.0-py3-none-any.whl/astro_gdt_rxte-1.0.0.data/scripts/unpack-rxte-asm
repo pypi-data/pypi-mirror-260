@@ -1,0 +1,106 @@
+#!python
+
+# CONTAINS TECHNICAL DATA/COMPUTER SOFTWARE DELIVERED TO THE U.S. GOVERNMENT 
+# WITH UNLIMITED RIGHTS
+#
+# Grant No.: 80NSSC21K0651
+# Grantee Name: Universities Space Research Association
+# Grantee Address: 425 3rd Street SW, Suite 950, Washington DC 20024
+#
+# Developed by: Colleen A. Wilson-Hodge
+# 			    National Aeronautics and Space Administration (NASA)
+#     			Marshall Space Flight Center
+#     			Astrophysics Branch (ST-12)
+#
+# This work is a derivative of the Gamma-ray Data Tools (GDT), including the 
+# Core and Fermi packages, originally developed by the following:
+#
+#     William Cleveland and Adam Goldstein
+#     Universities Space Research Association
+#     Science and Technology Institute
+#     https://sti.usra.edu
+#     
+#     Daniel Kocevski
+#     National Aeronautics and Space Administration (NASA)
+#     Marshall Space Flight Center
+#     Astrophysics Branch (ST-12)
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+# use this file except in compliance with the License. You may obtain a copy of 
+# the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software 
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the 
+# License for the specific language governing permissions and limitations under 
+# the License.
+
+import argparse
+import os
+import sys
+import tarfile
+import zipfile
+from gdt.core import data_path
+
+def do_unpack(keep=False):
+    asm_path = data_path / 'rxte-asm'
+    os.chdir(asm_path)
+    
+    print("Unpacking RXTE ASM files. Please be patient...") 
+    sys.stdout.flush()
+    with zipfile.ZipFile('rxte_asm_camera_data.zip','r') as zip_ref:
+       zip_ref.extractall()
+    
+    os.chdir('camera_data/cam_dwasc_01')   
+    with tarfile.open("cam_dwasc_01.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_dwasc_01.tar.gz')
+    
+    os.chdir('../cam_dwasc_02')   
+    with tarfile.open("cam_dwasc_02.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_dwasc_02.tar.gz')
+    
+    os.chdir('../cam_dwasc_03')
+    with tarfile.open("cam_dwasc_03.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_dwasc_03.tar.gz')
+    
+    os.chdir('../cam_evasc_01')
+    with tarfile.open("cam_evasc_01.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_evasc_01.tar.gz')
+    
+    os.chdir('../cam_evasc_02')
+    with tarfile.open("cam_evasc_02.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_evasc_02.tar.gz')
+    
+    os.chdir('../cam_evasc_03')
+    with tarfile.open("cam_evasc_03.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_evasc_03.tar.gz')
+    
+    os.chdir('../cam_evasc_04')
+    with tarfile.open("cam_evasc_04.tar.gz") as tar:
+        tar.extractall()
+        os.remove('cam_evasc_04.tar.gz')
+    
+    if not keep:
+        os.chdir(asm_path)
+        os.remove('rxte_asm_camera_data.zip')
+    
+    print('Unpacking RXTE ASM Data complete.')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='unpack-rxte-asm',
+                                     description='Unpacks the RXTE ASM data')
+    parser.add_argument('-k', '--keep-packed', action='store_true',
+                        help='Keeps the packed data after unpacking')
+    
+    args = parser.parse_args()
+    
+    do_unpack(keep=args.keep_packed)
