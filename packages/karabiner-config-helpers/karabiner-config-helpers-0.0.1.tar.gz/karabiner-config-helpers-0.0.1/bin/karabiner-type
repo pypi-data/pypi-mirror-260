@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import string
+import sys
+# local
+from karabiner_config_helpers import get_resolver
+from karabiner_config_helpers.type_utils import type_text_main
+from karabiner_config_helpers.rules import helper_insert_rule_into_config
+
+
+if __name__ == "__main__":
+    default_layout = "us_mac"
+
+    ap = argparse.ArgumentParser()
+    input_group = ap.add_mutually_exclusive_group(required=True)
+    input_group.add_argument("--stdin", action="store_true", help="read input from standard input stream, so that you can pipe it into this program without needing to worry about escaping")
+    input_group.add_argument("--type", metavar="TEXT_TO_TYPE", help="this is the string that should be typed")
+    input_group.add_argument("--test", action="store_true", help="replace string_to_type with all printable ASCII characters")  
+
+    ap.add_argument("keybindings", nargs="+", help="what key combinations need to be pressed to type the text. Format: <modifier1>+<modifier2...>+<key>. If you specify multiple, only one of them needs to be pressed (example: 'right_command+right_meta+t', 'button4')")
+    ap.add_argument("--resolver", default=default_layout, help=f"the name of the resolver/keyboard layout (Default: {default_layout})")
+    ap.add_argument("--parallels-resolver", default=None, help="the resolver to use if Parallels Desktop is receiving the keys. Defaults to using the value specified with --resolver")
+    ap.add_argument("-b", "--back", type=int, default=0, help="move the cursor backwards by X characters, so that it is within the just typed text (default: 0)")
+    ap.add_argument("-d", "--description", help="use this value as a description instead of automatically generating one")
+    ap.add_argument("--print", action="store_true", help="instead of inserting the rule just print it to stdout")
+    args = ap.parse_args()
+
+    if args.stdin:
+        string_to_type = sys.stdin.read()
+    elif args.test:
+        string_to_type = string.printable
+    else:
+        string_to_type = args.type
+
+    try:
+        keybinding_list = list(sorted([x.lower() for x in args.keybindings]))
+        default_resolver = get_resolver(args.resolver)
+        parallels_resolver = get_resolver(args.parallels_resolver) if args.parallels_resolver else None
+        if args.description != None:
+            description = args.description
+        else:
+            if parallels_resolver:
+                description = f"-1 | #{','.join(keybinding_list)} | {' or '.join(keybinding_list)} -> Type the string '{string_to_type}'. Host layout: {default_resolver.layout_name}. Parallels layout: {parallels_resolver.layout_name}"
+            else:
+                description = f"-1 | #{','.join(keybinding_list)} | {' or '.join(keybinding_list)} -> Type the string '{string_to_type}'. Layout: {default_resolver.layout_name}"
+            if args.back:
+                description += f" and go back {args.back} characters"
+
+        full_json = type_text_main(string_to_type, description, args.back, keybinding_list, default_resolver, parallels_resolver)
+        if args.print:
+            json.dump(full_json, sys.stdout, indent=4)
+        else:
+            helper_insert_rule_into_config(full_json)
+    except NoResolverWithName as e:
+        print("[!]", e)
+        exit(1)
