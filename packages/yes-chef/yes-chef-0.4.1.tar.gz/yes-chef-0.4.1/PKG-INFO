@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: yes-chef
+Version: 0.4.1
+Summary: A command-line tool for managing recipes and making shopping lists.
+Author-email: Robin Neville <robin.m.neville@gmail.com>
+Maintainer-email: Robin Neville <robin.m.neville@gmail.com>
+Project-URL: Repository, https://github.com/binnev/yes-chef
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: typer>=0.9
+Requires-Dist: colorama>=0.4
+Requires-Dist: rich>=13.7
+Requires-Dist: shellingham>=1.5
+Requires-Dist: pydantic>=2.6
+Requires-Dist: pydantic-settings>=2.2
+Requires-Dist: aiofiles>=23.2
+Requires-Dist: inquirer>=3.2
+Provides-Extra: dev
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: responses; extra == "dev"
+Requires-Dist: pyinstaller; extra == "dev"
+Requires-Dist: commitizen; extra == "dev"
+Requires-Dist: mkdocs; extra == "dev"
+Requires-Dist: mkdocstrings[python]; extra == "dev"
+Requires-Dist: mike; extra == "dev"
+
+# yes-chef
+
+A command-line tool for managing recipes and making shopping lists.
+
+# Installation
+
+Clone this repository, set up a venv, and run
+
+```shell
+./install.sh
+```
+
+You may need to give the file run permissions with
+
+```shell
+chmod +x install.sh
+```
+
+# Usage
+
+Initialise a new recipe library in the current folder:
+
+```shell
+chef init .
+```
+
+Create a new plan (collection of recipes to turn into a shopping list):
+
+```shell
+chef new plan 
+```
+
+Add a recipe to the plan:
+
+```shell
+chef plan <search term> 
+```
+
+View the currently planned recipes:
+
+```shell
+chef view plan 
+```
+
+View the shopping list for the planned recipes:
+
+```shell
+chef view list 
+```
