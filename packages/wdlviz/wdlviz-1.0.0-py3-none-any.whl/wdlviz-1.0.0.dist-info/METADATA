@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: wdlviz
+Version: 1.0.0
+Summary: WDL workflow visualization
+Project-URL: repository, https://github.com/miniwdl-ext/wdlviz.git
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: miniwdl
+Requires-Dist: graphviz
+Provides-Extra: dev
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+
+# wdlviz
+
+**Visualize [WDL](https://openwdl.org/) workflows using [miniwdl](https://github.com/chanzuckerberg/miniwdl) and [Graphviz](https://graphviz.org/)**
+
+```
+pip3 install wdlviz
+wdlviz https://github.com/broadinstitute/warp/raw/develop/pipelines/skylab/smartseq2_single_sample/SmartSeq2SingleSample.wdl
+```
+
+![image](https://github.com/miniwdl-ext/wdlviz/assets/356550/aa2ebe05-a285-493b-adc8-fd7a4b4d1d2e)
+
+See `wdlviz --help` for customization options. For example, add `--input --output` to include all the input & output declarations (often unwieldy, so omitted by default).
