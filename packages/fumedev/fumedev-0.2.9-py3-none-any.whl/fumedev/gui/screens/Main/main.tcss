@@ -1,0 +1,121 @@
+#container {
+    layout: horizontal;
+    margin: 1;
+    width: 100%;
+    height: 100%;
+}
+
+#chatWindow {
+    width: 70%;
+    dock: left;
+    height: 100%;
+}
+
+#chatInputContainer {
+    layout: horizontal;
+}
+
+#submit {
+    dock: right;
+}
+
+#chatDialogue {
+    margin-bottom: 1;
+    height: 80%;
+    padding-left: 2;
+    padding-right: 2;
+}
+
+#selectedFiles {
+    margin: 1;
+    padding: 1;
+}
+
+#fileCard {
+    layout: horizontal;
+    padding: 1;
+    background: $boost;
+    height: 3;
+    align: right middle;
+    width: 100%;
+    margin-left: 1;
+    margin-bottom: 1;
+}
+
+#fileCardLabel {
+    width: auto;
+    align-vertical: middle;
+    dock: left;
+    width: 80%;
+}
+
+#fileCardRemove {
+    dock: right;
+    max-width: 2;
+    max-height: 2;
+}
+
+#title {
+    text-style: bold;
+    margin-bottom: 1
+}
+
+#filesActionButtons {
+    layout: horizontal;
+    width: 100%;
+    align: center middle;
+    height: 3;
+    margin-bottom: 1
+}
+
+#navigateFileSelector {
+    margin-right: 1;
+}
+
+listView { 
+    height: auto;
+}
+
+#chatCard {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1;
+}
+
+#chatCardRole {
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+.chatCardContent {
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    margin-bottom: 1;
+}
+
+Rule {
+    color: gray;
+    margin: 0;
+}
+
+#multiChoiceContainer {
+    width: 100%;
+    height: auto;
+    layout: horizontal;
+    align: center middle;
+    padding: 1;
+}
+
+.multiChoiceOption {
+    margin-right: 1;
+}
+
+LoadingIndicator {
+    height: auto;
+}
+
+TextArea {
+    height: auto
+}
