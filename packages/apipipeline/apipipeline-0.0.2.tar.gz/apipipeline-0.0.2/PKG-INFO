@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: apipipeline
+Version: 0.0.2
+Summary: Assists large api requests
+Author-email: Dylan Wadsworth <dylanwadsworth@gmail.com>
+Project-URL: Homepage, https://github.com/diskotecha/apipipeline
+Project-URL: Issues, https://github.com/diskotecha/apipipeline/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# apipipeline
+## Api Request Pipeline
+A package containing a class that assists large looping api requests.
+Most useful when data from the requests are needed to make the next request. 
+Automatically watches api request limits, and processes requests accordingly.
