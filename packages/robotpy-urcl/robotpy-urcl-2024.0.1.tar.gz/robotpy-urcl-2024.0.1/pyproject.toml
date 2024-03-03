@@ -1,0 +1,65 @@
+[build-system]
+requires = [
+    "robotpy-build~=2024.0.0",
+    "pyntcore<2025.0.0,>=2024.1.1",
+    "robotpy-hal<2025.0.0,>=2024.1.1",
+    "robotpy-wpimath<2025.0.0,>=2024.1.1",
+    "robotpy-wpiutil<2025.0.0,>=2024.1.1",
+    "wpilib<2025.0.0,>=2024.1.1",
+]
+
+[tool.robotpy-build]
+base_package = "urcl"
+
+[tool.robotpy-build.metadata]
+name = "robotpy-urcl"
+description = "Python wrapper for FRC Team 6328's URCL library"
+author = "RobotPy Development Team"
+author_email = "robotpy@googlegroups.com"
+url = "https://github.com/robotpy/robotpy-urcl"
+license = "MIT"
+install_requires = [
+    "pyntcore<2025.0.0,>=2024.1.1",
+    "robotpy-hal<2025.0.0,>=2024.1.1",
+    "robotpy-wpiutil<2025.0.0,>=2024.1.1",
+    "wpilib<2025.0.0,>=2024.1.1",
+]
+
+[tool.robotpy-build.static_libs."urcl_driver".maven_lib_download]
+artifact_id = "URCL-driver"
+group_id = "org.littletonrobotics.urcl"
+repo_url = "https://raw.githubusercontent.com/Mechanical-Advantage/URCL/2024.0.1"
+version = "2024.0.1"
+libs = [
+    "URCLDriver",
+]
+
+[tool.robotpy-build.wrappers."urcl".maven_lib_download]
+artifact_id = "URCL-cpp"
+group_id = "org.littletonrobotics.urcl"
+repo_url = "https://raw.githubusercontent.com/Mechanical-Advantage/URCL/2024.0.1"
+version = "2024.0.1"
+use_sources = true
+sources = [
+    "URCL.cpp",
+]
+
+[tool.robotpy-build.wrappers."urcl"]
+name = "urcl"
+
+depends = [
+    "urcl_driver",
+    "wpiHal",
+    "ntcore",
+    "wpilibc",
+    "wpiutil",
+]
+
+sources = [
+    "urcl/wrapper.cpp",
+]
+
+generation_data = "gen"
+
+[tool.robotpy-build.wrappers."urcl".autogen_headers]
+URCL = "URCL.h"
