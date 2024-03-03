@@ -1,0 +1,35 @@
+[project]
+name = "dekshell"
+version = "0.1.12"
+description = "Being shell by mixing python and bash and cmd"
+authors = [
+    { name = "sanzenwin", email = "sanzenwin@gmail.com" },
+]
+dependencies = [
+    "packaging<=23.1",
+    "dektools<1.0.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+beep = [
+    "beepy<=1.0.7",
+]
+
+[project.scripts]
+dekshell = "dekshell.click.__entry__:main"
+
+[tool.pdm.build]
+includes = [
+    "dekshell",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
