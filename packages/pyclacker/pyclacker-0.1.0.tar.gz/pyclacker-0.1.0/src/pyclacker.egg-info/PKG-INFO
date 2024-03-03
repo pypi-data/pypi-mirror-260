@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: pyclacker
+Version: 0.1.0
+Summary: Command line reverse polish notation (RPN) calculator.
+Home-page: https://github.com/jtompkin/pyclacker
+Author: Josh Tompkin
+Author-email: jtompkin-dev@pm.me
+License: MIT
+Keywords: calculator,calc,reverse,polish,rpn
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# pyclacker
+
+Command line reverse polish notation (RPN) calculator. Stack based and ready to party.
+
+Josh Tompkin
+
+<jtompkin-dev@pm.me>
+
+https://github.com/jtompkin/pyclacker
+
+## Installation
+Install with pip
+```
+pip3 install pyclacker
+```
+
+## Usage
+```bash
+pyclacker [-h] [-v] [program]
+```
+Program should be provided as a string with commands separated by a space. Running without providing a program will enter interactive mode. In interactive mode, type a number and press enter to push to the stack. Enter an operator and press enter to perform the operation on the stack. Enter multiple commands separated by a space and press enter to execute them in order. Enter `help` to view available operators.
