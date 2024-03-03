@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: bdocs
+Version: 0.0.0.2
+Summary: A library to provide modify methods and higher features to Cdocs.
+Author: David Kershaw
+Author-email: dk107dk@hotmail.com
+Requires-Python: >=3.12,<4.0
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Documentation
+Classifier: Topic :: Text Processing :: Markup
+Requires-Dist: cdocs (==0.0.42)
+Requires-Dist: dulwich (>=0.21.7,<0.22.0)
+Requires-Dist: whoosh (>=2.7.4,<3.0.0)
+Project-URL: Github, https://github.com/dk107dk/bdocs
+Description-Content-Type: text/markdown
+
+# Bdocs
+
+## Write, copy, delete, and higher functions for Cdocs
+
+Cdocs is a contextual help framework. It is read-only. Bdocs is an overlay to Cdocs. It adds the ability to interact with Cdocs roots.
+
+On top of that, Bdocs adds higher level features, including:
+* Management of the Cdocs root within a local Git repo
+* Searching Cdocs roots
+* Rules that allow you to publish content with specificity
+* The ability to make private Cdocs roots
+* Transformations to be applied to docs as they are returned
+
+Like Cdocs, Bdocs is intended to be a library, not an application. On its own it is not a content management system. However it is straightforward to use Bdocs within an API to create a more complete solution. And the Bdocs design contemplates swapping in custom implementations for individual functions. This flexibility should make it more practical to layer up an application around Bdocs.
+
+Bdocs is on Pypi <a href='https://pypi.org/project/bdocs/'>here</a>.
+
+
