@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: astro-gdt-rxte
+Version: 1.0.0
+Summary: Gamma-ray Data Tools: RXTE Mission
+Home-page: https://github.com/USRA-STI/gdt-rxte
+Author: C. Wilson-Hodge
+Project-URL: Documentation, https://astro-gdt-rxte.readthedocs.io/en/latest/
+Project-URL: Source, https://github.com/USRA-STI/gdt-rxte
+Project-URL: Tracker, https://github.com/USRA-STI/gdt-rxte/issues
+Keywords: astronomy,gammaray,gamma-ray,usra
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.8
+License-File: license.txt
+Requires-Dist: astro-gdt>=2.0.0
+Requires-Dist: pyproj>=1.9.6
+Requires-Dist: numpy>=1.17.3
+Requires-Dist: scipy>=1.1.0
+Requires-Dist: matplotlib>=3.6.3
+Requires-Dist: astropy>=3.1
+Requires-Dist: healpy>=1.12.4
+Requires-Dist: cartopy>=0.21.1
+
+=========
+GDT-RXTE
+=========
+
+The GDT-RXTE is an extension to Gamma-ray Data Tools that adds functions specific to the RXTE mission.
+
+Normal Installation
+-------------------
+
+If you don't plan to contribute code to the project, the recommended install method is installing from PyPI using:
+
+.. code-block:: sh
+
+   pip install astro-gdt-rxte
+   gdt-data init
+
+The ``gdt-data init`` is required to initialize the library after installation of astro-gdt. You do not need to
+perform the initialization again if astro-gdt was already installed and initialized.  There is no harm in running
+it again "just in case".
+
+Contributing Code or Documentation
+----------------------------------
+
+If you plan to help with the development or documentation of astro-gdt-rxte, then please visit our github site at
+https://github.com/USRA-STI/gdt-rxte.
