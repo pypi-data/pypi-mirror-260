@@ -1,0 +1,1 @@
+from q2googledrive.version import __version__
