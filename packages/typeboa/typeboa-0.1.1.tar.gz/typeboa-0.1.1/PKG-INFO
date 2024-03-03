@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: typeboa
+Version: 0.1.1
+Summary: A description of my package.
+Author-email: Anish Kanthamneni <akneni@example.com>
+License-Expression: MIT
+Keywords: one,two
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+
+# Typeboa
+Typethon is a simple library that adds type checking into native python 
+
+
+## Usage
+```python
+from typethon import *
+x = Int | 23
+y = List[Int] | [1, 2, 3, 4]
+```
