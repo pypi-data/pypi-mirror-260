@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "dbglib"
+version = "0.3.0"
+description = ""
+authors = ["Savio Xavier <savioxavier112@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry_bumpversion.file."dbglib/__init__.py"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
