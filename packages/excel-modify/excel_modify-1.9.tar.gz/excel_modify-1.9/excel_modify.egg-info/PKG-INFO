@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: excel_modify
+Version: 1.9
+Summary: A package for editing Excel files for specific files
+Home-page: https://github.com/DrCinco730/excel_modifier
+Author: DrCino
+Author-email: khaled775057605@gmail.com
+Description-Content-Type: text/markdown
+Requires-Dist: beautifulsoup4
+
+# Excel Modify
+Excel modifier is a Python package for editing Excel files. It provides a convenient interface to modify comments in Excel files, allowing users to update comments for specific cells.
+
+
+## Installation
+__You can install Excel modifier using pip:__
+
+```bash
+pip install excel-modify
+```
+
+## Usage
+
+### Quick Start
+
+1. Import the `ExcelMode` class from the `excel_modify` package.
+2. Initialize `ExcelMode` with the path to your Excel file.
+3. Use the `set_comment` method to update the comment for a specific cell.
+4. Save the changes using the `save` method.
+
+```python
+from excel_modify import ExcelMode
+
+# Initialize ExcelMode with the path to your Excel file
+excel_mode = ExcelMode(file_path='path/to/your/excel/file.xlsx',cell_comment="AV") # e.g. cell_comment = "AR"
+
+# Set a comment in a specific cell
+excel_mode.set_comment('7', 'This is a comment')
+
+# Save the changes to the Excel file
+excel_mode.save()
+```
+
+
+## Features
+
+- **Edit Excel Comments**: Update comments for specific cells in Excel files.
+
+## Contributing
+
+Contributions are welcome! If you encounter any issues or have feature requests, please submit them through GitHub issues. Pull requests are also appreciated.
+
+Before contributing, please read the [Contributing Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+This README provides clear and concise instructions on how to install the package, a quick start guide for basic usage, information on advanced usage, a feature list, guidelines for contributing, and license information. It aims to be user-friendly and informative for potential users and contributors.
