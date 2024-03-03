@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "rodc-cli"
+version = "0.1.0"
+description = "Push files to an RODC instance"
+authors = ["Amy Parker <amy@amyip.net>"]
+readme = "README.md"
+license = "GPL-2.0-or-later"
+homepage = "https://rodc.amyip.net"
+repository = "https://github.com/amyipdecv/rodc"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+rodc = "rodc_cli.rodc:cli"
