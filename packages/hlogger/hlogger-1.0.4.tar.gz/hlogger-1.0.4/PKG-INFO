@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: hlogger
+Version: 1.0.4
+Summary: A logger utility for python application
+Home-page: https://github.com/llChameleoNll/hlogger
+Author: llChameleoNll
+Author-email: chameleon2318@gmail.com
+Project-URL: Bug Reports, https://github.com/sChameleoNz/hlogger/issues
+Project-URL: Source, https://github.com/sChameleoNz/hlogger
+Project-URL: Buy me a coffee, https://www.buymeacoffee.com/llhoyall
+Keywords: logger,logging
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: ~=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# HLogger
+
+HLogger is a utility module that provides a flexible logging solution for Python applications.
+It allows you to easily create and manage loggers with both file and stream handlers.
+
+## Installation
+
+You can install HLogger using pip:
+
+> $ pip install HLogger
+
+## Usage
+
+### Basic Logger Setup
+
+```python
+from hlogger import create_logger, logger
+
+# Create a logger
+create_logger("app_logger", "app_log.log")
+
+# Log messages
+logger.info("Application started")
+```
+
+### Change Log File
+
+```python
+from hlogger import create_logger, logger
+
+# Create a logger
+create_logger("app_logger", "app_log.log")
+
+# Log messages
+logger.info("Application started")
+
+# Change the log file dynamically
+create_logger("app_logger", "new_app_log.log")
+
+# Log messages with the new log file
+logger.warning("Application warning")
+```
+
+### Set Logger
+
+```python
+from hlogger import create_logger, set_logger, logger
+
+# Create a logger
+create_logger("app_logger", "app_log.log")
+
+# Create another logger
+create_logger("app_logger2", "app_log2.log")
+
+# Set logger to the previous one and log messages to it
+set_logger("app_logger")
+logger.error("Application error")
+```
