@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rand-sn"
+version = "1.0.0"
+authors = [
+  { name="Peter JOHN Matecsa", email="matecsaj@gmail.com" },
+]
+description = "rand-sn is a versatile Python tool designed for generating randomized serial numbers along with their corresponding barcodes and QR codes, facilitating secure labeling, efficient scanning, and enhanced inventory management while preserving operational confidentiality."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = ["barcode", "QR code", "inventory-management", "serial-numbers"]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    # example "requests>=2.25.1",
+    "python-barcode",
+    "qrcode[pil]"
+]
+
+[project.urls]
+homepage = "https://github.com/matecsaj/rand_sn"
+issues = "https://github.com/matecsaj/rand_sn/issues"
+repository = "https://github.com/matecsaj/rand_sn"
+
+[project.scripts]
+# It is conventional to use dashes in command line names and underscores in Python directory and file names.
+rand-sn = "rand_sn.main:main"
