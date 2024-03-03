@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "webp2png"
+version = "0.1.3"
+description = "webp convert to  png"
+authors = ["zhaifengtwo <zhaifengtwo@gmail.com>"]
+packages = [{include="webp2png"}]
+readme = "README.md"
+homepage = "https://github.com/fengtwo0/webp2png"
+repository = "https://github.com/fengtwo0/webp2png"
+[tool.poetry.dependencies]
+python = "^3.8"
+pillow = "^10.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+webp2png = "webp2png.__main__:main"
