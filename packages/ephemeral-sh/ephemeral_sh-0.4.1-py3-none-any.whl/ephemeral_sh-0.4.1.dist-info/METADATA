@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: ephemeral-sh
+Version: 0.4.1
+Summary: A one-task tracker in your terminal with a forgetful history
+Author-email: Mike Moran <mike@mkmrn.dev>
+Project-URL: GitLab, https://gitlab.com/mmoran0032/ephemeral-sh
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: rich
+Requires-Dist: typer[all]
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov >=4.0.0 ; extra == 'dev'
+Requires-Dist: pip-tools >=6.0.0 ; extra == 'dev'
+
+# ephemeral-sh
+
+A one-task tracker in your terminal with a forgetful history.
+
+Ephemeral keeps track of a single task, and when it was started. Once you decide to track something new, the old task can be forgotten or saved.
+
+- See your current task: `ephemeral`
+- Complete your current task: `ephemeral complete`
+- Discard your current task: `ephemeral discard`
+- Track a new task: `ephemeral track`
+- View your history: `ephemeral history`
+- Clear your history: `ephemeral clear`
+
+> [!NOTE]
+> Tired of writing `ephemeral`? You can also use the short alias `eph`.
+
+All actions are automatically persisted to the filesystem to keep the CLI and the data in sync.
