@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: easy-framework
+Version: 0.0.3
+Summary: 
+Author: Matheus Menezes Almeida
+Author-email: mrotame@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: Flask (>=3.0.2,<4.0.0)
+Requires-Dist: Flask-Cors (>=4.0.0,<5.0.0)
+Requires-Dist: SQLAlchemy (>=2.0.27,<3.0.0)
+Requires-Dist: bcrypt (>=4.1.2,<5.0.0)
+Requires-Dist: loguru (>=0.7.2,<0.8.0)
+Requires-Dist: marshmallow (>=3.20.2,<4.0.0)
+Requires-Dist: mongoengine (>=0.27.0,<0.28.0)
+Requires-Dist: passlib (>=1.7.4,<2.0.0)
+Requires-Dist: prodot (>=0.3.7,<0.4.0)
+Requires-Dist: psycopg2-binary (>=2.9.9,<3.0.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Description-Content-Type: text/markdown
+
+# EasyFramework
+
+> [!WARNING] 
+  Framework under development !<br>
+  
+A small Flask framework for fast API developments.
+This framework intends to be as modular as possible, so almost anything can be replaced/overrided
+
+## Technologies
+* Flask <br>
+  By using Flask and Werkzeug, this framework extends a lot of important features
+  
+* SQLAlchemy | MongoDB | Any other you want <br>
+  This framework has initial support for both PostgreSQL and MongoDB (you can use them at the same time).
+  By making this framework as modular as possible, you're able to add support for any other database easily using inheritance.
+
+* Marshmallow
+  It utilizes the Marshmallow library to serialize, validat,e and convert JSON data to SQLAlchemy or MongoDB Entities
+
+Full documentation coming soon
+
