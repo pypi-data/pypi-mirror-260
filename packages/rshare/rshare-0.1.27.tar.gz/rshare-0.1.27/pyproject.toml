@@ -1,0 +1,58 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "rshare"
+requires-python = ">=3.8"
+dynamic = ["version"]
+description = "It is a toy project for Python and Rust!"
+keywords = ["python", "rust", "data", "finance"]
+authors = [
+  {email = "albertandking@gmail.com"},
+  {name = "Albert King"}
+]
+readme = "README.md"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Rust",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+  "akshare",
+  "requests",
+  "beautifulsoup4",
+]
+license = "MIT"
+
+[project.urls]
+homepage = "https://github.com/albertandking/rshare"
+documentation = "https://rshare.readthedocs.io/"
+repository = "https://github.com/albertandking/rshare"
+changelog = "https://github.com/albertandking/rshare/blob/master/CHANGELOG.md"
+
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+manifest-path = "py-rshare/Cargo.toml"
+
+[tool.ruff]
+# Set the maximum line length to 79.
+line-length = 79
+
+[tool.ruff.lint]
+# Add the `line-too-long` rule to the enforced rule set.
+extend-select = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+exclude = ["*.pyi", "*.ipynb"]
