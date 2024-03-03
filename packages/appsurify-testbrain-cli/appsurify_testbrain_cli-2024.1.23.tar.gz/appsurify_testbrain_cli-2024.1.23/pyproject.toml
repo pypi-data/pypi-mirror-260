@@ -1,0 +1,162 @@
+[tool.bumpversion]
+allow_dirty = false
+commit = false
+message = "Bump version: {current_version} → {new_version}"
+commit_args = ""
+tag = false
+sign_tags = false
+tag_name = "{new_version}"
+tag_message = "Bump version: {current_version} → {new_version}"
+current_version = "2024.1.23"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = [
+    "{major}.{minor}.{patch}"
+]
+search = "{current_version}"
+replace = "{new_version}"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+
+[[tool.bumpversion.files]]
+filename = "src/testbrain/cli/__init__.py"
+
+[[tool.bumpversion.files]]
+filename = "doc-src/Writerside/v.list"
+
+[tool.poetry]
+name = "appsurify-testbrain-cli"
+version = "2024.1.23"
+description = "Command Line Interface for Appsurify Testbrain."
+license = "MIT"
+authors = [
+    "James Farrier <jamesfarrier@appsurify.com>",
+    "Artem Demidenko <ar.demidenko@appsurify.com>",
+]
+maintainers = [
+    "James Farrier <jamesfarrier@appsurify.com>",
+    "Artem Demidenko <ar.demidenko@appsurify.com>",
+]
+readme = "README.md"
+homepage = "https://appsurify.com"
+repository = "https://github.com/Appsurify/appsurify-testbrain-cli"
+documentation = "https://appsurify.com"
+keywords = ["appsurify", "testbrain", "cli"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control",
+]
+packages = [
+    {include = "testbrain", from = "src"},
+]
+include = ["CHANGELOG.md"]
+
+[tool.poetry.scripts]
+testbrain = "testbrain.cli.cli:app"
+tbcli = "testbrain.cli.cli:app"
+# Extra utils
+mstest2junit = "testbrain.cli.apps.report.cli:mstest_to_junit"
+report2testbrain = "testbrain.cli.apps.report.cli:push"
+# Backward capabilities
+# testbrain git - aliases
+git2testbrain = "testbrain.cli.apps.repository.git.cli:push"
+git2appsurify = "testbrain.cli.apps.repository.git.cli:push"
+# testbrain git - aliases
+tfvc2testbrain = "testbrain.cli.apps.repository.tfvc.cli:push"
+# testbrain tests - aliases
+#runtestswithappsurify = "testbrain.tests.cli:runtestswithappsurify"
+#testimportappsurify = "testbrain.tests.cli:testimportappsurify"
+
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"
+pydantic = "^2.4.2"
+requests = "^2.31.0"
+urllib3 = "<2.0.0"
+click = "^8.1.7"
+appsurify-testbrain-contrib = "^2024.1.13"
+
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+pytest-subprocess = "^1.5.0"
+requests-mock = "^1.11.0"
+pytest-cov = "^4.1.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.1"
+bump-my-version = "^0.11.0"
+black = "^23.9.1"
+flake8 = [{version = "5.0.4", python = "3.7"},{version = "^6.1.0", python = "^3.8.2"}]
+flake8-pyproject = "^1.2.3"
+isort = "^5.12.0"
+mypy = "^1.6.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+branch = true
+source = [
+    "./src/testbrain/",
+]
+omit = [
+    ".venv/",
+    "dev-scripts/",
+    "scripts",
+]
+
+[tool.coverage.report]
+ignore_errors = true
+
+[tool.pytest.ini_options]
+addopts = "--verbose -rA"
+pythonpath = "./src/testbrain"
+testpaths = ["./tests/"]
+python_files = ["test_*.py", ]
+junit_family = "xunit1" # "xunit1"
+
+
+[tool.black]
+line-length = 88
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.isort]
+profile = "black"
+src_paths = ["isort", "test", "src"]
+
+[tool.flake8]
+max-line-length = 88
+exclude = [".git", "__pycache__", ".pytest_cache"]
+extend-ignore = ["E203" ,"F401", "F403"]
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E203" ,"F401", "F403"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
