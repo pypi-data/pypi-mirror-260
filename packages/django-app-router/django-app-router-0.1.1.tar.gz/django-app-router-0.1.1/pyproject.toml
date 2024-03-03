@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py38"]
+exclude = '''
+/(
+    \.git
+  | \.vscode
+  | \.venv
+  | \.pytest_cache
+  | build
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+combine_star = true
+combine_as_imports = true
+balanced_wrapping = true
+skip = [
+  ".git",
+  ".vscode",
+  ".venv",
+  ".pytest_cache",
+  "build",
+]
+
+[tool.pyright]
+include = [
+  "django_app_router",
+  "example",
+  "tests",
+]
+exclude = [
+  "**/__pycache__",
+  "**/.venv",
+  "build",
+  "dist",
+]
+reportUnnecessaryTypeIgnoreComment = "warning"
+reportUnusedImport = "error"
+pythonVersion = "3.8"
+typeCheckingMode = "basic"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
+addopts = "-v --showlocals --tb=short --strict -p no:warnings --cov-report term-missing --cov=django_app_router"
+
+[tool.coverage.report]
+exclude_also = [
+  "if TYPE_CHECKING:",
+]
