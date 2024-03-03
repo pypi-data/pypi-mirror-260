@@ -1,0 +1,23 @@
+{% extends "../body.html" %}
+{% load static %}
+{% load util %}
+{% block content %}
+<script src="{% static 'js/jobs/edit.js' %}"></script>
+<a href="/ui/jobs/manage">
+    <button class="btn btn-info aw-btn-action" title="Return">
+        {% include "../button/icon/return.html" %}
+    </button>
+</a>
+
+<form class="aw-api-form" method="{{ form_method }}" action="/api/{{ form_api }}">
+    {% csrf_token %}
+    {{ form }}
+</form>
+
+<a href="/ui/jobs/manage">
+    <button class="btn btn-info aw-btn-action" title="Return">
+        {% include "../button/icon/return.html" %}
+    </button>
+</a>
+
+{% endblock %}
