@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "jkit"
+version = "3.0.0a14"
+description = "简书非官方 SDK - 创造可能性"
+readme = "README.md"
+license = "MIT"
+authors = ["yezi <yehaowei20060411@qq.com>"]
+repository = "https://github.com/FHU-yezi/JKit"
+keywords = ["jianshu", "SDK"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Chinese (Simplified)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+httpx = {extras = ["http2"], version = "*"}
+msgspec = "*"
+typing-extensions = "*"
+lxml = "*"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.0"
+pyright = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+
+target-version = "py38"
+
+lint.select = [
+    "A", "ANN", "ARG", "ASYNC", "B",
+    "BLE", "C4", "E", "F", "I",
+    "ICN", "ISC", "N", "PERF", "PIE",
+    "PT", "Q", "RET", "RSE", "RUF",
+    "S", "SIM", "SLOT", "TCH", "UP",
+    "W"
+]
+lint.ignore = ["ANN101", "ANN102", "ISC001", "RUF001", "RUF002", "RUF003"]
