@@ -1,0 +1,42 @@
+name: Tag
+
+on:
+  workflow_run:
+    workflows: ['Test']
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: git fetch --prune --unshallow
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        echo PATH=$PATH >> $GITHUB_ENV
+
+    - name: Build
+      env:
+        GH_TOKEN: ${{ secrets.PAT }}
+      run: ./scripts/publish.sh
+
+    - name: Tag
+      run: |
+        git push
+        git push --tags

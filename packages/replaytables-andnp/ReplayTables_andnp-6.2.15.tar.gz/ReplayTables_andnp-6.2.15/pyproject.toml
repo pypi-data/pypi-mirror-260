@@ -1,0 +1,55 @@
+[tool]
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "6.2.15"
+tag_format = "$version"
+version_files = ["pyproject.toml"]
+
+[tool.mypy]
+mypy_path = "typings"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+module-name = "ReplayTables.rust"
+
+[tool.ruff.lint]
+ignore = ['E701']
+
+[project]
+name = "ReplayTables-andnp"
+version = "6.2.15"
+description = "A simple replay buffer implementation in python for sampling n-step trajectories"
+authors = [
+    {name = "Andy Patterson", email = "andnpatterson@gmail.com"},
+]
+dependencies = [
+    "numba~=0.57",
+    "numpy~=1.23",
+    "scipy~=1.9",
+    "lz4~=4.3.2",
+]
+requires-python = ">=3.10,<3.13"
+readme = "README.md"
+license = {text = "MIT"}
+
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip",
+    "mypy",
+    "ruff",
+    "commitizen",
+    "pre-commit",
+    "pytest>=7.3,<9.0",
+    "pytest-benchmark~=4.0",
+    "maturin~=1.4.0",
+]
+
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
