@@ -1,0 +1,40 @@
+DirectoryTree {
+    padding: 1;
+    margin: 1;
+    width: 75%;
+}
+
+#container {
+    layout: horizontal;
+    margin: 1;
+}
+
+#selectedFiles {
+    margin: 1;
+    padding: 1;
+}
+
+#fileCard {
+    layout: horizontal;
+    padding: 1;
+    background: $boost;
+    height: 3;
+    align: right middle;
+    margin-bottom: 1;
+    margin-left: 1;
+}
+
+#fileCardLabel {
+    width: auto;
+    align-vertical: middle;
+    dock: left;
+}
+
+#fileCardRemove {
+    dock: right;
+}
+
+#title {
+    text-style: bold;
+    margin-bottom: 1
+}
