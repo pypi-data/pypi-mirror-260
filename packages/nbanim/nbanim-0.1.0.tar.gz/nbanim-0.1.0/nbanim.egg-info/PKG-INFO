@@ -1,0 +1,102 @@
+Metadata-Version: 2.1
+Name: nbanim
+Version: 0.1.0
+Summary: A utility for displaying image sequences as animations in Jupyter Notebooks.
+Author-email: Hamid Ali Syed <windcirculation@gmail.com>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: ipywidgets>=7.5
+Requires-Dist: IPython>=7.16
+Requires-Dist: Sphinx>=4.0.2
+Requires-Dist: myst-parser>=0.15.2
+Requires-Dist: nbsphinx>=0.8.7
+Requires-Dist: nbconvert>=6.1.0
+Requires-Dist: pydata-sphinx-theme>=0.6.3
+Provides-Extra: dev
+Requires-Dist: flake8>=3.9.0; extra == "dev"
+Requires-Dist: black>=21.5b0; extra == "dev"
+Requires-Dist: isort>=5.8.0; extra == "dev"
+
+# NBAnim
+
+NBAnim is a Python utility designed to display image sequences as animations within a Jupyter Notebook. It provides a simple interface to control the playback of image sequences, including play, pause, stop, and adjust the animation speed, making it ideal for visual demonstrations and presentations.
+
+## Features
+
+- Play, pause, and stop animations.
+- Navigate through image frames with next and previous controls.
+- Adjust animation speed dynamically.
+- Easy integration with Jupyter Notebooks.
+
+## Installation
+
+NBAnim can be installed using pip, by cloning the repository, or directly from GitHub. Below are instructions for each method:
+
+### Using pip
+
+To install NBAnim directly using pip, execute the following command in your terminal:
+
+```zsh
+pip install nbanim
+```
+
+### Cloning the Repository
+
+If you prefer to install NBAnim by cloning the repository, first ensure you have git installed on your system. Then, run the following command:
+
+```zsh
+git clone https://github.com/syedhamidali/nbanim.git
+cd nbanim
+pip install .
+```
+
+This will clone the repository to your local machine and install it using pip.
+
+### Directly from GitHub
+
+You can also install the latest version of NBAnim directly from GitHub using pip:
+
+```zsh
+pip install git+https://github.com/syedhamidali/nbanim.git
+```
+
+This method is useful if you want to install the very latest version that may include changes not yet published to PyPI.
+
+## Requirements
+
+NBAnim requires the following to run:
+
+- Python 3.6+
+- IPython
+- ipywidgets
+
+Please make sure you have these requirements installed before installing NBAnim.
+
+## Example Usage 1
+Here is a simple example of how to use NBAnim to display an animation in a Jupyter Notebook:
+
+```python
+from nbanim import NBAnim
+
+# List of image file paths for the frames of your animation
+frames = ['path/to/frame1.png', 'path/to/frame2.png', 'path/to/frame3.png']
+
+# Create an instance of NBAnim with the frames and optionally set the animation speed
+anim = NBAnim(frames, animation_speed=0.5)
+```
+
+## Example Usage 2
+
+```python
+import glob
+from nbanim import NBAnim
+
+# List of image file paths for the frames of your animation
+frames = sorted(glob.glob("~/Downloads/*png"))
+
+# Create an instance of NBAnim with the frames and optionally set the animation speed
+anim = NBAnim(frames, animation_speed=0.5)
+```
+
+### The animation controls will be displayed automatically in the Jupyter Notebook
+In this example, replace 'path/to/frame1.png', 'path/to/frame2.png', and 'path/to/frame3.png' with the actual paths to your image files. The NBAnim class takes care of displaying the images and providing a user interface for controlling the animation directly within the notebook.
