@@ -1,0 +1,36 @@
+# jupyter.yaml
+
+resources:
+  cloud: gcp
+  instance_type: n1-standard-64
+  region: us-central1
+  disk_size: 384
+  image_id: projects/hms-dev-greenberg-4923/global/images/hms-hanqing-rpy2
+
+file_mounts:
+  /data:
+    source: gs://hms-hanqing-analysis
+    mode: MOUNT
+  /ref:
+    source: gs://hms-hanqing-reference
+    mode: MOUNT
+  /wmb:
+    source: gs://hms-hanqing-wmb
+    mode: MOUNT
+  /tempdata:
+    source: gs://hms-hanqing-temp
+    mode: MOUNT
+
+setup: |
+  if [ -f /tmp/SKIPSETUP ]
+  then
+    echo "Skip setup"
+  else
+    mamba install -y "pandas<2.1" bedtools
+    pip install -U numexpr
+    pip install bolero bolero_process allcools wmb
+    touch /tmp/SKIPSETUP
+  fi
+
+run: |
+  nohup jupyter-lab --LabApp.token='' --no-browser --port 8787 > ~/jupyter.log 2>&1 &
