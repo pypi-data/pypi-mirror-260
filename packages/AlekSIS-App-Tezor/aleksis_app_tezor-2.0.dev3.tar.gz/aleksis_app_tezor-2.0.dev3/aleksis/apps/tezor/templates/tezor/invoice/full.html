@@ -1,0 +1,125 @@
+{% extends "core/base.html" %}
+{% load material_form i18n rules %}
+
+{% load render_table from django_tables2 %}
+
+{% block browser_title %}{{ object.number }}{% endblock %}
+
+{% block content %}
+
+    {% has_perm 'tezor.do_payment' user object as can_do_payment %}
+    {% has_perm 'tezor.view_invoice_group_rule' user object.group as can_view_invoice_group %}
+    {% has_perm 'tezor.display_purchased_items_rule' user object as can_view_purchased_items %}
+    {% has_perm 'tezor.display_billing_rule' user object as can_view_billing_information %}
+    {% has_perm 'tezor.print_invoice_rule' user object as can_print_invoice %}
+    {% has_perm 'tezor.send_invoice_email_rule' user object as can_send_invoice_email %}
+    {% has_perm 'tezor.change_payment_variant' user object as can_change_variant %}
+
+    <h1>{% trans "Invoice" %} {{ object.number }} — {{ object.created.date }}</h1>
+
+    {% if can_view_invoice_group %}
+      <a class="btn colour-primary waves-effect waves-light" href="{% url 'invoice_group_by_pk' object.group.pk %}">{% trans "Back" %}</a>
+    {% endif %}
+    {% if can_print_invoice %}
+      <a class="btn colour-primary waves-effect waves-light" href="{% url 'print_invoice' object.token %}">{% trans "Print" %}</a>
+    {% endif %}
+    {% if can_send_invoice_email %}
+      <a class="btn colour-primary waves-effect waves-light" href="{% url 'send_invoice_by_token' object.token %}">{% trans "Send Email" %}</a>
+    {% endif %}
+
+    <div class="row">
+    {% if can_view_billing_information %}
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{% trans "Billing information" %}</span>
+            <table class="highlight">
+              <tr>
+                <td>
+                  <i class="material-icons small iconify" data-icon="mdi:account-outline"></i>
+                </td>
+                <td>{{ object.billing_first_name }} {{object.billing_last_name }}</td>
+              </tr>
+              <tr>
+                <td rowspan="2">
+                  <i class="material-icons small iconify" data-icon="mdi:map-marker-outline"></i>
+                </td>
+                <td>{{ object.billing_address_1 }} {{ object.billing_address_2 }}</td>
+              </tr>
+              <tr>
+                <td>{{ object.billing_postcode }} {{ object.billing_city}}</td>
+              </tr>
+              <tr>
+                <td>
+                  <i class="material-icons small iconify" data-icon="mdi:email-outline"></i>
+                </td>
+                <td>
+                  <a href="mailto:{{ object.billing_email }}">{{ object.billing_email }}</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+      <form action="{% url 'do_payment' object.token %}">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">{% trans "Payment" %}</span>
+              <table class="highlight">
+                <tr>
+                  <td>
+                    <i class="material-icons iconify" data-icon="{{ object.get_variant_icon }}"></i>
+                  </td>
+                  <td>
+                    <select name="variant" {% if not can_change_variant %}disabled{% endif %}>
+                      {% for choice in object.get_variant_choices %}
+                        <option value="{{ choice.0 }}" {% if object.variant == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <i class="material-icons iconify" data-icon="{{ object.get_status_icon }}"></i>
+                  </td>
+                  <td>
+                    {{ object.get_status_display }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <i class="material-icons iconify" data-icon="mdi:calendar-end"></i>
+                  </td>
+                  <td>
+                    {{ object.due_date }}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            {% if object.status == "waiting" or object.status == "rejected" or object.status == "input" and can_do_payment %}
+            <div class="card-action">
+              <button class="btn waves-effect waves-light green" type="submit">
+                <i class="material-icons left iconify" data-icon="mdi:cash-fast"></i>
+                {% trans "Pay now" %}
+              </button>
+            </div>
+            {% endif %}
+            {% if object.status == "preauth" %}
+            <div class="card-action">
+              <a class="btn waves-effect waves-light green" href="{% url 'mark_invoice_paid_by_token' object.token %}">
+                <i class="material-icons left iconify" data-icon="mdi:check-all"></i>
+                {% trans "Mark as paid" %}
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </form>
+    </div>
+
+    {% render_table object.purchased_items_table %}
+    {% render_table object.totals_table %}
+
+{% endblock %}

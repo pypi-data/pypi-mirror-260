@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% load material_form i18n %}
+
+{% load render_table from django_tables2 %}
+
+{% block page_title %}{% blocktrans %}Clients{% endblocktrans %}{% endblock %}
+{% block browser_title %}{% blocktrans %}Clients{% endblocktrans %}{% endblock %}
+
+{% block content %}
+
+    <a class="btn colour-primary waves-effect waves-light" href="{% url 'create_client' %}">{% trans "Create client" %}</a>
+    {% render_table table %}
+
+{% endblock %}
