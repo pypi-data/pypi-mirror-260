@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling", "flask"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flask_cookies"
+version = "0.0.1"
+authors = [
+  { name="Enrico Cocchi", email="cocchi.e89@gmail.com" },
+]
+description = "Easily install a cookie banner working with Google Tag Manager in your Flask application"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/cccnrc/flask-cookies"
+Issues = "https://github.com/cccnrc/flask-cookies/issues"
