@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "slack-time-localization-bot"
+version = "0.1.10"
+description = "Detect temporal expressions in Slack messages (\"tomorrow at 5 pm\") and translate them for readers in other timezones."
+authors = ["Philipp Hossner <philipp.hossner@posteo.de>"]
+readme = "README.md"
+repository = "https://github.com/Slack-Time-Localization-Bot/Slack-Time-Localization-Bot"
+license = "MIT"
+include = ["CHANGELOG.md"]
+
+[tool.poetry.scripts]
+slack-time-localization-bot = 'slack_time_localization_bot.cli:run'
+
+[tool.poetry.dependencies]
+python = "^3.8"
+slack-bolt = "^1.18.1"
+cachetools = "^5.3.2"
+pyduckling-native-phihos = "^0.2.0"
+lingua-language-detector = "^2.0.2"
+pendulum = "^3.0.0"
+regex = "^2023.12.25"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+black = { extras = ["d"], version = ">=23.11,<25.0" }
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
