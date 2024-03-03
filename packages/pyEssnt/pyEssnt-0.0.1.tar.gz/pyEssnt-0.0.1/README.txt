@@ -1,0 +1,1 @@
+Python Essentials (pyEssnt) is a basic python package that contains useful shortcuts to coding. They save time on creating functions that we always create anyway, and minimalize package imports. after installing and importing pyEssnt, you can always type pyEssnt.pyHelp.all() in an interactive python session, or  just in a .py file to learn useful commands.
