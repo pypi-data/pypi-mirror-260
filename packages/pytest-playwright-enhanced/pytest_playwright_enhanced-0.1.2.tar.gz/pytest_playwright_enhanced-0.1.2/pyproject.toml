@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "pytest-playwright-enhanced"
+version = "0.1.2"
+description = "A pytest plugin for playwright python"
+authors = ["Simon K <jackofspaces@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.plugins.pytest11]
+pytest_playwright_enhanced = "pytest_playwright_enhanced.plugin"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+playwright = "^1.41.2"
+pytest = "^8.0.0"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.12.1"
+towncrier = "^23.11.0"
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.5.10"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
+coverage = "^7.4.1"
+typing-extensions = "^4.9.0"
+pytest-xdist = "^3.5.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+    "F", 
+    "I", 
+    "N", 
+    "W", 
+    "UP", 
+    "ANN", 
+    "BLE", 
+    "FBT", 
+    "B", 
+    "A", 
+    "COM", 
+    "C4", 
+    "DTZ", 
+    "T10", 
+    "EM",
+    "EXE",
+    "FA",
+    "ISC",
+    "ICN",
+    "INP",
+    "PIE",
+    "PYI",
+    "PT",
+    "RSE",
+    "RET",
+    "SLOT",
+    "SIM",
+    "ARG",
+    "PTH",
+    "ERA",
+    "PL",
+    "FLY",
+    "PERF",
+    "RUF",
+    ]
+fixable = ["ALL"]
+unfixable = []
+ignore = ["EM101", "ISC001", "COM812"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.pytest]
