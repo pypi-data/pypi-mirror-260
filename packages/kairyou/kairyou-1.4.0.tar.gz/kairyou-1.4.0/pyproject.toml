@@ -1,0 +1,31 @@
+[build-system]
+requires = [
+    'setuptools>=61.0',
+    'wheel',
+    'setuptools_scm>=6.0',
+    'tomli',
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+dependencies = [
+    "spacy>=3.7.0,<3.8.0"
+]
+
+name = "kairyou"
+version = "v1.4.0"
+authors = [
+  { name="Bikatr7", email="Tetralon07@gmail.com" },
+]
+description = "Quickly preprocesses Japanese text using NLP/NER from SpaCy for Japanese translation or other NLP tasks."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Bikatr7/Kairyou"
+Issues = "https://github.com/Bikatr7/Kairyou/issues"
