@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "tap-ibm-db2"
+version = "0.10.0"
+description = "`Tap-DB2` is a Singer tap for IBM DB2 data sources."
+authors = ["Daniel Purtov"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://meltano.com"
+repository = "https://github.com/danielptv/tap-db2"
+keywords = [
+    "DB2",
+    "IBM DB2",
+    "ELT",
+    "Meltano",
+    "Meltano SDK"
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+packages = [
+    { include = "tap_db2" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"
+singer-sdk = "0.36.0"
+ibm-db-sa = "0.4.0"
+sqlalchemy = "2.0.27"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.0.2"
+faker = "23.3.0"
+tox = "4.13.0"
+mypy = "1.8.0"
+ruff = "0.3.0"
+types-sqlalchemy = "1.4.53.38"
+types-jsonschema = "4.21.0.20240118"
+
+[tool.mypy]
+exclude = "tests"
+
+[build-system]
+requires = ["poetry-core==1.8.1", "poetry-dynamic-versioning==1.2.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry.scripts]
+# CLI declaration
+tap-db2 = 'tap_db2.tap:TapDB2.cli'
+
+[tool.poetry-dynamic-versioning]
+enable = false
+vcs = "git"
+style = "semver"
+
+[tool.ruff]
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+  "F",   # Pyflakes
+  "W",   # pycodestyle warnings
+  "E",   # pycodestyle errors
+  "I",   # isort
+  "N",   # pep8-naming
+  "D",   # pydocsyle
+  "ICN", # flake8-import-conventions
+  "RUF", # ruff
+]
+
+[tool.ruff.lint.flake8-import-conventions]
+banned-from = ["sqlalchemy"]
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+sqlalchemy = "sa"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
