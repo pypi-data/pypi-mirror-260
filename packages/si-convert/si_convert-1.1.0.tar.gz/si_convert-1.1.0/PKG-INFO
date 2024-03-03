@@ -1,0 +1,151 @@
+Metadata-Version: 2.1
+Name: si_convert
+Version: 1.1.0
+Summary: CLI tool for converting between SIQ and YAML for "Svoya Igra" (similar to Jeopardy)
+Home-page: https://github.com/Zverik/si_convert
+Author: Ilya Zverev
+Author-email: ilya@zverev.info
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Customer Service
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Programming Language :: Python :: 3
+Requires-Python: !=3.0.*,!=3.1.*,!=3.2.*,>=2.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: pyyaml
+
+# SI Convert
+
+Этот скрипт облегчает написание паков для «Своей игры» на движке SiGame Владимира Хиля.
+Вместо использования десктопного редактора под Windows или блуждания в кнопках «добавить вопрос»
+других интерфейсов, просто создайте текстовый файл и фигачьте вопросы туда. А затем запустите:
+
+    si_convert pack.yml result.siq
+
+В настоящий момент **НЕ поддерживает формат SIQ v5**. Помощь приветствуется.
+
+## Формат файла YAML
+
+Для примера, скачайте любой пак из [библиотеки вопросов](https://vladimirkhil.com/si/storage)
+и запустите с ним этот конвертер.
+
+См. также:
+* [Описание формата SIQ v4 в репозитории игры](https://github.com/VladimirKhil/SI/wiki/SIQ-file-format-(version-4))
+* [Типы вопросов](https://vladimirkhil.com/si/qtypes)
+
+### Пакет
+
+Ключ | Тип | Описание
+---|---|---
+name | строка | название пакета, обязательно
+difficulty | число | сложность 1-10, обязательно
+date | строка | дата обновления в формате дд.мм.гггг
+logo | строка | картинка для отображения
+language | строка | язык в формате ISO 639-1 + страна (например, `ru-RU` или `en-US`)
+authors | массив строк | список авторов, обязательно
+sources | массив строк | список источников
+comments | строка | комментарий к пакету
+publisher | строка | издатель
+restriction | строка | ограничение по возрасту: 12+, 18+.
+round1, round2, ... | раунд | вместо массива указываем номер раунда, `round1` обязателен.
+
+### Раунд
+
+Ключ | Тип | Описание
+---|---|---
+name | строка | название раунда, обязательно
+final | true/false | `true` для финального раунда
+prices | массив чисел | стоимости вопросов раунда, обязательно для не-финала
+themes | массив тем | каждая тема содежит только два поля: `name` с названием и `questions` с массивом вопросов, обязательно
+
+### Вопрос
+
+Ключ | Тип | Описание
+---|---|---
+type | строка | [тип вопроса](https://vladimirkhil.com/si/qtypes), если он не обычный simple
+cost | число | для типов `cat` и `bagcat` — реальная стоимость вопроса. Для выбора указывается массив из трёх чисел.
+theme | строка | для типов `cat` и `bagcat` — реальная тема вопроса
+self | true/false | для типа `bagcat` — можно ли забрать вопрос себе
+knows | before/after/never | для типа `bagcat` — когда узнаётся тема и стоимость вопроса
+answer | строка | ответ на вопрос, обязательно. Второй и последующие ответы пишите в `answer2`, `answer3` и т.д.
+wrong | строка | неправильный ответ. Другие варианты — в `wrong2` и т.д.
+scenario | массив | если нужно показать несколько слайдов, вносите каждый из последующего списка в массив
+text | строка | вопрос для отображения в слайде
+say | строка | вопрос для озвучивания ведущим
+image | название файла | картинка для отображения
+voice | название файла | звук для проигрывания
+video | название файла | видео для показа
+
+Файлы должны располагаться в том же каталоге, что и файл yaml, либо в подкаталоге `media`,
+либо в правильном подкаталоге из `Images`, `Audio` или `Video`.
+
+Один из элементов `text`, `say`, `image`, `voice` или `video` обязателен. Таким
+образом, минимальный вопрос — это один из этих элементов и `answer` с ответом.
+
+### Пример
+
+```yaml
+name: Примерная игра
+difficulty: 1
+date: 12.31.2022
+authors:
+  - Илья Зверев
+restriction: 18+
+
+round1:
+  name: Города
+  prices: [100, 200]
+  themes:
+    - name: Столицы
+      questions:
+        - text: Столица Эстонии
+          answer: Таллинн
+          answer2: Таллин
+        - scenario:
+            - text: Где находится этот собор?
+            - image: moscow-vasili-blazh.jpg
+          answer: Москва
+    - name: Вторые
+      questions:
+        - text: Где находится Медный всадник?
+          answer: Петербург
+          answer2: Санкт-Петербург
+        - type: bagcat
+          theme: Белый дом
+          cost: [200, 500, 100]
+          knows: before
+          text: Самый известный Белый дом находится в этом городе.
+          answer: Вашингтон
+
+round2:
+  name: Страны
+  final: true
+  themes:
+    - name: Размер
+      questions:
+        - text: Эта страна самая большая в Европе
+          answer: Украина
+    - name: Штаты
+      questions:
+        - text: У этого государства когда-то было 15 республик
+          answer: СССР
+```
+
+## Сложно
+
+Есть инструменты с нормальным интерфейсом:
+
+* [SIQuester](https://vladimirkhil.com/si/siquester) — официальный редактор. Требует Windows.
+* [SIPacker](https://github.com/VityaSchel/SIPacker) — веб-редактор, ссылка есть в readme (заброшен).
+
+## Как играть?
+
+В онлайне: [SIGame Online](https://vladimirkhil.com/si/online/). При создании игры выберите
+«из файла» и загрузите туда файл siq, созданный этим скриптом.
+
+## Author and License
+
+Written by Ilya Zverev, published under ISC License.
