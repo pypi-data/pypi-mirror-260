@@ -1,0 +1,56 @@
+# Package Overview
+package_name: regression
+
+# Data files
+training_data: train.csv
+test_data: test.csv
+
+# Variables
+# The variable we are attempting to predict (loan amount)
+target: loanamount
+
+pipeline_name: loan_pred_regression_model
+pipeline_save_file: loan_pred_regression_model_output_v
+
+features:
+  - married
+  - dependents
+  - education
+  - self_employed
+  - applicantincome
+  - coapplicantincome
+  - loan_amount_term
+  - credit_history
+  - property_area
+
+# set the train/test split size
+test_size: 0.2
+
+# to set the random seed
+random_state: 1
+
+alpha: 0.0001
+
+C: 1
+
+max_iter: 1000
+
+cat_vars_na: 
+  - married
+  - dependents
+  - self_employed
+
+num_var_na: 
+  - loan_amount_term
+
+num_cont_vars:
+  - applicantincome
+  - coapplicantincome
+
+cat_vars:
+  - married
+  - dependents
+  - education
+  - self_employed
+  - credit_history
+  - property_area
