@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "ownlib"
+version = "0.0.1a2"
+description = "Sample pypi project"
+authors = ["Андрей Мартынов <real.cloudhunter@gmail.com>"]
+license = "GNU"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.1"
+loguru = "^0.7.2"
+ipython = "^8.22.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+pylint = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = 3.11
+follow_imports = "skip"
