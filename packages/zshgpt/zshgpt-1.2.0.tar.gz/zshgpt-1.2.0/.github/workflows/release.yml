@@ -1,0 +1,45 @@
+name: Bump version and release
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+jobs:
+  bump:
+    name: Bump git tag.
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.merge_commit_sha }}
+        fetch-depth: '0'
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.64.0 # Don't use @master or @v1 unless you're happy to test the latest version.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token.
+        WITH_V: true
+        DEFAULT_BUMP: none # Only bumb if #major, #minor, #patch is in the commit message.
+
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install Hatch
+      run: pip install --upgrade hatch
+
+    - name: build
+      run: hatch build
+
+    - name: publish to pypi
+      env:
+        HATCH_INDEX_USER: __token__
+        HATCH_INDEX_AUTH: ${{ secrets.PYPI_TOKEN }}
+      run: hatch publish
