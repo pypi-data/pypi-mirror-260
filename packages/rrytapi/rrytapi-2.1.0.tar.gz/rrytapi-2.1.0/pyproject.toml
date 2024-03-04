@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "rrytapi"
+version = "2.1.0"
+description = ""
+authors = ["RadoTheProgrammer <rado@arazakar.com>"]
+readme = "README.md"
+license="MIT"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydub= ">=0.25.1"
+clean-text = "^0.6.0"
+js2py = "^0.74"
+bs4 = "^0.0.2"
+requests = "^2.31.0"
+mini-lambda = "^2.2.3"
+unidecode = "^1.3.8"
+rrprettier = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
