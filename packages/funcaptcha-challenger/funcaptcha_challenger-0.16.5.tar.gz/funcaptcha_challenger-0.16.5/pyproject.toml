@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "funcaptcha-challenger"
+version = "0.16.5"
+description = ""
+authors = ["Madoka <s@madokax.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+onnxruntime = "^1.16.2"
+pillow = "^10.1.0"
+requests = "^2.31.0"
+tqdm = "^4.66.1"
+loguru = "^0.7.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[[tool.poetry.packages]]
+include = "funcaptcha_challenger/*.py"
