@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: pyrobopath
+Version: 0.2.2
+Summary: This project contains python and ROS packages for working with robotic toolpaths
+Author-email: Alex Arbogast <arbogastaw@gmail.com>
+Maintainer: Alex Arbogast
+Maintainer-email: arbogastaw@gmail.com
+Project-URL: homepage, https://github.com/alexarbogast/pyrobopath
+Project-URL: documentation, https://pyrobopath.readthedocs.io/en/latest/
+Project-URL: issues, https://github.com/alexarbogast/pyrobopath/issues
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: matplotlib
+Requires-Dist: networkx
+Requires-Dist: gcodeparser
+Requires-Dist: python-fcl
+Requires-Dist: numpy >=1.20.0
+Requires-Dist: numpy-quaternion
+Requires-Dist: scipy
+Requires-Dist: colorama
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx >=3.1 ; extra == 'docs'
+Requires-Dist: pydata-sphinx-theme ; extra == 'docs'
+
+# PyRoboPath
+[![Python package](https://github.com/alexarbogast/pyrobopath/actions/workflows/build.yml/badge.svg)](https://github.com/alexarbogast/pyrobopath/actions/workflows/build.yml)
+[![Documentation Status](https://readthedocs.org/projects/pyrobopath/badge/?version=latest)](https://pyrobopath.readthedocs.io/en/latest/?badge=latest)
+![Static Badge](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
+![](https://www.python.org/)
+
+
+This project contains python and ROS packages for working with robotic
+toolpaths. The target functionalities include:
+* G-code interpretation and Python interfaces for working with G-code toolpaths
+  in Python - including manipulation and visualization tools
+* Collision checking with
+  [python-fcl](https://github.com/BerkeleyAutomation/python-fcl) and custom
+  interfaces
+* Scheduling tools for collision-free multi-agent robotic toolpaths
+
+> [!NOTE]
+> _This project is under heavy development and subject to changes in API and functionality._ 
+
+## Documentation
+Checkout the [Pyrobopath
+Documentation](https://pyrobopath.readthedocs.io/en/latest/) for installation
+help, examples, and API reference. 
+
+
+## Usage
+See [examples.py](./examples/examples.py) for python usage demos.
