@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CiscoConfParse Fundamentals: Using Parent / Child Relationships &mdash; ciscoconfparse2 0.7.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Config Values with CiscoConfParse" href="tutorial_get_config_values.html" />
+    <link rel="prev" title="CiscoConfParse Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Fundamentals: Using Parent / Child Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ios-parent-child-relationships">IOS Parent-child relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ioscfgline-objects"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code> objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-retrieving-text-from-an-ioscfgline-object">Example: Retrieving text from an <code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code> object</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#baseline-configuration-for-these-examples">Baseline configuration for these examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage-finding-interface-names-that-match-a-substring">Example Usage: Finding interface names that match a substring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage-finding-parents-with-a-specific-child">Example Usage: Finding parents with a specific child</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#method-1-for-loop-to-iterate-over-objects-and-search-children">Method 1: for-loop to iterate over objects and search children</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-2-list-comprehension-to-iterate-over-objects-and-search-children">Method 2: list-comprehension to iterate over objects and search children</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-3-find-parent-objects">Method 3: <code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage-finding-parents-without-a-specific-child">Example Usage: Finding parents <em>without</em> a specific child</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_config_values.html">Getting Config Values with <code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_build_diffs.html">Example Usage: Build configuration diffs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Fundamentals: Using Parent / Child Relationships</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_parent_child.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ciscoconfparse-fundamentals-using-parent-child-relationships">
+<h1><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a> Fundamentals: Using Parent / Child Relationships<a class="headerlink" href="#ciscoconfparse-fundamentals-using-parent-child-relationships" title="Permalink to this heading"></a></h1>
+<section id="ios-parent-child-relationships">
+<h2>IOS Parent-child relationships<a class="headerlink" href="#ios-parent-child-relationships" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse()</span></code></a> reads an IOS configuration and breaks
+it into a list of parent-child relationships.  Used correctly, these
+relationships can reveal a lot of useful information.  The concept of IOS
+parent and child is pretty intuitive, but we’ll go through a simple example
+for clarity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CiscoConfParse assumes the configuration is in the <em>exact format</em> rendered by Cisco IOS devices when you use <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">runn</span></code> or <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">start</span></code>.</p>
+</div>
+<p>Line 1 is a parent:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">policy-map QOS_1
+</span> class GOLD
+  priority percent 10
+ class SILVER
+  bandwidth 30
+  random-detect
+ class default
+!
+</pre></div>
+</div>
+<p>Child lines are indented more than parent lines; thus, lines 2, 4 and 7
+are children of line 1:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>policy-map QOS_1
+<span class="hll"> class GOLD
+</span>  priority percent 10
+<span class="hll"> class SILVER
+</span>  bandwidth 30
+  random-detect
+<span class="hll"> class default
+</span>!
+</pre></div>
+</div>
+<p>Furthermore, line 3 (highlighted) is a child of line 2:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>policy-map QOS_1
+ class GOLD
+<span class="hll">  priority percent 10
+</span> class SILVER
+  bandwidth 30
+  random-detect
+ class default
+!
+</pre></div>
+</div>
+<p>In short:</p>
+<ul class="simple">
+<li><p>Line 1 is a parent, and its children are lines 2, 4, and 7.</p></li>
+<li><p>Line 2 is also a parent, and it only has one child: line 3.</p></li>
+</ul>
+<p><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse()</span></code></a> uses these parent-child relationships
+to build queries.  For instance, you can find a list of all parents with or
+without a child; or you can find all the configuration elements that are
+required to reconfigure a certain class-map.</p>
+</section>
+<section id="ioscfgline-objects">
+<h2><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects<a class="headerlink" href="#ioscfgline-objects" title="Permalink to this heading"></a></h2>
+<p>When <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse()</span></code></a> reads a configuration, it stores
+parent-child relationships as a special <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a>
+object.  These objects are very powerful.</p>
+<p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects remember:</p>
+<ul class="simple">
+<li><p>The original IOS configuration line</p></li>
+<li><p>The parent configuration line</p></li>
+<li><p>All child configuration lines</p></li>
+</ul>
+<p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects also know about child indentation,
+and they keep special configuration query methods in the object itself.  For
+instance, if you found an <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object with
+children, you can search the children directly from the parent by using
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_search_children()</span></code></a>.</p>
+<section id="example-retrieving-text-from-an-ioscfgline-object">
+<h3>Example: Retrieving text from an <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object<a class="headerlink" href="#example-retrieving-text-from-an-ioscfgline-object" title="Permalink to this heading"></a></h3>
+<p>This example:</p>
+<ul class="simple">
+<li><p>Parses through a configuration</p></li>
+<li><p>Finds an <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> object with <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a></p></li>
+<li><p>Retrieves the configuration text from that object (highlighted in yellow)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s1">&#39;!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;interface Serial1/0&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39; ip address 1.1.1.5 255.255.255.252&#39;</span>
+<span class="gp">... </span>    <span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;interface&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Object: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+<span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Config text: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</span><span class="gp">...</span>
+<span class="go">Object: &lt;IOSCfgLine # 1 &#39;interface Serial1/0&#39;&gt;</span>
+<span class="go">Config text: interface Serial1/0</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the example, <code class="docutils literal notranslate"><span class="pre">obj.text</span></code> refers to the <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a>
+<code class="docutils literal notranslate"><span class="pre">text</span></code> attribute, which retrieves the text of the original IOS configuration
+statement.</p>
+</section>
+</section>
+<section id="baseline-configuration-for-these-examples">
+<h2>Baseline configuration for these examples<a class="headerlink" href="#baseline-configuration-for-these-examples" title="Permalink to this heading"></a></h2>
+<p>This tutorial will run all the queries against a sample configuration, which is shown below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>! Filename: /tftpboot/bucksnort.conf
+!
+policy-map QOS_1
+ class GOLD
+  priority percent 10
+ class SILVER
+  bandwidth 30
+  random-detect
+ class default
+!
+interface Ethernet0/0
+ ip address 1.1.2.1 255.255.255.0
+ no cdp enable
+!
+interface Serial1/0
+ encapsulation ppp
+ ip address 1.1.1.1 255.255.255.252
+!
+interface Serial1/1
+ encapsulation ppp
+ ip address 1.1.1.5 255.255.255.252
+ service-policy output QOS_1
+!
+interface Serial1/2
+ encapsulation hdlc
+ ip address 1.1.1.9 255.255.255.252
+!
+class-map GOLD
+ match access-group 102
+class-map SILVER
+ match protocol tcp
+!
+</pre></div>
+</div>
+</section>
+<section id="example-usage-finding-interface-names-that-match-a-substring">
+<h2>Example Usage: Finding interface names that match a substring<a class="headerlink" href="#example-usage-finding-interface-names-that-match-a-substring" title="Permalink to this heading"></a></h2>
+<p>The following script will load a configuration file from
+<code class="docutils literal notranslate"><span class="pre">/tftpboot/bucksnort.conf</span></code> and use
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> to find the
+Serial interfaces.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">^</span></code> symbol at the beginning of the search string is a regular expression; <code class="docutils literal notranslate"><span class="pre">^interface</span> <span class="pre">Serial</span></code> tells python to limit the search to lines that
+<em>begin</em> with <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">Serial</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s2">&quot;/tftpboot/bucksnort.conf&quot;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">serial_objs</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="s2">&quot;^interface Serial&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>The assuming we use the configuration in the example above,
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> scans the
+configuration for matching config objects and stores a list of
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects in <code class="docutils literal notranslate"><span class="pre">serial_objs</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">serial_objs</span>
+<span class="go">[&lt;IOSCfgLine # 14 &#39;interface Serial1/0&#39;&gt;,</span>
+<span class="go">&lt;IOSCfgLine # 18 &#39;interface Serial1/1&#39;&gt;,</span>
+<span class="go">&lt;IOSCfgLine # 23 &#39;interface Serial1/2&#39;&gt;]</span>
+</pre></div>
+</div>
+<p>As you can see, the config statements are stored inside
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects.  If you want to access the
+text inside the <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOSCfgLine</span></code></a> objects, just call their
+<code class="docutils literal notranslate"><span class="pre">text</span></code> attribute.  For example…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">serial_objs</span><span class="p">:</span>
+<span class="hll"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span><span class="gp">...</span>
+<span class="go">interface Serial1/0</span>
+<span class="go">interface Serial1/1</span>
+<span class="go">interface Serial1/2</span>
+</pre></div>
+</div>
+<p>Going forward, I will assume that you know how to use regular expressions; if
+you would like to know more about regular expressions, O’Reilly’s
+<a class="reference external" href="http://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/">Mastering Regular Expressions</a> book is very good.</p>
+</section>
+<section id="example-usage-finding-parents-with-a-specific-child">
+<h2>Example Usage: Finding parents with a specific child<a class="headerlink" href="#example-usage-finding-parents-with-a-specific-child" title="Permalink to this heading"></a></h2>
+<p>Suppose we need to find interfaces with the <code class="docutils literal notranslate"><span class="pre">QOS_1</span></code> service-policy applied
+outbound…</p>
+<section id="method-1-for-loop-to-iterate-over-objects-and-search-children">
+<h3>Method 1: for-loop to iterate over objects and search children<a class="headerlink" href="#method-1-for-loop-to-iterate-over-objects-and-search-children" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s2">&quot;/tftpboot/bucksnort.conf&quot;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">all_intfs</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^interf&quot;</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">all_intfs</span><span class="p">:</span>
+<span class="hll"><span class="gp">... </span>    <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">re_search_children</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;service-policy\soutput\sQOS_1&quot;</span><span class="p">):</span>
+</span><span class="gp">... </span>        <span class="n">qos_intfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span>
+<span class="go">[&lt;IOSCfgLine # 18 &#39;interface Serial1/1&#39;&gt;]</span>
+</pre></div>
+</div>
+<p>This script iterates over the interface objects, and searches the children for
+the qos policy.  It’s worth mentioning that Python also has something called a
+<a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list-comprehension</a>, which makes the script for this task a little more
+compact…</p>
+</section>
+<section id="method-2-list-comprehension-to-iterate-over-objects-and-search-children">
+<h3>Method 2: <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list-comprehension</a> to iterate over objects and search children<a class="headerlink" href="#method-2-list-comprehension-to-iterate-over-objects-and-search-children" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s2">&quot;/tftpboot/bucksnort.conf&quot;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^interf&quot;</span><span class="p">)</span> \
+</span><span class="hll"><span class="gp">... </span>    <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">re_search_children</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;service-policy\soutput\sQOS_1&quot;</span><span class="p">)]</span>
+</span><span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span>
+<span class="go">[&lt;IOSCfgLine # 18 &#39;interface Serial1/1&#39;&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="method-3-find-parent-objects">
+<h3>Method 3: <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a><a class="headerlink" href="#method-3-find-parent-objects" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s2">&quot;/tftpboot/bucksnort.conf&quot;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_parent_objects</span><span class="p">([</span><span class="sa">r</span><span class="s2">&quot;^interf&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;service-policy\soutput\sQOS_1&quot;</span><span class="p">])</span>
+</span><span class="hll"><span class="gp">...</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">qos_intfs</span>
+<span class="go">[&lt;IOSCfgLine # 18 &#39;interface Serial1/1&#39;&gt;]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_parent_objects()</span></code> supports an arbitrary list of search terms; this makes searching multiple child levels very simple.</p>
+</div>
+<p>You can choose any of these methods to accomplish your task…
+some might question why we cover the first two methods when
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a> solves
+the problem completely.  In this case, they have a point; however,
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a> is much slower
+when you have more than one child line to inspect per interface, because
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a> performs a
+line-by-line search of the whole configuration line each time it is called.
+By contrast, Method 1 is more efficient because you could simply call
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_search_children()</span></code></a> multiple times for each
+interface object.  <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_search_children"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_search_children()</span></code></a>
+only searches the child lines of that <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine" title="ciscoconfparse2.models_cisco.IOSCfgLine"><code class="xref py py-func docutils literal notranslate"><span class="pre">IOSCfgLine()</span></code></a>
+interface object.</p>
+</section>
+</section>
+<section id="example-usage-finding-parents-without-a-specific-child">
+<h2>Example Usage: Finding parents <em>without</em> a specific child<a class="headerlink" href="#example-usage-finding-parents-without-a-specific-child" title="Permalink to this heading"></a></h2>
+<p>Let’s suppose you wanted a list of all interfaces that have CDP enabled; this implies a couple of things:</p>
+<ol class="arabic simple">
+<li><p>CDP has not been disabled globally with <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">cdp</span> <span class="pre">run</span></code></p></li>
+<li><p>The interfaces in question are not configured with <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">cdp</span> <span class="pre">enable</span></code></p></li>
+</ol>
+<p><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child" title="ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects_wo_child()</span></code></a> is a function to
+find parents without a specific child; it requires arguments similar to
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects" title="ciscoconfparse2.CiscoConfParse.find_parent_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects()</span></code></a>:</p>
+<ul class="simple">
+<li><p>The first argument is a regular expression to match the parents</p></li>
+<li><p>The second argument is a regular expression to match the child’s <em>exclusion</em></p></li>
+</ul>
+<p>Since we need to find parents that do not have <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">cdp</span> <span class="pre">enable</span></code>, we will use
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child" title="ciscoconfparse2.CiscoConfParse.find_parent_objects_wo_child"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_parent_objects_wo_child()</span></code></a> for this query.
+Note that the script below makes use of a special property of python lists…
+empty lists test False in Python; thus, we can
+use <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">bool(parse.find_objects(r'no</span> <span class="pre">cdp</span> <span class="pre">run'))</span></code> to ensure that CDP is
+running globally on this device.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s2">&quot;/tftpboot/bucksnort.conf&quot;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;no cdp run&#39;</span><span class="p">)):</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="n">cdp_intfs</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_parent_objects_wo_child</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface&#39;</span><span class="p">,</span>
+</span><span class="hll"><span class="gp">... </span>        <span class="sa">r</span><span class="s1">&#39;no cdp enable&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cdp_intfs</span>
+<span class="go">[&lt;IOSCfgLine # 14 &#39;interface Serial1/0&#39;&gt;, &lt;IOSCfgLine # 18 &#39;interface Serial1/1&#39;&gt;, &lt;IOSCfgLine # 23 &#39;interface Serial1/2&#39;&gt;]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="CiscoConfParse Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_get_config_values.html" class="btn btn-neutral float-right" title="Getting Config Values with CiscoConfParse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 02, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
