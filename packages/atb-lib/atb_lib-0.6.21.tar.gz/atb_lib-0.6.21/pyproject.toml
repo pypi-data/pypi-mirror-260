@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "atb-lib"
+version = "0.6.21"
+description = "A Python package for Advanced Trading Bot"
+authors = ["Yuriy Tigiev <yuriy.tigiev@outlook.com>"]
+license = "MIT"
+packages = [
+    { include="src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+colorlog = "^6.8.2"
+aio_pika = "^9.4.0"
+asyncio = "^3.4.3"
+importlib-metadata = "^7.0.1"
+uvicorn = "^0.27.1"
+fastapi = "^0.109.2"
+websockets = "^12.0"
+pip = "^24.0.0"
+arrow = "^1.3.0"
+msgpack = "^1.0.7"
+wheel = "^0.42.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
