@@ -1,0 +1,110 @@
+[project]
+name = "gbfr-auto-restart"
+version = "0.3.0"
+description = "Granblue Fantasy Relink Auto Restart"
+authors = [
+    { name = "Dowon", email = "ks2515@naver.com" },
+]
+dependencies = [
+    "pyscreeze",
+    "pillow",
+    "rich",
+    "opencv-python",
+    "pydirectinput-rgx",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+keywords = [
+    "gbfr",
+]
+classifiers = [
+    "Topic :: Games/Entertainment",
+    "Topic :: Games/Entertainment :: Role-Playing",
+    "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "pre-commit",
+]
+build = [
+    "nuitka>=2",
+]
+
+[project.urls]
+repository = "https://github.com/Bing-su/gbfr_auto_restart"
+
+[project.scripts]
+gbfr_auto_restart = "gbfr_auto_restart:main"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.build]
+includes = [
+    "gbfr_auto_restart.py",
+]
+
+[tool.pdm.scripts.exe]
+cmd = [
+    "python",
+    "-m",
+    "nuitka",
+    "--assume-yes-for-downloads",
+    "--onefile",
+    "--output-dir=build",
+    "gbfr_auto_restart.py",
+]
+
+[tool.pdm.scripts.encode]
+cmd = [
+    "python",
+    "encode.py",
+]
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "EM",
+    "F",
+    "FA",
+    "FBT",
+    "FURB",
+    "I001",
+    "ISC",
+    "N",
+    "PERF",
+    "PIE",
+    "PT",
+    "PTH",
+    "RET",
+    "RUF",
+    "SIM",
+    "T20",
+    "UP",
+    "W",
+]
+ignore = [
+    "B008",
+    "B905",
+    "E501",
+]
+unfixable = [
+    "F401",
+]
