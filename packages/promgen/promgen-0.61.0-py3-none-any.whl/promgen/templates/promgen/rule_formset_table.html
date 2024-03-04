@@ -1,0 +1,20 @@
+{{ formset.management_form }}
+<table v-pre class="table">
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Delete?</th>
+    </tr>
+    {% for form in formset %}
+    <tr>
+        <td>{{ form.id }} {{ form.key }}</td>
+        <td>{{ form.value }}</td>
+        <td>{{ form.DELETE }}</td>
+    </tr>
+    {% if form.errors %}
+    <tr>
+        <td colspan="3">{{form.errors}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
