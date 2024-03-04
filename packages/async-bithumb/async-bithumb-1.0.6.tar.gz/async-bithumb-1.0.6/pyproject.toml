@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "async-bithumb"
+version = "1.0.2"
+description = "Asynchronus pybithumb library. Based on pybithumb library: https://github.com/sharebook-kr/pybithumb"
+authors = ["pakchu <gus4734@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+packages = [{include = "async_pybithumb"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "2.1.4"
+aiohttp = "3.9.1"
+websockets = "^12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
