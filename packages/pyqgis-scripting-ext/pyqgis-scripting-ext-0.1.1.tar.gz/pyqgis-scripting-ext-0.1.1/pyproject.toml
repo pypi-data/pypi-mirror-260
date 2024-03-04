@@ -1,0 +1,25 @@
+[project]
+name = "pyqgis-scripting-ext"
+version = "0.1.1"
+description = "A simple package that tries to make pyQGIS a bit more userfriendly to non programmers."
+authors = [
+    { name = "Andrea Antonello" },
+]
+dependencies = []
+requires-python = ">=3.8"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+homepage = "https://github.com/moovida/pyqgis_scripting_extensions.git"
+repository = "https://github.com/moovida/pyqgis_scripting_extensions.git"
+
+[tool.pdm]
+
+[build-system]
+requires = [
+    "pdm-pep517>=0.12.0",
+]
+build-backend = "pdm.pep517.api"
