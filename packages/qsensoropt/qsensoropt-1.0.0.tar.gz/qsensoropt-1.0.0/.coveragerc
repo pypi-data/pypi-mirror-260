@@ -1,0 +1,15 @@
+[run]
+branch = True
+source =
+       # Everything in src dir
+       src
+omit =
+     # No virtualenv
+     venv/*
+     # This should be redundant, but better safe than sorry
+     /usr/*
+[report]
+show_missing = True
+
+[html]
+directory = docs/htmlcov

@@ -1,0 +1,30 @@
+# Generic python stuff to exclude
+venv
+*.pyc
+.ipynb_checkpoints
+
+# python build
+dist
+src/qsensoropt.egg-info
+build
+
+# Coverage for tests
+.coverage
+
+# Docs build
+docs/_build
+docs/_static/*.png
+
+# VS settings
+.vscode
+
+# Trained models and data
+examples/*/data/*/*_ext.csv
+examples/*/data/*_ext.csv
+examples/*/data_*
+examples/*/images_*
+examples/*/trained_models_*
+tests/*/trained_models/*
+tests/*/data
+
+examples/*/trained_models/*dtree*

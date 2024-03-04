@@ -1,0 +1,58 @@
+stages:
+  - test
+  - build
+  - deploy_docs
+
+
+test:
+  image: python:3.10
+  stage: test
+  before_script:
+  - pip install .
+  - pip install ".[tests]"
+  script:
+  - coverage run tests/tests.py
+  - coverage report
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+
+
+build_docs:
+  stage: build
+  image: python:3.10
+  before_script:
+  - apt update -qq && apt install -y inkscape texlive-full
+  script:
+  - pip install ".[docs]"
+  - cd docs && make html
+  artifacts:
+    paths:
+    - docs/_build/html
+
+
+build_package:
+  image: python:3.10
+  stage: build
+  before_script:
+  - pip install build
+  script:
+  - python -m build
+  artifacts:
+    paths:
+    - dist
+
+
+pages:
+  stage: deploy_docs
+  image: debian:bullseye
+  script:
+  - mkdir -p public
+  - cp -r docs/_build/html/* public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
