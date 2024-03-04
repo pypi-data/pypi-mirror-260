@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: mngdataclean
+Version: 0.2
+Summary: Text preprocessing package
+Home-page: https://github.com/Nagaganesh21/mngdataclean
+Author: Nagaganesh
+Author-email: mnagaganesh21@gmail.com
+License: MIT
+Keywords: text,preprocessing
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: license
+Requires-Dist: spacy
+Requires-Dist: beautifulsoup4
+Requires-Dist: textblob
+Requires-Dist: unicodedata
+
+# Preprocess YourText
+
+Preprocess YourText is a Python package for text preprocessing tasks, designed to simplify and streamline the process of cleaning and preparing text data for natural language processing (NLP) tasks.
+
+## Features
+
+- **HTML Tag Removal**: Easily remove HTML tags from text data.
+- **URL Removal**: Remove URLs from text data.
+- **Email Removal**: Remove email addresses from text data.
+- **Special Character Removal**: Remove special characters from text data.
+- **Accent Removal**: Remove accents from characters in text data.
+- **Contractions Expansion**: Expand contractions in text data (e.g., "don't" to "do not").
+- **Lemmatization**: Lemmatize words in text data to their base form.
+- **Spelling Correction**: Correct spelling mistakes in text data.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Installation
+
+You can install the package via pip:
+
+```bash
+pip install mngdataclean
+
+## Usage
+import mngdataclean as mng
+
+# Example usage:
+text = "This is an example text with HTML tags <b>and URLs</b>."
+clean_text = pyt.clean_text(text)
+print(clean_text)
+
+#output is 
+This is an example text with HTML tags and URLs.
+
+
+
+
+
