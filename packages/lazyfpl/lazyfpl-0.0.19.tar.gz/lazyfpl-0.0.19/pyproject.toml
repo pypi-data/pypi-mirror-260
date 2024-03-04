@@ -1,0 +1,91 @@
+[tool.poetry]
+authors = ["JB Lovland <janbjorge@gmail.com>"]
+description = "Fantasy Premier League Team Optimizer - Win at FPL with lazines"
+homepage = "https://github.com/janbjorge/lazyFPL"
+license = "MIT"
+name = "lazyfpl"
+packages = [
+  {include = "lazyfpl"},
+  {include = "lazyfpl/py.typed"},
+]
+readme = "README.md"
+repository = "https://github.com/janbjorge/lazyFPL"
+version = "0.0.19"
+keywords = [
+    "fantasy premier league",
+    "FPL",
+    "data analysis",
+    "machine learning",
+    "team optimization",
+    "sports analytics",
+    "python",
+    "football data",
+    "soccer statistics",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python",
+    "Topic :: Games/Entertainment",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+pydantic = "^2.6.1"
+tqdm = "^4.66.2"
+requests = "^2.31.0"
+numpy = "^1.26.4"
+python-dateutil = "^2.8.2"
+pytz = "^2024.1"
+torch = "^2.2.0"
+tabulate = "^0.9.0"
+more-itertools = "^10.2.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.1"
+mypy = "^1.8.0"
+types-pytz = "^2024.1.0.20240203"
+types-python-dateutil = "^2.8.19.20240106"
+types-requests = "^2.31.0.20240125"
+tqdm-stubs = "^0.2.1"
+pytest = "^8.0.0"
+types-tabulate = "^0.9.0.20240106"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+ignore = [
+    "C901",
+    "PLR0912",
+    "PLR0913",
+]
+select = [
+    "C",
+    "E",
+    "F",
+    "I",
+    "PIE",
+    "Q",
+    "RET",
+    "RSE",
+    "SIM",
+    "W",
+    "C90",
+    "NPY",
+    "PD",
+    "PL",
+]
+line-length = 88
+[tool.ruff.lint.isort]
+combine-as-imports = true
