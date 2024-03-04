@@ -1,0 +1,108 @@
+# Botte
+The most easiest telegram package that helps you to connect with the telegram api.
+
+# Example How to send message
+
+```
+!pip install botte
+
+```
+```
+
+from telegram_client.client import runbot
+
+def my_message_handler(client, chat_id, text):
+    # Define how you want to handle incoming messages here
+    # For example, echoing the received message back to the user:
+    client.send_message(chat_id, f"Echo: {text}")
+
+# Replace 'YOUR_BOT_TOKEN' with your actual bot token
+token = 'YOUR_BOT_TOKEN'
+runbot(token, my_message_handler)
+
+```
+Telegram Bot Client Documentation
+Introduction
+The Telegram Bot Client is a Python package designed to simplify the process of creating and managing Telegram bots. It provides a set of methods to interact with the Telegram Bot API, allowing you to send messages, media, handle commands, and integrate with OpenAI for chat responses.
+
+Installation
+To install the Telegram Bot Client, you can use pip:
+
+Copy code
+pip install botte
+Usage
+Importing the Client
+python
+Copy code
+from botte.sync.client import TelegramClient
+Creating an Instance
+To create an instance of the TelegramClient, you need to provide your Telegram Bot API token:
+
+python
+Copy code
+client = TelegramClient(token)
+## Sending Messages
+You can send messages using the send_message method:
+```
+client.send_message(chat_id, text, parse_mode=None, reply_markup=None)
+```
+## Sending Media
+The client supports sending various types of media such as photos, audio, video, and documents:
+```
+client.send_photo(chat_id, photo, caption=None, parse_mode=None)
+client.send_audio(chat_id, audio, caption=None, parse_mode=None)
+client.send_video(chat_id, video, caption=None, parse_mode=None)
+client.send_document(chat_id, document, caption=None, parse_mode=None)
+```
+## Adding and Removing Keyboards
+You can add and remove keyboards in the chat using the following methods:
+```
+client.add_keyboard(chat_id, text, keyboard_options)
+client.close_keyboard(chat_id, text="Keyboard closed")
+```
+## Handling Messages
+
+You can register command handlers to handle different commands received by the bot:
+
+```
+client.register_command(command, handler)
+```
+
+# Listening for Messages
+To start listening for messages and handle them with a custom message handler:
+
+```
+client.listen_for_messages(message_handler)
+```
+# Enabling OpenAI Integration
+If you have an OpenAI API key, you can enable integration with OpenAI for generating chat responses:
+```
+client.enable_openai_integration(openai_api_key)
+Example
+```
+from botte.sync.client import TelegramClient
+
+# Define a message handler function
+def message_handler(client, chat_id, text):
+    if text.startswith("/start"):
+        client.send_message(chat_id, "Welcome to the bot!")
+    elif text.startswith("/chat"):
+        keyboard_options = [["Option 1", "Option 2"], ["Option 3", "Option 4"]]
+        client.add_keyboard(chat_id, "See menu:", keyboard_options)
+    else:
+        client.send_message(chat_id, "Unknown command. Type /start to begin.")
+
+# Replace 'your_token_here' with your actual Telegram Bot API token
+TOKEN = 'your_token_here'
+
+# Create an instance of TelegramClient
+client = TelegramClient(TOKEN)
+
+# Register the message handler
+client.register_command("/start", message_handler)
+client.register_command("/chat", message_handler)
+
+# Start listening for messages
+client.listen_for_messages(message_handler)
+client.enable_openai_integration('your_openai_api_key')
+```
