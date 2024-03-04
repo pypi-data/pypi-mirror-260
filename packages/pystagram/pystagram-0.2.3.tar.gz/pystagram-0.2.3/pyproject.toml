@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pystagram"
+version = "0.2.3"
+authors = [
+  { name="Matthieu THIBAUT", email="matthieu_thibaut@icloud.com" },
+]
+description = "API wrapper for Instagram APIs"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Typing :: Typed",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Telecommunications Industry",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Natural Language :: English",
+]
+keywords = [
+    "meta",
+    "facebook",
+    "instagram",
+    "api",
+    "wrapper",
+    "pystagram",
+    "instagram-api",
+    "graph-api",
+    "basic-display-api",
+]
+dependencies = [
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "twine",
+]
+test = [
+    "pytest",
+]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme",
+]
+
+[project.urls]
+Homepage = "https://github.com/MatthieuThib/pystagram"
+Source = "https://github.com/MatthieuThib/pystagram"
+Issues = "https://github.com/MatthieuThib/pystagram/issues"
+Documentation = "https://pystagram.readthedocs.io/en/latest/"
