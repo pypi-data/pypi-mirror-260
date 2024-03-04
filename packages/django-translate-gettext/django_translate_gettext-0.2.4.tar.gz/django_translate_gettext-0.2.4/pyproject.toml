@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "django-translate-gettext"
+version = "0.2.4"
+description = "Django app to wrap app files class fields to gettext calling for the given apps"
+authors = ["Denis Novikov <alpden550@gmail.com>"]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation",
+    "Environment :: Web Environment",
+    'License :: OSI Approved :: MIT License',
+    "Framework :: Django",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
+license = "MIT License"
+homepage = 'https://github.com/alpden550/django-translate-gettext'
+repository = 'https://github.com/alpden550/django-translate-gettext'
+keywords = ["django", "django-orm", "django app", "ast", "orm"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.0.1"
+loguru = "^0.7.2"
+ruff = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+fix = true
+exclude = [
+  ".venv",
+  "*migrations*",
+  "manage.py",
+]
+
+[tool.ruff.lint]
+ignore-init-module-imports = true
+preview = true
+explicit-preview-rules = true
+select = ["ALL"]
+ignore= ["S101", "COM812", "ISC001", "FA102", "PD011", "ANN", "D"]
+
+[tool.ruff.format]
+preview = true
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
