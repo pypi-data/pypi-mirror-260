@@ -1,0 +1,117 @@
+[project]
+name = "flask-mongoengine2"
+description = "Flask extension that provides integration with MongoEngine."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "BSD 3-Clause License"}
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Web Environment",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Framework :: Flask",
+]
+dependencies = [
+  "Flask>=2.3.0",
+  "mongoengine>=0.21, <0.28",
+  'importlib-metadata; python_version<"3.8"',
+]
+keywords = [
+  "flask",
+  "forms",
+  "mongo",
+  "pymongo",
+  "mongoengine",
+  "extension"
+]
+maintainers = [
+  {name = "Ahmet Elgün", email = "ahmetelgn@gmail.com"}
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+toolbar = ["Flask-DebugToolbar>=0.11.0"]
+dev = [
+  "black==22.6.0",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "pytest-mock",
+  "nox",
+  "Pillow>=7.0.0",
+  "blinker",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/ahmetelgun/flask-mongoengine2"
+Documentation = "https://flask-mongoengine2.readthedocs.io"
+Repository = "https://github.com/ahmetelgun/flask-mongoengine2"
+Changelog = "https://github.com/ahmetelgun/flask-mongoengine2/releases"
+
+[build-system]
+requires = [
+  "setuptools>=45",
+  "setuptools_scm[toml]>=6.3.1",
+  "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+zip-safe = false
+platforms = ["any"]
+packages=["flask_mongoengine2"]
+
+[tool.setuptools.dynamic]
+version = {attr = "flask_mongoengine2._version.version"}
+
+[tool.setuptools_scm]
+write_to = "flask_mongoengine2/_version.py"
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.tox
+  | \.venv
+  | \.vscode
+  | docs
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+
+[tool.pytest.ini_options]
+addopts = "--cov=flask_mongoengine2 --cov-config=setup.cfg"
+testpaths = ["tests"]
+filterwarnings = [
+  "error",
+  "ignore::ResourceWarning",
+  "ignore::DeprecationWarning:flask_mongoengine2",
+  "ignore::DeprecationWarning:tests",
+  ]
