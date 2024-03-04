@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: vertex_ai_huggingface_inference_toolkit
+Version: 0.0.1b0
+Summary: 🤗 Hugging Face Inference Toolkit for Google Cloud Vertex AI (similar to SageMaker's Inference Toolkit, but unofficial)
+Project-URL: Documentation, https://alvarobartt.github.io/vertex-ai-huggingface-inference-toolkit
+Project-URL: Issues, https://github.com/alvarobartt/vertex-ai-huggingface-inference-toolkit/issues
+Project-URL: Source, https://github.com/alvarobartt/vertex-ai-huggingface-inference-toolkit
+Author-email: Alvaro Bartolome <alvarobartt@gmail.com>
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.8
+Requires-Dist: docker
+Requires-Dist: google-api-core
+Requires-Dist: google-cloud-aiplatform
+Requires-Dist: google-cloud-artifact-registry
+Requires-Dist: google-cloud-storage
+Requires-Dist: huggingface-hub[hf-transfer]
+Requires-Dist: transformers
+Provides-Extra: docs
+Requires-Dist: mkdocs; extra == 'docs'
+Requires-Dist: mkdocs-git-revision-date-localized-plugin; extra == 'docs'
+Requires-Dist: mkdocs-material; extra == 'docs'
+Requires-Dist: mkdocstrings[python]; extra == 'docs'
+Provides-Extra: quality
+Requires-Dist: mypy~=1.4.0; extra == 'quality'
+Requires-Dist: pre-commit>=3.5.0; extra == 'quality'
+Requires-Dist: ruff>=0.3.0; extra == 'quality'
+Provides-Extra: tests
+Requires-Dist: pytest-cov~=4.1; extra == 'tests'
+Requires-Dist: pytest~=7.1.2; extra == 'tests'
+Description-Content-Type: text/markdown
+
+# 🤗 Hugging Face Inference Toolkit for Google Cloud Vertex AI
+
+```python
+from vertex_ai_huggingface_inference_toolkit import TransformersModel
+
+model = TransformersModel(
+    model_name_or_path="facebook/bart-large-mnli",
+    framework="torch",
+    framework_version="2.2.0",
+    transformers_version="4.38.2",
+    python_version="3.10",
+    cuda_version="12.3.0",
+    environment_variables={
+        "HF_TASK": "zero-shot-classification",
+    },
+)
+model.deploy(
+    machine_type="n1-standard-4",
+    accelerator_type="NVIDIA_TESLA_T4",
+    accelerator_count=1,
+)
+```
