@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "httpSocketGateway"
+version = "0.3.0.1"
+authors = []
+description = "A small socket gateway server. A simple socket client for sending json"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi >= 0.109.2",
+    "uvicorn >= 0.27.0.post1",
+    "requests >= 2.31.0",
+    "websocket-client >= 1.7.0",
+    "python-multipart>=0.0.9",
+    "uvicorn[standard]"
+]
+[project.urls]
+Homepage = "https://github.com/enzom06/gateway"
+Issues = "https://github.com/enzom06/gateway/issues"
