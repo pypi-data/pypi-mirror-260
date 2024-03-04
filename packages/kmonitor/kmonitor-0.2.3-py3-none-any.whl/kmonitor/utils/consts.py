@@ -1,0 +1,4 @@
+
+class KCt:
+  MAX_PENDING_TIME = 300
+  MIN_RUNNING_TIME = 3600
