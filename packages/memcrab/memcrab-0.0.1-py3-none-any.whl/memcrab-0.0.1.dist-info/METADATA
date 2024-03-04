@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: memcrab
+Version: 0.0.1
+Summary: Memcrab Python Client
+License: Apache-2.0
+Author: cospectrum
+Author-email: severinalexeyv@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+
+# memcrab-py
+Memcrab Python Client
+
+```sh
+pip install memcrab
+```
+
+## Usage
+
+### Tcp
+
+```py
+from memcrab.blocking import RawClient
+
+host = "127.0.0.1"
+port = 9900
+client = RawClient.tcp((host, port))
+client.ping()
+
+client.set("letters", b"ABC")
+val = client.get("letters")
+print(f"{val=}")
+```
+
