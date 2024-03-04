@@ -1,0 +1,341 @@
+Metadata-Version: 2.1
+Name: md_dead_link_check
+Version: 0.3
+Summary: This is a lightweight and fast tool to help you keep your Markdown files free of broken links.
+Project-URL: Homepage, https://github.com/AlexanderDokuchaev/md-dead-link-check
+Project-URL: Repository, https://github.com/AlexanderDokuchaev/md-dead-link-check.git
+Project-URL: Issues, https://github.com/AlexanderDokuchaev/md-dead-link-check/issues
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+License-File: LICENSE
+Keywords: broken link,broken link checker,dead link,dead link checker,documentation maintenance,link checker,link health,markdown
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Requires-Dist: aiohttp==3.9.3
+Requires-Dist: gitpython==3.1.42
+Requires-Dist: toml==0.10.2
+Provides-Extra: dev
+Requires-Dist: pre-commit==3.2.2; extra == 'dev'
+Requires-Dist: pytest==7.4.3; extra == 'dev'
+Provides-Extra: lint
+Requires-Dist: black==24.2.0; extra == 'lint'
+Requires-Dist: isort==5.13.2; extra == 'lint'
+Description-Content-Type: text/markdown
+
+# Markdown Dead Link Checker
+
+[![GitHub Action](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/github_action.yml/badge.svg?branch=main)](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/github_action.yml)
+[![Ubuntu](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/ubuntu.yml/badge.svg?branch=main)](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/ubuntu.yml)
+[![Windows](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/win.yml/badge.svg?branch=main)](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/win.yml)
+[![MacOS](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/mac.yml/badge.svg?branch=main)](https://github.com/AlexanderDokuchaev/md-dead-link-check/actions/workflows/mac.yml)
+
+This handy tool helps you maintain the integrity of your Markdown files by identifying broken links.
+It scans your files and detects:
+
+Here's what it does:
+
+- Missing webpages: Links that no longer exist on the internet.
+- Incorrect file links: Links that point to the wrong file in your project.
+- Non-existent fragments (anchors): Links to specific sections that don't exist, e.g. `README.md#no-fragment`.
+
+Example of output for [fail.md](tests/test_md_files/fail.md)
+
+```bash
+File: tests/test_md_files/fail.md:3 • Link: https://github.com/AlexanderDokuchaev/FAILED • Error: 404: Not Found
+File: tests/test_md_files/fail.md:4 • Link: https://not_exist_github.githubcom/ • Error: 500: Internal Server Error
+File: tests/test_md_files/fail.md:8 • Link: /test/fail.md1 • Error: Path does not exist
+File: tests/test_md_files/fail.md:9 • Link: fail.md1 • Error: Path does not exist
+File: tests/test_md_files/fail.md:13 • Link: a.md#fail • Error: Not found fragment
+❌ Found 5 dead links 🙀
+```
+
+> [!NOTE]
+> By defaults, only error codes like **404 (Not Found)**, **410 (Gone)**, and **500 (Internal Server Error)**,
+> and links that don't exist are considered "dead links". Other error codes typically indicate
+> temporary issues with the host server or unsupported links for the HEAD request type.
+
+## How to Use It
+
+### Option 1: GitHub Actions
+
+Add Github Action config to `.github/workflow/`
+
+```yaml
+jobs:
+  md-dead-link-check:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: AlexanderDokuchaev/md-dead-link-check@0.3
+```
+
+### Option 2: Pre-Commit
+
+Adding to your `.pre-commit-config.yaml` to integrate in [pre-commit](https://pre-commit.com/) tool
+
+```yaml
+  - repo: https://github.com/AlexanderDokuchaev/md-dead-link-check
+    rev: 0.3
+    hooks:
+      - id: md-dead-link-check
+```
+
+### Option 3: Install from pip
+
+For direct use, install with pip and run:
+
+```bash
+pip install md-dead-link-check
+md-dead-link-check
+```
+
+## Performance
+
+This tool utilizes asynchronous API calls and avoids downloading full web pages,
+enabling it to process thousands links in several seconds.
+
+## Proxy
+
+This tool leverages your system's existing HTTP and HTTPS proxy configuration.
+It achieves this by trusting the environment variables that your operating system utilizes to define proxy settings.
+This functionality is enabled by the `aiohttp.ClientSession(trust_env=True)` option.
+For further technical details, you can refer to the
+[aiohttp documentation](https://docs.aiohttp.org/en/v3.9.3/client_advanced.html#proxy-support).
+
+> [!WARNING]
+> **Without proxy configuration in environment, link failures may not be reported.**
+> If your environment lacks proxy configuration (variables like `http_proxy` and `https_proxy`),
+> link retrieval attempts may time out without indicating a failure.
+> To help diagnose this issue, use the `--verbose` argument to log all processed links.
+
+## Configuration
+
+This tool seamlessly integrates with your project's `pyproject.toml` file for configuration.
+To leverage a different file, invoke the `--config` option during execution.
+
+- timeout: Specifies the maximum time (in seconds) to wait for web link responses. Default: `5` seconds.
+- catch_response_codes: List of HTTP response codes to consider as failures.
+If empty, all codes greater than 400 will be marked as failures. Default: `[404, 410, 500]`.
+- exclude_links: List of links to exclude from checks. Default: `[]`.
+- exclude_files: List of files to exclude from checks. Default: `[]`.
+- force_get_requests_for_links: List of links for which the tool will use `GET` requests during checks. Default: `[]`.
+- check_web_links: Toggle web link checks on or off. Default: `true`.
+- validate_ssl: Toggles whether to validate SSL certificates when checking web links. Default: `true`.
+
+> [!TIP]
+> Leverage wildcard patterns ([fnmatch](https://docs.python.org/3/library/fnmatch.html) syntax) for
+> `exclude_links`, `exclude_files` and `force_get_requests_for_links` parameters.
+
+```toml
+[tool.md_dead_link_check]
+timeout = 10
+exclude_links = ["https://github.com/", "*localhost*"]
+exclude_files = ["tests/test_md_files/fail.md", "tests/*"]
+check_web_links = true
+```
