@@ -1,0 +1,170 @@
+# PhyloSophos
+
+A python-based high-throughput scientific name mapping algorithm
+
+## Table of contents
+
+- [In a nutshell](#in-a-nutshell)
+- [Summary](#summary)
+- [System requirements](#system-requirements)
+- [Installation guide](#installation-guide)
+- [Initialization guide](#initialization-guide)
+- [Taxonomic reference update guide](#taxonomic-reference-update-guide)
+- [Usage guide](#usage-guide)
+- [Result format guide](#result-format-guide)
+- [Citing PhyloSophos](#citing-phylosophos)
+- [License](#license)
+- [Contact](#contact)
+
+## In a nutshell
+
+```
+pip install phylosophos
+
+python [initialization script name] [optional_update_parameter]
+
+python [processing script name] [[optional_parameter_type] [optional_parameter_value]]
+```
+
+## Summary
+
+PhyloSophos is a high-throughput scientific name processor package which achieves greater mapping performance by referencing multiple taxonomic references and recognizing the semantic structure of scientific names. It also corrects common Latin variants and vernacular names, which often appear in various biological databases and resources. 
+
+Please refer to **phylosophos_guide.pdf** for detailed information on the github repository and instructions on how to use and modify it.
+
+## System requirements
+
+### Storage
+
+PhyloSophos requires a minimum of approximately 6.0GB of storage space for downloading and processing the metadata of three taxonomic reference databases (CoL, EoL, NCBI taxonomy) into base reference files. Importing GBIF adds an additional 7.0GB of storage space to accommodate its data.
+
+### Memory 
+
+PhyloSophos requires a minimum of 8GB RAM for conducting taxonomic mapping with three base reference files. An additional 8GB RAM is required for incorporating GBIF reference.
+
+## Installation guide
+
+PhyloSophos requires Numpy, along with other basic libraries of Python 3. Before initializing PhyloSophos to fit with your environment, please set up an environment with a python version >=3.8 (preferably with Conda), and install numpy (https://numpy.org/install/) as appropriate. 
+
+```
+conda create -n "phylosophos" python>=3.8
+
+conda activate phylosophos
+```
+
+PhyloSophos is available via PyPI. please install PhyloSophos as:
+
+<pre><code>pip install phylosophos</code></pre>
+
+## Initialization guide
+
+A function for initialization and update is **phylosophos.phylosophos_initialize_update.initialize_update()**. This script will download raw taxonomic metadata from Catalogue of Life (CoL), Encyclopedia of Life (EoL), and NCBI Taxonomy, process it into reference files, and place it within the working directory. 
+
+You may download and utilize **phylosophos_initialize_update.py** script file within GitHub repository for your convenience. This script has the following structure:
+
+```
+from phylosophos import phylosophos_initialize_update
+
+phylosophos_initialize_update.initialize_update()
+```
+
+You may execute this script as:
+
+<pre><code>python phylosophos_initialize_update.py [optional_update_parameter]</code></pre>
+
+For initialization purposes, the optional parameter will not affect downstream processes. It is possible for Catalogue of Life and Encyclopedia of Life to change the name of the metadata file in their FTP server. In addition, there was an instance when the taxonomic databases changed the format of their metadata, making the initialization script non-functional. If any of these cases happen, please notify me immediately (see contact information).
+
+## Taxonomic reference update guide
+
+Again, taxonomic reference update uses the same **phylosophos.phylosophos_initialize_update.py** script. You may execute this script as:
+
+<pre><code>python phylosophos_initialize_update.py 1</code></pre>
+
+In this case, optional update parameter affects the downstream process: by default, if a database metadata file is found in the **/external files** directory, the metadata download step is skipped to reduce processing time (allowing manual download of reference metadata). If an integer value other than 0 is given as an optional argument, the update script will start downloading the reference metadata file, overriding any pre-existing data.
+
+## Usage guide
+
+A function for PhyloSophos analysis is **phylosophos.phylosophos_core.phylosophos()**. You may download and utilize **phylosophos_core.py** script file within GitHub repository for your convenience. This script has the following structure:
+
+```
+from phylosophos import phylosophos_core
+
+phylosophos_core.phylosophos()
+```
+
+Please make sure to put your input file inside the **/input** directory before proceeding. You may execute this script as:
+
+<pre><code>python phylosophos_core.py [[optional_parameter_type] [optional_parameter_value]]</code></pre>
+
+PhyloSophos currently recognizes five types of optional parameters.
+
+* Help (-h, -help, -guide): if one of these arguments is given, a hard-coded guide to PhyloSophos will appear in the console. This will provide simple instructions on how to customize PhyloSophos mapping parameters. No following parameter value is required.
+* Reference type change (-r, -ref): if one of these arguments is given, PhyloSophos will change the database of choice to the one specified by the following argument. The default setting is 'ncbi', while 'col' and 'eol' are also available in basic PhyloSophos system. You may change the default setting by modifying **/ps_init/ps_initialize.py** (see lines 56, 60 & 62). If you want to include other types of references into PhyloSophos system, please read chapter 6.
+* Input type change (-i, -input): if one of these arguments is given, along with the name of the input file, PhyloSophos will specifically import the given file as an input. If not (as a default setting), PhyloSophos will consider all files within the **/input** directory to be scientific name input files.
+* Levenshtein distance cutoff (-l, -lev, -cutoff): if one of these arguments is given, along with an integer value, PhyloSophos will change the edit distance cutoff (default setting = 3) to the specified value. 
+* Manual curation status (-m, -manual, -curation): if one of these arguments is given, along with a value 1, PhyloSophos will import **/pp_learning/manual_curation_list.tsv** and utilize this information to pre-process inputs. If not (as a default setting), PhyloSophos will not import extra information other than reference data files within /pp_ref directory.
+
+The following is the example result of executing PhyloSophos with a sample input file (**sample_scientific_name_inputs.txt**), which includes 4,010 scientific name strings.
+
+```
+
+(base) D:\project\phylosophos>python phylosophos_core.py -ref ncbi -cutoff 3
+#### PhyloSophos initialization started ####
+## Reference type: ncbi
+## Input type: default directory
+## Levenshtein cutoff: 3
+## Manual curation data usage: False
+#### PhyloSophos analysis started ####
+#### Input file import completed ####
+#### Reference file import completed ####
+- sample_scientific_name_inputs.txt 4010 analysis completed
+#### PhyloSophos analysis completed ####
+
+(base) D:\project\phylosophos>
+
+```
+
+## Result format guide
+
+The results of the PhyloSophos analysis will be deposited in the **/result** directory. The name of the result file will be **phylosophos_result_[export_date]\_[export_time]\_[input_file_name]**. [export_date] and [export_time] will be six-digit numbers. 
+
+The following is an excerpt from the example result file generated by executing PhyloSophos with a sample input file (**sample_scientific_name_inputs.txt**).
+
+|	Input_file_name	|	Input_original_order	|	Raw_name_input	|	Pre_corrected_input	|	Chosen_reference	|	Chosen_reference_mapped_ID	|	Chosen_reference_scientific_name	|	Chosen_reference_mapping_status_code	|	Chosen_reference_mapping_status_description	|	col_mapped_ID	|	col_scientific_name	|	col_mapping_status_code	|	eol_mapped_ID	|	eol_scientific_name	|	eol_mapping_status_code	|	gbif_mapped_ID	|	gbif_scientific_name	|	gbif_mapping_status_code	|	ncbi_mapped_ID	|	ncbi_scientific_name	|	ncbi_mapping_status_code	|	Manual_curation_recommended	|
+|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|	----	|
+|	sample_scientific_name_inputs.txt	|	1	|	Abelmoschus esculentus	|	Abelmoschus esculentus	|	ncbi	|	455045	|	Abelmoschus esculentus	|	0	|	Raw / Exact DB / Canonical match	|	8JZL	|	Abelmoschus esculentus	|	0	|	EOL-000000421238	|	Abelmoschus esculentus	|	0	|	3152707	|	Abelmoschus esculentus	|	0	|	455045	|	Abelmoschus esculentus	|	0	|	NO	|
+|	sample_scientific_name_inputs.txt	|	2	|	Abies alba	|	Abies alba	|	ncbi	|	45372	|	Abies alba	|	0	|	Raw / Exact DB / Canonical match	|	8K9Y	|	Abies alba	|	0	|	EOL-000000503258	|	Abies alba	|	0	|	2685484	|	Abies alba	|	0	|	45372	|	Abies alba	|	0	|	NO	|
+|	sample_scientific_name_inputs.txt	|	3	|	Abies balsamea	|	Abies balsamea	|	ncbi	|	90345	|	Abies balsamea	|	0	|	Raw / Exact DB / Canonical match	|	63Z6Q	|	Abies balsamea	|	0	|	EOL-000000503176	|	Abies balsamea	|	0	|	2685383	|	Abies balsamea	|	0	|	90345	|	Abies balsamea	|	0	|	NO	|
+|	sample_scientific_name_inputs.txt	|	4	|	Abies pindrow	|	Abies pindrow	|	ncbi	|	425843	|	Abies pindrow	|	0	|	Raw / Exact DB / Canonical match	|	8KFL	|	Abies pindrow	|	0	|	EOL-000000503164	|	Abies pindrow	|	0	|	2685683	|	Abies pindrow	|	0	|	425843	|	Abies pindrow	|	0	|	NO	|
+|	sample_scientific_name_inputs.txt	|	5	|	Abies pinsapo	|	Abies pinsapo	|	ncbi	|	56046	|	Abies pinsapo	|	0	|	Raw / Exact DB / Canonical match	|	8KFM	|	Abies pinsapo	|	0	|	EOL-000000503252	|	Abies pinsapo	|	0	|	2685464	|	Abies pinsapo	|	0	|	56046	|	Abies pinsapo	|	0	|	NO	|
+
+PhyloSophos result file has the following format (delimited by tabs). Each column shows the information about:
+
+* Input_file_name: Name of input file which contains given scientific name input
+* Input_original_order: The order in which the scientific name is contained in the file
+* Raw_name_input: Raw scientific name input, as it is appeared in the input file
+* Pre_corrected_input: Pre-corrected scientific name input
+* Chosen_reference: Reference of choice (e.g. 'ncbi', 'col', 'eol')
+* Chosen_reference_mapped_ID: Taxonomic entry ID(s) mapped to given scientific name input (based on reference of choice)
+* Chosen_reference_scientific_name: Canonical scientific name(s) associated with mapped taxonomic ID(s) (based on reference of choice)
+* Chosen_reference_mapping_status_code: PhyloSophos mapping status code (based on reference of choice)
+* Chosen_reference_mapping_status_description: Short description of mapping status code (based on reference of choice)
+* (specific_reference)\_mapped\_id: Taxonomic entry ID(s) mapped to given scientific name input (based on specific reference)
+* (specific_reference)\_scientific\_name: Canonical scientific name(s) associated with mapped taxonomic ID(s) (based on specific reference)
+* (specific_reference)\_mapping\_status_code: PhyloSophos mapping status code (based on specific reference)
+* Manual_curation_recommended: Mapping status code-based opinion on whether manual curation is needed for this mapping result
+
+Each taxonomic reference found within **/pp_ref** directory provides **[(specific\_reference)\_mapped\_id] - [(specific\_reference)\_scientific\_name] - [(specific\_reference)\_mapping_status\_code]** column triplet. Base PhyloSophos provides 3 column triplets for CoL/EoL/NCBI taxonomy respectively.
+
+## Citing PhyloSophos
+
+We recommend that those wishing to cite PhyloSophos use the following citation:
+Cho MH, No KT. PhyloSophos: a high-throughput scientific name mapping algorithm augmented with explicit consideration of taxonomic science, and its application on natural product (NP) occurrence database processing. BMC Bioinformatics. (under review: to be updated soon)
+
+## License
+
+PhyloSophos is released with MIT license. This is open to all and can be used for any purpose. We look forward to an increase in the development of this field with the help of contributors who share their derived work publicly.
+
+## Contact
+
+mhcho@bmdrc.org
