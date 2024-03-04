@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: opentelemetry-instrumentation-faststream
+Version: 0.0.1
+Summary: FastStream instrumentation for OpenTelemetry
+Project-URL: Documentation, https://github.com/ashambalev/opentelemetry-instrumentation-faststream#readme
+Project-URL: Issues, https://github.com/ashambalev/opentelemetry-instrumentation-faststream/issues
+Project-URL: Source, https://github.com/ashambalev/opentelemetry-instrumentation-faststream
+Author-email: Artem Shambalev <a.shambalev@gmail.com>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.11
+Requires-Dist: opentelemetry-api~=1.5
+Requires-Dist: opentelemetry-instrumentation~=0.44b0
+Requires-Dist: wrapt<2.0.0,>=1.0.0
+Provides-Extra: instruments
+Requires-Dist: faststream[redis]<0.5.0,>=0.4.4; extra == 'instruments'
+Provides-Extra: quality
+Requires-Dist: mypy~=1.8.0; extra == 'quality'
+Requires-Dist: pre-commit~=3.6.0; extra == 'quality'
+Requires-Dist: ruff~=0.3.0; extra == 'quality'
+Provides-Extra: tests
+Requires-Dist: opentelemetry-instrumentation-faststream[instruments]; extra == 'tests'
+Requires-Dist: opentelemetry-test-utils~=0.44b0; extra == 'tests'
+Requires-Dist: pytest-cov~=4.1; extra == 'tests'
+Requires-Dist: pytest~=8.0.0; extra == 'tests'
+Requires-Dist: wrapt<2.0.0,>=1.0.0; extra == 'tests'
+Description-Content-Type: text/markdown
+
+# FastStream instrumentation for OpenTelemetry
+
+[![PyPI - Version](https://img.shields.io/pypi/v/opentelemetry-instrumentation-faststream.svg)](https://pypi.org/project/opentelemetry-instrumentation-faststream)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/opentelemetry-instrumentation-faststream.svg)](https://pypi.org/project/opentelemetry-instrumentation-faststream)
+
+
+This library allows tracing requests made by the [**FastStream**](https://faststream.airt.ai/latest/) library.
+
+*Only RedisBroker is supported and tested for now* 
+
+
+## Installation
+
+```console
+pip install opentelemetry-instrumentation-faststream
+```
+
+## License
+
+`faststream-instrumentation` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
