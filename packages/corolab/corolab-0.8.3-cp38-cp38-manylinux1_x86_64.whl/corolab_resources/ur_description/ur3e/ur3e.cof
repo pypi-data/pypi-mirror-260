@@ -1,0 +1,673 @@
+{
+  "materials": [
+    {
+      "name": "Black",
+      "base_rgb": {
+        "red": 0.033,
+        "green": 0.033,
+        "blue": 0.033
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "JointGrey",
+      "base_rgb": {
+        "red": 0.278,
+        "green": 0.278,
+        "blue": 0.278
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "LinkGrey",
+      "base_rgb": {
+        "red": 0.82,
+        "green": 0.82,
+        "blue": 0.82
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "URBlue",
+      "base_rgb": {
+        "red": 0.490,
+        "green": 0.678,
+        "blue": 0.800
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    }
+  ],
+  "joints": [
+    {
+      "name": "shoulder_pan_joint",
+      "parent": "base_link",
+      "child": "shoulder_link",
+      "pose": {
+        "position": {
+          "z": 0.152
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "shoulder_lift_joint",
+      "parent": "shoulder_link",
+      "child": "upper_arm_link",
+      "pose": {
+        "position": {
+          "y": 0.12
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "y": 1.0
+      }
+    },
+    {
+      "name": "elbow_joint",
+      "parent": "upper_arm_link",
+      "child": "forearm_link",
+      "pose": {
+        "position": {
+          "y": -0.093,
+          "z": 0.244
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "y": 1.0
+      }
+    },
+    {
+      "name": "wrist_1_joint",
+      "parent": "forearm_link",
+      "child": "wrist_1_link",
+      "pose": {
+        "position": {
+          "z": 0.213
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "y": 1.0
+      }
+    },
+    {
+      "name": "wrist_2_joint",
+      "parent": "wrist_1_link",
+      "child": "wrist_2_link",
+      "pose": {
+        "position": {
+          "y": 0.104
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "wrist_3_joint",
+      "parent": "wrist_2_link",
+      "child": "wrist_3_link",
+      "pose": {
+        "position": {
+          "z": 0.085
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "y": 1.0
+      }
+    },
+    {
+      "name": "ee_fixed_joint",
+      "parent": "wrist_3_link",
+      "child": "ee_link",
+      "pose": {
+        "position": {
+          "y": 0.092
+        },
+        "orientation": {
+          "x": -1.570796
+        }
+      }
+    },
+    {
+      "name": "base_link-base_fixed_joint",
+      "parent": "base_link",
+      "child": "base",
+      "pose": {
+        "position": {},
+        "orientation": {
+          "z": -3.141593
+        }
+      }
+    }
+  ],
+  "bodies": [
+    {
+      "name": "base_link",
+      "inertia": {
+        "center": {},
+        "mass": 2.0,
+        "moments": {
+          "xx": 0.003053,
+          "yy": 0.003053,
+          "zz": 0.005625
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/base/eSeries_UR3e_011.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/base/eSeries_UR3e_014.stl"
+          },
+          "material": "JointGrey"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0.045
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.07,
+              "height": 0.09
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "shoulder_link",
+      "inertia": {
+        "center": {},
+        "mass": 2.0,
+        "moments": {
+          "xx": 0.008093,
+          "yy": 0.008093,
+          "zz": 0.005625
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/shoulder/eSeries_UR3e_012.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/shoulder/eSeries_UR3e_013.stl"
+          },
+          "material": "URBlue"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/shoulder/eSeries_UR3e_029.stl"
+          },
+          "material": "JointGrey"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.06,
+              "height": 0.14
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "upper_arm_link",
+      "inertia": {
+        "center": {
+          "z": 0.122
+        },
+        "mass": 3.42,
+        "moments": {
+          "xx": 0.021777,
+          "yy": 0.021777,
+          "zz": 0.009619
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_015.stl"
+          },
+          "material": "URBlue"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_016.stl"
+          },
+          "material": "JointGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_017.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_018.stl"
+          },
+          "material": "LinkGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_019.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_020.stl"
+          },
+          "material": "URBlue"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_021.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_031.stl"
+          },
+          "material": "JointGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/upperarm/eSeries_UR3e_032.stl"
+          },
+          "material": "LinkGrey"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0.12
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.05,
+              "height": 0.26
+            }
+          }
+        },
+        {
+          "pose": {
+            "position": {
+              "y": -0.01
+            },
+            "orientation": {
+              "x": 0
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.055,
+              "height": 0.15
+            }
+          }
+        },
+        {
+          "pose": {
+            "position": {
+              "y": -0.01,
+              "z": 0.245
+            },
+            "orientation": {
+              "x": 0
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.045,
+              "height": 0.15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "forearm_link",
+      "inertia": {
+        "center": {
+          "z": 0.1065
+        },
+        "mass": 1.26,
+        "moments": {
+          "xx": 0.006536,
+          "yy": 0.006536,
+          "zz": 0.003544
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_022.stl"
+          },
+          "material": "JointGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_023.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_024.stl"
+          },
+          "material": "LinkGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_025.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_026.stl"
+          },
+          "material": "URBlue"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_028.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/forearm/eSeries_UR3e_033.stl"
+          },
+          "material": "JointGrey"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0.09
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.04,
+              "height": 0.25
+            }
+          }
+        },
+        {
+          "pose": {
+            "position": {
+              "y": 0,
+              "z": 0.215
+            },
+            "orientation": {
+              "x": 0
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.035,
+              "height": 0.10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrist_1_link",
+      "inertia": {
+        "center": {
+          "y": 0.104
+        },
+        "mass": 0.8,
+        "moments": {
+          "xx": 0.002085,
+          "yy": 0.002085,
+          "zz": 0.00225
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist1/eSeries_UR3e_027.stl"
+          },
+          "material": "URBlue"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist1/eSeries_UR3e_034.stl"
+          },
+          "material": "JointGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist1/eSeries_UR3e_035.stl"
+          },
+          "material": "Black"
+        }
+      ]
+    },
+    {
+      "name": "wrist_2_link",
+      "inertia": {
+        "center": {
+          "z": 0.085
+        },
+        "mass": 0.8,
+        "moments": {
+          "xx": 0.002085,
+          "yy": 0.002085,
+          "zz": 0.00225
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist2/eSeries_UR3e.stl"
+          },
+          "material": "JointGrey"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist2/eSeries_UR3e_036.stl"
+          },
+          "material": "Black"
+        },
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist2/eSeries_UR3e_037.stl"
+          },
+          "material": "URBlue"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0.02
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.035,
+              "height": 0.14
+            }
+          }
+        },
+        {
+          "pose": {
+            "position": {
+              "x": 0.04
+            },
+            "orientation": {
+              "z": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.035,
+              "height": 0.08
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrist_3_link",
+      "inertia": {
+        "center": {
+          "y": 0.071
+        },
+        "mass": 0.35,
+        "moments": {
+          "xx": 0.000141,
+          "yy": 0.000141,
+          "zz": 0.000179
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://ur_description/ur3e/meshes/wrist3/eSeries_UR3e_002.stl"
+          },
+          "material": "LinkGrey"
+        }
+      ],
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0
+            },
+            "orientation": {
+              "x": 0
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.035,
+              "height": 0.10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ee_link",
+      "obstacles": [
+        {
+          "pose": {
+            "position": {
+              "z": 0
+            },
+            "orientation": {
+              "x": 1.570796
+            }
+          },
+          "primitive": {
+            "cylinder": {
+              "radius": 0.035,
+              "height": 0.10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "base"
+    }
+  ]
+}
