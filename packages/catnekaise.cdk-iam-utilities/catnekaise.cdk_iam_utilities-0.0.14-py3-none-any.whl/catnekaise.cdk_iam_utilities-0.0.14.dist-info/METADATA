@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: catnekaise.cdk-iam-utilities
+Version: 0.0.14
+Summary: Experimental utilities intended for AWS CDK IAM
+Home-page: https://github.com/catnekaise/cdk-iam-utilities.git
+Author: Daniel Jonsén<djonser1@gmail.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/catnekaise/cdk-iam-utilities.git
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Typing :: Typed
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved
+Requires-Python: ~=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aws-cdk-lib <3.0.0,>=2.82.0
+Requires-Dist: constructs <11.0.0,>=10.0.5
+Requires-Dist: jsii <2.0.0,>=1.94.0
+Requires-Dist: publication >=0.0.3
+Requires-Dist: typeguard ~=2.13.3
+
+# CDK IAM Utilities
+
+Example implementation of this library exist in [catnekaise/actions-constructs](https://github.com/catnekaise/actions-constructs).
+
+## Developer Notes
+
+The general idea is that the utilities in this library can serve as building blocks for composing other utilities that ideally should aid the existing aws-iam library in certain situations.
