@@ -1,0 +1,9 @@
+from google.protobuf import descriptor_pb2 as _descriptor_pb2
+from google.protobuf import descriptor as _descriptor
+from typing import ClassVar as _ClassVar
+
+DESCRIPTOR: _descriptor.FileDescriptor
+TRUERA_RESTRICT_ADD_FIELDS_IN_FILE_FIELD_NUMBER: _ClassVar[int]
+truera_restrict_add_fields_in_file: _descriptor.FieldDescriptor
+TRUERA_RESTRICT_ADD_MESSAGE_FIELD_FIELD_NUMBER: _ClassVar[int]
+truera_restrict_add_message_field: _descriptor.FieldDescriptor
