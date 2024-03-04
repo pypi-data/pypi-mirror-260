@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "py_eth_contract"
+version = "0.1.1"
+description = ""
+authors = ["emliy Zhai <zhaixt@gmail.com>"]
+readme = "README.md"
+
+homepage = "https://github.com/zhaixt0203/py_eth_contract"
+repository = "https://github.com/zhaixt0203/py_eth_contract"
+
+packages = [{ include = "py_eth_contract" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+eth-account = "^0.11.0"
+web3 = "^6.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
