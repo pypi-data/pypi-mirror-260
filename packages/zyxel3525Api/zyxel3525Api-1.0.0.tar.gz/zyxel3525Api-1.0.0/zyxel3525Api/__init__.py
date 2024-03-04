@@ -1,0 +1,1 @@
+from zyxel3525Api.zyxel3525Api import ZyxelApi
