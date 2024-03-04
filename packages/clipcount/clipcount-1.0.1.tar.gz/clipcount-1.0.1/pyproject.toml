@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clipcount"
+version = "1.0.1"
+dependencies = [
+    "pyperclip >= 1.8.2"
+]
+requires-python = ">=3.8"
+authors = [
+    {name="yusu79"},
+    {email="oss@yusu79.com"}
+]
+description = "Reads the clipboard and outputs the character count."
+readme = "README_en.md"
+license = {file = "LICENSE"}
+keywords = [
+    "pyperclip",
+    "character_count",
+    "clipboard"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Terminals",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python"
+]
+
+[project.urls]
+Homepage = "https://yusu79.com"
+Repository = "https://github.com/yusu79/clipcount"
+
+[project.scripts]
+clipcount = "clipcount:main"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "twine",
+]
