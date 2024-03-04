@@ -1,0 +1,72 @@
+[project]
+name = "yes-chef"
+description = "A command-line tool for managing recipes and making shopping lists."
+version = "0.5.0"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Robin Neville", email = "robin.m.neville@gmail.com" },
+]
+maintainers = [
+    { name = "Robin Neville", email = "robin.m.neville@gmail.com" },
+]
+license = { file = "LICENSE" }
+
+dependencies = [
+    "typer>=0.9",
+    "colorama>=0.4",
+    "rich>=13.7",
+    "shellingham>=1.5",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "aiofiles>=23.2",
+    "inquirer>=3.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "responses",
+    "pyinstaller",
+    "commitizen",
+    # documentation
+    "mkdocs",
+    "mkdocstrings[python]",
+    "mike",
+]
+
+[project.urls]
+Repository = "https://github.com/binnev/yes-chef"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+#addopts = "-p no:cacheprovider --cov --cov-fail-under=70 --cov-report term-missing:skip-covered"
+testpaths = ["tests"]
+markers = [
+    "allow_settings_save: by default, Settings.save is mocked, so we don't create real files when running tests.",
+]
+
+[tool.coverage.run]
+omit = ["*/__init__.py"]
+
+
+[tool.ruff]
+line-length = 80
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in select subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
