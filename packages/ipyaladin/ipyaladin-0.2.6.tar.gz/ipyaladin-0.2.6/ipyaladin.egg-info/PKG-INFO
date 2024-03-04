@@ -1,0 +1,117 @@
+Metadata-Version: 2.1
+Name: ipyaladin
+Version: 0.2.6
+Summary: interactive viewer for astronomical surveys
+Home-page: https://github.com/cds-astro/ipyaladin
+Author: Jerome Desroziers, Thomas Boch & Matthieu Baumann
+Author-email: matthieu.baumann@astro.unistra.fr
+License: BSD 3-Clause License
+Project-URL: Bug Tracker, https://github.com/cds-astro/ipyaladin/issues
+Project-URL: Live Testing, https://mybinder.org/v2/gh/cds-astro/ipyaladin/master
+Project-URL: Documentation, https://aladin.u-strasbg.fr/AladinLite/doc/
+Project-URL: API Reference, https://aladin.u-strasbg.fr/AladinLite/doc/API/
+Project-URL: Source Code, https://github.com/cds-astro/ipyaladin
+Project-URL: Release Notes, https://docs.openstack.org/releasenotes/placement/
+Keywords: ipython,aladin,astronomy,widgets,Jupyter,JupyterLab,JupyterLab3,JupyterLab4
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: IPython
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Jupyter :: JupyterLab
+Classifier: Framework :: Jupyter :: JupyterLab :: 3
+Classifier: Framework :: Jupyter :: JupyterLab :: 4
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: ipywidgets<9,>=8.0.6
+
+# ipyaladin
+
+A bridge between Jupyter and Aladin Lite, enabling interactive sky visualization in IPython notebooks.
+With a couple of lines, you can display Aladin Lite, center it on the target of your choice, and overlay an Astropy table:
+
+![ipyaladin example](assets/ipyaladin-screencast.gif)
+
+- [ipyaladin](#ipyaladin)
+  - [Examples](#examples)
+  - [Installation](#installation)
+  - [New features corner](#new-features-corner)
+  - [Development installation](#development-installation)
+
+## Examples
+
+Some example notebooks can be found in the [examples directory](examples).
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cds-astro/ipyaladin/master). You can also try it directly [in mybinder](https://mybinder.org/v2/gh/cds-astro/ipyaladin/master), without installing anything.
+
+## Installation
+
+To install use pip or conda :
+
+```shell
+> pip install ipyaladin
+> # OR
+> conda install -c bmatthieu3 ipyaladin
+```
+
+You can already try to load ipyaladin in a notebook.
+
+```python
+from ipyaladin import Aladin
+aladin = Aladin()
+aladin
+```
+
+If it does not work, make sure to enable `widgetsnbextension` and `ipyaladin`:
+
+```shell
+> jupyter nbextension enable --py widgetsnbextension
+> jupyter nbextension enable --py --sys-prefix ipyaladin
+```
+
+Additionny, for a jupyterlab < 4 usage you might need to 
+(note that this is not needed for jupyterlab >= 4.0):
+
+```shell
+> jupyter labextension develop ipyaladin --overwrite
+```
+
+## New features corner
+
+![new_features](assets/new_features.gif)
+
+## Development installation
+
+First, make sure you have installed jupyter on your python environnement: `pip install jupyter`.
+For a development installation [Node.js](https://nodejs.org) and [Yarn version 1](https://classic.yarnpkg.com/) are also required,
+
+```shell
+> git clone https://github.com/cds-astro/ipyaladin.git
+> cd ipyaladin
+> npm install yarn
+> cd js
+> npm install
+> cd ..
+> pip install -e .
+```
+
+(note that the point is important in the last instruction)
+
+Then you need to rebuild the javascript when you change the code:
+
+```shell
+> cd js
+> yarn run build
+```
+
+You then need to refresh the JupyterLab page when your javascript changes.
