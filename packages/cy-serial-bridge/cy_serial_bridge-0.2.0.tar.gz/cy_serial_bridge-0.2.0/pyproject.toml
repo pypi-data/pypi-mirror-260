@@ -1,0 +1,197 @@
+[project]
+name = "cy_serial_bridge"
+# this is used by Ruff to disable "upgrade to feature x" inspections where x was added
+# after the given version
+requires-python = ">=3.10"
+version = "0.2.0"
+description = "Pure Python driver for using and reconfiguring the CY7C652xx family of USB to SPI/I2C/UART bridge ICs."
+authors = [
+  {name = "Jamie Smith", email = "smit109@usc.edu"},
+]
+readme = "README.md"
+license = {text = "LGPL"}
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Embedded Systems",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry]
+name = "cy_serial_bridge"
+version = "0.2.0"
+description = "Pure Python driver for using and reconfiguring the CY7C652xx family of USB to SPI/I2C/UART bridge ICs."
+authors = ["Jamie Smith <smit109@usc.edu>"]
+readme = "README.md"
+include = ['CHANGELOG.md', 'LICENSE', 'py.typed',]
+packages = [
+    { include = 'cy_serial_bridge', from = 'src' },
+]
+repository = 'https://github.com/mbed-ce/cy_serial_bridge/'
+
+[tool.poetry.scripts]
+cy_serial_cli = 'cy_serial_bridge.cli:main'
+
+[tool.poetry.urls]
+"Tracker" = 'https://github.com/mbed-ce/cy_serial_bridge/issues'
+
+[tool.poetry.dependencies]
+python = '^3.8.1'
+libusb1 = "^3.0.0"
+pyserial = "^3.5"
+typer = "^0.9"
+rich = "^13.6"
+
+[tool.poetry.group.dev.dependencies]
+mypy = '^1.8.0'
+
+[tool.poetry.group.linters]
+optional = true
+
+[tool.poetry.group.linters.dependencies]
+ruff = '^0.1.9'
+
+[tool.poetry.group.tests]
+optional = true
+
+[tool.poetry.group.tests.dependencies]
+pytest = '^7.4.3'
+pytest-cov = '^4.1.0'
+tox = '^4.11.4'
+tox-gh-actions = '^3.1.3'
+
+[tool.pytest.ini_options]
+minversion = '6.0'
+addopts = """
+--doctest-modules
+"""
+testpaths = [
+    'tests',
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = [
+    'A',    # Builtins
+    'ANN',  # Annotations
+    'ARG',  # Unused arguments
+    'B',    # Bugbear
+    # 'BLE',  # Blind except - disabled because sometimes you *don't* know what exceptions something will generate
+    'C4',   # Comprehensions
+    'C90',  # mccabe
+    'COM',  # Commas
+    'D2',   # Docstring conventions
+    'DTZ',  # Datetimes
+    'EM',   # Error messages
+    # 'ERA',  # Commented-out code - disabled because it generates false positives for comments with C structs
+    'EXE',  # Executable
+    'F',    # Pyflakes
+    'FA',   # __future__ annotations
+    'FLY',  # F-strings
+    # 'FURB', # Refurb
+    'G',    # Logging format
+    'I',    # Isort
+    'ICN',  # Import conventions
+    'INP',  # Disallow PEP-420 (Implicit namespace packages)
+    'INT',  # gettext
+    'ISC',  # Implicit str concat
+    # 'LOG',  # Logging
+    'N',    # PEP-8 Naming
+    'NPY',  # Numpy
+    'PERF', # Unnecessary performance costs
+    'PGH',  # Pygrep hooks
+    'PIE',  # Unnecessary code
+    'PL',   # Pylint
+    'PT',   # Pytest
+    'PTH',  # Use Pathlib
+    'PYI',  # Stub files
+    'Q',    # Quotes
+    'RET',  # Return
+    'RUF',  # Ruff
+    'RSE',  # Raise
+    'S',    # Bandit
+    'SIM',  # Code simplification
+    'SLF',  # Private member access
+    'SLOT', # __slots__
+    'T10',  # Debugger
+    # 'T20',  # Print - disabled because we are implementing a CLI and need to use print
+    'TCH',  # Type checking
+    'TID',  # Tidy imports
+    'TRY',  # Exception handling
+    'UP',   # Pyupgrade
+    'W',    # Warnings
+    'YTT',  # sys.version
+]
+ignore = [
+    'D203',    # One blank line before class docstring
+    'D212',    # Multi-line summary first line
+    'PLR0913', # Too many arguments
+    'Q000',    # Single quotes found but double quotes preferred
+    'F405',    # Star imports
+    'F403',    # Star imports
+    'D200',    # One-line docstring should fit on one line
+    'S101',    # Assert statements
+    'RET505',  # Unnecessary `elif` after `return` statement
+    'RET506',  # Unnecessary `else` after `raise` statement
+    'S311',    # Allow use of `random` module
+    'TRY003',  # Inline exception messages - Redundant with EM101
+    'COM812',  # Missing trailing commas - incompatible with formatter
+    'ISC001',  # Single line implicit string concatenation - incompatible with formatter
+    'TRY301',  # Don't call raise within a try block -- can I help it if other libraries don't use exceptions??
+    'TRY300',  # Returns within try blocks
+    'PLR2004', # Magic value used in comparison
+    'ANN101',  # Don't require annotations for self.  Waaaaay too complainy, plus deprecated in ruff
+    'ANN401',  # Allow typing.any
+    'UP007',   # Allow old style union annotations (typing.Optional/typing.Union).  Typer does not support the new style ones.
+    'PYI025',  # Allow using collections.abc.Set
+]
+ignore-init-module-imports = true
+line-length = 120
+# preview = true
+show-fixes = true
+src = ['src',]
+target-version = 'py310'
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = 'double'
+multiline-quotes = 'double'
+
+[tool.ruff.mccabe]
+max-complexity = 20
+
+[tool.ruff.per-file-ignores]
+# https://beta.ruff.rs/docs/rules/
+'__init__.py' = ['F401','F403','F405',]
+'tests/*' = ['ANN', 'ARG', 'INP001', 'S101',]
+
+[tool.ruff.pylint]
+max-args = 15
+max-branches = 20
+max-returns = 10
+max-statements = 80
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = 'all'
+
+# Allow __init__ to not have a return type annotation
+[tool.ruff.lint.flake8-annotations]
+mypy-init-return = true
