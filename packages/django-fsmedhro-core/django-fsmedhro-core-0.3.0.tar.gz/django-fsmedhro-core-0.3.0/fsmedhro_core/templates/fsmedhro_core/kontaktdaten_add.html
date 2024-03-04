@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Kontaktdaten hinzufügen{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-md-6">
+    <h3>Kontaktdaten hinzufügen</h3>
+    <form method="post" action="{% url 'fsmedhro_core:kontaktdaten_add' %}">
+      {% csrf_token %}
+      {{ kontaktdaten_form|crispy }}
+      <input type="hidden" name="fachschaftuser" value="{{ request.user.fachschaftuser.id }}">
+      {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+      <button class="btn btn-primary" type="submit">Speichern</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

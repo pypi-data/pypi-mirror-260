@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Rundmail{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col">
+      <h3>Rundmail verschicken</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <h4>Studiengänge</h4>
+      {% for studiengang in studiengaenge %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="studiengang"
+          value="{{ studiengang.id }}"
+          id="studiengang_{{studiengang.id }}"
+          {% if studiengang.id in gew_studiengaenge %}checked{% endif %}>
+        <label class="form-check-label" for="studiengang_{{studiengang.id }}">{{ studiengang }}</label>
+      </div>
+      {% endfor %}
+      <h4>Studienabschnitte</h4>
+      {% for studienabschnitt in studienabschnitte %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="studienabschnitt"
+          value="{{ studienabschnitt.id }}"
+          id="studienabschnitt_{{studienabschnitt.id }}"
+          {% if studienabschnitt.id in gew_studienabschnitte %}checked{% endif %}>
+        <label class="form-check-label" for="studienabschnitt_{{studienabschnitt.id }}">{{ studienabschnitt }}</label>
+      </div>
+      {% endfor %}
+      <h4>Gender</h4>
+      {% for g in gender %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="gender"
+          value="{{ g.id }}"
+          id="gender_{{g.id }}" {% if gew_gender %}{% if g.id in gew_gender %}checked{% endif %}{% else %}checked{% endif %}>
+        <label class="form-check-label" for="gender_{{g.id }}">{{ g }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <label for="email_subject"><strong>Betreff</strong></label>
+        <input type="text" class="form-control" id="email_subject" name="email_subject" value="{% if betreff %}{{ betreff }}{% else %}[FSR] {% endif %}">
+      </div>
+      <div class="form-group">
+        <label for="email_text"><strong>Text</strong></label>
+        <textarea class="form-control" id="email_text" name="email_text" rows="20">{{ text }}</textarea>
+      </div>
+    </div>
+
+    {% if errors %}
+    <div class="col-3">
+      <div class="alert alert-danger" role="alert">
+        Folgende Fehler sind aufgetreten:
+        <ul>
+          {% for error in errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    {% if anzahl_verschickt %}
+    <div class="col-3">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Gesendet!</h4>
+        Die E-Mail wurde an {{ anzahl_verschickt }} Personen verschickt.
+      </div>
+    </div>
+    {% endif %}
+    {% if testmail_verschickt %}
+    <div class="col-3">
+      <div class="alert alert-success" role="alert">
+        {{ anzahl_verschickt }} Testmail verschickt ✓
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <div class="form-check-inline">
+        <input class="form-check-input" type="checkbox" name="send_testmail" id="send_testmail">
+        <label class="form-check-label" for="send_testmail">Sende diese E-Mail als Testmail nur an den FSR.</label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-right">
+        <button type="submit" class="btn btn-primary">Abschicken</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
