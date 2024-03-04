@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "molecular_structure"
+version = "0.1.0"
+description = "A package to work with molecular structures"
+authors = [{name="Arian Jadbabaie",  email="arianjad@mit.edu"}, {name="Jose M Munoz", email="munozariasjm@gmail.com"}]
+
+[tool.poetry.dependencies]
+numpy = "^1.20.3"
+pandas = "^1.2.4"
+rdkit = "^2021.03.4"
+pytest = "^6.2.4"
+latex = "^0.7.0"
+matplotlib = "^3.4.2"
+seaborn = "^0.11.1"
+sympy = "^1.8"
+torch = "^1.8.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+
+[project.urls]
+Homepage = "https://github.com/munozariasjm/Molecule-Structure"
