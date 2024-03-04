@@ -1,0 +1,286 @@
+Metadata-Version: 2.1
+Name: gradio_toggle
+Version: 0.0.2
+Summary: A custom component that toggles between on and off states. Ideal for intuitive user controls and dynamic input handling in machine learning models and data presentations.
+Author: Daniel Ialcin Misser Westergaard
+License-Expression: MIT
+Keywords: button,checkbox,gradio-custom-component,gradio-template-Checkbox,select,toggle
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Requires-Python: >=3.8
+Requires-Dist: gradio<5.0,>=4.0
+Provides-Extra: dev
+Requires-Dist: build; extra == 'dev'
+Requires-Dist: twine; extra == 'dev'
+Description-Content-Type: text/markdown
+
+
+# `gradio_toggle`
+<a href="https://pypi.org/project/gradio_toggle/" target="_blank"><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/gradio_toggle"></a>  
+
+A custom component that toggles between on and off states. Ideal for intuitive user controls and dynamic input handling in machine learning models and data presentations.
+
+## Installation
+
+```bash
+pip install gradio_toggle
+```
+
+## Usage
+
+```python
+
+import gradio as gr
+from gradio_toggle import Toggle
+
+toggle_value = False
+toggle_message = ""
+
+def toggle_action(toggle_value):
+    if toggle_value == False:
+        toggle_message = "Toggle is False 👎"
+    elif toggle_value == True:
+        toggle_message = "Toggle is True 👍"
+    else:
+        toggle_message = "Error 😢"
+    
+    return toggle_message
+
+with gr.Blocks() as demo:
+    with gr.Row():
+        with gr.Column():
+            input = Toggle(label="Input", value=toggle_value, show_label=True, info="This is a toggle button.")
+        with gr.Column():
+            output = gr.Label(label="Output")
+    
+    input.change(fn=toggle_action, inputs=input, outputs=output)
+
+if __name__ == "__main__":
+    demo.launch()
+
+```
+
+## `Toggle`
+
+### Initialization
+
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left" style="width: 25%;">type</th>
+<th align="left">default</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>value</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool | Callable
+```
+
+</td>
+<td align="left"><code>False</code></td>
+<td align="left">Initial state of the toggle. If a callable is provided, it sets the initial state dynamically.</td>
+</tr>
+
+<tr>
+<td align="left"><code>label</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+str | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">Text label displayed adjacent to the toggle. Useful for providing context.</td>
+</tr>
+
+<tr>
+<td align="left"><code>info</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+str | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">Additional information or instructions displayed below the toggle.</td>
+</tr>
+
+<tr>
+<td align="left"><code>every</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+float | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">If value is a callable, this defines how often (in seconds) to refresh the toggle's state.</td>
+</tr>
+
+<tr>
+<td align="left"><code>show_label</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">Controls the visibility of the label.</td>
+</tr>
+
+<tr>
+<td align="left"><code>container</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool
+```
+
+</td>
+<td align="left"><code>True</code></td>
+<td align="left">None</td>
+</tr>
+
+<tr>
+<td align="left"><code>scale</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+int | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">Adjusts the size of the toggle relative to adjacent components.</td>
+</tr>
+
+<tr>
+<td align="left"><code>min_width</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+int
+```
+
+</td>
+<td align="left"><code>75</code></td>
+<td align="left">Minimum width of the toggle in pixels. Ensures readability and usability.</td>
+</tr>
+
+<tr>
+<td align="left"><code>interactive</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">Enables or disables user interaction with the toggle.</td>
+</tr>
+
+<tr>
+<td align="left"><code>visible</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool
+```
+
+</td>
+<td align="left"><code>True</code></td>
+<td align="left">Controls the visibility of the toggle on the interface.</td>
+</tr>
+
+<tr>
+<td align="left"><code>elem_id</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+str | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">An optional string that is assigned as the id of this component in the HTML DOM. Can be used for targeting CSS styles.</td>
+</tr>
+
+<tr>
+<td align="left"><code>elem_classes</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+list[str] | str | None
+```
+
+</td>
+<td align="left"><code>None</code></td>
+<td align="left">An optional list of strings that are assigned as the classes of this component in the HTML DOM. Can be used for targeting CSS styles.</td>
+</tr>
+
+<tr>
+<td align="left"><code>render</code></td>
+<td align="left" style="width: 25%;">
+
+```python
+bool
+```
+
+</td>
+<td align="left"><code>True</code></td>
+<td align="left">Determines if the toggle is rendered immediately in the Blocks context.</td>
+</tr>
+</tbody></table>
+
+
+### Events
+
+| name | description |
+|:-----|:------------|
+| `change` | Triggered when the value of the Toggle changes either because of user input (e.g. a user types in a textbox) OR because of a function update (e.g. an image receives a value from the output of an event trigger). See `.input()` for a listener that is only triggered by user input. |
+| `input` | This listener is triggered when the user changes the value of the Toggle. |
+| `select` | Event listener for when the user selects or deselects the Toggle. Uses event data gradio.SelectData to carry `value` referring to the label of the Toggle, and `selected` to refer to state of the Toggle. See EventData documentation on how to use this event data |
+
+
+
+### User function
+
+The impact on the users predict function varies depending on whether the component is used as an input or output for an event (or both).
+
+- When used as an Input, the component only impacts the input signature of the user function.
+- When used as an output, the component only impacts the return signature of the user function.
+
+The code snippet below is accurate in cases where the component is used as both an input and an output.
+
+- **As output:** Is passed, passes the status of the checkbox as a `bool`.
+- **As input:** Should return, expects a `bool` value that is set as the status of the toggle.
+
+ ```python
+ def predict(
+     value: bool | None
+ ) -> bool | None:
+     return value
+ ```
+ 
