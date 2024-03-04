@@ -1,0 +1,31 @@
+# Copyright (C) 2023 Maxwell G <maxwell@gtmx.me>
+# SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+---
+
+image: fedora/rawhide
+packages:
+  - forge-srpm-macros
+  - pipx
+  - python3.9
+  - python3.10-devel
+  - python3.11-devel
+  - python3.12-devel
+sources:
+  - https://git.sr.ht/~gotmax23/fclogr
+secrets:
+  # ~/.copr-dev-hook
+  - ed663ad2-1d16-4624-bbd4-53d682a8f0be
+tasks:
+  - setup: |
+      pipx install nox
+      pipx install git+https://git.sr.ht/~gotmax23/releaserr
+  - copr-webhook: |
+      cd fclogr
+      releaserr copr-webhook ~/.copr-dev-hook --branch origin/main --skip-if-missing
+  - nox-test: |
+      cd fclogr
+      nox -e test
+  - nox-lint: |
+      cd fclogr
+      nox -e lint
+
