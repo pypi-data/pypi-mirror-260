@@ -1,0 +1,84 @@
+from unittest.async_case import IsolatedAsyncioTestCase
+from unittest.mock import patch, AsyncMock
+
+from palaestrai.agent import Learner
+from palaestrai.agent import (
+    SensorInformation,
+    ActuatorInformation,
+    RewardInformation,
+    DummyBrain,
+)
+from palaestrai.core import MajorDomoWorker
+from palaestrai.core.protocol import (
+    MuscleUpdateResponse,
+    MuscleShutdownResponse,
+    MuscleUpdateRequest,
+    MuscleShutdownRequest,
+)
+from palaestrai.types import Discrete, Mode
+
+
+class TestLearner(IsolatedAsyncioTestCase):
+    _muscle_shutdown_request = MuscleShutdownRequest(
+        sender_muscle_id="muscle-id",
+        receiver_brain_id="brain-id",
+        experiment_run_id="exp_42",
+        experiment_run_instance_id="exp_42_instance",
+        experiment_run_phase=42,
+    )
+
+    @patch("palaestrai.agent.Memory.append")
+    @patch("palaestrai.agent.DummyBrain.thinking")
+    @patch("palaestrai.agent.dummy_brain.DummyBrain.store")
+    @patch("palaestrai.agent.dummy_brain.DummyBrain.load")
+    @patch(
+        "palaestrai.core.event_state_machine.MajorDomoWorker",
+        return_value=AsyncMock(
+            transceive=AsyncMock(
+                side_effect=[
+                    MuscleUpdateRequest(
+                        sender_rollout_worker_id="muscle-id-asdf",
+                        receiver_brain_id="brain-id",
+                        muscle_uid="muscle-id",
+                        sensor_readings=[
+                            SensorInformation(1, Discrete(2), "0")
+                        ],
+                        actuator_setpoints=[
+                            ActuatorInformation(0, Discrete(2), "0")
+                        ],
+                        experiment_run_id="exp_42",
+                        experiment_run_instance_id="exp_42_instance",
+                        experiment_run_phase=42,
+                        rewards=[RewardInformation(2, Discrete(3), "Test")],
+                        objective=2.0,
+                        statistics={},
+                        done=False,
+                        data=None,
+                    ),
+                    _muscle_shutdown_request,
+                ]
+            )
+        ),
+    )
+    async def test_handle_agent_update(
+        self,
+        major_domo_worker: MajorDomoWorker,
+        rollout_brain_load,
+        rollout_brain_store,
+        brain_thinking,
+        memory_append,
+    ):
+        learner = Learner(DummyBrain(), "brain-id")
+
+        # noinspection PyUnresolvedReferences
+        await learner.run()  # type: ignore[attr-defined]
+
+        self.assertIsInstance(
+            # noinspection PyUnresolvedReferences
+            learner.__esm__._mdp_worker.transceive.mock_calls[1].args[0],  # type: ignore[attr-defined]
+            MuscleUpdateResponse,
+            MuscleShutdownResponse,
+        )
+
+        self.assertTrue(brain_thinking.called)
+        self.assertTrue(memory_append)
