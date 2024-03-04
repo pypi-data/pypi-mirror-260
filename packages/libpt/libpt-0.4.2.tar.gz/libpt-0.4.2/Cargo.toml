@@ -1,0 +1,63 @@
+[workspace]
+resolver = "2"
+members = ["members/libpt-py"]
+default-members = [".", "members/libpt-core"]
+
+[workspace.package]
+publish = true
+version = "0.4.2"
+edition = "2021"
+authors = ["Christoph J. Scherr <software@cscherr.de>"]
+license = "MIT"
+description = "Personal multitool"
+readme = "README.md"
+homepage = "https://git.cscherr.de/PlexSheep/pt"
+repository = "https://git.cscherr.de/PlexSheep/pt"
+keywords = ["library"]
+categories = [
+  "command-line-utilities",
+  "development-tools",
+  "development-tools::ffi",
+]
+
+[workspace.dependencies]
+anyhow = "1.0.79"
+thiserror = "1.0.56"
+libpt-core = { version = "0.4.0", path = "members/libpt-core" }
+libpt-bintols = { version = "0.4.0", path = "members/libpt-bintols" }
+libpt-log = { version = "0.4.1", path = "members/libpt-log" }
+
+[package]
+name = "libpt"
+publish.workspace = true
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[features]
+default = ["log", "core"]
+core = []
+full = ["default", "core", "log", "bintols"]
+log = ["dep:libpt-log"]
+bintols = ["dep:libpt-bintols", "log"]
+# py = ["dep:libpt-py"]
+
+[lib]
+name = "libpt"
+crate-type = [
+  "dylib",     # .dll, .so, .dynlib
+  "staticlib", # .lib, .a
+  "rlib",
+]
+
+[dependencies]
+libpt-core = { workspace = true }
+libpt-bintols = { workspace = true, optional = true }
+libpt-log = { workspace = true, optional = true }
