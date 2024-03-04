@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "promptu"
+version = "0.1.0"
+description = "Write dynamic LLM prompts as natural language"
+authors = ["David <161997989+lintyourcode@users.noreply.github.com>"]
+readme = "README.md"
+license = "MIT"
+keywords = ["prompt-engineering", "llms", "genai"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
