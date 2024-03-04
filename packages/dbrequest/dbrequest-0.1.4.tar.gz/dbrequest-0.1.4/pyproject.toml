@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dbrequest"
+version = "0.1.4"
+authors = [
+    { name="korandr", email="korandrmail@ya.ru" },
+]
+description = "Abstraction from DBMS, queries without explicit use of SQL, and convenient work with high-level object-containers."
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Topic :: Database",
+    "Topic :: Documentation"
+]
+
+[project.urls]
+Github = "https://github.com/korandr/dbrequest"
+Documentation = "https://github.com/korandr/dbrequest/wiki"
+
