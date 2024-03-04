@@ -1,0 +1,25 @@
+[build-system]
+requires = [
+  "hatchling",
+]
+build-backend = "hatchling.build"
+[project]
+name = "music_checker_micro"
+version = "0.2.6"
+authors = [
+  { name = "Samuel Shiels" },
+]
+description = "A media file tag checker tool, intended to work alone or fit into a larger toolchain"
+readme = "README.md"
+requires-python = ">=3.11.5"
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "filetype",
+  "jsonpickle>=3.0.2",
+  "music-manager-micro>=0.2.2",
+  "mutagen",
+]
