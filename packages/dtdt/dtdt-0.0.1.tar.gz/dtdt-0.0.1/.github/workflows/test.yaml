@@ -1,0 +1,131 @@
+name: test
+
+on:
+  push:
+    paths-ignore:
+      - ".github/**"
+    branches:
+      - master
+      - "[0-9]+.[0-9]+.x"
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+      - "[0-9]+.[0-9]+.[0-9]+rc[0-9]+"
+
+  pull_request:
+    branches:
+      - master
+      - "[0-9]+.[0-9]+.x"
+
+
+# Cancel running jobs for the same workflow and branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Build and Check Package
+      uses: hynek/build-and-inspect-python-package@v2.0.1
+
+  build:
+    needs: [package]
+
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        name: [
+          "windows-py311",
+          "windows-py312",
+
+          "ubuntu-py311",
+          "ubuntu-py312",
+
+          "macos-py311",
+          "macos-py312",
+        ]
+
+        include:
+          - name: "windows-py311"
+            python: "3.11"
+            os: windows-latest
+            tox_env: "py311"
+          - name: "windows-py312"
+            python: "3.12-dev"
+            os: windows-latest
+            tox_env: "py312"
+
+          - name: "ubuntu-py311"
+            python: "3.11"
+            os: ubuntu-latest
+            tox_env: "py311"
+          - name: "ubuntu-py312"
+            python: "3.12-dev"
+            os: ubuntu-latest
+            tox_env: "py312"
+
+          - name: "macos-py311"
+            python: "3.11"
+            os: macos-latest
+            tox_env: "py311"
+          - name: "macos-py312"
+            python: "3.12-dev"
+            os: macos-latest
+            tox_env: "py312"
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+
+    - name: Download Package
+      uses: actions/download-artifact@v4
+      with:
+        name: Packages
+        path: dist
+
+    - name: Set up Python ${{ matrix.python }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python }}
+
+    - name: Install Package
+      run: |
+        python -m pip install --upgrade pip
+        pip install dist/*.whl
+      shell: bash
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest tox
+        if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+          sudo apt-get update -y
+          sudo apt-get install -y libgles2-mesa-dev
+        fi
+      shell: bash
+
+    - name: Test
+      shell: bash
+      run: |
+        echo "ONE"
+        pip list
+        pip install dist/*.whl
+        echo "TWO"
+        pip list
+        pip install -e .
+        echo "THREE"
+        pip list
+        pytest
