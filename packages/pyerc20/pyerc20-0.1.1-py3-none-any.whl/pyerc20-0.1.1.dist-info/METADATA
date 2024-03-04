@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: pyerc20
+Version: 0.1.1
+Summary: 
+Home-page: https://github.com/zhouflower/pyerc20
+Author: Hongxia Zhou
+Author-email: zhouhongxia5276@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: eth-account (>=0.11.0,<0.12.0)
+Requires-Dist: py-eth-contract (>=0.1.0,<0.2.0)
+Project-URL: Repository, https://github.com/zhouflower/pyerc20
+Description-Content-Type: text/markdown
+
+pyerc20 is a python implementation of the ERC20 standard.
+
+## Getting Started
+```
+pip install pyerc20
+```
+
+## Usage
+
+```python
+from web3 import Web3
+from pyerc20 import ERC20
+w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
+erc20 = ERC20(w3,'0x...')
+```
+
+
