@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "adsdatahub"
+version = "0.0.1"
+description = "Ads Data Hub API client for Python"
+authors = ["yassun7010 <yassun7010@outlook.com>"]
+readme = "README.md"
+packages = [{ include = "adsdatahub", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-api-python-client = "^2.114.0"
+pydantic = "^2.6.1"
+typing-extensions = "^4.9.0"
+httpx = "^0.26.0"
+google-cloud-bigquery = "^3.17.2"
+
+
+[tool.poetry.group.dev.dependencies]
+google-api-python-client-stubs = "^1.23.0"
+pytest = "^8.0.2"
+taskipy = "^1.12.2"
+pyright = "^1.1.348"
+ipython = "^8.20.0"
+ruff = "^0.3.0"
+pytest-xdist = "^3.5.0"
+pytest-asyncio = "^0.23.5"
+pytest-cov = "^4.1.0"
+pandas = "^2.2.1"
+db-dtypes = "^1.2.0"
+
+[tool.taskipy.tasks]
+format = "ruff format ."
+lint = "ruff check ."
+typecheck = "pyright src/** tests/** examples/**"
+test = "pytest -n auto --cov=src --cov-report=term --cov-report=xml tests"
+ci = "task format && task lint && task typecheck && task test"
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+markers = [
+    "long: marks tests as long (deselect with '-m \"not long\"')",
+    "mock: marks tests as mock (select with '-m \"mock\"')",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
