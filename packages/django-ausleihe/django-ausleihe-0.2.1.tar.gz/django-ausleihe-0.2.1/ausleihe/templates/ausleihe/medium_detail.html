@@ -1,0 +1,59 @@
+{% extends "ausleihe/base.html" %}
+
+{% block content %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page"><a href="{% url 'ausleihe:home' %}">Start</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ medium }}</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Mediatheknr.</th>
+            <td>{{ medium.id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% if medium.buecher.exists %}
+  <div class="row">
+    <div class="col">
+      <h4>dazugehörige Bücher</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Titel</th>
+            <th>Autoren</th>
+            <th>ISBN</th>
+            <th>Verlag</th>
+            <th>Ausgabe</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for buch in medium.buecher.all %}
+          <tr>
+            <td><a href="{% url 'ausleihe:buch-detail' buch.id %}">{{ buch.titel }}</a></td>
+            <td>
+              {% include "ausleihe/buch_autoren_links.html" %}
+            </td>
+            <td>{{ buch.isbn }}</td>
+            <td>
+              {% if buch.verlag %}
+              <a href="{% url 'ausleihe:verlag-detail' buch.verlag.id %}">{{ buch.verlag }}</a>
+              {% endif %}
+            </td>
+            <td>{{ buch.ausgabe }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
