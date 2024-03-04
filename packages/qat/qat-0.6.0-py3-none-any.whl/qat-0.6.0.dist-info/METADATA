@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: qat
+Version: 0.6.0
+Summary: Qt Application Tester, a BDD-oriented framework to test Qt-based applications
+Home-page: https://gitlab.com/testing-tool/qat
+Author: Quentin Derouault
+Author-email: qat.authors@gmail.com
+Project-URL: Documentation, https://qat.readthedocs.io/en/0.6.0/
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: C++
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Software Development :: Testing
+Classifier: Topic :: Software Development :: Testing :: BDD
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.MIT
+Requires-Dist: behave
+Requires-Dist: sv-ttk
+Requires-Dist: tkinter-tooltip
+Requires-Dist: xmlschema
+
+
+# Qat (Qt Application Tester)
+
+Qat is a testing framework for Qt-based applications.
+
+Qat provides a Python API to interact with any existing Qt application by accessing QML/QtQuick/QWidget elements and simulating user manipulations.
+
+It is also integrated to [behave](https://github.com/behave/behave) to support Behavior-Driven Development (BDD) with the [Gherkin language](https://cucumber.io/docs/gherkin/).
+
+Although Qat uses the GUI to interact with the tested application, it is oriented towards BDD and functional testing rather than pure UI or non-regression testing.
+
+The main objective of Qat is to provide quick feedback to developers and easy integration to build systems.
+
+The complete documentation is available on [readthedocs](https://qat.readthedocs.io/en/latest/) and on Qat's [Gitlab project](https://gitlab.com/testing-tool/qat/-/blob/develop/README.md?ref_type=heads).
