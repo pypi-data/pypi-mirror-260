@@ -1,0 +1,17 @@
+name = "{{lib_name}}"
+version = "{{version}}"
+license = "internal"
+author = ""
+maintainer = ""
+copyright = "Copyright 2022, SINTEF Ocean"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+[install]
+library = false
+
+
+[dependencies]
+json-fortran = {git = "https://github.com/jacobwilliams/json-fortran.git", tag = "8.3.0" }
+error-handling = { git = "https://github.com/SINTEF/fortran-error-handling.git", tag = "v0.2.0" }

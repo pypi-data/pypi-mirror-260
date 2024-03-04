@@ -1,0 +1,18 @@
+
+// The cmm config is not up to date! Use fpm instead
+
+{
+    "name": "{{lib_name}}",
+    "version": "{{version}}",
+    "languages": ["Fortran"],
+    "linker-language": "Fortran",
+    // When set to true, information for stacktrace generation will be included in release builds
+    "release-dbg-info": true,
+
+    "dependencies": {
+        "jsonfortran-static": { "git": "https://github.com/jacobwilliams/json-fortran.git", "version": "8.3.0", "tag": "8.3.0" }
+    },
+
+    "dev-dependencies": {}
+
+}
