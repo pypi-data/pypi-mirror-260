@@ -1,0 +1,112 @@
+
+
+#
+#	how to publish:
+#
+#		python3 publish.py
+#
+
+#
+#	(rm -rf dist && python3 -m build && twine upload dist/*)
+#
+
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OHF"
+version = "1.0.1"
+requires-python = ">=3.8"
+
+
+#
+#	⚠️
+#		Make sure that none of these depend on this module!
+#
+#		For the sake of sanity, please keep the "reliability, testing, etc."
+#		structure as a "tree, hierarchy, etc." etc. with no coodependencies
+#		that almost definitely cause chaos.
+#
+dependencies = [
+	'body_scan',
+
+	#--
+
+	'botanist',
+	'shares',
+	
+	#--
+	
+	'click',
+	'coverage',
+	'flask',
+	'pdoc3',
+	'pexpect',
+	'redis',
+	'requests',
+	'textual',
+	'tinydb'
+]
+
+
+
+#license = { file = "license.txt" }
+license = { text = "GPL 3.0" }
+
+description = "health checks module"
+readme = "structures/decor/OHF/module.MD"
+classifiers = []
+
+#
+#	https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#keywords
+#
+keywords = [
+	"homeostasis",
+	"reliability",
+	"consistency",
+	"integrity",
+	
+	"guarantees",
+	"vows",
+	"oaths",
+	"assurances",
+	"insurances",
+	"ensurances",
+
+	"speed",
+	"calmness",
+
+	"education",
+
+	"augmentation",
+	"enhancement",
+	"improvements"
+]
+
+[project.urls]
+GitLab = "https://gitlab.com/status600/climates/OHF"
+
+
+[project.scripts]
+#
+#	https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts
+#	from this_module import clique; clique ()
+#
+OHF = "OHF:clique"
+
+
+[tool.setuptools.packages.find]
+where = [ "structures/decor" ]
+
+#
+#	https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+#
+[tool.setuptools.package-data]
+"*" = [ "*.HTML", "*.json" ]
+
+
+
+
+
