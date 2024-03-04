@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Token Extractor</title>
+</head>
+<body>
+    <h1>Token successfully obtained</h1>
+    <p>This tab will automatically close.</p>
+    
+    <script>
+
+        // Function to send obtained token to Python using a webhook
+        function sendtokentopython(token) {
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+            var webhookUrl = 'http://localhost:8888/access_token';
+
+            // Define the HTTP method and URL
+            xhr.open('POST', webhookUrl, true);
+
+            // Set up event handler for network errors
+            xhr.onerror = function() {
+                console.error('Network error occurred while fetching data from the webhook.');
+            };
+
+            // Set the Content-Type header to application/json
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Define the data to send in the request body
+            var requestBody = JSON.stringify({"access_token": token});
+
+            // Set up event handler for when the request is complete
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // Request was successful
+                    var responseData = JSON.parse(xhr.responseText);
+                } else {
+                    // Request failed
+                    console.error('Failed to fetch data from the webhook.');
+                }
+            };
+
+            // Send the request with the request body
+            xhr.send(requestBody);
+        }
+
+        // Get the URL fragment
+        var fragment = window.location.hash.substring(1);
+
+        // Split the fragment into key-value pairs
+        var params = fragment.split('&');
+
+        // Loop through the key-value pairs
+        for (var i = 0; i < params.length; i++) {
+            var pair = params[i].split('=');
+            if (pair[0] === 'access_token') {
+                var accessToken = pair[1];
+                sendtokentopython(accessToken)
+                break;
+            }
+        }
+
+        setTimeout(() => {
+            window.close();
+          }, 1500);
+    </script>
+</body>
+</html>
