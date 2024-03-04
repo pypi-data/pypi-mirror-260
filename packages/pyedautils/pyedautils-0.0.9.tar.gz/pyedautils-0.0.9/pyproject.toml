@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "_version.py"
+
+[project]
+name = "pyedautils"
+dynamic = ["version"]
+authors = [
+  { name="Reto Marek"},
+]
+description = "Python Energy Data Analysis Utilities"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/retomarek/pyedautils/"
+Issues = "https://github.com/retomarek/pyedautils/issues"
