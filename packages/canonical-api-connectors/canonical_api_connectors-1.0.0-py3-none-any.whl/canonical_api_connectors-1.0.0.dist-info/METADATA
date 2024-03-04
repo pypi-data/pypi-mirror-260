@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: canonical-api-connectors
+Version: 1.0.0
+Summary: A set of API utility connectors
+License: LGPL-3.0
+Author: ali-kelkawi
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Provides-Extra: jira
+Provides-Extra: mattermost
+Provides-Extra: vault
+Requires-Dist: hvac (==2.1.0) ; extra == "vault"
+Requires-Dist: jira (==3.6.0) ; extra == "jira"
+Requires-Dist: mattermostdriver (==7.3.2) ; extra == "mattermost"
+Requires-Dist: python-dateutil (==2.8.2) ; extra == "vault"
+Description-Content-Type: text/markdown
+
+# Canonical API Connectors Library
+
+This library is a collection of libraries that provide seamless integration with
+different SaaS systems.
+
+## Building
+
+This library uses [poetry](https://github.com/python-poetry/poetry) for packaging and managing dependencies. To build the wheel file, simply run:
+
+```
+poetry build -f wheel
+```
+
+## Usage
+
+### Installation
+
+To install the entire package along with all supported libraries, simply run:
+
+```
+pip install canonical-api-connectors
+```
+
+### Installing Individual Libraries
+
+If you wish to install only specific libraries, you can use the `--extras` flag. Here are the available options:
+
+- `jira`: Install the Jira library
+- `mattermost`: Install the Mattermost library
+- `vault`: Install the HashiCorp Vault library
+
+For example, to install only the Jira library:
+
+```
+pip install canonical-api-connectors["jira"]
+```
+
+To install multiple libraries, separate them with commas. For instance:
+
+```
+pip install canonical-api-connectors["jira", "mattermost"]
+```
+
