@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo ---- ruff format ----
+ruff format --check .
+echo
+
+echo ---- ruff lint ----
+ruff check .
+echo
+
+echo ---- pytest ----
+pytest
+echo
+
+echo ---- stubtest ----
+stubtest htpy --allowlist allowlist
+echo
+
+echo ---- mypy ----
+mypy
+echo
+
+echo ==== SUCCESS ====
