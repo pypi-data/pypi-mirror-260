@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: audata
+Version: 1.0.4
+Summary: A python package for reading and writing data for in the audata file spec.
+Home-page: https://github.com/autonlab/audata
+Author: Anthony Wertz
+Author-email: awertz@cmu.edu
+License: GNU LGPL 3
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: h5py>=3.7.0
+Requires-Dist: jsbeautifier
+Requires-Dist: lorem
+Requires-Dist: tzlocal
+Requires-Dist: h5py
+
+# Auton Universal Data
+
+Welcome to the source code for Auton Universal Data (AUData). AUData is both a file schema and a toolset. This source repository contains the documentation of the file specification and a Python library for working with audata files.
+
+## Documentation
+
+Further documentation is available at [audata.readthedocs.io](https://audata.readthedocs.io/en/latest/)
+
+## Installation
+
+To install audata, simply use pip:
+
+```
+pip install audata
+```
+
+## Building
+
+If you'd like to build from source code (e.g. for development purposes):
+
+```
+python setup.py bdist_wheel
+pip install -U dist/*.whl
+cd test
+python write.py
+```
