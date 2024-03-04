@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: silog
+Version: 0.1.0
+Summary: A simple logging library
+Home-page: https://github.com/p12m3ikm4d/silog
+Author: p12m3ikm4d
+Author-email: issue.no9@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# silog
+
+silog is a simple logging library for Python. Designed to no worries about the underlying log file management.
+
+## Features
+
+- Automatic rotation of log files based on the date, ensuring that log files are organized by day.
+- Singleton pattern to ensure only one instance of the logger is created, making it easy to use across your application.
+- Simple interface for logging messages at various severity levels (DEBUG, INFO, WARNING, ERROR, CRITICAL).
+
+## Installation
+
+You can install silog directly from PyPI:
+
+```bash
+pip install silog
