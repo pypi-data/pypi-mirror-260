@@ -1,0 +1,39 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
+
+[project]
+name = "MDCraft"
+version = "0.0.1"
+authors = [
+  { name = "Benjamin B. Ye", email = "bye@caltech.edu" },
+  { name = "Pierre J. Walker", email = "pjwalker@caltech.edu" },
+]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3"
+]
+dependencies = [
+  "matplotlib",
+  "mdanalysis",
+  "netCDF4",
+  "numpy",
+  "pandas",
+  "pint",
+  "scipy",
+  "sympy"
+]
+description = """
+A batteries-included toolkit of analysis modules and helper functions 
+for molecular dynamics (MD) simulations.
+"""
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.urls]
+"Homepage" = "https://github.com/bbye98/mdcraft"
+"Bug Tracker" = "https://github.com/bbye98/mdcraft/issues"
