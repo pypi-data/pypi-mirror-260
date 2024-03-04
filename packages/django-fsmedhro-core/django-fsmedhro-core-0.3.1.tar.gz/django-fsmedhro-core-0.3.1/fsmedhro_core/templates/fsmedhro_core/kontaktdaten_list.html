@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Kontaktdaten{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-10 col-md-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Adresse</th>
+          <th>Telefonnummer</th>
+          <th>erstellt</th>
+          <th>verifizieren</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for k in kontaktdaten %}
+        <tr>
+          <td>{{ k.fachschaftuser }}</td>
+          <td style="white-space: pre;">{{ k.adresse }}</td>
+          <td>{{ k.telefonnummer }}</td>
+          <td>{{ k.created }} Uhr</td>
+          <td>
+            {% if k.gecheckt_von and k.gecheckt_datum %}
+            <span class="text-success">{{ k.gecheckt_datum }} Uhr von {{ k.gecheckt_von.get_full_name }}</span>
+            {% else %}
+            <form action="{% url 'fsmedhro_core:kontaktdaten_verify' %}" method="post" accept-charset="utf-8">
+              {% csrf_token %}
+              <input type="hidden" name="kontaktdaten_id" value="{{ k.id }}">
+              <button class="btn btn-sm btn-primary" type="submit">verifizieren</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
