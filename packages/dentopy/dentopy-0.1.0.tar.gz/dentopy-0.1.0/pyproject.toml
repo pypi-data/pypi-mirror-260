@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dentopy"
+version = "0.1.0"
+description = ""
+authors = ["harsh-leen <harsh@leen.dev>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.7"
+pydantic = "^2.6.3"
+
+[tool.poetry.scripts]
+dentopy = "dentopy.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
