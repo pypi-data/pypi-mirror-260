@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: bankinfo
+Version: 1.0.3
+Summary: 获取中国的银行信息
+Home-page: https://github.com/lisenone/bankinfo
+License: Apache-2.0
+Author: zhaione
+Author-email: zhaifengone@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: py_eth_contract (>=0.1.0,<0.2.0)
+Requires-Dist: requests (>=2.28.2,<3.0.0)
+Project-URL: Repository, https://github.com/lisenone/bankinfo
+Description-Content-Type: text/markdown
+
+
+可以获得国内银行卡的一些信息。
+
+## Install
+
+```bash
+pip install bankinfo
+```
+
+## 实例
+```python
+from bankinfo.validator import BankInfoValidator
+bank.validate('6217000130008255555')
+```
+```json
+{
+ 'bank': 'CCB', # 银行名称
+ 'cardType': 'DC', # 信用卡 储蓄卡
+ 'key': '6217000130008255555',
+ 'messages': [],
+ 'stat': 'ok',
+ 'validated': True
+ }
+```
+
+或者
+```
+bankinfo 6217000130008255555
+```
