@@ -1,0 +1,450 @@
+CQRS:
+  common_cmake_folder_path: src/core/contracts.cqrs
+DTOs:
+  common_cmake_folder_path: src/core/contracts.dto
+application:
+  common_cmake_folder_path: src/core/application
+  features:
+  - CRUD:
+      create:
+        enabled: true
+      enabled: true
+      entity_mappable_with: User
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: false
+      insert_relation:
+        enabled: false
+      remove:
+        enabled: false
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: User
+    name: User
+  - CRUD:
+      create:
+        enabled: false
+      enabled: true
+      entity_mappable_with: Book
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: true
+      insert_relation:
+        enabled: true
+      remove:
+        enabled: false
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: Book
+    name: Book
+  - CRUD:
+      create:
+        enabled: false
+      enabled: true
+      entity_mappable_with: Workspace
+      get:
+        enabled: true
+      get_all:
+        enabled: true
+      get_with_details:
+        enabled: true
+      insert_relation:
+        enabled: true
+      remove:
+        enabled: false
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: Workspace
+    name: Workspace
+  - CRUD:
+      create:
+        enabled: false
+      enabled: true
+      entity_mappable_with: Atelier
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: true
+      insert_relation:
+        enabled: false
+      remove:
+        enabled: false
+      update:
+        enabled: false
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: Atelier
+    name: Atelier
+  - CRUD:
+      create:
+        enabled: true
+      enabled: true
+      entity_mappable_with: Chapter
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: true
+      insert_relation:
+        enabled: true
+      remove:
+        enabled: true
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: Chapter
+    name: Chapter
+  - CRUD:
+      create:
+        enabled: true
+      enabled: true
+      entity_mappable_with: Scene
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: true
+      insert_relation:
+        enabled: true
+      remove:
+        enabled: true
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: Scene
+    name: Scene
+  - CRUD:
+      create:
+        enabled: true
+      enabled: true
+      entity_mappable_with: SceneParagraph
+      get:
+        enabled: true
+      get_all:
+        enabled: false
+      get_with_details:
+        enabled: false
+      insert_relation:
+        enabled: false
+      remove:
+        enabled: true
+      update:
+        enabled: true
+    DTO:
+      dto_identical_to_entity:
+        enabled: true
+        entity_mappable_with: SceneParagraph
+    name: SceneParagraph
+  - CRUD:
+      enabled: false
+    DTO:
+      dto_identical_to_entity:
+        enabled: false
+    commands:
+    - dto:
+        in:
+          fields:
+          - name: path
+            type: QString
+          - name: folderName
+            type: QString
+          - name: atelierName
+            type: QString
+          type_prefix: CreateNewAtelier
+        out:
+          enabled: false
+      entities:
+      - RecentAtelier
+      - Atelier
+      - Git
+      - Workspace
+      - File
+      - Book
+      - Chapter
+      - Scene
+      - SceneParagraph
+      name: CreateNewAtelier
+      undo: false
+      validator:
+        enabled: true
+    - dto:
+        in:
+          fields:
+          - name: path
+            type: QString
+          type_prefix: LoadAtelier
+        out:
+          enabled: false
+      entities:
+      - RecentAtelier
+      - Atelier
+      - Git
+      - Workspace
+      - File
+      - Book
+      - Chapter
+      - Scene
+      - SceneParagraph
+      name: LoadAtelier
+      undo: false
+      validator:
+        enabled: true
+    - dto:
+        in:
+          enabled: false
+        out:
+          enabled: false
+      entities:
+      - RecentAtelier
+      - Atelier
+      - Git
+      - Workspace
+      - File
+      - Book
+      - Chapter
+      - Scene
+      - SceneParagraph
+      minimum_progress_time: 1000
+      name: SaveAtelier
+      undo: false
+      validator:
+        enabled: false
+    - dto:
+        in:
+          enabled: false
+        out:
+          enabled: false
+      entities:
+      - RecentAtelier
+      - Atelier
+      - Git
+      - Workspace
+      - File
+      - Book
+      - Chapter
+      - Scene
+      name: CloseAtelier
+      undo: false
+      validator:
+        enabled: false
+    name: System
+    queries:
+    - dto:
+        in:
+          enabled: false
+        out:
+          fields:
+          - name: currentDateTime
+            type: QDateTime
+          type_prefix: GetCurrentTimeReply
+      name: GetCurrentTime
+      undo: false
+      validator:
+        enabled: false
+contracts:
+  export: SKRIBISTO_CONTRACTS_EXPORT
+  export_header_file: contracts_export.h
+  folder_path: src/core/contracts
+  inverted_app_domain: eu.skribisto
+interactor:
+  create_undo_redo_interactor: true
+  export: SKRIBISTO_INTERACTOR_EXPORT
+  export_header_file: interactor_export.h
+  folder_path: src/core/interactor/
+entities:
+  export: SKRIBISTO_DOMAIN_EXPORT
+  export_header_file: domain_export.h
+  folder_path: src/core/domain/
+  list:
+  - fields:
+    - name: uuid
+      type: QUuid
+    - name: creationDate
+      type: QDateTime
+    - name: updateDate
+      type: QDateTime
+    name: Entity
+    only_for_heritage: true
+    parent: EntityBase
+  - fields:
+    - name: name
+      type: QString
+    - name: path
+      type: QString
+    - name: isReachable
+      type: bool
+    name: RecentAtelier
+    parent: Entity
+  - fields:
+    - name: name
+      type: QString
+    - name: email
+      type: QString
+    name: User
+    parent: Entity
+  - fields:
+    - name: path
+      type: bool
+    - hidden: true
+      name: git
+      strong: true
+      type: Git
+    - name: workspaces
+      ordered: false
+      strong: true
+      type: QList<Workspace>
+    name: Atelier
+    parent: Entity
+  - fields:
+    - name: remoteGitRepositoryUrl
+      type: QString
+    - name: isGitHub
+      type: bool
+    name: Git
+    parent: Entity
+  - fields:
+    - name: name
+      type: QString
+    - name: checkPointHash
+      type: QString
+    - name: userOwned
+      type: bool
+    - name: isCommonWorkSpace
+      type: bool
+    - hidden: true
+      name: files
+      type: QList<File>
+    name: Workspace
+    parent: Entity
+  - fields:
+    - name: path
+      type: QString
+    - name: hash
+      type: QString
+    name: File
+    parent: Entity
+  - fields:
+    - name: title
+      type: QString
+    - name: chapters
+      ordered: true
+      strong: true
+      type: QList<Chapter>
+    name: Book
+    parent: Entity
+  - fields:
+    - name: title
+      type: QString
+    - name: label
+      type: QString
+    - name: scenes
+      ordered: true
+      strong: true
+      type: QList<Scene>
+    name: Chapter
+    parent: Entity
+  - fields:
+    - name: title
+      type: QString
+    - name: label
+      type: QString
+    - name: paragraphs
+      ordered: true
+      strong: true
+      type: QList<SceneParagraph>
+    name: Scene
+    parent: Entity
+  - fields:
+    - name: content
+      type: QString
+    - name: wordCount
+      type: int
+    name: SceneParagraph
+    parent: Entity
+global:
+  application_cpp_domain_name: Skribisto
+  application_name: Skribisto
+  organisation:
+    domain: skribisto.eu
+    name: skribisto
+presenter:
+  create_undo_and_redo_singles: true
+  export: SKRIBISTO_PRESENTER_EXPORT
+  export_header_file: presenter_export.h
+  folder_path: src/gui/presenter
+  list_models:
+  - displayed_field: title
+    entity: Chapter
+    in_relation_of: Book
+    name: auto
+    relation_field_name: chapters
+  - displayed_field: name
+    entity: Workspace
+    name: auto
+  - displayed_field: title
+    entity: Scene
+    in_relation_of: Chapter
+    name: auto
+    relation_field_name: scenes
+  singles:
+  - entity: Book
+    name: auto
+  - entity: User
+    name: auto
+  - entity: Git
+    name: auto
+  - entity: Atelier
+    name: auto
+qml:
+  folder_path: src/gui/qml
+repositories:
+  base_folder_path: src/core/persistence/
+  export: SKRIBISTO_PERSISTENCE_EXPORT
+  export_header_file: persistence_export.h
+  interface_path: src/core/contracts/repository/
+  list:
+  - entity_name: RecentAtelier
+    lazy_loaders: true
+  - entity_name: Atelier
+    lazy_loaders: true
+  - entity_name: User
+    lazy_loaders: true
+  - entity_name: Git
+    lazy_loaders: true
+  - entity_name: Workspace
+    lazy_loaders: true
+  - entity_name: File
+    lazy_loaders: true
+  - entity_name: Book
+    lazy_loaders: true
+  - entity_name: Chapter
+    lazy_loaders: true
+  - entity_name: Scene
+    lazy_loaders: true
+  - entity_name: SceneParagraph
+    lazy_loaders: true
+  repository_folder_path: src/core/persistence/repository/
