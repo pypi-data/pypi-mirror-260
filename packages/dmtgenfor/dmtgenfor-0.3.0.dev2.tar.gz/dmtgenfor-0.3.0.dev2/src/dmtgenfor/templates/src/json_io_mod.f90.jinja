@@ -1,0 +1,232 @@
+module internal_gen_json_io_mod
+    use json_module, only: json_file, json_core, json_value
+    use, intrinsic :: iso_fortran_env, only: dp => real64
+    use internal_gen_types_mod
+    use error_handling, only: error_t, fail, wrap_error
+    implicit none
+
+    private
+    public to_file
+    public from_file
+
+    interface to_file
+{%- for type in types %}
+        module procedure write_{{type.type}}
+{%- endfor %}
+    end interface
+
+    interface from_file
+{%- for type in types %}
+        module procedure read_{{type.type}}
+{%- endfor %}
+    end interface
+
+contains
+
+{%- for type in types %}
+    subroutine read_{{type.type}}(value, fname, error)
+        type({{type.type}}), intent(out) :: value
+        character(*), intent(in) :: fname
+        class(error_t), allocatable, intent(out) :: error
+        
+        type(json_file) :: jsonf
+        type(json_core) :: json
+        type(json_value), pointer :: parent
+
+        logical :: exists
+        
+        inquire(file = fname, exist = exists)
+        if (.not. exists) then
+            error = fail(fname // " does not exist")
+            return
+        end if
+        
+        call jsonf%initialize()
+        call jsonf%load(filename = fname)
+        call jsonf%get_core(json)
+        call jsonf%json_file_get_root(parent)
+        
+        call get_{{type.type}}(json, parent, value, error)
+        
+        call jsonf%destroy()
+        
+        if (allocated(error)) then
+            call wrap_error(error, "get_{{type.type}} returned with error")
+            return
+        elseif (jsonf%failed()) then
+            error = fail("json-fortran is reporting a failiure in read_{{type.type}}")
+            return
+        end if
+        
+    end subroutine
+
+    subroutine get_{{type.type}}(json, parent, value, error)
+        type(json_core) :: json
+        type(json_value), intent(in), pointer :: parent
+        type({{type.type}}), intent(out) :: value
+        class(error_t), allocatable, intent(out) :: error
+
+        type(json_value),pointer :: child
+
+        logical :: found
+        integer :: i, n_children
+
+        {%- for attr in type.attributes %}
+        {%- if attr.is_primitive %}
+            {%- if attr.is_array %}
+        call json%get_child(parent, '{{attr.name}}', child, found)
+        if (found) then
+            call json%get(child, value%{{attr.fieldname}})            {# - print*, "{{attr.name}}=", value%{{attr.fieldname}} #}
+                {%- if attr.is_required %}
+        else
+            error = fail('json value "{{attr.fieldname}}" was not found')
+            return
+                {%- endif %}
+        end if
+            {%- else %}
+        call json%get_child(parent, '{{attr.name}}', child, found)
+        if (found) then
+            call json%get(child, value%{{attr.fieldname}})            {#- print*,  "{{attr.name}}=", value%{{attr.fieldname}} #}
+                {%- if attr.is_required %}
+        else
+            error = fail('json value "{{attr.fieldname}}" was not found')
+            return
+                {%- endif %}
+        end if
+            {%- endif %}
+        {%- else %}
+            {%- if attr.is_array %}
+        call json%get_child(parent, '{{attr.name}}', child, found)
+        call json%info(child, n_children=n_children)
+        if (found) then
+            {#- print*, "{{attr.name}} found=",n_children #}
+            allocate(value%{{attr.fieldname}}(n_children))            
+            do i=1, n_children
+                call json%get_child(child, i, parent, found)
+                if (found) then
+                    call get_{{attr.type}}(json,parent,value%{{attr.fieldname}}(i), error)
+                    if (allocated(error)) then
+                        call wrap_error(error, "get_{{attr.type}} returned with error for {{attr.fieldname}}")
+                        return
+                    end if
+                else
+                    error = fail('json array element {{attr.fieldname}} was not found')
+                    return
+                end if
+            end do
+                {%- if attr.is_required %}
+        else
+            error = fail('json value "{{attr.name}}" was not found')
+            return
+                {%- endif %}
+        end if
+            {%- else %}
+        call json%get_child(parent, '{{attr.name}}', child, found)
+        if (found) then
+                {%- if not attr.is_required %}
+            allocate(value%{{attr.fieldname}})
+                {%- endif %}
+            call get_{{attr.type}}(json,child,value%{{attr.fieldname}}, error)
+            if (allocated(error)) then
+                call wrap_error(error, "get_{{attr.type}} returned with error for {{attr.fieldname}}")
+                return
+            end if
+                {%- if attr.is_required %}
+        else
+            error = fail('json value "{{attr.fieldname}}" was not found')
+            return
+                {%- endif %}
+        end if
+            {%- endif %}
+        {%- endif %}
+        {%- endfor %}
+
+    end subroutine
+
+    subroutine write_{{type.type}}(value, fname, error)
+        type({{type.type}}), intent(in) :: value
+        character(*), intent(in) :: fname
+        class(error_t), allocatable, intent(out) :: error
+
+        
+        type(json_core) :: json
+        type(json_value), pointer :: root_ptr
+
+        ! Initialize the type
+        call json%initialize()
+
+        ! Initialize the structure
+        call json%create_object(root_ptr,'')
+
+        ! Add data
+        call add_{{type.type}}(json, root_ptr, value)
+
+        ! Write file
+        call json%print(root_ptr, fname)
+
+        ! Cleanup:
+        call json%destroy() 
+        if (json%failed()) then
+            error = fail("json-fortran is reporting a failiure in write_{{type.type}}")
+            return
+        end if
+        
+    end subroutine
+
+    subroutine add_{{type.type}}(json, parent, value)
+        type(json_core), intent(inout) :: json
+        type(json_value), intent(in), pointer :: parent
+        type({{type.type}}), intent(in) :: value
+
+        type(json_value),pointer :: child, elements, element
+
+        logical :: found
+        integer :: i, n_children
+
+        call json%add(parent, "type", "{{type.path}}")
+        {%- for attr in type.attributes %}
+            {%- if attr.is_primitive %}
+        call json%add(parent, "{{attr.name}}",   value%{{attr.fieldname}})
+            {%- else %}
+                {%- if attr.is_array %}
+        if (allocated(value%{{attr.fieldname}})) then
+            call json%create_array(elements, "{{attr.name}}")
+            call json%add(parent, elements)
+            do i = 1, size(value%{{attr.fieldname}})
+                call json%create_object(element, '') ! Array element
+                call add_{{attr.type}}(json, element, value%{{attr.fieldname}}(i))    
+                call json%add(elements, element)
+                nullify(element)
+            end do
+        end if
+                {%- else %}
+                    {%- if attr.is_required %}
+        call json%create_object(child, "{{attr.name}}")
+        call json%add(parent, child)
+        call add_{{attr.type}}(json, child, value%{{attr.fieldname}})
+                    {%- else %}
+        if (allocated(value%{{attr.fieldname}})) then
+            call json%create_object(child, "{{attr.name}}")
+            call json%add(parent, child)
+            call add_{{attr.type}}(json, child, value%{{attr.fieldname}})
+        end if
+                    {%- endif %}
+                {%- endif %}
+            {%- endif %}
+        {%- endfor %}
+
+    end subroutine
+{% endfor %}
+
+    pure function tostr(int) result(string)
+        ! This should have been generic...
+        integer, intent(in) :: int
+        character(len=:), allocatable :: string
+
+        character(len=10) :: sint
+
+        write(sint,'(I10)') int
+        string = trim(adjustl(sint))
+    end function
+
+end module
