@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: uniadmin
+Version: 1.0.0
+Summary: Get the latest admission data
+Author-email: Atani oyinmiebi <atanioyinmiebi91@gmail.com>
+Project-URL: Homepage, https://github.com/atanifx/uniadmin
+Keywords: data,scraper
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: selenium
+
+d = Details()
+student_info = d.get_student_details()
+d.to_csv(student_info)
