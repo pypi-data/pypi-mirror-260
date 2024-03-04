@@ -1,0 +1,101 @@
+# Matt's Automatic Tracking Encounter Software
+
+Requires root and is somewhat of a security concern as all encounter trackers must be by necessity.
+
+if that dissapoints you make some noise here: <https://forums.pokemmo.com/index.php?/topic/175662-make-encounter-trackers-less-invasive/>
+
+Videos:
+
+<https://youtu.be/IkLZOhnaS2c>
+
+<https://youtu.be/GtdwyRFSZAA>
+
+Simple encounter tracker I slapped together in 3 days.
+Entirely programmed for android phones on an android phone.
+
+No I'm not joking.
+![programming](https://i.imgur.com/BLCC92W.png)
+
+
+## Important:
+The reason this needs root is because like all the other encounter trackers it works by taking captures of the screen. This is not usually possible on android because to capture the screen you must use the screenshot API which will only show content the app that requested the screenshot has rendered which is useless for this.
+
+I solved this issue by using a command that's tucked away in the binaries of android "screencap" this returns an unadulterated screenshot but is only accessible via root.
+
+The nature of this is somewhat of a security concern but these captures are immediately deleted after scanning for Pokémon.
+
+These captures never leave your device but as a precaution I still wouldn't leave it capturing if anything other than pokemmo is on screen.
+
+You can toggle capture by pressing enter with no command typed in.
+
+PS this has only been tested on a single device so if it doesn't work right away be patient and write an issue on the issue tracker I'll try fix stuff as an when I'm made aware.
+
+### I am not liable nor responsible if you brick your phone trying to root it! If you don't understand phone rooting then it's probably not a great idea to root your phone just for this. There are pros and cons to rooted android.
+
+## Requirements:
+
+
+| rooted phone                                                     |
+| ---------------------------------------------------------------- |
+| termux float - <https://github.com/termux/termux-float/releases> |
+| termux - <https://github.com/termux/termux-app/releases>         |
+| tsu - (in termux: pkg install tsu)                               |
+| python (in termux: pkg install python)                           |
+| tesseract (in termux: pkg install tesseract)                     |
+| pytesseract (in termux: pip install pytesseract)                 |
+| opencv2 (in termux: pkg install opencv-python)                   |
+
+
+don't get your hopes up too high. this is janky and sometimes doesnt work. if you have an issue please leave a report on the github issues page
+<https://github.com/Th3M4ttman/MATES/issues>
+
+## Installation:
+
+pip install pymates
+
+if you wanna make an alias to make it easier to run:
+alias mates="sudo mates"
+
+## Usage:
+
+To run the software run "sudo mates" in termux float or "mates" if you added the alias
+
+![interface](https://i.imgur.com/xxF9mJA.png)
+
+
+| Number | Component                                         |
+| ------ | ------------------------------------------------- |
+| 1      | Capture indicator                                 |
+| 2      | Donator indicator                                 |
+| 3      | Shiny charm indicator                             |
+| 4      | Shiny charm link indicator                        |
+| 5      | Combined shiny bonus                              |
+| 6      | Tracked monster                                   |
+| 7      | Chance of shiny/legendary encounter in N attempts |
+| 8      | Combat indicator                                  |
+| 9      | Combat Reported indicator                         |
+| 10     | Single tracking indicator                         |
+| 11     | Number of shinies                                 |
+| 12     | Number of legends                                 |
+| 13     | Command prompt                                    |
+
+
+press enter to toggle capture on and off
+
+Or type in commands
+
+
+| Command                | Use                                                                   | Notes                                                                                                                                               |
+| ---------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Reset (Pokémon)        | Resets encounters for selected Pokémon.                               | If given no Pokémon resets all                                                                                                                      |
+| add (number) (Pokémon) | Adds number \* Pokémon encounters                                     | You can also use "+"                                                                                                                                |
+| sub (number) (Pokémon) | Subtracts number \* Pokémon encounters                                | You can also use "-"                                                                                                                                |
+| track (Pokémon)        | Sets the Pokémon as a tracked pokemon                                 | If given no Pokémon it tracks all Pokémon with registered encounters. You can also use "t"                                                          |
+| untrack (Pokémon)      | Sets the Pokémon as an untracked pokemon                              | If given no Pokémon it untracks all. You can also use "u"                                                                                           |
+| total                  | Toggles the visibility of the total encounters                        |                                                                                                                                                     |
+| charm                  | Toggles shiny charm                                                   |                                                                                                                                                     |
+| donator                | Toggles donator                                                       |                                                                                                                                                     |
+| link                   | Toggles shiny charm link                                              |                                                                                                                                                     |
+| singles                | Toggles single tracking                                               |                                                                                                                                                     |
+| quit                   | Exits the app                                                         | Can also use "qq"                                                                                                                                   |
+| init                   | Captures a new reference of the HP icon on screen if it's not working | use init left top right bottom of the resulting /data/data/com.termux/files/usr/lib/python3.11/site-packages/pymates/hp.png is cropped incorrectly. |
