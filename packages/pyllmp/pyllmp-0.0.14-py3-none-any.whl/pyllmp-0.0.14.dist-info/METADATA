@@ -1,0 +1,128 @@
+Metadata-Version: 2.1
+Name: pyllmp
+Version: 0.0.14
+Summary: large language model Programming - Type safe structured generation
+Home-page: https://github.com/elokus/LLMP
+License: MIT
+Author: elokow
+Author-email: lukas.kowejsza@gmail.com
+Requires-Python: >=3.8, !=2.7.*, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*, !=3.7.*
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: colorama (==0.4.6)
+Requires-Dist: jsonlines (==4.0.0)
+Requires-Dist: jupyter (>=1.0.0,<2.0.0)
+Requires-Dist: pydantic (>=1,<3)
+Requires-Dist: python-dotenv (>=1)
+Requires-Dist: pyyaml (>=5.3,<7.0)
+Requires-Dist: structgenie (>=0.1.21)
+Requires-Dist: tiktoken (>=0.3,<1.0)
+Requires-Dist: tqdm (>=4.62.3,<5.0.0)
+Requires-Dist: uuid (>=1.30,<2.0)
+Project-URL: Repository, https://github.com/elokus/LLMP
+Description-Content-Type: text/markdown
+
+# Large Language Model Programming (LLMP)
+
+LLMP provides a high-level abstraction for creating, storing, and optimizing generative NLP tasks. It leverages the power of large language models, enabling users to seamlessly integrate them into their software projects without the hassle of manually crafting and optimizing prompts.
+
+## Key Features
+
+- **Job Creation**: Define jobs using input and output object structures.
+- **Auto-Optimization**: LLMP automatically optimizes prompts to achieve desired outputs.
+- **Metrics Collection**: Evaluate the performance of prompts in terms of accuracy, efficiency, and cost.
+- **Storage Management**: Jobs are organized and stored systematically for easy retrieval and management.
+
+
+## Documentation and Examples
+
+For detailed documentation and examples, please refer to the:
+ - Full documentation: [project documentation](https://llmp.vercel.app/docs/intro).
+ - API Reference: [API reference](https://llmp.readthedocs.io/en/latest/api_reference.html).
+## Quick Start
+
+### Installation
+```bash
+pip install pyllmp
+```
+
+### Creating a Job
+
+```python
+from pydantic import BaseModel
+from typing import Literal
+from llmp.services.program import Program
+
+class InputObject(BaseModel):
+    book_title: str
+    book_author: str
+    release_year: int
+
+class OutputObject(BaseModel):
+    genre: Literal["fiction", "non-fiction", "fantasy", "sci-fi", "romance", "thriller", "horror", "other"]
+
+# Initialize a job
+program = Program("Book to Genre", input_model=InputObject, output_model=OutputObject)
+```
+
+### Loading a Job
+
+```python
+program = Program("Book to Genre")
+```
+
+### Running a Job
+
+After creating or loading a job, you can easily execute it with input data to get the desired output.
+
+```python
+input_data = {
+    "book_title": "The Lord of the Rings",
+    "book_author": "J. R. R. Tolkien",
+    "release_year": 1954
+}
+
+result = program(input_data=input_data)
+print(result)
+```
+
+**Output:**
+
+```
+{
+    "genre": "fantasy"
+}
+```
+
+### Monitoring a Job
+
+To monitor existing jobs, you can use the `streamlit` command-line tool to run the monitoring application. Navigate to the `libs/llmp-monitor` directory and run the following command:
+
+```bash
+streamlit run app.py
+```
+
+Here you can past your local job directory path to monitor, update and optimize jobs located in that directory.
+Once you have run the command and entered the path, you can access the monitoring application at `http://localhost:8501`.
+You should see a screen similar to the following:
+
+
+![App Screenshot](docs/static/img/screenshot_monitor_app.png)
+
+
+
+## Architecture
+
+LLMP follows a component-based architecture with service layers, ensuring modularity and scalability. For detailed insights into the architecture, refer to the project documentation.
+
+## Contribute
+
+LLMP is an open-source project. Contributions, feedback, and suggestions are welcome! Please check out the `CONTRIBUTING.md` guide for more details.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
