@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: grepper-python
+Version: 0.0.1a0
+Summary: An API wrapper for the Grepper API.
+Home-page: https://github.com/CodeGrepper/grepper-python
+Author: CodedGrepper
+Author-email: support@grepper.com
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: urllib3
+
+# Grepper Python Client
+The Grepper Python library provides convenient access to the Grepper API from applications written in the Python language.
+
+## Requirements
+Python 3.7 and later.
+
+## PIP
+```
+pip install grepper-python
+```
+
+## Manual Installation
+```bash
+git clone https://github.com/CantCode023/grepper-python
+cd grepper-python
+python setup.py install
+```
+
+## Getting Started
+Simple usage:
+```py
+grepper = Grepper("your-grepper-api-key")
+answers = grepper.search("query")
+print(answers)
+```
