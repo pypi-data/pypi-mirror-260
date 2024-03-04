@@ -1,0 +1,62 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "git-remote-get"
+version = "0.2.1"
+description = "Download single files or directories from a git remote repository without cloning its entire contents."
+authors = ["01Joseph-Hwang10 <joseph95501@gmail.com>"]
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Intended Audience :: Developers',
+  'Natural Language :: English',
+  'Topic :: Software Development',
+  'Topic :: Software Development :: Libraries :: Python Modules',
+  'Topic :: Utilities',
+  'Programming Language :: Python :: 3 :: Only',
+  'Programming Language :: Python :: 3.8',
+  'Programming Language :: Python :: 3.9',
+  'Programming Language :: Python :: 3.10',
+  'Programming Language :: Python :: Implementation :: CPython',
+  'Programming Language :: Python :: Implementation :: PyPy',
+  'License :: OSI Approved :: MIT License',
+]
+license = "MIT"
+readme = "README.md"
+exclude = ["**/tests", "**/package.json", "**/project.json"]
+[[tool.poetry.packages]]
+include = "gget"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = "\\.pyi?$"
+extend-exclude = "/(\n  # The following are specific to Black, you probably don't want those.\n  tests/data\n  | profiling\n)/\n"
+
+[tool.poetry.scripts]
+gget = "gget.__main__:cli"
+git-remote-get = "gget.__main__:cli"
+
+[tool.poe.tasks]
+test = "python -m pytest"
+lint = "flake8 gget tests"
+check-format = "black gget tests --check"
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+python-dotenv = "^1.0.0"
+click = "^8.1.7"
+pygithub = "^2.2.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+black = "^23.9.1"
+pre-commit = "^3.4.0"
+commitizen = "^3.10.0"
+poethepoet = "^0.24.4"
+
+[tool.poetry.group.test.dependencies]
+faker = "^20.1.0"
+pytest = "^7.4.3"
+pytest-order = "^1.2.0"
