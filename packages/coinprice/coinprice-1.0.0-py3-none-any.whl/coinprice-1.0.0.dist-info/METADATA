@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: coinprice
+Version: 1.0.0
+Summary: Track cryptocurrency prices.
+Author: Bohdan
+Author-email: bogdan.kov07@outlook.com
+Project-URL: GitHub, https://github.com/7GitGuru/crypto-tracker/tree/cmd
+Project-URL: Documentation, https://github.com/7GitGuru/crypto-tracker/blob/cmd/README.md
+Keywords: cryptocurrency,crypto,bitcoin,ethereum,tracking,prices,finance
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: requests >=2.25.1
+
+# Crypto Tracker
+
+Crypto Tracker is a Python module that allows you to track the prices of cryptocurrencies in real-time. You can specify the cryptocurrency you want to track and the module will provide you with live updates on its price.
+
+## Features
+
+- Track the prices of various cryptocurrencies.
+- Set a custom interval for price updates.
+- Open-source project.
+
+## Installation
+
+You can install Crypto Tracker using pip:
+
+```
+pip install coinprice
+```
+
+## Usage
+
+To track the price of a cryptocurrency, simply run the following command:
+
+```
+price <coin> [--interval time]
+```
+
+Replace `<coin>` with the cryptocurrency you want to track (e.g., bitcoin, ethereum). You can optionally specify the interval (in seconds) for price updates using the `--interval` flag. By default, the interval is set to 30 seconds.
+
+Example usage:
+
+```
+price bitcoin
+price ethereum --interval 15
+```
+
+## Contributing
+
+Contributions to Crypto Tracker are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request on GitHub.
+
+## License
+
+Crypto Tracker is released under the MIT License. See [LICENSE](https://github.com/7GitGuru/crypto-tracker/blob/main/LICENSE) for details.
+
