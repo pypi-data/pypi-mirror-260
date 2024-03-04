@@ -1,0 +1,31 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "vershachi"
+version = "0.1.01"
+description = "Vershachi is a Python-based toolkit designed to streamline the development of machine learning and unlearning applications."
+authors = ["mo_shahab <mohdshahabuddinsoharwardi@gmail.com>", "veerasagar <veerasagar24502@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["machine learning", "unlearning", "toolkit"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+
+# Add the following line for long_description content type
+#long_description_content_type = "text/markdown"  # or "text/x-rst" for reStructuredText
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.21.5"
+pandas = "^2.2.1"
+scikit-learn = "^1.4.1"
+torch = "^2.2.1"
+
+
