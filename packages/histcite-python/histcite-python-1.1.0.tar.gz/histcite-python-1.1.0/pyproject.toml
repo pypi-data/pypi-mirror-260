@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "histcite-python"
+authors = [{name = "WangK2", email = "kw221225@gmail.com"}]
+description = "A Python interface for histcite"
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = [
+    "histcite",
+    "citation network",
+    "web of science",
+    "scopus",
+    "cssci",
+    ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+    ]
+dynamic = ["version"]
+
+dependencies = [
+    "pandas>=2.0",
+    "pyarrow",
+    "openpyxl",
+    ]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "coverage",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    ]
+
+[project.scripts]
+histcite = "histcite.__main__:cli"
+
+[project.urls]
+Repository = "https://github.com/doublessay/histcite-python"
+
+[tool.setuptools]
+packages = ["histcite"]
+
+[tool.setuptools.dynamic]
+version = {attr = "histcite.__version__"}
+
+[tool.coverage.run]
+source = ["histcite"]
+
+[tool.black]
+line-length = 120
