@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: restful_dnspod_log
+Version: 1.0.1
+Summary: return the log for dns resolution
+Home-page: https://github.com/hanyan007/RESTful_DNSPOD_LOG.git
+Author: hanyan_news
+Author-email: hanyan0572@gmail.com
+License: BSD License
+Project-URL: Source, https://github.com/hanyan007/RESTful_DNSPOD_LOG.git
+Platform: all
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: Chinese (Simplified)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: package-tea-hanyan ==1.0.2
+Requires-Dist: dnspod-domain-log ==1.0.2
+
+
+========
+工程说明
+========
+
+DNSPod 提供域名一站式服务，包括域名注册、DNS 管理、SSL 证书、网站备案等，您都可以在这方便、快捷的管理这一切，而且大部分服务是免费的。
+
+- 链接 https://www.dnspod.cn/
+
+- FLask+ Python2.7
+
+- 使用base64.b64encode 加密生成token，再调用dnspod API，查看解析log
