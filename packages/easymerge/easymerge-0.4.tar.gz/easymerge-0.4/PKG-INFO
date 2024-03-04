@@ -1,0 +1,105 @@
+Metadata-Version: 2.1
+Name: easymerge
+Version: 0.4
+Summary: A simple Python library for merging dataframes accommodating variations in language, spelling, and typos. 
+Home-page: UNKNOWN
+Author: Ethan Mai
+Author-email: iam.ethanmai@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+
+## EasyMerge: DataFrame Merger
+
+### Overview
+
+The `merge` function in this Python library facilitates the iterative merging of multiple DataFrames based on a specified column. This functionality is particularly useful when dealing with diverse datasets that may contain variations in language, spelling, or typos.
+
+### Installation
+
+You can install the library using pip:
+
+```bash
+pip install easymerge
+```
+
+### Usage
+Consider the following example where we have multiple DataFrames containing information about countries:
+
+Dataframe 1:
+
+| Country | Capital       |
+|-------------------|---------------|
+| USA               | Washington DC|
+| China             | Beijing       |
+| India             | New Delhi     |
+| FrAnce            | Paris         |
+| Canada            | Ottawa        |
+
+Dataframe 2:
+
+| Country | Population (in Millions) |
+|-------------------|---------------------------|
+| Canada            | 38.25                     |
+| United States     | 331.90                    |
+| China             | 1410.78                   |
+| Indía             | 1417.00                   |
+
+
+Dataframe 3:
+
+| Country | Continent     |
+|-------------------|---------------|
+| UsA               | North America|
+| ChinA             | Asia          |
+| indIa             | Asia          |
+| france            | Europe        |
+| CaNada            | North America|
+
+
+
+We can merge these DataFrames using the merge function:
+
+```python
+
+from easymerge import merger
+import pandas as pd
+
+# Define the DataFrames
+df1 = pd.DataFrame({
+'Country': ['USA', 'China', 'India','FrAnce', 'Canada'],
+'Capital': ['Washington DC', 'Beijing', 'New Delhi', 'Paris', 'Ottawa']
+})
+
+df2 = pd.DataFrame({
+'Country': ['canada','United States', 'China', 'Indía'],=
+'Population (in Millions)': [38.25, 331.9, 1410.78, 1417]
+})
+
+df3 = pd.DataFrame({
+'Country': ['UsA', 'ChinA', 'indIa','france', 'CaNada'],
+'Continent ': ['North America', 'Asia', 'Asia', 'Europe', 'North America']
+})
+
+# Perform iterative merging
+merged_df = merger.merge(df1, df2, df3, column_name='Country')
+
+print(merged_df)
+
+
+```
+
+
+This code will merge the provided DataFrames based on the "Country" column, accounting for variations in case and spelling. The resulting DataFrame will contain all the information merged based on the specified column.
+
+Merged Dataframe:
+
+| Country | Continent     | Population (in Millions) | Capital       |
+|-------------------|---------------|--------------------------|---------------|
+| USA               | North America| 331.90                   | Washington DC|
+| China             | Asia          | 1410.78                  | Beijing       |
+| India             | Asia          | 1417.00                  | New Delhi     |
+| FrAnce            | Europe        | NaN                      | Paris         |
+| Canada            | North America| 38.25                    | Ottawa        |
+
+
