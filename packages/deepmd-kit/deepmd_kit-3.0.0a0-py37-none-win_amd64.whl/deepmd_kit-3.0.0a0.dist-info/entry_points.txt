@@ -1,0 +1,12 @@
+[lammps.plugins]
+deepmd = deepmd.tf.lmp:get_op_dir
+
+[dpgui]
+DeePMD-kit = deepmd.utils.argcheck:gen_args
+
+[dpdata.plugins]
+deepmd_driver = deepmd.driver:DPDriver
+
+[console_scripts]
+dp = deepmd.main:main
+
