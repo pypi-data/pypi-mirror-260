@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: nomw
+Version: 0.0.1.dev20240303105449
+Summary: Node-On-My-Watch (NOMW) is a utility for keeping K8S EC2 nodes fresh by killing them off while ensuring the running workload remains stable
+Home-page: https://github.com/karellen/node-on-my-watch
+Author: Karellen, Inc.
+Author-email: supervisor@karellen.co
+Maintainer: Karellen, Inc., Arcadiy Ivanov
+Maintainer-email: supervisor@karellen.co,arcadiy@karellen.co
+License: Apache License, Version 2.0
+Project-URL: Bug Tracker, https://github.com/karellen/node-on-my-watch/issues
+Project-URL: Documentation, https://github.com/karellen/node-on-my-watch/
+Project-URL: Source Code, https://github.com/karellen/node-on-my-watch/
+Keywords: kubernetes k8s kube AWS node
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Environment :: Console
+Classifier: Topic :: Utilities
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: System :: Clustering
+Classifier: Topic :: System :: Networking
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 4 - Beta
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: boto3 ~=1.34
+Requires-Dist: coloredlogs ~=15.0
+Requires-Dist: gevent >=21.1.2
+Requires-Dist: json-log-formatter ~=0.3
+Requires-Dist: kubernetes ~=29.0
+Requires-Dist: platformdirs ~=4.2
+Requires-Dist: requests ~=2.25
+
+# Node-On-My-Watch (NOMW)
+
+[![Gitter](https://img.shields.io/gitter/room/karellen/lobby?logo=gitter)](https://gitter.im/karellen/Lobby)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/karellen/node-on-my-watch/node-on-my-watch.yml?branch=master)](https://github.com/karellen/node-on-my-watch/actions/workflows/node-on-my-watch.yml)
+[![Coverage Status](https://img.shields.io/coveralls/github/karellen/node-on-my-watch/master?logo=coveralls)](https://coveralls.io/r/karellen/node-on-my-watch?branch=master)
+
+[![Node-On-My-Watch Version](https://img.shields.io/pypi/v/nomw?logo=pypi)](https://pypi.org/project/nomw/)
+[![Node-On-My-Watch Python Versions](https://img.shields.io/pypi/pyversions/nomw?logo=pypi)](https://pypi.org/project/nomw/)
+[![Node-On-My-Watch Downloads Per Day](https://img.shields.io/pypi/dd/nomw?logo=pypi)](https://pypi.org/project/nomw/)
+[![Node-On-My-Watch Downloads Per Week](https://img.shields.io/pypi/dw/nomw?logo=pypi)](https://pypi.org/project/nomw/)
+[![Node-On-My-Watch Downloads Per Month](https://img.shields.io/pypi/dm/nomw?logo=pypi)](https://pypi.org/project/nomw/)
+
+## Notices
+
+### Beta Software
+
+While fully functional in the current state and used in production, this software is in **BETA**.
+Documentation at this stage is basically non-existent.
+
+### License
+
+The product is licensed under the Apache License, Version 2.0. Please see LICENSE for further details.
+
+### Warranties and Liability
+
+Node-On-My-Watch is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT,
+MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of
+using or redistributing Node-On-My-Watch and assume any risks associated with doing so.
+
+### Trademarks
+
+"Node-On-My-Watch" and "NOMW" are trademarks or registered trademarks of Karellen, Inc. 
+All other trademarks are property of their respective owners.
+
+## Problem Statement
+
+## Solution
+
+## Using Node-On-My-Watch with Docker
+
+A simple example is as follows:
+```
+$ docker run -t ghcr.io/karellen/node-on-my-watch:latest
+```
+
+## Using Node-On-My-Watch on MacOS
+
+```
+$ brew install python3.11
+$ pip3.11 install nomw
+$ nomw --version
+```
