@@ -1,0 +1,5 @@
+print("-" * 80)
+print("WARNING!")
+print("You've installed 'color-science', a protective placeholder package.")
+print("Seeking color science utilities? Consider 'colour-science' instead.")
+print("-" * 80)
