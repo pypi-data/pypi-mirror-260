@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: LAVASET
+Version: 0.1.0
+Summary: LAVASET: Latent Variable Stochastic Ensemble of Trees. An ensemble method for correlated datasets with spatial, spectral, and temporal dependencies
+Home-page: https://github.com/melkasapi/LAVASET
+Author: Melpomeni Kasapi
+Author-email: mk218@ic.ac.uk
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: numpy
+Requires-Dist: setuptools
+Requires-Dist: scipy
+Requires-Dist: cython
+Requires-Dist: joblib
+
+# LAVASET
+
+LAVASET (Latent Variable Stochastic Ensemble of Trees) is a Python package designed for ensemble learning in datasets with complex spatial, spectral, and temporal dependencies. It leverages advanced machine learning techniques to provide robust predictions, making it ideal for applications in remote sensing, time-series analysis, and beyond.
+
+## Features
+
+- **Efficient Handling of Correlated Data**: Optimized for datasets where traditional models struggle.
+- **Cython-Powered Performance**: Critical computations are implemented in Cython for efficiency.
+- **Cross-Platform Compatibility**: Tested and deployable across Linux, macOS, and Windows.
+
+## Installation
+
+You can install LAVASET directly from PyPI:
+
+```bash
+pip install lavaset
+```
+
+## Requirements
+- Python >= 3.7
+- NumPy
+- pandas
+- scikit-learn
+- scipy
+- Cython
+- joblib
+
+Cython and NumPy are incorporated as build dependencies for LAVASET and are pre-installed before the package setup. If you encounter any issues during installation, especially regarding Cython or NumPy, consider installing these packages manually before proceeding with the LAVASET installation.
+
+## Contributing
+
+Contributions to LAVASET are welcome! Please refer to the contributing guidelines for more information.
+
+## License
+
+LAVASET is released under the MIT License. See the LICENSE file for more details.
+
+## Contact
+
+For questions or feedback, please contact Melpi Kasapi at mk218@ic.ac.uk.
+
+Visit our [GitHub repository](https://github.com/melkasapi/LAVASET) for more information and updates.
