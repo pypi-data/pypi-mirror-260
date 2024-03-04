@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "aegis-web3-cli"
+version = "0.0.2"
+description = ""
+authors = []
+readme = "README.md"
+packages = [
+    { include = "args.py", from = "aegis-web3-cli" },
+    { include = "cli.py", from = "aegis-web3-cli" },
+    { include = "config.py", from = "aegis-web3-cli" },
+    { include = "controller.py", from = "aegis-web3-cli" },
+    { include = "helpers.py", from = "aegis-web3-cli" },
+    { include = "model.py", from = "aegis-web3-cli" },
+]
+
+[tool.poetry.dependencies]
+clidantic = "^0.1.0"
+colorama = "^0.4.6"
+datasets = "^2.16.1"
+hexbytes = "^0.2.3"
+python = "^3.11"
+pydantic = "1.10.14"
+py-solc-x = "^2.0.2"
+numpy = "^1.26.3"
+pyevmasm = "^0.2.3"
+scikit-learn = "^1.4.0"
+slither = "^0.3.0"
+solc = "^0.0.0a0"
+torch = "^2.2.0"
+torchvision = "^0.17.0"
+ctransformers = "^0.2.27"
+accelerate = "^0.26.1"
+transformers = { extras = ["torch"], version = "^4.37.2" }
+bitsandbytes = "^0.42.0"
+inquirer = "^3.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+aegis = "aegis.app:main"
