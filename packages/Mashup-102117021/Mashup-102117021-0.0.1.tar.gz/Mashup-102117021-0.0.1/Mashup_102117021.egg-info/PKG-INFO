@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: Mashup-102117021
+Version: 0.0.1
+Summary: Mashup of audio files from youtube videos.
+Author: intrinsicvardhan (Aaditya Vardhan)
+Author-email: intrinsicvardhan@gmail.com
+Keywords: mashup,youtube,web-scraping,audio-processing,audio-merging,audio-cutting,audio-mixing,audio-editing,audio-manipulation,audio-concatenation
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: selenium
+Requires-Dist: pydub
+Requires-Dist: pytube
+
+# Mashup-102117021
+
+## Description
+Mashup is a Python package for creating mashups of audio files from YouTube videos. It allows you to download audio from YouTube videos related to a specific artist, cut them to a specified duration, and merge them into one audio file.
+
+## Installation
+You can install Mashup-102117021 via package manager **pip**:
+
+`pip install Mashup-102117021`
+
+
+## Usage
+To use Mashup, you can execute a Python script with the following arguments:
+- `search_keyword`: The name of the artist or the search keyword to find related YouTube videos.
+- `num_of_videos`: The number of YouTube videos to download audio from.
+- `audio_duration`: The duration (in seconds) of the audio clips to be cut from each video. (Must be >= 20 seconds)
+- `output_file_name`: The name of the output audio file.
+
+Here's an example of how to use Mashup:
+
+```bash
+python sample.py "eminem" 20 20 output.mp3
+```
+
+
+## Dependencies:
+-   Selenium
+-   Pydub
+-   Pytube
+
