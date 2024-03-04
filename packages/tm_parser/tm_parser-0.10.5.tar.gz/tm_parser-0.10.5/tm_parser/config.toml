@@ -1,0 +1,266 @@
+OUTPUT_FORMAT = "yaml"
+OUTPUT_TO_FILE = false
+
+
+PARTIAL_MB_HEADERS = [
+    "Start Date",
+    "Last Progress",
+    "Counselor",
+    "BSA ID",
+    "Open Reqts",
+    "Remarks",
+]
+
+OA_HEADERS = [
+    "OA Election",
+    "Call Out",
+    "Ordeal",
+    "Brotherhood",
+    "Vigil",
+    "Vigil Name",
+]
+
+ACTIVITY_HEADERS = [
+    "Miles Hiking",
+    "Service Hours",
+    "Total Nights Camping",
+]
+
+SECTION_MARKERS = [
+    "Completed Ranks",
+    "Merit Badges",
+    "Partial Merit Badges",
+    "Activity Totals",
+    "Special Awards",
+    "Order of the Arrow",
+    "mic-o-say",
+    "Training Courses",
+    "Leadership",
+    "National Outdoor Awards",
+    "verified",
+]
+
+TEXT_FIELDS = [
+    "Name",
+    "Email",
+    "Patrol",
+    "Phone",
+    "Rank",
+    "Age",
+    "Position",
+    "BSA ID",
+]
+
+DATE_FIELDS = ["Date", "Date of Birth", "Date Joined Unit"]
+
+RANKS = [
+    "Scout",
+    "Tenderfoot",
+    "Second Class",
+    "First Class",
+    "Star",
+    "Life",
+    "Eagle",
+    "Bronze Palm",
+    "Gold Palm",
+    "Silver Palm",
+]
+
+UPPER_RANKS = [
+    "Star",
+    "Life",
+    "Eagle",
+]
+
+[STAR] 
+"Eagle Required" = 4
+"Total MB" = 6
+"Participation" =  "01"
+"Scout Spirit" = "02"
+"Service Project" = "04"
+"Position of Responsibility" = "05"
+"Child Protect/Cyber Chip" = "06"
+"Scoutmaster Conference" = "07"
+"Board of Review" = "08"
+
+[LIFE]
+"Eagle Required" = 7
+"Total MB" = 11
+"Participation" =  "01"
+"Scout Spirit" = "02"
+"Service Project" = "04"
+"Position of Responsibility" = "05"
+"Teach using EDGE Method" = "06"
+"Scoutmaster Conference" = "07"
+"Board of Review" = "08"
+
+[EAGLE]
+"Eagle Required" = 14
+"Total MB" = 21
+"Participation" = "01"
+"Scout Spirit" = "02"
+"Position of Responsibility" = "04"
+"Eagle Project" = "05"
+"Scoutmaster Conference" = "06"
+"Board of Review" = "07"
+
+OUTPUT_RANKS = [
+    "Scout",
+    "Tenderfoot",
+    "Second Class",
+    "First Class",
+    "Star",
+    "Life",
+    "Eagle",
+]
+
+CSV_HEADER = [
+    "Scout",
+    "Age",
+    "Patrol",
+    "Current Rank",
+    "Rank",
+    "Code",
+    "Date Earned",
+]
+
+MB_NAMES = [
+    "American Business",
+    "American Cultures",
+    "American Heritage",
+    "American Labor",
+    "Animal Science",
+    "Animation",
+    "Archaeology",
+    "Archery",
+    "Architecture",
+    "Art",
+    "Astronomy",
+    "Athletics",
+    "Automotive Maintenance",
+    "Aviation",
+    "Backpacking",
+    "Basketry",
+    "Bird Study",
+    "Bugling",
+    "Camping",
+    "Canoeing",
+    "Chemistry",
+    "Chess",
+    "Citizenship in Society",
+    "Citizenship in the Community",
+    "Citizenship in the Nation",
+    "Citizenship in the World",
+    "Climbing",
+    "Coin Collecting",
+    "Collections",
+    "Communication",
+    "Composite Materials",
+    "Cooking",
+    "Crime Prevention",
+    "Cycling",
+    "Dentistry",
+    "Digital Technology",
+    "Disabilities Awareness",
+    "Dog Care",
+    "Drafting",
+    "Electricity",
+    "Electronics",
+    "Emergency Preparedness",
+    "Energy",
+    "Engineering",
+    "Entrepreneurship",
+    "Environmental Science",
+    "Exploration",
+    "Family Life",
+    "Farm Mechanics",
+    "Fingerprinting",
+    "Fire Safety",
+    "First Aid",
+    "Fish and Wildlife Management",
+    "Fishing",
+    "Fly Fishing",
+    "Forestry",
+    "Game Design",
+    "Gardening",
+    "Genealogy",
+    "Geocaching",
+    "Geology",
+    "Golf",
+    "Graphic Arts",
+    "Health Care Professions",
+    "Hiking",
+    "Home Repairs",
+    "Horsemanship",
+    "Indian Lore",
+    "Insect Study",
+    "Inventing",
+    "Journalism",
+    "Kayaking",
+    "Landscape Architecture",
+    "Law",
+    "Leatherwork",
+    "Lifesaving",
+    "Mammal Study",
+    "Metalwork",
+    "Mining in Society",
+    "Model Design and Building",
+    "Motorboating",
+    "Moviemaking",
+    "Music",
+    "Nature",
+    "Nuclear Science",
+    "Oceanography",
+    "Orienteering",
+    "Painting",
+    "Personal Fitness",
+    "Personal Management",
+    "Pets",
+    "Photography",
+    "Pioneering",
+    "Plant Science",
+    "Plumbing",
+    "Pottery",
+    "Programming",
+    "Public Health",
+    "Public Speaking",
+    "Pulp and Paper",
+    "Radio",
+    "Railroading",
+    "Reading",
+    "Reptile and Amphibian Study",
+    "Rifle Shooting",
+    "Robotics",
+    "Rowing",
+    "Safety",
+    "Salesmanship",
+    "Scholarship",
+    "Scouting Heritage",
+    "Scuba Diving",
+    "Sculpture",
+    "Search and Rescue",
+    "Shotgun Shooting",
+    "Signs, Signals and Codes",
+    "Skating",
+    "Small-Boat Sailing",
+    "Snow Sports",
+    "Soil and Water Conservation",
+    "Space Exploration",
+    "Sports",
+    "Stamp Collecting",
+    "Surveying",
+    "Sustainability",
+    "Swimming",
+    "Textile",
+    "Theater",
+    "Traffic Safety",
+    "Truck Transportation",
+    "Veterinary Medicine",
+    "Water Sports",
+    "Weather",
+    "Welding",
+    "Whitewater",
+    "Wilderness Survival",
+    "Wood Carving",
+    "Woodwork",
+    ]
