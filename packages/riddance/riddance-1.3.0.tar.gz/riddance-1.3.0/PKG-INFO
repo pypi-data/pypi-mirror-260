@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: riddance
+Version: 1.3.0
+Summary: Designed to remove bloatware and augment freedom
+Project-URL: Repository, https://github.com/rylan-justice/riddance
+Author: Rylan Justice
+License: GPL-3.0-or-later
+License-File: COPYING
+Keywords: debloat,privacy,python,riddance
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: System :: Operating System
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# riddance
+
+Designed to remove bloatware and augment freedom
+
+## Installation
+
+```sh
+pip install riddance
+```
+
+## Usage
+
+```sh
+python -m riddance [option]
+```
+
+| Option            | Description                                          |
+| :---              | :---                                                 |
+| `-h`, `--help`    | display help                                         |
+| `-v`, `--version` | show version                                         |
+| `-l`, `--list`    | list compatible operating systems and their versions |
+| `-c`, `--check`   | check operating system and version compatibility     |
+| `-d`, `--debloat` | debloat a compatible operating system                |
+
+## License
+
+[GNU General Public License v3.0 or later](https://github.com/rylan-justice/riddance/blob/main/COPYING)
