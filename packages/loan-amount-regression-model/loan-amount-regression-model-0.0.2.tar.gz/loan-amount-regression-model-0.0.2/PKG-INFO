@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: loan-amount-regression-model
+Version: 0.0.2
+Summary: regression model package from Train In Data.
+Home-page: https://github.com/chibuikeeugene/loan-amount-prediction/
+Author: Eugene
+Author-email: chibuikeeugene@gmail.com
+License: BSD-3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+
+# LOAN AMOUNT PREDICTION  
+
+A machine learning program that predicts the amount of loan to be issued as seen in the dataset given. This program uses a **simple linear model sgdregressor algorithm** to predict the likely loan user should be eligible for.  
+
+## Data set and its description  
+
+| Data              | Description                            |
+|-------------------|----------------------------------------|
+| Loan_ID           | Unique loan request identifier         |
+| Gender            | sex of the user                        |
+| Married           | Marital status                         |
+| Dependents        | Number of dependents                   |
+| Education         | if the candidate is graduate or not    |
+| Self_Employed     | if the user is working for himself     |
+| ApplicantIncome   | total income of the candidate          |
+| CoapplicantIncome | total income of the borrower's partner |
+| LoanAmount        | Amount requested                       |
+| Loan_Amount_Term  | in months                              |
+| Credit_History    | 1(okay or eligible), 0(Not eligible)   |
+| Property_Area     | nature of where the borrower live      |
+| Loan_Status       | if loan was granted or not             |
+
+## Dependencies and packages  
+
+1. numpy>=1.20.0,<1.21.0
+2. pandas>=1.3.5,<1.4.0
+3. pydantic>=1.8.1,<1.9.0
+4. scikit-learn>=1.0.2,<1.1.0
+5. strictyaml>=1.3.2,<1.4.0
+6. ruamel.yaml==0.16.12
+7. feature-engine>=1.0.2,<1.6.2
+8. joblib>=1.0.1,<1.1.0
+
+## Source code link  
+
+Source code link:
+[Github link](https://github.com/chibuikeeugene/loan-amount-prediction.git)
