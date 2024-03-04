@@ -1,0 +1,73 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+    "hatchling",
+]
+
+[project]
+name = "aa-forum"
+description = "Simple forum for Alliance Auth"
+readme = "README.md"
+keywords = [
+    "allianceauth",
+    "eveonline",
+    "forum",
+]
+license = {file = "LICENSE"}
+authors = [
+    { name = "Peter Pfeufer", email = "develop@ppfeufer.de" },
+    { name = "Erik Kalkoken", email = "kalkoken87@gmail.com" },
+]
+requires-python = ">=3.8"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dynamic = [
+    "version",
+]
+dependencies = [
+    "allianceauth>=4.0.0b2",
+    "allianceauth-app-utils>=1.24",
+    "dhooks-lite>=1.1",
+    "django-ckeditor-5>=0.2.11",
+    "unidecode>=1.3.7",
+]
+[project.optional-dependencies]
+tests-allianceauth-latest = [
+    "aa-timezones",
+    "allianceauth-discordbot",
+    "coverage",
+    "django-testdata",
+    "django-webtest",
+    "Faker",
+    "python-dateutil",
+]
+[project.urls]
+Changelog = "https://github.com/ppfeufer/aa-forum/blob/master/CHANGELOG.md"
+Documentation = "https://github.com/ppfeufer/aa-forum/blob/master/README.md"
+Donations = "https://ko-fi.com/ppfeufer"
+Homepage = "https://github.com/ppfeufer/aa-forum"
+Source = "https://github.com/ppfeufer/aa-forum.git"
+Tracker = "https://github.com/ppfeufer/aa-forum/issues"
+
+[tool.hatch.build]
+include = [
+    "/aa_forum",
+]
+
+[tool.hatch.version]
+path = "aa_forum/__init__.py"
