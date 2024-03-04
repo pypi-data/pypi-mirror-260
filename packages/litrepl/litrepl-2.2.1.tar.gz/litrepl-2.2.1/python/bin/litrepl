@@ -1,0 +1,122 @@
+#!/usr/bin/env python
+
+import litrepl
+from litrepl import *
+from litrepl import __version__, eval_section_
+from os import chdir
+from subprocess import check_output, DEVNULL, CalledProcessError
+from argparse import ArgumentParser
+from tempfile import mkdtemp
+
+LOCSHELP='(N|$|N..N)[,(...)] where N is either: number,$,ROW:COL'
+
+if __name__=='__main__':
+  ap=ArgumentParser(prog='litrepl.py')
+  ap.add_argument('-v','--version',action='version',version=__version__ or '?',help='Print the version')
+  ap.add_argument('--filetype',metavar='STR',default='markdown',help='markdown|tex')
+  ap.add_argument('--interpreter',metavar='EXE',default='auto',help='python|ipython|auto')
+  ap.add_argument('--timeout-initial',type=str,metavar='SEC',default='inf')
+  ap.add_argument('--timeout-continue',type=str,metavar='SEC',default='inf')
+  ap.add_argument('-d','--debug',type=int,metavar='LEVEL',default=0)
+  ap.add_argument('--auxdir',type=str,metavar='DIR',default=None,help="Directory to store auxilary files")
+  ap.add_argument('-C','--workdir',type=str,metavar='DIR',default=None,help="Directory to run from")
+  ap.add_argument('-e','--exception-exit',type=str,metavar='ERRCODE',default=None, help='Return error code at first exception')
+  ap.add_argument('--standalone-session',action='store_true',help='Do not reuse the interpreter session of the current directory')
+  sps=ap.add_subparsers(dest='command',help='commands to execute')
+  sps.add_parser('start',help='Start the interpreter in the background')
+  sps.add_parser('stop',help='Stop the interpreter')
+  sps.add_parser('restart',help='Restart the interpreter')
+  sps.add_parser('parse',help='Parse the input file (diagnostics)')
+  sps.add_parser('parse-print',help='Parse and print the input file (diagnostics, no changes are expected)')
+  spes=sps.add_parser('status',help='Print the status of the worker')
+  spes.add_argument('--tty',action='store_true',help='Read from interactive terminal')
+  apes=sps.add_parser('eval-section',help='Evaluate the section under the cursor')
+  apes.add_argument('--line',type=int,default=None)
+  apes.add_argument('--col',type=int,default=None)
+  eps=sps.add_parser('eval-sections',help='Evaluate one or more sections by location')
+  eps.add_argument('locs',metavar='LOCS',default='*', help=LOCSHELP)
+  ecs=sps.add_parser('eval-code',help='Evaluate the given lines of code')
+  repl=sps.add_parser('repl',help='Connect interactive shell to the terminal')
+  ips=sps.add_parser('interrupt',help='Raise KeyboardInterrupt exception to the interpreter')
+  ips.add_argument('locs',metavar='LOCS',default='*',help=LOCSHELP)
+  a=ap.parse_args(sys.argv[1:])
+
+  a.timeout_initial=float(a.timeout_initial)
+  a.timeout_continue=float(a.timeout_continue)
+
+  if a.debug>0:
+    litrepl.eval.DEBUG=True
+    litrepl.base.DEBUG=True
+
+  if a.workdir:
+    chdir(a.workdir)
+
+  if a.standalone_session:
+    if a.auxdir is None:
+      a.auxdir=mkdtemp(prefix="litrepl-auxdir")
+    else:
+      assert not running(a), \
+        f"Explicitly-specified auxdir ({a.auxdir}) already contains a running session"
+
+  fns=pipenames(a)
+  if a.command=='start':
+    assert not a.standalone_session, f"`--new-session` is not compatible with `{a.commandd}`"
+    start(a)
+  elif a.command=='stop':
+    assert not a.standalone_session, f"`--new-session` is not compatible with `{a.commandd}`"
+    stop(a)
+  elif a.command=='restart':
+    assert not a.standalone_session, f"`--new-session` is not compatible with `{a.commandd}`"
+    stop(a); start(a)
+  elif a.command=='parse':
+    assert not a.standalone_session, f"`--new-session` is not compatible with `{a.commandd}`"
+    t=parse_(GRAMMARS[a.filetype])
+    print(t.pretty())
+    exit(0)
+  elif a.command=='parse-print':
+    sr0=SecRec(set(),{})
+    ecode=eval_section_(a,parse_(GRAMMARS[a.filetype]),sr0)
+    exit(0 if ecode is None else ecode)
+  elif a.command=='eval-section':
+    t=parse_(GRAMMARS[a.filetype])
+    nsecs=SecRec(set(solve_cpos(t,[(a.line,a.col)]).cursors.values()),{})
+    ecode=eval_section_(a,t,nsecs)
+    exit(0 if ecode is None else ecode)
+  elif a.command=='eval-sections':
+    t=parse_(GRAMMARS[a.filetype])
+    nsecs=solve_sloc(a.locs,t)
+    ecode=eval_section_(a,t,nsecs)
+    exit(0 if ecode is None else ecode)
+  elif a.command=='repl':
+    if not running(a) or a.standalone_session:
+      start(a)
+    print("Opening the interpreter terminal (NO PROMPT, USE `Ctrl+D` TO EXIT)")
+    system(f"socat - 'PIPE:{fns.outp},flock-ex-nb=1!!PIPE:{fns.inp},flock-ex-nb=1'")
+    ecode=interpExitCodeNB(fns,notfound=200)
+    if a.standalone_session:
+      stop(a)
+    exit(0 if ecode is None else ecode)
+  elif a.command=='interrupt':
+    assert not a.standalone_session, f"`--new-session` is not compatible with `{a.commandd}`"
+    os.kill(int(open('_pid.txt').read()),SIGINT)
+    t=parse_(GRAMMARS[a.filetype])
+    sr=solve_sloc(a.locs,t)
+    sr.nsecs|=set(sr.pending.keys())
+    ecode=eval_section_(a,t,sr)
+    exit(ecode)
+  elif a.command=='eval-code':
+    if not running(a) or a.standalone_session:
+      start(a)
+    ss=settings(fns)
+    print(eval_code(a,fns,ss,sys.stdin.read()))
+    ecode=interpExitCodeNB(fns,notfound=200)
+    if a.standalone_session:
+      stop(a)
+    exit(0 if ecode is None else ecode)
+  elif a.command=='status':
+    ecode=status(a, __version__)
+    exit(0 if ecode is None else ecode)
+  else:
+    pstderr(f'Unknown command: {a.command}')
+    exit(1)
+
