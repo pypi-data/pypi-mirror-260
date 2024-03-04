@@ -1,0 +1,42 @@
+# Description: Liten AI Configuration file
+# Author: Liten AI
+# Date: 2022-02-22
+# Version: 0.0.1
+
+# Customer can change settings as per their requirements. All setting names starting with _
+# are reserved for internal use, and are not to be exposed to the user.
+openai:
+  # OpenAI API key to for API calls
+  api_key: "<insert openai apikey here>"
+  # Specify openai model to use
+  _model: "gpt-3.5-turbo"
+spark:
+  # Spark connect mode - local or remote
+  connect_mode : "local"  # local or remote
+  # Spark local IP where  master is running, do local[n] for n threaded master
+  # Spark remote URL where master is running is like sc://localhost:15002 for spark-connect-server
+  connect_url : "local[*]"
+liten:
+  # Liten Datalake URL - assumes litenlakehouse.py is here for file scheme
+  lakehouse_url: "file:///content/samplelogfiles/"
+  # log file path
+  _log_file: "litenai.log"
+  # Disable debug mode run
+  _debug_level: 0
+  # Request timeouts in seconds
+  _request_timeout_in_secs: 60
+  # Maximum tool calls sequence
+  _max_tool_calls_sequence: 3
+  # Liten Business Apps like chat appear on this port
+  _chat_port: 8210
+  # Liten Server Host
+  _server_host: "localhost"
+  # Liten Server Port
+  _server_port: 8220
+slack:
+  # Slack Bot Name
+  _bot_name: "Liten"
+  # Slack Bot Token
+  _bot_token: ""
+  # Websock app token
+  _app_token: ""
