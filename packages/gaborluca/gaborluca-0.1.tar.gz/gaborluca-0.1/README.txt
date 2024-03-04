@@ -1,0 +1,1 @@
+next_prime() will return the next prime number but if self=Flase in case that the number is already a prime number it will ignore that a search for the next one
