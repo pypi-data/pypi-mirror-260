@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: andromedaClient
+Version: 0.0.3
+Summary: A python package to interact with the Andromeda API of the Metropolitan Region Rhine-Neckar.
+Author-email: Julian Vetter <julian.vetter@m-r-n.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+
+# AndromedaClient
+
+AndromedaClient is a python client for interacting with the Andromeda API of the Rhine-Neckar Metropolitan Region.
+
+## Installation
+
+You can install AndromedaClient using pip:
+
+```bash
+pip install andromedaClient
+```
+
+## Usage
+
+First, import the AndromedaClient class and create a new client:
+
+```python
+from andromedaClient import AndromedaClient
+# username and password is only required for upload operations
+client = AndromedaClient('https://contextbroker.digitale-mrn.de', 'username', 'password')
+```
+
+You can then use the client to make requests to the Andromeda API:
+
+```python
+response = client.get('/entities/?type=Gemeinde')
+```
