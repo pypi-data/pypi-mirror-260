@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: rs1090
+Version: 0.1.2
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: msgpack >=1.0.8
+Requires-Dist: mypy >=1.8.0 ; extra == 'dev'
+Requires-Dist: pytest >=8.0.2 ; extra == 'dev'
+Requires-Dist: ruff >=0.3.0 ; extra == 'dev'
+Provides-Extra: dev
+Summary: Python binding to rs1090, a library to decode Mode S and ADS-B signals
+Keywords: aircraft,ADS-B,Mode-S,decoding
+Author: Xavier Olive <git@xoolive.org>
+Author-email: Xavier Olive <git@xoolive.org>
+License: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: repository, https://github.com/xoolive/rs1090
+
+# rs1090
+
+rs1090 is a Python binding to the [rs1090](https://docs.rs/rs1090/) Rust library to decode Mode S and ADS-B messages.
+
+It takes its inspiration from the Python [pyModeS](https://github.com/junzis/pyModeS) library. The direction ambitioned by rs1090 boil down to:
+
+- improving the performance of Mode S decoding in Python;
+- exporting trajectory data to cross-platform formats such as JSON or parquet;
+- providing efficient multi-receiver Mode S decoding;
+- serving real-time enriched trajectory data to external applications.
+
+## Installation
+
+```sh
+pip install rs1090
+```
+
+## Usage
+
+```pycon
+>>> import rs1090
+>>> rs1090.decode("8c4841753a9a153237aef0f275be")
+{'df': '17', 'icao24': '484175', 'bds': '06', 'NUCp': 7, 'groundspeed': 17.0, 'track': 92.8125, 'parity': 'odd', 'lat_cpr': 39195, 'lon_cpr': 110320}
+```
+
