@@ -1,0 +1,101 @@
+[tool.poetry]
+name = "convpandas"
+version = "0.3.5"  # `poetry-dynamic-versioning`を使ってGitHubのバージョンタグを取得している。変更不要
+description = "Convert file format with pandas"
+authors = ["Kurusugawa Computer Inc."]
+license = "MIT"
+keywords=["pandas", "csv","xlsx", "excel"]
+readme="README.md"
+repository="https://github.com/kurusugawa-computer/convert-fileformat-with-pandas.git"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Topic :: Utilities",
+    "Operating System :: OS Independent",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "*"
+openpyxl = "*"
+
+[tool.poetry.dev-dependencies]
+ruff = "^0.3"
+mypy = "^1"
+pytest = "^7"
+
+[tool.poetry.scripts]
+convpandas = "convpandas.__main__:cli"
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs = true
+
+
+[tool.ruff]
+line-length = 150
+target-version = "py311"
+
+[tool.ruff.lint]
+ignore = [
+    "G004", # `logging-f-string` : loggingでf-stringを使いたいので無視する
+    "PD901", #すでに`df`という変数をいろんなところで使っているため
+    "PD002", #すでにpandasで`inplace=True`はいろんなところで使っているため
+    "RUF001", # 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF002",# 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF003",# 全角記号など`ambiguous unicode character`も使いたいため
+    "PLR2004", # magic-value-comparison: listのサイズで判定するときがよくあるため
+    "ANN101", # missing-type-self: 引数selfには型ヒントは付けていないため
+    "ANN102", # missing-type-cls: 引数clsには型ヒントは付けていないため
+    "ANN002", # missing-type-args
+    "ANN003", # missing-type-kwargs
+    "ERA", # : 役立つこともあるが、コメントアウトしていないコードも警告されるので無視する
+
+
+    # 以下のルールはコードに合っていないので無効化した
+    "RSE", # flake8-raise
+    "D", # pydocstyle, Docstringを中途半端にしか書いていないので、除外する
+    "C90", # mccabe
+    "T20", # flake8-print
+    "SLF", #  flake8-self
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "TRY", # tryceratops
+    "COM", # flake8-commas
+    "S", # flake8-bandit
+    "EM",#flake8-errmsg
+    "EXE", # flake8-executable
+    "ICN", # flake8-import-conventions
+    "RET",#flake8-return
+    "SIM",#flake8-simplify
+    "TCH", # flake8-type-checking
+    "PTH", #pathlibを使わないコードが多いので、除外する
+    "ISC", #flake8-implicit-str-concat
+    "N", # pep8-naming
+    "PT", # flake8-pytest-style
+]
+
+
+select = [
+    "ALL"
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 10
+
+
+
+
+
+[tool.poetry-dynamic-versioning]
+enable = false
+format = "{base}"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
