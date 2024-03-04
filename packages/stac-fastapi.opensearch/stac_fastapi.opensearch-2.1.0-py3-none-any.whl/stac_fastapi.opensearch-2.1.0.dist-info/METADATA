@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: stac-fastapi.opensearch
+Version: 2.1.0
+Summary: Opensearch stac-fastapi backend.
+Home-page: https://github.com/stac-utils/stac-fastapi-elasticsearch-opensearch
+License: MIT
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: stac-fastapi.core ==2.1.0
+Requires-Dist: opensearch-py ==2.4.2
+Requires-Dist: opensearch-py[async] ==2.4.2
+Requires-Dist: uvicorn
+Requires-Dist: starlette
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pytest-asyncio ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: requests ; extra == 'dev'
+Requires-Dist: ciso8601 ; extra == 'dev'
+Requires-Dist: httpx ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: mkdocs ; extra == 'docs'
+Requires-Dist: mkdocs-material ; extra == 'docs'
+Requires-Dist: pdocs ; extra == 'docs'
+Provides-Extra: server
+Requires-Dist: uvicorn[standard] ==0.19.0 ; extra == 'server'
+
+# stac-fastapi-opensearch 
