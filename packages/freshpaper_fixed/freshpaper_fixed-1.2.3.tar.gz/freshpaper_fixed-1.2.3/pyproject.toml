@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "freshpaper_fixed"
+version = "1.2.3"
+description = "Program to automatically set Bing's `Photo of the day`, NASA, NAT_Geo or Unsplash_Random as your Desktop's wallpaper."
+authors = ["Rohit Gupta <rohitgtech+git@gmail.com>", "ybzhao1989@hotmail.com"]
+license = "BSD-3-Clause"
+readme = "README.rst"
+packages = [{ include = "freshpaper.py" }]
+homepage = "https://github.com/z7z8th/freshpaper"
+repository = "https://github.com/z7z8th/freshpaper"
+keywords = ["wallpaper changer", "wallpaper", "bing", "bing wallpaper", "nasa-apod"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Topic :: Utilities",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+]
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+click = "*"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+
+[tool.poetry.scripts]
+freshpaper = "freshpaper:main"
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+priority = "primary"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
