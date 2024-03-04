@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "cormo"
+version = "0.1.0"
+description = "General-purpose deterministic and Monte Carlo simulator"
+authors = ["Armand Rego <armand@weirdsheeplabs.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ['monte carlo', 'simulation', 'flow management']
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+]
+packages = [
+    { include = "cormo"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+scipy = "^1.12.0"
+matplotlib = "^3.8.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.0"
+pytest-cov = "^4.1.0"
+pytest-xdist = "^3.5.0"
+pre-commit = "^3.6.2"
+
+[tool.pytest.ini_options]
+addopts = "--cov . -v --cov-report=html"
+python_files = ["tests.py", "test_*.py",  "*_tests.py"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+per-file-ignores = {'*/__init__.py' = ['F401']}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
