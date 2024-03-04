@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: atb_lib
+Version: 0.6.8
+Summary: A Python package for Advanced Trading Bot
+Home-page: https://github.com/YuriyTigiev/atb_lib
+Author: Yuriy Tigiev
+Author-email: yuriy.tigiev@outlook.com
+License: MIT
+Project-URL: Bug Reports, https://github.com/YuriyTigiev/atb_lib/issues
+Project-URL: Source, https://github.com/YuriyTigiev/atb_lib
+Keywords: crypto exchange trading bot package
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: colorlog >=6.8.2
+Requires-Dist: aio-pika >=9.4.0
+Requires-Dist: asyncio >=3.4.3
+Requires-Dist: importlib-metadata >=7.0.1
+Requires-Dist: uvicorn[standard] >=0.27.1
+Requires-Dist: fastapi >=0.109.2
+Requires-Dist: websockets >=12.0
+Requires-Dist: pip >=24.0.0
+Requires-Dist: setuptools >=69.1.1
+Requires-Dist: arrow >=1.3.0
+Requires-Dist: msgpack >=1.0.7
+Requires-Dist: wheel >=0.42.0
+Requires-Dist: starlette >=0.36.3
+
+1) **Title**: ATB Library
+2) **Description**: This package serves as an auxiliary library for solving Advanced Trading Bot (ATB) challenges.
+3) **Installation**: 
+   ```bash
+   pip install atb_lib
+   ```
+4) **Usage Examples**: This package is intended for internal use.
+5) **Functionality**: It includes features for working with crypto exchange websockets, RabbitMQ, and more.
+6) **Requirements**:
+   - `colorlog>=6.8.2`: For colored logging output.
+   - `aio_pika>=9.4.0`: For RabbitMQ support.
+   - `asyncio>=3.4.3`: For async/await syntax support.
+   - `importlib-metadata>=7.0.1`: For metadata handling, like versions.
+   - `uvicorn[standard]>=0.27.1`: ASGI server for FastAPI.
+   - `fastapi>=0.109.2`: Web framework for building APIs.
+   - `websockets>=12.0`: For websocket support.
+   - `pip>=24.0.0`: Package installer for Python.
+   - `setuptools>=69.1.1`: Python setup tool.
+   - `arrow>=1.3.0`: For date time functions.
+   - `msgpack>=1.0.7`: For efficient data serialization.
+   - `wheel>=0.42.0`: For building the wheel package.
+   - `starlette>=0.36.3`: For FastAPI web framework.
+7) **License**: MIT License.
+8) **Contact Information**: [GitHub - yuriytigiev](https://github.com/yuriytigiev)
+9) **Acknowledgments and References**: Special thanks to the open-source community and contributors who made this project possible.
