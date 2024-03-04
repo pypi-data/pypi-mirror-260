@@ -1,0 +1,10 @@
+{% load static %}
+
+{% with item=data.items.0 %}
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ item.ndr_image.image.url }}');  background-position: center;">
+      <div class="container">
+        <h1 class="display-4">{{ item.title }}</h1>
+        <p class="lead">{{ item.text }}</p>
+      </div>
+    </div>
+{% endwith %}

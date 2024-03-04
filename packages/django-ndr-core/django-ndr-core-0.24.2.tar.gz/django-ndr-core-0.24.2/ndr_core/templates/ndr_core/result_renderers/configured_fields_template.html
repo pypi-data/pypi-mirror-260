@@ -1,0 +1,12 @@
+{% extends 'ndr_core/result_renderers/base_renderer.html' %}
+{% load ndr_utils %}
+{% load i18n %}
+
+{% block search_result_content %}
+   {{ card_content }}
+{% endblock %}
+
+{% block citation_info %}
+    {% translate 'Cite:' %}
+    {{ citation }}
+{% endblock %}
