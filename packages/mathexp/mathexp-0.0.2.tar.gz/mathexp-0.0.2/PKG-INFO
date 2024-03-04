@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: mathexp
+Version: 0.0.2
+Summary: Mathematical Experiments
+Home-page: https://github.com/JWKennington/mathexp
+Author: J. W. Kennington
+Author-email: jameswkennington@gmail.com
+Project-URL: Bug Reports, https://github.com/JWKennington/mathexp/issues
+Project-URL: Funding, https://www.buymeacoffee.com/locallytrivial
+Project-URL: Source, https://github.com/JWKennington/mathexp
+Project-URL: Documentation, https://mathexp.readthedocs.io/en/latest/
+Keywords: symbolic math,combinatorics,finite groups
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: sympy
+Provides-Extra: dev
+Requires-Dist: check-manifest; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+
+# MATHematical EXPeriments: `mathexp`
+
+The `mathexp` repo contains a general set symbolic expression utilities, mostly for extending the capabilities of `sympy`. The repo also contains a set of executable scripts for performing various mathematical experiments. Caveat lector.
+
+## Installation
+
+```bash
+pip install mathexp
+```
+
+## Sample Usage
+
+### Working with integer partitions
+
+```python
+from maths.comb import partition
+
+partition.from_str('3+2+1')
+>> > IntegerPartition([3, 2, 1])
+```
+
+More documentation to come.
