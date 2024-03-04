@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: flask-fastauth
+Version: 0.1.0
+Summary: A utility for printing colored messages to the console.
+Home-page: https://github.com/sikandar1838/console
+Author: Sikandar Moyal
+Author-email: sikandar1838@gmail.com
+License: MIT
+Keywords: Console,Colorful Output,CLI,Text Formatting
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+# Console Package
+
+Console is a Python package that provides a `Console` class with methods to print messages in different colors. It also serves as a simple example of creating and packaging a Python module.
+
+## Installation
+
+You can install the package using `pip`. Make sure you have a Python virtual environment activated.
+
+```bash
+pip install console-py
+```
+
+## Documentation
+
+```py
+from console import Console
+
+# Create an instance of the Console class
+console = Console()
+
+# Use different methods to print messages in various colors
+console.info("Information message")
+console.warn("Warning message")
+console.error("Error message")
+console.success("Success message")
+console.secondary("Secondary message")
+```
+
+## Contributing
+
+If you want to contribute to this project, feel free to fork the repository, make changes, and submit a pull request.
