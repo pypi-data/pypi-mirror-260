@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=67.7.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kaftar"
+version = "0.2.1"
+authors = [
+  { name="Amirreza Taherkhani", email="amirrezataherkhaani@gmail.com" },
+]
+description = "a simple sdk to send notifications on queue for celery tasks"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = [
+    "celery==5.3.1",
+]
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"

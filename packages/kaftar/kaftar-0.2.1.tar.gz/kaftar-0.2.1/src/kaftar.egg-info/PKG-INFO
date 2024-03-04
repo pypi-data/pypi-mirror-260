@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: kaftar
+Version: 0.2.1
+Summary: a simple sdk to send notifications on queue for celery tasks
+Author-email: Amirreza Taherkhani <amirrezataherkhaani@gmail.com>
+Project-URL: Homepage, https://github.com/pypa/sampleproject
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: POSIX :: Linux
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: celery==5.3.1
+
+# Kaftar SDK
+
+## Usage
+
+Package installation
+
+``` bash
+pip install kaftar
+```
+
+Usage:
+
+``` python
+import uuid
+import time
+from kaftar import Notification
+
+message_uuid = uuid.uuid4()
+group_uuid = uuid.uuid4()
+broker_url = "BROKER_URL_HERE"
+
+app = Notification('app_name', broker_url)
+app.send_notification(
+    {
+        'subject': 'Notification title goes here',
+        'content': 'Notification body goes here'
+    },
+    [
+        {
+            'receiver': "076f08cc-4122-400a-bffa-2a0157ba57eb",  # can be email or phone number
+            'message_uuid': str(message_uuid),  # Optional (task will generate an id if not provided here)
+            'uuid': "076f08cc-4122-400a-bffa-2a0157ba57eb"
+        }
+    ],
+    int(time.time()),
+    group_uuid=group_uuid # Optional
+)
+# Delete single notification
+app.delete_notification(message_uuid)
+
+# Delete group of notifications
+app.delete_group_notification(group_uuid)
+```
