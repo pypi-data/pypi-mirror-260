@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: pr-review
+Version: 0.0.0.1
+Summary: A tool to check wolfSSL coding standards
+Author: Shingo Morimoto
+Author-email: shingo@wolfssl.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: dynaconf (>=3.2.4,<4.0.0)
+Requires-Dist: gitpython (>=3.1.42,<4.0.0)
+Requires-Dist: langchain (>=0.1.10,<0.2.0)
+Requires-Dist: langchain-community (>=0.0.25,<0.0.26)
+Requires-Dist: langchain-openai (>=0.0.8,<0.0.9)
+Requires-Dist: openai (>=1.13.3,<2.0.0)
+Requires-Dist: pygithub (>=2.2.0,<3.0.0)
+Requires-Dist: pytest (>=8.0.2,<9.0.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Description-Content-Type: text/markdown
+
+# PR-review
+Use `check`command to verify your code follows the wolfSSL coding standards.
+
+## Getting Started
+
+
+1. **Clone the repository**: Clone this repository to your local machine to start working with the scripts.
+
+2. **Install dependencies**: Run `pip3 install .` in the root of this project to install the necessary Python packages listed in `pyproject.toml`.
+
+    NOTE: If you are using newer pip, you need to add option: `pip3 install --break-system-packages .`
+
+
+3. **Export OPENAI_API_KEY ⚙️**:
+
+You must exoport an `OPENAI_API_KEY` in your environment.
+Also, you must have an access to the GPT-4 model to call OpenAI API. I recommend to export the key in .zshrc. 
+
+### Amazing! 
+
+Now you can use the `check` command. 
+
+4. **Usage**:
+   `$ check [FILE]...`
+   - **example**: Use this script to automate the review of pull requests.`$ check file1 file2 file3`
+
+5. **Configulation**
+
+Run `check --show-config-path` to see where the config file are located and you can change value to the variables like 'lanugage' in the config file.
+
