@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: asgi-monitor
+Version: 0.0.1
+Summary: Quick and easy monitoring setup for ASGI application
+Author-email: treaditup <treaditup@gmail.com>
+License: MIT
+Project-URL: Repository, https://github.com/draincoder/asgi-monitor
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: structlog>=24.1.0
+Requires-Dist: prometheus-client>=0.20.0
+Requires-Dist: opentelemetry-sdk>=1.23.0
+Requires-Dist: opentelemetry-exporter-otlp>=1.23.0
+Requires-Dist: opentelemetry-instrumentation-logging>=0.44b0
+Requires-Dist: opentelemetry-instrumentation-asgi>=0.44b0
+
+## ASGI Monitor
+[![license](https://img.shields.io/github/license/draincoder/asgi-monitor)](https://github.com/draincoder/asgi-monitor/blob/master/LICENSE)
+[![test](https://github.com/draincoder/asgi-monitor/actions/workflows/ci.yaml/badge.svg)](https://github.com/draincoder/asgi-monitor/actions/workflows/ci.yaml)
+
+A library for easy and fast configuration of logging, tracing and monitoring of ASGI applications.
