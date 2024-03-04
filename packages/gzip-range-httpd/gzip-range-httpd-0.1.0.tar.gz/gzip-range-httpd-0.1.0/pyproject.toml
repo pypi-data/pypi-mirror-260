@@ -1,0 +1,28 @@
+[project]
+name = "gzip-range-httpd"
+authors = [{name = "Andrei Paraschiv", email = "andrei@thephpfactory.com"}]
+requires-python = ">=3.8"
+description = "A simple HTTP server that supports gzip and range requests"
+license = {text = "Apache-2.0"}
+keywords = ["http", "server", "gzip", "range"]
+classifiers = [
+    'Environment :: Console',
+    'Environment :: Web Environment',
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: Apache Software License'
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/AndyTheFactory/GzipRangeSimpleHTTPServer"
+Repository = "https://github.com/AndyTheFactory/GzipRangeSimpleHTTPServer.git"
+Issues = "https://github.com/AndyTheFactory/GzipRangeSimpleHTTPServer/issues"
+Changelog = "https://github.com/AndyTheFactory/GzipRangeSimpleHTTPServer/blob/master/CHANGELOG.md"
+
+
+[tool.setuptools.dynamic]
+version = {attr = "gzip_range_httpd.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
