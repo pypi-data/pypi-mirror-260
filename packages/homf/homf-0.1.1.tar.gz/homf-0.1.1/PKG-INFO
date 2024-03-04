@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: homf
+Version: 0.1.1
+Summary: Download artifacts from various sources. E.g., a ZipApp from GitHub Releases.
+Project-URL: repository, https://github.com/duckinator/homf
+Project-URL: documentation, https://homf.readthedocs.io/en/latest/
+Author-email: Ellen Marie Dash <me@duckie.co>
+License: MIT
+License-File: LICENSE.txt
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.8
+Requires-Dist: packaging~=23.2
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: sphinx-argparse; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: pylint==3.0.1; extra == 'lint'
+Provides-Extra: test
+Requires-Dist: pytest==7.4.2; extra == 'test'
+Description-Content-Type: text/markdown
+
+# homf [![Build Status][build-status-img]][build-status-link] [![PyPI][pypi-version-img]][pypi-version-link] [![Documentation Status][docs-img]][docs-link]
+
+Homf is a tool for downloading artifacts from online services, like a ZipApp from GitHub Releases or a Wheel from PyPi.
+
+homf requires Python 3.8 or newer.
+
+[build-status-img]: https://api.cirrus-ci.com/github/duckinator/homf.svg
+[build-status-link]: https://cirrus-ci.com/github/duckinator/homf
+
+[pypi-version-img]: https://img.shields.io/pypi/v/homf
+[pypi-version-link]: https://pypi.org/project/homf
+
+[docs-img]: https://readthedocs.org/projects/homf/badge/?version=latest
+[docs-link]: https://homf.readthedocs.io/en/latest/?badge=latest
+
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at <https://github.com/duckinator/homf>.
+
+The code for Bork is available under the [MIT License](http://opensource.org/licenses/MIT).
