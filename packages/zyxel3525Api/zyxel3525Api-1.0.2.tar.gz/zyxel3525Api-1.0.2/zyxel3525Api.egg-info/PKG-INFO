@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: zyxel3525Api
+Version: 1.0.2
+Summary: Python wrapper to get JSON data from Zyxel BMG3525 series routers
+Home-page: 
+Author: Pieter du Toit
+Author-email: 1979@absamail.co.za
+License: MIT
+Keywords: zyxel,api,wrapper,BMG3525
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+
+# zxel3525Api
+
+A wrapper to access a Zyxel BMG3525 with python and receive back JSON data that can be stored to a database.
+
+    from zyxel3525Api import ZyxelApi
+    api = ZyxelApi('192.168.0.1', 'username', 'password') [comment]: Use the ip and access details for your router
+    logs = api.get_log()
+
+For help on other functions help(zyxel3525Api)
