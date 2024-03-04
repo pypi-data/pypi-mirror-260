@@ -1,0 +1,17 @@
+{% extends 'ndr_core/admin_views/delete/_confirm_delete.html' %}
+
+{% block title %}
+    Really delete This Manifest Group?
+{% endblock %}
+
+{% block back_url %}
+    {% url 'ndr_core:configure_uploads' %}
+{% endblock %}
+
+{% block confirm_text %}
+    Are you sure you want to delete "{{ object }}"?
+{% endblock %}
+
+{% block danger_text %}
+    This will be permanent!
+{% endblock %}

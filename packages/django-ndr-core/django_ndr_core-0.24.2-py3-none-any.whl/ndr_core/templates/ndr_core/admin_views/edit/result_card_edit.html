@@ -1,0 +1,27 @@
+{% extends 'ndr_core/admin_views/edit/_edit.html' %}
+{% load static %}
+
+{% block back_url %}
+    {% url 'ndr_core:configure_search' %}
+{% endblock %}
+
+{% block title %}
+    Configure Result Display
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static 'ndr_core/js/admin/preview.js' %}"></script>
+    <script src="{% static 'ndr_core/js/admin/result_card_preview.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            let imageBaseUrl = "{% url 'ndr_core:preview_result_card_image' 'image_string' %}";
+            init_result_preview(imageBaseUrl);
+            init_cpct_result_preview(imageBaseUrl);
+        
+            {% if not search_configuration.search_has_compact_result %}
+                let compact_tab = $("#result_card_tabs li:nth-child(2)");
+                compact_tab.children('a').attr('class', 'nav-link disabled');
+            {% endif %}
+        });
+    </script>
+{% endblock %}

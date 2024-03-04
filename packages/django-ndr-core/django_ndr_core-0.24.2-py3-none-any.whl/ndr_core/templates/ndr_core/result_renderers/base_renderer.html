@@ -1,0 +1,56 @@
+<!-- This is the base renderer which is used to render the results. It needs to be extended. -->
+{% load static %}
+{% load ndr_utils %}
+{% load i18n %}
+
+<!-- This card is the top element of one result. -->
+<div class="card mb-2 box-shadow">
+    <!-- Header of the card. Contains the title and the image. -->
+    <div class="card-header p-0 pl-3">
+        <small>
+            {% blocktrans with result.result_meta.result_number as result_number and result.result_meta.total_results as total_results %}
+                Result {{ result_number }} of {{ total_results }}
+            {% endblocktrans %}
+        </small>
+    </div>
+
+    <!--Body of the card. Contains the image and the content. -->
+    <div class="card-body d-flex flex-column align-items-start">
+        <div class="container">
+            {% block search_result_content %}
+                {{ card_content }}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer of the card. Contains the options and the citation info. -->
+    <div class="card-footer bg-white">
+        {% block options %}
+            <div class="row">
+                <div class="col-sm-12">
+                    {% for option in result.options %}
+                        <a
+                        {% for key, value in option.items %}
+                            {% if key != 'label' %}
+                                {{ key }}="{{ value }}"
+                            {% endif %}
+                        {% endfor %}>
+                            <span>{{ option.label|safe }}</span>
+                        </a>
+                    {% endfor %}
+                    <div id="copyNotification_{{ result.id|url_parse }}" class="btn btn-sm notification-box"></div>
+                    <small class="text-muted float-right">
+                        <span id="copyTarget_{{ result.id|url_parse }}">
+                        {% block citation_info %}
+
+                        {% endblock %}
+                        </span>
+                    </small>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
+
+
+
