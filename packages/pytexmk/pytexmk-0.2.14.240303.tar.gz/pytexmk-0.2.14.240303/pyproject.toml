@@ -1,0 +1,34 @@
+[project]
+name = "pytexmk"
+version = "0.2.14.240303"
+authors = [
+  { name = "焱铭", email = "lxb-yanming@foxmail.com" },
+]
+description = "LaTeX 辅助编译命令行工具 LaTeX Auxiliary Compilation Command Line Tool"
+keywords = ["LaTeX", "build", "latexmk"]
+dependencies = ["rich"]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers ",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+"Homepage" = "https://github.com/YanMing-lxb/PyTeXMK"
+"Bug Tracker" = "https://github.com/YanMing-lxb/PyTeXMK/issues"
+
+[project.scripts]
+pytexmk = "pytexmk:main"
