@@ -1,0 +1,254 @@
+2024-03-03 dd0a9c2 Daniel Graham
+    Tagged version 6.1.15.
+
+2024-03-03 c3d4615 Daniel Graham
+    Refactored timer_report and show_timers into get_timers. Added
+    round_to_minutes to ensure that the total reported in timer view
+    is consistent with the items listed. In reporting the moment a
+    timer status last changed use the datetime if the change occurred
+    on the current date and the timedelta between the current moment
+    and the datetime otherwise. Added 'inactive' to type_colors.
+    Changed default 'light' type_colors for 'paused' and 'running'.
+
+2024-02-29 0a6134f Daniel Graham
+    Tagged version 6.1.14.
+
+2024-02-29 465af5b Daniel Graham
+    Removed extraneous 'level=0
+    '
+
+2024-02-29 1b565b0 Daniel Graham
+    Tagged version 6.1.13. Conditionally show active timer in
+    statusbar 2nd line
+
+2024-02-29 fbe470f Daniel Graham
+    Fixed leap year bug in archiving items. Refactored fitting strings
+    into available terminal width using 'truncate_string'. Added
+    'conditional' status bar second line to show active timer when one
+    exists. Removed unused 'level' argument from NDict as_tree.
+    Reformated timer report to show total time for item, the current
+    status and the moment the status last changed.
+
+2024-02-24 f71dfcd Daniel Graham
+    Tagged version 6.1.12.
+
+2024-02-24 d0f5f18 Daniel Graham
+    Added 'show occurrences' bound to 'o' to display a list of fields
+    such as @i, @l, ..., with the distince occurrences of each and the
+    number of times used.
+
+2024-02-16 878447b Daniel Graham
+    Tagged version 6.1.11.
+
+2024-02-16 53022e3 Daniel Graham
+    Corrected wording in README regarding tab completion for @k
+    entries.
+
+2024-02-16 2f48d58 Daniel Graham
+    Jinja template tweaks for wrapping @d entries. Bind N (along with
+    +) to create new item but only if is_not_searching.
+
+2024-02-13 f99e118 Daniel Graham
+    Tagged version 6.1.10.
+
+2024-02-13 f4ac9a4 Daniel Graham
+    Fixed bug in processing do_reschedule when an empty string is
+    returned.
+
+2024-02-12 1c2f8be Daniel Graham
+    Tagged version 6.1.9.
+
+2024-02-12 6059ead Daniel Graham
+    corrected erroneous change to __version__.py
+
+2024-02-12 ba39b1c Daniel Graham
+    In row2id, skip 'wrapper' rows. When creating @K inbox entries
+    insure that 'created' is added. In populating konnections_from and
+    konnections_to, make sure that doc_ids correspond to existing data
+    entries. Added focus_on_click and search_field to details_area.
+    Require is_not_editing for 'k' binding in showing_konnections.
+    Changed menu name for 'J' to 'jot it down'.
+
+2024-02-09 0caec39 Daniel Graham
+    Simplified format for journal daily. No @s entry, take the
+    datetime from the summary. Format @d with weekday, long format
+    datetime and then modified norg headings for hour:minute entry
+    timestamps. Remove extra linebread in jinsa template for @d.
+
+2024-02-08 dcf36bd Daniel Graham
+    <enter> toggles showing details leaving text_area in focus. When
+    details is showing, up|down moves selection to previous|next item
+    and shows details for the current selection.
+
+2024-02-07 5e819fc Daniel Graham
+    Tagged version 6.1.8.
+
+2024-02-07 415aec7 Daniel Graham
+    Fixed bug in processing keyvals in text_changed.
+
+2024-02-05 d44dba2 Daniel Graham
+    Tagged version 6.1.7.
+
+2024-02-05 3c257da Daniel Graham
+    Update object_hsh for all keyvals.
+
+2024-02-05 0225f8f Daniel Graham
+    Tagged version 6.1.6.
+
+2024-02-05 41e4c7a Daniel Graham
+    Fixed bug in processing weekday entries in rrule specifications,
+    e.g., '@r m &w 2TH'. Problem arises from the fact that the
+    dateutil.rrule.weekday string representation for '2TH' is 'TH(+2)'
+    which differs from the '2TH' needed by etm.
+
+2024-02-03 80170b2 Daniel Graham
+    Tagged version 6.1.5.
+
+2024-02-03 bfa56e6 Daniel Graham
+    Fixed probably longstanding bug in which removing an element from
+    an item while editing, e.g., an @t tag, would apparently succeed
+    but when saving the changes, the removed item would reappear. The
+    standard tinydb update and upsert methods record adding new
+    elements and making changes to existing elements but not removing
+    an existing element. The solution is to obtain the doc_id of the
+    item, delete the item and then insert the new, changed item using
+    the original doc_id.
+
+2024-02-02 48a0e3e Daniel Graham
+    Tagged version 6.1.4.
+
+2024-02-02 65ee7b8 Daniel Graham
+    Update 'today' when creating a new daily journal entry. Set
+    starting_buffer_text = '' and then set edit_buffer.text = template
+    so that the buffer will automatically be seen as modified and save
+    will actually write the new record.
+
+2024-01-31 5f5377d Daniel Graham
+    Tagged version 6.1.3.
+
+2024-01-31 8134428 Daniel Graham
+    Fixed bug in query 'info' - used to show details for a provided
+    doc_id.
+
+2024-01-31 b587ead Daniel Graham
+    Tagged version 6.1.2. Proper sorting for type v csv queries.
+
+2024-01-31 c37c715 Daniel Graham
+    Refactored 'v' queries to use QDict 'as_csv', a slightly modified
+    version of as_tree. Cleaned up comments.
+
+2024-01-29 c3681b2 Daniel Graham
+    Tagged version 6.1.1.
+
+2024-01-29 69922a0 Daniel Graham
+    Wrapped starting time in date_to_datetime to permit sorting using
+    timestamp().
+
+2024-01-29 4df92d8 Daniel Graham
+    Tagged version 6.1.0.
+
+2024-01-29 ece863d Daniel Graham
+    Fixed sorting issue in journal and index views. Added section on
+    'Do Next View' to README.
+
+2024-01-28 65f3211 Daniel Graham
+    Tagged version 6.0.19.
+
+2024-01-28 1a5afa8 Daniel Graham
+    README tweaks. Now using auto tabs to spaces and remove trailing
+    white space which makes for lots of changes. Replaced erroneous
+    instance of 'diff_for_humans' (Pendulum) with 'duration_in_words'
+    now twith short option to retain only the two most significant
+    periods from weeks, days, hours and minutes. Used for 'when' in
+    email and text alerts.
+
+2024-01-27 5d2ed6d Daniel Graham
+    Tagged version 6.0.18.
+
+2024-01-27 af2eba5 Daniel Graham
+    Missed bindings for goto today.
+
+2024-01-27 f805747 Daniel Graham
+    Tagged version 6.0.17.
+
+2024-01-27 0068cfd Daniel Graham
+    Restored keybindings: space->goto today, enter->toggle details.
+    Added FuzzyCompleter wrapper to at_completer. Updated README for
+    menus and Konnected View.
+
+2024-01-26 fdcd9cd Daniel Graham
+    Implemented using @K <summary> entries to add links to as yet non
+    existing inbox items with the provided summary and an @s entry
+    corresponding to the current date. The inbox items are created and
+    the resulting doc_id's added to an @k entry which replaces the @K
+    entry. Reorganized menus and updated README accordingly. Pressing
+    'J' in any mode, opens a 'daily' journal entry for the current
+    date for editing, creating the item if it doesn't already exist.
+
+2024-01-24 11f2673 Daniel Graham
+    Reverse sort 'daily' to put most recent first. Wrap rset.after in
+    try/except to catch Gour issue.
+
+2024-01-23 b60c10a Daniel Graham
+    Tagged version 6.0.16.
+
+2024-01-23 6ba92e8 Daniel Graham
+    Key binding tweaks for dated views: '.' show current date and ','
+    jump to date. (One hand commands)
+
+2024-01-23 57da6a2 Daniel Graham
+    Tagged version 6.0.15. bug fix
+
+2024-01-23 33d0c35 Daniel Graham
+    Replaced ': ' as separator in completions with '|| ' to avoid
+    false matches.
+
+2024-01-23 98c2c0e Daniel Graham
+    Tagged version 6.0.14. Major update to Konnected (Zettelkasten)
+    View.
+
+2024-01-23 bdb1f21 Daniel Graham
+    When opening konnected view, if an item is selected with an @k
+    entry, then jump to that row in konnected view. When returning to
+    konnected view from viewing konnections for an item, jump to the
+    row corresponding to the last selection in konnections. Added
+    discussion of Zettelkasten to the Konnected View section of
+    README.
+
+2024-01-22 fde1078 Daniel Graham
+    Tagged version 6.0.13.
+
+2024-01-22 98ff2b4 Daniel Graham
+    Fixed bug in setting title for go_to_line.
+
+2024-01-22 15e61d0 Daniel Graham
+    Don't automatically archive items with @k entries. Use 4-digit
+    years in detail and edit views to preserve century, e.g., to avoid
+    1944/4/17 being saved as 44/4/17 and then interpreted as
+    2044/4/17.
+
+2024-01-20 3c246a6 Daniel Graham
+    Konnected view with show konnections for selected. Changed
+    bindings, space for details, ^down for current, ^up for jump to
+    date, in konnected view, enter shows konnections.
+
+2024-01-18 f21d6ff Daniel Graham
+    Tagged version 6.0.12.
+
+2024-01-18 9d15299 Daniel Graham
+    Refactored konnected, konnections_to and konnections_from. Wrapped
+    item['s'] in date_to_datetime to permit comparisons with rrule
+    instance when deleting.
+
+2024-01-18 1b434bb Daniel Graham
+    Tagged version 6.0.11.
+
+2024-01-18 70fb828 Daniel Graham
+    Konnected view tweaks.
+
+2024-01-18 0e23212 Daniel Graham
+    Added @k entries to lorem examples. Replaced erroneous Timezone
+    entries with ZoneInfo. Work on konnect view formatting.
+
+2024-01-15 ae440fe Daniel Graham
+    removed unused imports
