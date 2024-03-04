@@ -1,0 +1,23 @@
+[project]
+name = "PySTIXView"
+version = "0.0.2"
+authors = [
+  { name="Vincenzo Caputo", email="caputo.vincenzo@protonmail.com" },
+]
+description = "A Python library to create and display STIX2 graphs"
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/vincenzocaputo/PySTIXView"
+Issues = "https://github.com/vincenzocaputo/PySTIXView/issues"
+
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
