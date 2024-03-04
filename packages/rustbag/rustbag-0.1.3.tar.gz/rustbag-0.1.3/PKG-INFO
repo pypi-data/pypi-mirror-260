@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: rustbag
+Version: 0.1.3
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Summary: ROSBag Reader focused on cloud storage access, written in Rust.
+Author-email: Jakub Filipek <jfilipek@proton.me>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Documentation, https://balbok0.github.io/rustbag/
+Project-URL: Repository, https://github.com/balbok0/rustbag
+Project-URL: Issues, https://github.com/balbok0/rustbag/issues
+
+# RustBag
+[![Documentation](https://img.shields.io/badge/docs-passing-green)](https://balbok0.github.io/rustbag/)
+[![PyPI](https://img.shields.io/pypi/dm/rustbag?color=00ADD4)](https://pypi.org/project/rustbag/)
+[![License](https://img.shields.io/github/license/balbok0/rustbag)](./LICENSE)
+
+RustBag is a yet another ROSBag reader. It's main feature is the ability to read directly from an Object Storage, like AWS S3.
+Additionally, it is *fast*, with speeds somewhere in between [rosbags](https://ternaris.gitlab.io/rosbags/) and [embag](https://github.com/embarktrucks/embag).
+It is also written in Rust.
+
+## Using RustBag
+Please visit [docs website](https://balbok0.github.io/rustbag) for installation, examples and usage orientated documentation.
+
+## Development
+You will need at least [rustup](https://rustup.rs/) installed. [Miniforge](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download) is also highly recommended if you are planning on testing from python side.
+
+To contribute, please create a fork and submit an MR to the repo. Note that all contributions will be under [MIT License](./LICENSE).
+
