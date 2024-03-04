@@ -1,0 +1,135 @@
+Metadata-Version: 2.1
+Name: rocketgram
+Version: 6.0.1
+Summary: Modern and powerful asynchronous telegram bot framework.
+Keywords: telegram bot framework rocketgram async asyncio rocket
+Home-page: https://github.com/vd2org/wultiplexor
+Author-Email: Vd <rocketgram@vd2.org>
+License: Copyright 2015-2024 Vd
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of
+        this software and associated documentation files (the "Software"), to deal in
+        the Software without restriction, including without limitation the rights to
+        use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+        the Software, and to permit persons to whom the Software is furnished to do so,
+        subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+        FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+        IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+        CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Web Environment
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Internet
+Classifier: Topic :: Utilities
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Project-URL: Homepage, https://github.com/vd2org/wultiplexor
+Project-URL: Repository, https://github.com/vd2org/wultiplexor.git
+Project-URL: Issues, https://github.com/vd2org/wultiplexor/issues
+Requires-Python: <3.13,>=3.8
+Provides-Extra: aiohttp
+Provides-Extra: ujson
+Provides-Extra: orjson
+Requires-Dist: aiohttp~=3.9.3; extra == "aiohttp"
+Requires-Dist: ujson~=5.9.0; extra == "ujson"
+Requires-Dist: orjson~=3.9.15; extra == "orjson"
+Description-Content-Type: text/markdown
+
+# Rocketgram
+
+![TEST](https://github.com/rocketgram/rocketgram/workflows/TEST/badge.svg)
+
+Modern and powerful asynchronous telegram bot framework.
+
+Release news available here: [@RocketgramNews](https://t.me/RocketgramNews)
+
+## Dependencies
+
+All dependencies are optional, but you should install `aiohttp` to use the framework.
+
+`orjson` or `ujson` is highly recommended to speed up json parsing.
+
+Also, you can use `uvloop` as alternative to standard event loop.
+
+## How to install
+
+#### For development
+
+```bash
+pip install rocketgram[aiohttp]
+```
+
+#### For production
+
+```bash
+pip install uvloop rocketgram[aiohttp,orjson]
+```
+
+## Example
+
+There is a trivial example below.
+[Here](https://github.com/vd2org/rocketgram-template) is useful bot template.
+
+```python
+from rocketgram import Bot, Dispatcher, UpdatesExecutor
+from rocketgram import context, commonfilters
+from rocketgram import SendMessage
+
+try:
+    import uvloop
+
+    uvloop.install()
+except ImportError:
+    pass
+
+token = f'YOUR_BOT_TOKEN'
+
+router = Dispatcher()
+bot = Bot(token, router=router)
+
+@router.handler
+@commonfilters.command('/start')
+async def start_command():
+    await SendMessage(context.user.id, f'Hello there!').send()
+    
+@router.handler
+@commonfilters.command('/help')
+async def start_command():
+    await SendMessage(context.user.id, f'Some userful help!').send()
+    
+UpdatesExecutor.run(bot)
+```
+
+# Testing
+
+Code tested automatically using `Github Actions`. 
+You can see the build status **[here](https://github.com/rocketgram/rocketgram/actions)**.
+
+To test code manually run `pytest`:
+
+```bash
+pytest
+```
