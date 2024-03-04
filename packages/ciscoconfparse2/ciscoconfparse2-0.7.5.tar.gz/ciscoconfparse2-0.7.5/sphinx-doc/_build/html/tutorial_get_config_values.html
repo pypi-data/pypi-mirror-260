@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Config Values with CiscoConfParse &mdash; ciscoconfparse2 0.7.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example Usage: Build configuration diffs" href="tutorial_build_diffs.html" />
+    <link rel="prev" title="CiscoConfParse Fundamentals: Using Parent / Child Relationships" href="tutorial_parent_child.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI Command</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_parent_child.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Fundamentals: Using Parent / Child Relationships</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Config Values with <code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#re-match-typed-get-a-value-from-an-object"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code>: Get a value from an object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-match-iter-typed-iterate-over-all-children-and-get-a-value"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code>: Iterate over all children and get a value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-multiple-values-from-an-interface-with-re-list-iter-typed">Getting multiple values from an interface with <code class="xref py py-func docutils literal notranslate"><span class="pre">re_list_iter_typed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_build_diffs.html">Example Usage: Build configuration diffs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+      <li class="breadcrumb-item active">Getting Config Values with <code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_get_config_values.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-config-values-with-ciscoconfparse">
+<h1>Getting Config Values with <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a><a class="headerlink" href="#getting-config-values-with-ciscoconfparse" title="Permalink to this heading"></a></h1>
+<p>Now that we’re familiar with parent / child relationships, let’s tackle another
+common problem.  How do you get specific values from a configuration?</p>
+<p>For sure, you could use traditional Python techniques, such as Python’s
+<a class="reference external" href="https://docs.python.org/3/library/re.html#module-re" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">re</span></code></a> module; however, the <a class="reference external" href="https://docs.python.org/3/library/re.html#module-re" title="(in Python v3.12)"><code class="xref any docutils literal notranslate"><span class="pre">re</span></code></a> module is rather cumbersome when
+you’re retrieving a lot of config values.</p>
+<p><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse" title="ciscoconfparse2.CiscoConfParse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code></a> introduces methods directly on
+CiscoConfParse objects which simplify getting values from a configuration:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_list_iter_typed()</span></code></a></p></li>
+</ul>
+<p>For the next examples, we will use this configuration…</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>! Filename: short.conf
+!
+hostname IAHS1MDF-AR01A
+!
+vlan 10
+ name 192.0.2.0_24_HoustonUsers_S1_Bldg_MDF
+vlan 20
+ name 128.66.0.0_24_HoustonPrinters_S1_Bldg_MDF
+!
+interface Vlan10
+ description Connection to Houston office LAN switches
+ ip address 192.0.2.2 255.255.255.0
+ ip helper-address 198.51.100.12
+ ip helper-address 203.0.113.12
+ standby 10 ip 192.0.2.1
+ standby 10 priority 110
+ arp timeout 240
+ no ip proxy-arp
+!
+interface Vlan20
+ description Connection to Houston printer subnet
+ ip address 128.66.0.2 255.255.255.0
+ standby 20 ip 128.66.01
+ standby 20 priority 110
+!
+</pre></div>
+</div>
+<section id="re-match-typed-get-a-value-from-an-object">
+<h2><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a>: Get a value from an object<a class="headerlink" href="#re-match-typed-get-a-value-from-an-object" title="Permalink to this heading"></a></h2>
+<p>Let’s suppose we want the hostname of <cite>short.conf</cite> above.  One approach is to
+use <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> and then use
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a> to get the
+hostname:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">global_obj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^hostname&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">hostname</span> <span class="o">=</span> <span class="n">global_obj</span><span class="o">.</span><span class="n">re_match_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^hostname\s+(\S+)&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">hostname</span>
+<span class="go">&#39;IAHS1MDF-AR01A&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Take note of the regex we used: <code class="docutils literal notranslate"><span class="pre">r'hostname\s+(\S+)'</span></code>.  This regex has a
+capture group (bounded by the parenthesis), which
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a> requires.
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a> uses the
+contents of this capture group to return the value.</p>
+<p>This technique is fine, but we have to tell Python to iterate over all config
+objects with <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> and then
+we extract the hostname from that object.</p>
+<p>What if there was a way to get the hostname without calling <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a>?  As it happens,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code> does
+it for you.</p>
+</section>
+<section id="re-match-iter-typed-iterate-over-all-children-and-get-a-value">
+<h2><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a>: Iterate over all children and get a value<a class="headerlink" href="#re-match-iter-typed-iterate-over-all-children-and-get-a-value" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a>
+iterates over child objects and returns the <em>first</em> value it finds.  This is
+very useful because
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a> does
+all the iteration for us.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">hostname</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^hostname\s+(\S+)&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">hostname</span>
+<span class="go">&#39;IAHS1MDF-AR01A&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Take note of the regex we used: <code class="docutils literal notranslate"><span class="pre">r'hostname\s+(\S+)'</span></code>.  This regex has a
+capture group (bounded by the parenthesis), which
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a> requires.
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a> uses the
+contents of this capture group to return the value.</p>
+<p>This code is better than the previous example, because it eliminates the call
+to <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a> that we used above.</p>
+<p>However, there are still times when you need to call
+<a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a>; one example is when you
+need to get the HSRP address from an interface.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intf_obj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface\s+Vlan10$&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">hsrp_ip</span> <span class="o">=</span> <span class="n">intf_obj</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;standby\s10\sip\s(\S+)&#39;</span><span class="p">,</span>
+</span><span class="gp">... </span>    <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsrp_ip</span>
+<span class="go">&#39;192.0.2.1&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>The reason we had to call <a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2.CiscoConfParse.find_objects" title="ciscoconfparse2.CiscoConfParse.find_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">find_objects()</span></code></a>
+is so we can get the specific inteface object that contains the HSRP address
+in question.</p>
+<p>You may be wondering, “Why does this method have <em>typed</em> in its name?”.  This
+is because
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a>
+can return the value cast as a python type.  By default, all return values are
+cast as a Python <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str">str</a>.</p>
+<p>The following example looks for the ARP timeout on interface Vlan10, and
+returns it cast as a Python <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex">int</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intf_obj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface\s+Vlan10$&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">arp_timeout</span> <span class="o">=</span> <span class="n">intf_obj</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;arp\s+timeout\s+(\d+)&#39;</span><span class="p">,</span>
+</span><span class="hll"><span class="gp">... </span>    <span class="n">result_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="mi">3600</span><span class="p">)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">arp_timeout</span>
+<span class="go">240</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Finally, let’s talk about two more
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a>
+keywords: <cite>default</cite> and <cite>untyped_default</cite>.</p>
+<p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a>
+has a <cite>default</cite> keyword, which specifies what the default value should be if
+the regular expression doesn’t match the configuration.  The value in
+<cite>default</cite> is automatically cast as the <cite>result_type</cite>.</p>
+<p>However, there may be times when you don’t want <cite>default</cite>’s value to be cast
+as <cite>result_type</cite>.  If you find yourself in that situation, you can call
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a> with
+<cite>untyped_default=True</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intf_obj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface\s+Vlan20$&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arp_timeout</span> <span class="o">=</span> <span class="n">intf_obj</span><span class="o">.</span><span class="n">re_match_iter_typed</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;arp\s+timeout\s+(\d+)&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">result_type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+<span class="hll"><span class="go">        untyped_default=True, default=&#39;__no_explicit_value__&#39;)</span>
+</span><span class="gp">&gt;&gt;&gt; </span><span class="n">arp_timeout</span>
+<span class="go">&#39;__no_explicit_value__&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-multiple-values-from-an-interface-with-re-list-iter-typed">
+<h2>Getting multiple values from an interface with <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_list_iter_typed()</span></code></a><a class="headerlink" href="#getting-multiple-values-from-an-interface-with-re-list-iter-typed" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_typed()</span></code></a> and
+<a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_match_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_match_iter_typed()</span></code></a> <em>do not`
+return mutliple values</em>.</p>
+<p>However, <a class="reference internal" href="api_Models_Cisco.html#ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed" title="ciscoconfparse2.models_cisco.IOSCfgLine.re_list_iter_typed"><code class="xref py py-func docutils literal notranslate"><span class="pre">re_list_iter_typed()</span></code></a> will return
+multiple values.</p>
+<p>Suppose we want to get all the DHCP helper-addresses from an interface.  The
+best way to do this is to manually iterate over the children and append
+the values we want to a list.</p>
+<p>This script will get all the DHCP helper-addresses from Vlan10:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2</span> <span class="kn">import</span> <span class="n">CiscoConfParse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse</span> <span class="o">=</span> <span class="n">CiscoConfParse</span><span class="p">(</span><span class="s1">&#39;short.conf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Iterate over matching interfaces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">intf_obj</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^interface\s+Vlan10$&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">retval</span> <span class="o">=</span> <span class="n">intf_obj</span><span class="o">.</span><span class="n">re_list_iter_typed</span><span class="p">(</span><span class="s2">&quot;ip helper-address (\S.*)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">retval</span>
+<span class="go">[&#39;198.51.100.12&#39;, &#39;203.0.113.12&#39;]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_parent_child.html" class="btn btn-neutral float-left" title="CiscoConfParse Fundamentals: Using Parent / Child Relationships" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_build_diffs.html" class="btn btn-neutral float-right" title="Example Usage: Build configuration diffs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 03, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

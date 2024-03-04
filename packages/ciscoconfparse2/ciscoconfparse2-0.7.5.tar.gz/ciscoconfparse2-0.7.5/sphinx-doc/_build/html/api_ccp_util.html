@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ciscoconfparse2.ccp_util Classes and Methods &mdash; ciscoconfparse2 0.7.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ciscoconfparse2.CiscoPassword" href="api_CiscoPassword.html" />
+    <link rel="prev" title="ciscoconfparse2.models_nxos" href="api_Models_Nxos.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: light_blue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ciscoconfparse2
+              <img src="_static/ccp_logo_bw_w400px.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">CiscoConfParse</span></code> Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html">ciscoconfparse2 functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2-ciscoconfparse-object">ciscoconfparse2.CiscoConfParse Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoConfParse.html#ciscoconfparse2-diff-object">ciscoconfparse2.Diff Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_ConfigList.html">ciscoconfparse2.ConfigList Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html">ccp_abc functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Ccp_Abc.html#ciscoconfparse2-ccp-abc">ciscoconfparse2.ccp_abc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Cisco.html">ciscoconfparse2.models_cisco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_Models_Nxos.html">ciscoconfparse2.models_nxos</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ciscoconfparse2.ccp_util Classes and Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj"><code class="docutils literal notranslate"><span class="pre">IPv4Obj</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__add__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__add__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__contains__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__contains__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__eq__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__gt__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__gt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__hash__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__hash__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__index__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__index__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__int__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__int__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__iter__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__lt__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__lt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__ne__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__ne__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__next__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__next__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__repr__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.__sub__"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.__sub__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_binary_tuple"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_binary_tuple</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_addr"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_cidr_addr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_net"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_cidr_net</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_decimal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_broadcast"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_decimal_broadcast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_network"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_decimal_network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_hex"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_hex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_hex_tuple"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_hex_tuple</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_int"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_zeropadded</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded_network"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.as_zeropadded_network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.broadcast"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.broadcast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.debug"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.debug</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.dna"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.dna</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.empty"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.empty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.exploded"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.exploded</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.finished_parsing"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.finished_parsing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.get_regex"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.get_regex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.hostmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.inverse_netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.inverse_netmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.ip"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.ip_object"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.ip_object</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.ipv4"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.ipv4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.is_multicast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_private"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.is_private</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.is_reserved</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.masklen"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.masklen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.masklength"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.masklength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.max_int"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.max_int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.netmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.network"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.network_object"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.network_object</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.network_offset"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.network_offset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.next"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.numhosts"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.numhosts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.packed"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.packed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.prefixlen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlength"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.prefixlength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.strict"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.strict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.v4input"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.v4input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.version"><code class="docutils literal notranslate"><span class="pre">IPv4Obj.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj"><code class="docutils literal notranslate"><span class="pre">IPv6Obj</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__add__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__add__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__contains__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__contains__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__eq__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__gt__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__gt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__hash__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__hash__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__index__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__index__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__int__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__int__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__iter__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__lt__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__lt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__ne__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__ne__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__next__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__next__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__repr__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.__sub__"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.__sub__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_binary_tuple"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_binary_tuple</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_addr"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_cidr_addr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_net"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_cidr_net</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_decimal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_broadcast"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_decimal_broadcast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_decimal_network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network_maxint"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_decimal_network_maxint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_hex"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_hex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_hex_tuple"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_hex_tuple</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_int"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.as_int()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.broadcast"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.broadcast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.compressed"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.compressed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.debug"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.debug</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.dna"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.dna</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.empty"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.empty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.exploded"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.exploded</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.finished_parsing"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.finished_parsing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.get_regex"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.get_regex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.hostmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.inverse_netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.inverse_netmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.ip"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.ip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.ip_object"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.ip_object</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.ipv6"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.ipv6</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_ipv4_mapped"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_ipv4_mapped</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_link_local</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_multicast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_private"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_private</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_reserved</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_site_local"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_site_local</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.is_unspecified</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.masklen"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.masklen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.masklength"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.masklength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.max_int"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.max_int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.netmask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.network"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.network_object"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.network_object</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.network_offset"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.network_offset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.next"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.numhosts"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.numhosts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.packed"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.packed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.prefixlen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.prefixlength"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.prefixlength</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.sixtofour"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.sixtofour</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.strict"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.strict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.teredo"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.teredo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.v6input"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.v6input</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.version"><code class="docutils literal notranslate"><span class="pre">IPv6Obj.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange"><code class="docutils literal notranslate"><span class="pre">CiscoRange</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__add__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__add__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__class_getitem__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__class_getitem__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__contains__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__contains__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__copy__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__copy__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__delitem__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__delitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__eq__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__eq__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__ge__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__ge__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__getitem__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__gt__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__gt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__hash__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__hash__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__iadd__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__iadd__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__imul__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__imul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__iter__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__iter__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__le__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__le__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__len__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__len__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__lt__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__lt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__mul__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__mul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__radd__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__radd__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__repr__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__reversed__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__reversed__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__rmul__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__rmul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__setitem__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__setitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__str__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.__sub__"><code class="docutils literal notranslate"><span class="pre">CiscoRange.__sub__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.append"><code class="docutils literal notranslate"><span class="pre">CiscoRange.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.as_compressed_str"><code class="docutils literal notranslate"><span class="pre">CiscoRange.as_compressed_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.as_list"><code class="docutils literal notranslate"><span class="pre">CiscoRange.as_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.as_set"><code class="docutils literal notranslate"><span class="pre">CiscoRange.as_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.attribute_sort"><code class="docutils literal notranslate"><span class="pre">CiscoRange.attribute_sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.begin_obj"><code class="docutils literal notranslate"><span class="pre">CiscoRange.begin_obj</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.clear"><code class="docutils literal notranslate"><span class="pre">CiscoRange.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.copy"><code class="docutils literal notranslate"><span class="pre">CiscoRange.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.count"><code class="docutils literal notranslate"><span class="pre">CiscoRange.count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.data"><code class="docutils literal notranslate"><span class="pre">CiscoRange.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.default_iter_attr"><code class="docutils literal notranslate"><span class="pre">CiscoRange.default_iter_attr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.extend"><code class="docutils literal notranslate"><span class="pre">CiscoRange.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.index"><code class="docutils literal notranslate"><span class="pre">CiscoRange.index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.insert"><code class="docutils literal notranslate"><span class="pre">CiscoRange.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.iterate_attribute"><code class="docutils literal notranslate"><span class="pre">CiscoRange.iterate_attribute</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.member_type"><code class="docutils literal notranslate"><span class="pre">CiscoRange.member_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_cisco_interfaces"><code class="docutils literal notranslate"><span class="pre">CiscoRange.parse_cisco_interfaces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_floats"><code class="docutils literal notranslate"><span class="pre">CiscoRange.parse_floats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_integers"><code class="docutils literal notranslate"><span class="pre">CiscoRange.parse_integers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_strings"><code class="docutils literal notranslate"><span class="pre">CiscoRange.parse_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.pop"><code class="docutils literal notranslate"><span class="pre">CiscoRange.pop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.range_str"><code class="docutils literal notranslate"><span class="pre">CiscoRange.range_str</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.remove"><code class="docutils literal notranslate"><span class="pre">CiscoRange.remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.result_type"><code class="docutils literal notranslate"><span class="pre">CiscoRange.result_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.reverse"><code class="docutils literal notranslate"><span class="pre">CiscoRange.reverse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.sort"><code class="docutils literal notranslate"><span class="pre">CiscoRange.sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.text"><code class="docutils literal notranslate"><span class="pre">CiscoRange.text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.CiscoRange.this_obj"><code class="docutils literal notranslate"><span class="pre">CiscoRange.this_obj</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ccp_util.DNSResponse"><code class="docutils literal notranslate"><span class="pre">DNSResponse</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.DNSResponse.__repr__"><code class="docutils literal notranslate"><span class="pre">DNSResponse.__repr__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ciscoconfparse2.ccp_util.DNSResponse.__str__"><code class="docutils literal notranslate"><span class="pre">DNSResponse.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ciscoconfparse2.ccp_util.dns_query"><code class="docutils literal notranslate"><span class="pre">dns_query()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api_CiscoPassword.html">ciscoconfparse2.CiscoPassword</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: light_blue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ciscoconfparse2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">API</a></li>
+      <li class="breadcrumb-item active">ciscoconfparse2.ccp_util Classes and Methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_ccp_util.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ciscoconfparse2-ccp-util-classes-and-methods">
+<span id="api-ccp-util"></span><h1>ciscoconfparse2.ccp_util Classes and Methods<a class="headerlink" href="#ciscoconfparse2-ccp-util-classes-and-methods" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.ccp_util.</span></span><span class="sig-name descname"><span class="pre">IPv4Obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v4input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj" title="Permalink to this definition"></a></dt>
+<dd><p>An object to represent IPv4 addresses and IPv4 networks.</p>
+<p>When <a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj" title="ciscoconfparse2.ccp_util.IPv4Obj"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Obj</span></code></a> objects are compared or sorted, network numbers are sorted lower to higher.  If network numbers are the same, shorter masks are lower than longer masks. After comparing mask length, numerically higher IP addresses are greater than numerically lower IP addresses..  Comparisons between <a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj" title="ciscoconfparse2.ccp_util.IPv4Obj"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Obj</span></code></a> instances was chosen so it’s easy to find the longest-match for a given prefix (see examples below).</p>
+<p>This object emulates the behavior of ipaddr.IPv4Network (in Python2) where host-bits were retained in the IPv4Network() object.  <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Network</span></code></a> in Python3 does not retain host-bits; the desire to retain host-bits in both Python2 and Python3 ip network objects was the genesis of this API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v4input</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – A string (or integer) containing an IPv4 address, and optionally a netmask or masklength.  Integers are also accepted and the masklength of the integer is assumed to be 32-bits.  The following address/netmask formats are supported: “10.1.1.1/24”, “10.1.1.1 255.255.255.0”, “10.1.1.1/255.255.255.0”</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – When <cite>strict</cite> is True, the value of <cite>v4input</cite> must not have host-bits set.  The default value is False.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ccp_util</span> <span class="kn">import</span> <span class="n">IPv4Obj</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Parse from an integer...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span> <span class="o">=</span> <span class="n">IPv4Obj</span><span class="p">(</span><span class="mi">2886729984</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span>
+<span class="go">&lt;IPv4Obj 172.16.1.0/32&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">prefixlen</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span>
+<span class="go">&lt;IPv4Obj 172.16.1.0/24&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Parse from an string...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span> <span class="o">=</span> <span class="n">IPv4Obj</span><span class="p">(</span><span class="s1">&#39;172.16.1.0/24&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span>
+<span class="go">&lt;IPv4Obj 172.16.1.0/24&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">ip</span>
+<span class="go">IPv4Address(&#39;172.16.1.0&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">ip</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">IPv4Address(&#39;172.16.1.1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">ip</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;172.16.1.1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">network</span>
+<span class="go">IPv4Network(&#39;172.16.1.0/24&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">network_object</span>
+<span class="go">IPv4Network(&#39;172.16.1.0/24&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">network_object</span><span class="p">)</span>
+<span class="go">&#39;172.16.1.0/24&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">prefixlen</span>
+<span class="go">24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span><span class="o">.</span><span class="n">network_object</span><span class="o">.</span><span class="n">iterhosts</span><span class="p">()</span>
+<span class="go">&lt;generator object iterhosts at 0x7f00bfcce730&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of finding the longest-match IPv4 route for an addr...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prefix_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0.0.0.0/0&#39;</span><span class="p">,</span> <span class="s1">&#39;4.0.0.0/8&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0.0.0/7&#39;</span><span class="p">,</span> <span class="s1">&#39;4.0.0.0/16&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0.0.0/32&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rt_table</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">IPv4Obj</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">prefix_list</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addr</span> <span class="o">=</span> <span class="n">IPv4Obj</span><span class="p">(</span><span class="s1">&#39;4.0.1.1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">rt_table</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">route</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">break</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The longest match is contained in route</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">route</span>
+<span class="go">&lt;IPv4Obj 4.0.0.0/16&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_binary_tuple" title="ciscoconfparse2.ccp_util.IPv4Obj.as_binary_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_binary_tuple</span></code></a></p></td>
+<td><p>Returns the IP address as a tuple of zero-padded binary strings</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_addr" title="ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_addr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_cidr_addr</span></code></a></p></td>
+<td><p>Returns a string with the address in CIDR notation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_net" title="ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_net"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_cidr_net</span></code></a></p></td>
+<td><p>Returns a string with the network in CIDR notation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal" title="ciscoconfparse2.ccp_util.IPv4Obj.as_decimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_decimal</span></code></a></p></td>
+<td><p>Returns the IP address as a decimal integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_network" title="ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_decimal_network</span></code></a></p></td>
+<td><p>Returns the integer value of the IP network as a decimal integer; explicitly, if this object represents 1.1.1.5/24, 'as_decimal_network' returns the integer value of 1.1.1.0/24</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_hex_tuple" title="ciscoconfparse2.ccp_util.IPv4Obj.as_hex_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_hex_tuple</span></code></a></p></td>
+<td><p>Returns the IP address as a tuple of zero-padded hex strings</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded" title="ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_zeropadded</span></code></a></p></td>
+<td><p>Returns the IP address as a zero-padded string (useful when sorting in a text-file)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded_network" title="ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_zeropadded_network</span></code></a></p></td>
+<td><p>Returns the IP network as a zero-padded string (useful when sorting in a text-file)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.broadcast" title="ciscoconfparse2.ccp_util.IPv4Obj.broadcast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code></a></p></td>
+<td><p>Returns the broadcast address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.get_regex" title="ciscoconfparse2.ccp_util.IPv4Obj.get_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_regex</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.exploded" title="ciscoconfparse2.ccp_util.IPv4Obj.exploded"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exploded</span></code></a></p></td>
+<td><p>Returns the IPv4 Address object as a string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.hostmask" title="ciscoconfparse2.ccp_util.IPv4Obj.hostmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hostmask</span></code></a></p></td>
+<td><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.ip" title="ciscoconfparse2.ccp_util.IPv4Obj.ip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip</span></code></a></p></td>
+<td><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_multicast" title="ciscoconfparse2.ccp_util.IPv4Obj.is_multicast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multicast</span></code></a></p></td>
+<td><p>Returns a boolean for whether this is a multicast address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_private" title="ciscoconfparse2.ccp_util.IPv4Obj.is_private"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_private</span></code></a></p></td>
+<td><p>Returns a boolean for whether this is a private address</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_reserved" title="ciscoconfparse2.ccp_util.IPv4Obj.is_reserved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_reserved</span></code></a></p></td>
+<td><p>Returns a boolean for whether this is a reserved address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.netmask" title="ciscoconfparse2.ccp_util.IPv4Obj.netmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netmask</span></code></a></p></td>
+<td><p>Returns the network mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.network" title="ciscoconfparse2.ccp_util.IPv4Obj.network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network</span></code></a></p></td>
+<td><p>Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Network</span></code></a> object, which represents this network.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.network_offset" title="ciscoconfparse2.ccp_util.IPv4Obj.network_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network_offset</span></code></a></p></td>
+<td><p>Returns the integer difference between host number and network number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.numhosts" title="ciscoconfparse2.ccp_util.IPv4Obj.numhosts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numhosts</span></code></a></p></td>
+<td><p>Returns the total number of IP addresses in this network, including broadcast and the &quot;subnet zero&quot; address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.packed" title="ciscoconfparse2.ccp_util.IPv4Obj.packed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">packed</span></code></a></p></td>
+<td><p>Returns the IPv4 object as packed hex bytes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlen" title="ciscoconfparse2.ccp_util.IPv4Obj.prefixlen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prefixlen</span></code></a></p></td>
+<td><p>Returns the length of the network mask as an integer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlength" title="ciscoconfparse2.ccp_util.IPv4Obj.prefixlength"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prefixlength</span></code></a></p></td>
+<td><p>Returns the length of the network mask as an integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.inverse_netmask" title="ciscoconfparse2.ccp_util.IPv4Obj.inverse_netmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_netmask</span></code></a></p></td>
+<td><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv4Obj.version" title="ciscoconfparse2.ccp_util.IPv4Obj.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a></p></td>
+<td><p>Returns the IP version of the object as an integer.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>ip_object</strong></p></td>
+<td><p>(<a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a>) Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> with the host address of this object</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>network_object</strong></p></td>
+<td><p>(<a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Network</span></code></a>) Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Network</span></code></a> with the network of this object</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__add__" title="Permalink to this definition"></a></dt>
+<dd><p>Add an integer to IPv4Obj() and return an IPv4Obj()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__contains__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__gt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__hash__" title="Permalink to this definition"></a></dt>
+<dd><p>Return hash(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__index__">
+<span class="sig-name descname"><span class="pre">__index__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__index__" title="Permalink to this definition"></a></dt>
+<dd><p>Return this object as an integer (used for hex() and bin() operations)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__int__">
+<span class="sig-name descname"><span class="pre">__int__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__int__" title="Permalink to this definition"></a></dt>
+<dd><p>Return this object as an integer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__iter__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__lt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__ne__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self!=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__next__">
+<span class="sig-name descname"><span class="pre">__next__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__next__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.__sub__">
+<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.__sub__" title="Permalink to this definition"></a></dt>
+<dd><p>Subtract an integer from IPv4Obj() and return an IPv4Obj()</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_binary_tuple">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_binary_tuple</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_binary_tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a tuple of zero-padded binary strings</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_addr">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_cidr_addr</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_addr" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string with the address in CIDR notation</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_net">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_cidr_net</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_cidr_net" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string with the network in CIDR notation</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_decimal">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a decimal integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_broadcast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal_broadcast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_broadcast" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer value of the IP broadcast as a decimal integer; explicitly, if this object represents 1.1.1.5/24, ‘as_decimal_broadcast’ returns the integer value of 1.1.1.255</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal_network</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_decimal_network" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer value of the IP network as a decimal integer; explicitly, if this object represents 1.1.1.5/24, ‘as_decimal_network’ returns the integer value of 1.1.1.0/24</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_hex">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_hex</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_hex" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a hex string</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_hex_tuple">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_hex_tuple</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_hex_tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a tuple of zero-padded hex strings</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_int">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_int</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_int" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a decimal integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_zeropadded</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a zero-padded string (useful when sorting in a text-file)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded_network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_zeropadded_network</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.as_zeropadded_network" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP network as a zero-padded string (useful when sorting in a text-file)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.broadcast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">broadcast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.broadcast" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the broadcast address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.debug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.dna">
+<span class="sig-name descname"><span class="pre">dna</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.dna" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.empty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.exploded">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exploded</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.exploded" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv4 Address object as a string.  The string representation is in dotted decimal notation. Leading zeroes are never included in the representation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.finished_parsing">
+<span class="sig-name descname"><span class="pre">finished_parsing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.finished_parsing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.get_regex">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_regex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.get_regex" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.hostmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hostmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.hostmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.inverse_netmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inverse_netmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.inverse_netmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.ip">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ip</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.ip" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.ip_object">
+<span class="sig-name descname"><span class="pre">ip_object</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.ip_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.ipv4">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ipv4</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.ipv4" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.is_multicast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_multicast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_multicast" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a multicast address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.is_private">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_private</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_private" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a private address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.is_reserved">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_reserved</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.is_reserved" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a reserved address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.masklen">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">masklen</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.masklen" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.masklength">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">masklength</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.masklength" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.max_int">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_int</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.max_int" title="Permalink to this definition"></a></dt>
+<dd><p>Return the maximum size of an IPv4 Address object as an integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.netmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">netmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.netmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the network mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.network" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv4Network</span></code></a> object, which represents this network.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.network_object">
+<span class="sig-name descname"><span class="pre">network_object</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.network_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.network_offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">network_offset</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.network_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer difference between host number and network number.  This must be less than <cite>numhosts</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.next" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.numhosts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numhosts</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.numhosts" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total number of IP addresses in this network, including broadcast and the “subnet zero” address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.packed">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">packed</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.packed" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv4 object as packed hex bytes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.prefixlen">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefixlen</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlen" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.prefixlength">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefixlength</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.prefixlength" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.strict">
+<span class="sig-name descname"><span class="pre">strict</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.strict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.v4input">
+<span class="sig-name descname"><span class="pre">v4input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.v4input" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv4Obj.version">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv4Obj.version" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP version of the object as an integer.  i.e. 4</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.ccp_util.</span></span><span class="sig-name descname"><span class="pre">IPv6Obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v6input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj" title="Permalink to this definition"></a></dt>
+<dd><p>An object to represent IPv6 addresses and IPv6 networks.</p>
+<p>When <a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj" title="ciscoconfparse2.ccp_util.IPv6Obj"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv6Obj</span></code></a> objects are compared or sorted, network numbers are sorted lower to higher.  If network numbers are the same, shorter masks are lower than longer masks. After comparing mask length, numerically higher IP addresses are greater than numerically lower IP addresses.  Comparisons between <a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj" title="ciscoconfparse2.ccp_util.IPv6Obj"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv6Obj</span></code></a> instances was chosen so it’s easy to find the longest-match for a given prefix.</p>
+<p>This object emulates the behavior of ipaddr.IPv6Network() (in Python2) where host-bits were retained in the IPv6Network() object.  <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Network</span></code></a> in Python3 does not retain host-bits; the desire to retain host-bits in both Python2 and Python3 ip network objects was the genesis of this API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v6input</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>]</em>) – A string (or integer) containing an IPv6 address, and optionally a netmask or masklength.  Integers are also accepted and the masklength of the integer is assumed to be 128-bits.  The following address/netmask formats are supported: “2001::dead:beef”, “2001::dead:beef/64”,</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – When <cite>strict</cite> is True, the value of <cite>v4input</cite> must not have host-bits set.  The default value is False.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ccp_util</span> <span class="kn">import</span> <span class="n">IPv6Obj</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span> <span class="o">=</span> <span class="n">IPv6Obj</span><span class="p">(</span><span class="mi">42540488161975842760550356429036175087</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span>
+<span class="go">&lt;IPv6Obj 2001::dead:beef/64&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span> <span class="o">=</span> <span class="n">IPv6Obj</span><span class="p">(</span><span class="s2">&quot;2001::dead:beef/64&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">net</span>
+<span class="go">&lt;IPv6Obj 2001::dead:beef/64&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.network" title="ciscoconfparse2.ccp_util.IPv6Obj.network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network</span></code></a></p></td>
+<td><p>Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Network</span></code></a> object, which represents this network.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.ip" title="ciscoconfparse2.ccp_util.IPv6Obj.ip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip</span></code></a></p></td>
+<td><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_binary_tuple" title="ciscoconfparse2.ccp_util.IPv6Obj.as_binary_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_binary_tuple</span></code></a></p></td>
+<td><p>Returns the IPv6 address as a tuple of zero-padded 16-bit binary strings</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal" title="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_decimal</span></code></a></p></td>
+<td><p>Returns the IP address as a decimal integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network" title="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_decimal_network</span></code></a></p></td>
+<td><p>Returns the integer value of the IP network as a decimal integer; explicitly, if this object represents 2b00:cd80:14:10::1/64, 'as_decimal_network' returns the integer value of 2b00:cd80:14:10::0/64</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_hex_tuple" title="ciscoconfparse2.ccp_util.IPv6Obj.as_hex_tuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_hex_tuple</span></code></a></p></td>
+<td><p>Returns the IPv6 address as a tuple of zero-padded 16-bit hex strings</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.get_regex" title="ciscoconfparse2.ccp_util.IPv6Obj.get_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_regex</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.netmask" title="ciscoconfparse2.ccp_util.IPv6Obj.netmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">netmask</span></code></a></p></td>
+<td><p>Returns the network mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.network_offset" title="ciscoconfparse2.ccp_util.IPv6Obj.network_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">network_offset</span></code></a></p></td>
+<td><p>Returns the integer difference between host number and network number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.numhosts" title="ciscoconfparse2.ccp_util.IPv6Obj.numhosts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numhosts</span></code></a></p></td>
+<td><p>Returns the total number of IP addresses in this network, including broadcast and the &quot;subnet zero&quot; address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.prefixlen" title="ciscoconfparse2.ccp_util.IPv6Obj.prefixlen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prefixlen</span></code></a></p></td>
+<td><p>Returns the length of the network mask as an integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.hostmask" title="ciscoconfparse2.ccp_util.IPv6Obj.hostmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hostmask</span></code></a></p></td>
+<td><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ciscoconfparse2.ccp_util.IPv6Obj.numhosts" title="ciscoconfparse2.ccp_util.IPv6Obj.numhosts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numhosts</span></code></a></p></td>
+<td><p>Returns the total number of IP addresses in this network, including broadcast and the &quot;subnet zero&quot; address</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>network_object</strong></p></td>
+<td><p>(<a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Network</span></code></a>) Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Network</span></code></a> with the network of this object</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ip_object</strong></p></td>
+<td><p>(<a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a>) Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> with the host address of this object</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>broadcast: raises `NotImplementedError`; IPv6 doesn’t use broadcast addresses</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__add__" title="Permalink to this definition"></a></dt>
+<dd><p>Add an integer to IPv6Obj() and return an IPv6Obj()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__contains__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__gt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__hash__" title="Permalink to this definition"></a></dt>
+<dd><p>Return hash(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__index__">
+<span class="sig-name descname"><span class="pre">__index__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__index__" title="Permalink to this definition"></a></dt>
+<dd><p>Return this object as an integer (used for hex() and bin() operations)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__int__">
+<span class="sig-name descname"><span class="pre">__int__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__int__" title="Permalink to this definition"></a></dt>
+<dd><p>Return this object as an integer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__iter__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__lt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__ne__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self!=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__next__">
+<span class="sig-name descname"><span class="pre">__next__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__next__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.__sub__">
+<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.__sub__" title="Permalink to this definition"></a></dt>
+<dd><p>Subtract an integer from IPv6Obj() and return an IPv6Obj()</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_binary_tuple">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_binary_tuple</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_binary_tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv6 address as a tuple of zero-padded 16-bit binary strings</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_addr">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_cidr_addr</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_addr" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string with the address in CIDR notation</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_net">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_cidr_net</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_cidr_net" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string with the network in CIDR notation</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a decimal integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_broadcast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal_broadcast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_broadcast" title="Permalink to this definition"></a></dt>
+<dd><p>IPv6 does not support broadcast addresses.  Use ‘as_decimal_network_maxint’ if you want the integer value that would otherwise be an IPv6 broadcast.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal_network</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer value of the IP network as a decimal integer; explicitly, if this object represents 2b00:cd80:14:10::1/64, ‘as_decimal_network’ returns the integer value of 2b00:cd80:14:10::0/64</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network_maxint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_decimal_network_maxint</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_decimal_network_maxint" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer value of the maximum value of an IPv6 subnet as a decimal integer; explicitly, if this object represents 2b00:cd80:14:10::0/64, ‘as_decimal_network_maxint’ returns the integer value of 2b00:cd80:14:10:ffff:ffff:ffff:ffff</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_hex">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_hex</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_hex" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a hex string</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_hex_tuple">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">as_hex_tuple</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_hex_tuple" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv6 address as a tuple of zero-padded 16-bit hex strings</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.as_int">
+<span class="sig-name descname"><span class="pre">as_int</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.as_int" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP address as a decimal integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.broadcast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">broadcast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.broadcast" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.compressed">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compressed</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.compressed" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv6 Network object in compressed form</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.debug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.dna">
+<span class="sig-name descname"><span class="pre">dna</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.dna" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.empty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.exploded">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exploded</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.exploded" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv6 Address object in exploded form</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.finished_parsing">
+<span class="sig-name descname"><span class="pre">finished_parsing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.finished_parsing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.get_regex">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_regex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.get_regex" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.hostmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hostmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.hostmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.inverse_netmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inverse_netmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.inverse_netmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the host mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.ip">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ip</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.ip" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.ip_object">
+<span class="sig-name descname"><span class="pre">ip_object</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.ip_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.ipv6">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ipv6</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.ipv6" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the address as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_ipv4_mapped">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_ipv4_mapped</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_ipv4_mapped" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_link_local">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_link_local</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_link_local" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is an IPv6 link-local address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_multicast">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_multicast</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_multicast" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a multicast address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_private">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_private</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_private" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a private address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_reserved">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_reserved</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_reserved" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is a reserved address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_site_local">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_site_local</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_site_local" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this is an IPv6 site-local address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.is_unspecified">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_unspecified</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.is_unspecified" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a boolean for whether this address is not otherwise
+classified</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.masklen">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">masklen</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.masklen" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.masklength">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">masklength</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.masklength" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.max_int">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_int</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.max_int" title="Permalink to this definition"></a></dt>
+<dd><p>Return the maximum size of an IPv6 Address object as an integer</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.netmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">netmask</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.netmask" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the network mask as an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Address" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Address</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.network">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.network" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an <a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv6Network" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipaddress.IPv6Network</span></code></a> object, which represents this network.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.network_object">
+<span class="sig-name descname"><span class="pre">network_object</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.network_object" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.network_offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">network_offset</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.network_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the integer difference between host number and network number.  This must be less than <cite>numhosts</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.next" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.numhosts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">numhosts</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.numhosts" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the total number of IP addresses in this network, including broadcast and the “subnet zero” address</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.packed">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">packed</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.packed" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IPv6 object as packed hex bytes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.prefixlen">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefixlen</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.prefixlen" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.prefixlength">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefixlength</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.prefixlength" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the length of the network mask as an integer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.sixtofour">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sixtofour</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.sixtofour" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.strict">
+<span class="sig-name descname"><span class="pre">strict</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.strict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.teredo">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">teredo</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.teredo" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.v6input">
+<span class="sig-name descname"><span class="pre">v6input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.v6input" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.IPv6Obj.version">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.IPv6Obj.version" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the IP version of the object as an integer.  i.e. 6</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.ccp_util.</span></span><span class="sig-name descname"><span class="pre">CiscoRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type=&lt;class</span> <span class="pre">'str'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_iter_attr='port'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__add__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__class_getitem__">
+<span class="sig-name descname"><span class="pre">__class_getitem__</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;bound</span> <span class="pre">method</span> <span class="pre">GenericAlias</span> <span class="pre">of</span> <span class="pre">&lt;class</span> <span class="pre">'ciscoconfparse2.ccp_util.CiscoRange'&gt;&gt;</span></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__class_getitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__contains__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__copy__">
+<span class="sig-name descname"><span class="pre">__copy__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__copy__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__delitem__">
+<span class="sig-name descname"><span class="pre">__delitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ii</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__delitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__eq__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__ge__">
+<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__ge__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ii</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__getitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__gt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&gt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__hash__" title="Permalink to this definition"></a></dt>
+<dd><p>Return a deterministic identifier for CiscoRange() implementations</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__iadd__">
+<span class="sig-name descname"><span class="pre">__iadd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__iadd__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__imul__">
+<span class="sig-name descname"><span class="pre">__imul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__imul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__iter__" title="Permalink to this definition"></a></dt>
+<dd><p>Return an iterator for this CiscoRange().  If CiscoRange().__iter__() is not implemented, many CiscoRnage() index errors are generated by other methods accessing an index that is off by one.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__le__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__len__" title="Permalink to this definition"></a></dt>
+<dd><p>Return the length of this CiscoRange()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__lt__" title="Permalink to this definition"></a></dt>
+<dd><p>Return self&lt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__mul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__radd__">
+<span class="sig-name descname"><span class="pre">__radd__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__radd__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return a formal string representation of this CiscoRange() object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__reversed__">
+<span class="sig-name descname"><span class="pre">__reversed__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__reversed__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__rmul__">
+<span class="sig-name descname"><span class="pre">__rmul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__rmul__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__setitem__">
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ii</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__setitem__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>Return a formal string representation of this CiscoRange()</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.__sub__">
+<span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.__sub__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.append" title="Permalink to this definition"></a></dt>
+<dd><p>Append a member which matches the type of CiscoRange()._list[0].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.as_compressed_str">
+<span class="sig-name descname"><span class="pre">as_compressed_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.as_compressed_str" title="Permalink to this definition"></a></dt>
+<dd><p>Return a text string with a compressed csv of values</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ccp_util</span> <span class="kn">import</span> <span class="n">CiscoRange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">range_obj</span> <span class="o">=</span> <span class="n">CiscoRange</span><span class="p">(</span><span class="s1">&#39;1,3,5,6,7&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">range_obj</span><span class="o">.</span><span class="n">compressed_str</span>
+<span class="go">&#39;1,3,5-7&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.as_list">
+<span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.as_list" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of sorted components; an empty string is automatically rejected.  This method is tricky to test due to the requirement for the <cite>.sort_list</cite> attribute on all elements; avoid using the ordered nature of <cite>as_list</cite> and use <cite>as_set</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.as_set">
+<span class="sig-name descname"><span class="pre">as_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.as_set" title="Permalink to this definition"></a></dt>
+<dd><p>Return an unsorted set({}) components.  Use this method instead of <cite>.as_list</cite> whenever possible to avoid the requirement for elements needing a <cite>.sort_list</cite> attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.attribute_sort">
+<span class="sig-name descname"><span class="pre">attribute_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sort_list'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.attribute_sort" title="Permalink to this definition"></a></dt>
+<dd><p>Sort target_list based on the object attribute specified in attribute.  By default, CiscoRange().attribute_sort() sorts the CiscoRange() based on the <cite>sort_list</cite> attribute.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.begin_obj">
+<span class="sig-name descname"><span class="pre">begin_obj</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CiscoIOSInterface</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">CiscoIOSXRInterface</span></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.begin_obj" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">--</span> <span class="pre">remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">S</span></span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.clear" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.copy" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">integer</span> <span class="pre">--</span> <span class="pre">return</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">occurrences</span> <span class="pre">of</span> <span class="pre">value</span></span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.count" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.default_iter_attr">
+<span class="sig-name descname"><span class="pre">default_iter_attr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.default_iter_attr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.extend" title="Permalink to this definition"></a></dt>
+<dd><p>S.extend(iterable) – extend sequence by appending elements from the iterable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">integer</span> <span class="pre">--</span> <span class="pre">return</span> <span class="pre">first</span> <span class="pre">index</span> <span class="pre">of</span> <span class="pre">value.</span></span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.index" title="Permalink to this definition"></a></dt>
+<dd><p>Raises ValueError if the value is not present.</p>
+<p>Supporting start and stop arguments is optional, but
+recommended.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.insert" title="Permalink to this definition"></a></dt>
+<dd><p>CiscoRange().insert() is disabled because it currently generates a stackoverflow.  Use CiscoRange().append() instead.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.iterate_attribute">
+<span class="sig-name descname"><span class="pre">iterate_attribute</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.iterate_attribute" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.member_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">member_type</span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.member_type" title="Permalink to this definition"></a></dt>
+<dd><p>Return the member type of this CiscoRange().  The type is always based off the first member</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.parse_cisco_interfaces">
+<span class="sig-name descname"><span class="pre">parse_cisco_interfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_cisco_interfaces" title="Permalink to this definition"></a></dt>
+<dd><p>Parse text input to CiscoRange(), such as CiscoRange(‘Eth1/1-5,7’, result_type=None).  ‘Eth1/1-5,7 will be parsed.  By default, CiscoIOSInterface() objects are used when CiscoRange(result_type=None) is parsed.’  An error is raised if the CiscoRange() cannot be parsed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.parse_floats">
+<span class="sig-name descname"><span class="pre">parse_floats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_floats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.parse_integers">
+<span class="sig-name descname"><span class="pre">parse_integers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_integers" title="Permalink to this definition"></a></dt>
+<dd><p>Parse text input to CiscoRange(), such as CiscoRange(‘1-5,7’, result_type=int).  ‘1-5,7 will be parsed.  By default, integers are used when CiscoRange(result_type=int) is parsed.’  An error is raised if the CiscoRange() cannot be parsed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.parse_strings">
+<span class="sig-name descname"><span class="pre">parse_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.parse_strings" title="Permalink to this definition"></a></dt>
+<dd><p>Parse text input to CiscoRange(), such as CiscoRange(‘1-5,7’, result_type=None).  ‘1-5,7 will be parsed.  By default, CiscoIOSInterface() instances are used when CiscoRange(result_type=None) is parsed.’  An error is raised if the CiscoRange() cannot be parsed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">item</span> <span class="pre">--</span> <span class="pre">remove</span> <span class="pre">and</span> <span class="pre">return</span> <span class="pre">item</span> <span class="pre">at</span> <span class="pre">index</span> <span class="pre">(default</span> <span class="pre">last).</span></span></span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.pop" title="Permalink to this definition"></a></dt>
+<dd><p>Raise IndexError if list is empty or index is out of range.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.range_str">
+<span class="sig-name descname"><span class="pre">range_str</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.range_str" title="Permalink to this definition"></a></dt>
+<dd><p>Explode Cisco ranges into a list of explicit items… examples below…</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ccp_util</span> <span class="kn">import</span> <span class="n">CiscoRange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CiscoRange</span><span class="p">(</span><span class="s1">&#39;1-3,5,9-11,13&#39;</span><span class="p">,</span> <span class="n">result_type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">&lt;CiscoRange 1-3,5,9-11,13&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">CiscoRange</span><span class="p">(</span><span class="s1">&#39;Eth2/1-3,5,9-10&#39;</span><span class="p">,</span> <span class="n">result_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Eth2/1</span>
+<span class="go">Eth2/2</span>
+<span class="go">Eth2/3</span>
+<span class="go">Eth2/5</span>
+<span class="go">Eth2/9</span>
+<span class="go">Eth2/10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CiscoRange</span><span class="p">(</span><span class="s1">&#39;Eth2/1-3,7&#39;</span><span class="p">,</span> <span class="n">result_type</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">&lt;CiscoRange Eth2/1-3,7&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CiscoRange</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;1,3,5&quot;</span><span class="p">,</span> <span class="n">result_type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">&lt;CiscoRange [1, 3, 5]&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.remove" title="Permalink to this definition"></a></dt>
+<dd><p>S.remove(value) – remove first occurrence of value.
+Raise ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.result_type">
+<span class="sig-name descname"><span class="pre">result_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.result_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.reverse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.sort" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.text">
+<span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.text" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.CiscoRange.this_obj">
+<span class="sig-name descname"><span class="pre">this_obj</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">CiscoIOSInterface</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">CiscoIOSXRInterface</span></em><a class="headerlink" href="#ciscoconfparse2.ccp_util.CiscoRange.this_obj" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.DNSResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.ccp_util.</span></span><span class="sig-name descname"><span class="pre">DNSResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.DNSResponse" title="Permalink to this definition"></a></dt>
+<dd><p>A universal DNS Response object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>query_type</strong><span class="classifier">str</span></dt><dd><p>A string containing the DNS record type to lookup</p>
+</dd>
+<dt><strong>result_str</strong><span class="classifier">str</span></dt><dd><p>A string containing the DNS Response</p>
+</dd>
+<dt><strong>input_str</strong><span class="classifier">str</span></dt><dd><p>The DNS query string</p>
+</dd>
+<dt><strong>duration</strong><span class="classifier">float</span></dt><dd><p>The query duration in seconds</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>A <a class="reference internal" href="#ciscoconfparse2.ccp_util.DNSResponse" title="ciscoconfparse2.ccp_util.DNSResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNSResponse</span></code></a> instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>query_type</strong></p></td>
+<td><p>(str) A string containing the DNS record type to lookup</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>result_str</strong></p></td>
+<td><p>(str) A string containing the DNS Response</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input_str</strong></p></td>
+<td><p>(str) The DNS query string</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>has_error</strong></p></td>
+<td><p>(bool) Indicates the query resulted in an error when True</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>error_str</strong></p></td>
+<td><p>(str) The error returned by dnspython</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>duration</strong></p></td>
+<td><p>(float) The query duration in seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>preference</strong></p></td>
+<td><p>(int) The MX record’s preference (default: -1)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.DNSResponse.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.DNSResponse.__repr__" title="Permalink to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.DNSResponse.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.DNSResponse.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ciscoconfparse2.ccp_util.dns_query">
+<span class="sig-prename descclassname"><span class="pre">ciscoconfparse2.ccp_util.</span></span><span class="sig-name descname"><span class="pre">dns_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ciscoconfparse2.ccp_util.dns_query" title="Permalink to this definition"></a></dt>
+<dd><p>A unified IPv4 &amp; IPv6 DNS lookup interface; this is essentially just a wrapper around dnspython’s API.  When you query a PTR record, you can use an IPv4 or IPv6 address (which will automatically be converted into an in-addr.arpa name.  This wrapper only supports a subset of DNS records: ‘A’, ‘AAAA’, ‘CNAME’, ‘MX’, ‘NS’, ‘PTR’, and ‘TXT’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A set([]) of <a class="reference internal" href="#ciscoconfparse2.ccp_util.DNSResponse" title="ciscoconfparse2.ccp_util.DNSResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNSResponse</span></code></a> instances.  Refer to the DNSResponse object in these docs for more information.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ciscoconfparse2.ccp_util</span> <span class="kn">import</span> <span class="n">dns_query</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dns_query</span><span class="p">(</span><span class="s1">&#39;www.pennington.net&#39;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;4.2.2.2&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">{&lt;DNSResponse &quot;A&quot; result_str=&quot;65.19.187.2&quot;&gt;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response_set</span> <span class="o">=</span> <span class="n">dns_query</span><span class="p">(</span><span class="s1">&#39;www.pennington.net&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;4.2.2.2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aa</span> <span class="o">=</span> <span class="n">response_set</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aa</span><span class="o">.</span><span class="n">result_str</span>
+<span class="go">&#39;65.19.187.2&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aa</span><span class="o">.</span><span class="n">error_str</span>
+<span class="go">&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_Models_Nxos.html" class="btn btn-neutral float-left" title="ciscoconfparse2.models_nxos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_CiscoPassword.html" class="btn btn-neutral float-right" title="ciscoconfparse2.CiscoPassword" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2007-2024, David Michael Pennington &lt;mike /at\ pennington [dot] net&gt;.
+      <span class="lastupdated">Last updated on Mar 03, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
