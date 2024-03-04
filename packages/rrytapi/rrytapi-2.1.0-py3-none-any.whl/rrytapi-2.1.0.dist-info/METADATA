@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: rrytapi
+Version: 2.1.0
+Summary: 
+License: MIT
+Author: RadoTheProgrammer
+Author-email: rado@arazakar.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: bs4 (>=0.0.2,<0.0.3)
+Requires-Dist: clean-text (>=0.6.0,<0.7.0)
+Requires-Dist: js2py (>=0.74,<0.75)
+Requires-Dist: mini-lambda (>=2.2.3,<3.0.0)
+Requires-Dist: pydub (>=0.25.1)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: rrprettier (>=1.0.0,<2.0.0)
+Requires-Dist: unidecode (>=1.3.8,<2.0.0)
+Description-Content-Type: text/markdown
+
+# RRYTApi
+
+RRYTApi is a youtube api that allow you to download videos in any available format. It can also show the output of a search request, and read the content of a playlist.
+
+This is my first real github repository that I've done. And I hope that it works. (If not, pls send an issue and i fix it! Nothing is perfect.)
+
+To download it, use `git clone` command (maybe you already know that)
+
+```
+git clone https://github.com/RadoTheProgrammer/rrytapi
+cd rrytapi
+```
+
+## Installation
+
+After git cloned the repository, you can run the following command to install:
+
+```
+pip install .
+```
+
+
+## Usage
+
+To download a video:
+
+```python
+import rrytypi
+v=rrytypi.Video.get(<video url>)
+v.download()
+```
+
+To download the audio of a video:
+
+```python
+v.formats.audio.download()
+```
+
+To display all available formats, just use
+
+```python
+print(v.formats)
+```
+
