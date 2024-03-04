@@ -1,0 +1,125 @@
+﻿**NOTE: THIS PACKAGE IS IN TEST VERSION YET.**
+
+# EasyFTP
+
+EasyFTP is a Python library that simplifies the process of interacting with FTP (File Transfer Protocol) servers. With EasyFTP, you can easily upload, download, delete, and list files and directories on remote FTP servers using a simple and intuitive interface.
+
+## Features
+
+- Connect to FTP servers with ease.
+- Upload files and directories to remote servers.
+- Download files and directories from remote servers.
+- Delete files and directories on remote servers.
+- List files and directories on remote servers.
+- *(not implemented)* ~~Support for both FTP and secure FTP (FTPS).~~
+
+## Installation
+
+You can install EasyFTP via pip:
+
+```bash
+pip install easyftp
+```
+
+## Usage
+> Structure of the directory /example used here :
+```
+/examples
+├── dir1
+│   ├── a.png
+│   ├── b.png
+│   └── c.jpg
+├── dir2
+│   └── subdir-a
+│       ├── random.key
+│       └── randon.key
+├── dir3
+│   ├── some.binary
+│   └── some.binary.X
+├── example.py
+└── example.py2
+```
+
+ - Establishing connection
+```py
+from EasyFTP import EasyFTP as easyftp
+
+with easyftp.EasyFTP() as session:
+	session.connect("192.168.1.1", 21, "admin", "12345678", timeout = 30)
+	# Change it to your option, and timeout is not necessary.
+```
+- Listing files on remote directory
+```py
+from EasyFTP import EasyFTP as easyftp
+
+with easyftp.EasyFTP() as session:
+	session.connect("192.168.1.1", 21, "admin", "12345678", timeout = 30)
+	# Change it to your option, and timeout is not necessary.
+	l = session.ls("/examples")
+	# Directory argument is not necessary;
+	# It will print structure of current directory when there is no argument.
+	print(l)
+```
+It will print, for example: `["dir1", "dir2", "dir3", "example.py", "example.py2"]`
+
+- Changing directory in remote (and printing current working directory)
+```py
+from EasyFTP import EasyFTP as easyftp
+
+with easyftp.EasyFTP() as session:
+	session.connect("192.168.1.1", 21, "admin", "12345678", timeout = 30)
+	# Change it to your option, and timeout is not necessary.
+	
+	session.cd("/examples")
+	# This will change your directory to /examples.
+	# NOTE: Relative path is not tested yet.
+
+	print(session.cd())
+	# This will print "/examples", which is your current working directory.
+	# It does this when there is no argument passed to it.
+
+	print(session.pwd())
+	# It works like session.cd().
+```
+- Downloading specific file(s) from remote
+```py
+from EasyFTP import EasyFTP as easyftp
+
+with easyftp.EasyFTP() as session:
+	session.connect("192.168.1.1", 21, "admin", "12345678", timeout = 30)
+	# Change it to your option, and timeout is not necessary.
+
+	# Low-level example.
+	# This works by reading file on remote and retrieve it as string,
+	# and then write it to your desired file manually.
+	# This will raise FTPError if you don't have permission to
+	# read files, write permission to your local file,
+	# or error(s) not described here. It can be anything.
+	content = session.read("/examples/example.py")
+	with open("./example.py", encoding = "utf-8") as f:
+		f.write(content)
+
+	# This will change your directory to /examples.
+	# So you won't need to specify path to file IF IT EXISTS IN THE PATH.
+	# NOTE: Relative path is not tested yet.
+	session.cd("/examples")
+
+	# High-level example.
+	# This works by reading file on remote and retrieve it as file,
+	# which will be saved to specified file(s)/path which local_path variable indicates.
+	# This can raise error, too. Read them carefully if it happened.
+	# TODO : Return whether or not it has succeeded.
+
+	# Downloading one file.
+	session.download("example.py", "example.py")
+
+	# TODO : Downloading multiple files using wildcard(s).
+	# session.download("ex*.py*", ".")
+
+	# Downloading a directory.
+	# local_file MUST indicate a directory to do this.
+	# The subdirectory(subdirectories) in the directory will be downloaded too.
+	# TODO : Add EasyFTP.filter object to filter files to be downloaded.
+	session.download("dir2", ".")
+```
+
