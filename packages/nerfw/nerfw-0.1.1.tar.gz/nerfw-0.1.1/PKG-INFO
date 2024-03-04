@@ -1,0 +1,108 @@
+Metadata-Version: 2.1
+Name: nerfw
+Version: 0.1.1
+Summary: Framework for creation of web based visual novels
+Author-email: Nergan <noname.nosurname2016@yandex.ru>
+License: MIT License
+        
+        Copyright (c) 2021-present PyO3 Project and Contributors
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: homepage, https://github.com/Nergan123/NerFW/tree/main
+Project-URL: repository, https://github.com/Nergan123/NerFW/tree/main
+Keywords: flask,visual,novel,web
+Classifier: Framework :: Flask
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Games/Entertainment
+Classifier: Topic :: Games/Entertainment :: Role-Playing
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: python-dotenv
+Requires-Dist: flask
+Requires-Dist: pyjwt
+Requires-Dist: authlib
+Requires-Dist: requests
+Requires-Dist: patreon
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: pylint; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: sphinx; extra == "dev"
+Requires-Dist: sphinx-rtd-theme; extra == "dev"
+Requires-Dist: myst-parser; extra == "dev"
+
+# NerFW
+
+[![Code check](https://github.com/Nergan123/NerFW/actions/workflows/Checks.yml/badge.svg)](https://github.com/Nergan123/NerFW/actions/workflows/Checks.yml)
+[![Qodana](https://github.com/Nergan123/NerFW/actions/workflows/qodana_code_quality.yml/badge.svg)](https://github.com/Nergan123/NerFW/actions/workflows/qodana_code_quality.yml)
+[![PyPI version](https://badge.fury.io/py/nerfw.svg)](https://badge.fury.io/py/nerfw)
+[![Documentation Status](https://readthedocs.org/projects/nerfw/badge/?version=latest)](https://nerfw.readthedocs.io/en/latest/?badge=latest)
+
+![NerFW Logo](docs/img/logo512.png)
+
+## About
+
+NerFW *(Nergans FrameWork)* is a framework for visual novel creation. This framework
+is created in an attempt to make creation of visual novels more convenient for game developers,
+and at the same time to make the game harder to pirate. 
+
+NerFW is based on Flask. And is creating a server which hosts the game for you.
+
+
+## Installation
+
+To install the framework you need to have python 3.10 or higher installed on your computer. 
+Then you can install the framework using pip.
+
+```bash
+pip install nerfw
+```
+
+## Usefull links
+
+- [Read The Docs Documentation](https://nerfw.readthedocs.io/en/latest/index.html)
+- [PyPi](https://pypi.org/project/nerfw/)
+- [GitHub](https://github.com/Nergan123/NerFW)
+
+## Contacts
+
+- [Discord](https://discordapp.com/users/278900472679628800)
+- [GitHub](https://github.com/Nergan123)
+- [Email](mailto:noname.nosurname2016@yandex.ru)
+
+### Bug reporting
+
+If you found a bug in the framework, please report it in the 
+[issues](https://github.com/Nergan123/NerFW/issues) section of the GitHub repository.
+
+Or you can contact me directly using the contacts above.
+
+## Known Issues
+
+1. Patreon api updates creators token everytime you are logging to your campaign

@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nerfw"
+authors = [
+    {name = "Nergan", email = "noname.nosurname2016@yandex.ru"},
+]
+description = "Framework for creation of web based visual novels"
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.10"
+keywords = [
+    "flask",
+    "visual",
+    "novel",
+    "web",
+]
+license = {file = 'LICENSE'}
+classifiers = [
+    "Framework :: Flask",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment",
+    "Topic :: Games/Entertainment :: Role-Playing",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+    "python-dotenv",
+    "flask",
+    "pyjwt",
+    "authlib",
+    "requests",
+    "patreon",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "nerfw.__version__"}
+
+[project.urls]
+homepage = "https://github.com/Nergan123/NerFW/tree/main"
+repository = "https://github.com/Nergan123/NerFW/tree/main"
+
+[tool.setuptools.packages.find]
+exclude = [
+    "test_files",
+    "frontend",
+    "tests",
+]
+namespaces = false
+
+
+[tool.setuptools.package-data]
+nerfw = [
+    "**/*.html",
+    "**/*.css",
+    "**/*.js",
+    "**/*.txt",
+    "**/*.map",
+    "**/build/**/*.ico",
+    "**/build/**/*.png",
+    "**/build/**/*.svg",
+    "**/build/asset-manifest.json",
+    "**/build/manifest.json",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pylint",
+    "pytest",
+    "sphinx",
+    "sphinx-rtd-theme",
+    "myst-parser",
+]
