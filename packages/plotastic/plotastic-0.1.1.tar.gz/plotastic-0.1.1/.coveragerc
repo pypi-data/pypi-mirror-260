@@ -1,0 +1,22 @@
+; https://coverage.readthedocs.io/en/latest/config.html
+
+[paths]
+source =
+    src
+    ; */site-packages
+
+
+; [run]
+; parallel = true
+; omit = tests/*
+; branch = true
+; source =
+;     sampleproject
+
+[report]
+show_missing = true
+precision = 1
+; omit = *migrations*
+exclude_lines = 
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
