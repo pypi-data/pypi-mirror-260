@@ -1,0 +1,21 @@
+{
+  "name": "gradio_toggle",
+  "version": "0.2.11",
+  "description": "A custom component that toggles between on and off states. Ideal for intuitive user controls and dynamic input handling in machine learning models and data presentations.",
+  "type": "module",
+  "author": "Daniel Ialcin Misser Westergaard",
+  "license": "ISC",
+  "private": false,
+  "main_changeset": true,
+  "main": "./Index.svelte",
+  "exports": {
+    ".": "./Index.svelte",
+    "./example": "./Example.svelte",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@gradio/atoms": "0.5.3",
+    "@gradio/statustracker": "0.4.8",
+    "@gradio/utils": "0.3.0"
+  }
+}
