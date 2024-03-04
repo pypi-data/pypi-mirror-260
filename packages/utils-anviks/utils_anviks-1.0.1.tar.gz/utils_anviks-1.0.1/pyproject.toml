@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "utils_anviks"
+version = "1.0.1"
+authors = [
+    { name = "Andreas Marten Viks", email = "andreasviks0@gmail.com" },
+]
+description = "A collection of utility functions"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+
+[tool.hatch.build]
+exclude = []
+
+[project.urls]
+"Homepage" = "https://github.com/anviks/utils-anviks/"
+"Issues" = "https://github.com/anviks/utils-anviks/issues"
+"Changelog" = "https://github.com/anviks/utils-anviks/blob/master/CHANGELOG.md"
