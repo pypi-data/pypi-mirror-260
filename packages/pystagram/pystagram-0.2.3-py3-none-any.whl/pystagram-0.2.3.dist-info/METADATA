@@ -1,0 +1,124 @@
+Metadata-Version: 2.1
+Name: pystagram
+Version: 0.2.3
+Summary: API wrapper for Instagram APIs
+Project-URL: Homepage, https://github.com/MatthieuThib/pystagram
+Project-URL: Source, https://github.com/MatthieuThib/pystagram
+Project-URL: Issues, https://github.com/MatthieuThib/pystagram/issues
+Project-URL: Documentation, https://pystagram.readthedocs.io/en/latest/
+Author-email: Matthieu THIBAUT <matthieu_thibaut@icloud.com>
+License: MIT License
+        
+        Copyright (c) 2024 Matthieu THIBAUT
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+License-File: LICENSE
+Keywords: api,basic-display-api,facebook,graph-api,instagram,instagram-api,meta,pystagram,wrapper
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Telecommunications Industry
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Software Development
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: twine; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: pytest; extra == 'test'
+Description-Content-Type: text/markdown
+
+# Pystagram
+Instagram APIs Client for Python
+
+Badges: Pypi, instagram, python version, license, code style, tests passing, coverage, documentation, last release
+
+(Description, logo)
+graph api
+
+basic display api
+
+readthedocs
+
+## Features
+- Basic features
+
+## Installation
+**Pystagram** can be installed from PyPI or from source.
+
+### PyPI
+```bash
+pip install pystagram
+```
+
+### Source
+```bash
+git clone https://github.com/MatthieuThib/pystagram.git
+cd pystagram
+pip install .
+```
+## Table of Contents
+
+### Graph API
+
+### Basic Display API
+
+## Usage
+
+Publish media
+
+Fetch media
+
+Hashtag Search
+
+
+## ?
+
+cursor paginated endpoints
+
+Some endpoints can return a lot of data, hence, they are
+```
+MAX_PAGES = 10
+```
+
+
+## TO DO
+- Docker image
+
+
+
+
+
+
+
+
