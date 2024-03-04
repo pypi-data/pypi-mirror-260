@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: FoxDotChord
+Version: 0.0.0b2
+Summary: Chords for use in FoxDot
+Project-URL: Homepage, https://codeberg.com/taconi/FoxDotChord
+Project-URL: Documentation, https://taconi.codeberg.page/FoxDotChord
+Project-URL: Code, https://codeberg.com/taconi/FoxDotChord
+Project-URL: Issue tracker, https://codeberg.com/taconi/FoxDotChord/issues
+Author-email: taconi <igor.taconi@protonmail.com>
+Maintainer-email: taconi <igor.taconi@protonmail.com>
+License-Expression: GPL-3.0-or-later
+License-File: LICENSE
+Keywords: FoxDot,chord,foxdot
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# FoxDotChord
+
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://taconi.codeberg.page/FoxDotChord)
+[![status-badge](https://ci.codeberg.org/api/badges/12671/status.svg)](https://ci.codeberg.org/repos/12671)
+
+Chords for use in FoxDot.
+
+## Instalation
+
+Use the package manager you prefer
+
+```bash
+pip install git+https://codeberg.org/taconi/foxdot-chord.git
+
+poetry add  git+https://codeberg.org/taconi/foxdot-chord.git
+```
+
+## How to use?
+
+```python
+from FoxDotChord import PChord
+
+c0 = PChord['C', 'Am7', 'Dm', 'Em']
+
+t0 >> keys(c0.every(3, 'bubble'), dur=PDur(3, 8))
+
+b0 >> sawbass(c0, amp=1, pan=[0, 1, -1, 0])
+
+d0 >> play('x-o({-=}[--])')
+```
+
+<!--
+## Contribute
+-->

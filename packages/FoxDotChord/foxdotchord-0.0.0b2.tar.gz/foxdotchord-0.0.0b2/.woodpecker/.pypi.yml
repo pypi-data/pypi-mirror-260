@@ -1,0 +1,34 @@
+---
+when:
+  branch: main
+
+steps:
+  build:
+    image: python:${VERSION}-alpine
+    commands:
+      - pip install -U build
+      - python -m build --wheel
+    when:
+      event: [tag, pull_request, push]
+
+  publish:
+    image: python:${VERSION}-alpine
+    secrets: [ci_token]
+    commands: |
+      echo  "[distutils]
+      index-servers = codeberg
+
+      [codeberg]
+      repository = https://codeberg.org/api/packages/${CI_REPO_OWNER}/pypi
+      username = ${CI_REPO_OWNER}
+      password = $${CI_TOKEN}
+      " > ~/.pypirc
+
+      pip install -U twine
+      python -m twine upload --repository codeberg dist/*
+    when:
+      event: [tag]
+
+matrix:
+  VERSION:
+    - 3.10

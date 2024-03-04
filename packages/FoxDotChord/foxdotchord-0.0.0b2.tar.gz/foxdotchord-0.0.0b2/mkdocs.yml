@@ -1,0 +1,71 @@
+site_name: Foxdot Chord
+site_description: Chords for use in FoxDot.
+site_url: https://taconi.codeberg.page/FoxDotChord
+
+docs_dir: docs
+
+repo_name: taconi/FoxDotChord
+repo_url: https://codeberg.org/taconi/FoxDotChord
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.footer
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition:
+  - pymdownx.emoji:
+  - pymdownx.tasklist:
+  - pymdownx.caret:
+  - pymdownx.mark:
+  - pymdownx.tilde:
+  - pymdownx.superfences:
+  - pymdownx.inlinehilite:
+  - pymdownx.keys:
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+
+watch:
+  - FoxDotChord
+
+plugins:
+  - search:
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            FoxDotChord
+          options:
+            docstring_style: numpy
+            show_bases: false
+            show_source: false
+            ignore_init_summary: true
+            filters:
+              - "!^__(init|repr)__$"
+              - "!^_"
+
+nav:
+  - Home: index.md
+  - API:
+      - foxdot_chord.Chord: api/chord.md
+      - foxdot_chord.PChord: api/pchord.md

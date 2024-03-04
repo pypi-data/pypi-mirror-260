@@ -1,0 +1,20 @@
+---
+when:
+  branch: main
+
+steps:
+  build:
+    image: python:3.11-alpine
+    commands: |
+      pip install -U pip hatch
+      hatch run docs:build
+      mv site/* .
+
+  deploy:
+    image: appleboy/drone-git-push
+    settings:
+      branch: pages
+      remote:
+        from_secret: codeberg_repository
+      force: true
+      commit: true
