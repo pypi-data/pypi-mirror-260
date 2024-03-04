@@ -1,0 +1,243 @@
+Metadata-Version: 2.1
+Name: OHF
+Version: 1.0.3
+Summary: health checks module
+License: GPL 3.0
+Project-URL: GitLab, https://gitlab.com/status600/climates/OHF
+Keywords: homeostasis,reliability,consistency,integrity,guarantees,vows,oaths,assurances,insurances,ensurances,speed,calmness,education,augmentation,enhancement,improvements
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: body-scan
+Requires-Dist: botanist
+Requires-Dist: shares
+Requires-Dist: click
+Requires-Dist: coverage
+Requires-Dist: flask
+Requires-Dist: pdoc3
+Requires-Dist: pexpect
+Requires-Dist: redis
+Requires-Dist: requests
+Requires-Dist: textual
+Requires-Dist: tinydb
+
+
+
+
+# 🌑 🌘 🌗 🌖 🌕 🌔 🌓 🌒 🌑 
+# 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌑 
+# 🌑 🌘 🌗 🌖 🌕 🌔 🌓 🌒 🌑 
+
+Bravo!  You have received a Medical Diploma in "OHF" from      
+the Orbital Convergence University International Air and Water   
+Embassy of the Tangerine Planet 🍊.  
+
+You are now officially certified to include "OHF" in your   
+practice.    
+
+---
+
+# 🐍 OHF   
+## Organic Herb Farming
+
+## Pythons as OHF companions
+It seems like every kind of known "python" is non-venomous.        
+      
+Nevertheless, pythons are carnivorous constrictors that kill prey by   
+wrapping around them and squeezing tightly.  
+   
+There are very big python species like "reticulated pythons" 
+that can grow to over 20 feet and thusly can squeeze and kill 
+a human very fast.   
+
+However, Python species like "Ball", "Woma" and "Children's" pythons
+usually don't grow past 5 feet long.
+
+"Burmese" and "Carpet" pythons can also be great companions;
+they can grow to like 10 to 20 feet though.
+
+Dangers aside, pythons are great friends for organic crop
+farming as they reduce the rodent population.
+
+---
+
+## 🥧 description
+This is can ascertain   
+the health status of a python3 `.py` biome. 
+
+It's like a testing framework.    
+
+---
+
+## ⛲ licensing
+`GNU General Public License v3.0 - GNU Project - Free Software Foundation (FSF)`
+
+The complete license is included in the module  
+in the "./__license/options" directory.
+ 		
+---		
+		
+## ⛑️ install
+
+This utilizes:     
+[https://pypi.org/project/xonsh](https://pypi.org/project/xonsh)   
+
+```
+[xonsh] pip install OHF
+```
+
+   
+---
+	
+## 📖 documentation   
+```
+[xonsh] OHF help 
+```
+
+This opens a server process that can be opened in a browser. 
+	
+---	
+	
+## ⚕️ internal status tests of the module
+```
+[xonsh] OHF internal-status
+```
+	
+These checks are run with pypi "body_scan";   
+"OHF" is built from a fork of "body_scan".  
+
+The "body_scan" checks are written with "unittest". 
+	
+---
+
+## 🌌 Tutorial
+
+### The structure
+```
+📁 performance
+	📜 status_1.py
+```
+
+### The checks
+```		
+# status_1.py
+
+def check_1 ():
+	print ("check 1")
+	
+def check_2 ():
+	print ("check 2")
+	
+def check_3 ():
+	raise Exception ("not 110%")
+
+checks = {
+	"check 1": check_1,
+	"check 2": check_2,
+	"check 3": check_3
+}
+```
+		
+### The procedure
+From the `performance` directory,   
+```
+[xonsh] OHF status
+```
+
+#### The report
+This is the report that is (hopefully) written to the terminal.  
+
+```
+paths: [
+	{
+		"path": "status_1.py",
+		"empty": false,
+		"parsed": true,
+		"stats": {
+			"passes": 2,
+			"alarms": 1
+		},
+		"checks": [
+			{
+				"check": "check 1",
+				"passed": true,
+				"elapsed": [
+					4.054199962411076e-05,
+					"seconds"
+				]
+			},
+			{
+				"check": "check 2",
+				"passed": true,
+				"elapsed": [
+					1.72930003827787e-05,
+					"seconds"
+				]
+			},
+			{
+				"check": "check 3",
+				"passed": false,
+				"exception": "Exception('not 110%')",
+				"exception trace": [
+					"Traceback (most recent call last):",
+					"  File \"/OHF/processes/scan/process/keg/check.py\", line 68, in start",
+					"    checks [ check ] ()",
+					"  File \"<string>\", line 13, in check_3",
+					"Exception: not 110%"
+				]
+			}
+		]
+	}
+]
+alarms: [
+	{
+		"path": "status_1.py",
+		"checks": [
+			{
+				"check": "check 3",
+				"passed": false,
+				"exception": "Exception('not 110%')",
+				"exception trace": [
+					"Traceback (most recent call last):",
+					"  File \"/OHF/processes/scan/process/keg/check.py\", line 68, in start",
+					"    checks [ check ] ()",
+					"  File \"<string>\", line 13, in check_3",
+					"Exception: not 110%"
+				]
+			}
+		]
+	}
+]
+stats: {
+	"alarms": 0,
+	"empty": 0,
+	"checks": {
+		"passes": 2,
+		"alarms": 1
+	}
+}
+```
+	
+### Notes
+- Checks are started simultaneously, unless `--simultaneous no`
+	- `[xonsh] OHF status --simultaneous no`
+
+- The fractory glob pattern is "**/status_*.py", but can be changed with `--glob-string`  
+    - `[xonsh] OHF status --glob-string "**/performance_*.py"`  	
+	
+---
+
+## Advanced Tutorial   
+
+It's recommended to run OHF in a .py script.    
+
+An example of this can be found in the "_book/advanced tutorial"  
+section of the documentation.   
+
+---
+
+## 📡 Contacts
+Bryan@Status600.com
+	
+		
+		
+	
