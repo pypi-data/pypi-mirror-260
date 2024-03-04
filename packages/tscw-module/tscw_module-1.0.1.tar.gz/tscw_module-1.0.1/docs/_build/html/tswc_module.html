@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tscw_module package &mdash; Documentation tscw_module  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation tscw_module
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="source/Einleitung.html">Übersicht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Input.html">TSCW - INPUT - Erstellung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source/Output.html">TSCW - OUTPUT - Prozessierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">tscw_module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation tscw_module</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">tscw_module package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tswc_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tscw-module-package">
+<h1>tscw_module package<a class="headerlink" href="#tscw-module-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-tscw_module.tswc_DataClassesInput">
+<span id="tscw-module-tswc-dataclassesinput-module"></span><h2>tscw_module.tswc_DataClassesInput module<a class="headerlink" href="#module-tscw_module.tswc_DataClassesInput" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesInput.</span></span><span class="sig-name descname"><span class="pre">GacaFieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_boreholes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_fluid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tvd_max_borehole</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_type_cavern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_id_cavern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to create a field data file (<a href="#id1"><span class="problematic" id="id2">*</span></a>_gaca.fd.txt) as input for TSWC-GACA.
+Later on the following methods need to be performed for each instance of the class.
+For each step the according methods will check for correct inputs and prevent error in the exported txt-file.</p>
+<p>Workflow for Generating field data.</p>
+<dl class="simple">
+<dt>—- 1. BOREHOLE —-</dt><dd><ol class="arabic simple">
+<li><p>‘add_boreholeVector’</p></li>
+<li><p>‘add_radialComment’ (optional)</p></li>
+<li><p>‘add_boreholeInclination’</p></li>
+<li><p>‘add_materialProperty’ (depending on vertical discretisation)</p></li>
+<li><p>‘add_temperature’ - borehole</p></li>
+</ol>
+</dd>
+<dt>—- 2. CAVNERN —-</dt><dd><ol class="arabic simple">
+<li><p>‘add_cavernVector’</p></li>
+<li><p>‘add_temperature’ - cavern</p></li>
+<li><p>‘add_cavernCharacteristics’</p></li>
+</ol>
+</dd>
+</dl>
+<p>—- The last step is to export the field data to an txt-file with the method ‘export_fieldData’. —-</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_boreholeInclination">
+<span class="sig-name descname"><span class="pre">add_boreholeInclination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inclination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_boreholeInclination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_boreholeInclination" title="Link to this definition"></a></dt>
+<dd><p>Add inclination for borehole</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inclination</strong> (<em>array</em><em> [</em><em>1xp_borehole</em><em>] </em><em>oder 'vertical'</em>) – either array [1 x p_borehole] with deg data or ‘vertical’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_boreholeVector">
+<span class="sig-name descname"><span class="pre">add_boreholeVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radial_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_state</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_boreholeVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_boreholeVector" title="Link to this definition"></a></dt>
+<dd><p>Adds a radial vector within the borehole [m] and respective aggregate states (‘FLUID’ or ‘SOLID’).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radial_vector</strong> (<em>list</em><em> or </em><em>array</em><em> [</em><em>m</em><em>]</em>) – must be strictly increasing, will define self.m_borehole [int].</p></li>
+<li><p><strong>aggregate_state</strong> (<em>string array</em>) – list of strings either ‘FLUID’ or ‘SOLID’.
+Does not need to have the same length as radial_vector.
+Remaining values will be filled with ‘SOLID’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_cavernCharacteristics">
+<span class="sig-name descname"><span class="pre">add_cavernCharacteristics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refdepth_cavern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_heat_capacity_salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heat_conductivity_salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_cavern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_brine_equivalent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius_brine_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure_cavern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature_brine_equivalent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_cavernCharacteristics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_cavernCharacteristics" title="Link to this definition"></a></dt>
+<dd><p>Add cavern characteristics:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>refdepth_cavern</strong> (<em>float</em>) – reference depth for cavern pressure and modeling [m]</p></li>
+<li><p><strong>density_salt</strong> (<em>float</em>) – [kg/m3]</p></li>
+<li><p><strong>specific_heat_capacity_salt</strong> (<em>float</em>) – [J/kgK]</p></li>
+<li><p><strong>heat_conductivity_salt</strong> (<em>float</em>) – [W/mK]</p></li>
+<li><p><strong>height_cavern</strong> (<em>float</em>) – consists of H_zy + 2*rad_cav [m]</p></li>
+<li><p><strong>volume_brine_equivalent</strong> (<em>float</em>) – [m3]</p></li>
+<li><p><strong>radius_brine_level</strong> (<em>float</em>) – [m]</p></li>
+<li><p><strong>pressure_cavern</strong> (<em>float</em>) – [MPa]</p></li>
+<li><p><strong>temperature_brine_equivalent</strong> (<em>float</em><em>, </em><em>optional</em>) – [°C], defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_cavernVector">
+<span class="sig-name descname"><span class="pre">add_cavernVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radial_vector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_cavernVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_cavernVector" title="Link to this definition"></a></dt>
+<dd><p>Adds a radial vector within the cavern. The first element is the cavern radius.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>radial_vector</strong> (<em>list</em><em> or </em><em>array</em><em> [</em><em>m</em><em>]</em>) – must be strictly increasing, will define self.m_cavern [int].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_materialProperty">
+<span class="sig-name descname"><span class="pre">add_materialProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heat_capacity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_materialProperty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_materialProperty" title="Link to this definition"></a></dt>
+<dd><p>Adds material properties to the borehole.
+The value for the center of gravity of the layer is then modeled, with indication in relation to the bottom edge of the layer. 
+Hierarchical; new values overwrite respective old values at the same intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top</strong> (<em>int</em><em> or </em><em>float</em>) – start of layer [m]</p></li>
+<li><p><strong>bottom</strong> (<em>int</em><em> or </em><em>float</em>) – end of layer [m]</p></li>
+<li><p><strong>heat_capacity</strong> (<em>array</em><em> [</em><em>1 x m_borehole</em><em>]</em>) – [MJ/(m3K)]</p></li>
+<li><p><strong>thermal_conductivity</strong> (<em>[</em><em>W/</em><em>(</em><em>m K</em><em>)</em><em>]</em>) – [1 x m_borehole]</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the layer, will be displayed in .txt file when exported, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_radialComment">
+<span class="sig-name descname"><span class="pre">add_radialComment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radialComment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_radialComment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_radialComment" title="Link to this definition"></a></dt>
+<dd><p>Add comments for radial borehole vector. Will be displayed lather in txt file (OPTIONAL - for overview purpose only).
+If the array has a length of e.g. 5, then the comment is valid for the first five radial elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>radialComment</strong> (<em>array</em>) – E.g. [‘ID 858’,’OD 858’,’ID 1134’, ‘ZEMENT’, ‘FORMATION’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.add_temperature">
+<span class="sig-name descname"><span class="pre">add_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.add_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.add_temperature" title="Link to this definition"></a></dt>
+<dd><p>Adds temperature data to the borehole or cavern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>_type_</em>) – (p_borehole x m_borehole) array for ‘borehole or
+(m_cavern) for cavern</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – either ‘borehole’ or ‘cavern’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.export_fieldData">
+<span class="sig-name descname"><span class="pre">export_fieldData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_binary_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.export_fieldData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.export_fieldData" title="Link to this definition"></a></dt>
+<dd><p>Exports class to a txt-File with the suffix ‘_gaca.fd.txt’.
+Will be exported to a folder named (path, project_name). If it does not exist, it will be created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_folder</strong> (<em>str</em>) – path</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – suffix on path,</p></li>
+<li><p><strong>is_binary_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – Export class as a binary file (<a href="#id3"><span class="problematic" id="id4">*</span></a>.pickle). It can be later loaded to display to geometry for example in TSWC_TFBH.create_movie(), defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaFieldData.plot_geometry">
+<span class="sig-name descname"><span class="pre">plot_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaFieldData.plot_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaFieldData.plot_geometry" title="Link to this definition"></a></dt>
+<dd><p>Plots geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_range</strong> (<em>list</em><em>, </em><em>optional</em>) – start and end value of radial range, defaults to None</p></li>
+<li><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – Export plot data. defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two figures for heat capacity * rho and lambda</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig_cp, fig_lambda</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaProcessData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesInput.</span></span><span class="sig-name descname"><span class="pre">GacaProcessData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupled_annuli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaProcessData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaProcessData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaProcessData.add_stage">
+<span class="sig-name descname"><span class="pre">add_stage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaProcessData.add_stage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaProcessData.add_stage" title="Link to this definition"></a></dt>
+<dd><p>Erlaubt flexibles hinzufügen von stages. Stages werden chronologisch hinzugefügt.
+WICHTIG: Schlüsselnamen aus dict müssen mit Variablenname von TSWC übereinstimmen, erlaubt sind folgende Namen:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘TERMINATION_ID’,</p></li>
+<li><p>‘TERMINATION_QUANTITY’,</p></li>
+<li><p>‘DT_MAX’,</p></li>
+<li><p>‘FLOW_RATE’,</p></li>
+<li><p>‘P_BOUNDARY_CONDITION’,</p></li>
+<li><p>‘BOUNDARY_PRESSURE’,</p></li>
+<li><p>‘T_BOUNDARY_CONDITION’,</p></li>
+<li><p>‘BOUNDARY_TEMPERATURE’,</p></li>
+<li><p>‘K_S’</p></li>
+</ul>
+</div></blockquote>
+<p>‘TERMINATION_ID’ und ‘TERMINATION_QUANTITY’ müssen eingegeben werden!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stage_data</strong> (<em>dict</em>) – Enthält alle erforderlichen Parameter in der Form {Schlüssel: Wert}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesInput.GacaProcessData.export_processData">
+<span class="sig-name descname"><span class="pre">export_processData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesInput.html#GacaProcessData.export_processData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesInput.GacaProcessData.export_processData" title="Link to this definition"></a></dt>
+<dd><p>Exports class to a txt-File with the suffix ‘_gaca.pd.txt’.
+Will will be exported to a folder named (path, project_name, suffix). If it does not exist, it will be created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_folder</strong> (<em>str</em>) – _description_</p></li>
+<li><p><strong>project_name</strong> (<em>str</em>) – _description_</p></li>
+<li><p><strong>suffix</strong> (<em>str</em><em>, </em><em>optional</em>) – defaults to ‘’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tscw_module.tswc_DataClassesOutput">
+<span id="tscw-module-tswc-dataclassesoutput-module"></span><h2>tscw_module.tswc_DataClassesOutput module<a class="headerlink" href="#module-tscw_module.tswc_DataClassesOutput" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_Output">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesOutput.</span></span><span class="sig-name descname"><span class="pre">TSWC_Output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_Output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Super class for TSWC Output. Other instances are inheritances of it. Must not be called!</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_Output.calculate_axial_forces_super">
+<span class="sig-name descname"><span class="pre">calculate_axial_forces_super</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_total</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_etappe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_Output.calculate_axial_forces_super"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output.calculate_axial_forces_super" title="Link to this definition"></a></dt>
+<dd><p>Berechnet Axialkraft bezogen auf Ansatz BB122 aus dem Jahr 2011.
+Daten und Formeln aus berechnungenbbg_rev2.xlsx.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>meta_data</strong> (<em>_type_</em>) – _description_</p></li>
+<li><p><strong>t_vector</strong> (<em>[</em><em>1 x n</em><em>] </em><em>array</em>) – temperature  in [K]</p></li>
+<li><p><strong>p_vector</strong> (<em>[</em><em>1 x n</em><em>] </em><em>array</em>) – pressure in [MPa]</p></li>
+<li><p><strong>t_total</strong> (<em>[</em><em>1 x n</em><em>] </em><em>array</em>) – total time  in [h]</p></li>
+<li><p><strong>t_etappe</strong> (<em>[</em><em>1 x n</em><em>] </em><em>array</em>) – stage time  in [h]</p></li>
+<li><p><strong>T0</strong> (<em>float</em><em>, </em><em>optional</em>) – temperature for reference in delta_t [optional - float], else T = t_total[0]</p></li>
+<li><p><strong>export_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – absolute file path to export results, needs to end with ‘.xlsx’ , defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas dataframe containing forces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_Output.create_data_array2plot">
+<span class="sig-name descname"><span class="pre">create_data_array2plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_plot_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_Output.create_data_array2plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output.create_data_array2plot" title="Link to this definition"></a></dt>
+<dd><p>Extracts data to plot. Must no be called by user (for intern purposes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_plot_points</strong> (<em>list</em>) – which depths to plot [depth_t, depth_p]</p></li>
+<li><p><strong>all_data</strong> (<em>list</em>) – [self.vertT_df,self.vertP_df] temperature and pressure data</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – either ‘depth’ or ‘time’, defaults to ‘time’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_Output.create_pT_plot">
+<span class="sig-name descname"><span class="pre">create_pT_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_Output.create_pT_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output.create_pT_plot" title="Link to this definition"></a></dt>
+<dd><p>creates a temperture - pressure plot against time or depth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – output from create_data_array2plot</p></li>
+<li><p><strong>meta</strong> (<em>dict</em>) – containing information for meta data in plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesOutput.</span></span><span class="sig-name descname"><span class="pre">TSWC_TBHC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output" title="tscw_module.tswc_DataClassesOutput.TSWC_Output"><code class="xref py py-class docutils literal notranslate"><span class="pre">TSWC_Output</span></code></a></p>
+<p>Reads data from Projektname_i_pTBHC.txt
+Important attributes:
+self.sr_df: - meta data
+self.vertT_df: - temperature data
+self.vertP_df: - pressure data</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.calculate_axial_forces">
+<span class="sig-name descname"><span class="pre">calculate_axial_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.calculate_axial_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.calculate_axial_forces" title="Link to this definition"></a></dt>
+<dd><p>Calculates resulting axial forces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>meta_data</strong> (<em>dict</em>) – dictionary containing meta data.</p></li>
+<li><p><strong>z_ref</strong> (<em>_type_</em>) – reference depth, temperature and pressure array will be calculated by the mean at z_ref and z0 = 0m.</p></li>
+<li><p><strong>T0</strong> (<em>float</em><em>, </em><em>optional</em>) – Initial temperature for reference in delta_T, if None it will be the first element of the temperature array.</p></li>
+<li><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – _description_, defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas dataframe containing forces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.export_csv">
+<span class="sig-name descname"><span class="pre">export_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.export_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.export_csv" title="Link to this definition"></a></dt>
+<dd><p>Exports data to a xlsx- file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>depths</strong> (<em>list</em>) – which depths to export (alogrithm looks for closest match)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.extract_max_force">
+<span class="sig-name descname"><span class="pre">extract_max_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_etappe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.extract_max_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.extract_max_force" title="Link to this definition"></a></dt>
+<dd><p>Extracts min or max Fz_ges for a selected Stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_etappe</strong> (<em>int</em>) – Stage number</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – either ‘min’ or ‘max’</p></li>
+<li><p><strong>min_time</strong> (<em>float</em><em>, </em><em>optional</em>) – float - minimum time that has passed after the value is selected, put in +inf to select end of stage, 0 by default, defaults to 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.Dataframe containing relevant parameters, respective index in self.df</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_axial_forces">
+<span class="sig-name descname"><span class="pre">plot_axial_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_axial_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_axial_forces" title="Link to this definition"></a></dt>
+<dd><p>Plots axial forces of forces_df.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – Export as png, defaults to False</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_cavern_pt_development">
+<span class="sig-name descname"><span class="pre">plot_cavern_pt_development</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_cavern_pt_development"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_cavern_pt_development" title="Link to this definition"></a></dt>
+<dd><p>Plots cavern pressure - temperature development over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – defaults to False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_forces_difference">
+<span class="sig-name descname"><span class="pre">plot_forces_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_forces_difference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_forces_difference" title="Link to this definition"></a></dt>
+<dd><p>Plot difference between calculated forces. Pass other TSWC_TBHC instances as input (comma separated).
+:type args: 
+:param args: Other instances of TSWC_TBHC.
+:rtype: figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_pt_difference">
+<span class="sig-name descname"><span class="pre">plot_pt_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depths</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_pt_difference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_pt_difference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_tp_vs_depth">
+<span class="sig-name descname"><span class="pre">plot_tp_vs_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_tp_vs_depth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_tp_vs_depth" title="Link to this definition"></a></dt>
+<dd><p>Plots borehole temperature - pressure development over depth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth_t</strong> (<em>_type_</em><em>, </em><em>optional</em>) – which time intervals for Temperature, by default all</p></li>
+<li><p><strong>depth_p</strong> (<em>_type_</em><em>, </em><em>optional</em>) – which time intervals for Pressure, by default all</p></li>
+<li><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_tp_vs_time">
+<span class="sig-name descname"><span class="pre">plot_tp_vs_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TBHC.plot_tp_vs_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TBHC.plot_tp_vs_time" title="Link to this definition"></a></dt>
+<dd><p>_summary_</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth_t</strong> (<em>_type_</em><em>, </em><em>optional</em>) – which depth intervals for Temperature, by default all</p></li>
+<li><p><strong>depth_p</strong> (<em>which depth intervals for Pressure</em><em>, </em><em>by default all</em>) – _description_, defaults to None</p></li>
+<li><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – defaults to False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TFBH">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesOutput.</span></span><span class="sig-name descname"><span class="pre">TSWC_TFBH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TFBH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TFBH" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output" title="tscw_module.tswc_DataClassesOutput.TSWC_Output"><code class="xref py py-class docutils literal notranslate"><span class="pre">TSWC_Output</span></code></a></p>
+<p>Reads data from <a href="#id5"><span class="problematic" id="id6">*</span></a>_TFBH.TXT (Radial temperature along depth in borehole).
+Stores data in
+self.data: - data</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TFBH.create_movie">
+<span class="sig-name descname"><span class="pre">create_movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">range_radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_data_picklePath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TFBH.create_movie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TFBH.create_movie" title="Link to this definition"></a></dt>
+<dd><p>Generates a time lapse of the simulated temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>range_radial</strong> (<em>list</em><em>, </em><em>optional</em>) – [x0, x1] range of radial start and end point (no exact match needed), defaults to None</p></li>
+<li><p><strong>is_export</strong> (<em>bool</em><em>, </em><em>optional</em>) – export movie as .mp4 into the same folder of current instance, defaults to False</p></li>
+<li><p><strong>n_levels</strong> (<em>int</em><em>, </em><em>optional</em>) – how many levels for plt.contourf, defaults to 150</p></li>
+<li><p><strong>field_data_picklePath</strong> (<em>str</em><em>, </em><em>optional</em>) – path to (<a href="#id7"><span class="problematic" id="id8">*</span></a>.pickle) of FieldData class (if it has been exported). If loaded, the geometry will be displayed in the background., defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>animation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>animation.FuncAnimation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TFBH.plot_temp_distribution">
+<span class="sig-name descname"><span class="pre">plot_temp_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TFBH.plot_temp_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TFBH.plot_temp_distribution" title="Link to this definition"></a></dt>
+<dd><p>The values given in all input lists do not need to match exactly with the simulation result.
+The algorithm automatically finds the nearest neighbor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>times</strong> (<em>list</em>) – which time points</p></li>
+<li><p><strong>depths</strong> (<em>list</em><em>, </em><em>optional</em>) – which depth points, defaults to None</p></li>
+<li><p><strong>range_radial</strong> (<em>list</em><em>, </em><em>optional</em>) – [x0, x1] beginning and end of radial range, defaults to None</p></li>
+<li><p><strong>is_colormap</strong> (<em>bool</em><em>, </em><em>optional</em>) – plot as a colormap or line plot, defaults to True</p></li>
+<li><p><strong>n_levels</strong> (<em>int</em><em>, </em><em>optional</em>) – how many levels in pcolormesh plot, defaults to 150</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TFC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.tswc_DataClassesOutput.</span></span><span class="sig-name descname"><span class="pre">TSWC_TFC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TFC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TFC" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tscw_module.tswc_DataClassesOutput.TSWC_Output" title="tscw_module.tswc_DataClassesOutput.TSWC_Output"><code class="xref py py-class docutils literal notranslate"><span class="pre">TSWC_Output</span></code></a></p>
+<p>Reads data from <a href="#id9"><span class="problematic" id="id10">*</span></a>_TFC.TXT (cavern temperature over time)
+Stores data in
+self.data: - data</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.tswc_DataClassesOutput.TSWC_TFC.plot_temp_distribution">
+<span class="sig-name descname"><span class="pre">plot_temp_distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_radial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/tswc_DataClassesOutput.html#TSWC_TFC.plot_temp_distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.tswc_DataClassesOutput.TSWC_TFC.plot_temp_distribution" title="Link to this definition"></a></dt>
+<dd><p>Plot radial temperature development in cavern over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>times</strong> (<em>list</em>) – which time points</p></li>
+<li><p><strong>range_radial</strong> (<em>list</em><em>, </em><em>optional</em>) – [x0, x1] beginning and end of radial range, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tscw_module.thermreg_DataClasses">
+<span id="tscw-module-thermreg-dataclasses-module"></span><h2>tscw_module.thermreg_DataClasses module<a class="headerlink" href="#module-tscw_module.thermreg_DataClasses" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tscw_module.thermreg_DataClasses.</span></span><span class="sig-name descname"><span class="pre">ThermregData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_depths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Read in and process Thermreg output data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.calculate_axial_forces">
+<span class="sig-name descname"><span class="pre">calculate_axial_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T0=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors=&lt;class</span> <span class="pre">'tuple'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export=False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.calculate_axial_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.calculate_axial_forces" title="Link to this definition"></a></dt>
+<dd><p>Calculates resulting axial forces
+INPUT:
+meta_data: dictionary containing meta data.
+T0: Initial temperature for reference in delta_T
+vectors: tuple - (temperature, pressure) [K, MPa]
+is_export: true or false - as a xlsx file
+OUTPUT
+Dataframe</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.export_csv">
+<span class="sig-name descname"><span class="pre">export_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.export_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.export_csv" title="Link to this definition"></a></dt>
+<dd><p>Export Thermreg p-T data into a xlsx file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.extract_max_force">
+<span class="sig-name descname"><span class="pre">extract_max_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i_etappe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.extract_max_force"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.extract_max_force" title="Link to this definition"></a></dt>
+<dd><p>Extracts min or max Fz_ges for a selected Stage.
+INPUT:
+i_etappe: int - Stage number
+mode: either ‘min’ or ‘max’
+min_time: float - minimum time that has passed after the value is selected, put in +inf to select end of stage, 0 by default
+OUTPUT:
+filtered_df: pd.Dataframe containing relevant parameters
+df_index: int - index of total Dataframe df of respective class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.interpolate_pt">
+<span class="sig-name descname"><span class="pre">interpolate_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_array</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.interpolate_pt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.interpolate_pt" title="Link to this definition"></a></dt>
+<dd><p>Interpolates pressure and temperature for a new time_array
+INPUT:
+time_array: list - new time array
+OUTPUT
+thermreg_temp_inter - interpolated temperature array
+thermreg_pres_inter - interpolated pressure array</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.plot_all_tempfields">
+<span class="sig-name descname"><span class="pre">plot_all_tempfields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radial_vector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.plot_all_tempfields"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.plot_all_tempfields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.plot_axial_forces">
+<span class="sig-name descname"><span class="pre">plot_axial_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.plot_axial_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.plot_axial_forces" title="Link to this definition"></a></dt>
+<dd><p>Plots axial forces of forces_df.
+INPUT:
+is_export: bool - Export as png [optional]
+OUTPUT
+figure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.plot_tp_vs_depth">
+<span class="sig-name descname"><span class="pre">plot_tp_vs_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.plot_tp_vs_depth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.plot_tp_vs_depth" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tscw_module.thermreg_DataClasses.ThermregData.plot_tp_vs_time">
+<span class="sig-name descname"><span class="pre">plot_tp_vs_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tscw_module/thermreg_DataClasses.html#ThermregData.plot_tp_vs_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tscw_module.thermreg_DataClasses.ThermregData.plot_tp_vs_time" title="Link to this definition"></a></dt>
+<dd><p>Plots a temperature - pressure diagram vs Time.
+INPUT:
+depths: array of depths (must match n_depths)
+is_export: true or false [optional]
+OUTPUT:
+figure</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tscw_module">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tscw_module" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Thomas Simader.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
