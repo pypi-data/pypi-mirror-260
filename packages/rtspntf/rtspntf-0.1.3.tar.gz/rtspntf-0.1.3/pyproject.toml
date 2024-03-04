@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "rtspntf"
+version = "0.1.3"
+description = "Motion detection from RTSP image stream (intended for intercom image)"
+authors = ["Kyosuke Miyamura <ask@386.jp>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rtsp = "^1.1.12"
+numpy = "^1.26.4"
+opencv-python = "^4.9.0.80"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+rtspntf = "rtspntf.cli:main"
