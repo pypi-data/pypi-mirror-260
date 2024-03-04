@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools >=67"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anilist-helper"
+requires-python = ">=3.8"
+description = "A simple library to help you fetch data from AniList."
+authors = [{name = "Dominik Procházka"}]
+maintainers = [{name = "Dominik Procházka"}]
+keywords = ["python", "anilist"]
+dynamic = ["version"]
+readme = "README.md"
+license = {file = "LICENSE"}
+dependencies = [
+    "requests",
+    "flask",
+    "gevent"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Framework :: Flask",
+  "Topic :: Database",
+  "Topic :: Games/Entertainment",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ProchyGaming/anilist-helper"
+"Documentation" = "https://github.com/ProchyGaming/anilist-helper/wiki"
+"Source" = "https://github.com/ProchyGaming/anilist-helper"
