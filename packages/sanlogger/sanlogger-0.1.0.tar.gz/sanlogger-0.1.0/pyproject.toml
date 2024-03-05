@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "sanlogger"
+version = "0.1.0"
+description = "Customized Logger created by Santo"
+authors = ["Santo K Thomas <santokalayil@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/santokalayil/slogger"
+include = ["slogger/configuration/slogger.yaml"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pyyaml = "^6.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
