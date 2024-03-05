@@ -1,0 +1,777 @@
+openapi: 3.0.0
+paths:
+  /health:
+    get:
+      operationId: HealthCheckController_healthCheck
+      summary: ''
+      description: Basic health check endpoint. Always returns a 200 response
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - Health Check
+  /registration:
+    post:
+      operationId: RegistrationController_registerClient
+      summary: ''
+      description: Processes a registration request from a new API consumer
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '200':
+          description: An API consumer with the given identifier is already registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        '201':
+          description: The API consumer has been registered with the Flix Client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        '400':
+          description: The incoming API consumer details could not be validated
+      tags: &ref_0
+        - API Registration
+    get:
+      operationId: RegistrationController_getAll
+      summary: ''
+      description: >-
+        Returns a list of registered API consumer details.
+
+        Details returned by the registration manager are mapped to a DTO to
+        avoid exposing access tokens
+      parameters: []
+      responses:
+        '200':
+          description: Returns the list of registered API consumers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RegistrationDetails'
+      tags: *ref_0
+      security:
+        - bearer: []
+    delete:
+      operationId: RegistrationController_unregisterClient
+      summary: ''
+      description: Removes the registration for the requesting API consumer
+      parameters:
+        - name: authorization
+          required: true
+          in: header
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The API consumer has been unregistered from Flix
+      tags: *ref_0
+      security:
+        - bearer: []
+  /panels:
+    post:
+      operationId: PanelController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkPanelRequest'
+      responses:
+        '200':
+          description: The panel creation has been scheduled
+        '400':
+          description: >-
+            No sequence revision is loaded, or the panel create request is
+            invalid
+      tags: &ref_1
+        - Panel Management
+      security: &ref_2
+        - bearer: []
+    patch:
+      operationId: PanelController_update
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BulkPanelRequest'
+                - $ref: '#/components/schemas/FullPanelRequest'
+      responses:
+        '200':
+          description: The panel update has been scheduled
+        '400':
+          description: >-
+            No sequence revision is loaded, or the panel update request is
+            invalid
+      tags: *ref_1
+      security: *ref_2
+  /panels/annotate:
+    patch:
+      operationId: PanelController_annotate
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/BulkPanelAnnotateRequest'
+                - $ref: '#/components/schemas/FullPanelAnnotateRequest'
+      responses:
+        '200':
+          description: The panel annotation has been scheduled
+        '400':
+          description: >-
+            No sequence revision is loaded, or the panel annotation request is
+            invalid
+      tags: *ref_1
+      security: *ref_2
+  /download:
+    post:
+      operationId: DownloadController_downloadMediaObject
+      summary: ''
+      description: >-
+        Downloads a specific artwork type for a given asset, to a target folder
+        on the local machine
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadRequest'
+      responses:
+        '200':
+          description: The media object has been downloaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DownloadResponse'
+        '400':
+          description: The Flix Client is not logged in, or the request is invalid
+      tags:
+        - Media Object Download
+      security:
+        - bearer: []
+  /project:
+    get:
+      operationId: ProjectController_get
+      parameters: []
+      responses:
+        '200':
+          description: Returns the current Flix project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDetailsDto'
+        '400':
+          description: The Flix Client is not logged in to a server
+      tags:
+        - Project Details
+      security:
+        - bearer: []
+  /status:
+    get:
+      operationId: StatusController_get
+      parameters: []
+      responses:
+        '200':
+          description: Returns the current Flix Client status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: The Flix Client is not logged in to a server
+      tags:
+        - Status
+      security:
+        - bearer: []
+info:
+  title: Flix General Remote Client API
+  description: The general remote API for the Flix client
+  version: '1'
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    SubscribeRequest:
+      type: object
+      properties:
+        eventTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - PING
+              - ACTION
+              - OPEN
+              - PROJECT
+              - STATUS
+              - VERSION
+      required:
+        - eventTypes
+    WebsocketEvent:
+      type: object
+      properties:
+        data:
+          oneOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - PING
+                data:
+                  $ref: '#/components/schemas/PingEvent'
+              required:
+                - type
+                - data
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - STATUS
+                data:
+                  $ref: '#/components/schemas/StatusResponse'
+              required:
+                - type
+                - data
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - PROJECT
+                data:
+                  $ref: '#/components/schemas/ProjectDetailsDto'
+              required:
+                - type
+                - data
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - ACTION
+                data:
+                  $ref: '#/components/schemas/ActionEvent'
+              required:
+                - type
+                - data
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - OPEN
+                data:
+                  oneOf:
+                    - $ref: '#/components/schemas/OpenFileEvent'
+                    - $ref: '#/components/schemas/OpenSourceFileEvent'
+              required:
+                - type
+                - data
+            - type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - VERSION
+                data:
+                  $ref: '#/components/schemas/VersionEvent'
+              required:
+                - type
+                - data
+      required:
+        - data
+    PingEvent:
+      type: object
+      properties:
+        apiClientId:
+          type: integer
+      required:
+        - apiClientId
+    ActionEvent:
+      type: object
+      properties:
+        apiClientId:
+          type: integer
+          nullable: true
+        actionId:
+          type: integer
+        state:
+          type: string
+          enum:
+            - completed
+            - progress
+            - error
+            - started
+        action:
+          type: string
+          enum:
+            - PANEL_CREATE
+            - PANEL_UPDATE
+            - PANEL_ANNOTATE
+      required:
+        - apiClientId
+        - actionId
+        - state
+        - action
+    VersionEvent:
+      type: object
+      properties:
+        latestVersion:
+          type: string
+      required:
+        - latestVersion
+    ProjectIdsDto:
+      type: object
+      properties:
+        showId:
+          type: integer
+        episodeId:
+          type: integer
+        sequenceId:
+          type: integer
+        sequenceRevisionId:
+          type: integer
+    OpenSourceFileData:
+      type: object
+      properties:
+        assetId:
+          type: integer
+      required:
+        - assetId
+    OpenFilePanelData:
+      type: object
+      properties:
+        id:
+          type: integer
+        assetId:
+          type: integer
+        annotationAssetId:
+          type: integer
+        isAnimated:
+          type: boolean
+        sourceFile:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/OpenSourceFileData'
+      required:
+        - id
+        - assetId
+        - isAnimated
+        - sourceFile
+    PsConfiguration:
+      type: object
+      properties:
+        alwaysOpenSourceFile:
+          type: boolean
+        openBehaviour:
+          type: string
+        sendAnnotationAsLayer:
+          type: boolean
+      required:
+        - alwaysOpenSourceFile
+        - openBehaviour
+        - sendAnnotationAsLayer
+    OpenFileEvent:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/ProjectIdsDto'
+        panels:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenFilePanelData'
+        sketchingToolConfiguration:
+          $ref: '#/components/schemas/PsConfiguration'
+      required:
+        - project
+        - panels
+    OpenSourceFileEvent:
+      type: object
+      properties:
+        sourceFile:
+          $ref: '#/components/schemas/OpenSourceFileData'
+      required:
+        - sourceFile
+    RegistrationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for this API client
+        clientUid:
+          type: string
+          description: The API client-specified identifier for this API client
+        version:
+          type: string
+          description: The version of this API client (Optional)
+      required:
+        - name
+        - clientUid
+    RegistrationResponse:
+      type: object
+      properties:
+        flixId:
+          type: integer
+          description: The Flix-maintained identifier for this API client
+        token:
+          type: string
+          description: The generated access token for the API client
+      required:
+        - flixId
+        - token
+    RegistrationDetails:
+      type: object
+      properties:
+        flixId:
+          type: integer
+          description: The Flix-maintained identifier for this API client
+        name:
+          type: string
+          description: The name for this API client
+        version:
+          type: string
+          description: The version of this API client (Optional)
+        clientUid:
+          type: string
+          description: The API client-specified identifier for this API client
+      required:
+        - flixId
+        - name
+        - clientUid
+    PanelRequestItem:
+      type: object
+      properties:
+        panelId:
+          type: integer
+          description: The panel IDs it should link to
+        path:
+          type: string
+          description: The file path to upload
+      required:
+        - path
+    PanelRequestSourceFile:
+      type: object
+      properties:
+        path:
+          type: string
+          description: The path to the source file
+          example: /path/to/source/file.psd
+        previewMode:
+          type: string
+          description: The mode to use to generate the source file preview
+          example: source_file
+          enum:
+            - first_panel
+            - source_file
+        sourceFileType:
+          type: string
+          description: The extension type that the source file is coming from
+          example: Sketch
+          enum:
+            - Sketch
+            - Editorial
+            - 3D
+            - Standalone
+            - Script
+      required:
+        - path
+        - previewMode
+        - sourceFileType
+    FullPanelRequest:
+      type: object
+      properties:
+        startIndex:
+          type: integer
+          description: the index at which to insert the created panels
+          example: 3
+        panels:
+          description: The file paths to upload and the panel IDs they should link to
+          type: array
+          items:
+            $ref: '#/components/schemas/PanelRequestItem'
+        sourceFile:
+          description: The source file to upload
+          allOf:
+            - $ref: '#/components/schemas/PanelRequestSourceFile'
+        origin:
+          type: string
+      required:
+        - panels
+        - origin
+    BulkPanelAnnotateRequest:
+      type: object
+      properties:
+        startIndex:
+          type: integer
+          description: the index at which to insert the created panels
+        paths:
+          description: The file paths to upload
+          type: array
+          items:
+            type: string
+        origin:
+          type: string
+      required:
+        - startIndex
+        - paths
+        - origin
+    FullPanelAnnotateRequest:
+      type: object
+      properties:
+        startIndex:
+          type: integer
+          description: the index at which to insert the created panels
+        panels:
+          description: The file paths to upload and the panel IDs they should link to
+          type: array
+          items:
+            $ref: '#/components/schemas/PanelRequestItem'
+        origin:
+          type: string
+      required:
+        - startIndex
+        - panels
+        - origin
+    BulkPanelRequest:
+      type: object
+      properties:
+        startIndex:
+          type: integer
+          description: the index at which to insert the created panels
+          example: 3
+        paths:
+          description: The file paths to upload
+          example: '[''/path/to/file/1.psd'',''/path/to/file/2.psd'']'
+          type: array
+          items:
+            type: string
+        sourceFile:
+          description: The source file to upload
+          allOf:
+            - $ref: '#/components/schemas/PanelRequestSourceFile'
+        origin:
+          type: string
+      required:
+        - paths
+        - origin
+    DownloadRequest:
+      type: object
+      properties:
+        assetId:
+          type: integer
+        targetFolder:
+          type: string
+        assetType:
+          type: string
+          enum:
+            - artwork
+            - thumbnail
+            - scaled
+            - fullres
+            - show-thumbnail
+            - source_media
+            - audio
+            - movie
+            - publish
+            - annotation
+            - aaf
+            - xml
+            - dialogue
+            - source_file
+            - watermark
+            - logo
+            - contactsheet
+            - extension
+      required:
+        - assetId
+        - targetFolder
+        - assetType
+    DownloadResponse:
+      type: object
+      properties:
+        assetId:
+          type: integer
+        mediaObjectId:
+          type: integer
+        fileName:
+          type: string
+        filePath:
+          type: string
+      required:
+        - assetId
+        - mediaObjectId
+        - fileName
+        - filePath
+    ShowDetailsDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        trackingCode:
+          type: string
+        title:
+          type: string
+          nullable: true
+        aspectRatio:
+          type: number
+      required:
+        - id
+        - trackingCode
+        - title
+        - aspectRatio
+    EpisodeDetailsDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        trackingCode:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        owner:
+          type: string
+        title:
+          type: string
+          nullable: true
+      required:
+        - id
+        - trackingCode
+        - createdDate
+        - owner
+        - title
+    SequenceDetailsDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        trackingCode:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        owner:
+          type: string
+        title:
+          type: string
+          nullable: true
+      required:
+        - id
+        - trackingCode
+        - createdDate
+        - owner
+        - title
+    SequenceRevisionDetailsDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        createdDate:
+          format: date-time
+          type: string
+          nullable: true
+        owner:
+          type: string
+        published:
+          type: boolean
+        comment:
+          type: string
+      required:
+        - id
+        - createdDate
+        - owner
+        - published
+        - comment
+    ProjectDetailsDto:
+      type: object
+      properties:
+        show:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/ShowDetailsDto'
+        episode:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/EpisodeDetailsDto'
+        sequence:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/SequenceDetailsDto'
+        sequenceRevision:
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/SequenceRevisionDetailsDto'
+      required:
+        - show
+        - episode
+        - sequence
+        - sequenceRevision
+    RevisionStatusResponse:
+      type: object
+      properties:
+        selectedPanels:
+          type: array
+          items:
+            type: integer
+        canSave:
+          type: boolean
+        canPublish:
+          type: boolean
+        canExport:
+          type: boolean
+      required:
+        - selectedPanels
+        - canSave
+        - canPublish
+        - canExport
+    ActionsInProgressResponse:
+      type: object
+      properties:
+        isSaving:
+          type: boolean
+        isPublishing:
+          type: boolean
+        isExporting:
+          type: boolean
+      required:
+        - isSaving
+        - isPublishing
+        - isExporting
+    StatusResponse:
+      type: object
+      properties:
+        canCreate:
+          type: boolean
+        revisionStatus:
+          $ref: '#/components/schemas/RevisionStatusResponse'
+        actionsInProgress:
+          $ref: '#/components/schemas/ActionsInProgressResponse'
+      required:
+        - canCreate
+        - revisionStatus
+        - actionsInProgress
