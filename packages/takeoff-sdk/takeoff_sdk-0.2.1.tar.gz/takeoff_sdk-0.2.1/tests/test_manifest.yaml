@@ -1,0 +1,26 @@
+takeoff:
+  server_config:
+    max_batch_size: 30
+    batch_duration_millis: 50
+    echo: false
+    port: 3000
+    enable_metrics: true
+    heartbeat_check_interval: 5
+    launch_management_server: true
+    launch_vertex_server: false
+    launch_sagemaker_server: false
+    launch_openai_server: false
+    management_port: 3001
+    vertex_port: 3002
+    openai_port: 3003
+  readers_config:
+    reader1:
+      model_name: microsoft/deberta-large-mnli # BAAI/bge-reranker-base
+      device: cuda
+      max_batch_size: 5
+      max_sequence_length: 1024
+      consumer_group: primary
+      backend: jf
+      cuda_visible_devices: "0"
+      log_level: debug
+      disable_continuous_batching: false
