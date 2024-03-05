@@ -1,0 +1,108 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.poetry]
+authors = [
+  "ZEISS Digital Innovation Partners",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Internet :: Name Service (DNS)",
+  "Topic :: System :: Installation/Setup",
+  "Topic :: System :: Systems Administration",
+  "Topic :: Utilities",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+description = "ACME client setup based on Certbot for dns-01 challenges via Azure Cloud services"
+documentation = "https://zeiss.github.io/acme-dns-azure/"
+keywords = [
+  "acme",
+  "dns",
+  "azure",
+  "certbot",
+  "letsencrypt",
+]
+license = "MIT"
+name = "acme-dns-azure"
+packages = [
+  {include = "acme_dns_azure"},
+]
+readme = "README.md"
+repository = "https://github.com/ZEISS/acme-dns-azure"
+version = "0.1.8"
+
+[tool.poetry_bumpversion.file."acme_dns_azure/___init___.py"]
+
+[tool.poetry.dependencies]
+azure-identity = ">=1.14.0"
+azure-keyvault-certificates = ">=4.7.0"
+azure-keyvault-secrets = ">=4.7.0"
+certbot = ">=2"
+certbot-dns-azure = ">=2"
+cryptography = ">=42.0.0"
+python = "^3.8"
+pyyaml = ">=3"
+requests = ">=2"
+strictyaml = ">=1.7.3"
+
+[tool.poetry.dev-dependencies]
+azure-mgmt-authorization = "*"
+black = {version = "*", allow-prereleases = true}
+coverage = "*"
+flake8 = "*"
+isort = "*"
+mock = "*"
+mypy = "*"
+pdoc3 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+tox = ">=4"
+types-PyYAML = "*"
+types-pytz = "*"
+types-requests = "*"
+types-simplejson = "*"
+types-six = "*"
+types-toml = "*"
+vcrpy = "*"
+
+[tool.poetry.scripts]
+acme-dns-azure = "acme_dns_azure.cli:main"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+
+[tool.mypy]
+show_error_codes = true
+
+[tool.pytest.ini_options]
+addopts = "-s -v --durations=0"
+testpaths = ["tests/app"]
+
+[tool.coverage.run]
+branch = true
+command_line = "-m pytest --junitxml=test-results/unittests.xml"
+omit = [
+  "tests/*",
+  "examples/function/*",
+]
+source = ["acme_dns_azure"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.poetry.urls]
+"PyPI" = "https://pypi.org/project/acme-dns-azure/"
