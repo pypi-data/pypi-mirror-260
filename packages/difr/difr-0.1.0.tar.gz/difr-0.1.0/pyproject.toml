@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "difr"
+version = "0.1.0"
+description = ""
+authors = ["opqrstuvcut"]
+readme = "README.md"
+homepage = "https://github.com/opqrstuvcut/"
+repository = "https://github.com/opqrstuvcut/DIFR"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+onnxruntime = "^1.10"
+Pillow = "^10.0.0"
+tqdm = "^4.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+difr = "difr.main:main"
