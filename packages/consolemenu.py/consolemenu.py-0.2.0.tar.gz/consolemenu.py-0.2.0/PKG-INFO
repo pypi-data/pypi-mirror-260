@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: consolemenu.py
+Version: 0.2.0
+Summary: A simple Python console (terminal) menu that work's on any OS
+License: MIT
+Author: Pirulax
+Author-email: patrikjankovics7@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: aioconsole (>=0.7.0,<0.8.0)
+Description-Content-Type: text/markdown
+
+## Usage
+```py
+import consolemenu_py as cm
+
+async def main():
+    # Create the main menu. The name should usually be the name of your program
+    mm = cm.MainMenu("Example Program")
+
+    # This will enter an empty sub-menu
+    mm.add_item(cm.Menu("A sub-menu!"))
+
+    # This will print "Hello World!" to the console
+    mm.add_item(cm.FunctionMenuItem("A function menu item", lambda _: print("Hello World!")))
+
+    # This will only return if the user exists the main menu
+    await mm.run()
+```
+
+## License
+This package is licensed under MIT, see `LICENSE`
