@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "lipkg"
+version = "0.0.4"
+authors = [
+  { name="li zhankang", email="lizhankangde@outlook.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [  # 外部依赖模块
+    "requests",
+    'importlib-metadata',
+    'pycryptodome',
+    'pandas',
+    'openpyxl',
+    'json'
+]
+[project.urls]
+Homepage = "https://github.com/lizhankang/python-sdk"
+Issues = "https://github.com/lizhankang/python-sdk/issues"
