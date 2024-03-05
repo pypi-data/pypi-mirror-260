@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: linked-services
+Version: 1.0.7
+Project-URL: Documentation, https://github.com/breatheco-de/linked-services-django-plugin#readme
+Project-URL: Issues, https://github.com/breatheco-de/linked-services-django-plugin/issues
+Project-URL: Source, https://github.com/breatheco-de/linked-services-django-plugin
+Author-email: jefer94 <jdefreitaspinto@gmail.com>
+License-Expression: LGPL-3.0-or-later
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.11
+Requires-Dist: asgiref
+Requires-Dist: celery-task-manager
+Requires-Dist: cryptography
+Requires-Dist: pyjwt
+Requires-Dist: python-slugify
+Provides-Extra: aiohttp
+Requires-Dist: aiodns; extra == 'aiohttp'
+Requires-Dist: aiohttp; extra == 'aiohttp'
+Requires-Dist: brotli; extra == 'aiohttp'
+Provides-Extra: django
+Requires-Dist: adrf; extra == 'django'
+Requires-Dist: celery-task-manager[django]; extra == 'django'
+Requires-Dist: django; extra == 'django'
+Requires-Dist: djangorestframework; extra == 'django'
+Provides-Extra: httpx
+Requires-Dist: brotli; extra == 'httpx'
+Requires-Dist: h11; extra == 'httpx'
+Requires-Dist: httpcore; extra == 'httpx'
+Requires-Dist: httpx; extra == 'httpx'
+Requires-Dist: idna; extra == 'httpx'
+Provides-Extra: requests
+Requires-Dist: brotli; extra == 'requests'
+Requires-Dist: requests; extra == 'requests'
+Description-Content-Type: text/markdown
+
+# linked-services
+
+[![PyPI - Version](https://img.shields.io/pypi/v/linked-services.svg)](https://pypi.org/project/linked-services)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/linked-services.svg)](https://pypi.org/project/linked-services)
+
+-----
+
+**Table of Contents**
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install linked-services
+```
+
+## License
+
+`linked-services` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
