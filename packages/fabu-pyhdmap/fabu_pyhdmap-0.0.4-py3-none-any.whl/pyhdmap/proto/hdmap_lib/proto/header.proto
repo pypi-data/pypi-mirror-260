@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+message Projection {
+  optional string proj = 1;
+}
+
+message Header {
+  optional uint32 rev_major = 1;
+  optional uint32 rev_minor = 2;
+  optional string version = 3;
+  optional string date = 4;
+  optional Projection proj = 5;
+  optional double north = 6;
+  optional double south = 7;
+  optional double east = 8;
+  optional double west = 9;
+  optional string vendor = 10;
+  optional string name = 11;
+}

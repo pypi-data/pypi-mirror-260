@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+message Attribute {
+  // key.
+  optional string key = 1;
+
+  // value.
+  optional string value = 2;
+}
