@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: neat-html
+Version: 0.5.0
+Summary: A python library for writing and composing HTML.
+Home-page: https://github.com/SamDudley/neat-html
+License: MIT
+Keywords: html
+Author: Sam Dudley
+Author-email: dudley.co.uk@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Project-URL: Repository, https://github.com/SamDudley/neat-html
+Description-Content-Type: text/markdown
+
+# neat-html
+
+A python library for writing and composing HTML.
+
+Features:
+
+- small API to learn (2 functions)
+- fully typed API
+- produces "neatly" formatted HTML
+- written in pure python
+- zero dependencies
+- comprehensive test suite
+- no recursion
+
+Install using pip:
+
+```bash
+pip install neat-html
+```
+
+Take it for a spin:
+
+```python
+>>> from neat_html import h, render
+>>> greeting = h("strong", {"style": {"color": "green"}}, "Hello")
+>>> html = h("p", {"id": "foo"}, [greeting, ", World!"])
+>>> print(render(html))
+<p id="foo">
+    <strong style="color: green">Hello</strong>, World!
+</p>
+
+```
+
