@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: pi-log
+Version: 0.5.7.3
+Summary: Project to add utility log functions for Python
+License: MIT
+Author: parnell
+Author-email: 3028114+parnell@users.noreply.github.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# A simple logging module that adds utility functions for using Python logging
+
+## Example Usage
+
+### Using in a typical module
+```python
+from pi_conf import logs
+log = logs.getLogger(__name__)
+log.info("Hello log world!")
+```
+
+### Set logging across entire application
+```python
+from pi_conf import logs
+logs.set_app_logging("debug")
+```
+
