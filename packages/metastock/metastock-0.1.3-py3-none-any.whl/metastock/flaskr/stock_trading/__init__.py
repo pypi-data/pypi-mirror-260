@@ -1,0 +1,1 @@
+from metastock.flaskr.stock_trading.stock_trading import stock_trading
