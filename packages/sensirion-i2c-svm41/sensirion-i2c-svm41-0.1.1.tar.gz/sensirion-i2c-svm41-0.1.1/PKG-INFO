@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: sensirion-i2c-svm41
+Version: 0.1.1
+Summary: I2C Driver for Sensirion SVM41 Evaluation Kit
+Home-page: https://github.com/sensirion/python-i2c-svm41
+Author: Philippe Largier
+Author-email: info@sensirion.com
+License: BSD
+Description: sensirion-i2c-svm4x
+        ===================
+        
+        This package contains the driver for the Sensirion SVM41 Evaluation Kit using
+        the I²C interface.
+        
+        The driver provides all I²C commands as Python methods and handles all the
+        low-level things like type conversions, CRC calculation, error handling
+        etc.
+        
+        
+        Installation and Usage
+        ----------------------
+        
+        The user manual is available at https://sensirion.github.io/python-i2c-svm4x/.
+        
+        CHANGELOG
+        ---------
+        
+        0.1.0
+        :::::
+        - Initial release
+        
+Keywords: sensirion i2c driver svm41
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: System :: Hardware :: Hardware Drivers
+Requires-Python: >=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4
+Provides-Extra: test
