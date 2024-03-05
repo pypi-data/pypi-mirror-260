@@ -1,0 +1,77 @@
+Metadata-Version: 2.1
+Name: h5_to_edf
+Version: 1.4.0
+Summary: Convert a HDF5 file to EDF files
+Author-email: Jibril MAMMERI <mammeri@esrf.fr>
+License: MIT
+Project-URL: Homepage, https://gitlab.esrf.fr/tomo/h5_to_edf
+Project-URL: Bug Tracker, https://gitlab.esrf.fr/tomo/h5_to_edf/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: h5py
+Requires-Dist: fabio
+Requires-Dist: hdf5plugin
+Requires-Dist: pyyaml
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: types-PyYAML ; extra == 'dev'
+
+`h52edf`/`h5_to_edf` is a tool developed at ESRF to convert a HDF5
+file to EDF files.
+
+# Installation
+
+```
+pip install h5_to_edf
+```
+
+# Usage
+
+```
+usage: h52edf [-h] [-o EDF_DIRECTORY] [--report] [--debug] [--dry-run] [-V]
+              [--no-dark] [--no-flat] [--yml] [--no-xml] [--current CURRENT]
+              h5_names
+
+positional arguments:
+  h5_names
+
+options:
+  -h, --help         show this help message and exit
+  -o EDF_DIRECTORY   Output directory for EDF files
+  --report           Display report without data processing
+  --debug            Display debug information
+  --dry-run          Process the data without writing it
+  -V, --version      show program's version number and exit
+  --no-dark          If the h5 does not contains darks, will skip dark creation
+  --no-flat          If the h5 does not contains flats, will skip flat creation
+  --yml              Create a .yml file containing all the metadata from the h5 file
+  --no-xml           Do not generate a .xml file containing few metadata from the h5 file
+  --current CURRENT  Use a current text file containing the machine current
+```
+
+# How to use
+
+The converter needs the name of the hdf5 file to be converted, and the output
+directory where the EDF files will be created.
+
+```
+h52edf "path/file_001.h5" -o output_directory
+```
+
+You can also convert multiple hdf5 files at once with the following command:
+
+```
+h52edf "path/file_0*.h5" -o output_directory
+```
+
+# Project release
+
+```
+pip wheel . --wheel-dir=dist
+twine upload dist/h5_to_edf-*.whl
+```
+
