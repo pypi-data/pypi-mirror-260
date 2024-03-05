@@ -1,0 +1,86 @@
+[build-system]
+requires = [
+    "setuptools >= 61",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amazon-sagemaker-sql-execution"
+version = "0.1.0"
+description = "SageMaker SQL Execution library"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+authors = [
+    { name = "Amazon Web Services" },
+]
+classifiers = [
+"Intended Audience :: Developers",
+"Intended Audience :: Science/Research",
+"License :: OSI Approved :: Apache Software License",
+"Programming Language :: Python",
+"Programming Language :: Python :: 3.8",
+"Programming Language :: Python :: 3.9",
+"Programming Language :: Python :: 3.10",
+"Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "boto3>=1.28.64",
+    "pyathena>=3.3.0,<4",
+    "snowflake-connector-python>=3.7.0,<4.0",
+    "redshift-connector>=2.1.0,<3",
+    "aws_embedded_metrics>=3.2.0,<4",
+]
+
+[project.optional-dependencies]
+all = [
+    "amazon-sagemaker-sql-execution[dev, test, flake8, pylint, pydocstyle, twine]"
+]
+
+dev = [
+    "black",
+    "build"
+]
+test = [
+    "pytest",
+    "tox==4.11.4",
+    "parameterized",
+    "coverage",
+    "pytest-cov",
+    "pytest-timeout"
+]
+flake8 = [
+    "flake8==4.0.1",
+    "flake8-future-import==0.4.6"
+]
+pylint = [
+    "pylint==2.6.2",
+    "astroid==2.4.2"
+]
+pydocstyle = [
+    "pydocstyle==6.1.1"
+]
+twine = [
+    "twine==3.8.0",
+    "packaging"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[project.urls]
+homepage = "https://aws.amazon.com/sagemaker"
+
+[tool.isort]
+# required for compatibility with black:
+profile = "black"
+
+[tool.pytest.ini_options]
+markers = [
+    "snowflake: Run tests for snowflake connector",
+    "redshift: Run tests for redshift connector",
+    "athena: Run tests for athena connector",
+]
