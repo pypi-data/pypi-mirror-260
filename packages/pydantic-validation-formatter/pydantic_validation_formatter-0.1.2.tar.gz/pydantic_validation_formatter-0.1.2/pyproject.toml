@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "pydantic-validation-formatter"
+version = "0.1.2"
+description = "This is a package that allows to customize pydantic built-in validation error messages"
+authors = ["Soami Charan <charansoami@gmail.com>"]
+maintainers = ["Soami Charan <charansoami@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/soamicharan/pydantic-validation-formatter"
+keywords = ["python", "pydantic", "sqlmodel"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydantic = "^2.6.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
