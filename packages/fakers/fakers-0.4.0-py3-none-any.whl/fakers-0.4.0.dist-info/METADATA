@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: fakers
+Version: 0.4.0
+Summary: A package that provides ready-made objects of fake-data.
+Author-email: ASHISH GARG <ashishgargmp@gmail.com>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: Faker
+Requires-Dist: pandas
+Requires-Dist: pyspark
+Requires-Dist: pytest ; extra == "test"
+Requires-Dist: pytest-cov ; extra == "test"
+Provides-Extra: test
+
+# fakers
+***
+This generates pre-built container objects filled with fabricated data.
+
+## What goal this library achieved. 
+***
+The Faker library primarily offers fake data on an individual basis, so if you need fake data structured in groups of fields, it typically requires additional time and effort. This library saves you that extra time by providing pre-structured fake data groups.
+
+## Usage example
+***
+Currently, there are two modules available for use: Retail and Person. The Retail module includes entities such as user, product, order, and sale. The Person module provides fake personal and address data.
+``` python
+from fakers.providers.retail import Retail
+import pandas as pd
+
+user = Retail.fake_user()
+users = Retail.fake_users(5)
+
+df = users.to_pandas()
+```
+
+## Modules to use
+***
+| Module                  | Function              | Description                                                                    |
+|-------------------------|-----------------------|--------------------------------------------------------------------------------|
+| fakers.providers.person | Retail.fake_persons   | This retrieves details for either a single individual or multiple individuals. |
+| fakers.providers.person | Retail.fake_addresses | This retrieves a fake address for an individual or multiple fake addresses.    |
+| fakers.providers.retail | Retail.fake_user      | This retrieves a single user or multiple users.                                |
+| fakers.providers.retail | Retail.fake_products  | This retrieves one or more fake products.                                      |
+| fakers.providers.retail | Retail.fake_orders    | This retrieves one or more fake orders.                                        |
+| fakers.providers.retail | Retail.fake_sales     | This retrieves one or more fake sales.                                         |
+
+
+
+
+
