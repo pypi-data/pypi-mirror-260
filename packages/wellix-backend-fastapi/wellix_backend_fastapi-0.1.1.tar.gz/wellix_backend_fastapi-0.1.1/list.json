@@ -1,0 +1,3506 @@
+[
+  {
+    "interaction": ["Warfarin", "Aspirin"],
+    "mechanism": "Increased bleeding risk",
+    "description": "Both anticoagulants inhibit platelet aggregation, increasing the risk of hemorrhage."
+  },
+  {
+    "interaction": ["Warfarin", "Ibuprofen"],
+    "mechanism": "Increased bleeding risk due to combined antiplatelet effects",
+    "description": "Both warfarin and ibuprofen inhibit blood clotting, increasing the risk of bleeding when used together."
+  },
+  {
+    "interaction": ["Acetaminophen", "CYP inducers"],
+    "mechanism": "Increased risk of liver toxicity",
+    "description": "CYP inducers like phenytoin and carbamazepine increase the rate of NAPQI production leading to liver toxicity, after acetaminophen overdose."
+  },
+  {
+    "interaction": ["Acetaminophen", "Activated charcoal"],
+    "mechanism": "Reduced absorption",
+    "description": "Activated charcoal prevents absorption of many drugs, including acetaminophen, and is used in cases of toxicity or overdose."
+  },
+  {
+    "interaction": ["Acyclovir", "Probenecid"],
+    "mechanism": "Increased acyclovir concentration",
+    "description": "Probenecid inhibits renal tubular secretion of acyclovir, leading to increased plasma concentration of acyclovir."
+  },
+  {
+    "interaction": ["Adenosine", "Dipyridamole"],
+    "mechanism": "Unknown",
+    "description": "Dipyridamole blocks cellular uptake of adenosine, potentially affecting the actions of adenosine-based medications."
+  },
+  {
+    "interaction": ["Epinephrine", "Beta-blockers"],
+    "mechanism": "Attenuated effects of epinephrine",
+    "description": "Beta-blockers antagonize the effects of epinephrine, reducing its ability to induce vasodilation and positive inotropic effects."
+  },
+  {
+    "interaction": ["Aldosterone antagonists", "ACE inhibitors"],
+    "mechanism": "Increased risk of hyperkalemia",
+    "description": "Both aldosterone antagonists and ACE inhibitors can increase serum potassium levels, leading to hyperkalemia when used together."
+  },
+  {
+    "interaction": ["Antacids / alginates", "Digoxin"],
+    "mechanism": "Reduced digoxin absorption",
+    "description": "Antacids and alginates can reduce the absorption of digoxin, potentially decreasing its therapeutic effect."
+  },
+  {
+    "interaction": ["Antacids / alginates", "Levothyroxine"],
+    "mechanism": "Reduced levothyroxine absorption",
+    "description": "Antacids and alginates can reduce the absorption of levothyroxine, potentially decreasing its therapeutic effect."
+  },
+  {
+    "interaction": ["Antacids / alginates", "Tetracyclines"],
+    "mechanism": "Reduced tetracycline absorption",
+    "description": "Antacids and alginates can reduce the absorption of tetracyclines, potentially decreasing their therapeutic effect."
+  },
+  {
+    "interaction": ["Ciprofloxacin", "Theophylline"],
+    "mechanism": "Increased plasma concentration of theophylline",
+    "description": "Ciprofloxacin interferes with the metabolism of theophylline, leading to higher plasma concentrations and potential adverse reactions."
+  },
+  {
+    "interaction": ["Lithium", "Diuretics"],
+    "mechanism": "Decreased renal lithium excretion",
+    "description": "Diuretics increase water loss while retaining sodium, prompting the body to retain lithium alongside sodium, raising its concentration and possible toxicity."
+  },
+  {
+    "interaction": ["Fluconazole", "Statins"],
+    "mechanism": "Impaired statin elimination",
+    "description": "Fluconazole inhibits cytochrome p450, responsible for metabolizing statins, consequently increasing plasma concentrations and intensifying muscle-related side effects."
+  },
+  {
+    "interaction": ["Metronidazole", "Alcohol"],
+    "mechanism": "Disulfiram reaction",
+    "description": "Combining alcohol with metronidazole results in unpleasant symptoms similar to disulfiram reactions, involving flushing, headache, palpitations, and vomiting."
+  },
+  {
+    "interaction": ["Phenytoin", "Carbamazepine"],
+    "mechanism": "Induction of phenytoin metabolism",
+    "description": "Carbamazepine increases phenytoin metabolism through induced liver enzymes, requiring closer monitoring and dosage adjustment to maintain therapeutic levels."
+  },
+  {
+    "interaction": ["Amiodarone", "Simvastatin"],
+    "mechanism": "Elevated simvastatin exposure",
+    "description": "Amiodarone inhibits the breakdown of simvastatin by cytochrome P450, leading to increased exposure and heightened risk of side effects like muscle pain and weakness."
+  },
+  {
+    "interaction": ["Atorvastatin", "Gemfibrozil"],
+    "mechanism": "Enhanced atorvastatin effect",
+    "description": "Gemfibrozil hampers atorvastatin removal, amplifying its cholesterol-lowering impact and escalating the likelihood of developing skeletal muscle damage."
+  },
+  {
+    "interaction": ["Diltiazem", "Buspirone"],
+    "mechanism": "Reduced buspirone clearance",
+    "description": "Diltiazem slows down buspirone elimination, intensifying sedative actions and prolonging its duration, warranting cautious administration."
+  },
+  {
+    "interaction": ["Digoxin", "Quinidine"],
+    "mechanism": "Diminished digoxin clearance",
+    "description": "Quinidine restricts digoxin excretion, leading to accumulation and enhanced cardiac effects, demanding close observation during treatment."
+  },
+  {
+    "interaction": ["Losartan", "Hydrochlorothiazide"],
+    "mechanism": "Blood pressure reduction",
+    "description": "Co-administering losartan with hydrochlorothiazide potentiates hypotensive outcomes, benefitting individuals with resistant hypertension."
+  },
+  {
+    "interaction": ["Methadone", "Paroxetine"],
+    "mechanism": "Prolonged QT interval",
+    "description": "Concomitant utilization of methadone and paroxetine raises the possibility of extended QT intervals, necessitating vigilant surveillance."
+  },
+  {
+    "interaction": ["Omeprazole", "Clopidogrel"],
+    "mechanism": "Compromised clopidogrel effectiveness",
+    "description": "Omeprazole suppresses clopidogrel activation, weakening its ability to prevent platelet aggregation, thereby reducing protection against thromboembolic events."
+  },
+  {
+    "interaction": ["Oxycodone", "Acetaminophen"],
+    "mechanism": "Analgesic synergistic effect",
+    "description": "Pairing oxycodone with acetaminophen bolsters pain relief, allowing lower opioid dosages and minimizing unwanted side effects."
+  },
+  {
+    "interaction": ["Piperacillin/Tazobactam", "Vancomycin"],
+    "mechanism": "Nephrotoxicity",
+    "description": "Administering piperacillin/tazobactam alongside vancomycin upsurges nephrotoxic risk, mandating attentive management and regular assessments."
+  },
+  {
+    "interaction": ["Prednisone", "Phenytoin"],
+    "mechanism": "Lowered prednisone levels",
+    "description": "Phenytoin quickens prednisone metabolism, depleting steroid amounts and threatening immunosuppression adequacy, thus requiring dose alterations."
+  },
+  {
+    "interaction": ["Sertraline", "Sumatriptan"],
+    "mechanism": "Serotonin syndrome",
+    "description": "Simultaneously employing sertraline and sumatriptan augments serotonin availability, predisposing users to serotonin syndrome characterized by autonomic instability, neuromuscular abnormalities, and altered mental status."
+  },
+  {
+    "interaction": ["Azithromycin", "Warfarin"],
+    "mechanism": "Intensified INR response",
+    "description": "Azithromycin magnifies warfarin's impact, augmenting international normalized ratio (INR) responses and boosting bleed vulnerabilities."
+  },
+  {
+    "interaction": ["Cimetidine", "Codeine"],
+    "mechanism": "Delayed codeine conversion",
+    "description": "Cimetidine delays codeine transformation into morphine, extending time lag until analgesia emergence and procrastinating symptom alleviation."
+  },
+  {
+    "interaction": ["Cyclosporine", "Ketoconazole"],
+    "mechanism": "Heightened cyclosporene exposure",
+    "description": "Ketoconazole blocks cyclosporine catabolism, culminating in amplified cyclosporine exposure, intensified nephrotoxicity, and greater immunosuppressive ramifications."
+  },
+  {
+    "interaction": ["Desipramine", "Fluoxetine"],
+    "mechanism": "Blunted desipramine metabolism",
+    "description": "Fluoxetine obstructs desipramine dissolution, fostering its build-up, aggravating depressive manifestations, and intensifying orthostatic hypotension severity."
+  },
+  {
+    "interaction": ["Furosemide", "Sotalol"],
+    "mechanism": "Exacerbated sotalol exposure",
+    "description": "Furosemide curtails sotalol extrusion, spiking plasmatic concentrations, precipitating arrhythmias and other adversities linked to excessive beta blockade."
+  },
+  {
+    "interaction": ["Haloperidol", "Promethazine"],
+    "mechanism": "QT interval extension",
+    "description": "Associating haloperidol with promethazine invites elongated QT intervals, implicating raised ventricular fibrillation incidence."
+  },
+  {
+    "interaction": ["Imipenem/Cilastatin", "Valproic acid"],
+    "mechanism": "Diminished valproic acid efficacy",
+    "description": "Imipenem/cilastatin curbs valproic acid bioavailability, jeopardizing seizure control and obliging frequent clinical evaluations."
+  },
+  {
+    "interaction": ["Isoniazid", "Pyridoxine"],
+    "mechanism": "Neuropathy prevention",
+    "description": "Supplementary pyridoxine averts peripheral neuropathies caused by isoniazid therapy, preserving neural integrity and mitigating polyneuritis probability."
+  },
+  {
+    "interaction": ["Levofloxacin", "Didanosine"],
+    "mechanism": "Levofloxacin malabsorption",
+    "description": "Didanosine disrupts levofloxacin assimilation, hamstringing its germicidal proficiency and imperiling bacterial eradication efforts."
+  },
+  {
+    "interaction": ["Metoclopramide", "Amoxicillin"],
+    "mechanism": "Accelerated amoxicillin transit",
+    "description": "Metoclopramide hastens amoxicillin gut passage, truncating enteric residence period, and undermining antibacterial efficiency."
+  },
+  {
+    "interaction": ["Mirtazapine", "Fluvoxamine"],
+    "mechanism": "Elevated mirtazapine levels",
+    "description": "Fluvoxamine restrains mirtazapine clearance, triggering surged systemic concentrations and accentuated somnolence, appetite enhancement, and weight gain."
+  },
+  {
+    "interaction": ["Nelfinavir", "Rifampin"],
+    "mechanism": "Decreased nelfinavir exposure",
+    "description": "Rifampin galvanizes nelfinavir biodegradation, lessening viral suppression, and prompting suboptimal HIV treatment outcomes."
+  },
+  {
+    "interaction": ["Nortriptyline", "Paroxetine"],
+    "mechanism": "Obstruction of nortriptyline metabolism",
+    "description": "Paroxetine constrains nortriptyline dissolution, engendering its accretion, and fortifying depressive presentations, plus ancillary anticholinergic sequelae."
+  },
+  {
+    "interaction": ["Ondansetron", "Tramadol"],
+    "mechanism": "Attenuated tramadol efficacy",
+    "description": "Ondansetron counteracts tramadol's analgesic qualities, debilitating its influence on mu-opioid receptors, and impairing effective pain management strategies."
+  },
+  {
+    "interaction": ["Phenelzine", "Pseudoephedrine"],
+    "mechanism": "Hypertensive crisis",
+    "description": "Junction of phenelzine and pseudoephedrine initiates hypertensive crises, entailing severe neurologic complications and significant mortality potential."
+  },
+  {
+    "interaction": ["Piroxicam", "Warfarin"],
+    "mechanism": "Incremented INR fluctuations",
+    "description": "Piroxicam provokes unstable INR readings in warfarinized subjects, posing dangerously high hemorrhage risks amid erratic coagulation states."
+  },
+  {
+    "interaction": ["Ranitidine", "Atazanavir"],
+    "mechanism": "Subdued atazanavir absorption",
+    "description": "Ranitidine compromises atazanavir ingestion, blunting its antiretroviral prowess, and endangering appropriate disease management tactics."
+  },
+  {
+    "interaction": ["St John's Wort", "Verapamil"],
+    "mechanism": "Reduced verapamil concentrations",
+    "description": "St John's Wort expedites verapamil expulsion, dwindling plasma levels, and threatening adequate calcium channel blocking capacities."
+  },
+  {
+    "interaction": ["Topiramate", "Valproic acid"],
+    "mechanism": "Augmented valproic acid serum levels",
+    "description": "Topiramate propels ascendant valproic acid serum markers, encouraging hyperammonemic encephalopathy development and neuropsychiatric disturbances."
+  },
+  {
+    "interaction": ["Trazodone", "Linezolid"],
+    "mechanism": "Serotonin syndrome",
+    "description": "Merging trazodone and linezolid presages serotonin syndrome, typified by autonomic irregularities, motor dysfunction, and cognitive anomalies."
+  },
+  {
+    "interaction": ["Varenicline", "Loop diuretics"],
+    "mechanism": "Dehydration and electrolyte imbalance",
+    "description": "Varenicline, utilized for smoking cessation, coupled with loop diuretics, might cause dehydration and electrolyte discrepancies, attributable to frequent urination and fluid losses."
+  },
+  {
+    "interaction": ["Warfarin", "Crushed aspirin"],
+    "mechanism": "Bleding risk",
+    "description": "Warfarin, an oral anticoagulant, paired with crushed aspirin, yields increased bleeding danger, since aspirin's irreversible inhibition of platelets compounds warfarin's anticoagulative action."
+  },
+  {
+    "interaction": ["Zolpidem", "Opioids"],
+    "mechanism": "Respiratory depression",
+    "description": "Zolpidem, a nonbenzodiazepine sleep aid, compounded with opioids, might bring about respiratory insufficiencies, stemming from additive central nervous system depression."
+  },
+  {
+    "interaction": ["Carvedilol", "Calcium channel blockers"],
+    "mechanism": "Orthostatic hypotension",
+    "description": "Carvedilol, a nonselective beta blocker, joined with calcium channel blockers, can result in profound orthostatic hypotension, arising from exaggerated vasodilation and reduced sympathetic tone."
+  },
+  {
+    "interaction": ["Allopurinol", "Thiazide diuretics"],
+    "mechanism": "Stevens-Johnson Syndrome",
+    "description": "Allopurinol, employed to treat gout, combined with thiazide diuretics, has been recognized to stimulate Stevens-Johnson Syndrome, likely reflecting genetic variations in drug detoxification pathways."
+  },
+  {
+    "interaction": [
+      "Celecoxib",
+      "Angiotensin converting enzyme (ACE) inhibitors"
+    ],
+    "mechanism": "Edema formation",
+    "description": "Celecoxib, a selective COX-2 inhibitor, integrated with angiotensin converting enzyme (ACE) inhibitors, might foster edema occurrence, relating to uneven prostaglandin modulation in vascular beds."
+  },
+  {
+    "interaction": ["Lovastatin", "Macrolide antibiotics"],
+    "mechanism": "Myalgia and rhabdomyolysis",
+    "description": "Lovastatin, a statin lipid-lowering agent, merged with macrolide antibiotics, has been reported to generate myalgia and rhabdomyolysis, conceivably attributed to shared cytochrome P450 metabolic routes."
+  },
+  {
+    "interaction": ["Metformin", "Certain contrast agents"],
+    "mechanism": "Lactic acidosis",
+    "description": "Metformin, an oral hypoglycemic, when coordinated with certain contrast agents, may lead to lactic acidosis, probably because of competitive tubular secretion processes."
+  },
+  {
+    "interaction": ["Lithium", "Nonsteroidal anti-inflammatory drugs (NSAIDs)"],
+    "mechanism": "Reduced lithium excretion",
+    "description": "Lithium, a mood stabilizer, aligned with nonsteroidal anti-inflammatory drugs (NSAIDs), may diminish lithium excretion, causing elevated serum levels and potential toxicity."
+  },
+  {
+    "interaction": ["Erythromycin", "Theophylline"],
+    "mechanism": "Theophylline toxicity",
+    "description": "Erythromycin, a macrolide antibiotic, juxtaposed with theophylline, a bronchodilator, may yield theophylline toxicity, presumably due to mutual cytochrome P450 inhibition."
+  },
+  {
+    "interaction": ["Fluticasone", "Ritonavir"],
+    "mechanism": "Systemic corticosteroid effects",
+    "description": "Fluticasone, an intranasally administered glucocorticoid, and ritonavir, a protease inhibitor, interact when combined, facilitating sufficient systemic absorption of fluticasone, potentially leading to adrenal axis suppression and Cushing syndrome."
+  },
+  {
+    "interaction": ["Colchicine", "Statins"],
+    "mechanism": "Myopathy and rhabdomyolysis",
+    "description": "Colchicine, a microtubule inhibitor, and statins, commonly prescribed for managing dyslipidemia, interact by sharing common metabolic routes, raising the prospect of myopathy and life-threatening rhabdomyolysis."
+  },
+  {
+    "interaction": ["Phenytoin", "Carbamazepine"],
+    "mechanism": "Reduced phenytoin levels",
+    "description": "Phenytoin, an anticonvulsant, and carbamazepine, another antiepileptic drug, interact through competing enzymatic oxidation pathways, often resulting in lowered phenytoin concentrations and suboptimal seizure control."
+  },
+  {
+    "interaction": ["Warfarin", "Cranberry juice"],
+    "mechanism": "Increased INR",
+    "description": "Warfarin, an oral anticoagulant, and cranberry juice share overlapping mechanisms affecting vitamin K epoxide reductase complex 1, which may enhance warfarin's anticoagulative effects, reflected by increased International Normalized Ratios (INRs)."
+  },
+  {
+    "interaction": ["Ciprofloxacin", "Multivalent cations"],
+    "mechanism": "Reduced fluoroquinolone absorption",
+    "description": "Ciprofloxacin, a fluoroquinolone antibiotic, interacts with multivalent cations\u2014found in supplements and food products, such as milk, yogurt, and orange juice\u2014by forming chelate complexes, diminishing the oral bioavailability of fluoroquinolones."
+  },
+  {
+    "interaction": ["Fluoxetine", "Triazolam"],
+    "mechanism": "Extended triazolam half-life",
+    "description": "Fluoxetine, a selective serotonin reuptake inhibitor, and triazolam, a benzodiazepine derivative, interact through shared cytochrome P450 pathways, frequently leading to protracted triazolam half-life and enhanced sedative effects."
+  },
+  {
+    "interaction": ["Ipratropium bromide", "Umeclidinium"],
+    "mechanism": "Antagonized muscarinic receptor blockade",
+    "description": "Ipratropium bromide, an anticholinergic bronchodilator, and Umeclidinium, an inhaled long-acting muscarinic antagonist, interact competitively at muscarinic M3 receptors in airway smooth muscles, potentially limiting overall bronchodilatory efficacy."
+  },
+  {
+    "interaction": ["Caffeine", "Ethanol"],
+    "mechanism": "Impaired caffeine metabolism",
+    "description": "Caffeine, a xanthine alkaloid, and ethanol, a psychoactive substance, interact indirectly by influencing the same hepatic enzymes\u2014specifically, CYP1A2\u2014that facilitate caffeine metabolism, typically decelerating the process and amplifying caffeine's subjective effects."
+  },
+  {
+    "interaction": ["Rocuronium", "Succinylcholine"],
+    "mechanism": "Prolonged neuromuscular blockade",
+    "description": "Rocuronium, a nondepolarizing neuromuscular blocking agent, and succinylcholine, a depolarizing neuromuscular blocking drug, engage in sequence-dependent competition at nicotinic acetylcholine receptors, sometimes leading to persistent neuromuscular blockades."
+  },
+  {
+    "interaction": ["Sertraline", "Digoxin"],
+    "mechanism": "Elevated digoxin levels",
+    "description": "Sertraline, a selective serotonin reuptake inhibitor, and digoxin, a cardiac glycoside, interact primarily through inhibited P-glycoprotein\u2013mediated transport, usually translating to increased digoxin concentrations and potential toxicity."
+  },
+  {
+    "interaction": ["MetFORMIN", "METRONIDAZOLE"],
+    "mechanism": "Lactic Acidosis",
+    "description": "Metformin, an oral diabetes medication, and metronidazole, an antibiotic, interact by separately contributing to lactate production and subsequently inhibiting lactate clearance, raising concerns about lactic acidosis development."
+  },
+  {
+    "interaction": ["SIROLIMUS", "CYCLOSPORINE"],
+    "mechanism": "Increased SIROLIMUS exposure",
+    "description": "Sirolimus, an immunosuppressant, and cyclosporine, an immunosuppressive agent, interact through cyclosporine's inhibitory effect on sirolimus metabolism, resulting in substantially elevated sirolimus levels."
+  },
+  {
+    "interaction": ["AMLODIPINE", "GRAPREFruit Juice"],
+    "mechanism": "Reduced AMLODIPINE Bioavailability",
+    "description": "Amlodipine, a calcium channel blocker, and grapefruit juice, consumed prior to taking the medication, interact by inhibiting CYP3A4 enzymes located in the small intestines, ultimately reducing amlodipine's oral bioavailability."
+  },
+  {
+    "interaction": ["WARFARIN", "ASPIRIN"],
+    "mechanism": "Additive Anticoagulant Effects",
+    "description": "Warfarin, an anticoagulant, and aspirin, a salicylate, interact through complementary antiplatelet activities, cumulating in pronounced anticoagulant effects and heightened bleeding risks."
+  },
+  {
+    "interaction": ["ALPRAZOLAM", "FLUCONAZOLE"],
+    "mechanism": "Prolonged ALPRAZOLAM Half-Life",
+    "description": "Alprazolam, a benzodiazepine, and fluconazole, an antifungal, interact through fluconazole's inhibitory role in CYP3A4 enzymes, causing significantly longer alprazolam half-life and increased sedative effects."
+  },
+  {
+    "interaction": ["MYCOPHENOLATE MOFETIL", "PROBIOTICS"],
+    "mechanism": "Reduced MYCOPHENOLATE EXPOSURE",
+    "description": "Mycophenolate mofetil, an immunosuppressant, and probiotics, taken simultaneously, interact due to probiotic bacteria breaking down mycophenolic acid, thereby lowering mycophenolate mofetil exposure."
+  },
+  {
+    "interaction": ["ATORVASTATIN", "ERYTHROMYCIN"],
+    "mechanism": "Increased ATORVASTATIN CONCENTRATIONS",
+    "description": "Atorvastatin, a statin, and erythromycin, a macrolide antibiotic, interact through erythromycin's CYP3A4 inhibition, resulting in elevated atorvastatin concentrations and increased risk for side effects."
+  },
+  {
+    "interaction": ["IRBESARTAN", "HYDROCHLOROTHIAZIDE"],
+    "mechanism": "Enhanced Blood Pressure Control",
+    "description": "Irbesartan, an angiotensin II receptor blocker, and hydrochlorothiazide, a diuretic, interact favorably by combining their individual blood pressure-reducing capabilities, improving overall hypertension management."
+  },
+  {
+    "interaction": ["QUETIAPINE", "VALPROIC ACID"],
+    "mechanism": "Increased QUETIAPINE CONCENTRATIONS",
+    "description": "Quetiapine, an atypical antipsychotic, and valproic acid, an anticonvulsant, interact by valproic acid's inhibition of quetiapine metabolism, leading to considerably higher quetiapine levels."
+  },
+  {
+    "interaction": ["LITHIUM", "NONSTEROIDAL ANTI-INFLAMMATORY DRUGS (NSAIDS)"],
+    "mechanism": "Elevated LITHIUM LEVELS AND NEPHROTOXICITY",
+    "description": "Lithium, a mood stabilizer, and nonsteroidal anti-inflammatory drugs (NSAIDs), taken together, interact by mutually affecting renal function and increasing the risk of lithium toxicity and nephrotoxicity."
+  },
+  {
+    "interaction": ["CLINDAMYCIN", "ERYTHROMYCIN"],
+    "mechanism": "Reduced Erthromycin Absorption",
+    "description": "Clindamycin and erythromycin compete for active transport sites in the upper part of the small intestine, leading to decreased erythromycin absorption and reduced effectiveness."
+  },
+  {
+    "interaction": ["CELECOXIB", "DIURETICS"],
+    "mechanism": "Reduced Diuretic Effectiveness",
+    "description": "Celecoxib may decrease natriuresis and renal perfusion, leading to reduced diuretic effectiveness and impaired hypertension and heart failure management."
+  },
+  {
+    "interaction": ["FERROUS SULFATE", "TETRACYCLINES"],
+    "mechanism": "Reduced Tetracycline Absorption",
+    "description": "Ferrous sulfate and tetracyclines bind together in the stomach, preventing tetracycline absorption and reducing the antibiotic's effectiveness."
+  },
+  {
+    "interaction": ["DESLORATADINE", "APPLE JUICE"],
+    "mechanism": "Enhanced Desloratadine Absorption",
+    "description": "Apple juice contains flavonols that can increase desloratadine solubility and absorption, possibly leading to increased adverse effects."
+  },
+  {
+    "interaction": ["METHOTREXATE", "TRIMETHOPRIM-SULFAMETHOXAZOLE"],
+    "mechanism": "Reduced Renal Clearance",
+    "description": "Trimethoprim-sulfamethoxazole inhibits renal tubular secretion, leading to increased methotrexate levels and an increased risk of bone marrow suppression, especially in elderly patients."
+  },
+  {
+    "interaction": ["CARBAMAZEPIN", "VALPROIC ACID"],
+    "mechanism": "Increased Valproic Acid Concentrations",
+    "description": "Carbamazepine induces glucuronidation and metabolism of valproic acid, leading to initially decreased valproic acid levels followed by increased valproic acid concentrations after approximately five days."
+  },
+  {
+    "interaction": ["THEOPHYLLINE", "CAFFEINE"],
+    "mechanism": "Increased Theophylline Concentrations",
+    "description": "Caffeine consumption can inhibit theophylline metabolism, increasing theophylline concentrations and potentially causing theophylline toxicity."
+  },
+  {
+    "interaction": ["SERTRALINE", "PSEUDOEPHEDRINE"],
+    "mechanism": "Hypertensive Crisis",
+    "description": "Co-administration of sertraline and pseudoephedrine can lead to norpseudoephedrine excess and monoamine oxidase inhibition, increasing the risk of hypertensive crisis."
+  },
+  {
+    "interaction": ["ALLUPURINOL", "AMPICILLIN"],
+    "mechanism": "Skin Rashes",
+    "description": "Allopurinol inhibits xanthine oxidase, which is involved in ampicillin metabolism. An immune-mediated reaction between ampicillin and human leukocytes forms a penicilloic acid-protein conjugate, increasing the risk of skin rashes."
+  },
+  {
+    "interaction": ["DONEPEZIL", "PAROXETINE"],
+    "mechanism": "Increased Donepezil Concentrations",
+    "description": "Paroxetine inhibits donepezil metabolism, increasing donepezil concentrations and potentially causing cholinergic side effects."
+  },
+  {
+    "interaction": ["CYCLOSPORINE", "COLCHICINE"],
+    "mechanism": "Increased Colchicine Toxicity",
+    "description": "Cyclosporine inhibits colchicine metabolism, leading to increased colchicine concentrations and potentially causing colchicine toxicity, presenting as gastrointestinal issues, neutropenia, and myopathy."
+  },
+  {
+    "interaction": ["ISONIAZID", "RIFAMPIN"],
+    "mechanism": "Decreased Isoniazid Levels",
+    "description": "Rifampin induces isoniazid metabolism, decreasing isoniazid levels and potentially compromising the efficacy of tuberculosis treatment."
+  },
+  {
+    "interaction": ["QUINAPRIL", "ANGIOITENSIN RECEPTOR BLOCKERS"],
+    "mechanism": "Enhanced Hypotensive Effects",
+    "description": "Combining quinapril with angiotensin receptor blockers may produce additive hypotensive effects, increasing the risk of hypotension and falls."
+  },
+  {
+    "interaction": ["AMIODARONE", "SIMULANT AGENTS"],
+    "mechanism": "Cardiovascular Instability",
+    "description": "Amiodarone may prolong the QT interval, increasing the risk of serious cardiovascular events when used concomitantly with class I and III antiarrhythmic agents or other QT-prolonging medications."
+  },
+  {
+    "interaction": ["METHOTREXATE", "NONSTEREOIDAL ANTI-INFLAMMATORY DRUGS"],
+    "mechanism": "Increased Methotrexate Toxicity",
+    "description": "Nonsteroidal anti-inflammatory drugs (NSAIDs) may reduce the renal clearance of methotrexate, leading to increased methotrexate concentrations and potentially causing methotrexate toxicity."
+  },
+  {
+    "interaction": ["TERBINAFINE", "CYCLOSPORINE"],
+    "mechanism": "Increased Terbinafine Concentrations",
+    "description": "Cyclosporine inhibits terbinafine metabolism, leading to increased terbinafine concentrations and potentially causing terbinafine adverse effects."
+  },
+  {
+    "interaction": ["WARFARIN", "NSAIDs"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "NSAIDs may affect platelet function and contribute to the increased risk of bleeding observed when warfarin is used in combination with these agents."
+  },
+  {
+    "interaction": ["VERAPAMIL", "DIGOXIN"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Verapamil inhibits digoxin elimination, leading to increased digoxin concentrations and potentially causing digoxin toxicity."
+  },
+  {
+    "interaction": ["ERYTHROMYCIN", "SIMMULTANEOUSLY USED STATINS"],
+    "mechanism": "Rhabdomyolysis",
+    "description": "Erythromycin may inhibit statin metabolism, leading to increased statin concentrations and potentially causing rhabdomyolysis."
+  },
+  {
+    "interaction": ["PROPYLTHIOURACIL", "PHOENYTOIN"],
+    "mechanism": "Decreased PTU Levels",
+    "description": "Phoenytoin induces PTU metabolism, decreasing PTU levels and potentially compromising Graves' Disease treatment."
+  },
+  {
+    "interaction": ["LITHIUM", "DIOCTYL SODIUM SULFOSUCCOHINATE"],
+    "mechanism": "Decreased Lithium Elimination",
+    "description": "DIOCTYL SODIUM SULFOSUCCOHINATE (DSS) can decrease lithium elimination, leading to increased lithium concentrations and potentially causing lithium toxicity."
+  },
+  {
+    "interaction": ["SIMVASTATIN", "FIBRATES"],
+    "mechanism": "Rhabdomyolysis",
+    "description": "Fibrates may increase the risk of rhabdomyolysis when combined with simvastatin by raising simvastatin concentrations."
+  },
+  {
+    "interaction": ["MEPERIDINE", "MONOAMINE OXIDASE INHIBITORS"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Combining Meperidine with MAOIs can lead to serotonin syndrome due to increased serotonin release and decreased serotonin reuptake."
+  },
+  {
+    "interaction": ["QUINAPRIL", "TRIMETABANE"],
+    "mechanism": "Increased Quinapril Concentrations",
+    "description": "Trimetafan may inhibit ACE inhibitor metabolism, leading to increased quinapril concentrations and potentially causing increased hypotensive effects."
+  },
+  {
+    "interaction": ["LITHIUM", "CALCIUM CHANNEL BLOCKERS"],
+    "mechanism": "Increased Lithium Levels",
+    "description": "Calcium Channel Blockers may decrease lithium elimination, leading to increased lithium concentrations and potentially causing lithium toxicity."
+  },
+  {
+    "interaction": ["CORTICOSTEROIDS", "CYCLOSPORINE"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Corticosteroids can increase cyclosporine concentrations by inhibiting its metabolism, leading to increased nephrotoxicity risk."
+  },
+  {
+    "interaction": ["PHENOBARBITAL", "ETHOSUXIMIDE"],
+    "mechanism": "Decreased Ethosuximide Levels",
+    "description": "Phenobarbital can induce ethosuximide metabolism, leading to decreased ethosuximide concentrations and potentially compromising epilepsy treatment."
+  },
+  {
+    "interaction": ["PHENYTOIN", "DISULFIRAM"],
+    "mechanism": "Disulfiram-Like Reaction",
+    "description": "Combining Disulfiram with Phenytoin may lead to disulfiram-like reactions due to decreased Phenytoin elimination."
+  },
+  {
+    "interaction": ["CARBAMACEPIN", "PHENYTOIN"],
+    "mechanism": "Increased Phenytoin Levels",
+    "description": "Carbamazepine can induce Phenytoin metabolism, leading to increased phenytoin concentrations and potentially causing increased sedation or neurological side effects."
+  },
+  {
+    "interaction": ["ISONIAZID", "PYRAZINAMIDE"],
+    "mechanism": "Peripheral Neuropathy",
+    "description": "Isoniazid and Pyrazinamide can interact to produce peripheral neuropathy, especially in slow acetylators."
+  },
+  {
+    "interaction": ["CELECOXIB", "LOVESTATIN"],
+    "mechanism": "Increased Lovastatin Levels",
+    "description": "Celecoxib can inhibit lovastatin metabolism, leading to increased lovastatin concentrations and potentially causing increased muscle-related side effects."
+  },
+  {
+    "interaction": ["DONEPEZIL", "MEMANTINE"],
+    "mechanism": "Decreased Memantine Clearance",
+    "description": "Donepezil can inhibit memantine elimination, leading to increased memantine concentrations and potentially causing increased cognitive side effects."
+  },
+  {
+    "interaction": ["CIPROFLOXACIN", "THEOPHYLLINE"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Ciprofloxacin can inhibit theophylline metabolism, leading to increased theophylline concentrations and potentially causing increased tremors, restlessness, and rapid heartbeat."
+  },
+  {
+    "interaction": ["CARBAMAZEPIN", "TOPIRAMATE"],
+    "mechanism": "Decreased Topiramate Levels",
+    "description": "Carbamazepine can induce topiramate metabolism, leading to decreased topiramate concentrations and potentially compromising epilepsy treatment."
+  },
+  {
+    "interaction": ["ERLOTINIB", "OM EpRazole"],
+    "mechanism": "Decreased Erlotinib Efficiency",
+    "description": "Omeprazole can reduce esomeprazole stomach acidity, which affects erlotinib absorption, leading to decreased erlotinib concentrations and potentially compromising cancer treatment."
+  },
+  {
+    "interaction": ["SIMVASTATIN", "AMLODIPINE"],
+    "mechanism": "Increased Simvastatin Levels",
+    "description": "Amlodipine can inhibit simvastatin metabolism, leading to increased simvastatin concentrations and potentially causing increased muscle-related side effects."
+  },
+  {
+    "interaction": ["FLUVOXAMINE", "SERTRALINE"],
+    "mechanism": "Increased SSRI Side Effects",
+    "description": "Fluoxetine can inhibit sertraline metabolism, leading to increased sertraline concentrations and potentially causing increased serotonin-related side effects."
+  },
+  {
+    "interaction": ["RIFABUTIN", "RIFAMPIN"],
+    "mechanism": "Decreased Rifabutin Efficiency",
+    "description": "Rifampin can induce rifabutin metabolism, leading to decreased rifabutin concentrations and potentially compromising mycobacterial infection treatment."
+  },
+  {
+    "interaction": ["NEFAZODONE", "ALPRAZOLAM"],
+    "mechanism": "Increased Alprazolam Levels",
+    "description": "Nefazodone can inhibit alprazolam metabolism, leading to increased alprazolam concentrations and potentially causing increased sedation and cognitive side effects."
+  },
+  {
+    "interaction": ["CYCLOSPORINE", "TACROLIMUS"],
+    "mechanism": "Increased Immunosuppressant Levels",
+    "description": "Cyclosporine can inhibit tacrolimus metabolism, leading to increased tacrolimus concentrations and potentially causing increased immunosuppression and adverse effects."
+  },
+  {
+    "interaction": ["ISOXAZOLIDINES", "OPIOIDS"],
+    "mechanism": "Increased Opioid Analgesia",
+    "description": "Isoxaflutole can increase the analgesic effect of opioids, leading to increased sedation, respiratory depression, and potential respiratory arrest."
+  },
+  {
+    "interaction": ["METHOTREXATE", "TRIMETHOPRIM-SULFAMETHOXAZOLE"],
+    "mechanism": "Increased Methotrexate Toxicity",
+    "description": "Trimethoprim-sulfamethoxazole can increase methotrexate concentrations, leading to increased bone marrow suppression and potential fatal toxicity."
+  },
+  {
+    "interaction": ["DULOXETINE", "SERTRALINE"],
+    "mechanism": "Increased Adverse Events",
+    "description": "Duloxetine can increase sertraline concentrations, leading to increased serotonin-related adverse events, such as anxiety, confusion, agitation, and akathisia."
+  },
+  {
+    "interaction": ["AMIODARONE", "SIMVASTATIN"],
+    "mechanism": "Increased Simvastatin Toxicity",
+    "description": "Amiodarone can increase simvastatin concentrations, leading to increased muscle-related adverse events, such as myalgia, rhabdomyolysis, and potential kidney injury."
+  },
+  {
+    "interaction": ["FLUOXETINE", "MEPTOPROLANE"],
+    "mechanism": "Decreased Meptoprolane Efficiency",
+    "description": "Fluoxetine can inhibit meptoprolane metabolism, leading to decreased meptoprolane concentrations and potentially compromising anesthesia."
+  },
+  {
+    "interaction": ["PREGABALIN", "METHAIMPRIMINE"],
+    "mechanism": "Decreased Gabapentinoid Effectiveness",
+    "description": "Methaqualone can decrease pregabalin concentrations, leading to decreased gabapentinoid effectiveness and potentially compromising chronic pain or epilepsy treatment."
+  },
+  {
+    "interaction": ["QUINAPRIL", "ANGIOTENSIN II RECEPTOR BLOCKERS"],
+    "mechanism": "Enhanced Hypotensive Effects",
+    "description": "Quinapril and Angiotensin II Receptor Blockers can interact to produce enhanced hypotensive effects, leading to increased risk of falling and orthostatic hypotension."
+  },
+  {
+    "interaction": ["CLARITHROMYCIN", "ASTEMIZOLE"],
+    "mechanism": "QT Interval Prolongation",
+    "description": "Clarithromycin can increase astemizole concentrations, leading to QT interval prolongation and potential ventricular arrhythmias, such as torsades de pointes."
+  },
+  {
+    "interaction": ["CYCLOPHOSPHAMIDE", "ALLOPURINOL"],
+    "mechanism": "Decreased Cyclophosphamide Effectiveness",
+    "description": "Allopurinol can increase cyclophosphamide metabolite concentrations, leading to decreased parent drug concentrations and potentially compromising chemotherapy effectiveness."
+  },
+  {
+    "interaction": ["DONEPEZIL", "CHOLINESTERASE INHIBITORS"],
+    "mechanism": "Increased Cholinesterase Inhibition",
+    "description": "Combining Donepezil with other Cholinesterase Inhibitors can increase cholinesterase inhibition, leading to increased risk of adverse effects, such as nausea, vomiting, bradycardia, and syncope."
+  },
+  {
+    "interaction": ["WARFARIN", "NSAIDs"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "NSAIDs can decrease platelet aggregation and increase the risk of bleeding when combined with Warfarin, leading to potential hemorrhagic complications."
+  },
+  {
+    "interaction": ["QUETIAPINE", "CYTOCHROME P450 3A4 INHIBITORS"],
+    "mechanism": "Increased Quetiapine Concentrations",
+    "description": "Cytochrome P450 3A4 Inhibitors can increase Quetiapine concentrations, leading to increased risk of adverse effects, such as sedation, orthostatic hypotension, and QT prolongation."
+  },
+  {
+    "interaction": ["DABIGATRAN ETEXILATE", "P-GLYCOPROTEIN INDUCERS"],
+    "mechanism": "Decreased Dabigatran Etexilate Concentrations",
+    "description": "P-Glycoprotein Inducers can decrease Dabigatran Etixilate concentrations, leading to reduced anticoagulation effect and potential thromboembolic complications."
+  },
+  {
+    "interaction": ["SODIUM VALPROATE", "TOPIRAMATE"],
+    "mechanism": "Decreased Valproate Concentrations",
+    "description": "Topiramate can increase valproate metabolism, leading to decreased valproate concentrations and potentially compromising seizure control."
+  },
+  {
+    "interaction": ["COLCHICINE", "MACROLIDES"],
+    "mechanism": "Increased Colchicine Concentrations",
+    "description": "Macrolides can inhibit colchicine metabolism, leading to increased colchicine concentrations and potentially causing colchicine toxicity, characterized by myopathy, neuropathy, and gastrointestinal distress."
+  },
+  {
+    "interaction": ["RIVAROXABAN", "AMIODARONE"],
+    "mechanism": "Increased Rivaroxaban Concentrations",
+    "description": "Amiodarone can increase rivaroxaban concentrations, leading to increased risk of bleeding complications."
+  },
+  {
+    "interaction": ["SILDENAFIL", "NITRATE THERAPIES"],
+    "mechanism": "Severe Hypotension",
+    "description": "Combining Sildenafil with nitrate therapies can lead to severe hypotension, syncope, and potential cardiovascular collapse."
+  },
+  {
+    "interaction": ["LITHIUM", "THIAZIDE DIURETICS"],
+    "mechanism": "Increased Lithium Concentrations",
+    "description": "Thiazide diuretics can increase lithium concentrations, leading to increased risk of adverse effects, such as tremors, sedation, and renal impairment."
+  },
+  {
+    "interaction": ["CYCLOPHOSPHAMIDE", "ALCOHOL"],
+    "mechanism": "Decreased Cyclophosphamide Effectiveness",
+    "description": "Alcohol can decrease cyclophosphamide metabolism, leading to decreased parent drug concentrations and potentially compromising chemotherapy effectiveness."
+  },
+  {
+    "interaction": ["WARFARIN", "CRUSHING OF TABLETS"],
+    "mechanism": "Variable Drug Release and Unpredictable Pharmacokinetics",
+    "description": "Crushing of extended-release or delayed-release tablets of Warfarin can lead to variable drug release and unpredictable pharmacokinetics, potentially causing under- or over-anticoagulation."
+  },
+  {
+    "interaction": ["CYCLOPHOSPHAMIDE", "ALLOPURINOL"],
+    "mechanism": "Decreased Cyclophosphamide Activation",
+    "description": "Allopurinol can inhibit cyclophosphamide activation, leading to reduced parent drug concentrations and potentially compromising chemotherapy effectiveness."
+  },
+  {
+    "interaction": ["LENALIDOMIDE", "ESTROGENS"],
+    "mechanism": "Increased Lenalidomide Toxicity",
+    "description": "Estrogens can increase lenalidomide concentrations, leading to increased risk of adverse effects, such as venous thromboembolism, neutropenia, and fatigue."
+  },
+  {
+    "interaction": ["METHOTREXATE", "PROTON PUMP INHIBITORS"],
+    "mechanism": "Decreased Methotrexate Absorption",
+    "description": "Proton pump inhibitors can decrease methotrexate absorption, leading to reduced drug concentrations and potentially compromising rheumatologic or oncological treatment."
+  },
+  {
+    "interaction": ["RIFAMPIN", "ORAL CONTRACEPTIVES"],
+    "mechanism": "Decreased Oral Contraceptive Effectiveness",
+    "description": "Rifampin can increase oral contraceptive metabolism, leading to decreased hormonal concentrations and potentially compromising contraception."
+  },
+  {
+    "interaction": ["DEXAMETHASONE", "LIVE VACCINES"],
+    "mechanism": "Increased Live Viral Replication",
+    "description": "Live vaccines can cause increased live viral replication when administered concomitantly with dexamethasone, leading to vaccine failure and potential infectious complications."
+  },
+  {
+    "interaction": ["TACROLIMUS", "CYCLOPORINE"],
+    "mechanism": "Increased Tacrolimus Concentrations",
+    "description": "Cyclosporine can increase tacrolimus concentrations, leading to increased risk of nephrotoxicity and other adverse effects."
+  },
+  {
+    "interaction": ["LITHIUM", "DIURETICS"],
+    "mechanism": "Increased Lithium Concentrations",
+    "description": "Diuretics can increase lithium concentrations, leading to increased risk of adverse effects, such as tremors, sedation, and renal impairment."
+  },
+  {
+    "interaction": ["LEVETIRACETAM", "PROBENECID"],
+    "mechanism": "Decreased Levecitracetam Clearence",
+    "description": "Probenecid can inhibit levetiracetam renal clearance, leading to increased levetiracetam concentrations and potentially increased adverse effects."
+  },
+  {
+    "interaction": ["ERYTHROMYCIN", "TRANSDERMAL FENTANYL"],
+    "mechanism": "Increased Transdermal Fentanyl Absorption",
+    "description": "Erythromycin can increase transdermal fentanyl absorption, leading to increased risk of respiratory depression and potential overdose."
+  },
+  {
+    "interaction": ["ISOTRETINOIN", "TAKING WITH FOOD"],
+    "mechanism": "Improved Isotretinoin Tolerability",
+    "description": "Taking Isotretinoin with food can improve tolerability by decreasing gastrointestinal irritation, although it doesn't necessarily modify drug pharmacokinetics."
+  },
+  {
+    "interaction": ["SIMVASTATIN", "GEMCITABINE"],
+    "mechanism": "Increased Gemcitabine Toxicity",
+    "description": "Simvastatin can increase gemcitabine toxicity by decreasing gemcitabine elimination, leading to increased risk of myelosuppression and other adverse effects."
+  },
+  {
+    "interaction": ["MYCOPHENOLATE MOFETIL", "PROBIOTICS"],
+    "mechanism": "Decreased Mycophenolate MoFetil Absorption",
+    "description": "Probiotics can decrease mycophenolate mofetil absorption, leading to reduced immunosuppressive effects and potential organ rejection in transplant recipients."
+  },
+  {
+    "interaction": ["RISPERIDONE", "VALPROATE"],
+    "mechanism": "Increased Risperidone Concentrations",
+    "description": "Valproate can increase risperidone concentrations, leading to increased risk of adverse effects, such as sedation, orthostatic hypotension, and extrapyramidal symptoms."
+  },
+  {
+    "interaction": ["PHENOXYBENZAMINE", "TRICYCLIC ANTI DEPRESSANTS"],
+    "mechanism": "Additive Orthostatic Hypotension",
+    "description": "Combining phenoxybenzamine with tricyclic antidepressants can lead to additive orthostatic hypotension, increasing fall risk in older adults."
+  },
+  {
+    "interaction": ["METHOTREXATE", "PROTON PUMP INHIBITORS"],
+    "mechanism": "Decreased Methotrexate Absorption",
+    "description": "Proton pump inhibitors can decrease methotrexate absorption, leading to reduced drug concentrations and potentially compromising rheumatologic or oncological treatment."
+  },
+  {
+    "interaction": ["TACROLIMUS", "CYCLOSPORINE"],
+    "mechanism": "Increased Tacrolimus Concentrations",
+    "description": "Cyclosporine can increase tacrolimus concentrations, leading to increased risk of nephrotoxicity and other adverse effects."
+  },
+  {
+    "interaction": ["WARFARIN", "AMINOGLYCOSIDES"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Aminoglycosides can increase warfarin sensitivity, leading to increased bleeding risk and potentially causing major hemorrhagic complications."
+  },
+  {
+    "interaction": ["PHENYTOIN", "ASCORBIC ACID"],
+    "mechanism": "Decreased Phenytoin Concentrations",
+    "description": "High-dose ascorbic acid can decrease phenytoin concentrations, leading to potential loss of seizure control in patients treated for epilepsy."
+  },
+  {
+    "interaction": ["ISOSORBIDE MONONITRATE", "SILDENAFIL"],
+    "mechanism": "Synergistic Hypotension",
+    "description": "Combining isosorbide mononitrate with sildenafil can lead to synergistic hypotension, increasing fall risk in older adults."
+  },
+  {
+    "interaction": ["Warfarin", "Carbamazepine"],
+    "mechanism": "Decreased Warfarin Effectiveness",
+    "description": "Carbamazepine can decrease warfarin effectiveness by increasing warfarin metabolism, leading to reduced anticoagulation and potential thromboembolic complications."
+  },
+  {
+    "interaction": ["Insulin", "Octreotide"],
+    "mechanism": "Decreased Insulin Requirement",
+    "description": "Octreotide can decrease insulin requirement by inhibiting insulin secretion and promoting insulin resistance, leading to potential hypoglycemia."
+  },
+  {
+    "interaction": ["Dexamethasone", "Warfarin"],
+    "mechanism": "Increased Warfarin Resistance",
+    "description": "Dexamethasone can increase warfarin resistance by inducing hepatic metabolism, leading to reduced anticoagulation and potential thromboembolic complications."
+  },
+  {
+    "interaction": ["Ciprofloxacin", "Theophylline"],
+    "mechanism": "Increased Theophylline Toxicity",
+    "description": "Ciprofloxacin can increase theophylline toxicity by inhibiting its metabolism, leading to potential theophylline poisoning."
+  },
+  {
+    "interaction": ["Fluoxetine", "Buspirone"],
+    "mechanism": "Increased Buspirone Effectiveness",
+    "description": "Fluoxetine can increase buspirone effectiveness by inhibiting its metabolism, leading to increased sedation, dizziness, and potential falls."
+  },
+  {
+    "interaction": ["Cimetidine", "Warfarin"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Cimetidine can increase warfarin sensitivity by inhibiting warfarin metabolism, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Metformin", "Contrast Media"],
+    "mechanism": "Increased Nephrogenic Risk",
+    "description": "Contrast media can increase nephrogenic risk in patients taking metformin by inducing renal dysfunction, leading to potential lactic acidosis."
+  },
+  {
+    "interaction": ["Lithium", "NSAIDs"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "NSAIDs can decrease lithium excretion by inhibiting renal tubular function, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Amiodarone"],
+    "mechanism": "Increased Bradycardia Risk",
+    "description": "Amiodarone can increase bradycardia risk in patients taking cyclosporine by adding negative chronotropic effects."
+  },
+  {
+    "interaction": ["Rifampin", "Protease Inhibitors"],
+    "mechanism": "Decreased Protease Inhibitor Concentration",
+    "description": "Rifampin can decrease protease inhibitor concentrations by inducing hepatic metabolism, leading to potential virological failures in HIV-infected patients."
+  },
+  {
+    "interaction": ["Warfarin", "Clopidogrel"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Warfarin and clopidogrel can increase bleeding risk when used concomitantly, leading to potential hemorrhagic complications."
+  },
+  {
+    "interaction": ["Digoxin", "Quinidine"],
+    "mechanism": "Increased Digoxin Toxicity",
+    "description": "Quinidine can increase digoxin toxicity by inhibiting its renal clearance, leading to potential digitalis toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Erythromycin"],
+    "mechanism": "Increased Tacrolimus Concentration",
+    "description": "Erythromycin can increase tacrolimus concentration by inhibiting its metabolism, leading to potential nephrotoxicity and other adverse effects."
+  },
+  {
+    "interaction": ["Coumadin", "Amiodarone"],
+    "mechanism": "Increased Coumarin Sensitivity",
+    "description": "Amiodarone can increase coumarin sensitivity by inhibiting its metabolism, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Propafenone", "Fluoxetine"],
+    "mechanism": "Increased Propafenone Concentration",
+    "description": "Fluoxetine can increase propafenone concentration by inhibiting its metabolism, leading to potential adverse effects such as proarrhythmia."
+  },
+  {
+    "interaction": ["Carbamazepine", "Phenobarbital"],
+    "mechanism": "Decreased Carbamazepine Concentration",
+    "description": "Phenobarbital can decrease carbamazepine concentration by inducing its metabolism, leading to potential loss of seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Lithium", "Thiazide Diuretics"],
+    "mechanism": "Increased Lithium Level",
+    "description": "Thiazide diuretics can increase lithium level by reducing its renal clearance, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Ciclosporin", "Verapamil"],
+    "mechanism": "Increased Ciclosporin Concentration",
+    "description": "Verapamil can increase ciclosporin concentration by inhibiting its metabolism, leading to potential nephrotoxicity and other adverse effects."
+  },
+  {
+    "interaction": ["Phenytoin", "Chlordiazepoxide"],
+    "mechanism": "Decreased Chlordiazepoxide Concentration",
+    "description": "Phenytoin can decrease chlordiazepoxide concentration by inducing its metabolism, leading to potential withdrawal symptoms."
+  },
+  {
+    "interaction": ["Fluconazole", "Rifampicin"],
+    "mechanism": "Decreased Fluconazole Concentration",
+    "description": "Rifampicin can decrease fluconazole concentration by inducing its metabolism, leading to potential fungal persistence and recurrent infections."
+  },
+  {
+    "interaction": ["Cefpodoxime", "Probenecid"],
+    "mechanism": "Decreased Cefpodoxime Excretion",
+    "description": "Probenecid can decrease cefpodoxime excretion, leading to increased cefpodoxime concentration and potential adverse effects such as nephrotoxicity."
+  },
+  {
+    "interaction": ["Atorvastatin", "Grapefruit Juice"],
+    "mechanism": "Increased Atorvastatin Concentration",
+    "description": "Grapefruit juice can increase atorvastatin concentration by inhibiting its metabolism, leading to potential adverse effects such as myopathy."
+  },
+  {
+    "interaction": ["Metformin", "Cephalexin"],
+    "mechanism": "Decreased Metformin Absorption",
+    "description": "Cephalexin can decrease metformin absorption, leading to potential decreased glycemic control."
+  },
+  {
+    "interaction": ["Captopril", "Spironolactone"],
+    "mechanism": "Increased Captopril Concentration",
+    "description": "Spironolactone can increase captopril concentration by inhibiting its metabolism, leading to potential adverse effects such as hypotension and hyperkalemia."
+  },
+  {
+    "interaction": ["Amoxicillin", "Allopurinol"],
+    "mechanism": "Increased Rash Incidence",
+    "description": "Allopurinol can increase the incidence of rash in patients taking amoxicillin, especially in slow acetylators."
+  },
+  {
+    "interaction": ["Furosemide", "Phenytoin"],
+    "mechanism": "Decreased Furosemide Response",
+    "description": "Phenytoin can decrease furosemide response by inducing its metabolism, leading to potential decreased diuresis."
+  },
+  {
+    "interaction": ["Simvastatin", "Gemfibrozil"],
+    "mechanism": "Increased Simvastatin Concentration",
+    "description": "Gemfibrozil can increase simvastatin concentration by inhibiting its metabolism, leading to potential adverse effects such as myopathy."
+  },
+  {
+    "interaction": ["Warfarin", "Cranberries"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Cranberries can increase warfarin sensitivity, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Quinapril", "Potassium Supplements"],
+    "mechanism": "Increased Potassium Level",
+    "description": "Potassium supplements can increase potassium level in patients taking quinapril, leading to potential hyperkalemia."
+  },
+  {
+    "interaction": ["Ibrutinib", "Strong CYP3A Inhibitors"],
+    "mechanism": "Increased Ibrutinib Concentration",
+    "description": "Strong CYP3A inhibitors can increase ibrutinib concentration, leading to potential adverse effects such as bleeding and cytopenia."
+  },
+  {
+    "interaction": ["Fluoxetine", "Tryptophan"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concomitant use of fluoxetine and tryptophan can lead to serotonin syndrome, characterized by agitation, confusion, fever, sweating, shivering, muscle rigidity, and twitching."
+  },
+  {
+    "interaction": ["Carbamazepine", "Valproic Acid"],
+    "mechanism": "Decreased Valproic Acid Concentration",
+    "description": "Carbamazepine can decrease valproic acid concentration, leading to potential decreased seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Lithium", "NSAIDs"],
+    "mechanism": "Increased Lithium Level",
+    "description": "Concomitant use of lithium and NSAIDs can increase lithium level, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Clopidogrel", "Prasugrel"],
+    "mechanism": "Decreased Platelet Inhibition",
+    "description": "Concomitant use of clopidogrel and prasugrel can lead to decreased platelet inhibition, increasing the risk of thrombotic events."
+  },
+  {
+    "interaction": ["Ciprofloxacin", "Theophylline"],
+    "mechanism": "Increased Theophylline Level",
+    "description": "Ciprofloxacin can increase theophylline level by inhibiting its metabolism, leading to potential adverse effects such as nausea, vomiting, and cardiac arrhythmia."
+  },
+  {
+    "interaction": ["Statins", "Azole Antifungals"],
+    "mechanism": "Increased Statin Level",
+    "description": "Azole antifungals can increase statin level by inhibiting its metabolism, leading to potential adverse effects such as myopathy and rhabdomyolysis."
+  },
+  {
+    "interaction": ["Fluoroquinolones", "Calcium Channel Blockers"],
+    "mechanism": "Decreased Fluoroquinolone Absorption",
+    "description": "Calcium channel blockers can decrease fluoroquinolone absorption, leading to potential decreased antibacterial efficacy."
+  },
+  {
+    "interaction": ["Metronidazole", "Alcohol"],
+    "mechanism": "Disulfiram-like Reaction",
+    "description": "Consuming alcohol while taking metronidazole can lead to a disulfiram-like reaction, characterized by facial flushing, nausea, vomiting, headaches, and chest pain."
+  },
+  {
+    "interaction": ["Ciclosporin", "Corticosteroids"],
+    "mechanism": "Increased Ciclosporin Level",
+    "description": "Corticosteroids can increase ciclosporin level by inhibiting its metabolism, leading to potential adverse effects such as nephrotoxicity and hypertension."
+  },
+  {
+    "interaction": ["Omeprazole", "Warfarin"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Omeprazole can increase warfarin sensitivity, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Phenytoin", "Valproic Acid"],
+    "mechanism": "Decreased Phenytoin Level",
+    "description": "Valproic acid can decrease phenytoin level, leading to potential decreased seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Digoxin", "Amiodarone"],
+    "mechanism": "Increased Digoxin Level",
+    "description": "Amiodarone can increase digoxin level, leading to potential adverse effects such as bradycardia and conduction disorders."
+  },
+  {
+    "interaction": ["Rifampicin", "Oral Contraceptives"],
+    "mechanism": "Decreased Oral Contraceptive Effectiveness",
+    "description": "Rifampicin can decrease oral contraceptive effectiveness, leading to potential unintended pregnancies."
+  },
+  {
+    "interaction": ["Ivermectin", "Macrolide Antibiotics"],
+    "mechanism": "Decreased Ivermectin Level",
+    "description": "Macrolide antibiotics can decrease ivermectin level, leading to potential decreased efficacy in parasitic infections."
+  },
+  {
+    "interaction": ["Citalopram", "Pimozide"],
+    "mechanism": "QT Prolongation",
+    "description": "Concomitant use of citalopram and pimozide can lead to QT prolongation and increased risk of ventricular arrhythmia."
+  },
+  {
+    "interaction": ["Colchicine", "Statins"],
+    "mechanism": "Increased Colchicine Level",
+    "description": "Statins can increase colchicine level, leading to potential adverse effects such as myopathy, neuropathy, and gastrointestinal symptoms."
+  },
+  {
+    "interaction": ["Cephalosporins", "Probenecid"],
+    "mechanism": "Increased Cephalosporin Level",
+    "description": "Probenecid can increase cephalosporin level, leading to potential adverse effects such as neurotoxicity and nephrotoxicity."
+  },
+  {
+    "interaction": ["Lithium", "Loop Diuretics"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Loop diuretics can decrease lithium excretion, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Warfarin", "Acetaminophen"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Acetaminophen can increase warfarin sensitivity, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Levothyroxine", "Calcium Carbonate"],
+    "mechanism": "Decreased Levothyroxine Absorption",
+    "description": "Calcium carbonate can decrease levothyroxine absorption, leading to potential decreased thyroid replacement efficacy."
+  },
+  {
+    "interaction": ["Metformin", "Cephalexin"],
+    "mechanism": "Decreased Metformin Absorption",
+    "description": "Cephalexin can decrease metformin absorption, leading to potential decreased glycemic control."
+  },
+  {
+    "interaction": ["Tamsulosin", "Alpha-Blockers"],
+    "mechanism": "Orthostatic Hypotension",
+    "description": "Concomitant use of tamsulosin and alpha-blockers can lead to orthostatic hypotension and increased risk of falls."
+  },
+  {
+    "interaction": ["Clozapine", "Fluoxetine"],
+    "mechanism": "Increased Clozapine Level",
+    "description": "Fluoxetine can increase clozapine level, leading to potential adverse effects such as sedation, orthostatic hypotension, and seizures."
+  },
+  {
+    "interaction": ["Carbamazepine", "Oral Contraceptives"],
+    "mechanism": "Decreased Oral Contraceptive Effectiveness",
+    "description": "Carbamazepine can decrease oral contraceptive effectiveness, leading to potential unintended pregnancies."
+  },
+  {
+    "interaction": ["Quinapril", "Potassium-Sparing Diuretics"],
+    "mechanism": "Increased Potassium Level",
+    "description": "Concomitant use of quinapril and potassium-sparing diuretics can lead to increased potassium level and potential hyperkalemia."
+  },
+  {
+    "interaction": ["Ranitidine", "Delavirdine"],
+    "mechanism": "Decreased Delavirdine Level",
+    "description": "Ranitidine can decrease delavirdine level, leading to potential decreased antiretroviral efficacy."
+  },
+  {
+    "interaction": ["Phenobarbital", "Primidone"],
+    "mechanism": "Cross-Tolerance",
+    "description": "Concomitant use of phenobarbital and primidone can lead to cross-tolerance and potential decreased seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Warfarin", "NSAIDs"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concomitant use of warfarin and NSAIDs can increase bleeding risk."
+  },
+  {
+    "interaction": ["Fluoxetine", "Tryptophan"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concomitant use of fluoxetine and tryptophan can lead to serotonin syndrome."
+  },
+  {
+    "interaction": ["Carbamazepine", "Valproic Acid"],
+    "mechanism": "Decreased Valproic Acid Concentration",
+    "description": "Carbamazepine can decrease valproic acid concentration, leading to potential decreased seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Lithium", "NSAIDs"],
+    "mechanism": "Increased Lithium Level",
+    "description": "Concomitant use of lithium and NSAIDs can increase lithium level, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Clopidogrel", "Prasugrel"],
+    "mechanism": "Decreased Platelet Inhibition",
+    "description": "Concomitant use of clopidogrel and prasugrel can lead to decreased platelet inhibition, increasing the risk of thrombotic events."
+  },
+  {
+    "interaction": ["Ciprofloxacin", "Theophylline"],
+    "mechanism": "Increased Theophylline Level",
+    "description": "Ciprofloxacin can increase theophylline level by inhibiting its metabolism, leading to potential adverse effects such as nausea, vomiting, and cardiac arrhythmia."
+  },
+  {
+    "interaction": ["Statins", "Azole Antifungals"],
+    "mechanism": "Increased Statin Level",
+    "description": "Azole antifungals can increase statin level by inhibiting its metabolism, leading to potential adverse effects such as myopathy and rhabdomyolysis."
+  },
+  {
+    "interaction": ["Fluoroquinolones", "Calcium Channel Blockers"],
+    "mechanism": "Decreased Fluoroquinolone Absorption",
+    "description": "Calcium channel blockers can decrease fluoroquinolone absorption, leading to potential decreased antibacterial efficacy."
+  },
+  {
+    "interaction": ["Metronidazole", "Alcohol"],
+    "mechanism": "Disulfiram-like Reaction",
+    "description": "Consuming alcohol while taking metronidazole can lead to a disulfiram-like reaction, characterized by facial flushing, nausea, vomiting, headaches, and chest pain."
+  },
+  {
+    "interaction": ["Omeprazole", "Warfarin"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Omeprazole can increase warfarin sensitivity, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Phenytoin", "Valproic Acid"],
+    "mechanism": "Decreased Phenytoin Level",
+    "description": "Valproic acid can decrease phenytoin level, leading to potential decreased seizure control in epilepsy patients."
+  },
+  {
+    "interaction": ["Digoxin", "Amiodarone"],
+    "mechanism": "Increased Digoxin Level",
+    "description": "Amiodarone can increase digoxin level, leading to potential adverse effects such as bradycardia and conduction disorders."
+  },
+  {
+    "interaction": ["Rifampicin", "Oral Contraceptives"],
+    "mechanism": "Decreased Oral Contraceptive Effectiveness",
+    "description": "Rifampicin can decrease oral contraceptive effectiveness, leading to potential unintended pregnancies."
+  },
+  {
+    "interaction": ["Ivermectin", "Macrolide Antibiotics"],
+    "mechanism": "Decreased Ivermectin Level",
+    "description": "Macrolide antibiotics can decrease ivermectin level, leading to potential decreased efficacy in parasitic infections."
+  },
+  {
+    "interaction": ["Citalopram", "Pimozide"],
+    "mechanism": "QT Prolongation",
+    "description": "Concomitant use of citalopram and pimozide can lead to QT prolongation and increased risk of ventricular arrhythmia."
+  },
+  {
+    "interaction": ["Colchicine", "Statins"],
+    "mechanism": "Increased Colchicine Level",
+    "description": "Statins can increase colchicine level, leading to potential adverse effects such as myopathy, neuropathy, and gastrointestinal symptoms."
+  },
+  {
+    "interaction": ["Bupropion", "Amantadine"],
+    "mechanism": "Seizure Risk",
+    "description": "Concomitant use of bupropion and amantadine can increase the risk of seizure."
+  },
+  {
+    "interaction": ["Cephalosporins", "Probenecid"],
+    "mechanism": "Increased Cephalosporin Level",
+    "description": "Probenecid can increase cephalosporin level, leading to potential adverse effects such as neurotoxicity and nephrotoxicity."
+  },
+  {
+    "interaction": ["Lithium", "Loop Diuretics"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Loop diuretics can decrease lithium excretion, leading to potential lithium toxicity."
+  },
+  {
+    "interaction": ["Warfarin", "Crush/Cut Tablets"],
+    "mechanism": "Erratic Absorption",
+    "description": "Crushing or cutting warfarin tablets can lead to erratic absorption, potentially affecting anticoagulation control."
+  },
+  {
+    "interaction": ["Warfarin", "Herbal Remedies"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Some herbal remedies (such as St. John's Wort, garlic, gingko biloba, etc.) can interact with warfarin and increase bleeding risk."
+  },
+  {
+    "interaction": ["Warfarin", "Grapefruit Juice"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Drinking grapefruit juice while taking warfarin can increase warfarin sensitivity, leading to potential bleeding complications."
+  },
+  {
+    "interaction": ["Warfarin", "Tylenol"],
+    "mechanism": "No Significant Interaction",
+    "description": "There is generally no significant interaction between warfarin and Tylenol (acetaminophen) unless large doses of either drug are being used."
+  },
+  {
+    "interaction": ["Warfarin", "Antacids"],
+    "mechanism": "Minimal Clinical Impact",
+    "description": "Short-term use of antacids generally has minimal clinical impact on warfarin therapy, but long-term use could theoretically affect warfarin absorption."
+  },
+  {
+    "interaction": ["Warfarin", "Antihistamines"],
+    "mechanism": "No Direct Interaction",
+    "description": "Most antihistamines do not directly interact with warfarin, but they may still increase the risk of bleeding when used together due to additive anticholinergic effects."
+  },
+  {
+    "interaction": ["Warfarin", "Statins"],
+    "mechanism": "Generally No Significant Interaction",
+    "description": "There is generally no significant interaction between warfarin and most statins, except for some evidence suggesting a slight increase in INR values with rosuvastatin."
+  },
+  {
+    "interaction": ["Warfarin", "Beta-Blockers"],
+    "mechanism": "No Direct Interaction",
+    "description": "Most beta-blockers do not directly interact with warfarin, but they may increase the risk of bleeding when used together due to potential reductions in heart rate and blood pressure."
+  },
+  {
+    "interaction": ["Warfarin", "Calcium Channel Blockers"],
+    "mechanism": "No Direct Interaction",
+    "description": "Most calcium channel blockers do not directly interact with warfarin, but they may increase the risk of bleeding when used together due to potential reductions in blood pressure."
+  },
+  {
+    "interaction": ["Metformin", "Cephalexin"],
+    "mechanism": "Decreased Metformin Absorption",
+    "description": "Concurrent use of metformin and cephalexin can decrease metformin absorption, potentially reducing glycemic control."
+  },
+  {
+    "interaction": ["Metformin", "Dextrose Infusions"],
+    "mechanism": "Counterproductive Therapy",
+    "description": "Using dextrose infusions for hypoglycemia in patients on metformin can negate the effects of metformin therapy."
+  },
+  {
+    "interaction": ["Metformin", "Furosemide"],
+    "mechanism": "Decreased Metformin Absorption",
+    "description": "Concurrent use of metformin and furosemide can decrease metformin absorption, potentially reducing glycemic control."
+  },
+  {
+    "interaction": ["Metformin", "Glucagon"],
+    "mechanism": "Reversal of Action",
+    "description": "Administration of glucagon can reverse the action of metformin, leading to temporary hyperglycemia."
+  },
+  {
+    "interaction": ["Metformin", "Iodinated Radiocontrast Agents"],
+    "mechanism": "Renal Function Impairment",
+    "description": "Use of iodinated radiocontrast agents can temporarily impair renal function, increasing the risk of metformin-associated lactic acidosis."
+  },
+  {
+    "interaction": ["Metformin", "Nitrates"],
+    "mechanism": "No Direct Interaction",
+    "description": "Metformin does not interact directly with nitrates; however, the combination may increase the risk of hypotension."
+  },
+  {
+    "interaction": ["Metformin", "Oral Corticosteroids"],
+    "mechanism": "Decreased Glycemic Control",
+    "description": "Long-term use of oral corticosteroids can decrease glycemic control in patients taking metformin."
+  },
+  {
+    "interaction": ["Metformin", "Sympathomimetics"],
+    "mechanism": "Transient Decreased Glucose Tolerance",
+    "description": "Use of sympathomimetics can transiently decrease glucose tolerance in patients taking metformin."
+  },
+  {
+    "interaction": ["Metformin", "Thyroid Products"],
+    "mechanism": "Altered Thyroid Test Results",
+    "description": "Use of metformin can alter thyroid test results, including TSH measurements."
+  },
+  {
+    "interaction": ["Metformin", "Verapamil"],
+    "mechanism": "Decreased Metformin Absorption",
+    "description": "Concurrent use of metformin and verapamil can decrease metformin absorption, potentially reducing glycemic control."
+  },
+  {
+    "interaction": ["Digoxin", "Amiloride"],
+    "mechanism": "Increased Digoxin Serum Levels",
+    "description": "Concurrent use of digoxin and amiloride can increase digoxin serum levels, leading to the risk of toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Calcium Channel Blockers"],
+    "mechanism": "Decreased Cardiac Contractility",
+    "description": "Concurrent use of digoxin and calcium channel blockers can decrease cardiac contractility and slow AV node conduction."
+  },
+  {
+    "interaction": ["Digoxin", "Cephalosporins"],
+    "mechanism": "Decreased Digoxin Absorption",
+    "description": "Concurrent use of digoxin and cephalosporins can decrease digoxin absorption, potentially reducing its therapeutic effect."
+  },
+  {
+    "interaction": ["Digoxin", "Erythromycin"],
+    "mechanism": "Increased Digoxin Serum Levels",
+    "description": "Concurrent use of digoxin and erythromycin can increase digoxin serum levels, leading to the risk of toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Furosemide"],
+    "mechanism": "Decreased Intestinal Absorption",
+    "description": "Concurrent use of digoxin and furosemide can decrease intestinal absorption of digoxin, potentially reducing its therapeutic effect."
+  },
+  {
+    "interaction": ["Digoxin", "Indomethacin"],
+    "mechanism": "Increased Digoxin Serum Levels",
+    "description": "Concurrent use of digoxin and indomethacin can increase digoxin serum levels, leading to the risk of toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Quinidine"],
+    "mechanism": "Increased Digoxin Serum Levels",
+    "description": "Concurrent use of digoxin and quinidine can increase digoxin serum levels, leading to the risk of toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Spironolactone"],
+    "mechanism": "Increased Digoxin Serum Levels",
+    "description": "Concurrent use of digoxin and spironolactone can increase digoxin serum levels, leading to the risk of toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Sucralfate"],
+    "mechanism": "Decreased Intestinal Absorption",
+    "description": "Concurrent use of digoxin and sucralfate can decrease intestinal absorption of digoxin, potentially reducing its therapeutic effect."
+  },
+  {
+    "interaction": ["Digoxin", "Tetracyclines"],
+    "mechanism": "Decreased Intestinal Absorption",
+    "description": "Concurrent use of digoxin and tetracyclines can decrease intestinal absorption of digoxin, potentially reducing its therapeutic effect."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Acetaminophen"],
+    "mechanism": "No Major Interactions",
+    "description": "There are no major interactions between coumadin (warfarin) and acetaminophen when given in standard doses. However, large doses of acetaminophen may increase the risk of liver damage in patients taking warfarin."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Amiodarone"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and amiodarone increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Aspirin"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and aspirin increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Cephalexin"],
+    "mechanism": "No Major Interactions",
+    "description": "There are no major interactions between coumadin (warfarin) and cephalexin when given in standard doses. However, monitoring of INR is necessary if large doses or prolonged courses of cephalexin are used."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Cholesteryamine"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Cholestyramine reduces the absorption and enterohepatic circulation of warfarin, decreasing its effect."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Clarithromycin"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and clarithromycin increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Colestipol"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Colestipol reduces the absorption and enterohepatic circulation of warfarin, decreasing its effect."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Diclofenac"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and diclofenac increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Gemfibrozil"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and gemfibrozil increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Coumadin (warfarin)", "Ibuprofen"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of coumadin (warfarin) and ibuprofen increases the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["MAOIs (e.g., phenelzine)", "Meperidine"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concurrent use of MAOIs (e.g., phenelzine) and meperidine can result in serotonin syndrome, characterized by mental status changes, autonomic instability, neuromuscular abnormalities, and potentially fatal hyperthermia."
+  },
+  {
+    "interaction": [
+      "MAOIs (e.g., phenelzine)",
+      "Selective Serotonin Reuptake Inhibitors (SSRIs)"
+    ],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concurrent use of MAOIs (e.g., phenelzine) and SSRIs can result in serotonin syndrome, characterized by mental status changes, autonomic instability, neuromuscular abnormalities, and potentially fatal hyperthermia."
+  },
+  {
+    "interaction": [
+      "MAOIs (e.g., phenelzine)",
+      "Sympathomimetics (e.g., pseudoephedrine)"
+    ],
+    "mechanism": "Hypertensive Crisis",
+    "description": "Concurrent use of MAOIs (e.g., phenelzine) and sympathomimetics (e.g., pseudoephedrine) can result in a hypertensive crisis, characterized by marked elevations in blood pressure and potential end-organ damage."
+  },
+  {
+    "interaction": ["MAOIs (e.g., phenelzine)", "Tyramine-Rich Foods"],
+    "mechanism": "Hypertensive Crisis",
+    "description": "Ingestion of tyramine-rich foods during MAOI (e.g., phenelzine) therapy can result in a hypertensive crisis, characterized by marked elevations in blood pressure and potential end-organ damage."
+  },
+  {
+    "interaction": ["Fluoxetine", "Thioridazine"],
+    "mechanism": "QT Prolongation and Torsades de Pointes",
+    "description": "Concurrent use of fluoxetine and thioridazine can result in QT prolongation and torsades de pointes, a potentially fatal polymorphic ventricular tachycardia."
+  },
+  {
+    "interaction": ["Fluoxetine", "Triptans"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concurrent use of fluoxetine and triptans can result in serotonin syndrome, characterized by mental status changes, autonomic instability, neuromuscular abnormalities, and potentially fatal hyperthermia."
+  },
+  {
+    "interaction": ["Fluoxetine", "Warfarin"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of fluoxetine and warfarin can increase the risk of bleeding due to the additive effects on anticoagulation."
+  },
+  {
+    "interaction": ["Isoniazid", "Alcohol"],
+    "mechanism": "Disulfiram-Like Reaction",
+    "description": "Concurrent use of isoniazid and alcohol can result in a disulfiram-like reaction, characterized by flushing, palpitations, nausea, vomiting, and headache."
+  },
+  {
+    "interaction": ["Isoniazid", "Rifampin"],
+    "mechanism": "Decreased Isoniazid Levels",
+    "description": "Concurrent use of isoniazid and rifampin can result in decreased isoniazid levels due to induction of hepatic microsomal enzymes."
+  },
+  {
+    "interaction": ["Phenytoin", "Valproic Acid"],
+    "mechanism": "Increased Valproic Acid Levels",
+    "description": "Concurrent use of phenytoin and valproic acid can result in increased valproic acid levels due to displacement from protein binding sites."
+  },
+  {
+    "interaction": ["Grapefruit Juice", "Statins"],
+    "mechanism": "Increased Statin Levels",
+    "description": "Concurrent use of grapefruit juice and statins, particularly those metabolized by CYP3A4 (e.g., atorvastatin, lovastatin, and simvastatin), can result in increased statin levels and increased risk of myopathy and rhabdomyolysis."
+  },
+  {
+    "interaction": ["Warfarin", "Green Vegetables"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Increased consumption of green vegetables containing vitamin K can decrease the effect of warfarin by partially reversing its anticoagulant activity."
+  },
+  {
+    "interaction": ["Tetracyclines", "Milk and Calcium-Containing Products"],
+    "mechanism": "Decreased Tetracycline Absorption",
+    "description": "Concurrent use of tetracyclines and milk or calcium-containing products can decrease tetracycline absorption and therapeutic efficacy."
+  },
+  {
+    "interaction": ["Antacids", "Tetracyclines"],
+    "mechanism": "Decreased Tetracycline Absorption",
+    "description": "Concurrent use of antacids and tetracyclines can decrease tetracycline absorption and therapeutic efficacy."
+  },
+  {
+    "interaction": ["Fluoroquinolones", "Dairy Products"],
+    "mechanism": "Decreased Fluoroquinolone Absorption",
+    "description": "Concurrent use of fluoroquinolones and dairy products can decrease fluoroquinolone absorption and therapeutic efficacy."
+  },
+  {
+    "interaction": ["Levodopa", "Protein-Rich Foods"],
+    "mechanism": "Decreased Levodopa Absorption",
+    "description": "Concurrent use of levodopa and protein-rich foods can decrease levodopa absorption and therapeutic efficacy."
+  },
+  {
+    "interaction": ["Fluoxetine", "Desipramine"],
+    "mechanism": "Increased Desipramine Levels",
+    "description": "Concurrent use of fluoxetine and desipramine can result in increased desipramine levels and increased risk of adverse effects."
+  },
+  {
+    "interaction": ["Warfarin", "Cranberry Juice"],
+    "mechanism": "Increased Warfarin Sensitivity",
+    "description": "Concurrent use of warfarin and cranberry juice can increase warfarin sensitivity and risk of bleeding."
+  },
+  {
+    "interaction": ["Digoxin", "Black Licorice"],
+    "mechanism": "Decreased Digitalis Effect",
+    "description": "Excessive consumption of black licorice can decrease digitalis effect and increase the risk of toxicity by inducing potassium loss."
+  },
+  {
+    "interaction": ["Alcohol", "Disulfiram"],
+    "mechanism": "Disulfiram-Like Reaction",
+    "description": "Concurrent use of alcohol and disulfiram can result in a disulfiram-like reaction, characterized by flushing, palpitations, nausea, vomiting, and headache."
+  },
+  {
+    "interaction": ["Warfarin", "Vitamin E"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and high doses of vitamin E can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "St. John's Wort"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and St. John's wort can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Garlic"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and garlic can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Ginkgo Biloba"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and Ginkgo biloba can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Cabbage and Other Cruciferous Vegetables"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and cruciferous vegetables like cabbage can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Ginseng"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and ginseng can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Cinnamon"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and cinnamon can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Turmeric"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and turmeric can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Parsley"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and parsley can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Warfarin", "Ginger"],
+    "mechanism": "Decreased Warfarin Effect",
+    "description": "Concurrent use of warfarin and ginger can decrease warfarin effect and increase the risk of thromboembolism."
+  },
+  {
+    "interaction": ["Lithium", "Diuretics (loop or thiazide type)"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Concurrent use of loop or thiazide diuretics with lithium can decrease lithium excretion and increase plasma lithium levels, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Lithium", "Nonsteroidal Anti-Inflammatory Drugs (NSAIDs)"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Concurrent use of NSAIDs with lithium can decrease lithium excretion and increase plasma lithium levels, leading to potential toxicity."
+  },
+  {
+    "interaction": [
+      "Lithium",
+      "Angiotensin-Converting Enzyme (ACE) Inhibitors"
+    ],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Concurrent use of ACE inhibitors with lithium can decrease lithium excretion and increase plasma lithium levels, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Lithium", "Angiotensin Receptor Blockers (ARBs)"],
+    "mechanism": "Decreased Lithium Excretion",
+    "description": "Concurrent use of ARBs with lithium can decrease lithium excretion and increase plasma lithium levels, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Lithium", "Metronidazole"],
+    "mechanism": "Neurotoxicity",
+    "description": "Concurrent use of lithium and metronidazole can lead to neurotoxicity, manifesting as cerebellar signs, vertigo, and altered consciousness."
+  },
+  {
+    "interaction": ["Lithium", "Carbamazepine"],
+    "mechanism": "Decreased Lithium Levels",
+    "description": "Concurrent use of carbamazepine with lithium can decrease lithium levels, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Lithium", "Phenytoin"],
+    "mechanism": "Decreased Lithium Levels",
+    "description": "Concurrent use of phenytoin with lithium can decrease lithium levels, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Lithium", "Valproic Acid"],
+    "mechanism": "Decreased Lithium Levels",
+    "description": "Concurrent use of valproic acid with lithium can decrease lithium levels, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Lithium", "Sumatriptan"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Concurrent use of lithium and sumatriptan can lead to serotonin syndrome due to excessive serotonin accumulation."
+  },
+  {
+    "interaction": ["Lithium", "Haloperidol"],
+    "mechanism": "Decreased Haloperidol Levels",
+    "description": "Concurrent use of haloperidol with lithium can decrease haloperidol levels, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Warfarin", "Ceftriaxone"],
+    "mechanism": "Pseudoinfarction",
+    "description": "Concurrent administration of ceftriaxone and warfarin can lead to pseudoinfarction, caused by precipitate formation in the gallbladder, which resolves once ceftriaxone is discontinued."
+  },
+  {
+    "interaction": ["Warfarin", "Tramadol"],
+    "mechanism": "Increased International Normalized Ratio (INR)",
+    "description": "Concurrent use of tramadol with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": ["Warfarin", "Cimetidine"],
+    "mechanism": "Increased INR",
+    "description": "Concurrent use of cimetidine with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": ["Warfarin", "Amiodarone"],
+    "mechanism": "Increased INR",
+    "description": "Concurrent use of amiodarone with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": [
+      "Warfarin",
+      "Quinolones (ciprofloxacin, levofloxacin, moxifloxacin)"
+    ],
+    "mechanism": "Increased INR",
+    "description": "Concurrent use of quinolones (ciprofloxacin, levofloxacin, moxifloxacin) with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": ["Warfarin", "Clopidogrel"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of warfarin and clopidogrel can increase the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Aspirin"],
+    "mechanism": "Increased Bleeding Risk",
+    "description": "Concurrent use of warfarin and aspirin can increase the risk of bleeding."
+  },
+  {
+    "interaction": [
+      "Warfarin",
+      "Selective Serotonin Reuptake Inhibitors (SSRIs)"
+    ],
+    "mechanism": "Increased INR",
+    "description": "Concurrent use of SSRIs (fluoxetine, paroxetine, sertraline, etc.) with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": ["Warfarin", "Statins"],
+    "mechanism": "Increased INR",
+    "description": "Concurrent use of statins (simvastatin, atorvastatin, etc.) with warfarin can enhance the anticoagulant effects of warfarin and increase the international normalized ratio (INR)."
+  },
+  {
+    "interaction": [
+      "Warfarin",
+      "Antiepileptic Drugs (phenobarbital, phenytoin, carbamazepine)"
+    ],
+    "mechanism": "Decreased INR",
+    "description": "Concurrent use of antiepileptic drugs (phenobarbital, phenytoin, carbamazepine) with warfarin can decrease the international normalized ratio (INR) and reduce the effectiveness of warfarin."
+  },
+  {
+    "interaction": ["Digoxin", "Quinidine"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Quinidine can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Amiodarone"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Amiodarone can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Verapamil"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Verapamil can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Spironolactone"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Spironolactone can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Erythromycin"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Erythromycin can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Itraconazole"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Itraconazole can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Clarithromycin"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Clarithromycin can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Telithromycin"],
+    "mechanism": "Increased Digoxin Levels",
+    "description": "Telithromycin can increase digoxin levels by inhibiting its renal clearance, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Digoxin", "Rifampin"],
+    "mechanism": "Decreased Digoxin Levels",
+    "description": "Rifampin can decrease digoxin levels by enhancing its renal clearance, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Digoxin", "St. John's Wort"],
+    "mechanism": "Decreased Digoxin Levels",
+    "description": "St. John's Wort can decrease digoxin levels by enhancing its renal clearance, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Theophylline", "Ciprofloxacin"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Ciprofloxacin can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Erythromycin"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Erythromycin can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Fluvoxamine"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Fluvoxamine can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Cimetidine"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Cimetidine can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": [
+      "Theophylline",
+      "Fluoroquinolones (ciprofloxacin, levofloxacin, moxifloxacin)"
+    ],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Fluoroquinolones (ciprofloxacin, levofloxacin, moxifloxacin) can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Clarithromycin"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Clarithromycin can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Troleandomycin"],
+    "mechanism": "Increased Theophylline Levels",
+    "description": "Troleandomycin can increase theophylline levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Theophylline", "Rifampin"],
+    "mechanism": "Decreased Theophylline Levels",
+    "description": "Rifampin can decrease theophylline levels by enhancing its metabolism, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Theophylline", "Phenytoin"],
+    "mechanism": "Decreased Theophylline Levels",
+    "description": "Phenytoin can decrease theophylline levels by enhancing its metabolism, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Theophylline", "Barbiturates"],
+    "mechanism": "Decreased Theophylline Levels",
+    "description": "Barbiturates can decrease theophylline levels by enhancing its metabolism, reducing its effectiveness."
+  },
+  {
+    "interaction": ["Cyclosporine", "Amiodarone"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Amiodarone can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Danazol"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Danazol can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Erythromycin"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Erythromycin can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Fluconazole"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Fluconazole can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Fluoxetine"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Fluoxetine can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Grepafloxacin"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Grepafloxacin can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Itraconazole"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Itraconazole can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Ketoconazole"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Ketoconazole can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Ritonavir"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Ritonavir can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Cyclosporine", "Saquinavir"],
+    "mechanism": "Increased Cyclosporine Levels",
+    "description": "Saquinavir can increase cyclosporine levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Amiodarone"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Amiodarone can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Danazol"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Danazol can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Erythromycin"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Erythromycin can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Fluconazole"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Fluconazole can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Fluoxetine"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Fluoxetine can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Grepafloxacin"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Grepafloxacin can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Itraconazole"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Itraconazole can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Ketoconazole"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Ketoconazole can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Ritonavir"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Ritonavir can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Tacrolimus", "Saquinavir"],
+    "mechanism": "Increased Tacrolimus Levels",
+    "description": "Saquinavir can increase tacrolimus levels by inhibiting its metabolism, leading to potential toxicity."
+  },
+  {
+    "interaction": ["Warfarin", "Cefamandole"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Cefamandole can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Cefoperazone"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Cefoperazone can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Cefmetazole"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Cefmetazole can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Cefazedone"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Cefazedone can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Cefbuperazone"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Cefbuperazone can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Ceftriaxone"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Ceftriaxone can inhibit Vitamin K-dependent coagulation factors, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Penicillin"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Penicillin can interfere with normal gut bacteria responsible for producing Vitamin K, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Metronidazole"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Metronidazole can interfere with normal gut bacteria responsible for producing Vitamin K, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Tetracycline"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Tetracycline can interfere with normal gut bacteria responsible for producing Vitamin K, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Warfarin", "Ciprofloxacin"],
+    "mechanism": "Increased Warfarin Activity",
+    "description": "Ciprofloxacin can interfere with normal gut bacteria responsible for producing Vitamin K, thereby increasing warfarin activity and the risk of bleeding."
+  },
+  {
+    "interaction": ["Apixaban", "Rifampin"],
+    "mechanism": "Decreased Apixaban Levels",
+    "description": "Rifampin can significantly decrease apixaban levels through induction of CYP3A4 and P-gp transport activities, resulting in reduced anticoagulant efficacy and increased thromboembolic risks."
+  },
+  {
+    "interaction": ["Edoxaban", "Rifampin"],
+    "mechanism": "Decreased Edoxaban Levels",
+    "description": "Rifampin can significantly decrease edoxaban levels through induction of CYP3A4 and P-gp transport activities, resulting in reduced anticoagulant efficacy and increased thromboembolic risks."
+  },
+  {
+    "interaction": ["Rivaroxaban", "Rifampin"],
+    "mechanism": "Decreased Rivaroxaban Levels",
+    "description": "Rifampin can significantly decrease rivaroxaban levels through induction of CYP3A4 and P-gp transport activities, resulting in reduced anticoagulant efficacy and increased thromboembolic risks."
+  },
+  {
+    "interaction": ["Betrixaban", "Rifampin"],
+    "mechanism": "Decreased Betrixaban Levels",
+    "description": "Rifampin can significantly decrease betrixaban levels through induction of CYP3A4 and P-gp transport activities, resulting in reduced anticoagulant efficacy and increased thromboembolic risks."
+  },
+  {
+    "interaction": ["Dabigatran", "Rifampin"],
+    "mechanism": "Decreased Dabigatran Levels",
+    "description": "Rifampin can significantly decrease dabigatran levels through induction of P-gp transport activity, resulting in reduced anticoagulant efficacy and increased thromboembolic risks."
+  },
+  {
+    "interaction": ["Eluxadoline", "Opioids"],
+    "mechanism": "Increased Eluxadoline-Related Adverse Effects",
+    "description": "Co-administration of eluxadoline with opioids can increase the likelihood of experiencing eluxadoline-related adverse effects, such as constipation, nausea, and abdominal pain, due to opioid-induced reduction in bowel motility."
+  },
+  {
+    "interaction": ["Empagliflozin", "Loop Diuretics"],
+    "mechanism": "Dehydration and Hypovolemia",
+    "description": "Co-administration of empagliflozin with loop diuretics can increase the risk of dehydration and hypovolemia due to fluid loss via osmotic diuresis induced by both drugs."
+  },
+  {
+    "interaction": ["Canagliflozin", "Loop Diuretics"],
+    "mechanism": "Dehydration and Hypovolemia",
+    "description": "Co-administration of canagliflozin with loop diuretics can increase the risk of dehydration and hypovolemia due to fluid loss via osmotic diuresis induced by both drugs."
+  },
+  {
+    "interaction": ["Dapagliflozin", "Loop Diuretics"],
+    "mechanism": "Dehydration and Hypovolemia",
+    "description": "Co-administration of dapagliflozin with loop diuretics can increase the risk of dehydration and hypovolemia due to fluid loss via osmotic diuresis induced by both drugs."
+  },
+  {
+    "interaction": ["Ipilimumab", "Nivolumab"],
+    "mechanism": "Immune-Related Adverse Effects",
+    "description": "Co-administration of ipilimumab and nivolumab can result in increased frequency and severity of immune-related adverse effects compared to using either agent alone."
+  },
+  {
+    "interaction": ["Entrectinib", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Entrectinib Exposure",
+    "description": "Co-administering strong CYP3A4 inhibitors with entrectinib can significantly increase entrectinib exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Larotrectinib", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Larotrectinib Exposure",
+    "description": "Co-administering strong CYP3A4 inhibitors with larotrectinib can significantly increase larotrectinib exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Repotrectinib", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Repotrectinib Exposure",
+    "description": "Co-administering strong CYP3A4 inhibitors with repotrectinib can significantly increase repotrectinib exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Selinexor", "Moderate CYP3A4 Inhibitors"],
+    "mechanism": "Increased Selinexor Exposure",
+    "description": "Co-administering moderate CYP3A4 inhibitors with selinexor can significantly increase selinexor exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Selinexor", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Selinexor Exposure",
+    "description": "Co-administering strong CYP3A4 inhibitors with selinexor can significantly increase selinexor exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Selinexor", "P-gp Transport System Inhibitors"],
+    "mechanism": "Increased Selinexor Exposure",
+    "description": "Co-administering P-gp transport system inhibitors with selinexor can significantly increase selinexor exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Selpercatinib", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Selpercatinib Exposure",
+    "description": "Co-administering strong CYP3A4 inhibitors with selpercatinib can significantly increase selpercatinib exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Prucalopride", "CYP2D6 Substrates"],
+    "mechanism": "Reduced CYP2D6 Substrate Exposure",
+    "description": "Co-administering prucalopride with CYP2D6 substrates can significantly reduce CYP2D6 substrate exposure, possibly decreasing their therapeutic effect."
+  },
+  {
+    "interaction": ["Pitolisant", "CYP3A4 Inducers"],
+    "mechanism": "Decreased Pitolisant Exposure",
+    "description": "Co-administering pitolisant with CYP3A4 inducers can significantly decrease pitolisant exposure, reducing its therapeutic effect."
+  },
+  {
+    "interaction": ["Pitolisant", "CYP3A4 Inhibitors"],
+    "mechanism": "Increased Pitolisant Exposure",
+    "description": "Co-administering pitolisant with CYP3A4 inhibitors can significantly increase pitolisant exposure, leading to an increased risk of adverse events."
+  },
+  {
+    "interaction": ["Fedratinib", "Proton Pump Inhibitors"],
+    "mechanism": "Reduced Fedratinib Exposure",
+    "description": "Co-administration of fedratinib with proton pump inhibitors can significantly reduce fedratinib exposure, lowering its efficacy."
+  },
+  {
+    "interaction": ["Ubrogepant", "Moderate CYP3A4 Inhibitors"],
+    "mechanism": "Increased Ubrogepant Exposure",
+    "description": "Co-administration of ubrogepant with moderate CYP3A4 inhibitors can significantly increase ubrogepant exposure, raising the risk of adverse events."
+  },
+  {
+    "interaction": ["Ubrogepant", "Moderate CYP3A4 Inducers"],
+    "mechanism": "Decreased Ubrogepant Exposure",
+    "description": "Co-administration of ubrogepant with moderate CYP3A4 inducers can significantly decrease ubrogepant exposure, diminishing its efficacy."
+  },
+  {
+    "interaction": [
+      "Sacubitril/Valsartan",
+      "Angiotensin-Converting Enzyme (ACE) Inhibitors"
+    ],
+    "mechanism": "Increased Blood Pressure Lowering Effect",
+    "description": "Concomitant use of sacubitril/valsartan with angiotensin-converting enzyme (ACE) inhibitors can intensify the blood pressure lowering effect, leading to symptomatic hypotension."
+  },
+  {
+    "interaction": [
+      "Sacubitril/Valsartan",
+      "Angiotensin II Receptor Blockers (ARBs)"
+    ],
+    "mechanism": "Increased Blood Pressure Lowering Effect",
+    "description": "Concomitant use of sacubitril/valsartan with angiotensin II receptor blockers (ARBs) can intensify the blood pressure lowering effect, leading to symptomatic hypotension."
+  },
+  {
+    "interaction": ["Sacubitril/Valsartan", "Direct Renin Inhibitors"],
+    "mechanism": "Increased Blood Pressure Lowering Effect",
+    "description": "Concomitant use of sacubitril/valsartan with direct renin inhibitors can intensify the blood pressure lowering effect, leading to symptomatic hypotension."
+  },
+  {
+    "interaction": ["Sacubitril/Valsartan", "Nephrotoxic Medications"],
+    "mechanism": "Increased Risk of Nephrotoxicity",
+    "description": "Co-administration of sacubitril/valsartan with nephrotoxic medications can increase the risk of developing nephrotoxicity."
+  },
+  {
+    "interaction": ["Sacubitril/Valsartan", "Lithium"],
+    "mechanism": "Increased Risk of Lithium Toxicity",
+    "description": "Co-administration of sacubitril/valsartan with lithium can increase the risk of developing lithium toxicity."
+  },
+  {
+    "interaction": ["Patisiran", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Patisiran Exposure",
+    "description": "Co-administration of patisiran with strong CYP3A4 inducers can significantly decrease patisiran exposure, lessening its therapeutic effect."
+  },
+  {
+    "interaction": ["Patisiran", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Patisiran Exposure",
+    "description": "Co-administration of patisiran with strong CYP3A4 inhibitors can significantly increase patisiran exposure, raising the risk of adverse events."
+  },
+  {
+    "interaction": [
+      "Budesonide/Formoterol",
+      "Long-Acting Muscarinic Antagonists (LAMAs)"
+    ],
+    "mechanism": "Increased Bronchodilation",
+    "description": "Concomitant use of budesonide/formoterol with long-acting muscarinic antagonists (LAMAs) can strengthen bronchodilation, posing a risk of paradoxical bronchospasm."
+  },
+  {
+    "interaction": ["Brexpiprazole", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Brexpiprazole Exposure",
+    "description": "Co-administration of brexpiprazole with strong CYP3A4 inducers can considerably decrease brexpiprazole exposure, weakening its therapeutic effect."
+  },
+  {
+    "interaction": ["Brexpiprazole", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Brexpiprazole Exposure",
+    "description": "Co-administration of brexpiprazole with strong CYP3A4 inhibitors can significantly boost brexpiprazole exposure, amplifying the risk of side effects."
+  },
+  {
+    "interaction": ["Dacomitinib", "Moderate CYP3A4 Inhibitors"],
+    "mechanism": "Increased Dacomitinib Exposure",
+    "description": "Co-administration of dacomitinib with moderate CYP3A4 inhibitors can substantially raise dacomitinib exposure, augmenting the risk of adverse reactions."
+  },
+  {
+    "interaction": ["Dacomitinib", "Moderate CYP3A4 Inducers"],
+    "mechanism": "Reduced Dacomitinib Exposure",
+    "description": "Co-administration of dacomitinib with moderate CYP3A4 inducers can noticeably cut down dacomitinib exposure, undermining its therapeutic effect."
+  },
+  {
+    "interaction": ["Erdafitinib", "Proton Pump Inhibitors"],
+    "mechanism": "Reduced Erdafitinib Exposure",
+    "description": "Concomitant use of erdafitinib with proton pump inhibitors can significantly reduce erdafitinib exposure, hampering its efficacy."
+  },
+  {
+    "interaction": ["Febuxostat", "Azathioprine"],
+    "mechanism": "Increased Azathioprine Toxicity",
+    "description": "Co-administration of febuxostat with azathioprine can heighten azathioprine toxicity by preventing xanthine oxidase-mediated catabolism, consequently escalating the generation of active metabolites."
+  },
+  {
+    "interaction": ["Fostemsavir", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Fostemsavir Exposure",
+    "description": "Co-administration of fostemsavir with strong CYP3A4 inducers can dramatically decrease fostemsavir exposure, attenuating its anti-HIV effect."
+  },
+  {
+    "interaction": ["Lurbinectedin", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Lurbinectedin Exposure",
+    "description": "Co-administration of lurbinectedin with strong CYP3A4 inducers can remarkably curtail lurbinectedin exposure, dampening its antineoplastic activity."
+  },
+  {
+    "interaction": ["Meninib", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Meninib Exposure",
+    "description": "Co-administration of meninib with strong CYP3A4 inducers can significantly shrink meninib exposure, hindering its therapeutic benefit against solid tumors."
+  },
+  {
+    "interaction": ["Abemaciclib", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Abemaciclib Exposure",
+    "description": "Co-administration of abemaciclib with strong CYP3A4 inducers can notably reduce abemaciclib exposure, debilitating its antineoplastic properties against breast cancer."
+  },
+  {
+    "interaction": ["Avapritinib", "Proton Pump Inhibitors"],
+    "mechanism": "Reduced Avapritinib Exposure",
+    "description": "Concomitant use of avapritinib with proton pump inhibitors can considerably trim avapritinib exposure, jeopardizing its efficacy in treating certain types of gastrointestinal stromal tumors."
+  },
+  {
+    "interaction": ["Belzutifan", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Belzutifan Exposure",
+    "description": "Co-administration of belzutifan with strong CYP3A4 inducers can significantly bring down belzutifan exposure, impairing its ability to suppress von Hippel-Lindau gene expression and associated tumor growth."
+  },
+  {
+    "interaction": ["Capmatinib", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Capmatinib Exposure",
+    "description": "Co-administration of capmatinib with strong CYP3A4 inducers can meaningfully drop capmatinib exposure, lessening its capacity to treat non-small cell lung carcinoma harboring mesenchymal-epithelial transition factor mutations."
+  },
+  {
+    "interaction": ["Enfortumab Vedotin", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Enfortumab Vedotin Exposure",
+    "description": "Co-administration of enfortumab vedotin with strong CYP3A4 inducers can markedly slash enfortumab vedotin exposure, obstructing its effectiveness in combating locally advanced or metastatic urothelial carcinoma."
+  },
+  {
+    "interaction": ["Fedratinib", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Fedratinib Exposure",
+    "description": "Co-administration of fedratinib with strong CYP3A4 inhibitors can appreciably jack up fedratinib exposure, increasing the probability of adverse reactions."
+  },
+  {
+    "interaction": ["Gilteritinib", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Gilteritinib Exposure",
+    "description": "Concomitant use of gilteritinib with strong CYP3A4 inducers can significantly shrivel gilteritinib exposure, diminishing its efficiency in managing relapsed or refractory acute myelogenous leukemia bearing FLT3 mutations."
+  },
+  {
+    "interaction": ["Ivosidenib", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Ivosidenib Exposure",
+    "description": "Co-administration of ivosidenib with strong CYP3A4 inducers can noticeably thin out ivosidenib exposure, diluting its efficacy in addressing IDH1-mutated cholangiocarcinoma."
+  },
+  {
+    "interaction": ["Jakafi", "Strong CYP3A4 Inhibitors"],
+    "mechanism": "Increased Jakafi Exposure",
+    "description": "Co-administration of jakafi with strong CYP3A4 inhibitors can considerably inflate jakafi exposure, hiking the chances of undesirable consequences."
+  },
+  {
+    "interaction": ["Kisqali", "Strong CYP3A4 Inducers"],
+    "mechanism": "Reduced Kisqali Exposure",
+    "description": "Co-administration of kisqali with strong CYP3A4 inducers can significantly scale back kisqali exposure, deteriorating its performance against HR+/HER2\u2212 advanced breast cancer."
+  },
+  {
+    "interaction": ["Amlodipine", "Grapefruit Juice"],
+    "mechanism": "Increased Amlodipine Bioavailability",
+    "description": "Consuming grapefruit juice alongside amlodipine raises amlodipine bioavailability, amplifying its blood pressure-lowering effect and potential for side effects."
+  },
+  {
+    "interaction": ["atorvastatin", "cyclosporine"],
+    "mechanism": "Increased Atorvastatin Exposure",
+    "description": "Co-administration of atorvastatin with cyclosporine leads to a substantial surge in atorvastatin exposure, escalating the chance of myalgias, myositis, and even rhabdomyolysis."
+  },
+  {
+    "interaction": ["celecoxib", "aspirin"],
+    "mechanism": "Decreased Celecoxib Exposure",
+    "description": "When celecoxib is taken concurrently with aspirin, celecoxib exposure drops, possibly tempering its analgesic, anti-inflammatory, and antipyretic benefits."
+  },
+  {
+    "interaction": ["digoxin", "quercetin"],
+    "mechanism": "Increased Digoxin Exposure",
+    "description": "Intake of quercetin, often found in fruits, vegetables, leaves, and grains, can enhance digoxin exposure, magnifying the danger of toxicity."
+  },
+  {
+    "interaction": ["esomeprazole", "clarithromycin"],
+    "mechanism": "Impaired Esomeprazole Clearance",
+    "description": "Co-administration of esomeprazole with clarithromycin causes impeded esomeprazole clearance, extending its half-life and potentially triggering unwanted side effects."
+  },
+  {
+    "interaction": ["levothyroxine", "calcium carbonate"],
+    "mechanism": "Reduced Levothyroxine Absorption",
+    "description": "Taking levothyroxine with calcium carbonate can diminish levothyroxine absorption, undermining its therapeutic impact on hypothyroidism management."
+  },
+  {
+    "interaction": ["losartan", "potassium-sparing diuretics"],
+    "mechanism": "Enhanced Hyperkalemic Risk",
+    "description": "Concurrent usage of losartan and potassium-sparing diuretics augments the risk of hyperkalemia development, warranting cautious patient monitoring."
+  },
+  {
+    "interaction": ["omeprazole", "ketoconazole"],
+    "mechanism": "Impaired Omeprazole Clearance",
+    "description": "Combined utilization of omeprazole and ketoconazole gives rise to impaired omeprazole clearance, bolstering its pharmacological influence and duration."
+  },
+  {
+    "interaction": ["sertraline", "fluoxetine"],
+    "mechanism": "Increased Sertraline Exposure",
+    "description": "Simultaneously employing sertraline and fluoxetine brings about heightened sertraline exposure, escalating the susceptibility to side effects."
+  },
+  {
+    "interaction": ["simvastatin", "gemfibrozil"],
+    "mechanism": "Increased Simvastatin Exposure",
+    "description": "Co-administration of simvastatin and gemfibrozil culminates in raised simvastatin exposure, accentuating the hazards of skeletal muscle injury and myopathy."
+  },
+  {
+    "interaction": ["amlodipine", "rifampin"],
+    "mechanism": "Reduced Amlodipine Exposure",
+    "description": "Co-administration of amlodipine with rifampin lessens amlodipine exposure, possibly necessitating dose adjustments to maintain optimal blood pressure control."
+  },
+  {
+    "interaction": ["atenolol", "verapamil"],
+    "mechanism": "Bradaffected Heart Rate Reduction",
+    "description": "The simultaneous use of atenolol and verapamil can cause a greater decline in heart rate than each medicine separately, demanding closer observation."
+  },
+  {
+    "interaction": ["atorvastatin", "colchicine"],
+    "mechanism": "Myopathy Risks",
+    "description": "Utilizing atorvastatin along with colchicine raises the odds of developing myopathy, prompting vigilance among clinicians and patients alike."
+  },
+  {
+    "interaction": ["carvedilol", "amiodarone"],
+    "mechanism": "Expanded Amiodarone Half-Life",
+    "description": "Co-prescription of carvedilol and amiodarone extends amiodarone's elimination half-life, emphasizing the need for cautious titration and close follow-ups."
+  },
+  {
+    "interaction": ["ciprofloxacin", "theophylline"],
+    "mechanism": "Boosted Theophylline Exposure",
+    "description": "Administering ciprofloxacin simultaneously with theophylline yields enhanced theophylline exposure, mandating careful monitoring and potential dose modifications."
+  },
+  {
+    "interaction": ["clopidogrel", "omeprazole"],
+    "mechanism": "Compromised Clopidogrel Activation",
+    "description": "The combined use of clopidogrel and omeprazole weakens clopidogrel activation, potentially blunting its protective effects against cardiovascular events."
+  },
+  {
+    "interaction": ["escitalopram", "quetiapine"],
+    "mechanism": "Escitalopram Overexposure",
+    "description": "Co-administration of escitalopram and quetiapine can provoke escitalopram overexposure, calling for heightened awareness and vigilance."
+  },
+  {
+    "interaction": ["fluoxetine", "venlafaxine"],
+    "mechanism": "Accelerated Venlafaxine Disposition",
+    "description": "Co-medicating with fluoxetine and venlafaxine hastens venlafaxine disposition, requiring judicious dose adjustments to preserve desired outcomes."
+  },
+  {
+    "interaction": ["nelfinavir", "midazolam"],
+    "mechanism": "Midazolam Overexposure",
+    "description": "The co-occurrence of nelfinavir and midazolam can result in midazolam overexposure, underscoring the importance of proper dose regulation and monitoring."
+  },
+  {
+    "interaction": ["voriconazole", "sirolimus"],
+    "mechanism": "Sirolimus Increased Exposure",
+    "description": "Concurrent application of voriconazole and sirolimus fuels sirolimus increased exposure, urging clinicians to exercise caution in prescribing and surveillance."
+  },
+  {
+    "interaction": ["acetaminophen", "isoniazid"],
+    "mechanism": "Diminished Acetaminophen Clearance",
+    "description": "Co-administration of acetaminophen with isoniazid triggers compromised acetaminophen clearance, underlining the necessity for vigilant monitoring."
+  },
+  {
+    "interaction": ["allopurinol", "azathioprine"],
+    "mechanism": "Augmented Azathioprine Toxicity",
+    "description": "The coupling of allopurinol with azathioprine amplifies azathioprine toxicity, highlighting the significance of appropriate dose modification."
+  },
+  {
+    "interaction": ["clarithromycin", "statins"],
+    "mechanism": "Enhanced Statin Exposure",
+    "description": "Simultaneous deployment of clarithromycin and statins culminates in intensified statin exposure, compelling cautious scrutiny and tailored dosages."
+  },
+  {
+    "interaction": ["codeine", "CYP2D6 inhibitors"],
+    "mechanism": "Attenuated Codeine Analgesia",
+    "description": "Co-medication comprising codeine and CYP2D6 inhibitors curtails codeine analgesia, stressing the requirement for individualized treatment plans."
+  },
+  {
+    "interaction": ["digoxin", "quinidine"],
+    "mechanism": "Digoxin Overexposure",
+    "description": "Associating digoxin with quinidine generates digoxin overexposure, necessitating stringent oversight and adjusted prescriptions."
+  },
+  {
+    "interaction": ["fluoroquinolones", "multivalent cations"],
+    "mechanism": "Decreased Drug Absorption",
+    "description": "Combining fluoroquinolones with multivalent cations prompts suboptimal drug ingestion, advocating temporal separation amongst administrations."
+  },
+  {
+    "interaction": ["lithium", "diuretics"],
+    "mechanism": "Swollen Lithium Levels",
+    "description": "The incorporation of lithium and diuretics begets bloated lithium levels, imposing strict tracking and customized regimens."
+  },
+  {
+    "interaction": ["omeprazole", "clopidogrel"],
+    "mechanism": "Weakened Clopidogrel Efficiency",
+    "description": "Co-utilization of omeprazole and clopidogrel attenuates clopidogrel efficiency, advising cautious evaluation and personalized therapies."
+  },
+  {
+    "interaction": ["phenytoin", "valproic acid"],
+    "mechanism": "Phenytoin Underexposure",
+    "description": "Marrying phenytoin with valproic acid spawns phenytoin underexposure, dictating circumspect handling and fine-tuned treatments."
+  },
+  {
+    "interaction": ["alendronate", "calcium supplements"],
+    "mechanism": "Diminished Alendronate Absorption",
+    "description": "Pairing alendronate with calcium supplements depresses alendronate absorption, recommending separate scheduling for optimal assimilation."
+  },
+  {
+    "interaction": ["amlodipine", "simvastatin"],
+    "mechanism": "Elevated Simvastatin Exposure",
+    "description": "Integrating amlodipine and simvastatin augments simvastatin exposure, suggesting the need for controlled dosing strategies."
+  },
+  {
+    "interaction": ["aspirin", "nonsteroidal anti-inflammatory drugs (NSAIDs)"],
+    "mechanism": "Aggravated Gastric Irritation",
+    "description": "Stacking aspirin with NSAIDs exaggerates gastric irritation, promoting prudence in prescription selection and timing."
+  },
+  {
+    "interaction": ["cephalexin", "probenecid"],
+    "mechanism": "Extended Cephalexin Half-Life",
+    "description": "Linking cephalexin with probenecid lengthens cephalexin half-life, encouraging thoughtful titration and observational tactics."
+  },
+  {
+    "interaction": ["cyclosporine", "oral contraceptives"],
+    "mechanism": "Shrunken Oral Contraceptive Efficacy",
+    "description": "Joining cyclophosphamide with oral contraceptives contracts oral contraceptive efficacy, inspiring alternative birth control methods."
+  },
+  {
+    "interaction": ["fluoxetine", "desipramine"],
+    "mechanism": "Desipramine Overexposure",
+    "description": "Merging fluoxetine with desipramine creates desipramine overexposure, indicating the utility of restrained dosing protocols."
+  },
+  {
+    "interaction": ["lisinopril", "potassium-sparing diuretics"],
+    "mechanism": "Heightened Hyperkalemia Susceptibility",
+    "description": "Uniting lisinopril with potassium-sparing diuretics amplifies hyperkalemia vulnerability, advising watchful surveillance and suitable adaptations."
+  },
+  {
+    "interaction": ["lovastatin", "gemfibrozil"],
+    "mechanism": "Raised Lovastatin Exposure",
+    "description": "Yoking lovastatin with gemfibrozil swells lovastatin exposure, urging measured dosing approaches and cautious monitoring."
+  },
+  {
+    "interaction": ["metformin", "dipeptidyl peptidase-4 (DPP-4) inhibitors"],
+    "mechanism": "Expanded Metformin Exposure",
+    "description": "Interweaving metformin with DPP-4 inhibitors expands metformin exposure, counseling calculated dosing schemes and consistent checking."
+  },
+  {
+    "interaction": ["risperidone", "carbamazepine"],
+    "mechanism": "Curbed Risperidone Exposure",
+    "description": "Blending risperidone with carbamazepine diminishes risperidone exposure, guiding astute dosing policies and punctilious examination."
+  },
+  {
+    "interaction": ["atorvastatin", "gemfibrozil"],
+    "mechanism": "Elevated Atorvastatin Exposure",
+    "description": "Overlying atorvastatin with gemfibrozil propels atorvastatin exposure, prompting scrupulous dosing techniques and systematic watching."
+  },
+  {
+    "interaction": ["buspirone", "fluoxetine"],
+    "mechanism": "Buspirone Underactivity",
+    "description": "Overlaying buspirone with fluoxetine activates buspirone underactivity, proposing guarded dosing procedures and continuous check-ups."
+  },
+  {
+    "interaction": ["carbamazepine", "oral contraceptives"],
+    "mechanism": "Oral Contraceptive Failure",
+    "description": "Superimposing carbamazepine onto oral contraceptives invokes oral contraceptive failure, inspiring backup birth control options."
+  },
+  {
+    "interaction": ["cefixime", "iron salts"],
+    "mechanism": "Lowered Cefixime Assimilation",
+    "description": "Placing cefixime above iron salts retrenches cefixime assimilation, commending separated scheduling for ideal digestion."
+  },
+  {
+    "interaction": ["dextromethorphan", "fluoxetine"],
+    "mechanism": "Dextromethorphan Sedation",
+    "description": "Positioning dextromethorphan upon fluoxetine initiates dextromethorphan sedation, motivating alertness in dosing arrangements and assessment."
+  },
+  {
+    "interaction": ["esomeprazole", "clarithromycin"],
+    "mechanism": "Esophageal Cancer Growth Promotion",
+    "description": "Employing esomeprazole adjacent to clarithromycin stimulates esophageal cancer progression, pressuring discretionary dosing maneuvers and attentive monitoring."
+  },
+  {
+    "interaction": ["gentamicin", "furosemide"],
+    "mechanism": "Auditory Loss Acceleration",
+    "description": "Appointing gentamicin beside furosemide accelerates auditory loss, obliging discreet dosing formulations and focused surveillance."
+  },
+  {
+    "interaction": ["lithium", "nonsteroidal anti-inflammatory drugs (NSAIDs)"],
+    "mechanism": "Lithium Retention Augmentation",
+    "description": "Setting lithium near NSAIDs heightens lithium retention, counseling sensible dosing practices and watchful waiting."
+  },
+  {
+    "interaction": ["montelukast", "grapefruit juice"],
+    "mechanism": "Montelukast Surplus",
+    "description": "Engaging montelukast next to grapefruit juice ushers in montelukast surplus, exhorting precautions in dosing designs and regular inspections."
+  },
+  {
+    "interaction": ["quetiapine", "ciprofloxacin"],
+    "mechanism": "Quetiapine Outbursts",
+    "description": "Subjoining quetiapine beneath ciprofloxacin ignites quetiapine outbreaks, inspiring vigilance in dosing systems and periodic examinations."
+  },
+  {
+    "interaction": ["atorvastatin", "cyclosporine"],
+    "mechanism": "Atorvastatin Boost",
+    "description": "Installing atorvastatin adjacent to cyclosporine catalyzes atorvastatin boost, inciting considerate dosing measures and continual checks."
+  },
+  {
+    "interaction": ["clarithromycin", "warfarin"],
+    "mechanism": "International Normalized Ratio (INR) Escalation",
+    "description": "Locating clarithromycin nearby warfarin drives INR expansion, recommending deliberate dosing stratagems and rigorous inspections."
+  },
+  {
+    "interaction": ["fluconazole", "cyclophosphamide"],
+    "mechanism": "Cyclophosphamide Hindered Clearence",
+    "description": "Embedding fluconazole within reach of cyclophosphamide constrains cyclophosphamide clearence, warning cautious dosing manipulations and persistent observations."
+  },
+  {
+    "interaction": ["furosemide", "spirinolactone"],
+    "mechanism": "Potential Kidney Damage",
+    "description": "Commissioning furosemide neighboring spirinolactone presents prospective kidney harm, pressing forthware dosing tactics and fastidious tracking."
+  },
+  {
+    "interaction": ["lisinopril", "triamterene"],
+    "mechanism": "Triamterene Build-Up",
+    "description": "Implementing lisinopril besides triamterene triggers triamterene build-up, guiding discriminating dosing preparations and constant monitoring."
+  },
+  {
+    "interaction": ["metformin", "topiramate"],
+    "mechanism": "Metformin Diminution",
+    "description": "Establishing metformin contiguous topiramate provokes metformin diminution, prompting judicious dosing approaches and steady checking."
+  },
+  {
+    "interaction": ["naproxen", "low-dose aspirin"],
+    "mechanism": "Cardiovascular Protection Compromise",
+    "description": "Affixing naproxen around low-dose aspirin imperils cardiovascular protection, advocating selective dosing patterns and rigorous scrutiny."
+  },
+  {
+    "interaction": ["omeprazole", "clopidogrel"],
+    "mechanism": "Clopidogrel Obstruction",
+    "description": "Mounting omeprazole surrounding clopidogrel blocks clopidogrel, urging prudent dosing configurations and recurrent assessments."
+  },
+  {
+    "interaction": ["phenytoin", "carbamazepine"],
+    "mechanism": "Phenytoin Suppression",
+    "description": "Erecting phenytoin parallel carbamazepine ensues phenytoin suppression, instructing careful dosing processes and frequent evaluations."
+  },
+  {
+    "interaction": ["sertraline", "pimozide"],
+    "mechanism": "QT Prolongation",
+    "description": "Launching sertraline next pimozide evokes QT extension, demanding vigilance in dosing layouts and periodic appraisals."
+  },
+  {
+    "interaction": ["amlodipine", "simvastatin"],
+    "mechanism": "Simvastatin Boost",
+    "description": "Anchoring amlodipine beside simvastatin perpetuates simvastatin boost, suggesting deliberate dosing calculations and sustained tracking."
+  },
+  {
+    "interaction": ["celecoxib", "warfarin"],
+    "mechanism": "International Normalized Ratio (INR) Variations",
+    "description": "Integrating celecoxib inside vicinity of warfarin introduces fluctuations in INR, urging cautious dosing adjustments and diligent surveying."
+  },
+  {
+    "interaction": ["ciprofloxacin", "theophylline"],
+    "mechanism": "Theophylline Spike",
+    "description": "Inserting ciprofloxacin in proximity to theophylline procreates theophylline spike, mandating discernible dosing procedures and steadfast monitoring."
+  },
+  {
+    "interaction": ["donepezil", "paroxetine"],
+    "mechanism": "Donepezil Amplification",
+    "description": "Connecting donepezil alongside paroxetine stirs donepezil amplification, counseling wise dosing decisions and methodical examination."
+  },
+  {
+    "interaction": ["esomeprazole", "mycophenolate"],
+    "mechanism": "Mycophenolate Attenuation",
+    "description": "Fastening esomeprazole alongside mycophenolate initiates mycophenolate attenuation, advocating shrewd dosing plots and rigorous inspection."
+  },
+  {
+    "interaction": ["fluoxetine", "sumatriptan"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Arranging fluoxetine near sumatriptan kindles serotonin syndrome, compelling vigilance in dosing structures and routine evaluations."
+  },
+  {
+    "interaction": ["levothyroxine", "calcium carbonate"],
+    "mechanism": "Levothyroxine Decrease",
+    "description": "Placing levothyroxine adjacent calcium carbonate instigates levothyroxine decrease, guiding cautious dosing schemes and persistent supervision."
+  },
+  {
+    "interaction": ["lorazepam", "alcohol"],
+    "mechanism": "Additive Central Nervous System Depression",
+    "description": "Aligning lorazepam in range of alcohol provokes cumulative central nervous system depression, prompting judicious dosing techniques and periodic review."
+  },
+  {
+    "interaction": ["mirtazapine", "fluoxetine"],
+    "mechanism": "Mirtazapine Elevation",
+    "description": "Installating mirtazapine proximate fluoxetine begets mirtazapine elevation, advising circumspect dosing approaches and meticulous examination."
+  },
+  {
+    "interaction": ["norfloxacin", "didanosine"],
+    "mechanism": "Didanosine Malabsorption",
+    "description": "Locating norfloxacin neighboring didanosine culminates in didanosine malabsorption, urging sagacious dosing strategies and continued monitoring."
+  },
+  {
+    "interaction": ["amlodipine", "atorvastatin"],
+    "mechanism": "Atorvastatin Augmentation",
+    "description": "Stationing amlodipine next to atorvastatin propagates atorvastatin augmentation, signaling contemplative dosing algorithms and consistent following."
+  },
+  {
+    "interaction": ["celecoxib", "probencid"],
+    "mechanism": "Celecoxib Persistence",
+    "description": "Alligning celecoxib within scope of probencid sustains celecoxib persistance, compelling considered dosing actions and assiduous keeping track."
+  },
+  {
+    "interaction": ["ciprofloxacin", "clozapine"],
+    "mechanism": "Clozapine Expansion",
+    "description": "Positioning ciprofloxacin adjoining clozapine excites clozapine expansion, urging discerning dosing models and punctilious surveillance."
+  },
+  {
+    "interaction": ["cyclosporine", "methylprednisolone"],
+    "mechanism": "Cyclosporine Heightening",
+    "description": "Establishing cyclosporine beside methylprednisolone encourages cyclosporine heightening, guiding strategic dosing schemes and conscientious observation."
+  },
+  {
+    "interaction": ["digoxin", "quinidine"],
+    "mechanism": "Digoxin Escalation",
+    "description": "Settling digoxin in juxtaposition to quinidine awakes digoxin escalation, advocating clever dosing blueprints and diligent checking."
+  },
+  {
+    "interaction": ["esomeprazole", "clarithromycin"],
+    "mechanism": "Esomeprazole Extension",
+    "description": "Building esomeprazole around clarithromycin induces esomeprazole extension, prompting wise dosing frameworks and dedicated monitoring."
+  },
+  {
+    "interaction": ["fluoxetine", "memantine"],
+    "mechanism": "Memantine Swelling",
+    "description": "Placing fluoxetine aside memantine produces memantine swelling, requiring discrete dosing choices and regular examination."
+  },
+  {
+    "interaction": ["levothyroxine", "ferrous sulfate"],
+    "mechanism": "Levothyroxine Weakening",
+    "description": "Fixing levothyroxine near ferrous sulfate effects levothyroxine weakening, suggesting judicious dosing schedules and watchful supervision."
+  },
+  {
+    "interaction": ["lisinopril", "hydrochlorothiazide"],
+    "mechanism": "Lisinopril Drop",
+    "description": "Localizing lisinopril proximate hydrochlorothiazide occasions lisinopril drop, instructing prudent dosing tactics and frequent monitoring."
+  },
+  {
+    "interaction": ["losartan", "amlodipine"],
+    "mechanism": "Losartan Decline",
+    "description": "Situating losartan within arm's length of amlodipine originates losartan decline, motivating skillful dosing methods and constant tracking."
+  },
+  {
+    "interaction": ["atorvastatin", "gemfibrozil"],
+    "mechanism": "Atorvastatin Potency Upgrade",
+    "description": "Implanting atorvastatin nearby gemfibrozil fortifies atorvastatin potency, requiring purposeful dosing formulas and consistent surveillance."
+  },
+  {
+    "interaction": ["carbamazepine", "oral contraceptives"],
+    "mechanism": "Contraceptive Nullification",
+    "description": "Embracing carbamazepine in conjunction with oral contraceptives neutralizes contraceptives, advocating auxiliary birth control means."
+  },
+  {
+    "interaction": ["celexa", "warfarin"],
+    "mechanism": "Warfarin Strengthening",
+    "description": "Wedging celexa adjacent warfarin reinforces warfarin, advising calculated dosing routines and diligent watchfulness."
+  },
+  {
+    "interaction": ["ciprofloxacin", "sildenafil"],
+    "mechanism": "Sildenafil Intensity Increase",
+    "description": "Integrating ciprofloxacin with sildenafil escalates sildenafil intensity, prompting cautious dosing approaches and thorough examination."
+  },
+  {
+    "interaction": ["clarithromycin", "colchicine"],
+    "mechanism": "Colchicine Magnification",
+    "description": "Orchestrating clarithromycin in tandem with colchicine aggrandizes colchicine, recommending judicious dosing policies and careful observation."
+  },
+  {
+    "interaction": ["cyclosporine", "ketoconazole"],
+    "mechanism": "Cyclosporine Reinforcement",
+    "description": "Configuring cyclosporine contiguous ketoconazole buttresses cyclosporine, compelling reasonable dosing schemes and persistent monitoring."
+  },
+  {
+    "interaction": ["digoxin", "verapamil"],
+    "mechanism": "Digoxin Amplification",
+    "description": "Coordinating digoxin with verapamil amplifies digoxin, steering towards pondered dosing approaches and meticulous scrutiny."
+  },
+  {
+    "interaction": ["esomeprazole", "clopidogrel"],
+    "mechanism": "Clopidogrel Reduction",
+    "description": "Organizing esomeprazole alongside clopidogrel mitigates clopidogrel, suggesting sensible dosing modalities and regular inspection."
+  },
+  {
+    "interaction": ["fluoxetine", "ziprasidone"],
+    "mechanism": "Ziprasidone Bolstering",
+    "description": "Articulating fluoxetine close ziprasidone enhances ziprasidone, urging measured dosing principles and zealous monitoring."
+  },
+  {
+    "interaction": ["lithium", "thiazides"],
+    "mechanism": "Lithium Stepping Up",
+    "description": "Uniting lithium in league with thiazides steps up lithium, suggesting thoughtful dosing programs and rigid tracking."
+  },
+  {
+    "interaction": ["amlodipine", "atorvastatin"],
+    "mechanism": "Atorvastatin Elevation",
+    "description": "Docking amlodipine beside atorvastatin lifts atorvastatin, hinting at measured dosing policies and persistent tracking."
+  },
+  {
+    "interaction": ["celebrex", "aspirin"],
+    "mechanism": "Celebrex Affirmation",
+    "description": "Mooring celebrex alongside aspirin affirms celebrex, implying strategic dosing designs and unremitting supervision."
+  },
+  {
+    "interaction": ["ciprofloxacin", "antacids"],
+    "mechanism": "Ciprofloxacin Restriction",
+    "description": "Securing ciprofloxacin adjacent antacids restricts ciprofloxacin, counselling distanced scheduling and systematic examining."
+  },
+  {
+    "interaction": ["clindamycin", "erythromycin"],
+    "mechanism": "Clindamycin Hampering",
+    "description": "Corresponding clindamycin with erythromycin hampers clindamycin, prompting reflective dosing tactics and diligent observation."
+  },
+  {
+    "interaction": ["cyclosporine", "omeprazole"],
+    "mechanism": "Cyclosporine Truncation",
+    "description": "Tethering cyclosporine close omeprazole truncates cyclosporine, guiding cautious dosing plans and ardent monitoring."
+  },
+  {
+    "interaction": ["digoxin", "spironolactone"],
+    "mechanism": "Digoxin Degradation",
+    "description": "Binding digoxin amid spironolactone degrades digoxin, urging sober dosing procedures and devoted scrutiny."
+  },
+  {
+    "interaction": ["esomeprazole", "mycophenolic acid"],
+    "mechanism": "Esomeprazole Curtailing",
+    "description": "Locking esomeprazole neighboring mycophenolic acid curtails mycophenolic acid, pointing toward intelligent dosing techniques and keen checking."
+  },
+  {
+    "interaction": ["fluoxetine", "desipramine"],
+    "mechanism": "Desipramine Downgrading",
+    "description": "Matching fluoxetine with desipramine downgrades desipramine, implying prudent dosing methods and fastidious examination."
+  },
+  {
+    "interaction": ["lasix", "potassium"],
+    "mechanism": "Lasix Mitigation",
+    "description": "Pairing lasix and potassium mitigates lasix, recommending shrewd dosing solutions and earnest observation."
+  },
+  {
+    "interaction": ["levaquin", "multivitamin"],
+    "mechanism": "Levaquin Minimization",
+    "description": "Joining levaquin with multivitamin minimizes levaquin, counseling sequestered scheduling and thorough testing."
+  },
+  {
+    "interaction": ["lisinopril", "potassium"],
+    "mechanism": "Lisinopril Negligible Impact",
+    "description": "Merging lisinopril alongside potassium has negligible impact on lisinopril, yet still requires mindful monitoring."
+  },
+  {
+    "interaction": ["melatonin", "fluvoxamine"],
+    "mechanism": "Melatonin Multitude",
+    "description": "Collaborating melatonin with fluvoxamine multiplies melatonin, indicating judicious dosing procedures and watchful attention."
+  },
+  {
+    "interaction": ["metformin", "niacin"],
+    "mechanism": "Metformin Muffling",
+    "description": "Mixing metformin with niacin muffles metformin, mandating sensible dosing approaches and meticulous tracking."
+  },
+  {
+    "interaction": ["neoral", "ibuprofen"],
+    "mechanism": "Neoral Neutralisation",
+    "description": "Fusing neoral with ibuprofen neutralises neoral, advising alternate pain relief selections."
+  },
+  {
+    "interaction": ["norvasc", "simvastatin"],
+    "mechanism": "Norvasc Moderation",
+    "description": "Marrying norvasc with simvastatin moderates norvasc, suggesting measured dosing strategies and conscientious supervision."
+  },
+  {
+    "interaction": ["nystatin", "antacids"],
+    "mechanism": "Nystatin Nullification",
+    "description": "Uniting nystatin with antacids nullifies nystatin, necessitating separate intake intervals."
+  },
+  {
+    "interaction": ["prilosec", "atazanavir"],
+    "mechanism": "Prilosec Prevention",
+    "description": "Partnering prilosec with atazanavir prevents atazanavir absorption, demanding distinct dosing times."
+  },
+  {
+    "interaction": ["prevacid", "tetracycline"],
+    "mechanism": "Prevacid Paralyzation",
+    "description": "Fusing prevacid with tetracycline paralyzes tetracycline, guiding segregated administration."
+  },
+  {
+    "interaction": ["proscar", "finasteride"],
+    "mechanism": "Proscar Preservation",
+    "description": "Combining proscar with finasteride preserves proscar's efficacy while avoiding excess finasteride dosage."
+  },
+  {
+    "interaction": ["synthroid", "calcium"],
+    "mechanism": "Synthroid Slowing",
+    "description": "Blending synthroid with calcium slows synthroid absorption, advocating divided intake periods."
+  },
+  {
+    "interaction": ["Advair", "albuterol"],
+    "mechanism": "Advair Unaffected",
+    "description": "Paralleling Advair with albuterol keeps Advair unaffected, although separate delivery devices require coordinated usage."
+  },
+  {
+    "interaction": ["aspirin", "ibuprofen"],
+    "mechanism": "Minor Additive Effects",
+    "description": "Overlapping aspirin with ibuprofen exhibits minor additive effects, however stomach upset might arise and necessitate food intake."
+  },
+  {
+    "interaction": ["claritin", "pseudoephedrine"],
+    "mechanism": "Claritin Functionality Remains",
+    "description": "Adjacent placement of claritin and pseudoephedrine does not affect claritin functionality; nonetheless, monitor for elevated pulse."
+  },
+  {
+    "interaction": ["coumadin", " Tylenol"],
+    "mechanism": "Coumadin Integrity Retained",
+    "description": "Linking coumadin with Tylenol maintains coumadin integrity, though observe for any unexpected bruising or nosebleeds."
+  },
+  {
+    "interaction": ["glyburide", "metformin"],
+    "mechanism": "Glyburide Performance Steady",
+    "description": "Pairing glyburide with metformin holds glyburide performance stable, but screen glucose levels regularly."
+  },
+  {
+    "interaction": ["hydrocodone", "acetaminophen"],
+    "mechanism": "Analgesic Combination",
+    "description": "Synthesizing hydrocodone with acetaminophen forms an effective analgesic combination, yet manage total daily acetaminophen dosage."
+  },
+  {
+    "interaction": ["lipitor", "simvastatin"],
+    "mechanism": "Lipitor Predominance",
+    "description": "Conjoined lipitor and simvastatin favours Lipitor dominance, thus one statin becomes redundant."
+  },
+  {
+    "interaction": ["lyrica", "gabapentin"],
+    "mechanism": "Lyrica Continuation",
+    "description": "Mixing lyrica with gabapentin continues lyrica function without interference, but taper off slowly to avoid withdrawal symptoms."
+  },
+  {
+    "interaction": ["miralax", "senna"],
+    "mechanism": "Miralax Maintenance",
+    "description": "Integrating miralax with senna supports miralax maintenance, whilst tapering off senna gradually."
+  },
+  {
+    "interaction": ["singulair", "montelukast"],
+    "mechanism": "Singulair Sustenance",
+    "description": "United singulair with montelukast sustains singulair operation without compromise, yet watch for fatigue or vivid dreams."
+  },
+  {
+    "interaction": ["atorvastatin", "ezetimibe"],
+    "mechanism": "Compatible Cholesterol Management",
+    "description": "Consorting atorvastatin with ezetimibe delivers compatible cholesterol management, improving overall outcomes."
+  },
+  {
+    "interaction": ["clonazepam", "zolpidem"],
+    "mechanism": "Individual Sleep Support",
+    "description": "Fusing clonazepam with zolpidem offers individual sleep support, but stagger bedtimes to minimize daytime grogginess."
+  },
+  {
+    "interaction": ["famotidine", "omeprazole"],
+    "mechanism": "Identical Acidity Control",
+    "description": "Combining famotidine with omeprazole provides identical acidity control, nevertheless limit extended omeprazole usage."
+  },
+  {
+    "interaction": ["fluoxetine", "sertraline"],
+    "mechanism": "Depression & Anxiety Treatment",
+    "description": "Amalgamating fluoxetine with sertraline treats depression & anxiety effectively, yet gauge response closely for potential side effects."
+  },
+  {
+    "interaction": ["hctz", "furosemide"],
+    "mechanism": "Blood Pressure Regulation",
+    "description": "Aggregating hctz with furosemide regulates blood pressure efficiently, though electrolyte balance needs monitoring."
+  },
+  {
+    "interaction": ["ibuprofen", "naproxen"],
+    "mechanism": "Comparable Pain Relief",
+    "description": "Merging ibuprofen with naproxen grants comparable pain relief, but space them apart to prevent exceeding daily limits."
+  },
+  {
+    "interaction": ["lisinopril", "losartan"],
+    "mechanism": "BPV Reduction",
+    "description": "Fusing lisinopril with losartan aims for BPV reduction, however evaluate renal function periodically."
+  },
+  {
+    "interaction": ["metoprolol succinate", "metoprolol tartrate"],
+    "mechanism": "Equivalent Symptom Management",
+    "description": "Converging metoprolol succinate with metoprolol tartrate ensures equivalent symptom management, but distinguish dosing frequencies."
+  },
+  {
+    "interaction": ["naproxen sodium", "naproxen"],
+    "mechanism": "Consistent Pain Management",
+    "description": "Mixing naproxen sodium with naproxen secures consistent pain management, just be vigilant about maximum daily allowance."
+  },
+  {
+    "interaction": ["oxycodone", "acetaminophen"],
+    "mechanism": "Robust Pain Therapy",
+    "description": "Blending oxycodone with acetaminophen optimizes robust pain therapy, but ensure correct proportions to avert organ damage."
+  },
+  {
+    "interaction": ["amoxicillin", "clarithromycin"],
+    "mechanism": "Bacterial Infection Resolution",
+    "description": "Uniting amoxicillin with clarithromycin facilitates bacterial infection resolution, though examine liver function occasionally."
+  },
+  {
+    "interaction": ["aspirin", "enteric-coated aspirin"],
+    "mechanism": "Pain & Inflammation Alleviation",
+    "description": "Combining aspirin with enteric-coated aspirin eases pain & inflammation, but coordinate dosing schedule."
+  },
+  {
+    "interaction": ["ciprofloxacin", "ciprofloxacin XR"],
+    "mechanism": "Effective Bactericide Action",
+    "description": "Fusion of ciprofloxacin with ciprofloxacin XR guarantees effective bactericide action, but comply with respective dosage rules."
+  },
+  {
+    "interaction": ["clindamycin", "darunavir"],
+    "mechanism": "Broad Spectrum Coverage",
+    "description": "Merging clindamycin with darunavir achieves broad spectrum coverage, nonetheless, take account of potential gastrointestinal distress."
+  },
+  {
+    "interaction": ["docusate sodium", "psyllium"],
+    "mechanism": "Optimal Bowel Regularity",
+    "description": "Integrating docusate sodium with psyllium advances optimal bowel regularity, yet time separations may prove necessary."
+  },
+  {
+    "interaction": ["esomeprazole magnesium", "pantoprazole"],
+    "mechanism": "Acid Reflux Mitigation",
+    "description": "Combining esomeprazole magnesium with pantoprazole reduces acid reflux, but obey individual dosing instructions."
+  },
+  {
+    "interaction": ["fexofenadine", "loratadine"],
+    "mechanism": "Allergic Response Soothing",
+    "description": "Uniting fexofenadine with loratadine calms allergic responses, however vary consumption times if required."
+  },
+  {
+    "interaction": ["fluconazole", "itraconazole"],
+    "mechanism": "Fungal Infections Elimination",
+    "description": "Converging fluconazole with itraconazole annihilates fungal infections, but audit liver function routinely."
+  },
+  {
+    "interaction": ["hydralazine", "hydrochlorothiazide"],
+    "mechanism": "Blood Pressure Supervision",
+    "description": "Blending hydralazine together with hydrochlorothiazide governs blood pressure, nonetheless, eye tests could become mandatory."
+  },
+  {
+    "interaction": ["ibuprofen", "naproxen sodium"],
+    "mechanism": "Balanced Pain Administration",
+    "description": "Syncing ibuprofen with naproxen sodium allows balanced pain administration, but respect maximum daily quantities."
+  },
+  {
+    "interaction": ["amiodarone", "simvastatin"],
+    "mechanism": "Muscle Damage Inducement",
+    "description": "Uniting amiodarone with simvastatin can trigger muscle damage, therefore, seek safer statins or modify dosage accordingly."
+  },
+  {
+    "interaction": ["carbamazepine", "oral contraceptives"],
+    "mechanism": "Contraceptive Failure",
+    "description": "Combining carbamazepine with oral contraceptives risks contraceptive failure, hence discuss alternative birth controls."
+  },
+  {
+    "interaction": ["clopidogrel", "proton pump inhibitors"],
+    "mechanism": "Platelet Reactivity Increase",
+    "description": "Fusing clopidogrel with proton pump inhibitors can elevate platelet reactivity, leading to impaired cardiac protection."
+  },
+  {
+    "interaction": ["digoxin", "quinidine"],
+    "mechanism": "Toxicity Development",
+    "description": "Linking digoxin with quinidine increases possibility of toxicity, thus call for lowered digoxin doses and regular monitoring."
+  },
+  {
+    "interaction": ["fluoxetine", "tryptophan"],
+    "mechanism": "Serotonin Syndrome",
+    "description": "Joining fluoxetine with tryptophan opens door to serotonin syndrome, rendering caution important during combo therapy."
+  },
+  {
+    "interaction": ["isotretinoin", "oral contraceptives"],
+    "mechanism": "Birth Defects Possibility",
+    "description": "Concurrent usage of isotretinoin and oral contraceptives raises teratogenic concerns, so explore dual protection methods."
+  },
+  {
+    "interaction": ["maois", "ssris"],
+    "mechanism": "Serotonin Syndrome Threat",
+    "description": "Combining MAOIs with SSRIs implies serotonin syndrome threat, hence strictly avoid mixing these categories."
+  },
+  {
+    "interaction": ["methotrexate", "nonsteroidal anti-inflammatory drugs"],
+    "mechanism": "Kidney Damage",
+    "description": "Integrating methotrexate with nonsteroidal anti-inflammatory drugs endangers kidneys, thereby discouraging coincident use."
+  },
+  {
+    "interaction": ["phenytoin", "warfarin"],
+    "mechanism": "Bleeding Risk",
+    "description": "Merging phenytoin with warfarin heightens bleeding risk, subsequently mandating cautious surveillance and dose alterations."
+  },
+  {
+    "interaction": ["sertraline", "pimozide"],
+    "mechanism": "Heart Rhythm Issues",
+    "description": "Unifying sertraline with pimozide can provoke heart rhythm issues, making it vital to rule out dangerous duets."
+  },
+  {
+    "interaction": ["loratadine", "erythromycin"],
+    "mechanism": "Erythromycin Level Increase",
+    "description": "Erythromycin can elevate loratadine levels, causing somnolence, confusion, and rapid heartbeat. Monitor carefully and reduce loratadine dosage if necessary."
+  },
+  {
+    "interaction": ["loratadine", "ketoconazole"],
+    "mechanism": "Ketoconazole Level Increase",
+    "description": "Ketoconazole can escalate loratadine concentrations, leading to central nervous system (CNS) side effects. Keep an eye on patients and lower loratadine dosage if needed."
+  },
+  {
+    "interaction": ["loratadine", "itraconazole"],
+    "mechanism": "Itraconazole Level Increase",
+    "description": "Itraconazole raises loratadine levels, contributing to potential CNS impacts. Watch patients and decrease loratadine dose if deemed necessary."
+  },
+  {
+    "interaction": ["loratadine", "fluoxetine"],
+    "mechanism": "Fluoxetine Level Increase",
+    "description": "Fluoxetine can augment loratadine concentrations, resulting in heightened CNS effects. Stay vigilant and lower loratadine dosage if required."
+  },
+  {
+    "interaction": ["loratadine", "paroxetine"],
+    "mechanism": "Paroxetine Level Increase",
+    "description": "Paroxetine raises loratadine levels, possibly causing CNS reactions. Observe patients and decrease loratadine dosage if necessary."
+  },
+  {
+    "interaction": ["loratadine", "quinidine"],
+    "mechanism": "Quinidine Level Increase",
+    "description": "Quinidine can lift loratadine concentrations, predisposing individuals to CNS complications. Monitor patients and trim loratadine dosage if indicated."
+  },
+  {
+    "interaction": ["loratadine", "terbinafine"],
+    "mechanism": "Terbinafine Level Increase",
+    "description": "Terbinafine raises loratadine concentrations, sparking CNS effects. Keep an eye on patients and curtail loratadine dosage if needed."
+  },
+  {
+    "interaction": ["loratadine", "ranitidine"],
+    "mechanism": "Absorption Impairment",
+    "description": "Ranitidine can disrupt loratadine absorption, affecting allergy symptom relief. Separate dosing times between ranitidine and loratadine."
+  },
+  {
+    "interaction": ["loratadine", "cimetidine"],
+    "mechanism": "Absorption Impairment",
+    "description": "Cimetidine can hinder loratadine absorption, influencing allergy symptom alleviation. Space out dosing times between cimetidine and loratadine."
+  },
+  {
+    "interaction": ["loratadine", "famotidine"],
+    "mechanism": "Absorption Impairment",
+    "description": "Famotidine can impede loratadine absorption, impacting allergy symptom improvement. Segregate dosing durations between famotidine and loratadine."
+  },
+  {
+    "interaction": ["loratadine", "amiodarone"],
+    "mechanism": "Amiodarone Level Increase",
+    "description": "Amiodarone may heighten loratadine levels, causing CNS side effects. Be vigilant and lower loratadine dosage if necessary."
+  },
+  {
+    "interaction": ["loratadine", "rifampin"],
+    "mechanism": "Loratadine Level Decrease",
+    "description": "Rifampin reduces loratadine concentration, potentially impacting allergy symptom relief. Consider different antihistamine options."
+  },
+  {
+    "interaction": ["loratadine", "carbamazepine"],
+    "mechanism": "Loratadine Level Decrease",
+    "description": "Carbamazepine lowers loratadine concentrations, which might affect allergy symptom relief. Look into alternative antihistamines."
+  },
+  {
+    "interaction": ["azithromycin", "warfarin"],
+    "mechanism": "INR Increase",
+    "description": "Azithromycin may elevate warfarin levels, leading to an increased INR and bleeding risk. Monitor INR closely and adjust warfarin dosage as needed."
+  },
+  {
+    "interaction": ["azithromycin", "digoxin"],
+    "mechanism": "Digoxin Level Increase",
+    "description": "Azithromycin can raise digoxin concentrations, potentially causing arrhythmias and toxicity. Monitor digoxin levels and reduce dosage if required."
+  },
+  {
+    "interaction": ["azithromycin", "colchicine"],
+    "mechanism": "Myopathy",
+    "description": "Combining azithromycin with colchicine may enhance the risk of myopathy and rhabdomyolysis. Avoid this combination whenever possible."
+  },
+  {
+    "interaction": ["azithromycin", "amlodipine"],
+    "mechanism": "QT Interval Prolongation",
+    "description": "This combination can prolong the QT interval, raising the risk of ventricular arrhythmias. Apply caution and weigh the risks versus benefits."
+  },
+  {
+    "interaction": ["azithromycin", "atorvastatin"],
+    "mechanism": "Myopathy",
+    "description": "Using azithromycin with atorvastatin may increase the risk of myopathy and rhabdomyolysis. Carefully assess the necessity and potential risks involved."
+  },
+  {
+    "interaction": ["azithromycin", "cyclosporine"],
+    "mechanism": "Cyclosporine Level Increase",
+    "description": "Azithromycin can raise cyclosporine levels, potentially leading to nephrotoxicity. Monitor cyclosporine levels and adjust dosage as necessary."
+  },
+  {
+    "interaction": ["azithromycin", "nilotinib"],
+    "mechanism": "Nilotinib Level Decrease",
+    "description": "Azithromycin may decrease nilotinib concentrations, impacting its efficacy. Time dosing appropriately or choose another antibiotic."
+  },
+  {
+    "interaction": ["azithromycin", "ergotamine"],
+    "mechanism": "Peripheral Vasoconstriction",
+    "description": "Azithromycin can intensify peripheral vasoconstrictive effects of ergotamine, increasing the risk of ischemia. Opt for alternative antibiotics instead."
+  },
+  {
+    "interaction": ["azithromycin", "alfuzosin"],
+    "mechanism": "Orthostatic Hypotension",
+    "description": "Concurrent use of azithromycin and alfuzosin may exacerbate orthostatic hypotension. Weigh the advantages against the potential risks."
+  },
+  {
+    "interaction": ["azithromycin", "sotalol"],
+    "mechanism": "QT Interval Prolongation",
+    "description": "This combination can prolong the QT interval, increasing the risk of ventricular arrhythmias. Evaluate the necessity and potential hazards before proceeding."
+  },
+  {
+    "interaction": ["fluconazole", "warfarin"],
+    "mechanism": "INR Increase",
+    "description": "Fluconazole may elevate warfarin levels, leading to an increased INR and bleeding risk. Monitor INR closely and adjust warfarin dosage as needed."
+  },
+  {
+    "interaction": ["fluconazole", "phenytoin"],
+    "mechanism": "Phenytoin Level Increase",
+    "description": "Fluconazole can raise phenytoin concentrations, potentially causing neurotoxicity and seizures. Monitor phenytoin levels and reduce dosage if required."
+  },
+  {
+    "interaction": ["fluconazole", "tolbutamide"],
+    "mechanism": "Tolbutamide Level Increase",
+    "description": "Fluconazole raises tolbutamide levels, increasing the risk of hypoglycemia. Alternatively, consider switching to another antidiabetic drug."
+  },
+  {
+    "interaction": ["fluconazole", "cefdinir"],
+    "mechanism": "Cefdinir Level Decrease",
+    "description": "Fluconazole can decrease cefdinir concentrations, negatively impacting its efficacy. Choose a different antibiotic when feasible."
+  },
+  {
+    "interaction": ["fluconazole", "cyclosporine"],
+    "mechanism": "Cyclosporine Level Increase",
+    "description": "Fluconazole can raise cyclosporine levels, potentially leading to nephrotoxicity. Monitor cyclosporine levels and adjust dosage as necessary."
+  },
+  {
+    "interaction": ["fluconazole", "tacrolimus"],
+    "mechanism": "Tacrolimus Level Increase",
+    "description": "Fluconazole raises tacrolimus concentrations, increasing the risk of nephrotoxicity. Monitor tacrolimus levels and adjust dosage as required."
+  },
+  {
+    "interaction": ["fluconazole", "vinblastine"],
+    "mechanism": "Vincristine Level Increase",
+    "description": "Fluconazole can elevate vinblastine levels, raising the risk of neurotoxicity. Evaluate the necessity and potential hazards before combining."
+  },
+  {
+    "interaction": ["fluconazole", "saquinavir"],
+    "mechanism": "Saquinavir Level Increase",
+    "description": "Fluconazole raises saquinavir concentrations, potentially causing adverse effects. If necessary, consider reducing saquinavir dosage."
+  },
+  {
+    "interaction": ["fluconazole", "fentanyl"],
+    "mechanism": "Fentanyl Level Increase",
+    "description": "Fluconazole raises fentanyl concentrations, increasing the risk of respiratory depression. Monitor fentanyl levels and adjust dosage if needed."
+  },
+  {
+    "interaction": ["fluconazole", "atorvastatin"],
+    "mechanism": "Atorvastatin Level Increase",
+    "description": "Fluconazole can raise atorvastatin concentrations, potentially causing myopathy and rhabdomyolysis. Monitor atorvastatin levels and reduce dosage if required."
+  },
+  {
+    "interaction": ["warfarin", "vitamin K"],
+    "mechanism": "Competition for coagulation factors synthesis",
+    "description": "High dietary Vitamin K intake or Vitamin K supplementation can counteract warfarin's anticoagulant effect, increasing the risk of thrombosis. Counsel patients to maintain consistent Vitamin K intake and avoid sudden changes."
+  },
+  {
+    "interaction": ["statins", "CoQ10"],
+    "mechanism": "Inhibition of CoQ10 production",
+    "description": "Long-term statin use may lower CoQ10 levels, which can contribute to muscle cramps and weakness. Providing CoQ10 supplementation can help alleviate these side effects."
+  },
+  {
+    "interaction": ["antiepileptic drugs (AEDs)", "folate"],
+    "mechanism": "Decreased folate absorption or metabolism",
+    "description": "Some AEDs, like phenytoin, carbamazepine, and valproic acid, can decrease folate levels, leading to megaloblastic anemia and neural tube defects in pregnant women. Folate supplementation may be beneficial in these cases."
+  },
+  {
+    "interaction": ["metformin", "Vitamin B12"],
+    "mechanism": "Decreased Vitamin B12 absorption",
+    "description": "Long-term metformin use can reduce Vitamin B12 absorption, leading to deficiencies and neurological symptoms. Periodic screening and Vitamin B12 supplementation may be necessary."
+  },
+  {
+    "interaction": ["sevelamer", "fat-soluble vitamins (A, D, E, and K)"],
+    "mechanism": "Binding and removal from the body",
+    "description": "This phosphate binder binds and removes fat-soluble vitamins (A, D, E, and K) from the gut, increasing the risk of deficiencies. Additional supplementation is often recommended."
+  },
+  {
+    "interaction": ["cholestyramine", "fat-soluble vitamins (A, D, E, and K)"],
+    "mechanism": "Binding and removal from the body",
+    "description": "Similar to sevelamer, cholestyramine also binds and removes fat-soluble vitamins (A, D, E, and K) from the gut, increasing the risk of deficiencies. Additional supplementation is advisable."
+  },
+  {
+    "interaction": ["proton pump inhibitors (PPIs)", "Vitamin B12"],
+    "mechanism": "Decreased Vitamin B12 absorption",
+    "description": "PPIs like omeprazole and pantoprazole can decrease Vitamin B12 absorption, leading to deficiencies and neurological symptoms. Periodic screening and Vitamin B12 supplementation may be necessary."
+  },
+  {
+    "interaction": ["isotretinoin", "Vitamin A"],
+    "mechanism": "Isotretinoin is a derivative of Vitamin A",
+    "description": "Concurrent use of isotretinoin and Vitamin A can increase the risk of Vitamin A toxicity, manifesting as headaches, dry skin, and hair loss. Discourage Vitamin A supplementation during isotretinoin treatment."
+  },
+  {
+    "interaction": ["valproic acid", "Vitamin D"],
+    "mechanism": "Decreased Vitamin D absorption",
+    "description": "Valproic acid can decrease Vitamin D absorption, putting patients at risk for osteopenia and fractures. Screening and supplementation may be required."
+  },
+  {
+    "interaction": ["fluoroquinolones", "Calcium"],
+    "mechanism": "Formation of chelate complexes",
+    "description": "Taking fluoroquinolones with calcium-rich foods or supplements can decrease drug absorption, reducing the antibiotic's effectiveness. Advisable to separate dosing by two hours."
+  },
+  {
+    "interaction": ["tyrosine kinase inhibitors (TKIs)", "grape fruit juice"],
+    "mechanism": "CYP3A4 inhibition",
+    "description": "Grapefruit juice can increase TKI plasma concentrations, leading to enhanced toxicity. Advise patients to avoid consuming grapefruit products during TKI therapy."
+  },
+  {
+    "interaction": ["warfarin", "green leafy vegetables"],
+    "mechanism": "Vitamin K content variation",
+    "description": "Large amounts of green leafy vegetables can decrease warfarin's effectiveness due to increased Vitamin K content. Encourage consistency in vegetable intake and advise patients to notify their healthcare provider of significant dietary changes."
+  },
+  {
+    "interaction": ["calcium channel blockers (CCBs)", "grapefruit juice"],
+    "mechanism": "CYP3A4 inhibition",
+    "description": "Grapefruit juice can increase CCB plasma concentrations, leading to enhanced toxicity. Advise patients to avoid consuming grapefruit products during CCB therapy."
+  },
+  {
+    "interaction": ["statins", "grapefruit juice"],
+    "mechanism": "CYP3A4 inhibition",
+    "description": "Grapefruit juice can increase statin plasma concentrations, leading to enhanced toxicity. Advise patients to avoid consuming grapefruit products during statin therapy."
+  },
+  {
+    "interaction": ["benzodiazepines", "alcohol"],
+    "mechanism": "Pharmacodynamic synergism",
+    "description": "Alcohol can enhance benzodiazepine sedation and impair motor skills, increasing fall risk. Warn patients about the dangers of combining alcohol with benzodiazepines and recommend limiting alcohol intake during benzodiazepine therapy."
+  },
+  {
+    "interaction": ["monoamine oxidase inhibitors (MAOIs)", "aged cheese"],
+    "mechanism": "Tyramine content interaction",
+    "description": "Aged cheese contains tyramine, which can precipitate hypertensive crisis when consumed with MAOIs. Direct patients to avoid aged cheese and other high-tyramine foods during MAOI therapy."
+  },
+  {
+    "interaction": ["levodopa", "protein-rich meals"],
+    "mechanism": "Protein binding competition",
+    "description": "Protein-rich meals can compete with levodopa for absorption, decreasing its bioavailability. Recommend that patients take levodopa on an empty stomach or at least one hour prior to eating."
+  },
+  {
+    "interaction": ["lithium", "dehydration"],
+    "mechanism": "Decreased excretion",
+    "description": "Dehydration caused by sweating, vomiting, or diarrhea can decrease lithium excretion, leading to toxicity. Educate patients about maintaining adequate hydration and recognizing signs of lithium toxicity."
+  },
+  {
+    "interaction": ["levothyroxine", "fiber-rich meals"],
+    "mechanism": "Delayed absorption",
+    "description": "Fiber-rich meals can delay levothyroxine absorption, affecting hormonal replacement. Advise patients to take thyroid hormone replacement at least thirty minutes before breakfast or wait four hours afterward."
+  },
+  {
+    "interaction": ["bisphosphonates", " milk products"],
+    "mechanism": "Calcium chelation",
+    "description": "Milk products contain calcium, which can chelate bisphosphonates and decrease absorption. Direct patients to take bisphosphonates with plain water and avoid consuming anything else for at least thirty minutes afterward."
+  },
+  {
+    "interaction": [
+      "selective serotonin reuptake inhibitors (SSRIs)",
+      "monoamine oxidase inhibitors (MAOIs)"
+    ],
+    "mechanism": "Excess serotonin accumulation",
+    "description": "Concomitant use of SSRIs and MAOIs can result in excessive serotonin accumulation, causing serotonin syndrome \u2013 a life-threatening condition characterized by autonomic dysfunction, neuromuscular excitability, and altered mental status. Allow a washout period between changing from an SSRI to an MAOI, according to product labeling."
+  },
+  {
+    "interaction": ["tricyclic antidepressants (TCAs)", "fluoxetine"],
+    "mechanism": "Pharmacokinetic interaction",
+    "description": "Fluoxetine inhibits CYP2D6 and CYP1A2, which can increase TCA levels, leading to enhanced toxicity. Wait at least five weeks between stopping fluoxetine and starting a TCA to prevent this interaction."
+  },
+  {
+    "interaction": ["venlafaxine", "CYP2D6 inhibitors"],
+    "mechanism": "Pharmacokinetic interaction",
+    "description": "Coadministration of CYP2D6 inhibitors, such as paroxetine and fluoxetine, can increase venlafaxine levels, leading to enhanced toxicity. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["mirtazapine", "fluoxetine"],
+    "mechanism": "Pharmacokinetic interaction",
+    "description": "Fluoxetine inhibits CYP2D6, which can increase mirtazapine levels, leading to enhanced toxicity. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["trazodone", "CYP3A4 inhibitors"],
+    "mechanism": "Pharmacokinetic interaction",
+    "description": "Coadministration of CYP3A4 inhibitors, such as protease inhibitors and macrolide antibiotics, can increase trazodone levels, leading to enhanced toxicity. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["SSRIs", "aspirin"],
+    "mechanism": "Increased GI bleeding risk",
+    "description": "SSRIs can independently increase the risk of upper gastrointestinal (GI) bleeding, and aspirin further compounds this risk. Monitor patients for signs of GI bleeding and consider alternative antidepressant agents or analgesics if necessary."
+  },
+  {
+    "interaction": ["SSRIs", "nonsteroidal anti-inflammatory drugs (NSAIDs)"],
+    "mechanism": "Increased GI bleeding risk",
+    "description": "SSRIs can independently increase the risk of upper gastrointestinal (GI) bleeding, and NSAIDs further compound this risk. Monitor patients for signs of GI bleeding and consider alternative antidepressant agents or analgesics if necessary."
+  },
+  {
+    "interaction": ["SNRIs", "NSAIDs"],
+    "mechanism": "Increased GI bleeding risk",
+    "description": "SNRIs, such as venlafaxine and duloxetine, can independently increase the risk of upper gastrointestinal (GI) bleeding, and NSAIDs further compound this risk. Monitor patients for signs of GI bleeding and consider alternative antidepressant agents or analgesics if necessary."
+  },
+  {
+    "interaction": ["SSRIs", "warfarin"],
+    "mechanism": "Increased INR",
+    "description": "SSRIs can increase warfarin levels, leading to an increased International Normalized Ratio (INR). Monitor INR closely and adjust warfarin dosage as needed."
+  },
+  {
+    "interaction": ["mirtazapine", "quetiapine"],
+    "mechanism": "Pharmacodynamic synergism",
+    "description": "Coadministration of mirtazapine and quetiapine can result in additive sedative effects, increasing the risk of falls and cognitive impairment. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "modafinil"],
+    "mechanism": "Decreased Quetiapine Plasma Concentrations",
+    "description": "Modafinil can decrease quetiapine plasma concentrations by approximately 50%, reducing quetiapine's therapeutic efficacy. Consider increasing quetiapine dosage or selecting an alternative wakefulness-promoting agent."
+  },
+  {
+    "interaction": ["quetiapine", "aripiprazole"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and aripiprazole can result in additive sedative effects, increasing the risk of falls and cognitive impairment. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "divalproex"],
+    "mechanism": "Pharmacokinetic Interaction",
+    "description": "Divalproex may increase quetiapine plasma concentrations, leading to enhanced toxicity. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "carbamazepine"],
+    "mechanism": "Pharmacokinetic Interaction",
+    "description": "Carbamazepine can decrease quetiapine plasma concentrations, reducing quetiapine's therapeutic efficacy. Consider increasing quetiapine dosage or selecting an alternative mood stabilizer."
+  },
+  {
+    "interaction": ["quetiapine", "phenytoin"],
+    "mechanism": "Pharmacokinetic Interaction",
+    "description": "Phenytoin can decrease quetiapine plasma concentrations, reducing quetiapine's therapeutic efficacy. Consider increasing quetiapine dosage or selecting an alternative mood stabilizer."
+  },
+  {
+    "interaction": ["quetiapine", "pimavanserin"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and pimavanserin can result in additive sedative effects, increasing the risk of falls and cognitive impairment. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "olanzapine"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and olanzapine can result in additive weight gain, metabolic effects, and sedative effects. Monitor patients closely for adverse effects and consider lifestyle interventions and/or dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "risperidone"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and risperidone can result in additive extrapyramidal symptoms, sedative effects, and weight gain. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "lurasidone"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and lurasidone can result in additive sedative effects, increasing the risk of falls and cognitive impairment. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["quetiapine", "zolpidem"],
+    "mechanism": "Pharmacodynamic Synergism",
+    "description": "Concomitant use of quetiapine and zolpidem can result in additive sedative effects, increasing the risk of falls and cognitive impairment. Monitor patients closely for adverse effects and consider dosage adjustments if necessary."
+  },
+  {
+    "interaction": ["oseltamivir", "phenytoin"],
+    "mechanism": "CYP2C19 Inhibition",
+    "description": "Oseltamivir can inhibit CYP2C19, which may increase phenytoin plasma concentrations and the risk of toxicity. Monitor phenytoin levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["oseltamivir", "warfarin"],
+    "mechanism": "Altered PT/INR",
+    "description": "Oseltamivir can affect international normalized ratio (INR) values in patients receiving warfarin, either increasing or decreasing INR depending on individual variability. Monitor PT/INR values closely during oseltamivir treatment."
+  },
+  {
+    "interaction": ["oseltamivir", "live virus vaccines"],
+    "mechanism": "Immunosuppression",
+    "description": "Oseltamivir may suppress the immune system, theoretically increasing the risk of live vaccine-associated adverse events. Live viral vaccines should be avoided during and shortly after antiviral treatment unless absolutely necessary."
+  },
+  {
+    "interaction": ["baloxavir marboxil", "phenytoin"],
+    "mechanism": "CYP2C19 Inhibition",
+    "description": "Baloxavir marboxil can inhibit CYP2C19, which may increase phenytoin plasma concentrations and the risk of toxicity. Monitor phenytoin levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["baloxavir marboxil", "warfarin"],
+    "mechanism": "Altered PT/INR",
+    "description": "Baloxavir marboxil can affect international normalized ratio (INR) values in patients receiving warfarin, either increasing or decreasing INR depending on individual variability. Monitor PT/INR values closely during baloxavir marboxil treatment."
+  },
+  {
+    "interaction": ["baloxavir marboxil", "live virus vaccines"],
+    "mechanism": "Immunosuppression",
+    "description": "Baloxavir marboxil may suppress the immune system, theoretically increasing the risk of live vaccine-associated adverse events. Live viral vaccines should be avoided during and shortly after antiviral treatment unless absolutely necessary."
+  },
+  {
+    "interaction": ["zanamivir", "theophylline"],
+    "mechanism": "CYP1A2 Inhibition",
+    "description": "Zanamivir can inhibit CYP1A2, which may increase theophylline plasma concentrations and the risk of toxicity. Monitor theophylline levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["amantadine", "trimethoprim/sulfamethoxazole"],
+    "mechanism": "Decreased Renal Clearance",
+    "description": "Trimethoprim/sulfamethoxazole may decrease renal secretion of amantadine, leading to increased amantadine plasma concentrations and the risk of toxicity. Adjust amantadine dosages based on creatinine clearance when using trimethoprim/sulfamethoxazole."
+  },
+  {
+    "interaction": ["amantadine", "quinolones"],
+    "mechanism": "Seizure Risk",
+    "description": "Concomitant use of amantadine and quinolones may increase the risk of seizures. Consider alternative antimicrobials when possible, and monitor patients for signs of seizure activity."
+  },
+  {
+    "interaction": ["rimantadine", "quinolones"],
+    "mechanism": "Seizure Risk",
+    "description": "Concomitant use of rimantadine and quinolones may increase the risk of seizures. Consider alternative antimicrobials when possible, and monitor patients for signs of seizure activity."
+  },
+  {
+    "interaction": ["oseltamivir", "warfarin"],
+    "mechanism": "PK/PD Interaction",
+    "description": "Oseltamivir may increase warfarin levels, leading to an increased INR and bleeding risk. Patients should be monitored closely for bleeding complications and INR values throughout oseltamivir treatment."
+  },
+  {
+    "interaction": ["oseltamivir", "tamiflu"],
+    "mechanism": "Duplicate Medication",
+    "description": "Concomitant use of oseltamivir and Tamiflu\u00ae (same medication) may increase the risk of adverse effects, such as nausea and vomiting. There is no indication for doubling the dosage, and physicians should be aware of potential additive effects."
+  },
+  {
+    "interaction": ["oseltamivir", "peramivir"],
+    "mechanism": "PK/PD Overlap",
+    "description": "Oseltamivir and peramivir share overlapping mechanisms, increasing the risk of adverse events. Physicians should avoid concomitant use unless no alternative exists, in which case, close monitoring is required."
+  },
+  {
+    "interaction": ["amantadine", "quinolones"],
+    "mechanism": "Seizure Risk",
+    "description": "Concomitant use of amantadine and quinolones may increase the risk of seizures. Physicians should consider alternative antimicrobials when possible, and monitor patients for signs of seizure activity."
+  },
+  {
+    "interaction": ["rimantadine", "quinolones"],
+    "mechanism": "Seizure Risk",
+    "description": "Concomitant use of rimantadine and quinolones may increase the risk of seizures. Physicians should consider alternative antimicrobials when possible, and monitor patients for signs of seizure activity."
+  },
+  {
+    "interaction": ["oseltamivir", "cyclophosphamide"],
+    "mechanism": "PK/PD Interaction",
+    "description": "Oseltamivir may increase cyclophosphamide levels, leading to increased toxicity. Patients should be monitored closely for neutropenia, hemorrhagic cystitis, and other adverse effects during concomitant therapy."
+  },
+  {
+    "interaction": ["oseltamivir", "mycophenolate mofetil"],
+    "mechanism": "PK/PD Interaction",
+    "description": "Oseltamivir may increase mycophenolate mofetil levels, leading to increased myelosuppression. Patients should be monitored closely for white blood cell count and other adverse effects during concomitant therapy."
+  },
+  {
+    "interaction": ["oseltamivir", "theophylline"],
+    "mechanism": "CYP1A2 Inhibition",
+    "description": "Oseltamivir can inhibit CYP1A2, which may increase theophylline plasma concentrations and the risk of toxicity. Monitor theophylline levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["amantadine", "trihexyphenidyl"],
+    "mechanism": "Pharmacodynamics Enhancement",
+    "description": "Combining amantadine with trihexyphenidyl may increase the risk of anticholinergic side effects, such as hallucinations, confusion, blurred vision, and urinary retention. Consider alternative medications or reduced doses."
+  },
+  {
+    "interaction": ["rimantadine", "carbidopa/levodopa"],
+    "mechanism": "Pharmacodynamics Enhancement",
+    "description": "Combining rimantadine with carbidopa/levodopa may increase dopamine release, enhancing the effects of carbidopa/levodopa, leading to adverse effects such as dyskinesia, agitation, or confusion. Consider alternative medications or reduced doses."
+  },
+  {
+    "interaction": ["simvastatin", "danazol"],
+    "mechanism": "Increased Simvastatin Plasma Concentrations",
+    "description": "Danazol increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "amiodarone"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Amiodarone increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "verapamil/diltiazem"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Verapamil and diltiazem increase simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "ranolazine"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Ranolazine increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "colchicine"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Colchicine increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "fusidic acid"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Fusidic acid increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "nicotinic acid/niacin"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Nicotinic acid/niacin increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "cyclosporine"],
+    "mechanism": "Increased Simvastatin Plasma Concentrations",
+    "description": "Cyclosporine increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "gemfibrozil"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Gemfibrozil increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["simvastatin", "fenofibrate"],
+    "mechanism": "Increased Risk of Myopathy/Rhabdomyolysis",
+    "description": "Fenofibrate increases simvastatin plasma concentrations, leading to an increased risk of myopathy and rhabdomyolysis. Consider alternative medications or simvastatin dose adjustment."
+  },
+  {
+    "interaction": ["meloxicam", "diuretics"],
+    "mechanism": "Increased Risk of Renal Insufficiency",
+    "description": "Concurrent use of meloxicam and diuretics may increase the risk of renal insufficiency, particularly in older adults or those with existing renal dysfunction. Closely monitor renal function during combined therapy."
+  },
+  {
+    "interaction": ["meloxicam", "ACE inhibitors"],
+    "mechanism": "Increased Risk of Renal Insufficiency",
+    "description": "Combining meloxicam with ACE inhibitors may increase the risk of renal insufficiency, notably in elderly patients or those with underlying renal problems. Monitor renal function closely during simultaneous treatment."
+  },
+  {
+    "interaction": ["meloxicam", "angiotensin II receptor blockers (ARBs)"],
+    "mechanism": "Increased Risk of Renal Insufficiency",
+    "description": "The coadministration of meloxicam and angiotensin II receptor blockers (ARBs) may increase the risk of renal insufficiency, predominantly in senior citizens or those with preexisting renal disorders. Keep a close eye on renal function throughout joint therapy."
+  },
+  {
+    "interaction": ["meloxicam", "corticosteroids"],
+    "mechanism": "Increased Risk of GI Ulceration",
+    "description": "Simultaneously employing meloxicam along with corticosteroids can boost the probability of gastrointestinal ulceration. Screen patients for indicators of GI distress during concurrent utilization."
+  },
+  {
+    "interaction": ["meloxicam", "anticoagulants"],
+    "mechanism": "Increased Risk of Bleeding",
+    "description": "Concurrent application of meloxicam and anticoagulants may elevate the chance of bleeding. Scrutinize patients for signs of bleeding during synchronous employment."
+  },
+  {
+    "interaction": [
+      "meloxicam",
+      "selective serotonin reuptake inhibitors (SSRIs)/selective norepinephrine reuptake inhibitors (SNRIs)"
+    ],
+    "mechanism": "Increased Risk of GI Ulceration",
+    "description": "Jointly administering meloxicam with SSRIs or SNRIs can enlarge the likelihood of gastrointestinal ulceration. Watch over patients for signals of GI trouble during combined administration."
+  },
+  {
+    "interaction": ["meloxicam", "other NSAIDs"],
+    "mechanism": "Increased Risk of GI Ulceration",
+    "description": "The coupling of meloxicam with other NSAIDs may expand the risk of gastrointestinal ulceration. Check patients for markers of GI distress during joined usage."
+  },
+  {
+    "interaction": ["meloxicam", "lithium"],
+    "mechanism": "Decreased Lithium Clearance",
+    "description": "Associating meloxicam with lithium can lessen lithium clearance and boost lithium levels. Track lithium stages during collective therapy."
+  },
+  {
+    "interaction": ["meloxicam", "ciclosporin"],
+    "mechanism": "Increased Risk of Nephrotoxicity",
+    "description": "The merger of meloxicam and ciclosporin can magnify the danger of nephrotoxicity. Survey renal function closely during consolidated treatment."
+  },
+  {
+    "interaction": ["meloxicam", "methotrexate"],
+    "mechanism": "Increased Risk of Methotrexate Toxicity",
+    "description": "The fusion of meloxicam and methotrexate may heighten the risk of methotrexate poisoning. Supervise patients for indicators of methotrexate toxicity during linked utilization."
+  },
+  {
+    "interaction": ["meloxicam", "warfarin"],
+    "mechanism": "Pharmacodynamics Enhancement",
+    "description": "Concurrent use of meloxicam and warfarin may increase the risk of bleeding due to enhanced anticoagulant effects. Monitor INR levels and adjust warfarin dosage accordingly."
+  },
+  {
+    "interaction": ["meloxicam", "methotrexate"],
+    "mechanism": "Pharmacokinetics Inhibition",
+    "description": "Meloxicam may inhibit methotrexate elimination, increasing methotrexate levels and toxicity risk. Monitor methotrexate levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["meloxicam", "cyclosporine"],
+    "mechanism": "Pharmacokinetics Inhibition",
+    "description": "Meloxicam may inhibit cyclosporine elimination, increasing cyclosporine levels and toxicity risk. Monitor cyclosporine levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["meloxicam", "loop diuretics"],
+    "mechanism": "Reduced Diuretic Efficiency",
+    "description": "Combining meloxicam with loop diuretics may decrease diuretic efficiency and increase the risk of fluid retention. Monitor patients for signs of edema and adjust diuretic dosage as necessary."
+  },
+  {
+    "interaction": ["meloxicam", "ACE inhibitors"],
+    "mechanism": "Impaired Renal Function",
+    "description": "Concurrent use of meloxicam and ACE inhibitors may increase the risk of renal dysfunction, especially in elderly patients or those with pre-existing renal diseases. Monitor renal function closely during combined therapy."
+  },
+  {
+    "interaction": ["meloxicam", "ARBS"],
+    "mechanism": "Impaired Renal Function",
+    "description": "The coadministration of meloxicam and ARBS may increase the risk of renal dysfunction, primarily in older adults or those with underlying renal problems. Keep a close eye on renal function throughout joint therapy."
+  },
+  {
+    "interaction": ["meloxicam", "digoxin"],
+    "mechanism": "Pharmacokinetics Inhibition",
+    "description": "Meloxicam may inhibit digoxin elimination, increasing digoxin levels and toxicity risk. Monitor digoxin levels and adjust dosages as necessary."
+  },
+  {
+    "interaction": ["meloxicam", "beta-blockers"],
+    "mechanism": "Masked Hypertension",
+    "description": "Combining meloxicam with beta-blockers may mask signs of hypertension, leading to underdiagnosis and undertreatment. Monitor blood pressure closely during concurrent therapy."
+  },
+  {
+    "interaction": ["meloxicam", "SSRIs"],
+    "mechanism": "Increased GI Side Effects",
+    "description": "The coupling of meloxicam with SSRIs may augment the risk of gastrointestinal side effects. Exercise caution and monitor patients for signs of abdominal distress during joined usage."
+  },
+  {
+    "interaction": ["meloxicam", "SNRIs"],
+    "mechanism": "Increased GI Side Effects",
+    "description": "The concurrent application of meloxicam and SNRIs may boost the likelihood of gastrointestinal side effects. Practice caution and check patients for markers of digestive tract distress during merged utilization."
+  }
+]
