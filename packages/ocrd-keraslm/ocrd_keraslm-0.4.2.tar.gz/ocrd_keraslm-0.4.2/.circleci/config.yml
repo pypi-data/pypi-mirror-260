@@ -1,0 +1,75 @@
+version: 2.1
+jobs:
+
+  build-python3:
+    docker:
+      - image: ocrd/core
+    environment:
+      PIP: pip3
+      PYTHON: python3
+    steps:
+      - run: apt-get update && apt-get install -y --no-install-recommends ssh
+      - checkout
+      - run: make nvidia-tensorflow
+      - run: make deps
+      - run: make install
+  
+  test-python3:
+    docker:
+      - image: ocrd/tesserocr
+    environment:
+      PIP: pip3
+      PYTHON: python3
+      # as long as ocrd/tesserocr is built with Tesseract from PPA (but does not export this variable):
+      TESSDATA_PREFIX: /usr/share/tesseract-ocr/4.00/tessdata
+    steps:
+      - run: apt-get update && apt-get install -y --no-install-recommends make wget unzip xsltproc
+      - checkout
+      - run: make nvidia-tensorflow
+      - run: make deps
+      - run: make install
+      - run: ocrd resmgr download -n
+          https://github.com/tesseract-ocr/tessdata/raw/4.1.0/deu_frak.traineddata
+          ocrd-tesserocr-recognize deu-frak.traineddata
+      - run: make deps-test
+      # restore trained model from previous run
+      # (change name of the key here when model ABI changes)
+      - restore_cache:
+          key: v0.3-model_dta_test
+      - run: make test |& tee test.log
+      - store_artifacts:
+          path: test.log
+      # store trained model for next run
+      # (change name of the key here when model ABI changes)
+      - save_cache:
+          key: v0.3-model_dta_test
+          paths:
+            - model_dta_test.h5
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
+
+  deploy-docker:
+    docker:
+      - image: circleci/buildpack-deps:stretch
+    steps:
+      - checkout
+      - setup_remote_docker: # https://circleci.com/docs/2.0/building-docker-images/
+          docker_layer_caching: true
+      - run: make docker
+      - run:
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASS" | docker login --username "$DOCKERHUB_USER" --password-stdin
+      - run: docker push ocrd/keraslm
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-python3
+      - test-python3
+  deploy:
+    jobs:
+      - deploy-docker:
+          filters:
+            branches:
+              only: master
