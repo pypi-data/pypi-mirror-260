@@ -1,0 +1,741 @@
+Metadata-Version: 2.1
+Name: marie-ai
+Version: 3.0.29
+Summary: Python library to Integrate AI-powered features into your applications
+Home-page: https://github.com/marieai/marie-ai/
+Download-URL: https://github.com/marieai/marie-ai/tags
+Author: Marie AI
+Author-email: hello@marieai.co
+License: Apache 2.0
+Project-URL: Documentation, https://docs.marieai.co
+Project-URL: Source, https://github.com/marieai/marie-ai.git
+Project-URL: Tracker, https://github.com/marieai/marie-ai/issues
+Keywords: marie-ai ocr icr index elastic neural-network encoding embedding serving docker container image video audio deep-learning mlops
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Unix Shell
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Database :: Database Engines/Servers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Internet :: WWW/HTTP :: Indexing/Search
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: Topic :: Multimedia :: Video
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: NOTICE
+Requires-Dist: onnx==1.15.0
+Requires-Dist: shapely
+Requires-Dist: aiostream
+Requires-Dist: pillow~=9.5
+Requires-Dist: psutil
+Requires-Dist: imutils
+Requires-Dist: pytest
+Requires-Dist: grpcio-reflection<=1.57.0,>=1.46.0
+Requires-Dist: onnxmltools
+Requires-Dist: opentelemetry-instrumentation-grpc
+Requires-Dist: pika
+Requires-Dist: orjson
+Requires-Dist: Wand
+Requires-Dist: websockets
+Requires-Dist: fast_pytorch_kmeans
+Requires-Dist: transformers
+Requires-Dist: urllib3<2.0.0,>=1.25.9
+Requires-Dist: natsort
+Requires-Dist: pendulum
+Requires-Dist: onnxruntime==1.16.3
+Requires-Dist: docarray>=0.16.4
+Requires-Dist: pathspec
+Requires-Dist: protobuf<4.24,>=3.20.2
+Requires-Dist: imagecodecs
+Requires-Dist: psycopg2-binary==2.8.6
+Requires-Dist: fastwer==0.1.3
+Requires-Dist: dominate==2.7.0
+Requires-Dist: lmdb
+Requires-Dist: filelock
+Requires-Dist: Cython
+Requires-Dist: Pillow-SIMD
+Requires-Dist: jsons
+Requires-Dist: matplotlib
+Requires-Dist: onnxruntime-gpu
+Requires-Dist: pyyaml>=5.3.1
+Requires-Dist: patchify==0.2.3
+Requires-Dist: prometheus_client
+Requires-Dist: fastapi>=0.76.0
+Requires-Dist: uuid7
+Requires-Dist: Levenshtein
+Requires-Dist: pycocotools
+Requires-Dist: aiofiles
+Requires-Dist: packaging>=20.0
+Requires-Dist: nltk
+Requires-Dist: uvloop; platform_system != "Windows"
+Requires-Dist: pydantic<2.0.0
+Requires-Dist: uvicorn[standard]<=0.23.1
+Requires-Dist: hydra-core==1.3.1
+Requires-Dist: boto3
+Requires-Dist: reportlab
+Requires-Dist: sqlalchemy
+Requires-Dist: munch
+Requires-Dist: grpcio-health-checking<=1.57.0,>=1.46.0
+Requires-Dist: docker
+Requires-Dist: nlpaug
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0
+Requires-Dist: prometheus_client>=0.12.0
+Requires-Dist: aiohttp
+Requires-Dist: requests
+Requires-Dist: colorcet
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0
+Requires-Dist: pytesseract
+Requires-Dist: numpy
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0
+Requires-Dist: timm==0.6.12
+Requires-Dist: omegaconf==2.3.0
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0
+Requires-Dist: python-consul2
+Requires-Dist: opencv-python==4.8.1.78
+Requires-Dist: pybind11
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0
+Requires-Dist: PyPDF4
+Requires-Dist: grpcio<=1.57.0,>=1.46.0
+Requires-Dist: sentencepiece
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0
+Requires-Dist: albumentations
+Requires-Dist: onnxconverter_common==1.13.0
+Requires-Dist: celery
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0
+Requires-Dist: anyconfig
+Requires-Dist: python-multipart
+Provides-Extra: pybind11
+Requires-Dist: pybind11; extra == "pybind11"
+Provides-Extra: standard
+Requires-Dist: onnx==1.15.0; extra == "standard"
+Requires-Dist: aiostream; extra == "standard"
+Requires-Dist: shapely; extra == "standard"
+Requires-Dist: numpy; extra == "standard"
+Requires-Dist: dominate==2.7.0; extra == "standard"
+Requires-Dist: uvicorn[standard]<=0.23.1; extra == "standard"
+Requires-Dist: lmdb; extra == "standard"
+Requires-Dist: hydra-core==1.3.1; extra == "standard"
+Requires-Dist: psutil; extra == "standard"
+Requires-Dist: pillow~=9.5; extra == "standard"
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0; extra == "standard"
+Requires-Dist: timm==0.6.12; extra == "standard"
+Requires-Dist: omegaconf==2.3.0; extra == "standard"
+Requires-Dist: filelock; extra == "standard"
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0; extra == "standard"
+Requires-Dist: imutils; extra == "standard"
+Requires-Dist: Cython; extra == "standard"
+Requires-Dist: pytest; extra == "standard"
+Requires-Dist: boto3; extra == "standard"
+Requires-Dist: uvloop; extra == "standard"
+Requires-Dist: Pillow-SIMD; extra == "standard"
+Requires-Dist: jsons; extra == "standard"
+Requires-Dist: matplotlib; extra == "standard"
+Requires-Dist: reportlab; extra == "standard"
+Requires-Dist: python-consul2; extra == "standard"
+Requires-Dist: opencv-python==4.8.1.78; extra == "standard"
+Requires-Dist: pybind11; extra == "standard"
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0; extra == "standard"
+Requires-Dist: onnxruntime-gpu; extra == "standard"
+Requires-Dist: PyPDF4; extra == "standard"
+Requires-Dist: pytesseract; extra == "standard"
+Requires-Dist: sqlalchemy; extra == "standard"
+Requires-Dist: munch; extra == "standard"
+Requires-Dist: sentencepiece; extra == "standard"
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0; extra == "standard"
+Requires-Dist: onnxmltools; extra == "standard"
+Requires-Dist: opentelemetry-instrumentation-grpc; extra == "standard"
+Requires-Dist: pika; extra == "standard"
+Requires-Dist: orjson; extra == "standard"
+Requires-Dist: pyyaml>=5.3.1; extra == "standard"
+Requires-Dist: Wand; extra == "standard"
+Requires-Dist: websockets; extra == "standard"
+Requires-Dist: patchify==0.2.3; extra == "standard"
+Requires-Dist: prometheus_client; extra == "standard"
+Requires-Dist: fast_pytorch_kmeans; extra == "standard"
+Requires-Dist: docker; extra == "standard"
+Requires-Dist: transformers; extra == "standard"
+Requires-Dist: albumentations; extra == "standard"
+Requires-Dist: fastapi>=0.76.0; extra == "standard"
+Requires-Dist: natsort; extra == "standard"
+Requires-Dist: pendulum; extra == "standard"
+Requires-Dist: onnxruntime==1.16.3; extra == "standard"
+Requires-Dist: uuid7; extra == "standard"
+Requires-Dist: pathspec; extra == "standard"
+Requires-Dist: protobuf<4.24,>=3.20.2; extra == "standard"
+Requires-Dist: nlpaug; extra == "standard"
+Requires-Dist: pycocotools; extra == "standard"
+Requires-Dist: Levenshtein; extra == "standard"
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0; extra == "standard"
+Requires-Dist: aiofiles; extra == "standard"
+Requires-Dist: packaging>=20.0; extra == "standard"
+Requires-Dist: prometheus_client>=0.12.0; extra == "standard"
+Requires-Dist: aiohttp; extra == "standard"
+Requires-Dist: imagecodecs; extra == "standard"
+Requires-Dist: celery; extra == "standard"
+Requires-Dist: requests; extra == "standard"
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0; extra == "standard"
+Requires-Dist: anyconfig; extra == "standard"
+Requires-Dist: nltk; extra == "standard"
+Requires-Dist: onnxconverter_common==1.13.0; extra == "standard"
+Requires-Dist: colorcet; extra == "standard"
+Requires-Dist: psycopg2-binary==2.8.6; extra == "standard"
+Requires-Dist: python-multipart; extra == "standard"
+Requires-Dist: fastwer==0.1.3; extra == "standard"
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0; extra == "standard"
+Provides-Extra: core
+Requires-Dist: onnx==1.15.0; extra == "core"
+Requires-Dist: shapely; extra == "core"
+Requires-Dist: numpy; extra == "core"
+Requires-Dist: dominate==2.7.0; extra == "core"
+Requires-Dist: lmdb; extra == "core"
+Requires-Dist: hydra-core==1.3.1; extra == "core"
+Requires-Dist: pillow~=9.5; extra == "core"
+Requires-Dist: timm==0.6.12; extra == "core"
+Requires-Dist: omegaconf==2.3.0; extra == "core"
+Requires-Dist: imutils; extra == "core"
+Requires-Dist: Cython; extra == "core"
+Requires-Dist: pytest; extra == "core"
+Requires-Dist: boto3; extra == "core"
+Requires-Dist: Pillow-SIMD; extra == "core"
+Requires-Dist: jsons; extra == "core"
+Requires-Dist: matplotlib; extra == "core"
+Requires-Dist: reportlab; extra == "core"
+Requires-Dist: pytesseract; extra == "core"
+Requires-Dist: opencv-python==4.8.1.78; extra == "core"
+Requires-Dist: pybind11; extra == "core"
+Requires-Dist: grpcio-reflection<=1.57.0,>=1.46.0; extra == "core"
+Requires-Dist: onnxruntime-gpu; extra == "core"
+Requires-Dist: PyPDF4; extra == "core"
+Requires-Dist: sqlalchemy; extra == "core"
+Requires-Dist: munch; extra == "core"
+Requires-Dist: grpcio<=1.57.0,>=1.46.0; extra == "core"
+Requires-Dist: sentencepiece; extra == "core"
+Requires-Dist: onnxmltools; extra == "core"
+Requires-Dist: pika; extra == "core"
+Requires-Dist: orjson; extra == "core"
+Requires-Dist: pyyaml>=5.3.1; extra == "core"
+Requires-Dist: Wand; extra == "core"
+Requires-Dist: patchify==0.2.3; extra == "core"
+Requires-Dist: fast_pytorch_kmeans; extra == "core"
+Requires-Dist: grpcio-health-checking<=1.57.0,>=1.46.0; extra == "core"
+Requires-Dist: urllib3<2.0.0,>=1.25.9; extra == "core"
+Requires-Dist: transformers; extra == "core"
+Requires-Dist: albumentations; extra == "core"
+Requires-Dist: natsort; extra == "core"
+Requires-Dist: pendulum; extra == "core"
+Requires-Dist: onnxruntime==1.16.3; extra == "core"
+Requires-Dist: docarray>=0.16.4; extra == "core"
+Requires-Dist: uuid7; extra == "core"
+Requires-Dist: nlpaug; extra == "core"
+Requires-Dist: protobuf<4.24,>=3.20.2; extra == "core"
+Requires-Dist: Levenshtein; extra == "core"
+Requires-Dist: pycocotools; extra == "core"
+Requires-Dist: packaging>=20.0; extra == "core"
+Requires-Dist: imagecodecs; extra == "core"
+Requires-Dist: nltk; extra == "core"
+Requires-Dist: celery; extra == "core"
+Requires-Dist: onnxconverter_common==1.13.0; extra == "core"
+Requires-Dist: anyconfig; extra == "core"
+Requires-Dist: colorcet; extra == "core"
+Requires-Dist: psycopg2-binary==2.8.6; extra == "core"
+Requires-Dist: fastwer==0.1.3; extra == "core"
+Requires-Dist: pydantic<2.0.0; extra == "core"
+Provides-Extra: numpy
+Requires-Dist: numpy; extra == "numpy"
+Provides-Extra: protobuf
+Requires-Dist: protobuf<4.24,>=3.20.2; extra == "protobuf"
+Provides-Extra: grpcio
+Requires-Dist: grpcio<=1.57.0,>=1.46.0; extra == "grpcio"
+Provides-Extra: grpcio-reflection
+Requires-Dist: grpcio-reflection<=1.57.0,>=1.46.0; extra == "grpcio-reflection"
+Provides-Extra: grpcio-health-checking
+Requires-Dist: grpcio-health-checking<=1.57.0,>=1.46.0; extra == "grpcio-health-checking"
+Provides-Extra: pyyaml
+Requires-Dist: pyyaml>=5.3.1; extra == "pyyaml"
+Provides-Extra: packaging
+Requires-Dist: packaging>=20.0; extra == "packaging"
+Provides-Extra: docarray
+Requires-Dist: docarray>=0.16.4; extra == "docarray"
+Provides-Extra: perf
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0; extra == "perf"
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0; extra == "perf"
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0; extra == "perf"
+Requires-Dist: uvloop; extra == "perf"
+Requires-Dist: opentelemetry-instrumentation-grpc; extra == "perf"
+Requires-Dist: prometheus_client>=0.12.0; extra == "perf"
+Requires-Dist: prometheus_client; extra == "perf"
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0; extra == "perf"
+Requires-Dist: psutil; extra == "perf"
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0; extra == "perf"
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0; extra == "perf"
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0; extra == "perf"
+Provides-Extra: prometheus-client
+Requires-Dist: prometheus_client; extra == "prometheus-client"
+Requires-Dist: prometheus_client>=0.12.0; extra == "prometheus-client"
+Provides-Extra: devel
+Requires-Dist: aiostream; extra == "devel"
+Requires-Dist: uvicorn[standard]<=0.23.1; extra == "devel"
+Requires-Dist: psutil; extra == "devel"
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0; extra == "devel"
+Requires-Dist: filelock; extra == "devel"
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0; extra == "devel"
+Requires-Dist: watchfiles>=0.18.0; extra == "devel"
+Requires-Dist: strawberry-graphql>=0.96.0; extra == "devel"
+Requires-Dist: python-consul2; extra == "devel"
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0; extra == "devel"
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0; extra == "devel"
+Requires-Dist: opentelemetry-instrumentation-grpc; extra == "devel"
+Requires-Dist: websockets; extra == "devel"
+Requires-Dist: docker; extra == "devel"
+Requires-Dist: fastapi>=0.76.0; extra == "devel"
+Requires-Dist: gradio; extra == "devel"
+Requires-Dist: pathspec; extra == "devel"
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0; extra == "devel"
+Requires-Dist: aiofiles; extra == "devel"
+Requires-Dist: prometheus_client>=0.12.0; extra == "devel"
+Requires-Dist: aiohttp; extra == "devel"
+Requires-Dist: requests; extra == "devel"
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0; extra == "devel"
+Requires-Dist: uvloop; platform_system != "Windows" and extra == "devel"
+Requires-Dist: python-multipart; extra == "devel"
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0; extra == "devel"
+Provides-Extra: psutil
+Requires-Dist: psutil; extra == "psutil"
+Provides-Extra: uvloop
+Requires-Dist: uvloop; extra == "uvloop"
+Provides-Extra: opentelemetry-instrumentation-grpc
+Requires-Dist: opentelemetry-instrumentation-grpc; extra == "opentelemetry-instrumentation-grpc"
+Provides-Extra: opentelemetry-sdk
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0; extra == "opentelemetry-sdk"
+Provides-Extra: opentelemetry-exporter-otlp
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0; extra == "opentelemetry-exporter-otlp"
+Provides-Extra: opentelemetry-exporter-prometheus
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0; extra == "opentelemetry-exporter-prometheus"
+Provides-Extra: opentelemetry-semantic-conventions
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0; extra == "opentelemetry-semantic-conventions"
+Provides-Extra: opentelemetry-instrumentation-aiohttp-client
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0; extra == "opentelemetry-instrumentation-aiohttp-client"
+Provides-Extra: opentelemetry-instrumentation-fastapi
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0; extra == "opentelemetry-instrumentation-fastapi"
+Provides-Extra: opentelemetry-exporter-otlp-proto-grpc
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0; extra == "opentelemetry-exporter-otlp-proto-grpc"
+Provides-Extra: fastapi
+Requires-Dist: fastapi>=0.76.0; extra == "fastapi"
+Provides-Extra: uvicorn-standard
+Requires-Dist: uvicorn[standard]<=0.23.1; extra == "uvicorn-standard"
+Provides-Extra: docker
+Requires-Dist: docker; extra == "docker"
+Provides-Extra: pathspec
+Requires-Dist: pathspec; extra == "pathspec"
+Provides-Extra: filelock
+Requires-Dist: filelock; extra == "filelock"
+Provides-Extra: requests
+Requires-Dist: requests; extra == "requests"
+Provides-Extra: websockets
+Requires-Dist: websockets; extra == "websockets"
+Provides-Extra: pydantic
+Requires-Dist: pydantic<2.0.0; extra == "pydantic"
+Provides-Extra: python-multipart
+Requires-Dist: python-multipart; extra == "python-multipart"
+Provides-Extra: aiofiles
+Requires-Dist: aiofiles; extra == "aiofiles"
+Provides-Extra: aiohttp
+Requires-Dist: aiohttp; extra == "aiohttp"
+Provides-Extra: aiostream
+Requires-Dist: aiostream; extra == "aiostream"
+Provides-Extra: test
+Requires-Dist: kubernetes>=18.20.0; extra == "test"
+Requires-Dist: mock; extra == "test"
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: black==22.3.0; extra == "test"
+Requires-Dist: pytest-custom_exit_code; extra == "test"
+Requires-Dist: pytest-timeout; extra == "test"
+Requires-Dist: pytest-cov==3.0.0; extra == "test"
+Requires-Dist: pytest-lazy-fixture; extra == "test"
+Requires-Dist: psutil; extra == "test"
+Requires-Dist: pytest-mock; extra == "test"
+Requires-Dist: requests-mock; extra == "test"
+Requires-Dist: pytest-kind==22.11.1; extra == "test"
+Requires-Dist: coverage==6.2; extra == "test"
+Requires-Dist: pytest-repeat; extra == "test"
+Requires-Dist: pytest-reraise; extra == "test"
+Requires-Dist: pytest-asyncio; extra == "test"
+Provides-Extra: pytest
+Requires-Dist: pytest; extra == "pytest"
+Provides-Extra: pytest-timeout
+Requires-Dist: pytest-timeout; extra == "pytest-timeout"
+Provides-Extra: pytest-mock
+Requires-Dist: pytest-mock; extra == "pytest-mock"
+Provides-Extra: pytest-cov
+Requires-Dist: pytest-cov==3.0.0; extra == "pytest-cov"
+Provides-Extra: coverage
+Requires-Dist: coverage==6.2; extra == "coverage"
+Provides-Extra: pytest-repeat
+Requires-Dist: pytest-repeat; extra == "pytest-repeat"
+Provides-Extra: pytest-asyncio
+Requires-Dist: pytest-asyncio; extra == "pytest-asyncio"
+Provides-Extra: pytest-reraise
+Requires-Dist: pytest-reraise; extra == "pytest-reraise"
+Provides-Extra: mock
+Requires-Dist: mock; extra == "mock"
+Provides-Extra: requests-mock
+Requires-Dist: requests-mock; extra == "requests-mock"
+Provides-Extra: pytest-custom-exit-code
+Requires-Dist: pytest-custom_exit_code; extra == "pytest-custom-exit-code"
+Provides-Extra: black
+Requires-Dist: black==22.3.0; extra == "black"
+Provides-Extra: kubernetes
+Requires-Dist: kubernetes>=18.20.0; extra == "kubernetes"
+Provides-Extra: pytest-kind
+Requires-Dist: pytest-kind==22.11.1; extra == "pytest-kind"
+Provides-Extra: pytest-lazy-fixture
+Requires-Dist: pytest-lazy-fixture; extra == "pytest-lazy-fixture"
+Provides-Extra: cicd
+Requires-Dist: strawberry-graphql>=0.96.0; extra == "cicd"
+Requires-Dist: torch; extra == "cicd"
+Provides-Extra: torch
+Requires-Dist: torch; extra == "torch"
+Provides-Extra: strawberry-graphql
+Requires-Dist: strawberry-graphql>=0.96.0; extra == "strawberry-graphql"
+Provides-Extra: watchfiles
+Requires-Dist: watchfiles>=0.18.0; extra == "watchfiles"
+Provides-Extra: urllib3
+Requires-Dist: urllib3<2.0.0,>=1.25.9; extra == "urllib3"
+Provides-Extra: transformers
+Requires-Dist: transformers; extra == "transformers"
+Provides-Extra: anyconfig
+Requires-Dist: anyconfig; extra == "anyconfig"
+Provides-Extra: python-consul2
+Requires-Dist: python-consul2; extra == "python-consul2"
+Provides-Extra: fastwer
+Requires-Dist: fastwer==0.1.3; extra == "fastwer"
+Provides-Extra: matplotlib
+Requires-Dist: matplotlib; extra == "matplotlib"
+Provides-Extra: albumentations
+Requires-Dist: albumentations; extra == "albumentations"
+Provides-Extra: dominate
+Requires-Dist: dominate==2.7.0; extra == "dominate"
+Provides-Extra: lmdb
+Requires-Dist: lmdb; extra == "lmdb"
+Provides-Extra: natsort
+Requires-Dist: natsort; extra == "natsort"
+Provides-Extra: celery
+Requires-Dist: celery; extra == "celery"
+Provides-Extra: opencv-python
+Requires-Dist: opencv-python==4.8.1.78; extra == "opencv-python"
+Provides-Extra: imagecodecs
+Requires-Dist: imagecodecs; extra == "imagecodecs"
+Provides-Extra: imutils
+Requires-Dist: imutils; extra == "imutils"
+Provides-Extra: pypdf4
+Requires-Dist: PyPDF4; extra == "pypdf4"
+Provides-Extra: reportlab
+Requires-Dist: reportlab; extra == "reportlab"
+Provides-Extra: pycocotools
+Requires-Dist: pycocotools; extra == "pycocotools"
+Provides-Extra: nltk
+Requires-Dist: nltk; extra == "nltk"
+Provides-Extra: timm
+Requires-Dist: timm==0.6.12; extra == "timm"
+Provides-Extra: wand
+Requires-Dist: Wand; extra == "wand"
+Provides-Extra: cython
+Requires-Dist: Cython; extra == "cython"
+Provides-Extra: jsons
+Requires-Dist: jsons; extra == "jsons"
+Provides-Extra: shapely
+Requires-Dist: shapely; extra == "shapely"
+Provides-Extra: gradio
+Requires-Dist: gradio; extra == "gradio"
+Provides-Extra: psycopg2-binary
+Requires-Dist: psycopg2-binary==2.8.6; extra == "psycopg2-binary"
+Provides-Extra: nlpaug
+Requires-Dist: nlpaug; extra == "nlpaug"
+Provides-Extra: munch
+Requires-Dist: munch; extra == "munch"
+Provides-Extra: onnx
+Requires-Dist: onnx==1.15.0; extra == "onnx"
+Provides-Extra: onnxruntime
+Requires-Dist: onnxruntime==1.16.3; extra == "onnxruntime"
+Provides-Extra: onnxruntime-gpu
+Requires-Dist: onnxruntime-gpu; extra == "onnxruntime-gpu"
+Provides-Extra: onnxconverter-common
+Requires-Dist: onnxconverter_common==1.13.0; extra == "onnxconverter-common"
+Provides-Extra: onnxmltools
+Requires-Dist: onnxmltools; extra == "onnxmltools"
+Provides-Extra: pika
+Requires-Dist: pika; extra == "pika"
+Provides-Extra: sentencepiece
+Requires-Dist: sentencepiece; extra == "sentencepiece"
+Provides-Extra: levenshtein
+Requires-Dist: Levenshtein; extra == "levenshtein"
+Provides-Extra: boto3
+Requires-Dist: boto3; extra == "boto3"
+Provides-Extra: sqlalchemy
+Requires-Dist: sqlalchemy; extra == "sqlalchemy"
+Provides-Extra: pendulum
+Requires-Dist: pendulum; extra == "pendulum"
+Provides-Extra: uuid7
+Requires-Dist: uuid7; extra == "uuid7"
+Provides-Extra: orjson
+Requires-Dist: orjson; extra == "orjson"
+Provides-Extra: omegaconf
+Requires-Dist: omegaconf==2.3.0; extra == "omegaconf"
+Provides-Extra: hydra-core
+Requires-Dist: hydra-core==1.3.1; extra == "hydra-core"
+Provides-Extra: pillow-simd
+Requires-Dist: Pillow-SIMD; extra == "pillow-simd"
+Provides-Extra: pillow
+Requires-Dist: pillow~=9.5; extra == "pillow"
+Provides-Extra: pytesseract
+Requires-Dist: pytesseract; extra == "pytesseract"
+Provides-Extra: patchify
+Requires-Dist: patchify==0.2.3; extra == "patchify"
+Provides-Extra: colorcet
+Requires-Dist: colorcet; extra == "colorcet"
+Provides-Extra: fast-pytorch-kmeans
+Requires-Dist: fast_pytorch_kmeans; extra == "fast-pytorch-kmeans"
+Provides-Extra: all
+Requires-Dist: onnx==1.15.0; extra == "all"
+Requires-Dist: aiostream; extra == "all"
+Requires-Dist: shapely; extra == "all"
+Requires-Dist: pillow~=9.5; extra == "all"
+Requires-Dist: psutil; extra == "all"
+Requires-Dist: imutils; extra == "all"
+Requires-Dist: pytest; extra == "all"
+Requires-Dist: grpcio-reflection<=1.57.0,>=1.46.0; extra == "all"
+Requires-Dist: pytest-repeat; extra == "all"
+Requires-Dist: pytest-custom_exit_code; extra == "all"
+Requires-Dist: onnxmltools; extra == "all"
+Requires-Dist: opentelemetry-instrumentation-grpc; extra == "all"
+Requires-Dist: pika; extra == "all"
+Requires-Dist: orjson; extra == "all"
+Requires-Dist: Wand; extra == "all"
+Requires-Dist: websockets; extra == "all"
+Requires-Dist: fast_pytorch_kmeans; extra == "all"
+Requires-Dist: transformers; extra == "all"
+Requires-Dist: urllib3<2.0.0,>=1.25.9; extra == "all"
+Requires-Dist: requests-mock; extra == "all"
+Requires-Dist: natsort; extra == "all"
+Requires-Dist: pendulum; extra == "all"
+Requires-Dist: mock; extra == "all"
+Requires-Dist: onnxruntime==1.16.3; extra == "all"
+Requires-Dist: docarray>=0.16.4; extra == "all"
+Requires-Dist: pathspec; extra == "all"
+Requires-Dist: protobuf<4.24,>=3.20.2; extra == "all"
+Requires-Dist: pytest-timeout; extra == "all"
+Requires-Dist: imagecodecs; extra == "all"
+Requires-Dist: psycopg2-binary==2.8.6; extra == "all"
+Requires-Dist: fastwer==0.1.3; extra == "all"
+Requires-Dist: dominate==2.7.0; extra == "all"
+Requires-Dist: lmdb; extra == "all"
+Requires-Dist: filelock; extra == "all"
+Requires-Dist: Cython; extra == "all"
+Requires-Dist: Pillow-SIMD; extra == "all"
+Requires-Dist: strawberry-graphql>=0.96.0; extra == "all"
+Requires-Dist: jsons; extra == "all"
+Requires-Dist: matplotlib; extra == "all"
+Requires-Dist: onnxruntime-gpu; extra == "all"
+Requires-Dist: pyyaml>=5.3.1; extra == "all"
+Requires-Dist: patchify==0.2.3; extra == "all"
+Requires-Dist: pytest-cov==3.0.0; extra == "all"
+Requires-Dist: prometheus_client; extra == "all"
+Requires-Dist: fastapi>=0.76.0; extra == "all"
+Requires-Dist: gradio; extra == "all"
+Requires-Dist: uuid7; extra == "all"
+Requires-Dist: Levenshtein; extra == "all"
+Requires-Dist: pycocotools; extra == "all"
+Requires-Dist: aiofiles; extra == "all"
+Requires-Dist: packaging>=20.0; extra == "all"
+Requires-Dist: nltk; extra == "all"
+Requires-Dist: pytest-lazy-fixture; extra == "all"
+Requires-Dist: coverage==6.2; extra == "all"
+Requires-Dist: uvloop; platform_system != "Windows" and extra == "all"
+Requires-Dist: pydantic<2.0.0; extra == "all"
+Requires-Dist: uvicorn[standard]<=0.23.1; extra == "all"
+Requires-Dist: hydra-core==1.3.1; extra == "all"
+Requires-Dist: pytest-kind==22.11.1; extra == "all"
+Requires-Dist: boto3; extra == "all"
+Requires-Dist: reportlab; extra == "all"
+Requires-Dist: sqlalchemy; extra == "all"
+Requires-Dist: munch; extra == "all"
+Requires-Dist: black==22.3.0; extra == "all"
+Requires-Dist: grpcio-health-checking<=1.57.0,>=1.46.0; extra == "all"
+Requires-Dist: docker; extra == "all"
+Requires-Dist: nlpaug; extra == "all"
+Requires-Dist: opentelemetry-sdk<1.20.0,>=1.14.0; extra == "all"
+Requires-Dist: prometheus_client>=0.12.0; extra == "all"
+Requires-Dist: aiohttp; extra == "all"
+Requires-Dist: requests; extra == "all"
+Requires-Dist: colorcet; extra == "all"
+Requires-Dist: opentelemetry-instrumentation-aiohttp-client>=0.33b0; extra == "all"
+Requires-Dist: pytest-asyncio; extra == "all"
+Requires-Dist: pytesseract; extra == "all"
+Requires-Dist: numpy; extra == "all"
+Requires-Dist: opentelemetry-exporter-prometheus>=0.33b0; extra == "all"
+Requires-Dist: pytest-reraise; extra == "all"
+Requires-Dist: timm==0.6.12; extra == "all"
+Requires-Dist: omegaconf==2.3.0; extra == "all"
+Requires-Dist: kubernetes>=18.20.0; extra == "all"
+Requires-Dist: opentelemetry-instrumentation-fastapi>=0.33b0; extra == "all"
+Requires-Dist: watchfiles>=0.18.0; extra == "all"
+Requires-Dist: torch; extra == "all"
+Requires-Dist: python-consul2; extra == "all"
+Requires-Dist: opencv-python==4.8.1.78; extra == "all"
+Requires-Dist: pybind11; extra == "all"
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc>=1.13.0; extra == "all"
+Requires-Dist: PyPDF4; extra == "all"
+Requires-Dist: grpcio<=1.57.0,>=1.46.0; extra == "all"
+Requires-Dist: sentencepiece; extra == "all"
+Requires-Dist: opentelemetry-exporter-otlp>=1.12.0; extra == "all"
+Requires-Dist: albumentations; extra == "all"
+Requires-Dist: onnxconverter_common==1.13.0; extra == "all"
+Requires-Dist: celery; extra == "all"
+Requires-Dist: opentelemetry-semantic-conventions>=0.33b0; extra == "all"
+Requires-Dist: anyconfig; extra == "all"
+Requires-Dist: pytest-mock; extra == "all"
+Requires-Dist: python-multipart; extra == "all"
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+# Marie-AI
+
+Integrate AI-powered document pipeline into your applications
+
+## Documentation
+
+See the [MarieAI docs](https://docs.marieai.co).
+
+## Installation
+
+You don't need this source code unless you want to modify the package. If you just
+want to use the package, just run:
+
+```sh
+pip install --upgrade marieai
+```
+
+Install from source with:
+
+```sh
+pip install -e .
+```
+
+Build docker container:
+
+```sh
+DOCKER_BUILDKIT=1 docker build . --build-arg PIP_TAG="standard" -f ./Dockerfiles/gpu.Dockerfile  -t marieai/marie:3.0-cuda 
+```
+
+## Command-line interface
+
+This library additionally provides an `marie` command-line utility which makes it easy to interact with the API 
+from your terminal. Run `marie -h` for usage.
+
+## Example code
+
+Examples of how to use this library to accomplish various tasks can be found in the MarieAI documentation. 
+It contains code examples for:
+
+* Document cleanup
+* Optical character recognition (OCR)
+* Document Classification
+* Document Splitter
+* Named Entity Recognition
+* Form detection
+* And more
+
+
+## Run with default entrypoint
+
+```shell
+docker run --rm  -it marieai/marie:3.0.19-cuda
+```
+
+## Run the server with custom entrypoint
+
+```shell
+docker run --rm  -it --entrypoint /bin/bash  marieai/marie:3.0.19-cuda  
+```
+
+## Telemetry
+https://telemetry.marieai.co/
+
+TODO :MOVE TO DOCS
+
+# S3 Cloud Storage
+```shell
+docker compose -f  docker-compose.s3.yml --project-directory . up  --build --remove-orphans
+```
+
+CrossFTP
+
+
+## Configure AWS CLI Credentials.
+
+```shell
+vi ~/.aws/credentials
+[marie] # this should be in the file
+aws_access_key_id=your_access_key_id
+aws_secret_access_key=your_secret_access_key
+```
+
+ 
+
+## Pull the Docker image.
+
+```shell
+docker pull zenko/cloudserver
+```
+
+## Create and start the container.
+
+
+```sh
+docker run --rm -it --name marie-s3-server -p 8000:8000 \
+-e SCALITY_ACCESS_KEY_ID=MARIEACCESSKEY \
+-e SCALITY_SECRET_ACCESS_KEY=MARIESECRETACCESSKEY \
+-e S3DATA=multiple \
+-e S3BACKEND=mem zenko/cloudserver
+```
+
+```
+SCALITY_ACCESS_KEY_ID : Your AWS ACCESS KEY 
+SCALITY_SECRET_ACCESS_KEY: Your AWS SECRET ACCESS KEY 
+S3BACKEND: Currently using memory storage
+```
+
+## Verify Installation.
+
+```shell
+aws s3 mb s3://mybucket  --profile marie --endpoint-url http://localhost:8000 --region us-west-2
+```
+
+```shell
+aws s3 ls --profile marie --endpoint-url http://localhost:8000
+```
+
+```shell
+aws s3 cp some_file.txt s3://mybucket  --profile marie --endpoint-url http://localhost:8000
+```
+
+
+```shell
+aws s3 --profile marie --endpoint-url=http://127.0.0.1:8000 ls --recursive s3://
+```
+
+# Production setup
+
+
+Configuration for the S3 server will be stored in the following files:
+https://towardsdatascience.com/10-lessons-i-learned-training-generative-adversarial-networks-gans-for-a-year-c9071159628
