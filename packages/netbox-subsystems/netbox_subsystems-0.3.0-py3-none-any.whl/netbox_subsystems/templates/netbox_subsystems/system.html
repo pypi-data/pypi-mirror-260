@@ -1,0 +1,349 @@
+{% extends 'generic/object.html' %}
+{% load static %}
+{% load helpers %}
+{% block content %}
+{% load plugins %}
+{% load i18n %}
+<!-- Modal Superset -->
+<div id="superset_modal" class="modal" data-modal="1" style="height: 100%; width: 100%; z-index: 99999999;">
+   <!--   Svg иконка для закрытия окна  -->
+   <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="z-index:999999999"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.>
+   <p class="modal__title"><div class="container"style="height: 90%; width: 90%;">
+    <!-- This div will serve as the mount point for the embedded dashboard -->
+    <div id="my-superset-container" style="height: 100%; width: 100%;"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if we have a token and an embed ID
+            if ("{{ token }}" && "{{ EmbeddedDashboardID }}") {
+                supersetEmbeddedSdk.embedDashboard({
+                    id: "{{ EmbeddedDashboardID }}",
+                    supersetDomain: "{{ supersetDomain }}",
+                    mountPoint: document.getElementById("my-superset-container"),
+                    fetchGuestToken: () => Promise.resolve("{{ token }}"),
+                    dashboardUiConfig: {
+                                          hideTitle: "true",
+                                          hideTab: "true",
+                                          hideChartControls: "true",
+                                          filters: {
+                                                  expanded: "true",
+                                                  visible: "true"
+                                          }
+                    },
+                }).catch(error => {
+                    console.error('Error embedding Superset dashboard:', error);
+                });
+            } else {
+                console.error('Missing Superset embed ID or guest token.');
+            }
+        });
+    </script>
+</div></p>
+</div>
+
+<link
+      rel="stylesheet"
+      href="{% static 'superset.css'%}"
+/>
+
+
+<div class="row mb-3">
+  <div class="col col-md-6">
+    <div class="card">
+      <h5 class="card-header">Описание</h5>
+      <div class="card-body">
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">Название</th>
+            <td>{{ object.name|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Дашборд</th>
+            <td><a href="#" class="js-open-modal" data-modal="1">Посмотреть дашборд</a></td>
+          </tr>
+          <tr>
+            <th scope="row">security_id</th>
+            <td>{{ object.security_id|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Короткое именование</th>
+            <td>{{ object.slug|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Учреждение</th>
+            <td><a href="{% url 'tenancy:tenant' pk=object.tenant.pk %}">{{ object.tenant }}</a></td>
+          </tr>
+          <tr>
+            <td>Группа систем</td>
+            <td>{{ object.group|linkify|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">В составе системы</th>
+            <td>{{ object.parent|linkify|placeholder }}</td>
+          </tr>
+          <tr>
+            <td>Описание</td>
+            <td>{{ object.description|placeholder }}</td>
+          </tr>
+          <tr>
+            <td>Подсистемы:</td>
+            {% if object.subsystems.all %}
+            <td>{% for sub in object.subsystems.all %}
+              {{ sub|linkify|placeholder }} <br>
+              {% endfor %}
+            </td>
+            {% else %}
+            <td>Нет подсистем</td>
+            {% endif %}
+          </tr>
+          <tr>
+            <th scope="row">Gitlab</th>
+            <td><a href="{{ object.gitlab }}">{{ object.gitlab|placeholder }}</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Wiki</th>
+            <td><a href="{{ object.wiki }}">{{ object.wiki|placeholder }}</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Уровень критичности ИС</th>
+            <td>{% badge object.get_critical_level_display bg_color=object.get_document_type_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Категория персональных данных</th>
+            <td>{% badge object.get_pers_data_category_display bg_color=object.get_document_type_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Перечень конфиденциальной информации</th>
+            <td>{% badge object.get_confidential_info_display bg_color=object.get_document_type_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Дата ввода в эксплуатацию</th>
+            <td>{{ object.comm_date|date:"d.m.Y" }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Приказ ввода в эксплуатацию</th>
+            <td>{{ object.com_order|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Технологии</th>
+            <td>{{ object.technologies|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Технологии развертывания</th>
+            <td>{{ object.dev_technologies|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Коробочное решение</th>
+            <td>{% if object.is_box_solution %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+
+          <tr>
+            <th scope="row">Система на аутсорсе</th>
+            <td>{% if object.is_otsrc_sys %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Администрирование системы на аутсорсе</th>
+            <td>{% if object.is_otsrc_adm %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Поддержка системы на аутсорсе</th>
+            <td>{% if object.is_otsrc_sup %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Доступно ли решение из сети Интернет</th>
+            <td>{% if object.is_internet %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Доступ из сети других организаций ЕИРЖС</th>
+            <td>{% if object.is_able_eirjs %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Есть ли API и используется ли API у решения</th>
+            <td>{% if object.is_able_api %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Нужен ли API доступ из сети Интернет</th>
+            <td>{% if object.is_api_internet %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Доступ из сети подрядчика, контрагента</th>
+            <td>{% if object.is_cont_access %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Обработка конф информации</th>
+            <td>{% if object.is_conf_info %}Да{% else %}Нет{% endif %}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    {% include 'inc/panels/custom_fields.html' %}
+    {% plugin_left_page object %}
+  </div>
+  <div class="col col-md-6">
+    <div class="card">
+      <h5 class="card-header">Связанные объекты</h5>
+      <ul class="list-group list-group-flush">
+        {% for obj, val in object.get_related_objects.items %}
+          {% if val.model == 'device' %}
+            <a href="{% url 'dcim:device_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'virtualmachine' %}
+            <a href="{% url 'virtualization:virtualmachine_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'cluster' %}
+            <a href="{% url 'virtualization:cluster_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'l2vpn' %}
+            <a href="{% url 'vpn:l2vpn_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'asn' %}
+            <a href="{% url 'ipam:asn_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'ipaddress' %}
+            <a href="{% url 'ipam:ipaddress_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'iprange' %}
+            <a href="{% url 'ipam:iprange_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'prefix' %}
+            <a href="{% url 'ipam:prefix_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% elif val.model == 'vlan' %}
+            <a href="{% url 'ipam:vlan_list' %}?cf_system={{ object.pk }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% else %}
+            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+          {% endif %}
+          {{ val.name|title }}
+          {% if val.count %}
+            <span class="badge bg-primary rounded-pill">{{ val.count }}</span>
+          {% else %}
+            <span class="badge bg-light rounded-pill">&mdash;</span>
+          {% endif %}
+          </a>
+        {% endfor %}
+      </ul>
+    </div>
+    {% plugin_right_page object %}
+    {% include 'inc/panels/related_objects.html' %}
+    {% include 'inc/panels/tags.html' %}
+    {% include 'inc/panels/comments.html' %}
+
+  </div>
+  <div class="row">
+    <div class="col col-md-12">
+      {% plugin_full_width_page object %}
+    </div>
+  </div>
+</div>
+<!-- Подложка под модальным окном -->
+<div class="overlay js-overlay-modal"></div>
+<script>
+!function(e){"function"!=typeof e.matches&&(e.matches=e.msMatchesSelector||e.mozMatchesSelector||e.webkitMatchesSelector||function(e){for(var t=this,o=(t.document||t.ownerDocument).querySelectorAll(e),n=0;o[n]&&o[n]!==t;)++n;return Boolean(o[n])}),"function"!=typeof e.closest&&(e.closest=function(e){for(var t=this;t&&1===t.nodeType;){if(t.matches(e))return t;t=t.parentNode}return null})}(window.Element.prototype);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+   /* Записываем в переменные массив элементов-кнопок и подложку.
+      Подложке зададим id, чтобы не влиять на другие элементы с классом overlay*/
+   var modalButtons = document.querySelectorAll('.js-open-modal'),
+       overlay      = document.querySelector('.js-overlay-modal'),
+       closeButtons = document.querySelectorAll('.js-modal-close');
+
+
+   /* Перебираем массив кнопок */
+   modalButtons.forEach(function(item){
+
+      /* Назначаем каждой кнопке обработчик клика */
+      item.addEventListener('click', function(e) {
+
+         /* Предотвращаем стандартное действие элемента. Так как кнопку разные
+            люди могут сделать по-разному. Кто-то сделает ссылку, кто-то кнопку.
+            Нужно подстраховаться. */
+         e.preventDefault();
+
+         /* При каждом клике на кнопку мы будем забирать содержимое атрибута data-modal
+            и будем искать модальное окно с таким же атрибутом. */
+         var modalId = this.getAttribute('data-modal'),
+             modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
+
+
+         /* После того как нашли нужное модальное окно, добавим классы
+            подложке и окну чтобы показать их. */
+         modalElem.classList.add('active');
+         overlay.classList.add('active');
+      }); // end click
+
+   }); // end foreach
+
+
+   closeButtons.forEach(function(item){
+
+      item.addEventListener('click', function(e) {
+         var parentModal = this.closest('.modal');
+
+         parentModal.classList.remove('active');
+         overlay.classList.remove('active');
+      });
+
+   }); // end foreach
+
+
+    document.body.addEventListener('keyup', function (e) {
+        var key = e.keyCode;
+
+        if (key == 27) {
+
+            document.querySelector('.modal.active').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+        };
+    }, false);
+
+
+    overlay.addEventListener('click', function() {
+        document.querySelector('.modal.active').classList.remove('active');
+        this.classList.remove('active');
+    });
+
+
+
+
+}); // end ready
+</script>
+
+
+
+
+	<script>
+	function waitForElementToExist(selector) {
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+    });
+  });
+}
+
+// 👇️ using the function
+waitForElementToExist('#my-superset-container > iframe').then(element => {
+  		superset = document.getElementById("my-superset-container")
+		superset_iframe = superset.children[0]
+		superset_iframe.width = '100%'
+		superset_iframe.height = '100%'
+});
+
+
+modal = document.getElementById('superset_modal')
+modal.style.maxWidth = '80%'
+modal.style.width = '80%'
+modal.style.height = '80%'
+	</script>
+
+
+
+
+<script src="https://unpkg.com/@superset-ui/embedded-sdk"></script>
+{% endblock content %}
+
