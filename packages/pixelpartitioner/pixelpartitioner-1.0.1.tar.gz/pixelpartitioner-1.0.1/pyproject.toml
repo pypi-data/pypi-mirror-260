@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "pixelpartitioner"
+version = "1.0.1"
+description = "Tools for pixel partitioning, intensity-based segmentation, and visualization."
+authors = ["Ajit Johnson Nirmal <ajitjohnson.n@gmail.com>"]
+readme = "README.md"
+
+keywords = ["image analysis","multiplex imaging","single cell analysis"]
+
+homepage = "https://pypi.org/project/pixelpartitioner/"
+documentation = "https://nirmallab.github.io/pixelpartitioner/"
+repository = "https://github.com/nirmallab/pixelpartitioner"
+
+classifiers = [
+              "Development Status :: 5 - Production/Stable",
+              "Natural Language :: English",
+              "Operating System :: OS Independent",
+              "Programming Language :: Python"]
+              
+exclude = ["docs"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.26.4"
+tifffile = "^2024.2.12"
+pandas = "^2.2.1"
+scikit-image = "^0.22.0"
+matplotlib = "^3.8.3"
+pytest = "^8.0.2"
+imagecodecs = "^2024.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
