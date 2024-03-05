@@ -1,0 +1,17 @@
+[workspace]
+members = ["python/distances"]
+resolver = "2"
+
+[profile.test]
+opt-level = 3
+debug = true
+overflow-checks = true
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+
+[profile.bench]
+debug = true
+overflow-checks = true
