@@ -1,0 +1,500 @@
+Metadata-Version: 2.1
+Name: port43
+Version: 0.1.dev0
+Summary: A set of open-source Information Security tools for the 🦜🔗 LangChain framework
+Project-URL: Homepage, https://github.com/pogzyb/port43
+Project-URL: Issues, https://github.com/pogzyb/port43/issues
+Author-email: pogzyb <pogzyb@umich.edu>
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: asyncwhois
+Requires-Dist: langchain
+Description-Content-Type: text/markdown
+
+[![PyPI version](https://badge.fury.io/py/port43.svg)](https://badge.fury.io/py/port43)
+![package workflow](https://github.com/pogzyb/port43/actions/workflows/python-package.yml/badge.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+# 🤿 port43
+
+⚠️ **[work-in-progess]**
+
+A set of open-source Information Security tools for the 🦜🔗 LangChain framework
+
+### Premise
+
+Port43 can help you build Information Security-based LLM applications.
+
+A few use-cases include ...
+- Enabling Threat and SOC Analysts to query SIEM's using natural language
+- Parsing and extracting data from DNS, WHOIS, and RDAP queries
+- Gathering HTML, favicons, certificates, or screenshots from phishing sites on the internet
+- Connecting popular Information Security API's (shodan, virustotal, etc.) with LLM's
+
+... or combining any or all of the steps above into a single workflow!
+
+### Quickstart
+
+Check out the `examples/` folder for each example's complete code.
+
+#### Basic example: WHOIS
+
+WHOIS is a query and response protocol that is used for querying databases 
+that store an Internet resource's registered users or assignees - [Wikipedia](https://en.wikipedia.org/wiki/WHOIS)
+
+Unlike the modern RDAP standard which uses a JSON schema, the format of WHOIS responses follow a semi-free text format. 
+So in other words, WHOIS is ["Fragile, unparseable, obsolete... and universally relied upon"](https://www.netmeister.org/blog/whois.html)
+
+In order to parse WHOIS text responses from different registrars into a set of standardized key-value pairs that can be 
+used by applications many open-source libraries have implemented a combination of regular expressions and text mining 
+techniques. Despite some success the amount of edge-cases or registrars with unconventional implementations has caused
+an overall inconsistent feel for many developers wishing to integrate WHOIS data into their applications.
+
+For example, here is the authoritative output of `whois umich.edu`, which doesn't necessary follow 
+the conventional single line key:value format:
+```
+-------------------------------------------------------------
+
+Domain Name: UMICH.EDU
+
+Registrant:
+	University of Michigan -- ITD
+	ITCS, Arbor Lakes
+	4251 Plymouth Road
+	Ann Arbor, MI 48105-2785
+	USA
+
+Administrative Contact:
+	Domain Admin
+	University of Michigan
+	ITS, Arbor Lakes
+	4251 Plymouth Road
+	Ann Arbor, MI 48105-3640
+	USA
+	+1.7347641817
+	domainreg@umich.edu
+
+Technical Contact:
+	 
+	University of Michigan
+	ITS, Arbor Lakes
+	4251 Plymouth Road
+	Ann Arbor, MI 48105-3640
+	USA
+	+1.7347641817
+	domainreg@umich.edu
+
+Name Servers:
+	UMICH-EDU.DNS.UMICH.COM
+	UMICH-EDU.DNS.UMICH.ORG
+	UMICH-EDU.DNS.UMICH.NET
+
+Domain record activated:    07-Oct-1985
+Domain record last updated: 04-Jan-2024
+Domain expires:             31-Jul-2024
+
+```
+
+Fortunately, the ever-growing capabilities of LLM's have made it possible to frame this problem in terms of an "AI-assistant"
+(aka ChatModel) leading to impressive results with zero pre- and post-processing.
+
+Here is some example code:
+
+```python
+# get a blob of WHOIS text
+text, _ = asyncwhois.whois("umich.edu", authoritative_only=True)
+# craft a prompt to extract key/values from the whois text
+# the prompt asks the LLM to take the text and convert it into a standardized JSON format
+prompt = WhoisTextToJson  # port43.prompts.whois_text_to_json.py
+# pull any open-source LLM from HuggingFace
+# or use Ollama: model = llm = ChatOllama("mistral")
+llm = HuggingFaceHub(
+    repo_id="HuggingFaceH4/zephyr-7b-beta",
+    task="text-generation",
+    huggingfacehub_api_token=<HF_API_TOKEN>,
+    model_kwargs={"max_new_tokens": 2048},
+)
+# wrapper for HuggingFace LLM's
+model = ChatHuggingFace(llm=llm)
+# LCEL
+chain = prompt | model | StrOutputParser()
+# view the result
+pprint(chain.invoke(input={"data": text}))
+```
+<details>
+  <summary>View the Result</summary>
+  
+Note that there is absolutely no postprocessing of the LLM output. The LLM
+was able to match all keys/values on its own. Further processing could be added to
+convert timestamps, fill-in null values, or modify values for a specific use-case.
+
+```json
+{
+  "admin_address": "University of Michigan -- ITD\\nITCS, Arbor Lakes\\n4251 Plymouth Road\\nAnn Arbor, MI 48105-2785\\nUSA",
+  "admin_city": "Ann Arbor",
+  "admin_country": "USA",
+  "admin_email": "domainreg@umich.edu",
+  "admin_fax": "+1.7347641817",
+  "admin_id": "",
+  "admin_name": "",
+  "admin_organization": "University of Michigan -- ITD",
+  "admin_phone": "+1.7347641817",
+  "admin_state": "",
+  "admin_zipcode": "48105-3640",
+  "billing_address": "University of Michigan -- ITD\\nITCS, Arbor Lakes\\n4251 Plymouth Road\\nAnn Arbor, MI 48105-3640\\nUSA",
+  "billing_city": "Ann Arbor",
+  "billing_country": "USA",
+  "billing_email": "",
+  "billing_fax": "+1.7347641817",
+  "billing_id": "",
+  "billing_name": "",
+  "billing_organization": "University of Michigan -- ITD",
+  "billing_phone": "+1.7347641817",
+  "billing_state": "",
+  "billing_zipcode": "48105-3640",
+  "created": "07-Oct-1985",
+  "dnssec": "",
+  "domain_name": "UMICH.EDU",
+  "expires": "31-Jul-2024",
+  "name_servers": [
+    "UMICH-EDU.DNS.UMICH.ORG",
+    "UMICH-EDU.DNS.UMICH.NET",
+    "UMICH-EDU.DNS.UMICH.COM"
+  ],
+  "registrant_address": "University of Michigan -- ITD\\nITCS, Arbor Lakes\\n4251 Plymouth Road\\nAnn Arbor, MI 48105-2785\\nUSA",
+  "registrant_city": "Ann Arbor",
+  "registrant_country": "USA",
+  "registrant_email": "",
+  "registrant_fax": "+1.7347641817",
+  "registrant_id": "",
+  "registrant_name": "",
+  "registrant_organization": "University of Michigan -- ITD",
+  "registrant_phone": "+1.7347641817",
+  "registrant_state": "",
+  "registrant_zipcode": "48105-2785",
+  "registrar": "",
+  "registrar_abuse_email": "",
+  "registrar_abuse_phone": "",
+  "registrar_iana_id": "",
+  "registrar_url": "",
+  "status": [
+    "active"
+  ],
+  "tech_address": "University of Michigan\\nITS, Arbor Lakes\\n4251 Plymouth Road\\nAnn Arbor, MI 48105-3640\\nUSA",
+  "tech_city": "Ann Arbor",
+  "tech_country": "USA",
+  "tech_email": "",
+  "tech_fax": "+1.7347641817",
+  "tech_id": "",
+  "tech_name": "",
+  "tech_organization": "University of Michigan",
+  "tech_phone": "+1.7347641817",
+  "tech_state": "",
+  "tech_zipcode": "48105-3640",
+  "updated": "04-Jan-2024"
+}
+```
+</details>
+
+This whois example is just scratching the surface of what kind of problems LLM's can tackle. 
+Again, the goal of Port43 is to highlight more use-cases and expand AI-first information security workflows. 
+
+#### Basic Agent: Finding DNS Records
+
+```python
+# add some tools
+tools = [DNSTool(), WHOISTool()]
+# get the ReAct prompt
+prompt = get_react_json_prompt(tools, render_args=True)
+# init any LLM; in this example we're using mistral via Ollama
+# figure out how to use Ollama here: https://ollama.com
+llm = ChatOllama(model="mistral", temperature=0)
+# have the model stop after solving the exercise
+chat_model_with_stop = llm.bind(stop=["\nObservation"])
+# create the agent
+agent = (
+    {
+        "input": lambda x: x["input"],
+        "chat_history": lambda x: (
+            _format_chat_history(x["chat_history"]) if x.get("chat_history") else []
+        ),
+        "agent_scratchpad": lambda x: format_log_to_messages(
+            x["intermediate_steps"]
+        ),
+    }
+    | prompt
+    | chat_model_with_stop
+    | ReActJsonSingleInputOutputParser()
+)
+# create an executor
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+pprint(
+    agent_executor.invoke(
+        {
+            "input": "How many DNS records does google.com have? What are the MX records?"
+        }
+    )
+)
+```
+
+<details>
+  <summary>View the Result</summary>
+
+`examples/scripts/basic_react_agent_01.py`
+
+```python
+"""
+> Entering new AgentExecutor chain...
+ Thought: I need to find out how many DNS records google.com has and what its MX records are. I can use the dns_search tool for this.
+Action:```json
+{
+    "action": "dns_search",
+    "action_input": {
+        "hostname": "google.com"
+    }
+}
+```{
+  "A": "142.250.191.142",
+  "NS": "ns4.google.com.",
+  "SOA": "ns1.google.com. dns-admin.google.com. 611883130 900 900 1800 60",
+  "MX": "10 smtp.google.com.",
+  "TXT": "\"apple-domain-verification=30afIBcvSuDV2PLX\"",
+  "AAAA": "2607:f8b0:4009:818::200e",
+  "CAA": "0 issue \"pki.goog\""
+} Observation: The DNS records for google.com include one A record, two NS records, one SOA record, one MX record, one TXT record, one AAAA record, and one CAA record. The MX record is "10 smtp.google.com."
+Thought: I now have the information to answer the original question.
+Final Answer: Google.com has a total of 7 DNS records, including 1 A record, 2 NS records, 1 SOA record, 1 MX record, 1 TXT record, 1 AAAA record, and 1 CAA record. The MX records are "10 smtp.google.com."
+
+> Finished chain.
+{'input': 'How many DNS records does google.com have? What are the MX records?',
+ 'output': 'Google.com has a total of 7 DNS records, including 1 A record, 2 '
+           'NS records, 1 SOA record, 1 MX record, 1 TXT record, 1 AAAA '
+           'record, and 1 CAA record. The MX records are "10 smtp.google.com."'}
+"""
+```
+
+</details>
+
+#### Advanced use-case: Threat Hunting using Natural Language
+
+```python
+coming soon...
+```
+
+#### Advanced use-case: Domain Monitoring & Phishing Detection
+
+```python
+coming soon...
+```
+
+### Roadmap
+- Continue to expand the number of Tools
+  - common interface for SIEM query integrations (Splunk, Elasticsearch, SumoLogic, etc.)
+  - popular infosec API's (shodan, virustotal, ..., etc.)
+  - popular open-source cli libraries (dnstwist, ..., etc.)  
+- Add examples for advanced use-cases
+- Abstract some of the LangChain Agent setup
