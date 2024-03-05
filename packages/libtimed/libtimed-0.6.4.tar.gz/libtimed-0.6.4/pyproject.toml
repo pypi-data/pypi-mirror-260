@@ -1,0 +1,91 @@
+[tool.poetry]
+name = "libtimed"
+version = "0.6.4"
+description = "Library to intreact with timed webapp."
+authors = [
+  "Arthur Deierlein <arthur.deierlein@adfinis.com>",
+  "Gian Klug <gian.klug@adfinis.com>",
+]
+readme = "README.md"
+packages = [{ include = "libtimed", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+keyring = "^24.1.0"
+inflection = "^0.5.1"
+requests-cache = "^1.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+pytest = "^7.3.2"
+pytest-coverage = "^0.0"
+pdbpp = "^0.10.3"
+ruff = "^0.0.282"
+
+# Dependencies only used in examples
+[tool.poetry.group.example.dependencies]
+pyfzf = "^0.3.1"
+
+
+[tool.ruff]
+line-length = 88
+select = ["F","E","W","I","N", "D", "B", "Q", "C4", "UP", "PT", "T20", "RET", "RUF", "SLF", "SIM", "C90"]
+src = ["src", "examples", "test"]
+ignore = [
+    # make docstrings optional
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D211",
+    "D213",
+    "RUF012",
+    # line length is handled by black
+    "E501",
+    # disable this for now
+    "SLF001",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 8
+
+[tool.ruff.extend-per-file-ignores]
+"examples/*.py" = ["T201"]
+
+[tool.ruff.isort]
+known-first-party = ["libtimed"]
+combine-as-imports = true
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+fail_under = 100
+exclude_lines = [
+  "pragma: no cover",
+  "pragma: todo cover",
+  "def __str__",
+  "def __unicode__",
+  "def __repr__",
+]
+omit = []
+show_missing = true
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+major_on_zero = false
+branch = "main"
+build_command = "pip install poetry && poetry build"
