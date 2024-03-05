@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: algaestat
+Version: 1.0.2
+Summary: Algae cultivating data extract-transform-load package
+Home-page: https://azcati.asu.edu/
+Author: David A. Baker
+Classifier: Intended Audience :: Manufacturing 
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >3.10.0
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: boto3
+Requires-Dist: simplejson
+Requires-Dist: csaps
+Requires-Dist: importlib_resources
+Requires-Dist: numpy
+
+algaestat is a package to extract, transform and aggregate Algae cultivation data. 
+A series of proprietary and open-source instruments collected this data: 
+Burge Environmental MiProbe (Algae Probe), YSI (Algae Probe), HoboLink (Weather Data)
+pH Meters.
+Free from notebook entries are also accessible.
+Cultivation data.
+- Algae Pool Status including, levels, temperature. 
+- This package contains classes to: 
+- Query the WS Dynomodb (where the data is stored).
+- Extract data from AWS Dynomodb, 
+- Transform and aggregate the data to relational tables or JSON formats.
+- Export results as files (i.e. csv)
