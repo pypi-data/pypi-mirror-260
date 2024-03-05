@@ -1,0 +1,91 @@
+{
+    "configurations":
+        [
+            {
+            "config_id": "device_registry",
+            "filename": "core.device_registry",
+            "first_key": "data",
+            "second_key": "devices",
+            "id_key": "id",
+            "identifiers_key": "identifiers",
+            "type_cfg": ".json",
+            "path": "./config/.storage/",
+            "on_off_field": "disabled_by",
+            "on_integration": null,
+            "off_integration": "user"
+            },
+            {
+            "config_id": "config_entries",
+            "filename": "core.config_entries",
+            "first_key": "data",
+            "second_key": "entries",
+            "id_key": "entry_id",
+            "identifiers_key": "domain",
+            "type_cfg": ".json",
+            "path": "./config/.storage/",
+            "on_off_field": "disabled_by",
+            "on_integration": null,
+            "off_integration": "user"
+            },
+            {
+            "config_id": "entity_registry",
+            "filename": "core.entity_registry",
+            "first_key": "data",
+            "second_key": "entities",
+            "id_key": "id",
+            "identifiers_key": "platform",
+            "type_cfg": ".json",
+            "path": "./config/.storage/",
+            "on_off_field": "disabled_by",
+            "on_integration": null,
+            "off_integration": "user"
+            }
+        ],
+
+    "automations_cfg":
+        [
+            {
+            "config_id": "automations",
+            "first_key": null,
+            "second_key": null,
+            "id_key": "id",
+            "identifiers_key": "id",
+            "filename": "automations.yaml",
+            "type_cfg": ".yaml",
+            "path": "./config/",
+            "on_off_field": "disabled_by",
+            "on_integration": null,
+            "off_integration": "user"
+            },
+            {
+            "config_id": "entity_registry",
+            "filename": "core.entity_registry",
+            "first_key": "data",
+            "second_key": "entities",
+            "id_key": "unique_id",
+            "identifiers_key": "platform",
+            "type_cfg": ".json",
+            "path": "./config/.storage/",
+            "on_off_field": "disabled_by",
+            "on_integration": null,
+            "off_integration": "user"
+            }
+        ],
+
+    "config_restore_state" :
+        {
+        "config_id": "restore_state",
+        "filename": "core.restore_state",
+        "first_key": "data",
+        "second_key": null,
+        "state": "state",
+        "id_key": "entity_id",
+        "attr_id": "id",
+        "identifiers_key": "attributes",
+        "type_cfg": ".json",
+        "path": "./config/.storage/",
+        "on_off_field": "disabled_by",
+        "on_integration": null,
+        "off_integration": "user"
+        }
+}
