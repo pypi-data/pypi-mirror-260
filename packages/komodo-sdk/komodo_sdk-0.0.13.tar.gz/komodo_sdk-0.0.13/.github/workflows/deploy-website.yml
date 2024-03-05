@@ -1,0 +1,20 @@
+name: Deploy Komodo AI Website Container
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Set tag
+        default: latest
+
+jobs:
+  call-update-function:
+    uses: ./.github/workflows/deploy-container.yml
+    with:
+      folder: website
+      registry: 173309180924.dkr.ecr.us-east-1.amazonaws.com
+      repository: komodo/website
+      image_tag: latest
+    secrets: inherit
