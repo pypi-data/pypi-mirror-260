@@ -1,0 +1,30 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "orca-rs"
+requires-python = ">=3.10"
+description = "Parser for ORCA output files."
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+license = {file = "LICENSE" }
+
+authors = [
+    { name = "Felix Scherz", email = "felixwscherz@gmail.com" },
+]
+maintainers = [
+    { name = "Felix Scherz", email = "felixwscherz@gmail.com" },
+]
+
+[project.urls]
+repository = "https://github.com/felixscherz/orca-rs"
+issues = "https://github.com/felixscherz/orca-rs/issues"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
