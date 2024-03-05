@@ -1,0 +1,184 @@
+Metadata-Version: 2.1
+Name: dmtoolbox-win
+Version: 0.1.1
+Summary: Uma extensão do dmtoolbox focada em funcionalidades específicas do Windows, incluindo manipulação de registros, criação de executáveis e gerenciamento de arquivos e configurações avançadas do sistema.
+Home-page: https://github.com/DanielMelloo/dmtoolbox-win
+Author: Daniel Mello
+Author-email: danielmello.dev@gmail.com
+License: GPLv3
+Keywords: utils automation numpy pandas matplotlib
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyinstaller>=6.4.0
+Requires-Dist: pefile>=2023.2.7
+Requires-Dist: dmtoolbox>=0.1.22
+
+
+![GitHub repo size](https://img.shields.io/github/repo-size/DanielMelloo/dmtoolbox-win?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/DanielMelloo/dmtoolbox-win?style=for-the-badge)
+![Bitbucket open issues ](https://img.shields.io/bitbucket/issues/DanielMelloo/dmtoolbox-win?style=for-the-badge)
+![Bitbucket open pull requests ](https://img.shields.io/bitbucket/pr/DanielMelloo/dmtoolbox-win?style=for-the-badge)  
+
+
+# dmtoolbox-win
+
+
+- [dmtoolbox-win](#dmtoolbox-win)
+  - [Descrição](#descrição)
+  - [Funcionalidades](#funcionalidades)
+  - [Funcionalidades dos Módulos](#funcionalidades-dos-módulos)
+    - [appdataGen.py](#appdatagenpy)
+    - [createExeOnC.py](#createexeoncpy)
+    - [exeGenerator.py](#exegeneratorpy)
+    - [regedit.py](#regeditpy)
+  - [Instalação do Pacote dmtoolbox](#instalação-do-pacote-dmtoolbox)
+    - [Pré-Requisitos](#pré-requisitos)
+    - [Passo 1: Criação de um Ambiente Virtual (Opcional, mas Recomendado)](#passo-1-criação-de-um-ambiente-virtual-opcional-mas-recomendado)
+    - [Passo 2: Instalação do Pacote dmtoolbox](#passo-2-instalação-do-pacote-dmtoolbox)
+    - [Solução Alternativa: Instalação Manual das Dependências e Clonagem do Repositório](#solução-alternativa-instalação-manual-das-dependências-e-clonagem-do-repositório)
+  - [Uso](#uso)
+  - [Exemplo de Uso](#exemplo-de-uso)
+  - [Contribuindo](#contribuindo)
+  - [Autor](#autor)
+  - [Licença](#licença)
+
+
+## Descrição
+
+`dmtoolbox-win` é uma extensão do `dmtoolbox`, projetada especificamente para integrar funcionalidades específicas do ambiente Windows em seus projetos Python. Este pacote complementar oferece ferramentas poderosas para manipulação de registros do Windows, criação de executáveis, gerenciamento avançado de arquivos e diretórios, e muito mais.
+
+## Funcionalidades
+
+- **appdataGen**: Facilita a criação, manipulação e organização de arquivos e pastas dentro do diretório AppData do Windows, permitindo o armazenamento de dados de aplicativos de forma estruturada e acessível.
+
+- **createExeOnC**: Auxilia na criação de cópias executáveis da sua aplicação diretamente no disco local C, simplificando o processo de instalação e distribuição de software.
+
+- **exeGenerator**: Utiliza o PyInstaller para converter scripts Python em executáveis autônomos para Windows, facilitando a distribuição de aplicações sem necessidade de instalação do Python.
+
+- **regedit**: Fornece uma interface programática para a criação, leitura, edição e exclusão de registros do Windows, permitindo a modificação de configurações do sistema e de aplicativos de maneira automatizada.
+
+
+
+## Funcionalidades dos Módulos
+Cada módulo traz um conjunto de funcionalidades específicas, detalhadas a seguir:
+
+### [appdataGen.py](https://github.com/DanielMelloo/dmtoolbox-win/blob/main/dmtoolbox-win/appdataGen.py)
+- Gerencia arquivos e diretórios no AppData LocalLow, permitindo a criação personalizada de estruturas de diretórios e arquivos de configuração.
+
+### [createExeOnC.py](https://github.com/DanielMelloo/dmtoolbox-win/blob/main/dmtoolbox-win/createExeOnC.py)
+
+- Facilita a criação de cópias da aplicação no disco local C, útil para a distribuição de software ou instalação local rápida.
+
+### [exeGenerator.py](https://github.com/DanielMelloo/dmtoolbox-win/blob/main/dmtoolbox-win/exeGenerator.py)
+- Utiliza o PyInstaller para converter scripts Python em executáveis autônomos, simplificando a distribuição de aplicações.
+  
+
+### [regedit.py](https://github.com/DanielMelloo/dmtoolbox/blob/main/dmtoolbox-win/regedit.py)
+- Permite a criação e gerenciamento de entradas de registro do Windows, facilitando a integração com o sistema operacional.
+
+## Instalação do Pacote dmtoolbox
+
+Para instalar o pacote dmtoolbox-win de maneira eficiente e segura, siga os passos abaixo. Recomendamos a utilização de um ambiente virtual Python para evitar conflitos de dependências com outros pacotes instalados no sistema.
+
+### Pré-Requisitos
+
+- Certifique-se de que o Python está instalado em seu sistema. O dmtoolbox é compatível com Python 3.6 ou superior.
+- É recomendável ter o pip, o gerenciador de pacotes do Python, atualizado. Para atualizar o pip, execute o seguinte comando no terminal:
+```bash
+python -m pip install --upgrade pip
+```
+
+
+### Passo 1: Criação de um Ambiente Virtual (Opcional, mas Recomendado)
+
+1. Abra um terminal.
+2. Navegue até o diretório onde deseja armazenar o ambiente virtual e seu projeto.
+3. Execute o comando para criar um ambiente virtual. Substitua `meuenv` pelo nome que deseja dar ao seu ambiente virtual:
+
+python -m venv meuenv
+
+4. Ative o ambiente virtual:
+
+   - No Windows:
+    ```powershell
+    .\meuenv\Scripts\activate
+    ```
+
+    - No Unix ou MacOS:
+    ```bash
+    source meuenv/bin/activate
+    ```
+
+### Passo 2: Instalação do Pacote dmtoolbox
+
+Com o ambiente virtual ativado, instale o pacote `dmtoolbox-win` utilizando o pip:
+```bash
+pip install dmtoolbox-win
+```
+
+### Solução Alternativa: Instalação Manual das Dependências e Clonagem do Repositório
+
+Caso encontre problemas ao instalar o pacote via pip, você pode optar por instalar manualmente as dependências e clonar o repositório do projeto. Primeiro, instale as dependências listadas no arquivo `requirements.txt`:
+```bash
+pip install -r win-requirements.txt
+```
+
+Certifique-se de que o [`dmtoolbox`](https://github.com/DanielMelloo/dmtoolbox) esteja instalado ou será instalado automaticamente como dependência.
+
+## Uso
+
+Para usar `dmtoolbox-win`, simplesmente importe o pacote ou módulos específicos em seu projeto Python. Veja a documentação para exemplos detalhados de uso e funcionalidades.
+
+`dmtoolbox-win` é a ferramenta ideal para desenvolvedores Python que trabalham em ambientes Windows e procuram integrar funcionalidades específicas do Windows em seus projetos com facilidade e eficiência.
+
+
+
+
+## Exemplo de Uso
+
+Para criar um arquivo executável de um script Python, você pode utilizar o módulo `exeGenerator`. Este módulo permite converter um script Python em um arquivo executável para Windows, especificando o caminho do script, o nome desejado para o executável e o diretório onde o executável será salvo.
+
+```python
+from dmtoolbox_win.exeGenerator import create_executable
+
+# Caminho do seu script Python
+script_path = "meu_script.py"
+
+# Nome desejado para o executável
+exe_name = "MeuApp"
+
+# Diretório onde o executável será salvo
+release_dir = "./dist"
+
+create_executable(script_path, exe_name, release_dir)
+```
+
+Este exemplo demonstra como usar o módulo `exeGenerator` para converter um script Python em um arquivo executável para Windows.
+
+## Contribuindo
+
+Contribuições para `dmtoolbox-win` são bem-vindas! Se você tem sugestões de melhorias, correções de bugs ou novas funcionalidades, fique à vontade para abrir uma issue ou enviar um pull request.
+
+## Autor
+
+- Nome: Daniel Mello
+- Website: [Portfólio](https://www.danielmello.tech)
+- GitHub: [github.com/DanielMelloo](https://github.com/DanielMelloo)
+
+
+## Licença
+Este projeto é licenciado sob a GNU General Public License v3.0 - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+
+[⬆ Voltar ao topo](#dmtoolbox-win)**
