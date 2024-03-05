@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "pyavd-cli"
+version = "0.1.2"
+description = "A collection of cli scripts to use pyavd"
+authors = ["Arista Networks <eosplus-dev@arista.com>"]
+readme = "README.md"
+include = ["CHANGELOG.md"]
+
+[tool.poetry-dynamic-versioning]
+enable = false
+metadata = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyavd = "^4.5.0"
+ansible-core = ">=2.16.0, <2.17.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+flake8-docstrings = "^1.7.0"
+pre-commit = "^3.6.0"
+pylint = "^3.0.3"
+pylint-exit = "^1.2.0"
+mypy = "^1.8.0"
+types-pyyaml = "^6.0.12.12"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.black]
+line-length = 130
+preview = true
+
+[tool.isort]
+profile = "black"
+
+[tool.poetry.scripts]
+pyavd-build = "pyavd_cli.build:main"
