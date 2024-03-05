@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: oarepo-global-search
+Version: 1.0.1
+Summary: "A model builder plugin for global search"
+Home-page: https://github.com/oarepo/oarepo-global-search
+Author: Alzbeta Pokorna
+Author-email: Alzbeta.Pokorna@cesnet.cz
+License: MIT
+Keywords: invenio relations model builder
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: oarepo-model-builder>=4.0.0
+Requires-Dist: invenio_records_resources>=0.21.4
+Provides-Extra: tests
+Requires-Dist: pytest; extra == "tests"
+Requires-Dist: black; extra == "tests"
+Requires-Dist: autoflake; extra == "tests"
+Requires-Dist: isort; extra == "tests"
+
+# Global search plugin
+
