@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "streamdeck-linux-gui"
+version = "4.1.1"
+description = "A service, Web Interface, and UI for interacting with your computer using a Stream Deck"
+authors = ["Timothy Crosley <timothy.crosley@gmail.com>"]
+maintainers = ["4s3ti <4s3ti@4s3ti.net>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+  {include = "streamdeck_ui"}
+]
+
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.13"
+streamdeck = "^0.9.5"
+pillow = "10.2.0"
+pyside6 = "^6.4.2"
+CairoSVG = "^2.5.2"
+filetype = "^1.0.10"
+importlib-metadata = "^6.8.0"
+evdev = "^1.6.1"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = ">=1.4.2"
+mkdocs-material = ">=9.1.14"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.12.0"
+pytest-qt = "^4.2.0"
+
+[tool.poetry.group.lint.dependencies]
+black = "^23.10.1"
+flake8-bugbear = "23.3.12" # over this version python 3.8.1 is required
+mypy = "^1.6.1"
+pep8-naming = "^0.13.3"
+vulture = "^2.10"
+bandit = "^1.7.5"
+safety = "^2.3.5"
+isort = "^5.12.0"
+
+[tool.poetry.scripts]
+streamdeck = "streamdeck_ui.gui:start"
+streamdeckc = "streamdeck_ui.cli.server:execute"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "hug"
+
+[tool.mypy]
+python_version = "3.8"
+
+[tool.portray]
+output_dir = "site"
+include_reference_documentation = false
+extra_dirs = ["art", "images", "media", "scripts"]
+
+[tool.portray.mkdocs]
+repo_url = "https://github.com/streamdeck-linux-gui/streamdeck-linux-gui"
+edit_uri = "edit/master/"
