@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "ghostfft"
+version = "0.1.0"
+description = "A tool to simulate behaviour of CASPER Simulink blocks with bit accuracy."
+authors = ["Vadym Bidula <vadym.bidula@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.26.3"
+tqdm = "^4.66.2"
+
+
+[tool.poetry.group.qc.dependencies]
+pytest = "^8.0.2"
+h5py = "^3.10.0"
+
+
+[tool.poetry.group.dev.dependencies]
+matplotlib = "^3.8.2"
+jupyter = "^1.0.0"
+scipy = "^1.12.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
