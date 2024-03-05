@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: humanfirst
+Version: 1.0.5
+Summary: HumanFirst Package Module
+Home-page: https://github.com/zia-ai/humanfirst-module
+Author: Mohammed Fayaz Ansar Jelani
+Author-email: fayaz@humanfirst.ai
+License: MIT
+Keywords: python,humanfirst,HumanFirst
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: requests-toolbelt
+Requires-Dist: dataclasses
+Requires-Dist: dataclasses-json
+Requires-Dist: python-dotenv
+Provides-Extra: dev
+Requires-Dist: twine ==4.0.2 ; extra == 'dev'
+Requires-Dist: wheel ==0.41.2 ; extra == 'dev'
+Requires-Dist: keyring ; extra == 'dev'
+Requires-Dist: keyrings.alt ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+Requires-Dist: git-pylint-commit-hook ; extra == 'dev'
+Requires-Dist: numpy ; extra == 'dev'
+Requires-Dist: pandas ; extra == 'dev'
+Requires-Dist: requests ; extra == 'dev'
+Requires-Dist: requests-toolbelt ; extra == 'dev'
+Requires-Dist: autopep8 ; extra == 'dev'
+Requires-Dist: dataclasses ; extra == 'dev'
+Requires-Dist: dataclasses-json ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: python-dotenv ; extra == 'dev'
+
+
+# humanfirst-module
+Humanfirst module package
+
+## Components
+It contains classes and API functions
+
+**humanfirst.objects** - A set of helper classes and methods for describing, validating and interacting with HFOBjects that make up the HF JSON format
+
+**humanfirst.apis** - Examples of how to the call the HumanFirst APIs
