@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: preloop-cli
+Version: 0.3.12
+Summary: Command line interface to access Preloop.
+Home-page: https://www.preloop.com/
+License: Apache-2.0
+Keywords: preloop,cli
+Author: Preloop, Inc.
+Author-email: engineering@preloop.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: preloop-sdk (>=0.2.14,<0.3.0)
+Requires-Dist: pyarrow (>=14.0.1,<15.0.0)
+Requires-Dist: rich (>=13.7.0,<14.0.0)
+Requires-Dist: typer (>=0.9.0,<0.10.0)
+Project-URL: Documentation, https://www.preloop.com/docs
+Description-Content-Type: text/markdown
+
+# Preloop CLI
+Using this command line tool is the quickest way to interact with your Preloop entities.
+
+# Installation instructions
+Use pip to install the CLI. It's recommended to do so in a virtual environment.
+```
+pip install preloop-cli
+```
+
+# Authentication
+Use environment variables to store an API key generated in your account to authenticate with Preloop.
+```
+export PRELOOP_KEY_ID=<key_id>
+export PRELOOP_SECRET=<secret>
+```
+
+# Commands
+Start with `preloop --help` to display a list of commands. You can also use `--help` along with a command to display a list of possible arguments and options that can be used with the command.
+```
+preloop list-datasources --help
+```
