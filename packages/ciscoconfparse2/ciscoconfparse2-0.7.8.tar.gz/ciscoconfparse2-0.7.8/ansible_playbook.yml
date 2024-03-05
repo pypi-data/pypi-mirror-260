@@ -1,0 +1,10 @@
+---
+- name: Perform directory on server
+  hosts: webhosts
+  remote_user: mpenning
+
+  tasks:
+  - name: Run a remote unix ls command
+    shell:
+      cmd: ls -la | grep mpenning
+      chdir: public_html

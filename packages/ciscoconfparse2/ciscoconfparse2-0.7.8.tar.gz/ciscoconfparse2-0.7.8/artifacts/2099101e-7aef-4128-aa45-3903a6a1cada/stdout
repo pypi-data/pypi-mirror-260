@@ -1,0 +1,18 @@
+
+PLAY [Perform directory on server] *********************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;35m[DEPRECATION WARNING]: Distribution Ubuntu 20.04 on host chestnut.he.net should[0m
+[0;35m use /usr/bin/python3, but is using /usr/bin/python for backward compatibility [0m
+[0;35mwith prior Ansible releases. A future Ansible release will default to using the[0m
+[0;35m discovered platform python for this host. See https://docs.ansible.com/ansible[0m
+[0;35m/2.10/reference_appendices/interpreter_discovery.html for more information. [0m
+[0;35mThis feature will be removed in version 2.12. Deprecation warnings can be [0m
+[0;35mdisabled by setting deprecation_warnings=False in ansible.cfg.[0m
+[0;32mok: [chestnut.he.net][0m
+
+TASK [Run a remote unix ls command] ********************************************
+[0;33mchanged: [chestnut.he.net][0m
+
+PLAY RECAP *********************************************************************
+[0;33mchestnut.he.net[0m            : [0;32mok=2   [0m [0;33mchanged=1   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
