@@ -1,0 +1,77 @@
+[project]
+name = "cs.app.myke"
+description = "my make program; parallel make tool with superior expression syntax"
+authors = [
+    { name = "Cameron Simpson", email = "cs@cskk.id.au" },
+]
+keywords = [
+    "python3",
+]
+dependencies = [
+    "cs.cmdutils>=20240211",
+    "cs.debug>=20230613.1",
+    "cs.deco>=20240303",
+    "cs.excutils>=20230212.1",
+    "cs.inttypes>=20150120",
+    "cs.later>=20240305",
+    "cs.lex>=20240211",
+    "cs.logutils>=20230212",
+    "cs.pfx>=20230604",
+    "cs.py.func>=20230331",
+    "cs.queues>=20240305",
+    "cs.result>=20240305",
+    "cs.threads>=20240303",
+]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
+version = "20240305.2"
+
+[project.license]
+text = "GNU General Public License v3 or later (GPLv3+)"
+
+[project.urls]
+URL = "https://bitbucket.org/cameron_simpson/css/commits/all"
+
+[project.scripts]
+myke = "cs.app.myke.__main__:main"
+
+[project.readme]
+text = """
+My make programme, a parallel make tool with superior expression syntax.
+
+*Latest release 20240305.2*:
+Several internal updates.
+
+
+
+# Release Log
+
+
+
+*Release 20240305.2*:
+Several internal updates.
+
+*Release 20240305.1*:
+Several internal updates.
+
+*Release 20240305*:
+Several internal updates.
+
+*Release 20220805*:
+Initial PyPI release."""
+content-type = "text/markdown"
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools >= 61.2",
+    "trove-classifiers",
+    "wheel",
+]
