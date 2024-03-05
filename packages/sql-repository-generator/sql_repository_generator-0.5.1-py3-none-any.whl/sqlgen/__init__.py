@@ -1,0 +1,1 @@
+from sqlgen.repository import AsyncRepository, AsyncObjectBoundRepository
