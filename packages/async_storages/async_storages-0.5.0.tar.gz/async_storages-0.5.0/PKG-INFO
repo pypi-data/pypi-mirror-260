@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: async_storages
+Version: 0.5.0
+Summary: Simple filesytem abstraction for async Python
+Home-page: https://github.com/alex-oleshkevich/async_storages
+License: MIT
+Author: Alex Oleshkevich
+Author-email: alex.oleshkevich@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Provides-Extra: s3
+Requires-Dist: aioboto3 (>=12,<13) ; extra == "s3"
+Requires-Dist: anyio (>=4,<5)
+Requires-Dist: sanitize-filename (>=1.2.0,<2.0.0)
+Project-URL: Documentation, https://github.com/alex-oleshkevich/async_storages
+Project-URL: Repository, https://github.com/alex-oleshkevich/async_storages
+Description-Content-Type: text/markdown
+
+# Async storages
+
+Async file storages for Python
+
+![PyPI](https://img.shields.io/pypi/v/async_storages)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alex-oleshkevich/async_storages/Lint)
+![GitHub](https://img.shields.io/github/license/alex-oleshkevich/async_storages)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/async_storages)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/async_storages)
+![GitHub Release Date](https://img.shields.io/github/release-date/alex-oleshkevich/async_storages)
+
+## Installation
+
+Install `async_storages` using PIP or poetry:
+
+```bash
+pip install async_storages
+# or
+poetry add async_storages
+```
+
+## Features
+
+- simple abstraction over local filesystem, s3, or memory driver
+- S3 integration
+- Spooled In-memory driver for unit tests
+
+## Quick start
+
+See example application in [examples/](examples/) directory of this repository.
+
