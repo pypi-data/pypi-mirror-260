@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: chemprop
+Version: 2.0.0rc1
+Summary: Molecular Property Prediction with Message Passing Neural Networks
+Author-email: "The Chemprop Development Team (see LICENSE.txt)" <chemprop@mit.edu>
+License: MIT
+Project-URL: documentation, https://chemprop.readthedocs.io/en/latest/
+Project-URL: source, https://github.com/chemprop/chemprop
+Project-URL: PyPi, https://pypi.org/project/chemprop/
+Keywords: chemistry,machine learning,property prediction,message passing neural network,graph neural network,drug discovery
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: lightning>=2.0
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: rdkit
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: torch>=2.1
+Requires-Dist: torch_scatter
+Requires-Dist: astartes[molecules]
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: bumpversion; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: nbsphinx; extra == "docs"
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx-argparse; extra == "docs"
+Requires-Dist: sphinx-autobuild; extra == "docs"
+Requires-Dist: sphinx-autoapi; extra == "docs"
+Requires-Dist: sphinxcontrib-bibtex; extra == "docs"
+Requires-Dist: sphinx-book-theme; extra == "docs"
+Requires-Dist: nbsphinx-link; extra == "docs"
+Requires-Dist: ipykernel; extra == "docs"
+Provides-Extra: test
+Requires-Dist: parameterized>0.8; extra == "test"
+Requires-Dist: pytest>=6.2; extra == "test"
+Requires-Dist: pytest-cov; extra == "test"
+Provides-Extra: notebooks
+Requires-Dist: ipykernel; extra == "notebooks"
+
+# Chemprop v2.0.0
+
+This is the development branch for Chemprop v2.0.0.
+
+The v2 documentation can be found [here](https://chemprop.readthedocs.io/en/v2-dev/index.html).
+
+There are tutorial notebooks for v2 in the [`examples/`](https://github.com/chemprop/chemprop/tree/v2/dev/examples) directory.
+
+A helpful transition guide from v1 to v2 can be found [here](https://docs.google.com/spreadsheets/u/3/d/e/2PACX-1vRshySIknVBBsTs5P18jL4WeqisxDAnDE5VRnzxqYEhYrMe4GLS17w5KeKPw9sged6TmmPZ4eEZSTIy/pubhtml). This includes a side-by-side comparison of CLI argument options, a list of which arguments will be implemented in later versions of v2, and a list of changes to default hyperparameters.
+
+You can subscribe to our development status and notes for this version [here](https://github.com/chemprop/chemprop/issues/517).
