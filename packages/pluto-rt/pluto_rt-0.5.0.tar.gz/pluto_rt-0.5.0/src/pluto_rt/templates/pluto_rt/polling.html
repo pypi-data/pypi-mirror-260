@@ -1,0 +1,8 @@
+{# Polled messages sent as templated strings as they're retrieved from queue #}
+<div
+  hx-get="{% url 'pluto_rt:polling' queue_name item_template %}?count={{ num_per_gulp }}&reverse={{ reverse }}"
+  hx-trigger="every {{ interval_seconds }}s"
+  hx-target="{{ target }}"
+  hx-swap="{% if reverse %}afterbegin{% else %}beforeend{% endif %}"
+>
+</div>
