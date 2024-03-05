@@ -1,0 +1,37 @@
+{
+    "KVCacheMgr":{
+        "input0":{
+            "dtype":"float32, int32, uint32, float16, int16, uint16, int8, uint8",
+            "format":"ND,ND,ND,ND,ND,ND,ND,ND",
+            "name":"past",
+            "paramType":"required"
+        },
+        "input1":{
+            "dtype":"float32, int32, uint32, float16, int16, uint16, int8, uint8",
+            "format":"ND,ND,ND,ND,ND,ND,ND,ND",
+            "name":"cur",
+            "paramType":"required"
+        },
+        "input2":{
+            "dtype":"int32,int32,int32,int32,int32,int32,int32,int32",
+            "format":"ND,ND,ND,ND,ND,ND,ND,ND",
+            "name":"index",
+            "paramType":"required"
+        },
+        "needCheckSupport":{
+            "flag":"true"
+        },
+        "opFile":{
+            "value":"kv_cache_mgr"
+        },
+        "opInterface":{
+            "value":"kv_cache_mgr"
+        },
+        "output0":{
+            "dtype":"float32, int32, uint32, float16, int16, uint16, int8, uint8",
+            "format":"ND,ND,ND,ND,ND,ND,ND,ND",
+            "name":"past",
+            "paramType":"required"
+        }
+    }
+}
