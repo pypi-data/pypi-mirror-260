@@ -1,0 +1,142 @@
+NoteDecorations {
+  preview-fg: #3f3f74;
+  preview-bg: #f3e9dd;
+  highlight-fg: #f3e9dd;
+  highlight-bg: #a68d9d;
+  encryption-icon: #827081;
+  encryption-icon-active: #5b4b49;
+  toolbar-icon: #827081;
+  toolbar-icon-active: #f3e9dd;
+  status-icon: #c9c1c8;
+  status-icon-active: #ffffff;
+  border-color: #a68d9d;
+}
+
+QTextEdit#html,
+QPlainTextEdit#plain {
+  color: #827081;
+  background-color: #f3e9dd;
+}
+
+QTextEdit:active#html,
+QPlainTextEdit:active#plain {
+  color: #3f3f74;
+}
+
+QTextEdit[readOnly="true"]#html,
+QPlainTextEdit[readOnly="true"]#plain {
+  color: #827081;
+}
+
+QFrame#html,
+QFrame#plain {
+  border: 4px solid #f3e9dd;
+}
+
+AbstractText,
+QSizeGrip,
+Vim,
+QFrame#hotbar-frame,
+QFrame#hotbar-spacer {
+  color: #827081;
+  background-color: #a68d9d;
+}
+
+QLabel#topbar-title,
+QPushButton#topbar-status,
+QPushButton#topbar-close {
+  color: #c9c1c8;
+  background-color: #a68d9d;
+  border: none;
+}
+
+QLabel:active#topbar-title {
+  color: #ffffff;
+}
+
+QPushButton:active#topbar-close {
+  color: #f3e9dd;
+}
+
+QPushButton:hover#topbar-close {
+  color: #ffffff;
+}
+
+QFrame#popup-frame,
+QFrame#msgbar-frame,
+QLabel#msgbar-folder,
+QLabel#msgbar-pixels,
+QLabel#msgbar-popup-left,
+QLabel#msgbar-popup-right,
+QLabel#msgbar-words {
+  color: #827081;
+  background-color: #f3e9dd;
+}
+
+QFrame:active#msgbar-frame,
+QLabel:active#msgbar-folder,
+QLabel:active#msgbar-pixels,
+QLabel:active#msgbar-popup-left,
+QLabel:active#msgbar-popup-right,
+QLabel:active#msgbar-words {
+  color: #5b4b49;
+}
+
+QFrame#toolbar-frame,
+QLabel#toolbar-spacer,
+QLabel#toolbar-separator {
+  color: #a68d9d;
+  background-color: #a68d9d;
+  border: none;
+}
+
+QPushButton:hover#toolbar-icon {
+  background-color: #5b4b49;
+}
+
+QPushButton#toolbar-icon,
+QPushButton:pressed#toolbar-icon {
+  background-color: #a68d9d;
+}
+
+QSizeGrip:hover {
+  background-color: #5b4b49;
+}
+
+QScrollBar {
+  background: #dbcbbd;
+}
+
+QScrollBar::handle {
+  background-color: #a68d9d;
+}
+
+QWidget#lockscreen {
+  background-color: #f3e9dd;
+}
+
+QWidget#lockscreen-frame {
+  background-color: #a68d9d;
+}
+
+QLabel#lockscreen-label {
+  color: #c9c1c8;
+}
+
+QLabel:active#lockscreen-label {
+  color: #faf4f0;
+}
+
+QLineEdit#lockscreen-input {
+  color: #827081;
+  background-color: #f3e9dd;
+}
+
+QLineEdit:active#lockscreen-input {
+  color: #3f3f74;
+}
+
+QLineEdit[error="true"]#lockscreen-input {
+  color: #9c0006;
+  background-color: #ffc7ce;
+}
