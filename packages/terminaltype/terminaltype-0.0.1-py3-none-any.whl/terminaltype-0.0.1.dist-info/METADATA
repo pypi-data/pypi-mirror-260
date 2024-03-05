@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: terminaltype
+Version: 0.0.1
+Summary: A simple terminal-based typing test
+Home-page: https://github.com/ramirocabral/terminaltype
+Author: Ramiro Cabral
+Author-email: <ramiro.cabral@alu.ing.unlp.edu.ar>
+License: GPL
+Keywords: python,typing,test,game,curses
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: twine >=4.0.2 ; extra == 'dev'
+
+# terminaltype
+
+A simple terminal-based typing test written in Python
+
+![](static/demo.gif)
+
+## Installation
+
+```bash
+pip install terminaltype
+
+```
+
+### Manual Installation
+
+```bash
+git clone https://github.com/ramirocabral/terminaltype
+cd terminaltype
+pip install .
+```
+
+## Usage
+
+For usage options, use `terminaltype -h`
+
+```
+A simple terminal-based typing test
+
+options:
+  -h, --help            Show this help message and exit
+  -w, --words {english200,english1000,italian200,italian1000,spanish200,spanish1000}
+  -t, --time [10,120]
+  -H, --history         Show the history
+```
+
+## License
+
+Licensed under [GPL](LICENSE) license
