@@ -1,0 +1,14 @@
+pip
+boto3
+click
+
+[:sys_platform == "win32"]
+colorama>=0.2.4
+
+[dev]
+pytest
+flake8
+bump-my-version
+
+[test]
+pytest
