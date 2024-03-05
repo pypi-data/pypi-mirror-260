@@ -1,0 +1,104 @@
+[tool]
+[tool.poetry]
+name = "chatlab"
+version = "2.1.0"
+homepage = "https://github.com/rgbkrk/chatlab"
+description = "Chat Plugin Experiments, Simplified. Give all the power to the models in your life."
+authors = ["Kyle Kelley <rgbkrk@gmail.com>"]
+readme = "README.md"
+license =  "BSD-3-Clause"
+classifiers=[
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Education',
+    'Intended Audience :: Science/Research',
+    'Framework :: Jupyter',
+    'Framework :: Jupyter :: JupyterLab',
+    'License :: OSI Approved :: BSD License',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Topic :: Communications :: Chat',
+    'Topic :: Scientific/Engineering :: Artificial Intelligence',
+    'Topic :: Scientific/Engineering :: Artificial Life',
+    'Topic :: Scientific/Engineering :: Human Machine Interfaces'
+]
+packages = [
+    { include = "chatlab" },
+    { include = "tests", format = "sdist" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipython = ">=7.0.0"
+openai = "^1.2.2"
+pydantic = "^2.4.2"
+vdom = "^1.0.0"
+deprecation = "^2.1.0"
+repr-llm = "^0.2.0"
+python-ulid = { version = "^1.1.0", optional = true }
+typing-extensions = "^4.7.1"
+aiofiles = "^23.1.0"
+types-aiofiles = "^23.2.0.0"
+mypy = "^1.6.1"
+spork = "^1.2.0"
+instructor = "^0.6.1"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.4.11"
+ruff = "^0.1.2"
+mypy = "^1.2.0"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+virtualenv = "^20.21.0"
+pip = "^23.0.1"
+twine = "^4.0.2"
+pre-commit = "^3.2.2"
+toml = "^0.10.2"
+bump2version = "^1.0.1"
+jinja2 = "^3.1.2"
+ipykernel = ">=6.0.0"
+types-toml = "^0.10.8.6"
+pandas = "^2.0.2"
+pytest-asyncio = "^0.21.1"
+types-aiofiles = "^23.1.0.5"
+types-orjson = "^3.6.2"
+
+[tool.poetry.extras]
+test = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "pytest-cov"
+]
+
+dev = ["tox", "pre-commit", "virtualenv", "pip", "twine", "toml", "bump2version"]
+
+[tool.setuptools.package-data]
+chatlab = ["py.typed"]
+
+[[tool.mypy.overrides]]
+module = [
+    "aiofiles",
+    "orjson",
+    "vdom",
+    "repr_llm.*",
+    "deprecation",
+    "instructor",
+    "instructor.*"
+]
+
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report=lcov:lcov.info --cov-report=term --cov-report=html"
+
+[tool.ruff]
+line-length = 120
