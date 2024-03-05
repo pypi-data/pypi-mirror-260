@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: pycollimator
+Version: 2.0.0
+Summary: Collimator.ai core simulation engine and API client
+Author-email: Collimator <support@collimator.ai>
+License: AGPLv3+
+Project-URL: Homepage, https://www.collimator.ai
+Project-URL: Documentation, https://py.collimator.ai
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE.header.txt
+License-File: LICENSE.md
+Requires-Dist: click ~=8.1.7
+Requires-Dist: diffrax ~=0.5.0
+Requires-Dist: equinox ~=0.11.1
+Requires-Dist: jax ~=0.4.25
+Requires-Dist: jaxlib ~=0.4.25
+Requires-Dist: jaxtyping ~=0.2.25
+Requires-Dist: jaxopt ~=0.8.3
+Requires-Dist: networkx ~=3.1
+Requires-Dist: numpy ~=1.26.0
+Requires-Dist: optax ~=0.1.5
+Requires-Dist: scipy ~=1.10.1
+Requires-Dist: fmpy ~=0.3.19
+Requires-Dist: requests ~=2.31.0
+Requires-Dist: dataclasses-json ~=0.6.4
+Requires-Dist: dataclasses-jsonschema ~=2.16
+Requires-Dist: ts-type ~=0.2.9
+Requires-Dist: StrEnum ~=0.4.15 ; python_version < "3.11"
+Provides-Extra: all
+Requires-Dist: control ~=0.9.4 ; extra == 'all'
+Requires-Dist: cyipopt ~=1.3.0 ; extra == 'all'
+Requires-Dist: osqp ~=0.6.5 ; extra == 'all'
+Requires-Dist: pandas ~=2.1.2 ; extra == 'all'
+Requires-Dist: pysindy ~=1.7.5 ; extra == 'all'
+Requires-Dist: sympy ~=1.11.1 ; extra == 'all'
+Provides-Extra: datasource
+Requires-Dist: pandas ~=2.1.2 ; extra == 'datasource'
+Provides-Extra: linearsystem
+Requires-Dist: control ~=0.9.4 ; extra == 'linearsystem'
+Provides-Extra: nmpc
+Requires-Dist: cyipopt ~=1.3.0 ; extra == 'nmpc'
+Requires-Dist: osqp ~=0.6.5 ; extra == 'nmpc'
+Provides-Extra: sindy
+Requires-Dist: pandas ~=2.1.2 ; extra == 'sindy'
+Requires-Dist: pysindy ~=1.7.5 ; extra == 'sindy'
+Requires-Dist: sympy ~=1.11.1 ; extra == 'sindy'
+
+## Getting started
+
+### Prerequisites
+
+Python 3.10 or later is required.
+
+`collimator` has been developed and tested on Linux (Ubuntu 22+) and macOS.
+
+Native Windows support has not been tested at this time but may work. We
+recommend using the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+with an Ubuntu distribution instead.
+
+### Installation steps
+
+```bash
+pip install pycollimator
+```
+
+### Optional dependencies
+
+Nonlinear MPC blocks require `IPOPT` to be preinstalled.
+
+- On Ubuntu: `sudo apt install coinor-libipopt-dev`.
+- On macOS: `brew install ipopt`.
+
+On macOS with Apple Silicon (M series), `cmake` is also required to build and
+install `qdldl` and `osqp` dependencies. Install it with `brew install cmake`.
+
+Install all optional dependencies with:
+
+```bash
+pip install pycollimator[all]
+```
+
+### Tutorials
+
+Read the [Getting Started Tutorial](https://py.collimator.ai/tutorials/01-getting-started/)
+for a more complete example.
+
+## Documentation
+
+Head over to [https://py.collimator.ai](https://py.collimator.ai) for
+the API reference documentation as well as examples and tutorials.
+
+## Licensed under AGPLv3
+
+This package is released and licensed under the
+[AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) license.
+
+Collimator, Inc reserves all rights to release
+under a different license under a different license at any time, as well as all
+rights to use the code in any way in their own commercial offerings.
