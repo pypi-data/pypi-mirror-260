@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+DXCOMPILER_VERSION="2.11.4"
+DXCOMPILER_JAR="dxCompiler-${DXCOMPILER_VERSION}.jar"
+DXCOMPILER="java -jar ${DXCOMPILER_JAR}"
+
+if ! command -v pip3 &> /dev/null; then
+    echo pip3 not found. Please install and re-run this script
+    exit 1
+fi
+if ! command -v dx &> /dev/null; then
+    pip3 install dx
+    if ! command -v dx &> /dev/null; then
+	echo "Couldn't install dx"
+	exit 2
+    fi
+fi
+if [[ ! -f "${DXCOMPILER_JAR}" ]]; then
+    wget -q https://github.com/dnanexus/dxCompiler/releases/download/${DXCOMPILER_VERSION}/${DXCOMPILER_JAR}
+    if [[ ! -f "${DXCOMPILER_JAR}" ]]; then
+	echo "Couldn't download dxCompiler"
+	exit 3
+    fi
+fi
+if ! dx whoami &> /dev/null; then
+    dx login
+fi
+
+${DXCOMPILER} compile "$@"
