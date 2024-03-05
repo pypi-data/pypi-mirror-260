@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang=fr>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Author" content="">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href={{LIEN_CSS}}>
+	</head>
+	<title>Dossier compétence</title>
+</head>
+<div id="logo">
+	<img src= {{LOGO_TETE}} alt="Logo Datalyo echec" width="80" />
+</div>
+
+<body>
+
+	<h1>
+		{{name}}
+	</h1>
+
+	<h2>
+		{{poste}}
+	</h2>
+
+	{% for s in sections %}
+
+    <h3>
+        {{s.titre}}
+    </h3>
+    <p>
+        {{s.file}}
+    </p>
+	<h5>★★★</h5>
+
+    {% endfor %}
+
+
+</body>
+<div id="pied" style="text-align: center;">
+	<img src={{LOGO_PIED}} alt="Logo Datalyo echec" width="650" />
+</div>
+
+</html>
