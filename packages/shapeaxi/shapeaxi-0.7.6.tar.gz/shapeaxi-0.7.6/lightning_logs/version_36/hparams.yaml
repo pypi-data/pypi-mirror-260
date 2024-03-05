@@ -1,0 +1,68 @@
+base_encoder: resnet18
+base_encoder_params: pretrained=False,spatial_dims=2,n_input_channels=4,num_classes=512
+batch_size: 8
+class_column: class
+class_weights: !!python/object/apply:numpy.core.multiarray._reconstruct
+  args:
+  - !!python/name:numpy.ndarray ''
+  - !!python/tuple
+    - 0
+  - !!binary |
+    Yg==
+  state: !!python/tuple
+  - 1
+  - !!python/tuple
+    - 4
+  - !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - false
+  - !!binary |
+    jDHGGGOM3T8fwX0E9xHwP4mIiIiIiP4/HMdxHMdxCUA=
+csv_test: Deg_classification_aggregate_long_exists_train_fold2_test.csv
+csv_train: Deg_classification_aggregate_long_exists_train_fold2_train_train.csv
+csv_valid: Deg_classification_aggregate_long_exists_train_fold2_train_test.csv
+dropout_lvl: 0.2
+epochs: 40
+fs_path: null
+hidden_dim: 512
+ico_lvl: 2
+image_size: 256
+layer: IcoConv2D
+log_every_n_steps: 10
+lr: 0.0001
+mean: 0
+model: null
+mount_point: /work/floda/data/DCBIA/DJD/
+neptune_project: null
+neptune_tags: null
+nn: SaxiClassification
+noise_lvl: 0.01
+num_images: 12
+num_workers: 4
+out: /work/floda/data/DCBIA/DJD/train/fold2
+out_classes: 4
+path_ico_left: ./3DObject/sphere_f327680_v163842.vtk
+path_ico_right: ./3DObject/sphere_f327680_v163842.vtk
+patience: 30
+pretrained: false
+profiler: null
+radius: 1.35
+scale_factor: 0.0115936857586288
+std: 0.005
+subdivision_level: 1
+surf_column: surf
+tb_dir: null
+tb_name: tensorboard
+train_sphere_samples: 10000
