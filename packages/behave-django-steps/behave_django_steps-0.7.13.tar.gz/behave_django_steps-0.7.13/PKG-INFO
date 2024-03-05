@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: behave-django-steps
+Version: 0.7.13
+Summary: Boilerplate steps for testing Django with Behave
+Project-URL: Homepage, https://github.com/BillSchumacher/behave-django-steps
+Project-URL: Bug Tracker, https://github.com/BillSchumacher/behave-django-steps/issues
+Author-email: Bill Schumacher <34168009+BillSchumacher@users.noreply.github.com>
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.1
+Classifier: Framework :: Django :: 3.2
+Classifier: Framework :: Django :: 4.0
+Classifier: Framework :: Django :: 4.1
+Classifier: Framework :: Django :: 4.2
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Internet :: WWW/HTTP
+Requires-Python: >=3.8
+Requires-Dist: behave-django
+Requires-Dist: django
+Description-Content-Type: text/markdown
+
+behave-django-steps
+===
+[![Coverage Status](https://coveralls.io/repos/github/BillSchumacher/behave-django-steps/badge.svg?branch=main)](https://coveralls.io/github/BillSchumacher/behave-django-steps?branch=main)
+
+Reduce boilerplate in your behave steps for Django.
+
+Features
+---
+
+Authentication Steps: [authentication.feature](tests%2Facceptance%2Ffeatures%2Fauthentication.feature)
+
+Authorization Steps: [authorization.feature](tests%2Facceptance%2Ffeatures%2Fauthorization.feature)
+
+Model Steps: [models.feature](tests%2Facceptance%2Ffeatures%2Fmodels.feature)
+
+Performance Steps: [queries.feature](tests%2Facceptance%2Ffeatures%2Fqueries.feature)
+
+Request Steps: [requests.feature](tests%2Facceptance%2Ffeatures%2Frequests.feature)
+
+
+Caveats
+---
+
+When loading `auth.Permission` fixtures you must consider that Django
+automatically creates basic permissions for models.
+
+If you're trying to load custom permissions after writing the `Permission.json` fixture
+you need to delete the default permissions from the fixture, or json.loads it and filter
+on only your custom permissions.
+
+Because the permission was already created by Django, if you try to load it
+you will get an `IntegrityError`.
