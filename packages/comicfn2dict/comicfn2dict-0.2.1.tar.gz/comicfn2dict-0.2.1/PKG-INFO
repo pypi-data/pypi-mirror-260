@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: comicfn2dict
+Version: 0.2.1
+Summary: Parse common comic filenames and return a dict of metadata attributes. Includes a cli.
+Home-page: https://github.com/ajslater/comicfn2dict
+License: GPL-3.0-only
+Author: AJ Slater
+Author-email: aj@slater.net
+Requires-Python: >=3.9,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Project-URL: Documentation, https://github.com/ajslater/comicfn2dict
+Project-URL: News, https://github.com/ajslater/comicfn2dict/NEWS.md
+Project-URL: Repository, https://github.com/ajslater/comicfn2dict
+Project-URL: Report Issues, https://github.com/ajslater/comicfn2dict/issues
+Description-Content-Type: text/markdown
+
+# comicfn2dict
+
+An API and CLI for extracting structured comic metadata from filenames.
+
+## Install
+
+<!-- eslint-skip -->
+
+```sh
+pip install comicfn2dict
+```
+
+## API
+
+<!-- eslint-skip -->
+
+```python
+from comicfn2dict import comicfn2dict, dict2comicfn
+
+path = "Comic Series #001 Title (2024).cbz"
+
+metadata: dict[str, str| tuple[str,...]] = comicfn2dict(path, verbose=0)
+
+filename: str = dict2comicfn(metadata, bool=True, verbose=0)
+```
+
+## CLI
+
+<!-- eslint-skip -->
+
+```sh
+comicfn2dict "Series Name #01 - Title (2023).cbz"
+{'ext': 'cbz',
+'issue': '001',
+'series': 'Series Name',
+'title': 'Title',
+'year': '2023'}
+```
+
