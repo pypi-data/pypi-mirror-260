@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: SplashStand
+Version: 3.0.2
+Keywords: starlette htmx jinja httpx fastapi sqladmin sqlmodel pydantic
+Author-Email: lesleslie <les@wedgwoodwebworks.com>
+Maintainer-Email: lesleslie <les@wedgwoodwebworks.com>
+License: BSD-3-Clause
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: Pydantic
+Classifier: Framework :: Pydantic :: 2
+Classifier: Framework :: AsyncIO
+Classifier: Typing :: Typed
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Development Status :: 3 - Alpha
+Project-URL: Homepage, https://gitlab.com/lesleslie/splashstand
+Project-URL: Documentation, https://gitlab.com/lesleslie/splashstand
+Project-URL: Repository, https://gitlab.com/lesleslie/splashstand
+Requires-Python: >=3.12
+Requires-Dist: jinja2-inflection>=0.1.5
+Requires-Dist: jinja2-arrow>=0.1.6
+Requires-Dist: phonenumbers>=8.13.28
+Requires-Dist: acb>=0.5.0
+Requires-Dist: uuid-utils>=0.6.1
+Requires-Dist: google-analytics-admin>=0.20.0; extra == "analytics"
+Requires-Dist: google-analytics-data>=0.17.1; extra == "analytics"
+Requires-Dist: google-cloud-recaptcha-enterprise>=1.13.0; extra == "captcha"
+Requires-Dist: firebase-admin>=6.4.0; extra == "auth"
+Provides-Extra: analytics
+Provides-Extra: captcha
+Provides-Extra: auth

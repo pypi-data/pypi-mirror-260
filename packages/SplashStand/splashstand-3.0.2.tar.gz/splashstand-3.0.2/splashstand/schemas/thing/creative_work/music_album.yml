@@ -1,0 +1,26 @@
+alias: album
+model: true
+fields:
+  by_artist:
+    type: MusicGroup
+  album_production_type:
+    type: str
+    choices:
+      - LiveAlbum
+      - StudioAlbum
+      - CompilationAlbum
+      - DemoAlbum
+      - RemixAlbum
+      - DJMixAlbum
+      - SoundtrackAlbum
+  album_release:
+    type: str
+    choices:
+      - AlbumRelease
+      - BroadcastRelease
+      - EPRelease
+      - SingleRelease
+  num_tracks:
+    type: int
+  track:
+    type: MusicRecording

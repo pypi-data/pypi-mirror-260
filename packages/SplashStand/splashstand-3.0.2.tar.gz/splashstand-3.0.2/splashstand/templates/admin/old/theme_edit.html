@@ -1,0 +1,112 @@
+% extends [% extends "../../base/templates/base.html" %]
+% import 'static.html' as admin_static with context
+% import 'lib.html' as lib with context
+
+
+[# store the jinja2 context for form_rules rendering logic #]
+## % set render_ctx = h.resolve_ctx()
+
+
+% block head
+[[ super() ]]
+[# @formatter:off #]
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/codemirror.min.css"/>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/theme/[[ cm_theme ]].min.css"/>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/show-hint.min.css"/>
+<link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/lint.min.css"/>
+[# @formatter:on #]
+<style>
+    .cm-s-cobalt.CodeMirror, .cm-s-cobalt .CodeMirror-gutters {
+        background: #002a64;
+    }
+</style>
+% endblock
+
+% block body
+<div class="section">
+<h1 class="has-text-centered title is-spaced is-4">
+    Editing '[[ name ]]'
+</h1>
+</div>
+
+<div class="theme-editor">
+    % block theme_edit_form
+    [[ lib.render_form(form, return_url, extra=True) ]]
+    % endblock theme_edit_form
+</div>
+<div id="pageloader" class="pageloader is-light is-active
+    primary-loader is-right-to-left"></div>
+% endblock body
+
+% block tail
+[# @formatter:off #]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/codemirror.min.js"></script>
+[#<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/keymap/vim.min.js"></script>#]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/jinja2/jinja2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/vue/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/css/css.min.js"></script>
+[#<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/rst/rst.min.js"></script>#]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/yaml/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/sass/sass.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/markdown/markdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/css-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/xml-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/html-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/javascript-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/css-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/html-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/javascript-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/json-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/yaml-lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/hint/show-hint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/lint/lint.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/fold/xml-fold.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/edit/matchtags.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/edit/closetag.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/[[ cm_ver ]]/addon/comment/comment.min.js"></script>
+
+[# @formatter:on #]
+
+<script>
+    const editor = CodeMirror.fromTextArea(document.getElementById('text'), {
+        lineNumbers: true,
+        lineWrapping: true,
+        mode: "[[ mode ]]",
+        theme: "[[ cm_theme ]]",
+        ## keyMap: "vim",
+        smartIndent: true,
+        lint: true,
+        gutters: ["CodeMirror-lint-markers"],
+        showHint: true,
+        ## hintOptions: {hint: synonyms},
+        autoCloseTags: true,
+        autoCloseBrackets: true,
+        matchTags: true,
+        matchBrackets: true,
+        extraKeys: {
+            "Ctrl-Space": "autocomplete",
+            ## "Cmd-/": "commentRange",
+            ## "Alt-Cmd-L": "autoFormatRange",
+            "Cmd-/": "toggleComment",
+        }
+    });
+
+    $('.field-label').hide();
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#pageloader').removeClass('is-active');
+            $('.theme-editor').css('visibility', 'visible');
+        }, 800);
+    });
+</script>
+% endblock

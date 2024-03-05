@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+[% block head %]
+<head>
+    [[ render_block('head.html', page=request.path_params['page']) ]]
+</head>
+[% endblock head %]
+
+[% block body %]
+<body>
+
+[% block messages %]
+[% endblock messages %]
+
+[% block nav %]
+<nav id="nav" class="nav">
+    [[ render_block('nav.html') ]]
+</nav>
+[% endblock nav %]
+
+[% block header %]
+<header id="header" class="header">
+    [[ render_block('header.html') ]]
+</header>
+[% endblock header %]
+
+[% block main %]
+<main id="main" class="main">
+    [[ render_block(request.path_params['page'] + '.html') ]]
+</main>
+[% endblock main %]
+
+[% block footer %]
+<footer id="footer" class="footer">
+    [[ render_block('footer.html') ]]
+</footer>
+[% endblock footer %]
+
+</body>
+[% endblock body %]
+
+</html>

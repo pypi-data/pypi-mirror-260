@@ -1,0 +1,95 @@
+% macro menu_icon(item)
+% set # icon_type = item.get_icon_type()
+% if # icon_type
+% set # icon_value = item.get_icon_value()
+
+% if # icon_type == 'fas'
+<i class="fas [[ # icon_value ]]"></i>
+% elif # icon_type == 'image'
+<img src="[[ url_for('static', filename=icon_value) ]]"
+     alt="menu image">
+% elif # icon_type == 'image-url'
+<img src="[[ # icon_value ]]" alt="menu image">
+% endif
+% endif
+% endmacro
+
+% macro menu(menu_root=None)
+% if menu_root is none
+% set menu_root = admin_view.admin.menu()
+% endif
+% for item in menu_root[1:]
+% if item.is_accessible() and item.is_visible()
+% set class_name = item.get_class_name()
+<a class="navbar-item is-marginless-touch
+    [% if item.is_active(admin_view) %]is-active[% endif %]
+    [% if class_name %][[ class_name ]][% endif %]"
+        href="[[ item.get_url() ]]"
+        % if item.target
+        target="[[ item.target ]]"
+        % endif
+>
+    [[ item.name ]]
+    ## [[ menu_icon(item) ]][[ item.name ]]
+</a>
+% endif
+% endfor
+% endmacro
+
+% macro menu_tabs(menu_root=None)
+% if menu_root is none
+% set menu_root = admin_view.admin.menu()
+% endif
+% for item in menu_root[1:]
+% if item.is_accessible() and item.is_visible()
+% set class_name = item.get_class_name()
+<li class="tab
+    [% if item.is_active(admin_view) %]is-active[% endif %]
+    [% if class_name %][[ class_name ]][% endif %]">
+    <a
+        href="[[ item.get_url() ]]"
+        % if item.target
+        target="[[ item.target ]]"
+        % endif
+    >
+    [[ item.name ]]
+    </a>
+    ## [[ menu_icon(item) ]][[ item.name ]]
+</li>
+% endif
+% endfor
+% endmacro
+
+% macro menu_links(links=None)
+% if links is none
+% set links = admin_view.admin.menu_links()
+% endif
+% for item in links
+% if item.is_accessible() and item.is_visible()
+<a class="navbar-item level-item" href="[[ item.get_url() ]]">
+    [[ menu_icon(item) ]][[ item.name ]]</a>
+% endif
+% endfor
+% endmacro
+
+% macro messages()
+% with messages = get_flashed_messages(with_categories=True)
+% if messages
+% set mapping = {'message': 'info', 'error': 'danger', 'warning': 'warning', 'info': 'info'}
+% for category, m in messages
+% if category
+<div class="is-[[ mapping.get(category, category) ]] notification is-small alert"
+        role="alert">
+    <button class="delete" data-dismiss="alert"></button>
+    <p>[[ m ]]</p>
+</div>
+%else
+<div class="notification is-small is-info alert" role="alert">
+    <button class="delete" data-dismiss="alert"></button>
+    <p>[[ m ]]</p>
+</div>
+% endif
+% endfor
+% endif
+% endwith
+% endmacro

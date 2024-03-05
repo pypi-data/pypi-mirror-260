@@ -1,0 +1,53 @@
+% import 'static.html' as admin_static with context
+
+
+% macro dropdown(actions)
+<div class="level-item level-left">
+    <div class="dropdown actions-dropdown">
+        <button class="button is-grey dropdown-trigger" aria-haspopup="true"
+                aria-controls="dropdown-menu">
+            <span>[[ _gettext('Selected') ]]</span>
+            <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content selected-dropdown">
+                % for p in actions
+                <a href="javascript:void(0)"
+                        class="dropdown-item has-text-left"
+                        onclick="return modelActions.execute('[[ p[0] ]]');">
+                <span class="icon selected-icon">
+                    <i class="fas fa-[[ p[2] ]]"> </i>
+                </span>
+                    <span class="action-text">[[ _gettext(p[1]) ]]</span>
+                </a>
+                % endfor
+            </div>
+        </div>
+    </div>
+</div>
+% endmacro
+
+% macro form(actions, url)
+% if actions
+<form id="action_form" action="[[ url ]]" method="POST"
+        style="display: none">
+    % if action_form.csrf_token
+    [[ action_form.csrf_token ]]
+    % elif csrf_token
+    <input type="hidden" name="csrf_token"
+            value="[[ csrf_token() ]]"/>
+    % endif
+    [[ action_form.url(value=return_url) ]]
+    [[ action_form.action() ]]
+</form>
+% endif
+% endmacro
+
+% macro script(message, actions, actions_confirmation)
+% if actions
+<script>
+    [% include admin_actions_js %]
+</script>
+% endif
+% endmacro

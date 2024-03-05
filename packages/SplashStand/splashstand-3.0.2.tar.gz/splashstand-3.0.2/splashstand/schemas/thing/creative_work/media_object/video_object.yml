@@ -1,0 +1,21 @@
+alias: video
+model: true
+fields:
+  video_frame_size:
+    type: str
+  bitrate:
+    type: str
+#    default_factory: get_video_dimensions
+  youtube_id:
+    type: str
+  start_time:
+    type: str
+    default: "00:00:00"
+  end_time:
+    type: str
+  recorded_at:
+    type: Event
+  producer:
+    type: Person
+  video:
+    type: url

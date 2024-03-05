@@ -1,0 +1,13 @@
+model: true
+fields:
+  amount_of_this_good:
+    type: int
+    alias: amount
+#  type_of_good:
+#    type: Product  # Service
+#    relation: many-to-many
+#    alias: type
+  unit_code:
+    type: str  # t.AnyURL
+  unit_text:
+    type: str

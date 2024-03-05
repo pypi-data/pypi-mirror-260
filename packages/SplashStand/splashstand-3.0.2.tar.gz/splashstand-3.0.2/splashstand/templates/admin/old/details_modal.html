@@ -1,0 +1,73 @@
+% import 'static.html' as admin_static with context
+% import 'lib.html' as lib with context
+
+% block body
+
+<header class="modal-card-head is-paddingless">
+    % block header_text
+    <p class="modal-card-title has-text-weight-semibold">
+        [[ 'View Record #' + request.args.get('id') ]]
+    </p>
+    <button class="delete modal-delete"
+            data-dismiss="modal" aria-label="close"></button>
+    % endblock
+</header>
+
+<section class="modal-card-body">
+    % block details_table
+    <div class="details-modal content">
+        % for c, name in details_columns
+        % if c == 'fs_uniquifier'
+        % continue
+        % endif
+        % if get_value(model, c)|safe
+        % if c in ['position', 'active', 'fit_image', 'visible', 'login_count', 'start', 'end', 'youtube_id']
+        <div class="level is-mobile">
+            <h5 class="level-item level-left has-text-weight-semibold is-marginless">
+                % if c == 'youtube_id'
+                YouTube ID
+                % else
+                [[ name|replace(' Id', 'ID') ]]
+                % endif
+            </h5>
+            <div class="level-item level-left">
+                % if get_value(model, c) is sameas true
+                <span class="icon">
+                        <i class="fas fa-check-circle fa-lg has-text-success"></i>
+                    </span>
+                % elif get_value(model, c) is sameas false
+                <span class="icon">
+                        <i class="fas fa-times-circle fa-lg has-text-danger"></i>
+                    </span>
+                % else
+                [[ get_value(model, c)|safe ]]
+                % endif
+            </div>
+        </div>
+        % else
+        <h5 class="has-text-weight-semibold">
+            % if c == 'create_datetime'
+                Created At
+            % elif c == 'update_datetime'
+                Updated At
+            % else
+            [[ name ]]
+            % endif
+        </h5>
+        [[ get_value(model, c)|safe]]
+        % endif
+        % if c not in ['visible']
+        <hr>
+        % endif
+        % endif
+        % endfor
+    </div>
+    % endblock
+</section>
+<footer class="modal-card-foot">
+</footer>
+% endblock
+% block tail
+<script src="[[ admin_static.url(filename='admin/js/details_filter.js', v='1.0.0') ]]"></script>
+<script src="[[ admin_static.url(filename='admin/js/bs3_modal.js', v='1.0.0') ]]"></script>
+% endblock

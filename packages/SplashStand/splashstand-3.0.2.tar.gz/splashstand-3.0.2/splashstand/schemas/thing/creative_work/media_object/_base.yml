@@ -1,0 +1,19 @@
+fields:
+  content_url:
+    type: url
+#    function: get_media_duration
+  content_size:
+    type: str
+  upload_date:
+    type: datetime
+#    default_factory: get_upload_date
+#  player_type:
+#    type: str
+#  width:
+#    type: QuantitativeValue
+#    default_factory: get_media_width
+#  height:
+#    type: QuantitativeValue
+#    default_factory: get_media_height
+  associated_article:
+    type: BlogPosting

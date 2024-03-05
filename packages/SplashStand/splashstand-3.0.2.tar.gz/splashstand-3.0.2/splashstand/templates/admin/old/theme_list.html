@@ -1,0 +1,96 @@
+% extends [% extends "../../base/templates/base.html" %]
+% import 'lib.html' as lib with context
+
+% block body
+% block file_list_table
+<div class="container">
+    <div class="section">
+    <div class="has-text-centered title is-spaced is-4">
+        Theme ([[ theme ]])
+        </div>
+    </div>
+    <table class="table is-hoverable is-striped is-fullwidth model-list">
+        <thead>
+        <tr>
+            % block list_header scoped
+            % for column in admin_view.column_list
+            <th class="has-text-centered">
+                % if admin_view.is_column_sortable(column)
+                % if sort_column == column
+                <a href="[[ sort_url(column, True) ]]"
+                        class="has-text-dark"
+                        title="[[ _gettext('Sort by %(name)s', name=column) ]]">
+                    [[ admin_view.column_label(column) ]]
+                    % if sort_desc
+                    <span class="icon">
+                        <i class="fas fa-caret-up"></i>
+                    </span>
+                    % else
+                    <span class="icon">
+                        <i class="fas fa-caret-down"></i>
+                    </span>
+                    % endif
+                </a>
+                % else
+                <a href="[[ sort_url(column) ]]"
+                        title="[[ _gettext('Sort by %(name)s', name=column) ]]"
+                        class="has-text-dark is-mobile">
+                    <span>
+                        [[ admin_view.column_label(column) ]]
+                    </span>
+                    <span class="icon">
+                        <i class="fas fa-sort"></i>
+                    </span>
+                </a>
+                % endif
+                % else
+                [[ _gettext(admin_view.column_label(column)) ]]
+                % endif
+            </th>
+            % endfor
+            <th class="has-text-centered action-cell">Action</th>
+            % endblock list_header
+        </tr>
+        </thead>
+        % for name, path in items
+        <tr>
+            % block list_row scoped
+            <td class="has-text-centered">
+                [[ name ]]
+            </td>
+            <td class="has-text-centered action-cell">
+                % block list_row_actions scoped
+                <div class="level">
+                    <div class="row-action theme-action level-item is-marginless">
+                        <a href="[[ url_for('.details_view').rstrip('/') ]]?name=[[ name.replace('.', '-') ]]"
+                           title="View"
+                           data-target="#fa_modal_window"
+                           data-toggle="modal"
+                           class="icon">
+                                <span class="action-icon # icon has-text-success">
+                                    <i class="fas fa-eye fa-2x fa-fw"></i>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="row-action theme-action level-item is-marginless">
+                        <a href="[[ url_for('.edit').rstrip('/') ]]?name=[[ name.replace('.', '-') ]]"
+                           title="Edit"
+                           class="icon">
+                                <span class="action-icon # icon has-text-info">
+                                    <i class="fas fa-edit fa-2x fa-fw"></i>
+                                </span>
+                        </a>
+                    </div>
+                </div>
+                % endblock list_row_actions
+            </td>
+            % endblock list_row
+        </tr>
+        % endfor
+    </table>
+</div>
+% endblock file_list_table
+% if admin_view.edit_modal or admin_view.details_modal
+[[ lib.add_modal_window() ]]
+% endif
+% endblock body

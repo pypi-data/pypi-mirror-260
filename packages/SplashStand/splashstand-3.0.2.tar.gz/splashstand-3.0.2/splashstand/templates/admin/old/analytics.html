@@ -1,0 +1,117 @@
+% extends [% extends "../../base/templates/base.html" %]
+% import 'lib.html' as lib with context
+
+
+% block head
+[[ super() ]]
+<script>
+    (function (w, d, s, g, js, fs) {
+        g = w.gapi || (w.gapi = {});
+        g.analytics = {
+            q: [], ready: function (f) {
+                this.q.push(f);
+            }
+        };
+        js = d.createElement(s);
+        fs = d.getElementsByTagName(s)[0];
+        js.src = 'https://apis.google.com/js/platform.js';
+        fs.parentNode.insertBefore(js, fs);
+        js.onload = function () {
+            g.load('analytics');
+        };
+    }(window, document, 'script'));
+</script>
+% endblock head
+
+% block body
+<div class="section">
+    <h1 class="has-text-centered title is-spaced is-4">
+        Analytics
+    </h1>
+</div>
+    <div class="section analytics-container">
+    % for days in ga_days_line
+    <div id="chart-[[ loop.index ]]-container"></div>
+    <div class="has-text-centered title is-5">
+        <p>Last [[ days|humanize_days ]]</p>
+    </div>
+    % endfor
+    % set days_length = ga_days_line|count + 1
+    % set dimensions_length = ga_dimensions_table|count
+    % for i in range(days_length, days_length + dimensions_length, 2)
+    <div class="columns">
+        <div class="column">
+            <div id="chart-[[ i ]]-container"></div>
+        </div>
+        <div class="column">
+            <div id="chart-[[ i + 1 ]]-container"></div>
+        </div>
+    </div>
+    % endfor
+</div>
+<div id="pageloader" class="pageloader is-light is-active is-right-to-left
+    primary-loader"></div>
+% endblock body
+
+% block tail
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('#pageloader').removeClass('is-active');
+            $('.analytics').css('visibility', 'visible');
+        }, 4200);
+    });
+
+    gapi.analytics.ready(function () {
+        gapi.analytics.auth.authorize({
+            'serverAuth': {
+                'access_token': '[[ ga_access_token ]]'
+            }
+        });
+
+        [% for d in ga_days_line %]
+            const dataChart[[ loop.index ]] = new gapi.analytics.googleCharts
+            .DataChart({
+                query: {
+                    'ids': 'ga:[[ ga_view_id ]]',
+                    'start-date': '[[ d ]]daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:sessions,ga:pageviews',
+                    'dimensions': 'ga:date'
+                },
+                chart: {
+                    'container': 'chart-[[ loop.index ]]-container',
+                    'type': 'LINE',
+                    'options': {
+                        'width': '100%'
+                    }
+                }
+            });
+            dataChart[[ loop.index ]].execute();
+        [% endfor %]
+        [% for dimension in ga_dimensions_table %]
+            [% set c = loop.index + ga_days_line | length %]
+            const dataChart[[ c ]] = new gapi.analytics.googleCharts
+            .DataChart({
+                query: {
+                    'ids': 'ga:[[ ga_view_id ]]',
+                    'start-date': '365daysAgo',
+                    'end-date': 'yesterday',
+                    'dimensions': 'ga:[[ dimension ]]',
+                    'metrics': 'ga:sessions',
+                    'sort': '-ga:sessions',
+                    'max-results': '6'
+                },
+                chart: {
+                    type: 'TABLE',
+                    container: 'chart-[[ c ]]-container',
+                    options: {
+                        width: '100%'
+                    }
+                }
+            });
+            dataChart[[ c ]].execute();
+        [% endfor %]
+    });
+</script>
+% endblock tail

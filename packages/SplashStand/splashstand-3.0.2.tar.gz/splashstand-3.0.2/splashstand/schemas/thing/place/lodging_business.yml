@@ -1,0 +1,17 @@
+fields:
+  audience:
+    type: bool
+  number_of_rooms:
+    type: QuantitativeValue
+  available_language:
+    type: choice
+    choices:
+      default_factory: langcodes
+  has_menu:
+    type: url
+  serves_cuisine:
+    type: str
+  pets_allowed:
+    type: bool
+#  star_rating:
+#    type: Rating

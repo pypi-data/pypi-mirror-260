@@ -1,0 +1,470 @@
+% import 'static.html' as admin_static with context
+
+
+[# ---------------------- Pager -------------------------- #]
+
+% macro pager(page, num_pages, generator)
+<nav class="pagination is-centered is-large" role="navigation"
+        aria-label="pagination">
+    % if num_pages > 1
+    <div id="owl-pagination" class="owl-carousel owl-theme">
+        % for p in range(0, num_pages)
+        % if page == p
+        <a class="pagination-link is-current has-text-weight-semibold"
+                href="javascript:void(0)">[[ p + 1 ]]</a>
+        % else
+        <a class="pagination-link has-text-grey-dark"
+                href="[[ generator(p) ]]">[[ p + 1 ]]</a>
+        % endif
+        % endfor
+    </div>
+    % endif
+</nav>
+% endmacro
+
+% macro simple_pager(page, have_next, generator)
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous">Previous</a>
+    <a class="pagination-next">Next</a>
+    <ul class="pagination-list">
+        % if page > 0
+        <li>
+            <a href="[[ generator(page - 1) ]]"
+                    class="pagination-link" aria-label="Go to previous">&lt;
+            </a>
+        </li>
+        % else
+        <li class="disabled">
+            <a href="[[ generator(0) ]]" class="pagination-link"
+                    aria-label="Go to previous"><</a>
+        </li>
+        % endif
+        % if have_next
+        <li>
+            <a href="[[ generator(page + 1) ]]"
+                    class="pagination-link" aria-label="Go to next">&gt;</a>
+        </li>
+        % else
+        <li class="disabled">
+            <a href="[[ generator(page) ]]" class="pagination-link"
+                    aria-label="Go to next">&gt;</a>
+        </li>
+        % endif
+    </ul>
+</nav>
+% endmacro
+
+[# ---------------------- Modal Window ------------------- #]
+
+% macro add_modal_window(modal_window_id='fa_modal_window', modal_label_id='fa_modal_label')
+## <div class="modal modal-fx-3dFlipHorizontal" id="[[ modal_window_id ]]"
+<div class="modal" id="[[ modal_window_id ]]"
+        tabindex="-1"
+        role="dialog" aria-labelledby="[[ modal_label_id ]]">
+    <div class="modal-background"></div>
+    <div class="modal-content section"></div>
+</div>
+% endmacro
+
+% macro add_modal_button(url='', title='', content='', modal_window_id='fa_modal_window', btn_class='')
+<a class="[[ btn_class ]] modal-action" data-target="#[[ modal_window_id ]]"
+        title="[[ title ]]" href="[[ url ]]" data-toggle="modal">
+    [[ content|safe ]]
+    % if 'Create' in content
+    <span class="icon is-small">
+                <i class="fas fa-plus"></i>
+        </span>
+    % endif
+</a>
+% endmacro
+
+[# ---------------------- Fields -------------------------- #]
+
+[# % macro field_extra(field) #]
+[# % if field.description #]
+[# <p class="help-block">[[ field.description|safe ]]</p> #]
+[# % endif #]
+[# % if direct_error #]
+[# <ul class="help-block input-errors"> #]
+[# % for e in field.errors if e is string #]
+[# <li>[[ e ]]</li> #]
+[# % endfor #]
+[# </ul> #]
+[# % endif #]
+[# % endmacro #]
+
+
+% macro image_field(field, is_required)
+<div id="[[ field.id ]]-field">
+    <label for="[[ field.id ]]"
+            class="label">[[ field.label.text ]]
+        % if h.is_required_form_field(field) or is_required
+        <strong style="color: red">&ast;</strong>
+        % endif
+    </label>
+    <div class="tiles box level media-box">
+        <div class="tile level-item level-left is-5">
+               [# id="[[ field.name ]]-field"> #]
+            <div class="field [[ ' has-error' if direct_error else '' ]]">
+                <div class="control file-upload-control">
+                    % if is_required
+                    [[ field(required='', **kwargs)|safe ]]
+                    % else
+                    [[ field(**kwargs)|safe ]]
+                    % endif
+                    [# [[ field_extra(field) ]] #]
+                    <div class="notification is-danger [[ field.name ]]-error">
+                    </div>
+                </div>
+            </div>
+        </div>
+% endmacro
+
+
+% macro media_field(field, is_required, form)
+       <div id="[[ field.id ]]-field">
+        [# <div> #]
+    <label for="[[ field.id ]]"
+            class="label">
+        [[ field.label.text|replace('ID', '')|replace('Id', '') ]]
+        % if h.is_required_form_field(field) or is_required
+        <strong style="color: red">&ast;</strong>
+        % endif
+    </label>
+    <div class="tiles box level media-box">
+            <div class="tile level-item level-left is-5">
+          [#  <div class="field [[ ' has-error' if direct_error else '' ]]"> #]
+                % if field.name in ['video', 'audio', 'image', 'picture', 'photo']
+            <div class="field [[ ' has-error' if direct_error else '' ]]">
+                <div class="control file-upload-control">
+                % else
+                <div class="field is-horizontal [[ ' has-error' if direct_error else '' ]]">
+                <div class="field-label is-normal time-label">
+                <label for="[[ field.id ]]" class="label">
+                    ## [[ field.label.text ]]
+                    ID
+                    % if h.is_required_form_field(field) or is_required
+                    <strong style="color: red">&ast;</strong>
+                    % endif
+                </label>
+                    % set _dummy = kwargs.setdefault('class', 'input')
+            </div>
+                    <div class="control">
+                    % endif
+
+                    % if is_required
+                    [[ field(required='', **kwargs)|safe ]]
+                    % else
+                    [[ field(**kwargs)|safe ]]
+                    % endif
+                    [# [[ field_extra(field) ]] #]
+                    % if field.name in ['video', 'audio', 'image', 'photo', 'picture']
+                    <div class="notification is-danger [[ field.name ]]-error">
+                    </div>
+                    % endif
+                </div>
+            </div>
+                    </div>
+        % for f in fields
+                [% if f in ['start', 'end'] and field.name in ['video', 'audio', 'youtube_id', 'spotify_id', 'archive_id', 'soundcloud_id', 'bandcamp_id'] %]
+                [[ media_option_field(form[f], False) ]]
+                % elif f in ['anchor'] and field.name in ['image', 'photo', 'picture']
+                [[ media_option_field(form[f], False) ]]
+               [# % elif field.name in ['image', 'photo', 'picture']
+                    </div> #]
+                % endif
+                % endfor
+            </div>
+% endmacro
+
+
+% macro media_option_field(field, is_required)
+% if field.name in ['start', 'anchor']
+<div class="tile level-item is-5 is-vertical">
+    % endif
+    <div class="tile time-tile"
+            id="[[ field.id ]]-field">
+        <div class="field is-horizontal [[ ' has-error' if direct_error else '' ]]">
+            <div class="field-label is-normal time-label">
+                <label for="[[ field.id ]]" class="label">
+                    [[ field.label.text ]]
+                    % if h.is_required_form_field(field) or is_required
+                    <strong style="color: red">&ast;</strong>
+                    % endif
+                </label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    % if field.type == 'Select2Field'
+                    <div class="[[ kwargs.get('column_class', 'control') ]]">
+                        % set _dummy = kwargs.setdefault('class', 'input select')
+                    % else
+                        <div class="control">
+                        % set _dummy = kwargs.setdefault('class', 'input')
+                            % endif
+                        % if is_required
+                        [[ field(required='', **kwargs)|safe ]]
+                        % else
+                        [[ field(**kwargs)|safe ]]
+                        % endif
+                        [# [[ field_extra(field) ]] #]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     % if field.name in ['end', 'anchor']
+    </div>
+</div>
+    % endif
+% endmacro
+
+% macro null_field()
+<div class="is-hidden"></div>
+% endmacro
+
+% macro toggle_field(field, is_required)
+<div class="field [[ ' has-error' if direct_error else '' ]]"
+        id="[[ field.name ]]-field">
+    <div class="control">
+        [[ field(type="checkbox", id=field.id,
+        class_="is-checkradio is-success is-rtl is-marginless") ]]
+        <label for="[[ field.id ]]"
+                class="label is-marginless">[[ field.label.text ]]
+        </label>
+        [# [[ field_extra(field) ]] #]
+    </div>
+</div>
+% endmacro
+
+% macro datetime_field(field, is_required)
+<div class="field [[ ' has-error' if direct_error else '' ]]"
+        id="[[ field.name ]]-field">
+    <label for="[[ field.id ]]"
+            class="label">[[ field.label.text ]]
+        % if h.is_required_form_field(field) or is_required
+        <strong style="color: red">&ast;</strong>
+        % endif
+    </label>
+    <div class="control box datetime-widget has-text-centered"
+            id="datetime-widget">
+        % set _dummy = kwargs.setdefault('class', 'input')
+        % if is_required
+        [[ field(required='', **kwargs)|safe ]]
+        % else
+        [[ field(**kwargs)|safe ]]
+        % endif
+        [# [[ field_extra(field) ]] #]
+    </div>
+</div>
+% endmacro
+
+% macro select_field(field, is_required)
+<div class="field [[ ' has-error' if direct_error else '' ]]"
+        id="[[ field.name ]]-field">
+    <label for="[[ field.id ]]"
+            class="label">[[ field.label.text ]]
+        % if h.is_required_form_field(field) or is_required
+        <strong style="color: red">&ast;</strong>
+        % endif
+    </label>
+    <div class="[[ kwargs.get('column_class', 'control') ]]">
+        % if field.type == 'QuerySelectField'
+        % set _dummy = kwargs.setdefault('class', 'input select')
+        % else
+        % set _dummy = kwargs.setdefault('class', 'input')
+        % endif
+        [# % if is_required#]
+        [# [[ field(required='', **kwargs)|safe ]]#]
+        [# % else#]
+        [[ field(**kwargs)|safe ]]
+        [# % endif#]
+        [# [[ field_extra(field) ]] #]
+    </div>
+</div>
+                % endmacro
+
+                % macro # icon_field(field)
+
+                % endmacro
+
+
+                [# ---------------------- Forms -------------------------- #]
+
+                % macro render_field(form, field, kwargs={}, model_name=None, caller=None)
+                % set direct_error = h.is_field_error(field.errors)
+                % if ac.debug.form
+                [[ field.type ]]
+                % endif
+                % set is_required=False
+                % if field.name in required_fields|default([])
+                % set is_required=True
+                % endif
+                ## % if field.name in ['image', 'photo', 'picture', 'video', 'audio', 'youtube_id', 'spotify_id',
+                'soundcloud_id', 'archive_id', 'bandcamp_id']
+                % if field.name in ['image', 'photo', 'picture', 'video', 'audio', 'youtube_id']
+                [[ media_field(field, is_required, form) ]]
+                [# % elif field.name in ['start', 'end', 'anchor'] #]
+                [# [[ media_option_field(field, is_required) ]] #]
+                % elif field.name == 'fit_image'
+                [[ null_field() ]]
+                % elif field.type == 'BooleanField'
+                [[ toggle_field(field, is_required) ]]
+                % elif field.type == 'DateTimeField'
+                [[ datetime_field(field, is_required) ]]
+                % elif field.type == 'QuerySelectMultipleField' or field.type == 'QuerySelectField'
+                [[ select_field(field, is_required) ]]
+                [# % elif field.name == 'icon' #]
+                [# [[ # icon_field(field) ]] #]
+                % elif field.name not in ['start', 'end', 'anchor']
+                <div class="field [[ ' has-error' if direct_error else '' ]]"
+                     id="[[ field.name ]]-field">
+                    <label for="[[ field.id ]]"
+                           class="label">[[ field.label.text ]]
+                        % if h.is_required_form_field(field) or is_required
+                        <strong style="color: red">&ast;</strong>
+                        % endif
+                    </label>
+                    <div class="[[ kwargs.get('column_class', 'control') ]]">
+        % set _dummy = kwargs.setdefault('class', 'input')
+        % if is_required
+        [[ field(required='', **kwargs)|safe ]]
+        % else
+        [[ field(**kwargs)|safe ]]
+        % endif
+        [# [[ field_extra(field) ]] #]
+    </div>
+</div>
+% endif
+% if caller
+[[ caller(form, field, direct_error, kwargs) ]]
+% endif
+% endmacro
+
+% macro render_header(form, text)
+<h3>[[ text ]]</h3>
+% endmacro
+
+% macro render_form_fields(form, form_opts=None, model_name=None)
+% if form.hidden_tag is defined
+[[ form.hidden_tag() ]]
+% else
+% if csrf_token
+<input type="hidden" name="csrf_token" value="[[ csrf_token() ]]"/>
+% endif
+% for f in form if f.widget.input_type == 'hidden'
+[[ f ]]
+% endfor
+% endif
+% if form_opts and form_opts.form_rules
+% for r in form_opts.form_rules
+[[ r(form, form_opts=form_opts) ]]
+% endfor
+% else
+% for f in form if f.widget.input_type != 'hidden'
+        [# % if f.name in ['anchor', 'start', 'end']
+        % continue #]
+                % if f.name.endswith('_id') and f.name not in ['youtube_id', 'spotify_id', 'archive_id', 'soundcloud_id', 'bandcamp_id']
+                % continue
+        % endif
+% if form_opts
+% set kwargs = form_opts.widget_args.get(f.short_name, {})
+% else
+% set kwargs = {}
+% endif
+[[ render_field(form, f, kwargs, model_name=model_name) ]]
+% endfor
+% endif
+% endmacro
+
+% macro form_tag(form=None, action=None)
+<form action="[[ action or '' ]]" method="POST" role="form"
+        class="admin-form form-horizontal"
+        autocomplete="off"
+        enctype="multipart/form-data">
+    [[ caller() ]]
+</form>
+% endmacro
+
+% macro render_form_buttons(cancel_url, extra=None, is_modal=False)
+<hr>
+<div class="field buttons is-2 is-right">
+    % if cancel_url
+   <div class="control">
+        <a href="[[ cancel_url ]]"
+                class="button is-danger is-outlined" role="button"
+                % if is_modal
+                data-dismiss="modal"
+                % endif
+        >
+                    <span class="icon is-small">
+                        <i class="fas fa-times"></i>
+                    </span>
+            <span>[[ _gettext('Cancel') ]]</span>
+        </a>
+    </div>
+    % endif
+    % if extra
+    <div class="control is-hidden-touch">
+        <button name="_continue_editing" type="submit"
+                class="button is-info">
+                ## value="[[ _gettext('Save and Continue') ]]">
+            <span>Save and Continue</span>
+        [# <span class="icon is-small"> #]
+        [#            <i class="fas fa-check"></i> #]
+        [#        </span> #]
+        </button>
+    </div>
+    % endif
+    <div class="control">
+        <button type="submit" class="button is-success">
+        <span class="icon is-small has-text-white">
+            <i class="fas fa-check"></i>
+        </span>
+            <span>Save</span>
+        </button>
+    </div>
+</div>
+[# % if extra #]
+[# [[ extra ]] #]
+[# % endif #]
+% endmacro
+
+% macro render_form(form, cancel_url, extra=None, form_opts=None, action=None, is_modal=False, model_name=None)
+% call form_tag(action=action)
+[[ render_form_fields(form, form_opts=form_opts, model_name=model_name) ]]
+[[ render_form_buttons(cancel_url, extra, is_modal) ]]
+% endcall
+% endmacro
+
+
+% macro form_css()
+[#
+% if editable_columns
+<link href="[[ admin_static.url(filename='vendor/x-editable/css/bootstrap3-editable.css', v='1.5.1.1') ]]"
+        rel="stylesheet">
+% endif
+                #]
+% endmacro
+
+% macro form_js()
+
+                [#
+% if editable_columns
+<script src="[[ admin_static.url(filename='vendor/x-editable/js/bootstrap3-editable.min.js', v='1.5.1.1') ]]"></script>
+% endif
+      #]
+                % endmacro
+[#
+% macro extra()
+% if admin_view.can_create
+<input name="_add_another" type="submit" class="btn btn-default"
+        value="[[ _gettext('Save and Add Another') ]]"/>
+% endif
+% if admin_view.can_edit
+<input name="_continue_editing" type="submit" class="btn btn-default"
+        value="[[ _gettext('Save and Continue Editing') ]]"/>
+% endif
+% endmacro
+3}

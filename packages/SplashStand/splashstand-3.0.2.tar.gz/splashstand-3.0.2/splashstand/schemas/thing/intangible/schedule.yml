@@ -1,0 +1,37 @@
+model: true
+fields:
+  by_day:
+    type: str
+#    options: get # ical dates of week
+  by_month:
+    type: int
+    min_value: 1
+    max_value: 12
+  by_month_day:
+    type: int
+    min_value: 1
+    max_value: 31
+  by_month_week:
+    type: int
+    min_value: 1
+    max_value: 5
+  start_date:
+    type: date
+  start_time:
+    type: time
+  end_date:
+    type: date
+  end_time:
+    type: time
+  duration:
+    type: duration
+#    default_factory: get_duration
+  except_date:
+    type: date
+  repeat_count:
+    type: int
+  repeat_frequency:
+    type: int
+  schedule_timezone:
+    type: str
+#    default_factory: get_browser_time_zone
