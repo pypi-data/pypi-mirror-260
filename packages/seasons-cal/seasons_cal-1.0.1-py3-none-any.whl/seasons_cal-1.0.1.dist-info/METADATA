@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: seasons-cal
+Version: 1.0.1
+Project-URL: Source Code, https://github.com/zeevro/seasons-cal/
+Author-email: Zeev Rotshtein <zeevro@gmail.com>
+License-File: LICENSE
+Keywords: calendar,equinox,ical,icalendar,ics,seasons,solstice
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: The Unlicense (Unlicense)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Python: >=3.8
+Requires-Dist: ephem
+Description-Content-Type: text/markdown
+
+# seasons-cal
+A small tool to generate iCalendar files with equinoxes and solstices.
+
+## Installation
+```
+pip install seasons-cal
+```
+
+## Usage
+```
+seasons-cal --help
+```
+or
+```
+python -m seasons_cal --help
+```
