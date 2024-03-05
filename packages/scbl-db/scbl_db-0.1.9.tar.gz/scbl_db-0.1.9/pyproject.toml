@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "scbl-db"
+version = "0.1.9"
+description = "The ORM of the sample-tracking database used at the Single Cell Biology Laboratory at the Jackson Laboratory. This ORM is currently incomplete - it only supports a subset of the platforms available at the Single Cell Biology Laboratory."
+authors = ["Ahmed Said <ahmed.said@jax.org>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+SQLAlchemy = "^2.0.27"
+email-validator = "^2.1.1"
+urllib3 = "^2.2.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+black = "^24.2.0"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+skip-string-normalization = true
