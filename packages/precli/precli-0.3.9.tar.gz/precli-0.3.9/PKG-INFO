@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: precli
+Version: 0.3.9
+Summary: Static analysis security tool command line
+Author: Secure Sauce
+Project-URL: Release notes, https://github.com/securesauce/precli/releases
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Security
+Requires-Python: >=3.12
+License-File: LICENSE
+Requires-Dist: cwe
+Requires-Dist: Pygments
+Requires-Dist: rich
+Requires-Dist: tree_sitter>=0.20.4
+Requires-Dist: tree-sitter-languages>=1.9.1
+Requires-Dist: ignorelib
+Requires-Dist: requests
+Requires-Dist: sarif-om>=1.0.4
+Requires-Dist: jschema-to-python>=1.2.3
+Requires-Dist: outdated
+
+Precli - precaution command line interface
+==========================================
+
+.. image:: https://github.com/securesauce/precli/actions/workflows/unit-test.yml/badge.svg?branch=main
+    :target: https://github.com/securesauce/precli/actions/workflows/unit-test.yml
+    :alt: Build and Test
+
+Precli is the core of the GitHub App Precaution and also a command line interface to demonstate its functionality.
+
+Quick Start
+-----------
+
+To install precli:
+
+.. code-block:: console
+
+    pip install precli
+
+Run precli on a single test example:
+
+.. code-block:: console
+
+    precli tests/unit/rules/python/stdlib/examples/hmac_timing_attack.py
+
+Run precli on a single test example, showing results in SARIF format:
+
+.. code-block:: console
+
+    precli tests/unit/rules/python/stdlib/examples/hmac_timing_attack.py --json
+
+Run precli on a single test example, showing results in plain format:
+
+.. code-block:: console
+
+    precli tests/unit/rules/python/stdlib/examples/hmac_timing_attack.py --plain
+
+Run precli on a single test example, showing results in markdown format:
+
+.. code-block:: console
+
+    precli tests/unit/rules/python/stdlib/examples/hmac_timing_attack.py --markdown
+
+Run precli against all the python test examples:
+
+.. code-block:: console
+
+    precli -r tests/unit/rules/python/stdlib/examples/
+
+Run precli against an entire GitHub repository:
+
+.. code-block:: console
+
+    precli -r https://github.com/securesauce/precli
+
+Run precli against an entire GitHub repository and output the results in markdown format to Gist.
+Note: this requires a GITHUB_TOKEN environment variable set to a valid GitHub token value:
+
+.. code-block:: console
+
+    precli -r https://github.com/securesauce/precli --markdown --gist
+
