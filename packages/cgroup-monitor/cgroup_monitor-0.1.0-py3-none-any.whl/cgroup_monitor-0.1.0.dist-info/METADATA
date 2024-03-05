@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: cgroup-monitor
+Version: 0.1.0
+Summary: A simple library to monitor CPU and Memory usage only using cgroups. Mainly created to monitor the resources inside the container.
+Home-page: https://github.com/veedata/cgroup-monitor
+Download-URL: https://github.com/veedata/cgroup-monitor/archive/refs/tags/v1.0.1-stable.tar.gz
+Author: Viraj Thakkar
+Author-email: vdthakkar111@gmail.com
+Project-URL: Code, https://github.com/veedata/cgroup-monitor
+Project-URL: Issue tracker, https://github.com/veedata/cgroup-monitor/issues
+Project-URL: Documentation, https://cgroup-monitor.readthedocs.io/en/latest
+Keywords: cgroup,docker
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: piexif
+Requires-Dist: opencv-python
+Requires-Dist: Pillow
+
+# cgroup-monitor
+A CPU/RAM monitoring tool that only relies on cgroups
