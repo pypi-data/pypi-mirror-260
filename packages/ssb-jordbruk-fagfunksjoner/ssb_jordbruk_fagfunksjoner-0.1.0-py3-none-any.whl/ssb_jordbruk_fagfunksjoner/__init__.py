@@ -1,0 +1,1 @@
+"""SSB Jordbruk Fagfunksjoner."""
