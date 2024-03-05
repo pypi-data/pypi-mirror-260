@@ -1,0 +1,78 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/attribute.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+message LaneSection {
+  // lane ids (left to right guarrante).
+  repeated Id lane_ids = 1;
+
+}
+
+message Road {
+  // road unique id.
+  optional Id id = 1;
+
+  // road sections.
+  repeated LaneSection lane_sections = 2;
+
+  // it is null for the road is not in junction.
+  optional Id junction_id = 3;
+
+  // next junction id.
+  optional Id next_junction_id = 5;
+
+  // previous junction id.
+  optional Id prev_junction_id = 6;
+
+  // attributes.
+  repeated Attribute attributes = 4;
+
+  // name.
+  optional string name = 7;
+
+  enum RoadType {
+    UNKNOWN_ROAD = 1;
+    PORT_VERTICAL_ROAD = 2;
+    PORT_HORIZONTAL_ROAD = 3;
+    PORT_YARD_ROAD = 4;
+    PORT_BRIDGE_ROAD = 5;
+    PORT_DOCK_ROAD = 6;
+    PORT_REV_DOCK_ROAD = 7;
+    PORT_GIRDER_ROAD = 8;
+    PORT_REV_GIRDER_ROAD = 9;
+    PORT_CROSS_ROAD = 10;
+    PORT_YARD_ENTRANCE_EXIT_ROAD = 11;
+    PORT_BRIDGE_ENTRANCE_EXIT_ROAD = 12;
+    PORT_VESSEL_HEAD_ROAD = 13;
+    PORT_VESSEL_TAIL_ROAD = 14;
+    PORT_VESSEL_HEAD_TAIL_ROAD = 15;
+    PORT_GANTRY_ROAD = 16;
+    PORT_CRANE_ROAD = 17;
+    PORT_CHARGING_AREA = 18;
+    CITY_NORMAL_ROAD = 19;
+    CITY_CROSS_ROAD = 20;
+    RAMP_ROAD = 21;
+    HIGHWAY_NORMAL_ROAD = 22;
+    BRIDGE_ROAD = 23;
+    TUNNEL_ROAD = 24;
+    FLYOVER_ROAD = 25;
+    ROUNDABOUT_ROAD = 26;
+    LETT_TURN_ONLY = 27;
+    RIGHT_TURN_ONLY = 28;
+    U_TURN_ONLY = 29;
+    PARKING_LOT_ENTRANCE_EXIT_ROAD = 30;
+    PARKING_LOT_ROAD = 31;
+  };
+  // type.
+  optional RoadType type = 8;
+
+  repeated Id prev_road_ids = 9;
+
+  repeated Id next_road_ids = 10;
+
+  optional Polygon polygon = 11;
+}
