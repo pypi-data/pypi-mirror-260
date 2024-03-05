@@ -1,0 +1,25 @@
+[project]
+name            = "python-runj"
+description     = "I just want to run a shell command from Python!"
+authors         = [{name = "Rudolph Pienaar"}]
+license         = "MIT"
+readme          = "README.md"
+requires-python = ">= 3.10"
+
+dynamic         = ["version"]
+
+[project.scripts]
+runj            = "runj.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+exclude = [ "/.github" ]
+
+[tool.hatch.build.targets.wheel]
+packages = [ "runj" ]
+
+[tool.hatch.version]
+path = "runj/__init__.py"
