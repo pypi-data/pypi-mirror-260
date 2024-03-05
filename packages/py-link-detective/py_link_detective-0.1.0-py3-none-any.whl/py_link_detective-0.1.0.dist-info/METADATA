@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: py-link-detective
+Version: 0.1.0
+Summary: A simple implementation of a dead link detection tool using python asyncio library
+Author: Ahmed Bin Nasser
+Author-email: ahmednasser.bin@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: bs4 (>=0.0.2,<0.0.3)
+Requires-Dist: httpx (>=0.27.0,<0.28.0)
+Description-Content-Type: text/markdown
+
+<div align="center">
+<pre align="center">
+<h2 align="center">
+;; Python-Link-Detective ;;
+</h2>
+<h4 align="center">A simple implementation of a dead link detection tool using python httpx & asyncio library</h4>
+</pre>
+</div>
+
+## Installation
+```sh
+pip install py-link-detective
+```
+
+## Quick-start
+
+## Usage
+```sh
+py-link-detective -h
+```
+
+```text
+usage: py-link-detective [-h] [--version] [-n N] (-c | -j) url
+
+Detective: A simple link checker for websites
+
+positional arguments:
+  url            The url of the website to be checked
+
+options:
+  -h, --help     show this help message and exit
+  --version, -v  show program's version number and exit
+  -n N           number of concurrent request at a time
+  -c             use console for output
+  -j             use a json file(in the current path) for output
+```
+
+## Test
+
+```sh
+pytest -vv
+```
+
