@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grobidmonkey"
+version = "0.0.2"
+authors = [
+  { name="Zehao Lu", email="com3dian@outlook.com" },
+]
+description = "A python package for processing grobid output."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dev-dependencies]
+xmltodict = ">=0.12.0"
+lxml = ">=4.7.1"
+anytree = ">=2.8.0"
+
+[project.urls]
+Homepage = "https://github.com/com3dian/grobidmonkey"
+Issues = "https://github.com/com3dian/grobidmonkey/issues"
