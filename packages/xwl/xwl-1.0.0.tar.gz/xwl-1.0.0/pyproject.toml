@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "xwl"
+version = "1.0.0"
+description = "xwl library"
+readme = "README.rst"
+authors = [{ name = "Trevor Taylor"}]
+license = { file = "MIT-LICENCE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Development Status :: 5 - Production/Stable"
+]
+requires-python = ">=3.11"
+dependencies = [ "xju>=2" ]
+[project.urls]
+Homepage = "https://github.com/urnest/urnest"
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["xwl","xwl.*","xwl.example.*"]  # package names should match these glob patterns (["*"] by default)
+exclude = []  # exclude packages matching these glob patterns (empty by default)
+namespaces = true  # to disable scanning PEP 420 namespaces (true by default)
+[tool.setuptools.package-data]
+xwl = [ "./example.py.test","./wsgi.py.test","./xwl.py.test", "py.typed"]

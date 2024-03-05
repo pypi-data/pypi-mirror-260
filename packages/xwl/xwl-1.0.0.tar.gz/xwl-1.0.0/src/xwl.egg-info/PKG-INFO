@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: xwl
+Version: 1.0.0
+Summary: xwl library
+Author: Trevor Taylor
+License: Copyright © 2022 Trevor Taylor
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/urnest/urnest
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 5 - Production/Stable
+Requires-Python: >=3.11
+Description-Content-Type: text/x-rst
+
+xwl python library
+------------------
+
+WSGI dispatcher that maps HTTP requests to python functions of same/similar name.
+
+* function params taken from query string and/or POST content
+* function access control via python decorators
+* JSON support for parameters and responses
+* small javascript library with convenience async postToServer
+* and getFromServer functions
+
+see `xwl.example <xwl/example>`_ which implements a HTTP
+`server.py <xwl/example/server.py>`_ using
+`dispatcher.py <xwl/dispatcher.py>`_ to map HTTP requests to
+`app <xwl/example/app.py>`_ and
+`app.submodule <xwl/example.submodule.py>`_ functions
