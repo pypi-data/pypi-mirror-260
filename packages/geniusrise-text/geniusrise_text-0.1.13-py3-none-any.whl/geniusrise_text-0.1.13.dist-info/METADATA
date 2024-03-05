@@ -1,0 +1,111 @@
+Metadata-Version: 2.1
+Name: geniusrise-text
+Version: 0.1.13
+Summary: Text bolts for geniusrise
+Home-page: https://github.com/geniusrise/geniusrise-text
+Author: ixaxaar
+Author-email: ixaxaar@geniusrise.ai
+Project-URL: Bug Reports, https://github.com/geniusrise/geniusrise-text/issues
+Project-URL: Source, https://github.com/geniusrise/geniusrise-text
+Project-URL: Documentation, https://docs.geniusrise.ai/
+Keywords: mlops,llm,geniusrise,machine learning,data processing
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: geniusrise ==0.1.7
+Requires-Dist: torch ==2.1.2
+Requires-Dist: accelerate ==0.27.2
+Requires-Dist: transformers ==4.38.1
+Requires-Dist: evaluate ==0.4.1
+Requires-Dist: datasets ==2.16.1
+Requires-Dist: autoawq ==0.2.2
+Requires-Dist: auto-gptq ==0.7.0
+Requires-Dist: bitsandbytes ==0.42.0
+Requires-Dist: CherryPy ==18.9.0
+Requires-Dist: flash-attn ==2.4.2
+Requires-Dist: peft ==0.7.1
+Requires-Dist: gunicorn ==21.2.0
+Requires-Dist: trl ==0.7.10
+Requires-Dist: sentence-transformers ==2.2.2
+Requires-Dist: nbformat ==5.9.2
+Requires-Dist: sacremoses ==0.1.1
+Requires-Dist: sacrebleu ==2.4.0
+Requires-Dist: rouge-score ==0.1.2
+Requires-Dist: rouge ==1.0.1
+Requires-Dist: openpyxl ==3.1.2
+Requires-Dist: sentencepiece ==0.1.99
+Requires-Dist: safetensors ==0.4.1
+Requires-Dist: einops ==0.7.0
+Requires-Dist: packaging ==23.2
+Requires-Dist: optimum ==1.16.2
+Requires-Dist: textwrap3 ==0.9.2
+Requires-Dist: nltk ==3.8.1
+Requires-Dist: pyarrow >=9.0.0
+Requires-Dist: absl-py ==2.1.0
+Requires-Dist: pandas ==1.3.5
+Requires-Dist: multiprocess ==0.70.15
+Requires-Dist: vllm ==0.3.2
+Requires-Dist: llama-cpp-python ==0.2.50
+Provides-Extra: dev
+Requires-Dist: check-manifest ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage ; extra == 'test'
+
+![logo_with_text](https://github.com/geniusrise/.github/assets/144122/2f8e51ee-0fcd-4f74-90fd-97301ef7943d)
+
+### AI Ecosystem
+
+<h3 align="center">
+  <a style="color:#f34960" href="https://docs.geniusrise.ai">Documentation</a>
+  ||
+  <a style="color:#f34960" href="https://github.com/geniusrise/examples">Examples</a>
+  ||
+  <a style="color:#f34960" href="https://geniusrise.com">Cloud</a>
+</h3>
+
+### <span style="color:#e667aa">About</span>
+
+<span style="color:#e4e48c">Geniusrise</span> is a modular, loosely-coupled
+MLOps framework designed for the era of Large Language Models,
+offering flexibility and standardization in designing networks of
+AI agents.
+
+It defines components and orchestrates them providing observability, state management and data handling,
+all while supporting diverse infrastructures. With its modular and unopinonated architecture,
+<span style="color:#e4e48c">Geniusrise</span> empowers teams to build, share,
+and deploy AI across various platforms.
+
+Geniusrise is powered by its components:
+
+- [geniusrise-text](https://github.com/geniusrise/geniusrise-text): Text components offerring:
+  - Inference APIs
+  - Bulk inference
+  - Fine-tuning
+- [geniusrise-audio](https://github.com/geniusrise/geniusrise-audio): Audio components offerring:
+  - Inference APIs
+  - Bulk inference
+  - Fine-tuning
+- [geniusrise-vision](https://github.com/geniusrise/geniusrise-vision): Vision components offerring:
+  - Inference APIs
+  - Bulk inference
+  - Fine-tuning
+- [geniusrise-listeners](https://github.com/geniusrise/geniusrise-listeners): Streaming data ingestion
+- [geniusrise-databases](https://github.com/geniusrise/geniusrise-databases): Bulk data ingestion
+
+### <span style="color:#e667aa">Links</span>
+
+- **Website**: [geniusrise.ai](https://geniusrise.ai)
+- **Docs**: [docs.geniusrise.ai](https://docs.geniusrise.ai)
+- **Examples**: [geniusrise/examples](https://github.com/geniusrise/examples)
+- **Cloud**: [geniusrise.com](https://geniusrise.com)
+
+# Text Components
+
+These are text components, mainly focused around models of the text modality (both input and output).
+This also includes large language models.
