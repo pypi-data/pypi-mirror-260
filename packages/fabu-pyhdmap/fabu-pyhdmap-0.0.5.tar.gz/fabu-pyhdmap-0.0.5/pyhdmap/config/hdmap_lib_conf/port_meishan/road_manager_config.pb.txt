@@ -1,0 +1,68 @@
+# hdmap_lib::RoadManagerConfig
+
+road_configs {
+  road_type : PORT_VERTICAL_ROAD
+  max_reverse_distance: 0. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 10.
+  max_init_d_value: 0.3
+}
+
+road_configs {
+  road_type : PORT_HORIZONTAL_ROAD
+  max_reverse_distance: 0. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 10.
+  max_init_d_value: 0.3
+}
+
+road_configs {
+  road_type : PORT_YARD_ROAD
+  max_reverse_distance: 6. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 5.
+  max_init_d_value: 0.15
+}
+
+road_configs {
+  road_type : PORT_BRIDGE_ROAD
+  max_reverse_distance: 6. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 5.
+  max_init_d_value: 0.15
+}
+
+road_configs {
+  road_type : PORT_DOCK_ROAD
+  max_reverse_distance: 6. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 5.
+  max_init_d_value: 0.15
+}
+
+road_configs {
+  road_type : PORT_GIRDER_ROAD
+  max_reverse_distance: 0. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 50. # 最小变入并拉直距离
+  max_angle_diff_in_degree: 5.
+  max_init_d_value: 0.15
+}
+
+road_configs {
+  road_type : PORT_EMPTY_YARD_ROAD
+  max_reverse_distance: 15. # 最大倒车距离
+  max_angle_diff_in_degree: 5.
+  max_init_d_value: 0.15
+}

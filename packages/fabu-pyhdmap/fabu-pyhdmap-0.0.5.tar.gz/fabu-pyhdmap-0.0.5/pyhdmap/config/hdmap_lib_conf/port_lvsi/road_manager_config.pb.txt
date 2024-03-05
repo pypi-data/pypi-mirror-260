@@ -1,0 +1,33 @@
+# hdmap_lib::RoadManagerConfig
+
+road_configs {
+  road_type : PORT_VERTICAL_ROAD
+  max_reverse_distance: 0. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 53. # 最小变入并拉直距离，实际是17个贝位，17*3=51m，考虑感知box检测到的偏小，留一定余量
+}
+
+road_configs {
+  road_type : PORT_HORIZONTAL_ROAD
+  max_reverse_distance: 0. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 53. # 最小变入并拉直距离，实际是17个贝位，17*3=51m，考虑感知box检测到的偏小，留一定余量
+}
+
+road_configs {
+  road_type : PORT_YARD_ROAD
+  max_reverse_distance: 6. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 53. # 最小变入并拉直距离，实际是17个贝位，17*3=51m，考虑感知box检测到的偏小，留一定余量
+}
+
+road_configs {
+  road_type : PORT_DOCK_ROAD
+  max_reverse_distance: 6. # 最大倒车距离
+  min_dist_to_change_out: 15. # 最小变出的距离
+  min_dist_to_change_in: 30. # 最小变入距离
+  min_dist_to_change_in_with_straighten: 53. # 最小变入并拉直距离，实际是17个贝位，17*3=51m，考虑感知box检测到的偏小，留一定余量
+}
