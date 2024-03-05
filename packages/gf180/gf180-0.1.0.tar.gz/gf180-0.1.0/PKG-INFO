@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: gf180
+Version: 0.1.0
+Summary: GlobalFoundries 180nm MCU
+Keywords: python
+Author-email: gdsfactory <contact@gdsfactory.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Requires-Dist: gdsfactory>=7.16.0,<7.17
+Requires-Dist: pre-commit ; extra == "dev"
+Requires-Dist: pytest ; extra == "dev"
+Requires-Dist: pytest-cov ; extra == "dev"
+Requires-Dist: pytest_regressions ; extra == "dev"
+Requires-Dist: autodoc_pydantic ; extra == "docs"
+Requires-Dist: jupytext ; extra == "docs"
+Requires-Dist: jupyter-book==1.0.0 ; extra == "docs"
+Requires-Dist: pytest ; extra == "tests"
+Requires-Dist: pytest-cov ; extra == "tests"
+Provides-Extra: dev
+Provides-Extra: docs
+Provides-Extra: tests
+
+# gf180 0.1.0
+
+GlobalFoundries 180nm MCU based on [Google open source PDK](https://github.com/google/globalfoundries-pdk-libs-gf180mcu_fd_pr)
+
+This is a pure python implementation of the PDK.
+
+## Installation
+
+### Installation for new python users
+
+If you don't have python installed on your system you can [download the gdsfactory installer](https://github.com/gdsfactory/gdsfactory/releases) that includes python3, miniconda and all gdsfactory plugins.
+
+### Installation for new gdsfactory users
+
+If you already have python installed. Open Anaconda Prompt and then install the ubcpdk using pip.
+
+![anaconda prompt](https://i.imgur.com/Fyal5sT.png)
+
+```
+pip install gf180 --upgrade
+```
+
+Then you need to restart Klayout to make sure the new technology installed appears.
+
+### Installation for developers
+
+For developers you need to `git clone` the GitHub repository, fork it, git add, git commit, git push and merge request your changes.
+
+```
+git clone https://github.com/gdsfactory/gf180.git
+cd gf180
+make install
+```
+
+## Documentation
+
+- Run notebooks on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gdsfactory/binder-sandbox/HEAD)
+- [gdsfactory docs](https://gdsfactory.github.io/gdsfactory/)
+
