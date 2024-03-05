@@ -1,0 +1,100 @@
+Metadata-Version: 2.1
+Name: workstream-dbt-core
+Version: 0.2.0
+Summary: A CLI and Python library for integrating Workstream and dbt-core.
+License: Apache 2.0
+Author: Ted Conbeer
+Author-email: tconbeer@users.noreply.github.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: dbt-core (>=1.5,<2.0)
+Description-Content-Type: text/markdown
+
+# workstream-dbt-core
+
+A CLI and Python library for integrating dbt-core and Workstream.
+
+## Installation
+
+```bash
+pip install workstream-dbt-core
+```
+
+## Usage
+
+Installing this package installs a CLI app. You can learn about its commands and options using:
+
+```bash
+workstream --help
+```
+
+### Reporting a dbt Invocation
+
+Report a dbt-core invocation to Workstream by posting artifacts from dbt's `target` directory
+to the Workstream API. The CLI defaults to searching for a directory named `target` in the
+current working directory, but this is configurable with the `--target-path` or `-t` option.
+
+```bash
+workstream report -t /path/to/dbt/target --client-id abc123 --client-secret xyz987
+```
+
+#### Exit Codes
+
+By default, `workstream report` will always exit with a 0 code, even if it encounters critical errors, so that it doesn't interrupt later steps in your pipeline. 
+
+However, if you rely on dbt failures to cause workflow failures, this may not work for you. If you would like `workstream report` to exit with a nonzero code when dbt runs, tests, or sources fail, you can run it with the `--exit-nonzero` option:
+
+```
+dbt test || true
+workstream report --exit-nonzero
+```
+
+### Environment Variables
+
+All CLI options can also be set using environment variables. Vars start with the prefix `WORKSTREAM_DBT_` and then share their name with their associated option. The following command is equivalent to the previous one:
+
+```bash
+WORKSTREAM_DBT_TARGET_PATH="/path/to/dbt/target" WORKSTREAM_DBT_CLIENT_ID="abc123" WORKSTREAM_DBT_CLIENT_SECRET="xyz987" workstream report
+```
+
+## Contributing
+
+This project is built with [Poetry](https://python-poetry.org/). After cloning, install with:
+
+```bash
+poetry install
+```
+
+Then spawn a subshell with a virtual environment activated:
+
+```bash
+poetry shell
+```
+
+### Testing and Linting
+
+This project uses pytest and ruff. With `poetry shell` activated, run tests with:
+
+```bash
+pytest
+```
+
+Format and lint with:
+
+```bash
+ruff format
+ruff . --fix
+```
+
+or if you have make, lint and test with:
+
+```bash
+make
+```
+
