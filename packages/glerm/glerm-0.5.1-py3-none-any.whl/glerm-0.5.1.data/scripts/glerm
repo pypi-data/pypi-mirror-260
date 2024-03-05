@@ -1,0 +1,549 @@
+#!python
+""" Glerm, a puzzle game """
+# Copyright (C) 2024 Gwyn Ciesla
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#Basic init stuff
+import sys
+import random
+import pygame
+# pylint: disable=no-member
+
+import pyglerm
+
+VERSION = "0.5.1"
+
+pygame.init()
+
+pygame.mixer.init(22050, -16, 16, 1024)
+SWAPCHANNEL = pygame.mixer.find_channel()
+NEWLEVELCHANNEL = pygame.mixer.find_channel()
+
+pygame.display.set_caption("Glerm " + VERSION)
+
+SIZE = 672, 692
+
+FLAGS = pygame.SCALED
+
+SCREEN = pygame.display.set_mode(SIZE, FLAGS)
+
+FILE_PATH = pyglerm.__path__[0] + '/data/'
+
+FONT = pygame.font.SysFont("DejaVu Sans", 12)
+TEXT_COLOR = (0, 255, 255)
+BLACK = (0, 0, 0)
+TITLE_TEXT = FONT.render("Glerm " + VERSION, 1, TEXT_COLOR)
+
+LEVEL = 1
+KILLCOUNT = 0
+
+#Load images
+BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile.png")
+BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core.png")
+PLAYER_RED = pygame.image.load(FILE_PATH + "player_red_cone.png")
+PLAYER_BLUE = pygame.image.load(FILE_PATH + "player_blue_cone.png")
+PLAYER_YELLOW = pygame.image.load(FILE_PATH + "player_yellow_cone.png")
+PLAYER_GREEN = pygame.image.load(FILE_PATH + "player_green_cone.png")
+CHIT_RED = pygame.image.load(FILE_PATH + "chit_red_sphere.png")
+CHIT_BLUE = pygame.image.load(FILE_PATH + "chit_blue_sphere.png")
+CHIT_YELLOW = pygame.image.load(FILE_PATH + "chit_yellow_sphere.png")
+CHIT_GREEN = pygame.image.load(FILE_PATH + "chit_green_sphere.png")
+PAUSED_IMAGE = pygame.image.load(FILE_PATH + "paused.png")
+GAME_OVER_IMAGE = pygame.image.load(FILE_PATH + "game_over.png")
+BEAM_IMAGE = pygame.image.load(FILE_PATH + "beam.png")
+
+#Load sound
+NOSOUND = 1
+BEAM_SWAP_SOUND = pygame.mixer.Sound(FILE_PATH + "beam_swap.ogg")
+NEW_LEVEL_SOUND = pygame.mixer.Sound(FILE_PATH + "new_level.ogg")
+NOMUSIC = 1
+MUSIC = pygame.mixer.music.load(FILE_PATH + "music.ogg")
+pygame.mixer.music.play(-1, 0.0)
+
+RESOLVED = 0
+SCORE = 0
+
+HIGH_SCORE = 0
+
+TILELIST = []
+
+TILELIST = pyglerm.tiles_init(TILELIST, BLANK_TILE, BLANK_TILE_CORE)
+
+for thistile in TILELIST:
+    thistile.rect = thistile.rect.move([thistile.horiz, thistile.vert])
+
+for thistile in TILELIST:
+    thistile.new = pygame.transform.rotate(thistile.image, 0)
+
+#Setup the player
+PLAYER = pyglerm.GAMEOBJECT()
+PLAYER.horiz = 7*48-48
+PLAYER.vert = 7*48-48
+COLOR = random.randrange(0, 5)
+if COLOR <= 1:
+    PLAYER.image = PLAYER_RED
+    PLAYER.color = 0
+if 1 < COLOR <= 2:
+    PLAYER.image = PLAYER_BLUE
+    PLAYER.color = 1
+if 2 < COLOR <= 3:
+    PLAYER.image = PLAYER_YELLOW
+    PLAYER.color = 2
+if COLOR > 3:
+    PLAYER.image = PLAYER_GREEN
+    PLAYER.color = 3
+PLAYER.rect = PLAYER.image.get_rect()
+PLAYER.rect = PLAYER.rect.move([PLAYER.horiz, PLAYER.vert])
+PLAYER.dir = 0
+PLAYER.new = pygame.transform.rotate(PLAYER.image, PLAYER.dir)
+
+#Pause text object
+PAUSED_OBJECT = pyglerm.GAMEOBJECT()
+PAUSED_OBJECT.horiz = 200
+PAUSED_OBJECT.vert = 275
+PAUSED_OBJECT.rect = PAUSED_IMAGE.get_rect()
+PAUSED_OBJECT.rect = PAUSED_OBJECT.rect.move([PAUSED_OBJECT.horiz, PAUSED_OBJECT.vert])
+PAUSED_OBJECT.dir = 0
+PAUSED_OBJECT.new = pygame.transform.rotate(PAUSED_IMAGE, PAUSED_OBJECT.dir)
+
+#Game over text object
+GAME_OVER_OBJECT = pyglerm.GAMEOBJECT()
+GAME_OVER_OBJECT.horiz = 75
+GAME_OVER_OBJECT.vert = 275
+GAME_OVER_OBJECT.rect = GAME_OVER_IMAGE.get_rect()
+GAME_OVER_OBJECT.rect = GAME_OVER_OBJECT.rect.move([GAME_OVER_OBJECT.horiz, GAME_OVER_OBJECT.vert])
+GAME_OVER_OBJECT.dir = 0
+GAME_OVER_OBJECT.new = pygame.transform.rotate(GAME_OVER_IMAGE, GAME_OVER_OBJECT.dir)
+
+#Beam object
+BEAM_OBJECT = pyglerm.GAMEOBJECT()
+BEAM_OBJECT.horiz = 75
+BEAM_OBJECT.vert = 275
+BEAM_OBJECT.rect = BEAM_IMAGE.get_rect()
+BEAM_OBJECT.rect = BEAM_OBJECT.rect.move([BEAM_OBJECT.horiz, BEAM_OBJECT.vert])
+BEAM_OBJECT.dir = 0
+BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+
+#Start events
+EVENT = pygame.event.Event(pygame.USEREVENT)
+
+#Setup the chits
+CHITLIST = []
+
+def chit_add(clist):
+    """ A chit is born """
+    newchit = pyglerm.GAMEOBJECT()
+
+    #Choose starting location
+    side = random.randrange(0, 5)
+    row = random.randrange(0, 4)
+    if side <= 1:
+        newchit.horiz = 0
+        newchit.vert = row + 5
+    if 1 < side <= 2:
+        newchit.horiz = row + 5
+        newchit.vert = 13
+    if 2 < side <= 3:
+        newchit.horiz = 13
+        newchit.vert = row + 5
+    if side > 3:
+        newchit.horiz = row + 5
+        newchit.vert = 0
+
+    #Spacing
+    newchit.horiz = newchit.horiz*48
+    newchit.vert = newchit.vert*48
+
+
+   #Choose color
+    clr = random.randrange(0, 5)
+    if clr <= 1:
+        newchit.image = CHIT_RED
+        newchit.color = 0
+    if 1 < clr <= 2:
+        newchit.image = CHIT_BLUE
+        newchit.color = 1
+    if 2 < clr <= 3:
+        newchit.image = CHIT_YELLOW
+        newchit.color = 2
+    if clr > 3:
+        newchit.image = CHIT_GREEN
+        newchit.color = 3
+
+    #Load image
+    newchit.rect = newchit.image.get_rect()
+
+    newchit.rect = newchit.rect.move([newchit.horiz, newchit.vert])
+
+    #Shift chits as needed.
+    clist = pyglerm.chit_shift(clist, newchit)
+
+    #Add to the list
+    clist.append(newchit)
+
+    #Check chits
+    clist, brchd = pyglerm.chit_check(clist)
+
+    return clist, brchd
+
+
+CHITLIST, BREACHED = chit_add(CHITLIST)
+
+CHIT_TIMER_GLOBAL, CHIT_TIMER_ACCEL_GLOBAL = [100, 20]
+CHIT_TIMER = CHIT_TIMER_GLOBAL
+CHIT_TIMER_ACCEL = CHIT_TIMER_ACCEL_GLOBAL
+
+def chit_swap(clist, check_h, check_v, plyr, scr, kcount):
+    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-statements
+    """ Chit interaction logic"""
+    rslvd = 0
+    chit_counter = 0
+    drop_list = []
+    for check_chit in clist: # pylint: disable=too-many-nested-blocks
+        #is there a chit here?
+        if check_chit.rect.centerx == check_h and check_chit.rect.centery == check_v:
+            rslvd = 1
+            #if color is the same as PLAYER remove
+            if check_chit.color == plyr.color:
+                drop_list.insert(0, chit_counter)
+                scr += 5
+                scr_mult = 2
+                kcount = kcount + 1
+
+                # Delete all contiguous chits of the same color with increasing score bonus
+                if plyr.dir == 0:
+                    check_counter = 0
+                    for chit in clist:
+                        if chit.rect.centery == check_v and chit.rect.centerx > check_h:
+                            if chit.color != plyr.color:
+                                break
+                            if chit.color == plyr.color:
+                                drop_list.insert(0, check_counter)
+                                scr += 5*scr_mult
+                                scr_mult += 1
+                        check_counter += 1
+                if plyr.dir == 90:
+                    check_counter = 0
+                    for chit in clist:
+                        if chit.rect.centerx == check_h and chit.rect.centery < check_v:
+                            if chit.color != plyr.color:
+                                break
+                            if chit.color == plyr.color:
+                                drop_list.insert(0, check_counter)
+                                scr += 5*scr_mult
+                                scr_mult += 1
+                        check_counter += 1
+                if plyr.dir == 180:
+                    check_counter = 0
+                    for chit in clist:
+                        if chit.rect.centery == check_v and chit.rect.centerx < check_h:
+                            if chit.color != plyr.color:
+                                break
+                            if chit.color == plyr.color:
+                                drop_list.insert(0, check_counter)
+                                scr += 5*scr_mult
+                                scr_mult += 1
+                        check_counter += 1
+                if plyr.dir == 270:
+                    check_counter = 0
+                    for chit in clist:
+                        if chit.rect.centerx == check_h and chit.rect.centery > check_v:
+                            if chit.color != plyr.color:
+                                break
+                            if chit.color == plyr.color:
+                                drop_list.insert(0, check_counter)
+                                scr += 5*scr_mult
+                                scr_mult += 1
+                        check_counter += 1
+
+            #if not, swap colors with player
+            else:
+                hold_color = plyr.color
+                plyr.color = check_chit.color
+                check_chit.color = hold_color
+                if check_chit.color == 0:
+                    check_chit.image = CHIT_RED
+                if check_chit.color == 1:
+                    check_chit.image = CHIT_BLUE
+                if check_chit.color == 2:
+                    check_chit.image = CHIT_YELLOW
+                if check_chit.color == 3:
+                    check_chit.image = CHIT_GREEN
+                check_chit.new = pygame.transform.rotate(check_chit.image, 0)
+                if plyr.color == 0:
+                    plyr.image = PLAYER_RED
+                if plyr.color == 1:
+                    plyr.image = PLAYER_BLUE
+                if plyr.color == 2:
+                    plyr.image = PLAYER_YELLOW
+                if plyr.color == 3:
+                    plyr.image = PLAYER_GREEN
+                plyr.new = pygame.transform.rotate(plyr.image, plyr.dir)
+
+        chit_counter += 1
+
+    # Delete the chits
+    for chit in drop_list:
+        del clist[chit]
+
+    #if no chit, move chit one on if not at the border
+    if rslvd == 0:
+        if plyr.dir == 0:
+            if 13 * 48 > check_h > 5 * 48:
+                clist, plyr, rslvd, scr, kcount = \
+                    chit_swap(clist, check_h+48, check_v, plyr, scr, kcount)
+        if plyr.dir == 90:
+            if 48 < check_v < 13 * 48:
+                clist, plyr, rslvd, scr, kcount = \
+                    chit_swap(clist, check_h, check_v - 48, plyr, scr, kcount)
+        if plyr.dir == 180:
+            if 48 < check_h < 13 * 48:
+                clist, plyr, rslvd, scr, kcount = \
+                    chit_swap(clist, check_h - 48, check_v, plyr, scr, kcount)
+        if plyr.dir == 270:
+            if 13 * 48 > check_v > 5 * 48:
+                clist, plyr, rslvd, scr, kcount = \
+                    chit_swap(clist, check_h, check_v+48, plyr, scr, kcount)
+
+    return clist, plyr, rslvd, scr, kcount
+
+HIGH_SCORE = pyglerm.score_file(SCORE)
+
+#Main loop
+while 1:
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            sys.exit()
+        if e.type == pygame.KEYDOWN:
+            if e.key == pygame.K_p:
+                SCREEN.blit(PAUSED_OBJECT.new, PAUSED_OBJECT.rect)
+                pygame.display.flip()
+                PAUSELOOP = 0
+                while PAUSELOOP == 0:
+                    for pevent in pygame.event.get():
+                        if pevent.type == pygame.KEYDOWN and pevent.key == pygame.K_p:
+                            PAUSELOOP = 1
+            if e.key == pygame.K_s:
+                if NOSOUND == 1:
+                    NOSOUND = 0
+                else:
+                    NOSOUND = 1
+            if e.key == pygame.K_m:
+                if NOMUSIC == 1:
+                    pygame.mixer.music.pause()
+                    NOMUSIC = 0
+                else:
+                    pygame.mixer.music.unpause()
+                    NOMUSIC = 1
+
+        #Turn the player
+            GO = 0
+            if e.key == pygame.K_RIGHT:
+                PLAYER.dir = 0
+                if (PLAYER.rect.centerx-24)/48 < 8:
+                    PLAYER.horiz = 48
+                    PLAYER.vert = 0
+                    GO = 1
+                PLAYER.new = pygame.transform.rotate(PLAYER.image, PLAYER.dir)
+            if e.key == pygame.K_LEFT:
+                PLAYER.dir = 180
+                if (PLAYER.rect.centerx-24)/48 > 5:
+                    PLAYER.horiz = -48
+                    PLAYER.vert = 0
+                    GO = 1
+                PLAYER.new = pygame.transform.rotate(PLAYER.image, PLAYER.dir)
+            if e.key == pygame.K_UP:
+                PLAYER.dir = 90
+                if (PLAYER.rect.centery-24)/48 > 5:
+                    PLAYER.horiz = 0
+                    PLAYER.vert = -48
+                    GO = 1
+                PLAYER.new = pygame.transform.rotate(PLAYER.image, PLAYER.dir)
+            if e.key == pygame.K_DOWN:
+                PLAYER.dir = 270
+                if (PLAYER.rect.centery-24)/48 < 8:
+                    PLAYER.horiz = 0
+                    PLAYER.vert = 48
+                    GO = 1
+                PLAYER.new = pygame.transform.rotate(PLAYER.image, PLAYER.dir)
+            if GO == 1:
+                PLAYER.rect = PLAYER.rect.move([PLAYER.horiz, PLAYER.vert])
+            #Player swap color with target chit
+            if e.key == pygame.K_SPACE:
+                if NOSOUND:
+                    SWAPCHANNEL.play(BEAM_SWAP_SOUND)
+                BEAM_OBJECT.dir = PLAYER.dir
+                if PLAYER.dir == 0:
+                    BEAM_OBJECT.rect.centery = PLAYER.rect.centery
+                    BEAM_OBJECT.rect.centerx = PLAYER.rect.centerx + 48
+                    BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                    SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                    pygame.display.flip()
+                    while BEAM_OBJECT.rect.centerx < 624:
+                        BEAM_OBJECT.rect.centerx = BEAM_OBJECT.rect.centerx + 48
+                        BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                        SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                        pygame.display.flip()
+                if PLAYER.dir == 180:
+                    BEAM_OBJECT.rect.centerx = PLAYER.rect.centerx - 48
+                    BEAM_OBJECT.rect.centery = PLAYER.rect.centery
+                    BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                    SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                    pygame.display.flip()
+                    while BEAM_OBJECT.rect.centerx > 0:
+                        BEAM_OBJECT.rect.centerx = BEAM_OBJECT.rect.centerx - 48
+                        BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                        SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                        pygame.display.flip()
+                if PLAYER.dir == 90:
+                    BEAM_OBJECT.rect.centerx = PLAYER.rect.centerx
+                    BEAM_OBJECT.rect.centery = PLAYER.rect.centery - 48
+                    BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                    SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                    pygame.display.flip()
+                    while BEAM_OBJECT.rect.centery > 0:
+                        BEAM_OBJECT.rect.centery = BEAM_OBJECT.rect.centery - 48
+                        BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                        SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                        pygame.display.flip()
+                if PLAYER.dir == 270:
+                    BEAM_OBJECT.rect.centerx = PLAYER.rect.centerx
+                    BEAM_OBJECT.rect.centery = PLAYER.rect.centery + 48
+                    BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                    SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                    pygame.display.flip()
+                    while BEAM_OBJECT.rect.centery < 624:
+                        BEAM_OBJECT.rect.centery = BEAM_OBJECT.rect.centery + 48
+                        BEAM_OBJECT.new = pygame.transform.rotate(BEAM_IMAGE, BEAM_OBJECT.dir)
+                        SCREEN.blit(BEAM_OBJECT.new, BEAM_OBJECT.rect)
+                        pygame.display.flip()
+                CHITLIST, PLAYER, RESOLVED, SCORE, KILLCOUNT = \
+                    chit_swap(CHITLIST, PLAYER.rect.centerx, PLAYER.rect.centery, \
+                    PLAYER, SCORE, KILLCOUNT)
+            if e.key == pygame.K_q:
+                SCREEN.blit(GAME_OVER_OBJECT.new, GAME_OVER_OBJECT.rect)
+                pygame.display.flip()
+                PAUSELOOP = 0
+                pygame.mixer.music.stop()
+                QUITLOOP = 0
+                while PAUSELOOP == 0:
+                    QUITLOOP = QUITLOOP + 1
+                    for pevent in pygame.event.get():
+                        if pevent.type == pygame.KEYDOWN or QUITLOOP > 30:
+                            PAUSELOOP = 1
+                HIGH_SCORE = pyglerm.score_file(SCORE)
+                sys.exit()
+
+    CHIT_TIMER = CHIT_TIMER - 1
+    if CHIT_TIMER == 0:
+        CHITLIST, BREACHED = chit_add(CHITLIST)
+        CHIT_TIMER = CHIT_TIMER_GLOBAL
+        CHIT_TIMER_ACCEL = CHIT_TIMER_ACCEL - 1
+        if CHIT_TIMER_ACCEL == 0 and CHIT_TIMER_GLOBAL > 0:
+            CHIT_TIMER_GLOBAL = CHIT_TIMER_GLOBAL - 1
+            CHIT_TIMER_ACCEL = CHIT_TIMER_ACCEL_GLOBAL
+
+    #level advance
+    if KILLCOUNT == 20:
+        if NOSOUND:
+            NEWLEVELCHANNEL.play(NEW_LEVEL_SOUND)
+        KILLCOUNT = 0
+        LEVEL = LEVEL + 1
+        COLORER = LEVEL
+        while COLORER > 8:
+            COLORER = COLORER - 8
+        if COLORER == 1:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core.png")
+        if COLORER == 2:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_red.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_red.png")
+        if COLORER == 3:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_orange.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_orange.png")
+        if COLORER == 4:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_yellow.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_yellow.png")
+        if COLORER == 5:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_green.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_green.png")
+        if COLORER == 6:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_blue.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_blue.png")
+        if COLORER == 7:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_purple.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_purple.png")
+        if COLORER == 8:
+            BLANK_TILE = pygame.image.load(FILE_PATH + "blank_tile_white.png")
+            BLANK_TILE_CORE = pygame.image.load(FILE_PATH + "blank_tile_core_white.png")
+
+        TILELIST = []
+        TILELIST = pyglerm.tiles_init(TILELIST, BLANK_TILE, BLANK_TILE_CORE)
+        for thistile in TILELIST:
+            thistile.rect = thistile.rect.move([thistile.horiz, thistile.vert])
+        for thistile in TILELIST:
+            thistile.new = pygame.transform.rotate(thistile.image, 0)
+
+
+    #Blitting
+
+    SCREEN.fill(BLACK)
+
+    #Background tiles
+    for thistile in TILELIST:
+        SCREEN.blit(thistile.new, thistile.rect)
+
+    #Player
+    SCREEN.blit(PLAYER.new, PLAYER.rect)
+
+    #Chits
+    for thischit in CHITLIST:
+        thischit.new = pygame.transform.rotate(thischit.image, 0)
+        SCREEN.blit(thischit.new, thischit.rect)
+
+    #Info bar
+    SCREEN.blit(TITLE_TEXT, (15, 672))
+    if NOSOUND == 0:
+        SOUND_TEXT = FONT.render("Sound OFF", 1, TEXT_COLOR)
+    else:
+        SOUND_TEXT = FONT.render("Sound ON", 1, TEXT_COLOR)
+    SCREEN.blit(SOUND_TEXT, (120, 672))
+    if NOMUSIC == 0:
+        MUSIC_TEXT = FONT.render("Music OFF", 1, TEXT_COLOR)
+    else:
+        MUSIC_TEXT = FONT.render("Music ON", 1, TEXT_COLOR)
+    SCREEN.blit(MUSIC_TEXT, (190, 672))
+    SCORE_TEXT = FONT.render("Score: " + str(SCORE), 1, TEXT_COLOR)
+    SCREEN.blit(SCORE_TEXT, (300, 672))
+    LEVEL_TEXT = FONT.render("Level: " + str(LEVEL), 1, TEXT_COLOR)
+    SCREEN.blit(LEVEL_TEXT, (400, 672))
+    HIGH_SCORE_TEXT = FONT.render("High Score: " + str(HIGH_SCORE).rstrip(), 1, TEXT_COLOR)
+    SCREEN.blit(HIGH_SCORE_TEXT, (500, 672))
+
+    #Paint the whole thing
+    pygame.display.flip()
+
+    if BREACHED == 1:
+        SCREEN.blit(GAME_OVER_OBJECT.new, GAME_OVER_OBJECT.rect)
+        pygame.display.flip()
+        PAUSELOOP = 0
+        while PAUSELOOP == 0:
+            for pevent in pygame.event.get():
+                if pevent.type == pygame.KEYDOWN:
+                    PAUSELOOP = 1
+        HIGH_SCORE = pyglerm.score_file(SCORE)
+        sys.exit()
