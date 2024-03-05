@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "consolemenu.py"
+version = "0.2.2"
+description = "A simple Python console (terminal) menu that work's on any OS"
+authors = ["Pirulax <patrikjankovics7@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.urls]
+"Homepage" = "https://github.com/Pirulax/consolemenu.py"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aioconsole = "^0.7.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
