@@ -1,0 +1,114 @@
+# https://github.com/ofek/hatch-vcs/blob/master/.github/workflows/build.yml
+name: build
+
+on:
+  push:
+    branches:
+    - >-
+      **
+    - >-
+      !dependabot/**
+    - >-
+      !pre-commit-ci-update-config
+    tags:
+    - >-
+      v*
+  pull_request:
+    paths-ignore:
+    - docs/**.rst
+
+concurrency:
+  group: build-${{ github.head_ref }}
+
+jobs:
+  lint:
+    uses: ./.github/workflows/test.yml
+    secrets:
+      SAFPIS_SUBSCRIBER_TOKEN: ${{ secrets.SAFPIS_SUBSCRIBER_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: Build distribution 📦
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history so "hatch version" can determine the
+          # correct dev version from git
+          fetch-depth: 0
+
+      - name: Set up 🐍 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+  
+      - name: Install 🐣
+        run: pip install --upgrade hatch
+
+      - name: Build a 🛞 and source tarball
+        run: hatch build
+
+      - name: Store distribution 📦
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
+  check:
+    if: always()
+    needs:
+      - lint
+      - build
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
+
+  publish-pypi:
+    name: PyPI - Publish 🐍 distribution 📦
+    if: startsWith(github.ref, 'refs/tags/v')  # only publish to PyPI on tag pushes
+    needs:
+      - check
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/safpis
+    permissions:
+        contents: read  # This job doesn't need to `git push` anything
+        id-token: write  # Mandatory for trusted publishing
+    steps:
+      - name: Download distribution 📦 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-testpypi:
+    name: TestPyPI - Publish 🐍 distribution 📦
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - check
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/safpis
+    permissions:
+      contents: read  # This job doesn't need to `git push` anything
+      id-token: write  # Mandatory for trusted publishing
+    steps:
+      - name: Download distribution 📦 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      - name: Publish distribution 📦 to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/

@@ -1,0 +1,106 @@
+[build-system]
+# https://hatch.pypa.io/latest/
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "safpis"
+description = """
+    SAFPIS is a Python library to access the South Australia Fuel Pricing
+    Information Scheme (SAFPIS) REST API.
+"""
+license = {text = "MIT License"}
+requires-python = ">=3.5"
+dynamic = ["version"]
+authors = [
+    {name = "Nathan Watson-Haigh", email = "nathan@watsonhaigh.net"},
+]
+readme = "README.rst"
+keywords = ["safpis", "South Australia", "Fuel", "Petrol"]
+classifiers = [
+    # How mature is this project? Common values are
+    #   3 - Alpha
+    #   4 - Beta
+    #   5 - Production/Stable
+    "Development Status :: 3 - Alpha",
+
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+
+    "Natural Language :: English",
+
+    "License :: OSI Approved :: MIT License",
+
+    "Operating System :: OS Independent",
+
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+
+    "Topic :: Home Automation",
+]
+
+dependencies = [
+    "requests_cache>=0.9.1",
+    "geopy>=1.13.0",
+    "money>=1.0",
+    "python-dateutil>=2.7.0",
+    "Click>=6.0",
+    "pytz",
+]
+
+[project.urls]
+Documentation = "https://safpis.readthedocs.io"
+Repository = "https://github.com/nathanhaigh/safpis.git"
+Issues = "https://github.com/nathanhaigh/safpis/issues"
+History = "https://github.com/nathanhaigh/safpis/blob/main/HISTORY.rst"
+
+[tool]
+
+[[tool.mypy.overrides]]
+module = [
+    "geopy.distance",
+    "money",
+    "pytest",
+]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "tests/*"
+]
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+    ]
+
+ignore_errors = true
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.ruff]
+#https://hatch.pypa.io/1.9/config/static-analysis/#default-settings
+extend = "ruff_defaults.toml"
