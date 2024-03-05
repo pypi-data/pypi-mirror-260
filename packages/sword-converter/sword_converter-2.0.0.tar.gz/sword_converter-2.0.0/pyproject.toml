@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "sword-converter"
+version = "2.0.0"
+description = "Generate JSON Files and SQLite Databases of Bible Texts from SWORD Modules"
+license = "GPL-3.0-or-later"
+authors = ["Evans <evans@fundi.dev>"]
+readme = "README.md"
+homepage = "https://github.com/evnskc/sword-converter"
+repository = "https://github.com/evnskc/sword-converter"
+documentation = "https://github.com/evnskc/sword-converter"
+keywords = ["SWORD", "Converter", "Bible Text", "JSON", "SQLite"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pysword = "^0.2.8"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+jsonschema = "^4.21.1"
+
+[tool.poetry.scripts]
+sword-converter = "sword_converter.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
