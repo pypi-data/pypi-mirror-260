@@ -1,0 +1,48 @@
+package:
+  name: essreflectometry
+
+  version: {{ GIT_DESCRIBE_TAG }}
+
+source:
+  path: ..
+
+requirements:
+  build:
+    - setuptools
+    - setuptools_scm
+  run:
+    - dask
+    - python-dateutil
+    - graphviz
+    - plopp
+    - pythreejs
+    - orsopy
+    - sciline>=23.9.1
+    - scipp>=23.8.0
+    - scippneutron>=23.9.0
+    - python>=3.10
+
+test:
+  imports:
+    - essreflectometry
+  requires:
+    - pytest
+  source_files:
+    - pyproject.toml
+    - tests/
+  commands:
+    # We ignore warnings during release package builds
+    - python -m pytest -Wignore tests
+
+build:
+  noarch: python
+  script:
+    - python -m pip install .
+
+about:
+  home: https://github.com/scipp/essreflectometry
+  license: BSD-3-Clause
+  summary: Reflectometry data reduction for the European Spallation Source
+  description: Reflectometry data reduction for the European Spallation Source
+  dev_url: https://github.com/scipp/essreflectometry
+  doc_url: https://scipp.github.io/essreflectometry
