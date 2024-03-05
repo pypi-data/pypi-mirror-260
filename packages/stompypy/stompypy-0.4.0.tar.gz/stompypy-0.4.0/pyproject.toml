@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "stompypy"
+version = "0.4.0"
+description = "The StompyPy is a simple implementation of the STOMP (Simple Text Oriented Messaging Protocol) protocol. It provides an easy way to connect to and exchange STOMP frames with a STOMP server."
+authors = ["Hugo Brilhante <hugobrilhante@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/hugobrilhante/stompypy"
+repository = "https://github.com/hugobrilhante/stompypy"
+packages = [{include = "stompypy", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^4.1.0"
+
+[tool.ruff]
+line-length = 120
+include = ["pyproject.toml", "src/**/*.py", "test/**/*.py"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "PL"]
+
+[tool.ruff.lint.pylint]
+max-args = 13
+
+[tool.ruff.lint.isort]
+force-single-line = true
+force-sort-within-sections = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
