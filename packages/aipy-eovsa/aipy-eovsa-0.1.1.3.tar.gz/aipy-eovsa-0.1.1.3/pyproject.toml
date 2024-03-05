@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "numpy", "setuptools-scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aipy-eovsa"
+readme = "README.md"
+version = "0.1.1.3"
+description = "AIPY package customized for EOVSA data analysis."
+authors = [{name = "Dale Gary, Sijie Yu", email = "sijie.yu@njit.edu"}]
+dependencies = [
+    "astropy>=1.0",
+    "basemap",
+    "numpy>=1.2",
+    "ephem>=3.7.3.2",
+    'matplotlib<3; python_version<"3.0"',
+    'matplotlib; python_version>="3.0"',
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = [
+    "tests/alm_test.py",
+    "tests/amp_test.py",
+    "tests/coord_test.py",
+    "tests/deconv_test.py",
+    "tests/dsp_test.py",
+    "tests/healpix_test.py",
+    "tests/miriad_test.py",
+    "tests/phs_test.py",
+    "tests/scripting_test.py",
+    "tests/twodgauss_test.py",
+]
+
+[tool.setuptools_scm]
+write_to = "aipy/_version.py"
+parentdir_prefix_version = "aipy-"
+fallback_version = "0.1.0"
