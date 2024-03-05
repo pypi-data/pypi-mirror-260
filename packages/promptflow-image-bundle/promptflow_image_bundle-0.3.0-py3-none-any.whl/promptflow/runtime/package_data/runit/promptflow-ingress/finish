@@ -1,0 +1,44 @@
+#!/bin/bash
+
+exit_code="$1" # The exit code from nginx
+signal="$2"    # The signal which caused nginx to exit (or 0)
+
+echo "$(date -uIns) - promptflow-ingress/finish $@"
+
+# kill ingress before terminate gunicorn process (flask app),
+# to avoid ingress fail to connect with EOF error for ongoing request and result in 500 system error,
+# instead, it will return 502 bad gateway and classify as user error.
+echo "$(date -uIns) - Stopping promptflow-ingress"
+killall -9 promptflow-ingress
+# kill process with SIGKILL is not guaranteed to done immediately, it's asynchronously.
+# so wait for completion.
+process_name="promptflow-ingress"
+# The process name used for matching is limited to the 15 characters
+process_name=${process_name:0:15}
+while pgrep $process_name >/dev/null; do
+  echo "$(date -uIns) - promptflow-ingress is still running, waiting for 1s"
+  sleep 1
+done
+echo "$(date -uIns) - Stopped promptflow-ingress"
+
+
+# stop all gunicorn processes
+echo "$(date -uIns) - Stopping all Gunicorn processes"
+pkill gunicorn
+while pgrep gunicorn >/dev/null; do
+  echo "$(date -uIns) - Gunicorn process is still running, waiting for 1s"
+  sleep 1
+done
+
+echo "$(date -uIns) - Stopped all Gunicorn processes"
+
+echo "$(date -uIns) - Finalizing executor containers"
+output=$(python -m handle_executor_containers --stage finalize 2>&1)
+exit_status=$?
+echo "$output"
+if [ $exit_status -ne 0 ]; then
+  echo "Error: The Python script exited with a non-zero status code: $exit_status"
+  exit 1
+fi
+
+killall runsvdir

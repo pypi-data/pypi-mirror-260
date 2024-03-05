@@ -1,0 +1,17 @@
+#! /bin/bash
+
+# avoid start with serving "runsvdir /var/runit" command.
+[[ -z "${PROMPTFLOW_AUTO_DETECT}" ]] && source /service/scripts/auto_detect_env.sh
+
+# export environment variables for (potential) embedding store service
+source /service/scripts/init_for_embedding_store.sh
+
+RUN_MODE=${PROMPTFLOW_RUN_MODE:-"compute"}
+if [ "$RUN_MODE" = "serving" ]; then
+    echo "serving mode, skip invoking embedding store service"
+    sleep infinity
+else
+    echo "start embedding store service..."
+    # max file size: 1GB, consumes 2GB memory
+    promptflow_vectordb_service --max_file_size 1000000000 --local_cache_path ${EMBEDDING_STORE_LOCAL_CACHE_PATH} --port ${EMBEDDING_STORE_SERVICE_PORT}
+fi

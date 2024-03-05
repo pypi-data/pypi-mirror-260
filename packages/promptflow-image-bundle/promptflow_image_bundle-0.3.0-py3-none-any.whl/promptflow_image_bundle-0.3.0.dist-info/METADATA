@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: promptflow-image-bundle
+Version: 0.3.0
+Summary: Allow you to create your own prompt flow runtime base images
+Author: Microsoft Corporation
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Requires-Python: <4.0,>=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: gunicorn <21.0.0,>=20.1.0
+Requires-Dist: flask <3.0.0,>=2.2.5
+Requires-Dist: omegaconf <3.0.0,>=2.3.0
+Requires-Dist: Werkzeug <3.0.0,>=2.3.7
+Requires-Dist: beautifulsoup4 <5.0.0,>=4.12.2
+Requires-Dist: distro <2.0.0,>=1.6.0
+Requires-Dist: promptflow[azureml-serving] ==1.6.0
+Requires-Dist: promptflow-tools ==1.3.0
+Requires-Dist: promptflow-vectordb[azure] ==0.2.4
+Requires-Dist: semantic-kernel <0.4.6.dev0,>=0.4.0.dev0
+Provides-Extra: azure
+Requires-Dist: azure-core <2.0.0,>=1.26.4 ; extra == 'azure'
+Requires-Dist: azure-common <2.0.0,>=1.1.28 ; extra == 'azure'
+Requires-Dist: azure-data-tables <13.0.0,>=12.4.2 ; extra == 'azure'
+Requires-Dist: azure-storage-blob <13.0.0,>=12.17.0 ; extra == 'azure'
+Requires-Dist: azure-identity <2.0.0,>=1.12.0 ; extra == 'azure'
+Requires-Dist: azure-ai-ml <2.0.0,>=1.12.0 ; extra == 'azure'
+Requires-Dist: azureml-ai-monitoring <1.0.0,>=0.1.0b3 ; extra == 'azure'
+Requires-Dist: mlflow <3.0.0,>=2.7.1 ; extra == 'azure'
+Requires-Dist: azureml-mlflow <2.0.0,>=1.54.0.post1 ; extra == 'azure'
+Requires-Dist: azure-search-documents <12.0.0,>=11.3.0 ; extra == 'azure'
+Requires-Dist: azureml-core <2.0.0,>=1.52.0 ; extra == 'azure'
+Requires-Dist: mltable <2.0.0,>=1.4.1 ; extra == 'azure'
+Requires-Dist: opencensus-ext-azure <2.0.0,>=1.1.9 ; extra == 'azure'
+
+# Prompt flow image bundle
+
+This bundle package provides a way to use your own base images to build and run prompt flow runtime,
+and build high-quality LLM apps with [prompt flow package](https://pypi.org/project/promptflow).
+
+## Example usage:
+
+```dockerfile
+# choose your base image, for example AzureML base images
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.8-cudnn8-ubuntu22.04:latest
+# install bundle package
+RUN pip install -U promptflow-image-bundle[azure]
+# install other requirements if needed
+# RUN pip install -r requirements.txt
+# expose prompt flow runtime service port
+EXPOSE 8080
+# start prompt flow runtime service
+CMD ["start_promptflow"]
+```
+
+Currently, we only support `Ubuntu` and `Debian` based images, and have verified both [AzureML base images](https://github.com/Azure/AzureML-Containers)
+and popular images like `ubuntu:22.04`, `debian:11`, `python:3.10`, `continuumio/miniconda3:23.3.1-0`, `nginx:stable`, etc.
+
+If your base images doesn't have Python or Conda, you need to install it in you docker file as a prerequisite.
