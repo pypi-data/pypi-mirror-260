@@ -1,0 +1,59 @@
+{
+  "api": "@predefined_input/strategy/v1",
+  "name": "simple_alert_input_v1",
+  "input": {
+    "range": {
+      "type": "relative",
+      "from": {
+        "modify": "shift",
+        "amount": "2",
+        "amount_type": "months"
+      },
+      "to": {}
+    },
+    "filter": {
+      "filters": [
+        "total_trade_value_filter"
+      ],
+      "input": {
+        "api": "@filter/input/v1",
+        "input": {
+          "specific_symbols_filter": {
+            "symbols": [
+              "BFC"
+            ]
+          },
+          "total_trade_value_filter": {
+            "top": 50
+          }
+        }
+      }
+    },
+    "signal": {
+      "signals": [
+        "hullma_signal"
+      ],
+      "input": {
+        "api": "@signal/input/v1",
+        "input": {
+          "hullma": {
+            "length": 15
+          }
+        }
+      }
+    },
+    "action": {
+      "actions": [
+        "alert_action_v1"
+      ],
+      "input": {
+        "api": "@action/input/v1",
+        "input": {
+          "buy": {},
+          "sell": {},
+          "alert": {}
+        }
+      }
+    }
+  }
+}

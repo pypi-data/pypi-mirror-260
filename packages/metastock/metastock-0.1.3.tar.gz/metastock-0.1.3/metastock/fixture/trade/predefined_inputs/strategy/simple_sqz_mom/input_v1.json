@@ -1,0 +1,53 @@
+{
+  "api": "@predefined_input/strategy/v1",
+  "name": "simple_sqz_mom_strategy_input_v1",
+  "input": {
+    "range": {
+      "type": "relative",
+      "from": {
+        "modify": "shift",
+        "amount": "2",
+        "amount_type": "years"
+      },
+      "to": {}
+    },
+    "filter": {
+      "filters": [
+        "capitalization_filter",
+        "specific_symbols_filter"
+      ],
+      "input": {
+        "api": "@filter/input/v1",
+        "input": {
+          "specific_symbols_filter": {
+            "symbols": [
+              "BFC"
+            ]
+          }
+        }
+      }
+    },
+    "signal": {
+      "signals": [
+        "simple_sqz_mom_signal"
+      ],
+      "input": {
+        "api": "@signal/input/v1",
+        "input": {}
+      }
+    },
+    "action": {
+      "actions": [
+        "simple_action_v1"
+      ],
+      "input": {
+        "api": "@action/input/v1",
+        "input": {
+          "buy": {},
+          "sell": {},
+          "alert": {}
+        }
+      }
+    }
+  }
+}
