@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: command-line-file-manager
+Version: 1.1.5
+Summary: CLI tool for managing local file system storage
+Author-email: Kaloyan Ivanov <kaloyan.ivanov88@gmail.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click ==8.1.7
+Requires-Dist: emoji ==2.8.0
+Requires-Dist: directory-tree ==0.0.4
+Provides-Extra: dev
+Requires-Dist: tox ==4.11.3 ; extra == 'dev'
+Requires-Dist: codespell ==2.2.6 ; extra == 'dev'
+Requires-Dist: black ==23.9.1 ; extra == 'dev'
+Requires-Dist: pytest ==7.4.2 ; extra == 'dev'
+Requires-Dist: coverage ==7.3.2 ; extra == 'dev'
+Requires-Dist: pytest-cov ==4.1.0 ; extra == 'dev'
+Requires-Dist: build ==1.0.3 ; extra == 'dev'
+Requires-Dist: twine ==4.0.2 ; extra == 'dev'
+
+# command-line-file-manager
+
+Python CLI tool for scanning and organizing local directories and files.
+
+#### Requires Python 3.10+
+
+## Installation
+
+
+Via pip:
+```console
+$ pip install command-line-file-manager
+```
+
+From main branch:
+```console
+$ git clone https://github.com/kaliv0/command-line-file-manager.git
+$ cd command-line-file-manager 
+$ pip install .
+```
+
+## Example
+
+
+To run the application type <i>fm</i> followed by a sub-command, target directory and options
+```console
+$ fm scan-files ../test --sort=type --save --output=./
+```
+
+Add --help after the <i>fm</i> command or any of the subcommands to get more information
+```console
+$ fm scan-files --help
+
+Usage: fm scan-files [OPTIONS] DIR_PATH
+
+  DIR_PATH: Path to directory to be scanned
+
+Options:
+  --sort [name|size|date|modified|type]   Sorting criteria.  [default: name]
+  --desc                                  Display result in descending order.
+  -s, --save                              Save log message to file.
+  -o, --output TEXT                       Path to output directory for the saved log file.
+  --help                                  Show this message and exit.
+```
