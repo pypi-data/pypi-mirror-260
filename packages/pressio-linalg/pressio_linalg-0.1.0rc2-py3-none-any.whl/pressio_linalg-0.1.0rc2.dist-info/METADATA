@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: pressio-linalg
+Version: 0.1.0rc2
+Summary: Parallel linear algebra library
+Author-email: francesco.rizzi@ng-analytics.com
+Keywords: model reduction,scientific computing,dense linear algebra,parallel computing,hyper-reduction,HPC
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: Unix
+Classifier: Environment :: MacOS X
+Classifier: Programming Language :: C++
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Development Status :: 4 - Beta
+Requires-Python: >=3
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pytest-mpi
+Requires-Dist: pytest
+
+pressio-linalg: Parallel Linear Algebra
+=======================================
+
+This Python library offers basic linear algebra functions that can be implemented in parallel.
+
+Install
+-------
+
+pressio-linalg is tested on Python 3.8-3.11.
+
+To install, use the following command:
+
+.. code-block:: bash
+
+  pip install pressio-linalg
+
+With this installation, all kernels are implemented with pure Python calls and calls to MPI. This ensures that all the communication is handled explicitly internally and we do not rely on any external backend.
