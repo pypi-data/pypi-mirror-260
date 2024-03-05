@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "keycloak-oauth"
+version = "0.2.0"
+description = "Keycloak OAuth client for Python projects"
+authors = ["bakdata <opensource@bakdata.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/bakdata/python-keycloak-oauth"
+packages = [{ include = "keycloak_oauth" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+starlette = "^0.27.0"
+pydantic = { extras = ["email"], version = "^2.4.2" }
+authlib = "^1.3.0"
+itsdangerous = "^2.1.2"
+httpx = "^0.26.0"
+fastapi = { version = "^0.104.1", optional = true }
+starlette-admin = { version = "^0.13.2", optional = true }
+
+[tool.poetry.extras]
+fastapi = ["fastapi"]
+starlette-admin = ["starlette-admin"]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+pre-commit = "^3.6.2"
+ruff = "^0.2.2"
+pyright = "^1.1.351"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.1"
+pytest-mock = "^3.12.0"
+python-keycloak = "^3.9.0"
+testcontainers-keycloak = { git = "https://github.com/TheForgottened/testcontainers-python", subdirectory = "keycloak" } # updated Keycloak container: https://github.com/testcontainers/testcontainers-python/pull/369
+twill = "^3.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
