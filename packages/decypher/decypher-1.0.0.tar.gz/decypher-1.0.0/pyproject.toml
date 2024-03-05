@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "decypher"
+version = "1.0.0"
+description = ""
+authors = ["R Aswin <aswinr242004@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+Decypher = "decypher.cli:app"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
