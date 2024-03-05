@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2" ]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[project]
+name = "kopiluwak"
+version = "0.2"
+authors = [
+  { name="amapa", email="amapa619@gmail.com" },
+]
+description = "kopiluwak bikin mencret"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  'kedongdong==0.3',
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+Homepage = "https://github.com/amapas/kopiluwak"
+repository = "https://github.com/amapas/kopiluwak"
