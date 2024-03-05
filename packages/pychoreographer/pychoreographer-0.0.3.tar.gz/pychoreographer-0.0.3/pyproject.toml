@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]  # Dependencies for building your package
+build-backend = "setuptools.build_meta" 
+
+
+[project]
+name = "Pychoreographer"
+version = "0.0.3"
+authors = [
+  { name="Rajaa Lebchiri", email="rajaa.lebchiri@gmail.com" },
+]
+description = "A customizable Python library for automating file operations, system monitoring, and routine tasks."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+pychoreographer = "pychoreographer.pychoreographer:cli"
+
+[project.urls]
+Homepage = "https://github.com/rajaalebchiri/pychoreographer"
+Issues = "https://github.com/rajaalebchiri/pychoreographer/issues"
+
