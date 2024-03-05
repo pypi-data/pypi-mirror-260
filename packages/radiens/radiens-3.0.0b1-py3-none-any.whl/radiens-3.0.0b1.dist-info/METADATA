@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: radiens
+Version: 3.0.0b1
+Summary: provides python API to RADIENS analytics platform
+Home-page: http://neuronexus.github.io
+Author: NeuroNexus
+Author-email: dkipke@neuronexus.com
+License: MIT
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: boto3
+Requires-Dist: pandas
+Requires-Dist: grpcio-tools
+Requires-Dist: grpc-interceptor
+Requires-Dist: tqdm
+
+# Installation 
+Installed with
+```bash
+$ pip install radiens
+``` 
+
+For details on usage and API calls, see the [documentation](https://neuronexus.github.io)
+
+# Changelog
+
+All notable changes (for versions > `3.X.X`) to this project will be documented in this file.
+
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.0.0b1] - 2024-03-04
+
+### Added
+
+- this changelog
+- `save()` method on `PSD` class to save the PSD to a `.npz` file
+- `load()` classmethod on `PSD` class to load a PSD from a file
+
+### Fixed
+
+- `get_psd()` `file` keyword argument now works as expected
+
+### Changed
+
+- updated max message receive size to have no limit. Should make obsolete the `Data too big. Try smaller chunks` exception.
+- updated most methods to allow `time_range` to be a `TimeRange`, `list` or `np.array`.
+
+## [3.0.0b0] - 2024-03-01
+
+### Added
+
+- Better error messages for various methods
+
+### Fixed
+
+- Api calls updated to work with Videre app 1.5.14-beta
+  - `get_signals()`
+  - `get_spikes_timestamps()`
+  - `get_metrics()`
+  - `get_psd()`
+
+<!-- ## [x.x.x] - year-month-day
+
+### Added
+
+### Fixed
+
+### Changed
+
+### Removed -->
