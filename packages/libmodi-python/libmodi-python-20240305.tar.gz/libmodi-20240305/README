@@ -1,0 +1,37 @@
+libmodi is a library to access the Mac OS disk image format.
+
+Project information:
+
+* Status: experimental
+* Licence: LGPLv3+
+
+Supported Mac OS image formats:
+
+* Sparse bundle disk image
+* Sparse disk image
+* Universal Disk Image Format (UDIF) image
+  * uncompressed
+  * ADC compressed
+  * bzip2 compressed
+  * LZFSE/LZVN compressed
+  * LZMA compressed
+  * zlib/DEFLATE compressed
+
+Unsupported Mac OS image formats:
+
+* encrypted images
+* Disk Copy format(s)
+* New Disk Image Format (NDIF)
+* Universal Disk Image Format (UDIF) image
+  * multi-segment
+
+Work in progress:
+
+* bzip2 fallback implementation
+* lzma fallback implementation
+
+For more information see:
+
+* Project documentation: https://github.com/libyal/libmodi/wiki/Home
+* How to build from source: https://github.com/libyal/libmodi/wiki/Building
+
