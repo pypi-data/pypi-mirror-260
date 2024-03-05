@@ -1,0 +1,72 @@
+stages:
+  - build
+  - test
+  - publish
+
+create-venv:
+  stage: build
+  tags:
+    - grid5000-docker
+  image: python:3.8
+  script:
+    - apt-get update -qy
+    - apt-get install -y make
+    - pip install isort mypy pytest
+    - make venv
+  artifacts:
+    paths:
+      - venv/
+
+installable:
+  stage: build
+  tags:
+    - grid5000-docker
+  image: python:3.8
+  script:
+    - make installable
+
+check-format:
+    stage: test
+    tags:
+      - grid5000-docker
+    image: python:3.8
+    script:
+        - source venv/bin/activate
+        - echo $VIRTUAL_ENV
+        - make check_format
+
+lint:
+  stage: test
+  tags:
+    - grid5000-docker
+  image: python:3.8
+  script:
+    - source venv/bin/activate
+    - make lint
+  artifacts:
+    paths:
+      - test_results/
+
+test_coverage:
+  stage: test
+  tags:
+    - grid5000-docker
+  image: python:3.8
+  script:
+    - apt-get update -qy
+    - apt-get install -y rsync
+    - source venv/bin/activate
+    - make test_coverage
+  artifacts:
+    paths:
+      - test_results/coverage_html/
+
+publish-pypi:
+  stage: publish
+  rules:
+    - if: $CI_COMMIT_TAG
+  image: python:3.8
+  tags:
+    - grid5000-docker
+  script:
+    - make release
