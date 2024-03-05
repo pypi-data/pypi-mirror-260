@@ -1,0 +1,109 @@
+Metadata-Version: 2.1
+Name: nendo-plugin-stemify-demucs
+Version: 0.1.3
+Summary: Nendo Plugin for Music Source Separation.
+Home-page: https://okio.ai
+License: MIT
+Keywords: Nendo,AI,Machine Learning,Audio,Generative,Music,Audio Production,Audio Generation,Audio Analysis,Stemification,Souce Separation
+Author: Aaron Abebe
+Author-email: aaron@okio.ai
+Requires-Python: >=3.8,<3.11
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: demucs (>=4.0.1,<5.0.0)
+Requires-Dist: nendo (>=0.2.0,<0.3.0)
+Requires-Dist: pydantic (>=2.0.0,<2.5.0)
+Requires-Dist: pydantic-settings (>=2.1.0,<3.0.0)
+Project-URL: Repository, https://github.com/okio-ai/nendo_plugin_stemify_demucs
+Description-Content-Type: text/markdown
+
+# Nendo Plugin Stemify Demucs
+
+<br>
+<p align="left">
+    <img src="https://okio.ai/docs/assets/nendo_core_logo.png" width="350" alt="Nendo Core">
+</p>
+<br>
+
+<p align="left">
+<a href="https://okio.ai" target="_blank">
+    <img src="https://img.shields.io/website/https/okio.ai" alt="Website">
+</a>
+<a href="https://twitter.com/okio_ai" target="_blank">
+    <img src="https://img.shields.io/twitter/url/https/twitter.com/okio_ai.svg?style=social&label=Follow%20%40okio_ai" alt="Twitter">
+</a>
+<a href="https://discord.gg/gaZMZKzScj" target="_blank">
+    <img src="https://dcbadge.vercel.app/api/server/XpkUsjwXTp?compact=true&style=flat" alt="Discord">
+</a>
+</p>
+
+---
+
+Nendo Plugin for Music Source Separation (based on Meta [demucs](https://github.com/facebookresearch/demucs))
+
+## Features
+
+- Extract up to six different audio stems
+
+## Installation
+
+1. [Install Nendo](https://github.com/okio-ai/nendo#installation)
+2. `pip install nendo-plugin-stemify-demucs`
+
+## Usage
+
+Take a look at a basic usage example below.
+For more detailed information, please refer to the [documentation](https://okio.ai/docs/plugins).
+
+For more advanced examples, check out the examples folder.
+or try it in colab:
+
+<a target="_blank" href="https://colab.research.google.com/drive/1rYBw5N0xzDf-NQJC1cQXqRBneBE8q4_z?usp=sharing">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+```python
+from nendo import Nendo, NendoConfig
+
+nd = Nendo(config=NendoConfig(plugins=["nendo_plugin_stemify_demucs"]))
+
+# load track
+track = nd.library.add_track(file_path='/path/to/track.mp3')
+
+# run stemification to get 6 stems
+stems = nd.plugins.stemify_demucs(
+    track=track,
+    stem_types=["vocals", "drums", "bass", "other", "piano", "guitar"],
+    model="htdemucs_6s"
+)
+vocals, drums = stems[0], stems[1]
+drums.play()
+
+# run stemification to get vocals and background
+stems = nd.plugins.stemify_demucs(
+    track=track,
+    stem_types=["vocals", "no_vocals"],
+    model="mdx_extra"
+)
+
+background = stems[1]
+background.play()
+```
+
+## Contributing
+
+Visit our docs to learn all about how to contribute to Nendo: [Contributing](https://okio.ai/docs/contributing/)
+
+
+## License
+
+Nendo: MIT License
+
+Demucs: MIT License
