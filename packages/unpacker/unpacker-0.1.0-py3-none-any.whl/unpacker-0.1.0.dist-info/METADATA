@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: unpacker
+Version: 0.1.0
+Summary: Clean up and unpack items in working directory
+Author-email: Quinten Roets <qdr2104@columbia.edu>
+License: MIT
+Project-URL: Source Code, https://github.com/quintenroets/unpacker
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: package-utils <1,>=0.6.1
+Requires-Dist: quinten-cli <2,>=1.1.16
+Requires-Dist: superpathlib <3,>=2.0.2
+Provides-Extra: dev
+Requires-Dist: hypothesis <7,>=6.97.1 ; extra == 'dev'
+Requires-Dist: package-dev-tools <1,>=0.5.11 ; extra == 'dev'
+Requires-Dist: package-dev-utils <1,>=0.1.6 ; extra == 'dev'
+
+# Unpacker
+[![PyPI version](https://badge.fury.io/py/unpacker.svg)](https://badge.fury.io/py/unpacker)
+![Python version](https://img.shields.io/badge/python-3.10+-brightgreen)
+![Operating system](https://img.shields.io/badge/os-linux%20%7c%20macOS-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+
+Clean up and unpack items in working directory
+
+## Usage
+Run
+```shell
+unpack
+```
+
+## Installation
+```shell
+pip install unpacker
+```
