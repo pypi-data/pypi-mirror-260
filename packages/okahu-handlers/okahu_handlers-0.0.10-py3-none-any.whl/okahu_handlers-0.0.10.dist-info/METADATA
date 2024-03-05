@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: okahu_handlers
+Version: 0.0.10
+Summary: package with callback handler code for observability
+Project-URL: Homepage, https://github.com/okahu/demo-repository
+Project-URL: Issues, https://github.com/okahu/demo-repository/issues
+Author-email: "Okahu Inc." <okahu-pypi@okahu.ai>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Requires-Dist: langchain==0.1.0
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: faiss-cpu==1.7.4; extra == 'dev'
+Requires-Dist: instructorembedding==1.0.1; extra == 'dev'
+Requires-Dist: langchain-openai==0.0.5; extra == 'dev'
+Requires-Dist: numpy==1.26.4; extra == 'dev'
+Requires-Dist: pytest==8.0.0; extra == 'dev'
+Requires-Dist: sentence-transformers==2.2.2; extra == 'dev'
+Requires-Dist: types-requests==2.31.0.20240106; extra == 'dev'
+Description-Content-Type: text/markdown
+
+
+This module provides okahu callback handler for tracing callbacks in langchain
+
+### Installing the package
+```
+> python3 -m pip install pipenv
+
+> pipenv install -i https://test.pypi.org/simple/ okahu-handlers
+```
+
+### References
+
+[Managing application dependencies](https://packaging.python.org/en/latest/tutorials/managing-dependencies/)
