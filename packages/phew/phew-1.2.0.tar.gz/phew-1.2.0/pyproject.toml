@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "phew"
+version = "1.2.0"
+description = "a library housing basic mathematical and statistical formulae used in insurance."
+authors = ["Precious Nliwasa <preciousnliwasa8@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+keywords = ["social","insurance",'finance',"travel","trip","delay","social travel insurance","trip delay coverage"]
+documentation = "https://preciousnliwasa.github.io/phew_docs/userguide/"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+statsmodels = "^0.14.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
