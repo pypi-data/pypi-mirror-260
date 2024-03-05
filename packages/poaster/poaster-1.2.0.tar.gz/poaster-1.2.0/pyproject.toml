@@ -1,0 +1,125 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "poaster"
+dynamic = ["version"]
+description = 'Minimal, libre bulletin board for posts.'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "AGPL-3.0-or-later"
+keywords = []
+authors = [
+  { name = "Logan Connolly", email = "me@loganconnolly.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "aiosqlite",
+  "alembic",
+  "click",
+  "fastapi",
+  "passlib[argon2]",
+  "pydantic-settings",
+  "python-jose",
+  "python-multipart",
+  "sqlalchemy[asyncio,mypy]",
+  "uvicorn[standard]",
+]
+
+[project.urls]
+Homepage = "https://sr.ht/~loges/poaster"
+Source = "https://git.sr.ht/~loges/poaster"
+Issues = "https://todo.sr.ht/~loges/poaster"
+
+[project.scripts]
+poaster = "poaster.cli:poaster"
+
+[tool.hatch.version]
+path = "src/poaster/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "httpx",
+  "pytest",
+  "pytest-asyncio",
+  "pytest-env",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report --show-missing",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+dev = "uvicorn --reload --host '127.0.0.1' --port 8000 src.poaster.app:app"
+
+[tool.hatch.envs.db.scripts]
+migration = "alembic -c ./src/poaster/migrations/alembic.ini revision --autogenerate"
+upgrade = "alembic -c ./src/poaster/migrations/alembic.ini upgrade {args:head}"
+fixtures = "python ./scripts/load-fixtures.py"
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+  "ruff",
+]
+[tool.hatch.envs.types.scripts]
+check = [
+  "ruff check {args:src/poaster}",
+  "mypy --install-types --non-interactive {args:src/poaster}",
+]
+
+[tool.coverage.run]
+source_pkgs = ["poaster"]
+branch = true
+parallel = true
+omit = [
+  "src/poaster/__about__.py",
+  "src/poaster/migrations/*",
+]
+
+[tool.coverage.paths]
+poaster= ["src/poaster"]
+tests = ["tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.mypy]
+strict = true
+plugins = 'sqlalchemy.ext.mypy.plugin'
+
+[tool.ruff]
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "PIE"]
+ignore = []
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+env = [
+    "DB_PATH=/:memory:",
+]

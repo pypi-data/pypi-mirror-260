@@ -1,0 +1,12 @@
+image: alpine/edge
+packages:
+  - pipx
+sources:
+  - https://git.sr.ht/~loges/poaster
+tasks:
+  - lint: |
+      cd poaster
+      pipx run hatch run types:check
+  - test: |
+      cd poaster
+      pipx run hatch run cov
