@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 500 */
+@font-face {
+  font-family: "Cerebri Sans";
+  font-style: normal;
+  src: url('../public/Cerebri.Sans.Pro-www.Dfonts.org/Cerebri.Sans.Pro/CerebriSansPro-Medium.ttf') format('woff');
+}
+
+/* 700 */
+@font-face {
+  font-family: "Cerebri Sans bold";
+  font-style: normal;
+  src: url('../public/Cerebri.Sans.Pro-www.Dfonts.org/Cerebri.Sans.Pro/CerebriSansPro-Bold.ttf') format('woff');
+}
+
+/* 400 */
+@font-face {
+  font-family: "Cerebri Sans regular";
+  font-style: normal;
+  src: url('../public/Cerebri.Sans.Pro-www.Dfonts.org/Cerebri.Sans.Pro/CerebriSansPro-Regular.ttf') format('woff');
+}
+
+/* 600 */
+@font-face {
+  font-family: "Cerebri Sans semibold";
+  font-style: normal;
+  src: url('../public/Cerebri.Sans.Pro-www.Dfonts.org/Cerebri.Sans.Pro/CerebriSansPro-SemiBold.ttf') format('woff');
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+#range3 {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 20px;
+  height: 6px;
+  background: #b6e7df;
+}
+
+#range3::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  background-color: #3ebfab;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+/* Thumb: Firefox */
+#range3::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  background-color: #3ebfab;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.swal2-popup {
+  border-radius: 0px !important;
+}
+
+.swal2-title {
+  margin-top: 20px;
+  font-family: 'Cerebri Sans semibold';
+}
+
+/* .swal2-actions{
+  padding-bottom: 20px;
+} */
+.swal2-html-container {
+  font-family: "Cerebri Sans regular";
+}
+
+.swal2-styled {
+  font-family: "Cerebri Sans regular";
+  border-radius: 0px !important;
+  border: 2px solid #3A9B5A !important;
+  color: #3A9B5A !important;
+}
+
+.swal2-confirm {
+  color: #fff !important;
+  border: 2px solid #3A9B5A !important;
+}
+
+.css-1u9des2-indicatorSeparator {
+  display: none !important;
+}
+
+.css-1xc3v61-indicatorContainer {
+  padding: 0 8px 0 0 !important;
+}
+
+.css-1fdsijx-ValueContainer {
+  padding: 2px 0 !important;
+}

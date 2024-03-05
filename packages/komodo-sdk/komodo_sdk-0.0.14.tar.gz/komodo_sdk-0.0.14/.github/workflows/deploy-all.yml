@@ -1,0 +1,47 @@
+name: Deploy Komodo AI Website Container
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Set tag
+        default: latest
+
+jobs:
+  call-update-function:
+    uses: ./.github/workflows/publish-container.yml
+    with:
+      folder: website
+      registry: public.ecr.aws/k9s5f5s5
+      repository: website
+      image_tag: latest
+    secrets: inherit
+
+  pypi-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/komodo-sdk
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: python -m build
+
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}

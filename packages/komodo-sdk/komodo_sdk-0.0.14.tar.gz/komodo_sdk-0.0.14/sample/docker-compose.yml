@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  website:
+    build: ../website
+    volumes:
+      - ../website/src:/app/src
+      - ../website/public:/app/public
+    ports:
+      - "8041:8041"
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ..
+      dockerfile: sample/Dockerfile
+    environment:
+      DEBUG: 1
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    volumes:
+      - ../sample:/code/sample
+      - ../komodo:/code/komodo
+    ports:
+      - "8042:8042"
+    depends_on:
+      - redis
+
+
+  redis:
+    image: "redis/redis-stack"
+    ports:
+      - "8001:8001"
+      - "6379:6379"
+    environment:
+      REDIS_ARGS: "--save 60 1 --appendonly yes"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./data/redis:/data
