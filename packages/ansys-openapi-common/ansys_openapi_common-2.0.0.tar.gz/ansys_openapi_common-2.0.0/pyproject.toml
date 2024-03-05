@@ -1,0 +1,156 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "ansys-openapi-common"
+description = "Provides a helper to create sessions for use with Ansys OpenAPI clients."
+version = "2.0.0"
+license = "MIT"
+authors = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
+maintainers = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
+repository = "https://github.com/pyansys/openapi-common"
+documentation = "https://openapi.docs.pyansys.com"
+readme = "README.rst"
+keywords = [
+  "Ansys",
+  "OpenAPI"
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+packages = [
+  { include = "**/*.py", from = "src" },
+  { include = "**/py.typed", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+# Packages for core library
+requests = "^2.26"
+requests-negotiate-sspi = { version = "^0.5.2", markers = "sys_platform == 'win32'"}
+requests-ntlm = "^1.1.0"
+pyparsing = "^3.0.8"
+python-dateutil ="^2.6.1"
+
+# Packages for oidc extra
+requests_auth = { version = ">=6,<8", optional = true }
+keyring = { version = ">=22,<25", optional = true }
+
+# Packages for linux-kerberos extra
+requests-kerberos = {version = "^0.13", markers = "sys_platform == 'linux'", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+# Test packages
+pytest = { version = "*" }
+pytest-cov = { version = "*" }
+uvicorn = { version = "*" }
+fastapi = { version = "*" }
+pydantic = { version = "*" }
+requests-mock = { version = "*" }
+pytest-mock = { version = "*" }
+covertable = { version = "*" }
+asgi_gssapi = { version = "*", markers = "sys_platform == 'linux'" }
+mypy = "^1.8.0"
+types-requests = { version = "*" }
+types-python-dateutil = { version = "*" }
+requests_auth = { version = "*" }
+keyring = { version = "*" }
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+# Doc packages
+ansys-sphinx-theme = { version = "0.14.0" }
+numpydoc = { version = "1.6.0" }
+sphinx = { version = "7.2.6" }
+sphinx-notfound-page = { version = "1.0.0" }
+sphinx-copybutton = { version = "0.5.2" }
+
+[tool.poetry.extras]
+oidc = [
+  "requests_auth",
+  "keyring"
+]
+
+linux-kerberos = [
+  "requests-kerberos"
+]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py39,py310,py311,py312
+isolated_build = True
+requires =
+  tox-gh-actions==2.9.1
+
+[gh-actions]
+python =
+    3.9: py39
+    3.10: py310
+    3.11: py311
+    3.12: py312
+
+[testenv]
+whitelist_externals = poetry
+commands_pre =
+    poetry install --no-root --extras "oidc linux-kerberos"
+extras =
+    oidc
+    linux-kerberos
+commands = poetry run pytest --cov=ansys.openapi.common --cov-report=xml {posargs}
+"""
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+force_sort_within_sections = true
+line_length = 100
+default_section = "THIRDPARTY"
+src_paths = ["doc", "src", "tests"]
+
+[tool.coverage.run]
+omit = [
+  "**/_base/*"
+]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[tool.pydocstyle]
+convention = "numpy"
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+show_error_codes = true
+files = "src"
+explicit_package_bases = true
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+namespace_packages = true
