@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "codeanim"
+version = "0.0.12"
+description = "A tool that automates presentation of software demos."
+authors = ["Shad Sharma <shadanan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pynput = "^1.7.6"
+pyperclip = "^1.8.2"
+
+[tool.poetry.scripts]
+codeanim = "codeanim:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
