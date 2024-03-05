@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "gaql-console"
+version = "0.1.6"
+description = "Google Ads Query Language Interactive Console"
+authors = ["Piotr Kilczuk <piotr@kilczuk.dev>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+prompt-toolkit = "^3.0.24"
+Pygments = "^2.11.2"
+google-ads = {version = "^23.1.0", python = ">=3.8,<3.13"}
+click = "^8.0.3"
+toml = "^0.10.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.1"
+black = "^23.3.0"
+ipython = "^8.14.0"
+
+[tool.poetry.scripts]
+gaql = "gaql_console.console:main"
+
+[tool.black]
+line-length = 119
+
+[tool.gaql-console]
+context-callable = "dummy_context_callable:provide_context"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
