@@ -1,0 +1,16 @@
+numpy>=1.25.2
+websocket-client~=1.7.0
+requests>=2.31.0
+
+[all]
+roboquant[ibkr,torch,yahoo]
+
+[ibkr]
+nautilus-ibapi~=10.19.2
+
+[torch]
+torch>=2.1.0
+tensorboard>=2.15.2
+
+[yahoo]
+yfinance~=0.2.36
