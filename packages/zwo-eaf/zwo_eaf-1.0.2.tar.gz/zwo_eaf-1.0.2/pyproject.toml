@@ -1,0 +1,15 @@
+[build-system]
+requires = ["cython", "setuptools"]
+
+[tools.setuptools]
+packages = ["src"]
+
+[project]
+name = "zwo_eaf"
+version="1.0.2"
+authors = [{name = "Eric Pedley"}]
+description="Python wrapper for ZWO EAF C++ SDK"
+readme="README.md"
+
+[project.urls]
+source = "https://github.com/EricPedley/py-zwo-eaf"
