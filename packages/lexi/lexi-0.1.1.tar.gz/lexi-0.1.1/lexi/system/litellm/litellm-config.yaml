@@ -1,0 +1,10 @@
+model_list:
+  - model_name: gpt-3.5-turbo ### RECEIVED MODEL NAME ###
+    litellm_params: # all params accepted by litellm.completion() - https://docs.litellm.ai/docs/completion/input
+      model: openai/gpt-3.5-turbo ### MODEL NAME sent to `litellm.completion()` ###
+      api_key: "os.environ/OPENAI_API_KEY" # does os.getenv("AZURE_API_KEY_EU")
+      rpm: 6      # [OPTIONAL] Rate limit for this deployment: in requests per minute (rpm)
+
+litellm_settings: # module level litellm settings - https://github.com/BerriAI/litellm/blob/main/litellm/__init__.py
+  drop_params: True
+  set_verbose: True
