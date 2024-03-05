@@ -1,0 +1,99 @@
+{% extends 'generic/object.html' %}
+{% load render_table from django_tables2 %}
+{% load helpers %}
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Роль систем</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Название</th>
+              <td>{{ object.name|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Система</th>
+              {% if object.system %}
+              <td><a href="{% url 'plugins:netbox_subsystems:system' pk=object.system.pk %}">{{ object.system|linkify }}</a></td>
+              {% else %}
+              <td>-</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Подсистема</th>
+              {% if object.subsystem %}
+              <td><a href="{% url 'plugins:netbox_subsystems:subsystem' pk=object.subsystem.pk %}">{{ object.subsystem|linkify }}</a></td>
+              {% else %}
+              <td>-</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Подсистемы</th>
+                <td>
+                {% for subsystem in  object.subsystems.all %}
+                  <a href="{% url 'plugins:netbox_subsystems:subsystem' pk=subsystem.pk %}">{{ subsystem|linkify }}</a><br>
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+              <th scope="row">В составе роли</th>
+              {%  if object.parent %}
+                <td><a href="{% url 'plugins:netbox_rolesandgroups:systemrole' pk=object.parent.pk %}">{{ object.parent|linkify }}</a></td>
+              {% else %}
+                <td>-</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th scope="row">Состав данных</th>
+              <td>{{ object.data_composition|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Интерфейс выгрузки</th>
+              <td>{{ object.upload_interface|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Форма выгрузки</th>
+              <td>{{ object.upload_format|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Mapping SecurityGroup</th>
+              <td>{{ object.mapping_security_group|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">СЭД</th>
+              <td>{{ object.sed|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">FSLink</th>
+              <td>{{ object.link|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Описание</th>
+              <td>{{ object.description|placeholder }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Короткий URL</th>
+              <td>{{ object.slug|placeholder }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
+    </div>
+    <div class="row">
+      <div class="col col-md-12">
+        <div class="card">
+          <h5 class="card-header">Технические роли</h5>
+          <div class="card-body table-responsive">
+            {% render_table techrole_table %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
