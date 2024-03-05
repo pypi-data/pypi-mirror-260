@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "aiondata"
+version = "0.2.1"
+description = "A common data access layer for AI-driven drug discovery."
+authors = ["JJ Ben-Joseph <jj@tensorspace.ai>"]
+license = "Apache"
+readme = "README.md"
+homepage = "https://www.github.com/aion-labs/aiondata"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Development Status :: 3 - Alpha",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+polars = {version = "*", python = ">=3.10"}
+rdkit = "*"
+tqdm = "*"
+xlsx2csv = "*"
+numpy = [
+    {version = "^1.26.0", python = "^3.12"},
+    {version = "^1.25.2", python = "^3.11"},
+    {version = "^1.25.2", python = "^3.10"}
+]
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.2"
+iprogress = "^0.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.1"
