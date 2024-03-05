@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "nicostick"
+version = "0.0.2"
+description = "Python package for interfacing with the Nicolaudie Stick3-DE DMX controller over Ethernet"
+authors = ["Yngvi Thor Sigurjonsson <blitzkopf@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/blitzkopf/shadeorb"
+repository = "https://github.com/blitzkopf/shadeorb"
+keywords = ["nicolaudie", "stick3", "dmx", "lighting", "controller"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Topic :: Home Automation",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+black = "^24.2.0"
+ruff = "^0.3.0"
+pytest = "^8.0.2"
+pre-commit = "^3.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+skip-string-normalization = true
+line-length = 120
+
+[tool.ruff]
+# Same as Black.
+line-length = 120
+
+exclude = ["jupyter_notebook_config.py"]
+lint.select = [
+    "E", # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "I", # isort
+    "C", # flake8-comprehensions
+    "B", # flake8-bugbear
+]
+lint.ignore = [
+    "E501", # line too long, handled by black
+    "C901", # too complex
+]
+[tool.ruff.isort]
+order-by-type = true
+relative-imports-order = "closest-to-furthest"
+extra-standard-library = ["typing"]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+known-first-party = []
