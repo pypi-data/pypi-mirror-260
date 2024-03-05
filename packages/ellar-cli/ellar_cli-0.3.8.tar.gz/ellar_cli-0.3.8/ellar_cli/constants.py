@@ -1,0 +1,3 @@
+ELLAR_META = "ELLAR_META"
+ELLAR_PY_PROJECT = "ellar"
+ELLAR_PROJECT_NAME = "project_name"
