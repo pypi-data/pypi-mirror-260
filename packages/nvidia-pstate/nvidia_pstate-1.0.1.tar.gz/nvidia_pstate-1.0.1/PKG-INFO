@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: nvidia_pstate
+Version: 1.0.1
+Summary: A library and CLI utilities for managing performance states of NVIDIA GPUs.
+Author-email: sasha0552 <admin@sasha0552.org>
+License: MIT
+Project-URL: Homepage, https://github.com/sasha0552/nvidia-pstate
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# nvidia-pstate
+A library and CLI utilities for managing performance states of NVIDIA GPUs.
+
+## Installation
+```sh
+pip3 install nvidia_pstate
+```
+
+## Usage (CLI)
+```sh
+# List available performance states (TODO: does not work right now, use nvidia-smi -q and count memory clocks)
+nvidia-pstate list-pstates
+
+# Set performance state for specific GPU
+nvidia-pstate set-pstate -i 0 -ps 0
+
+# Let driver decide which performance state GPU should use
+nvidia-pstate set-pstate -i 0 -ps 16
+
+# Set performance state for all GPUs
+nvidia-pstate set-pstate -ps 0
+```
+
+## Usage (API)
+```python
+from nvidia_pstate import set_pstate_low, set_pstate_high
+
+set_pstate_low() # set pstate to "low" level (8 by default)
+set_pstate_high() # set pstate to "high" level (16 by default)
+
+# default values can be overrided using NVIDIA_PSTATE_LOW and NVIDIA_PSTATE_HIGH environment variables.
+```
