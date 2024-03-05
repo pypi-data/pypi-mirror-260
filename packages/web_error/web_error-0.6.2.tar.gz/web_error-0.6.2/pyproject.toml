@@ -1,0 +1,97 @@
+[tool.poetry]
+name = "web_error"
+version = "0.6.2"
+description = "Web based error utils"
+authors = ["Daniel Edgecombe <edgy.edgemond@gmail.com>"]
+license = "Apache-2.0"
+repository="https://github.com/EdgyEdgemond/web-error/"
+homepage="https://github.com/EdgyEdgemond/web-error/"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+
+fastapi = "*"
+
+changelog-gen = { version="^0.9.0", extras=["bump-my-version"]}
+pytest = "~7.4.3"
+pytest-asyncio = "^0.21"
+pytest-cov = "^4.1.0"
+pytest-httpx = "^0.26.0"
+pytest-random-order = "^1.0"
+
+# Style
+ruff = "^0.3.0"
+pre-commit = "^3.0.2"
+
+[tool.bumpversion]
+current_version = "0.6.2"
+commit = true
+tag = true
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[tool.changelog_gen]
+release = true
+commit = true
+reject_empty = true
+allowed_branches = [
+    "main",
+]
+date_format = "- %Y-%m-%d"
+issue_link = "https://github.com/EdgyEdgemond/web-error/issues/::issue_ref::"
+commit_link = "https://github.com/EdgyEdgemond/web-error/commit/::commit_hash::"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--random-order"
+markers = [
+    "backwards_compat: marks tests as part of backwards compatibility checks.",
+]
+
+[tool.coverage.report]
+sort = "cover"
+fail_under = 95
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    "if typing.TYPE_CHECKING:",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["web_error"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+select = ["ALL"]
+ignore = [
+    "ANN002",  # ParamSpec not available in 3.9
+    "ANN003",  # ParamSpec not available in 3.9
+    "FIX",  # allow TODO
+    "D",
+]
+
+[tool.ruff.per-file-ignores]
+"tasks.py" = ["ANN", "E501", "INP001"]
+"tests/*" = ["ANN", "D", "S101", "S105", "S106", "SLF001"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
