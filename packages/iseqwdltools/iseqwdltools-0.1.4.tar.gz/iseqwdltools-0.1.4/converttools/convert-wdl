@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+WDLTOOLS_VERSION="0.17.16"
+WDLTOOLS_JAR="wdlTools-${WDLTOOLS_VERSION}.jar"
+WDLTOOLS="java -jar ../${WDLTOOLS_JAR}"
+
+if [[ ! -f "${WDLTOOLS_JAR}" ]]; then
+    wget -q https://github.com/dnanexus/wdlTools/releases/download/${WDLTOOLS_VERSION}/${WDLTOOLS_JAR}
+    if [[ ! -f "${WDLTOOLS_JAR}" ]]; then
+        echo "Couldn't download wdlTools"
+        exit 2
+    fi
+fi
+
+if [[ "$1" == "" ]]; then
+    cat <<EOF
+USAGE:
+    convert-wdl <url>
+or
+    convert-wdl <filename> --resume
+   
+url
+    URL of the main WDL file
+filename
+    local filename
+EOF
+    exit
+fi
+
+if ! command -v ruby > /dev/null; then
+    echo Ruby not found. Please install and re-run the script.
+    exit 127
+fi
+
+
+mkdir -p input
+mkdir -p fixed
+mkdir -p output
+cd input
+
+if [[ "$2" == "--resume" ]]; then
+    filename="$1"
+    echo "Resuming ${filename}..."
+else
+    url="$1"
+    filename=`echo "${url}" | rev | cut -d "/" -f 1 | rev`
+    echo "Converting ${filename}..."
+    if [[ ! -f "${filename}" ]]; then
+        wget -q "$url"
+
+        if [[ ! -f "${filename}" ]]; then
+            echo "Couldn't download file"
+            exit 1
+        fi
+    fi
+fi
+
+imports=`cat ${filename} | sed -nr 's/^import "(https?:\/\/[^"]+)"( as .*)?$/\1/p'`
+for imp in $imports; do
+    cd ..
+    convert-wdl "${imp}" "$2" || ./convert-wdl "${imp}" "$2" 
+    branch=`echo $imp | sed -nr 's|^.*/raw/([^/]+)/.*/([^"]+)$|\1|p'`
+    impfile=`echo $imp | sed -nr 's|^.*/raw/([^/]+)/.*/([^"]+)$|\2|p'`
+    fullimpfile="$branch-$impfile"
+    mv "input/$impfile" "input/$fullimpfile"
+    mv "fixed/$impfile" "fixed/$fullimpfile"
+    mv "output/$impfile" "output/$fullimpfile"
+    cd input
+    sed -r -i "s|^import \"${imp}\"|import \"${fullimpfile}\"|" "${filename}"
+done
+
+fixer.rb "${filename}" > "../fixed/${filename}" || ../fixer.rb "${filename}" > "../fixed/${filename}"
+
+cd ../fixed
+${WDLTOOLS} upgrade --nocheck --nofollow-imports -o -O ../output/ "${filename}"
+${WDLTOOLS} check "../output/${filename}"

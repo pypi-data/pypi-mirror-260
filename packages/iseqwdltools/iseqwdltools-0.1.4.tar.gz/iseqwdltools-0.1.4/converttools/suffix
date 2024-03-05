@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+filename="$1"
+ver=`echo $filename | sed -r 's/^.*@([0-9.]+)-.*$/\1/'`
+if [[ "$ver" == "" ]]; then
+    echo Not a versioned file. Skipping.
+    exit
+fi
+ver_plain=`echo $ver | sed -r 's/[^A-Za-z0-9]//g'`
+
+workflow_name=`cat $filename | sed -nr 's/^\s*workflow\s+([a-zA-Z0-9_]+)\s*\{?$/\1/p'`
+new_workflow_name="${workflow_name}_${ver_plain}"
+sed -ri "s/(workflow\s+)${workflow_name}\b/\1${new_workflow_name}/" $filename
+
+task_name=`cat $filename | sed -nr 's/^\s*task\s+([a-zA-Z0-9_]+)\s*\{?$/\1/p'`
+new_task_name="${task_name}_${ver_plain}"
+sed -ri "s/(task\s+)${task_name}\b/\1${new_task_name}/" $filename
+sed -ri "s/(call\s+)${task_name}\b/\1${new_task_name}/" $filename
+
+for f in `grep -l "import\s\+\"$filename\"" *.wdl`; do
+    mod_name=`cat $f | sed -nr "s/^\s*import\s+\"$filename\" as ([a-zA-Z0-9_]+)$/\1/p"`
+    sed -ri "s/(call\s+)${mod_name}\.${workflow_name}/\1${mod_name}.${new_workflow_name}/" $f
+done

@@ -1,0 +1,177 @@
+# Iseq WDL
+
+A bunch of scripts to operate on iseq WDL files
+
+More info here: https://workflows-dev-documentation.readthedocs.io/en/latest/WDL.html
+
+# Install
+
+Optional steps (create virtual environment):
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Obligatory steps:
+```
+python3 -m pip install --upgrade pip
+pip install iseqwdltools
+```
+
+# Checking and validating
+
+1. Check if you forgot to remove paths that are not allowed in test.json (like /home/ catalog)
+```
+local_route_test -j "path/to/test1.json" "path/to/test2.json" 
+```
+
+2. Compare your current branch's pushed changes (to origin) with origin/dev.
+If origin/dev is at least one commit ahead there will be warning.
+Merging dev into your branch will resolve this issue.
+```
+source-target-branch-warn
+``` 
+
+3. Run womtool and wdlTools validation on the given wdl file.
+If any of these tools above is not installed then wget will be launched and saved locally.
+Remember not to commit them! (possible solution: add to .gitignore)
+```
+full-static-analysis path/to/wdl/file
+```
+In order to analyse .wdl files using just womtool or wdlTools type:
+```
+wdltools-analysis path/to/wdl/file
+```
+or
+```
+womtool-analysis path/to/wdl/file
+```
+
+4. Change updated task versions in imports where they are used
+```
+update_task_versions -w path/to/updated/wdl/file
+```
+
+# WDL converter/uploader
+
+### Converting/fixing WDL files
+
+Use `convert-wdl` to retrieve the WDL and all its dependencies (and their
+dependencies) from GitLab, convert it to WDL spec version 1.0, and make it
+usable with DNAnexus:
+```
+convert-wdl https://gitlab.com/intelliseq/workflows/raw/dev/src/main/wdl/modules/fq-qc/fq-qc.wdl
+```
+or run it on an already retrieved (and - possibly - manually modified) file:
+```
+convert-wdl input/fq-qc.wdl --resume
+```
+This will do the conversion for the specified WDL and **all** its child
+components.
+
+#### Patching
+
+DNAnexus' workflow engine is much more strict compared to Cromwell.
+Hence, many analyses that run correctly with Cromwell will fail on DNAnexus
+(or even don't pass the compilation). The tool called `fixer.rb` (invoked
+under the hood by the converter) patches the original WDLs, fixing the most
+common problems, mostly related to the use of optional/undefined variables.
+
+#### Directory structure
+
+Upon first launch, `convert-wdl` creates three subdirectories:
+- `input/` - original WDL files are downloaded here,
+- `fixed/` - patched files land here,
+- `output/` - here goes the final, upgraded and checked workflow.
+
+**Note:** the main WDL and *all* its upstream dependencies (modules, tasks)
+are written to the same location, and are not sorted into separate folders.
+Please remember to move the old contents of these directories elsewhere
+before converting a new workflow! (This is only for the sake of clarity;
+the scripts will ignore WDLs from other workflows.)
+
+#### Resolving problems with non-unique workflow/task names
+
+Since the converter downloads all the upstream WDLs, it may happen that
+more than one version of a certain component will be downloaded.
+The converter can already deal with it by renaming each child WDL to
+the format `branch-name.wdl` (e.g., `bco-merge@1.4.0-bco-merge.wdl`),
+but workflows/tasks in these files will still have the original, non-unique
+names.
+
+To make these names unique, run
+```
+suffix output/bco-merge@1.4.0-bco-merge.wdl
+```
+This will add a version suffix to all workflow/task names in the WDL,
+and update `call` directives in all its downstream dependencies accordingly.
+
+### Uploading workflows to DNAnexus
+
+Use `upload` to compile and upload the converted workflow to DNAnexus:
+```
+upload output/fq-qc.wdl -f -folder /my-remote-subfolder
+```
+When launched for the first time, this script will download the necessary
+tools and log in to DNAnexus (keep your username and password at hand!).
+
+
+# Creating task/module/pipeline from scratch
+
+You can create tasks/modules/pipelines from scratch by following steps below.
+In square brackets non obligatory parameters:
+
+1) Create task:
+
+```
+create-task --name task_name [--version X.Y.Z] [--quiet]
+```
+
+2) Create module:
+
+```
+create-module --name task_name [--version X.Y.Z] [--quiet]
+```
+
+3) Create pipeline:
+
+```
+create-task --name task_name [--version X.Y.Z] [--quiet]
+```
+
+More info here:
+https://workflows-dev-documentation.readthedocs.io/en/latest/WDL.html#creating-wdl
+
+
+# Tagging WDL file
+
+While using vscode as IDE you need to turn off terminal authentication in Settings (press ‘Ctrl + ,’ and search for git.terminalAuthentication).
+
+Script usage on example:
+
+```
+WDL="src/main/wdl/pipelines/germline/germline.wdl"
+tag_wdl -w $WDL
+```
+
+If you wish to tag a workflow without the proper meta.json file you can add the -i flag. For example:
+
+```
+tag_wdl -w $WDL -i
+```
+
+
+Where:
+    WDL is the path to tagged .wdl file. In the same directory should be meta.json
+
+For example: `/path/to/wdl/file/file.wdl` and `/path/to/wdl/file/meta.json`. This is really important to name these files as mentioned. Script looks for them named like that in chosen directory. Tag version is taken from .wdl file. Script looks for the first line containing String and version keywords with one of the following words: `pipeline/module/task`.
+
+
+Wdl-tagger:
+    1. Compares version in wdl and meta.json file (without -i flag)
+    2. Gets to the workflows repository
+    3. Fetches the workflows repository
+    4. Creates a new tag based on workflow name (finds pipeline/module/task name in wdl file) and workflow version
+    5. Checks if the new tag is not occupied and compares it with latest version in repository (to check if it’s latest)
+    6. Compares wdl from latest tag version with wdl from dev and checks if it’s content is the same
+    7. Pushes new tag to the repository
