@@ -1,0 +1,324 @@
+Metadata-Version: 2.1
+Name: aiodgram
+Version: 2.6.3
+Summary: This library from easy work with aiogram
+Author: Darkangel, Arkeep
+Author-email: fvovva@gmail.com
+Keywords: telegram aiogram aiodgram
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: aiogram <=2.25.2
+Requires-Dist: colorama
+Requires-Dist: pytube
+
+# aiodgram 
+
+## What is this? 
+The module makes it easier for you to use the basic functions of AIOGRAM, such as sending messages/photos/video and start your bot.
+
+
+
+## Using 
+
+Let's import it first:
+First, import class `TgBot and types` from the library (use the 'from `...` import TgBot, types' construct).
+Second, create a object from class `TgBot` (use '`name` = TgBot()' construct)
+Third, You must write arguments to this object, *token*: `string`, *admin_username*: `string`
+
+```python
+from `...` import TgBot
+
+bot = TgBot(`token`, `admin_username`)
+```
+
+
+
+AFTER `object_botname` = `bot`
+
+## Use in asyng defines
+
+Examples:
+
+```python
+@`bot`.dispatcher.message_handler()
+async def test:
+  await bot.send_message(`chat_id`, `text`)
+```
+
+or
+
+```python
+@`bot`.dispatcher.message_handler()
+async def test:
+  await bot.send_photo(`chat_id`, `photo_url`, caption=`text`)
+```
+
+or
+
+```python
+@`bot`.dispatcher.message_handler()
+async def test:
+  await bot.send_video(`chat_id`, `video_url`, caption=`text`)
+```
+
+
+
+## Beautiful messages to console 
+
+You can create your beautiful messages to console with color!
+
+First, import class `MyMessages` from the library (use the 'from `...` import MyMessages' construct)
+
+Second, create a object from class `MyMessages` (use '`name` = MyMessage()' construct)
+
+Third, you must use a `message` define based on this object (use, '`name`.message()' construct)
+
+Fourth, You must write arguments to this define, *clear*: `bool`, *message*:`string`, *colors*:`string`.
+
+Example:
+
+```python
+from `...` import MyMessages
+
+my_msg = MyMessage()
+
+print(my_msg.message(clear=`bool`, text=`text`, color=`[green, blue]`))
+```
+
+
+
+## Download a videos from YouTube 
+
+You can download a video from YouTube using this library!
+
+First, import class `DownloadVideo` from the library (use the 'from `...` import DownloadVideo' construct)
+
+Second, create a object from class `DownloadVideo` (use '`name` = DownloadVideo()' construct)
+
+Third, you must use a `Download_This_Video` define based on this object (use, '`name`.Download_This_Video()' construct)
+
+Fourth, you must write arguments to this define, *link_on_video*: `string`, *video_name*: `string`, *resolution*: `int` 
+
+
+
+Example:
+
+```python
+from `...` import DownloadVideo
+
+video = DownloadVideo()
+
+video.download_This_Video(link_on_video=`link`, video_name=`name of file`, resolution=`720p`)
+```
+
+
+
+
+
+## Create your buttons 
+
+You can create buttons for your messages!
+
+### For reply_markup
+Example:
+
+```python
+from `...` import Button
+
+btns = Button()
+
+keyboard = [
+  [
+    btns.add_button(`text`)
+  ],
+  [
+    btns.add_button(`text`)
+  ]
+]
+
+reply_btns = btns.add_markup(keyboard)
+```
+
+And, you must add object from fourth point to `send_message` ; `send_photo` ; `send_video` in `reply_markup` argument
+
+
+
+
+### For inline_markup
+
+Example:
+
+```python
+from `...` import Button
+
+btns = Button()
+
+keyboard = [
+  [
+    btns.add_inline_button(`text`, `callback`)
+  ],
+  [
+    btns.add_inline_button(`text`, `callback`)
+  ]
+]
+
+reply_btns = btns.add_inline_markup(keyboard)
+```
+
+And, you must add object from fourth point to `send_message` or `send_photo` or `send_video` in `reply_markup` argument
+
+
+
+
+## Show loading animation in your bot
+First, you must use a define from TgBot (use '`bot`.loading()')
+
+Second, you must write argumets to this define, *chat_id*: `int`, *percentages*: `int`
+
+Example:
+
+```python
+bot = TgBot(`token`)
+
+@`bot`.dispatcher.message_handler()
+async def test:
+  await bot.loading(`chat_id`, `percentages`)
+```
+
+
+
+
+## Easy work with SQL
+
+Example:
+
+```python
+from `...` import Database
+
+db = Database(`filename db`)
+
+db.create_data(`table`, columns=`list`, values=`list`) #Creating a cell in a DB table
+
+db.select_data(`table`, column=`str`, search_column=`str`, search_data=`str`) #Return list with your datas
+
+db.edit_data(`table`, column=`str`, new_data=`any`, search_column=`str`, search_data=`str`) #Edit data in your DB
+
+db.delete_data(`table`, search_column=`str`, search_data=`str`) #Delete data fro DB
+```
+
+
+
+
+## Your custom exceptions
+
+Example:
+
+```python
+from `...` import MyException
+
+MyException(message='', extra_info=any)
+```
+
+
+
+## Logging your project
+
+Example:
+
+```python
+from `...` import Logged
+
+`log` = Logged(type_logging='info', filename='log.log')
+
+`log`.info(message='')
+`log`.error(message='')
+`log`.warning(message='')
+`log`.critical(message='')
+`log`.debug(message='')
+
+```
+
+
+
+
+## Password maker
+
+Example:
+```python
+from `...` import PasswordMaker, TgBot, types
+bot = TgBot(`token`, `admin_username`)
+
+password = PasswordMaker(bot=bot)
+
+@bot.dispatcher.message_handler()
+async def password_maker(message: types.Message):
+  await password.make(message.from_user.id, 'Input a password lenght')
+
+```
+
+
+## Edit text in your message
+
+Example:
+```python
+from `...` inport TgBot
+
+bot = TgBot(`token`, `admin_username`)
+
+@dp.message_handler()
+async def a(message: types.Message):
+  text = message.text
+  chat_id = message.chat.id
+
+  await bot.edit_message_text(text=text, chat_id=chat_id)
+
+
+```
+
+
+## Edit inline markup in your message
+
+Example:
+```python
+from `...` inport TgBot
+
+bot = TgBot(`token`, `admin_username`)
+your_inline_markup = 'your markup'
+
+@dp.message_handler()
+async def a(message: types.Message):
+  chat_id = message.chat.id
+  message_id = message.message_id
+
+  await bot.edit_message_markup(chat_id=chat_id, message_id=message_id, reply_markup=your_inline_markup)
+
+
+```
+
+
+
+## For start your bot, you need
+
+bot.start_polling(dispatcher=`bot Dispatcher`, skip_updates=`True or False`, on_startup=`define for start`, on_shutdown=`define for shutdown`).
+
+
+
+Example:
+
+```python
+from `...` import TgBot
+bot = TgBot()
+
+bot.start_polling(`nothing arguments or your arguments`)
+```
+
+
+
+
+# Developers
+authors: `Darkangel, Arkeep`
+
+authors telegrams: `t.me/darkangel58414` and `t.me/Stillcrayg`
