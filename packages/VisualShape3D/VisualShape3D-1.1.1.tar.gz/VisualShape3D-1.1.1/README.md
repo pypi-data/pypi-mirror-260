@@ -1,0 +1,79 @@
+# VisualShape3D
+
+## VisualShape3D
+
+VisualShape3D is an easy-to-use Python wrapper of matplotlib, designed to facilitate the creation of 3D polygons for educational purposes. The package allows the user to create a view, add shapes into it, and display them all together in the end.
+
+There three shapes to have been defined in VisualShape3D : Point, PolyLine, and Polygon. To create a 3D shape, one follows a two-step process: 1) creating a 2D shape in the yz plane; 2) transforming it to desired position to form a 3D shape. During the transformation,  translate the reference point to a new position (X,Y,Z), and then turn its facet to  a new orientation. By default, the first vertex of a shape acts as its reference point, and the orientation is set by two angles (alpha, beta). alpha refers to the angle from y to y' on xy plane , while beta means the other angle from z to z' in xz plane. They are positive anticlockwise.
+
+Besides these features, VisualShape3D also offers the ability to calculate the intersection of a line with a polygon, that is , PolyLine and Polygon. The function serves as a first step towards a more useful tool.
+
+## Core Features
+*Three shapes : Point, Segment and Polygon.
+*It can check whether or not a point is inside a segment or polygon, by using the magic functions __contains__.
+*__hash__ and __eq__, also overloaded for Point, Segment and Polygon.
+*__neg__ overloaded for polygon when one wants to know the list of vertices on its other side.
+
+## Requirements
+
+* [Python](http://www.python.org) 3 
+* Matplotlib is needed.
+
+## Documentation
+
+To be continued.
+
+## Installation
+```bash
+pip install VisualShape3D
+```
+
+## Usage
+```python
+
+from VisualShape3D import VisualShape3D as vs3d
+from VisualShape3D.geometry import Shape 
+
+A,B,C = 6,6,3
+P1,P2,P3,P4 = (A,0,0),(A,B,0),(A,B,C),(A,0,C)
+P5,P6,P7,P8 = (0,0,0),(0,B,0),(0,B,C),(0,0,C)
+V = [P1,P2,P3,P4,P5,P6,P7,P8]
+shape1 = Shape("Polygon",vertices = [V[0],V[1],V[2],V[3]])
+shape2 = Shape("Polygon",vertices = [V[1],V[2],V[6],V[5]])
+shape3 = Shape("Polygon",vertices = [V[5],V[4],V[7],V[6]])
+shape4 = Shape("Polygon",vertices = [V[4],V[0],V[3],V[7]])
+shape5 = Shape("Polygon",vertices = [V[3],V[2],V[6],V[7]])
+shape6 = Shape("Polygon",vertices = [V[4],V[5],V[1],V[0]])
+
+body = vs3d.VisualShape3D({'facecolor':'yellow','alpha':0.7})
+body.add_shape(shape1,{'facecolor':'red','alpha':0.7})
+body.add_shape(shape2)
+body.add_shape(shape3)
+body.add_shape(shape4)
+body.add_shape(shape5)
+body.add_shape(shape6)
+body.show()
+```
+
+## Change Log
+
+[changelog.md](changelog.md)
+
+## License
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+## Contact
+heliqun@ustc.edu.cn
+
