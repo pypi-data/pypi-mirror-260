@@ -1,0 +1,60 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "dotty-dictionary"
+version = "1.1.0"
+description = "Dictionary wrapper that provides dot notation access to nested dictionaries"
+authors = [
+  "01Joseph-Hwang10 <joseph95501@gmail.com>",
+  "Pawel Zadrozny <pawel.zny@gmail.com>",
+]
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Intended Audience :: Developers',
+  'Natural Language :: English',
+  'Topic :: Software Development',
+  'Topic :: Software Development :: Libraries :: Python Modules',
+  'Programming Language :: Python :: 3 :: Only',
+  'Programming Language :: Python :: 3.10',
+  'Programming Language :: Python :: 3.11',
+  'Programming Language :: Python :: 3.12',
+  'Programming Language :: Python :: 3.13',
+  'Programming Language :: Python :: Implementation :: CPython',
+  'Programming Language :: Python :: Implementation :: PyPy',
+  'License :: OSI Approved :: MIT License',
+]
+license = "MIT"
+readme = "README.md"
+exclude = ["**/tests", "**/package.json", "**/project.json"]
+[[tool.poetry.packages]]
+include = "dotty_dictionary"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = "\\.pyi?$"
+extend-exclude = "/(\n  # The following are specific to Black, you probably don't want those.\n  tests/data\n  | profiling\n)/\n"
+
+[tool.poe.tasks]
+test = "python -m pytest"
+lint = "flake8 dotty_dictionary tests"
+check-format = "black dotty_dictionary tests --check"
+format = "black dotty_dictionary tests"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+black = "^23.9.1"
+pre-commit = "^3.4.0"
+commitizen = "^3.10.0"
+poethepoet = "^0.24.4"
+git-remote-get = "^0.2.1"
+
+[tool.poetry.group.test.dependencies]
+faker = "^20.1.0"
+pytest = "^7.4.3"
+pytest-order = "^1.2.0"
