@@ -1,0 +1,17 @@
+[console_scripts]
+finitedepth = finitedepth:main
+
+[finitedepth.analyzers]
+CoatingImage = finitedepth:coatingimage_analyzer
+CoatingVideo = finitedepth:coatingvideo_analyzer
+
+[finitedepth.coatinglayers]
+CoatingLayer = finitedepth.coatinglayer:CoatingLayer
+RectLayerShape = finitedepth.coatinglayer:RectLayerShape
+
+[finitedepth.references]
+Reference = finitedepth.reference:Reference
+
+[finitedepth.substrates]
+RectSubstrate = finitedepth.substrate:RectSubstrate
+Substrate = finitedepth.substrate:Substrate
