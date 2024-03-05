@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: starlette-static-cache-control
+Version: 0.1.2
+Summary: 
+Author: megahomyak
+Author-email: g.megahomyak@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: starlette (>=0.13.8)
+Description-Content-Type: text/markdown
+
+# starlette\_static\_cache\_control
+
+A `starlette.staticfiles.StaticFiles` subclass allowing custom `Cache-Control`. Just import it (it's called `CacheControlStaticFiles`) and use it as regular `StaticFiles`, it only has an additional `cache_control` argument. The class was stolen from https://github.com/lexxai/goit_python_web_hw_14/blob/a4e247e2b1afb57f2d8eb9e63a34d34f4f3e6bd6/hw14/main.py#L99
+
