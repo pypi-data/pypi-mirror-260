@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: rate-control
+Version: 1.0.0.dev0
+Summary: Versatile rate controlling in Python
+Home-page: https://github.com/corentin-regent/rate-control
+License: MIT
+Keywords: async,rate limiter,rate control,scheduler,throttling,token bucket
+Author: Corentin Régent
+Author-email: corentin.regent.pro@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: AnyIO
+Classifier: Framework :: AsyncIO
+Classifier: Framework :: Trio
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Typing :: Typed
+Requires-Dist: anyio (>=4,<5)
+Requires-Dist: typing_extensions (>=4.4,<5.0) ; python_version < "3.12"
+Project-URL: Repository, https://github.com/corentin-regent/rate-control
+Description-Content-Type: text/x-rst
+
+============
+Rate Control
+============
+
+*Versatile rate controlling in Python*
+
+Key Features
+------------
+
+* Rate limiting
+* Scheduling requests
+* Request synchronization
+* Request prioritization
+* Chaining buckets
+* Support for both asyncio_ and Trio_, through AnyIO_
+
+.. _AnyIO: https://github.com/agronholm/anyio
+.. _asyncio: https://docs.python.org/3/library/asyncio.html
+.. _Trio: https://github.com/python-trio/trio
+
+Contributing
+------------
+
+Contributions are very welcome. Please read `CONTRIBUTING </CONTRIBUTING.rst>`_ for details.
+
