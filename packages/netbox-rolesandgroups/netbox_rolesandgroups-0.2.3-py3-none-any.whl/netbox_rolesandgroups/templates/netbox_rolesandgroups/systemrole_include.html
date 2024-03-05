@@ -1,0 +1,67 @@
+{% load helpers %}
+
+{% if perms.netbox_rolesandgroups.view_systemrole %}
+<div class="card">
+<h5 class="card-header">
+    Роли в системе
+    {% if system_roles %}
+      <a href="{% url 'plugins:netbox_rolesandgroups:systemrole_list' %}?system={{ object.pk }}">
+        (всего: {{ system_roles|length }})</a>
+    {% endif %}
+</h5>
+<div class="card-body">
+{% if system_roles %}
+    <table class="table table-hover">
+        <tr>
+            <th>Название</th>
+            <th>Состав данных</th>
+            <th>Описание</th>
+            <th>Технические роли</th>
+            <th></th>
+        </tr>
+        {% for role in system_roles|slice:":20" %}
+        <tr>
+            <td>{{ role.name|slice:":50" }}{% if role.name|length > 50 %}...{% endif %}</td>
+            <td>{{ role.data_composition|slice:":50" }} {% if role.data_composition|length > 50 %}...{% endif %}</td>
+            <td>{{ role.description|slice:":50" }} {% if role.description|length > 50 %}...{% endif %}</td>
+            <td>
+               <a href="{% url 'plugins:netbox_rolesandgroups:techrole_list' %}?roles={{ role.pk }}">
+                 {{ role.techroles.count }}</a>
+            </td>
+            <td class="text-end noprint">
+                <a href="{% url 'plugins:netbox_rolesandgroups:systemrole' pk=role.pk %}"
+                   class="btn btn-primary btn-sm lh-1" title="Просмотреть">
+                    <i class="mdi mdi-book" aria-hidden="true"></i>
+                  </a>
+                  {% if perms.netbox_rolesandgroups.change_systemrole %}
+                  <a href="{% url 'plugins:netbox_rolesandgroups:systemrole_edit' pk=role.pk %}?return_url=
+                  {% url 'plugins:netbox_subsystems:subsystem' pk=object.pk %}" class="btn btn-warning btn-sm lh-1" title="Редактировать">
+                    <i class="mdi mdi-pencil" aria-hidden="true"></i>
+                  </a>
+                  {% endif %}
+                  {% if perms.netbox_rolesandgroups.delete_systemrole %}
+                  <a href="{% url 'plugins:netbox_rolesandgroups:systemrole_delete' pk=role.pk %}?return_url=
+                  {% url 'plugins:netbox_subsystems:system' pk=object.pk %}" class="btn btn-danger btn-sm lh-1" title="Удалить">
+                    <i class="mdi mdi-trash-can-outline" aria-hidden="true"></i>
+                  </a>
+                  {% endif %}
+              </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <div class="text-muted">
+            Нет
+        </div>
+    {% endif %}
+    </div>
+  {% if perms.netbox_rolesandgroups.change_systemrole %}
+    <div class="card-footer text-end noprint">
+        <a href="{% url 'plugins:netbox_rolesandgroups:systemrole_add' %}?subsystem={{ object.pk }}&return_url={% url 'plugins:netbox_subsystems:subsystem' pk=object.pk %}" class="btn b>
+            <i class="mdi mdi-plus-thick" aria-hidden="true"></i>
+            Добавить роль
+        </a>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
