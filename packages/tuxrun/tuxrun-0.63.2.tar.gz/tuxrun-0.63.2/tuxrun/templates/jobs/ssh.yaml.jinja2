@@ -1,0 +1,38 @@
+device_type: "ssh"
+
+{% if tests %}
+job_name: "tuxrun@{{ device.name }}: {{ tests|map(attribute="name")|join(", ")}}"
+{% else %}
+job_name: "tuxrun@{{ device.name }}: boot"
+{% endif %}
+priority: "medium"
+visibility: "public"
+{%- set boot_timeout = timeouts.boot|default(3) %}
+
+{% block timeouts %}
+timeouts:
+  job:
+    minutes: {{ boot_timeout + tests_timeout }}
+  action:
+   minutes: 5
+  actions:
+    power-off:
+      seconds: 30
+{% endblock %}
+
+actions:
+- deploy:
+    to: ssh
+    os: debian
+- boot:
+    method: ssh
+    connection: serial
+    failure_retry: 2
+    timeout:
+      minutes: {{ boot_timeout }}
+    prompts:
+    - 'root@(.*):[/~]#'
+{% for prompt in ssh_prompt %}
+    - "{{ prompt }}"
+{% endfor %}
+
