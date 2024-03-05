@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "typed-ffmpeg"
+version = "1.0.3"
+description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
+authors = ["lucemia <lucemia@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "ffmpeg", from = "src" }]
+include = ["ffmpeg/py.typed"]
+exclude = ["**/tests"]
+license = "MIT"
+homepage = "https://livingbio.github.io/typed-ffmpeg/"
+repository = "https://github.com/livingbio/typed-ffmpeg"
+keywords = [
+    "ffmpeg",
+    "video",
+    "audio",
+    "multimedia",
+    "filter",
+]
+classifiers = [
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Topic :: Multimedia :: Video',
+        'Topic :: Multimedia :: Sound/Audio',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+
+graphviz = {"version" = "*", optional=true}
+
+[tool.poetry.extras]
+graph = [
+    "graphviz",
+]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+# test
+pytest-cov = "^4.1.0"
+pytest-datadir = "^1.5.0"
+pytest-recording = "^0.13.1"
+syrupy = "^4.6.0"
+pre-commit = "*"
+mypy = "*"
+imagehash = "*"
+graphviz = "*"
+
+# Doc
+mkdocs = "*"
+markdown-callouts = "^0.4.0"
+mkdocs-material = "^9.5.9"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
+pymdown-extensions = "^10.7"
+griffe_inherited_docstrings = "*"
+
+[tool.poetry-dynamic-versioning]
+enable = false
+pattern = "default-unprefixed"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
