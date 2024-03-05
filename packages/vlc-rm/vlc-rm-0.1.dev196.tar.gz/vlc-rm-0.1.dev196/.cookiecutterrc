@@ -1,0 +1,74 @@
+# This file exists so you can easily regenerate your project.
+#
+# `cookiepatcher` is a convenient shim around `cookiecutter`
+# for regenerating projects (it will generate a .cookiecutterrc
+# automatically for any template). To use it:
+#
+#    pip install cookiepatcher
+#    cookiepatcher gh:ionelmc/cookiecutter-pylibrary python-vlc-rm
+#
+# See:
+#    https://pypi.org/project/cookiepatcher
+#
+# Alternatively, you can run:
+#
+#    cookiecutter --overwrite-if-exists --config-file=python-vlc-rm/.cookiecutterrc gh:ionelmc/cookiecutter-pylibrary
+
+default_context:
+
+    _extensions:               ['jinja2_time.TimeExtension']
+    _template:                 'https://github.com/ionelmc/cookiecutter-pylibrary'
+    allow_tests_inside_package: 'no'
+    appveyor:                  'no'
+    c_extension_function:      'longest'
+    c_extension_module:        '_vlc_rm'
+    c_extension_optional:      'no'
+    c_extension_support:       'no'
+    c_extension_test_pypi:     'no'
+    c_extension_test_pypi_username: 'jufgutierrezgo'
+    codacy:                    'no'
+    codacy_projectid:          '[Get ID from https://app.codacy.com/gh/jufgutierrezgo/python-vlc-rm/settings]'
+    codeclimate:               'no'
+    codecov:                   'no'
+    command_line_interface:    'argparse'
+    command_line_interface_bin_name: 'vlc-rm-cli'
+    coveralls:                 'no'
+    distribution_name:         'vlc-rm'
+    email:                     'jufgutierrezgo@unal.edu.co'
+    full_name:                 'Juan F. Gutierrez'
+    github_actions:            'no'
+    github_actions_osx:        'no'
+    github_actions_windows:    'no'
+    legacy_python:             'no'
+    license:                   'BSD 3-Clause License'
+    linter:                    'flake8'
+    package_name:              'vlc_rm'
+    pre_commit:                'no'
+    pre_commit_formatter:      'blue'
+    project_name:              'vlc-rm'
+    project_short_description: 'The package implements a recursive model to simulate a VLC system inside of rectangular empty room.'
+    pypi_badge:                'yes'
+    pypi_disable_upload:       'no'
+    release_date:              'today'
+    repo_hosting:              'github.com'
+    repo_hosting_domain:       'github.com'
+    repo_main_branch:          'main'
+    repo_name:                 'python-vlc-rm'
+    repo_username:             'jufgutierrezgo'
+    requiresio:                'no'
+    scrutinizer:               'no'
+    setup_py_uses_pytest_runner: 'yes'
+    setup_py_uses_setuptools_scm: 'yes'
+    sphinx_docs:               'yes'
+    sphinx_docs_hosting:       'https://python-vlc-rm.readthedocs.io/'
+    sphinx_doctest:            'yes'
+    sphinx_theme:              'python-docs-theme'
+    test_matrix_configurator:  'no'
+    test_matrix_separate_coverage: 'no'
+    travis:                    'no'
+    travis_osx:                'no'
+    version:                   '0.0.0'
+    version_manager:           'bump2version'
+    website:                   'https://blog.ionelmc.ro'
+    year_from:                 '2022'
+    year_to:                   '2022'
