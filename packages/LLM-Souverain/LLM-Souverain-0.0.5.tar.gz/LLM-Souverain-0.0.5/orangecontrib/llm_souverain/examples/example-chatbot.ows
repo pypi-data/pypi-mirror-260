@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Chatbot" qualified_name="Orange.widgets.dev_workflow.owchatbot.OWChatbot" project_name="Orange3" version="" title="Chatbot" position="(600, 450)" />
+		<node id="1" name="Text Field" qualified_name="_textable.widgets.OWTextableTextField.OWTextableTextField" project_name="Orange3-Textable" version="" title="Text Field" position="(300, 300)" />
+		<node id="2" name="Text Field" qualified_name="_textable.widgets.OWTextableTextField.OWTextableTextField" project_name="Orange3-Textable" version="" title="Text Field (1)" position="(300, 450)" />
+		<node id="3" name="Text Field" qualified_name="_textable.widgets.OWTextableTextField.OWTextableTextField" project_name="Orange3-Textable" version="" title="Text Field (2)" position="(299.0, 600.0)" />
+		<node id="4" name="Create Table" qualified_name="orangecontrib.educational.widgets.owcreatetable.OWCreateTable" project_name="Orange3-Educational" version="" title="Create Table" position="(300, 750)" />
+		<node id="5" name="Edit Domain" qualified_name="Orange.widgets.data.oweditdomain.OWEditDomain" project_name="Orange3" version="" title="Edit Domain" position="(450, 750)" />
+		<node id="6" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table" position="(450, 900)" />
+		<node id="7" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table (1)" position="(750, 450)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="1" sink_node_id="0" source_channel="Text data" sink_channel="Pre-prompt" enabled="true" sink_channel_id="preprompt" />
+		<link id="1" source_node_id="2" sink_node_id="0" source_channel="Text data" sink_channel="Request" enabled="true" sink_channel_id="request" />
+		<link id="2" source_node_id="3" sink_node_id="0" source_channel="Text data" sink_channel="Post-prompt" enabled="true" sink_channel_id="postprompt" />
+		<link id="3" source_node_id="4" sink_node_id="5" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="4" source_node_id="5" sink_node_id="6" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="5" source_node_id="5" sink_node_id="0" source_channel="Data" sink_channel="Parameters" enabled="true" source_channel_id="data" sink_channel_id="parameters" />
+		<link id="6" source_node_id="0" sink_node_id="7" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<arrow id="0" start="(232.0, 257.0)" end="(392.0, 257.0)" fill="#39B54A" />
+		<text id="1" type="text/plain" rect="(224.0, 224.0, 262.0, 33.0)" font-family="MS Shell Dlg 2" font-size="16">Parameters - Text</text>
+		<arrow id="2" start="(253.0, 709.0000000000001)" end="(504.0, 709.0000000000001)" fill="#39B54A" />
+		<text id="3" type="text/plain" rect="(250.0, 677.0, 174.0, 32.0)" font-family="MS Shell Dlg 2" font-size="16">Parameters - Numeric</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x02\x02\x00\x00\x00\xdc\x00\x00\x04&gt;\x00\x00\x01\xef\x00\x00\x02\x03\x00\x00\x00\xfa\x00\x00\x04=\x00\x00\x01\xee\x00\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x02\x03\x00\x00\x00\xfa\x00\x00\x04=\x00\x00\x01\xee', '__version__': 1}</properties>
+		<properties node_id="1" format="literal">{'autoSend': False, 'controlAreaVisible': True, 'encoding': 'utf-8', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x05\x04\x00\x00\x01\xb5\x00\x00\x06\x11\x00\x00\x03\xc7\x00\x00\x05\x05\x00\x00\x01\xd3\x00\x00\x06\x10\x00\x00\x03\xc6\x00\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x05\x05\x00\x00\x01\xd3\x00\x00\x06\x10\x00\x00\x03\xc6', 'textFieldContent': b'USER: ', 'uuid': '88fefa49-d531-4e8a-adc6-1a17570a9e2a', '__version__': 1, '_TextableUtils_settings_version__': (0, 13)}</properties>
+		<properties node_id="2" format="literal">{'autoSend': False, 'controlAreaVisible': True, 'encoding': 'utf-8', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x03y\x00\x00\x01P\x00\x00\x04\x86\x00\x00\x03b\x00\x00\x03z\x00\x00\x01n\x00\x00\x04\x85\x00\x00\x03a\x00\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x03z\x00\x00\x01n\x00\x00\x04\x85\x00\x00\x03a', 'textFieldContent': b'What are the planets in the solar system ??', 'uuid': 'ee629bb7-72f7-47c8-8afc-0c3a0f67ede4', '__version__': 1, '_TextableUtils_settings_version__': (0, 13)}</properties>
+		<properties node_id="3" format="literal">{'autoSend': False, 'controlAreaVisible': True, 'encoding': 'utf-8', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x03y\x00\x00\x01P\x00\x00\x04\x86\x00\x00\x03b\x00\x00\x03z\x00\x00\x01n\x00\x00\x04\x85\x00\x00\x03a\x00\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x03z\x00\x00\x01n\x00\x00\x04\x85\x00\x00\x03a', 'textFieldContent': b' ASSISTANT: ', 'uuid': '03abe9a2-89dd-4cd0-b51d-2a5b17deb86b', '__version__': 1, '_TextableUtils_settings_version__': (0, 13)}</properties>
+		<properties node_id="4" format="pickle">gASVYwEAAAAAAAB9lCiMC2F1dG9fY29tbWl0lIiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAluX2Nv
+bHVtbnOUSwOMBm5fcm93c5RLAYwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAA////////
+//kAAAgAAAAE0AAAA4wAAAEqAAAGqwAAAx0AAAAAAgAAAAgAAAAAAAAAABcAAAf/AAAEz5SMC19f
+dmVyc2lvbl9flEsBjBBjb250ZXh0X3NldHRpbmdzlF2UjBVvcmFuZ2V3aWRnZXQuc2V0dGluZ3OU
+jAdDb250ZXh0lJOUKYGUfZQojAZ2YWx1ZXOUfZQojAxjb250ZXh0X2RhdGGUXZRdlCiMAzIwMJSM
+AzAuN5SMAjQwlIwDMC40lIwEMS4xOJSMAjY0lIwBOJRlYWgHSwF1jAphdHRyaWJ1dGVzlE6MBW1l
+dGFzlE6MCmNsYXNzX3ZhcnOUTnViYXUu
+</properties>
+		<properties node_id="5" format="pickle">gASV/gEAAAAAAAB9lCiMFF9kb21haW5fY2hhbmdlX2hpbnRzlH2UKIwEUmVhbJQojAExlEsDjAFm
+lIaUKYl0lIaUXZSMBlJlbmFtZZSMCk1heCBsZW5ndGiUhZSGlGFoAyiMATKUSwNoBYaUKYl0lIaU
+XZRoCowLVGVtcGVyYXR1cmWUhZSGlGFoAyiMATOUSwNoBYaUKYl0lIaUXZRoCowFVG9wIEuUhZSG
+lGFoAyiMATSUSwNoBYaUKYl0lIaUXZRoCowFVG9wIFCUhZSGlGFoAyiMATWUSwNoBYaUKYl0lIaU
+XZRoCowOUmVwZWF0IHBlbmFsdHmUhZSGlGFoAyiMATaUSwNoBYaUKYl0lIaUXZRoCowNUmVwZWF0
+IGxhc3QgbpSFlIaUYWgDKIwBN5RLA2gFhpQpiXSUhpRdlGgKjApCYXRjaCBzaXpllIWUhpRhdYwW
+X21lcmdlX2RpYWxvZ19zZXR0aW5nc5R9lIwSY29udHJvbEFyZWFWaXNpYmxllIiMEW91dHB1dF90
+YWJsZV9uYW1llIwAlIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAEAAAAAAAAAAf/
+AAAEzwAABAEAAAAeAAAH/gAABM4AAAAAAAAAAAgAAAAEAQAAAB4AAAf+AAAEzpSMC19fdmVyc2lv
+bl9flEsDdS4=
+</properties>
+		<properties node_id="6" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\xff\xff\xff\xff\xff\xff\xff\xf9\x00\x00\x08\x00\x00\x00\x04\xd0\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x07\xff\x00\x00\x04\xcf\x00\x00\x00\x00\x02\x00\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x07\xff\x00\x00\x04\xcf', 'select_rows': True, 'show_attribute_labels': True, 'show_distributions': False, 'stored_selection': {'rows': [], 'columns': []}, 'stored_sort': [], '__version__': 1}</properties>
+		<properties node_id="7" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\xff\xff\xff\xff\xff\xff\xff\xf9\x00\x00\x08\x00\x00\x00\x04\xd0\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x07\xff\x00\x00\x04\xcf\x00\x00\x00\x00\x02\x00\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x17\x00\x00\x07\xff\x00\x00\x04\xcf', 'select_rows': True, 'show_attribute_labels': True, 'show_distributions': False, 'stored_selection': {'rows': [], 'columns': []}, 'stored_sort': [], '__version__': 1}</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>
