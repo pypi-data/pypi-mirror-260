@@ -1,0 +1,64 @@
+{% load afat %}
+{% load evelinks %}
+{% load i18n %}
+
+<div id="tab-mine" class="tab-pane fade show active card card-default border-0" role="tabpanel" aria-labelledby="tab-mine">
+    <div class="card-body">
+        <h4>{% translate "Your monthly stats" %}</h4>
+
+        <p>
+            {% translate "Only months with FAT data for the selected year are shown." %}<br>
+            {% translate "Only characters that have FATs for the selected year are shown." %}
+        </p>
+
+        <ul class="nav nav-pills">
+            {% for character in charstats %}
+                {% include "afat/partials/common/navigation/tab-character.html" with forloop=forloop character_id=character.2 character_name=character.0 %}
+            {% endfor %}
+        </ul>
+
+        <div class="tab-content">
+            {% if charstats %}
+                {% for character in charstats %}
+                    <div id="content-{{ character.2 }}" class="tab-pane fade card-default{% if forloop.first %} show active{% endif %}">
+                        <div class="card-body">
+                            {% if character.1|length > 0 %}
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{% translate "Month" %}</th>
+                                            <th>{% translate "FAT count" %}</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        {% for month, fatcount in character.1.items %}
+                                            <tr>
+                                                <td>{{ month|month_name }}</td>
+                                                <td>{{ fatcount }}</td>
+                                                <td class="text-end">
+                                                    <a href="{% url 'afat:statistics_character' character.2 year month %}" class="btn btn-primary btn-sm">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <div class="aa-callout aa-callout-warning" role="alert">
+                                    <p>{% translate "No FATs for" %} {{ character.0 }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="aa-callout aa-callout-warning">
+                    <p>{% translate "No FATs for this year at all" %}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

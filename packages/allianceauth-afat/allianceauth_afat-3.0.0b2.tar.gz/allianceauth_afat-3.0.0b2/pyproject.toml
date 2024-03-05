@@ -1,0 +1,65 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+    "hatchling",
+]
+
+[project]
+name = "allianceauth-afat"
+description = "Another Fleet Activity Tracking tool for Alliance Auth"
+readme = "README.md"
+keywords = [
+    "allianceauth",
+    "eveonline",
+    "template",
+    "theme",
+]
+license = {file = "LICENSE"}
+authors = [
+    { name = "Peter Pfeufer", email = "develop@ppfeufer.de" },
+]
+requires-python = ">=3.8"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+dynamic = [
+    "version",
+]
+dependencies = [
+    "allianceauth>=4.0.0b2",
+    "allianceauth-app-utils>=1.14.1",
+    "unidecode>=1.3.4",
+]
+[project.optional-dependencies]
+tests-allianceauth-latest = [
+    "coverage",
+    "django-webtest",
+]
+[project.urls]
+Changelog = "https://github.com/ppfeufer/allianceauth-afat/blob/master/CHANGELOG.md"
+Documentation = "https://github.com/ppfeufer/allianceauth-afat/blob/master/README.md"
+Donations = "https://ko-fi.com/ppfeufer"
+Homepage = "https://github.com/ppfeufer/allianceauth-afat"
+Source = "https://github.com/ppfeufer/allianceauth-afat.git"
+Tracker = "https://github.com/ppfeufer/allianceauth-afat/issues"
+
+[tool.hatch.build]
+include = [
+    "/afat",
+]
+
+[tool.hatch.version]
+path = "afat/__init__.py"
