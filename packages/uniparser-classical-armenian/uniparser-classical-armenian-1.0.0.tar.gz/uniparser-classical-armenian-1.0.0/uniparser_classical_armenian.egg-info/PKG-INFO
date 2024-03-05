@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: uniparser-classical-armenian
+Version: 1.0.0
+Summary: Rule-based morphological analysis for Classical Armenian
+Home-page: https://github.com/timarkh/uniparser-grammar-classical-armenian
+Author: Timofey Arkhangelskiy <timarkh@gmail.com>
+Author-email: timarkh@gmail.com
+Project-URL: Bug Tracker, https://github.com/timarkh/uniparser-grammar-classical-armenian/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Text Processing :: Linguistic
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: uniparser-morph>=2.7.4
+Requires-Dist: importlib-resources
+
+# Classical Armenian morphological analyzer
+This is a rule-based morphological analyzer for Classical Armenian (``xcl``). It is based on a formalized description of literary Classical Armenian morphology and uses [uniparser-morph](https://github.com/timarkh/uniparser-morph) for parsing. It performs full morphological analysis of Classical Armenian words (lemmatization, POS tagging, grammatical tagging, glossing).
+
+## How to use
+### Python package
+The analyzer is available as a Python package. If you want to analyze Classical Armenian texts in Python, install the module:
+
+```
+pip3 install uniparser-classical-armenian
+```
+
+Import the module and create an instance of ``ClassicalArmenianAnalyzer`` class. After that, you can either parse tokens or lists of tokens with ``analyze_words()``, or parse a frequency list with ``analyze_wordlist()``. Here is a simple example:
+
+```python
+from uniparser_classical_armenian import ClassicalArmenianAnalyzer
+a = ClassicalArmenianAnalyzer()
+
+analyses = a.analyze_words('զՔրիստոսի')
+# The parser is initialized before first use, so expect
+# some delay here (usually several seconds)
+
+# You will get a list of Wordform objects
+# The analysis attributes are stored in its properties
+# as string values, e.g.:
+for ana in analyses:
+        print(ana.wf, ana.lemma, ana.gramm, ana.gloss)
+
+# You can also pass lists (even nested lists) and specify
+# output format ('xml' or 'json')
+# If you pass a list, you will get a list of analyses
+# with the same structure
+analyses = a.analyze_words([['եւ'], ['Սիրեմ', 'զքեզ', ':']],
+	                       format='xml')
+analyses = a.analyze_words(['զՔրիստոսի', [['եւ'], ['Սիրեմ', 'զքեզ', ':']]],
+	                       format='json')
+```
+
+Refer to the [uniparser-morph documentation](https://uniparser-morph.readthedocs.io/en/latest/) for the full list of options.
