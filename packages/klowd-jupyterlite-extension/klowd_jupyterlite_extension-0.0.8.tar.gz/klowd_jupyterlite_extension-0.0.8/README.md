@@ -1,0 +1,1 @@
+klowd_jupyterlite_extension integration plugin
