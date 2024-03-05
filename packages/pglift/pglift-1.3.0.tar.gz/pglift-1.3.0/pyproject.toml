@@ -1,0 +1,96 @@
+# SPDX-FileCopyrightText: 2021 Dalibo
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pglift"
+description = "Life-cycle management of production-ready PostgreSQL instances"
+readme = "README.md"
+requires-python = ">=3.9, <4"
+license = { text = "GPLv3" }
+authors = [{ name = "Dalibo SCOP", email = "contact@dalibo.com" }]
+keywords = [
+    "postgresql",
+    "deployment",
+    "administration",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Database",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+dynamic = ["version"]
+
+dependencies = [
+    "async-lru",
+    "attrs >= 21.3.0",
+    "httpx",
+    "humanize",
+    "pgtoolkit >= 0.27.0",
+    "pluggy",
+    "psycopg >= 3.1",
+    "pydantic >= 2.5.0",
+    "pydantic-settings",
+    "python-dateutil",
+    "python-dotenv",
+    "tenacity",
+    "typing-extensions",
+    "PyYAML >= 6.0.1",
+]
+
+[project.optional-dependencies]
+cli = [
+    "pglift_cli",
+]
+test = [
+    "ansible-core",
+    "anyio",
+    "httpx",
+    "patroni[etcd] >= 2.1.5",
+    "port-for",
+    "prysk[pytest-plugin] >= 0.14.0",
+    "pytest",
+    "pytest-cov",
+    "tenacity >= 8.0.0, != 8.2.0",
+    "trustme",
+]
+typing = [
+    "mypy >= 1.8.0",
+    "types-psutil",
+    "types-PyYAML >= 6.0.12.10",
+    "types-python-dateutil",
+]
+dev = [
+    "pglift[test,typing]",
+    "autoflake",
+    "black >= 24.1.1",
+    "codespell",
+    "flake8",
+    "flake8-bugbear",
+    "isort",
+    "pip-tools",
+    "pre-commit",
+    "pytest-accept",
+    "pyupgrade",
+    "reuse",
+    "sphinx-autobuild",
+    "towncrier",
+]
+
+[project.urls]
+Documentation = "https://pglift.readthedocs.io/"
+Source = "https://gitlab.com/dalibo/pglift/"
+Tracker = "https://gitlab.com/dalibo/pglift/-/issues/"
