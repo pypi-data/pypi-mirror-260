@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: sanlogger
+Version: 0.1.0
+Summary: Customized Logger created by Santo
+Home-page: https://github.com/santokalayil/slogger
+License: MIT
+Author: Santo K Thomas
+Author-email: santokalayil@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: pyyaml (>=6.0.1,<7.0.0)
+Project-URL: Repository, https://github.com/santokalayil/slogger
+Description-Content-Type: text/markdown
+
+# slogger
+A customized logger for my end to end project workflows
+
+## Usage
+```python
+from slogger import SLogger
+
+# setting up logging file location
+from slogger.paths import TEMP_DIR
+logfile = TEMP_DIR / 'logs'
+# this log file location can be changed to custom log paths as well
+
+logger = SLogger(__name__, logfile)
+
+logger.critical("Santo")
+```
+
