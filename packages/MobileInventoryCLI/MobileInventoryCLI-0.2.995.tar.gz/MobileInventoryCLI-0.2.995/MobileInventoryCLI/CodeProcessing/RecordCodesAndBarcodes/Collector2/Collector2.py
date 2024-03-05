@@ -1,0 +1,273 @@
+#Collector2.py
+
+from MobileInventoryCLI.CodeProcessing.RecordCodesAndBarcodes.DB.db import *
+import MobileInventoryCLI.CodeProcessing.RecordCodesAndBarcodes.Unified.Unified as unified
+
+
+class Collector2:
+    def __init__(self,engine,parent):
+        self.parent=parent
+        self.engine=engine
+
+
+
+        self.cmds={
+        'quit':{
+            'cmds':['q','quit'],
+            'exec':lambda :exit("user quit"),
+            'desc':'quit program!'
+        },
+        'back':{
+            'cmds':['b','back'],
+            'exec':None,
+            'desc':'go back a menu if any'
+        },
+        'collect':{
+            'cmds':['collect','1'],
+            'exec':self.collect,
+            'desc':'collect code pairs',
+        },
+        'export':{
+            'cmds':['export','2'],
+            'exec':self.export,
+            'desc':'collect code pairs',
+        },
+        'edit':{
+            'cmds':['edit','3'],
+            'exec':self.edit,
+            'desc':'edit code pairs',
+        },
+        'list':{
+            'cmds':['list','4'],
+            'exec':self.list,
+            'desc':'list code pairs',
+        },
+        'save':{
+            'cmds':['save_cp','5'],
+            'exec':self.saveAll,
+            'desc':'save code pairs to img',
+        },
+        'clear':{
+            'cmds':['clear_all_cp','6'],
+            'exec':self.clearAll,
+            'desc':'clear all code pairs',
+        },
+        'remove':{
+            'cmds':['remove_pc','7'],
+            'exec':self.removePC,
+            'desc':'remove code pair',
+        },
+        '?PC?':{
+            'cmds':['help',],
+            'exec':self.helpSMG,
+            'desc':"show help!"
+        },
+        '?unified':{
+            'cmds':['?unified',],
+            'exec':self.helpSMG2,
+            'desc':"unified cmds!"
+        }
+        }
+        while True:
+            cmd=input("do what[help]? :")
+            for c in self.cmds:
+                if self.cmds[c]['exec']!=None and cmd.split(',')[0].lower() in self.cmds[c]['cmds']:
+                    if cmd.split(',')[0].lower() in ['edit','3'] or cmd.lower() in ["edit",'3']:
+                        if len(cmd.split(",")) == 2:
+                            self.edit(cmd.split(",")[1])
+                        elif len(cmd.split(",")) == 3:
+                            self.edit(cmd.split(",")[1],cmd.split(",")[2])
+                        elif len(cmd.split(",")) == 4:
+                            self.edit(cmd.split(",")[1],cmd.split(",")[2],cmd.split(",")[3])
+                        else:
+                            print("""
+#edit,$PCId - prompt for value and entry
+#edit,$PCId,field - prompt for value
+#edit,$PCId,field,value - set field=$field,value=$value no prompt
+                        """)
+                    elif cmd.split(',')[0].lower() in ['list','4'] or cmd.lower() in ["list",'4']:
+                        if len(cmd.split(",")) == 2:
+                            self.list(cmd.split(",")[1])
+                        else:
+                            print("""
+#list,$PCId - print PC
+#list,all - list all PC
+                        """)
+
+                    elif cmd.split(',')[0].lower() in ['remove_pc','7'] or cmd.lower() == ["remove_pc",'7']:
+                        if len(cmd.split(",")) == 2:
+                            self.removePC(cmd.split(",")[1])
+                        elif len(cmd.split(",")) == 3:
+                            self.removePC(cmd.split(",")[1],onlyID=bool(cmd.split(",")[2]))
+                        else:
+                            print("""
+#remove_pc,$PCId - remove codePair by ID
+#remove_pc,$PCId,onlyId - remove codepair by id only if True , if set to false will go by code|barcode|id and will delete all if all exist DANGEROUS!!!
+#remove_cp, - show this
+                        """)
+                    else:
+                        self.cmds[c]['exec']()
+                    break
+                elif self.cmds[c]['exec']==None and cmd.lower() in self.cmds[c]['cmds']:
+                    return
+                elif self.parent != None and self.parent.Unified(cmd):
+                    print("ran an external command!")
+
+    def edit(self,ID,field=None,value=None):
+        try:
+            if field and value:
+                with Session(self.engine) as session:
+                    result=session.query(PairCollection).filter(PairCollection.PairCollectionId==ID).first()
+                    if result:
+                        setattr(result,field,value)
+                        session.commit()
+                        session.flush()
+                        session.refresh(result)
+                        print(result)
+            if field and not value:
+                with Session(self.engine) as session:
+                    result=session.query(PairCollection).filter(PairCollection.PairCollectionId==ID).first()
+                    if result:
+                        value=input(f"{Fore.red}{field}{Style.reset} : ")
+                        setattr(result,field,value)
+                        session.commit()
+                        session.flush()
+                        session.refresh(result)
+                        print(result)
+            if not field and not value:
+                with Session(self.engine) as session:
+                    result=session.query(PairCollection).filter(PairCollection.PairCollectionId==ID).first()
+                    if result:
+                        field=input(f"{','.join([i.name for i in PairCollection.__table__.columns])}\n{Fore.yellow}Field{Style.reset}: ")
+                        value=input(f"{Fore.red}{field}OLD:{Style.reset}({getattr(result,field)}) : ")
+                        setattr(result,field,value)
+                        session.commit()
+                        session.flush()
+                        session.refresh(result)
+                        print(result)
+        except Exception as e:
+            print(e)
+
+    def saveAll(self):
+         with Session(self.engine) as session:
+                    result=session.query(PairCollection).all()
+                    try:
+                        for num, r in enumerate(result):
+                            print(f"""{Fore.red}{num}{Style.reset} -> {r}""")
+                            r.saveItemData()
+                    except Exception as e:
+                        print(f"""{Fore.red}0{Style.reset} -> {result}""")
+    def clearAll(self):
+         with Session(self.engine) as session:
+            result=session.query(PairCollection).delete()
+            session.commit()
+            session.flush()
+            print(result)
+
+
+    def list(self,ID=None):
+        try:
+            if ID == None:
+                ID=input("{Fore.green_yellow}ID{Style.reset}|{Fore.cyan}Code{Style.reset}|{Fore.rgb(254,20,36)}Barcode to remove:{Style.reset} ")
+            if ID.lower() != "all":
+                with Session(self.engine) as session:
+                    result=session.query(PairCollection).filter(or_(PairCollection.PairCollectionId==int(ID),PairCollection.Barcode==ID,PairCollection.Code==ID)).all()
+                    try:
+                        for num, r in result:
+                            print(f"""{Fore.red}{num}{Style.reset} -> {r}""")
+                    except Exception as e:
+                        print(f"""{Fore.red}0{Style.reset} -> {result}""")
+            else:
+                with Session(self.engine) as session:
+                    result=session.query(PairCollection).all()
+                    try:
+                        for num, r in enumerate(result):
+                            print(f"""{Fore.red}{num}{Style.reset} -> {r}""")
+                    except Exception as e:
+                        print(f"""{Fore.red}0{Style.reset} -> {result}""")
+        except Exception as e:
+            print(e)
+    def removePC(self,ID=None,onlyID=True):
+        try:
+            if ID == None:
+                ID=input("{Fore.green_yellow}ID{Style.reset}|{Fore.cyan}Code{Style.reset}|{Fore.rgb(254,20,36)}Barcode to remove:{Style.reset} ")
+            if ID.lower() != "":
+                if not onlyID:
+                    with Session(self.engine) as session:
+                        result=session.query(PairCollection).filter(or_(PairCollection.PairCollectionId==int(ID),PairCollection.Barcode==ID,PairCollection.Code==ID)).delete()
+                        print(result)
+                        session.commit()
+                        session.flush()
+                else:
+                    with Session(self.engine) as session:
+                        result=session.query(PairCollection).filter(PairCollection.PairCollectionId==int(ID)).delete()
+                        print(result)
+                        session.commit()
+                        session.flush()
+        except Exception as e:
+            print(e)
+
+    def helpSMG2(self):
+        self.parent.Unified('?')
+
+    def helpSMG(self):
+        for num,k in enumerate(self.cmds):
+            if num%2==0:
+                color=Fore.green
+                color2=Fore.cyan
+            else:
+                color=Fore.dark_goldenrod
+                color2=Fore.red
+            print(f"{color}{self.cmds[k]['cmds']}{Style.reset} - {color2}{self.cmds[k]['desc']}{Style.reset}")
+
+    def export(self):
+        with Session(self.engine) as session:
+            result=session.query(PairCollection).all()
+            for num,i in enumerate(result):
+                i.saveItemData(num=num)
+                print(i)
+
+    def collect(self):
+        while True:
+            print(Style.reset)
+            barcode=input(f"{Style.reset}{Fore.cyan}{Style.bold}barcode: {Style.reset}{Fore.green}")
+            if barcode.lower() in ['q','quit']:
+                print(Style.reset)
+                exit("user quit")
+            elif barcode in ['b','back']:
+                print(Style.reset)
+                return
+            print(Style.reset)
+            code=input(f"{Style.reset}{Style.bold}{Fore.dark_goldenrod}code: {Style.reset}{Fore.grey_50}")
+            if code.lower() in ['q','quit']:
+                print(Style.reset)
+                exit('user quit!')
+            elif code.lower() in ['b','back']:
+                print(Style.reset)
+                return
+            
+            if barcode in ['','n/a'] and code not in ['','n/a']:
+                barcode=code
+            else:
+                raise Exception("Not Enough Values!")
+
+
+            if code in ['','n/a'] and barcode not in ['','n/a']:
+                code=barcode
+            else:
+                raise Exception("Not Enough Values!")
+
+            print(Style.reset)
+            with Session(self.engine) as session:
+                query=session.query(PairCollection).filter(or_(PairCollection.Barcode==barcode,PairCollection.Code==code))
+                result=query.first()
+                if not result:
+                    pcd=PairCollection(Barcode=barcode,Code=code)
+                    session.add(pcd)
+                    session.commit()
+                    session.flush()
+                    session.refresh(pcd)
+                    print(pcd)
+                else:
+                    print(result)
+            print(Style.reset)
