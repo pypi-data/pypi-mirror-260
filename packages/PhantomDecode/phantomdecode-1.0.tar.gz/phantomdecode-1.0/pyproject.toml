@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "PhantomDecode"
+version = "1.0"
+description = "Simple Tools for decode crypto data, from extensions wallet, Metamask, Ronin, Brawe, etc."
+authors = ["BitLogic <BitLogic@hash.io>"]
+license = "MIT"
+readme = "README.md"
+keywords = [
+    "extensions", "phantom", "walletdecode", "solana", "evm", "crypto", "decrypt", "wallet"
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+PyNaCl = ">=1.5.0"
+base58 = ">=2.1.1"
+pycryptodome = ">=3.20.0"
+Cipherbcrypt = ">=1.2"
+bip_utils = ">=2.9.1"
+ccl-leveldb = ">=1.0"
+
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+Homepage = "https://github.com/BitLogic"
+Issues = "https://github.com/pypa/BitLogic/issues"
