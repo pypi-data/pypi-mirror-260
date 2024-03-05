@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: pyfivetran
+Version: 0.1.3
+Summary: Pythonic interface to the fivetran API
+License: MIT
+Author: Khari Gardner
+Author-email: kharigardner@protonmail.com
+Requires-Python: >=3.8,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: httpx (>=0.25.1,<0.26.0)
+Requires-Dist: lazy (>=1.6,<2.0)
+Requires-Dist: python-dateutil (>=2.9.0.post0,<3.0.0)
+Requires-Dist: pytz (>=2024.1,<2025.0)
+Description-Content-Type: text/markdown
+
+# PyFivetran
+
+A simple Python wrapper around the Fivetran REST API.
+
+----------------------------------------------------------------
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kharigardner/pyfivetran/test.yml?label=tests)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/kharigardner/pyfivetran/build.yml?label=build)
+![License](https://img.shields.io/pypi/l/pyfivetran)
+
+
+## Installation
+
+```bash
+pip install pyfivetran
+```
+
+## Usage
+
+```python
+from pyfivetran import FivetranClient
+
+ftran = FivetranClient(api_key, api_secret)
+
+# create endpoint objects
+connector_endpoint = ftran.connector_endpoint
+certificate_endpoint = ftran.certificate_endpoint
+```
+
+For more examples, see the [examples](https://github.com/kharigardner/pyfivetran/examples) directory.
+
+## Development
+
+```bash
+pip install poetry
+
+git clone https://github.com/kharigardner/pyfivetran.git
+
+cd pyfivetran
+
+poetry install
+poetry install --with dev
+
+# run tests
+pytest tests
+
+# create feature branch
+git checkout -b feature/my-feature
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+MIT. Fivetran API is subject to licensing, usage, and other terms and conditions not covered by this project. For more information, see the [Fivetran API documentation](https://fivetran.com/docs/rest-api).
