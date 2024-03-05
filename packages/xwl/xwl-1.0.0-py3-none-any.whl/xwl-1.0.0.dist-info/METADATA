@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: xwl
+Version: 1.0.0
+Summary: xwl library
+Author: Trevor Taylor
+Project-URL: Homepage, https://github.com/urnest/urnest
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 5 - Production/Stable
+Requires-Python: >=3.11
+Description-Content-Type: text/x-rst
+Requires-Dist: xju >=2
+
+xwl python library
+------------------
+
+WSGI dispatcher that maps HTTP requests to python functions of same/similar name.
+
+* function params taken from query string and/or POST content
+* function access control via python decorators
+* JSON support for parameters and responses
+* small javascript library with convenience async postToServer
+* and getFromServer functions
+
+see `xwl.example <xwl/example>`_ which implements a HTTP
+`server.py <xwl/example/server.py>`_ using
+`dispatcher.py <xwl/dispatcher.py>`_ to map HTTP requests to
+`app <xwl/example/app.py>`_ and
+`app.submodule <xwl/example.submodule.py>`_ functions

@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+# coding: utf-8
+
+# Copyright (c) 2018 Trevor Taylor
+# 
+# Permission to use, copy, modify, and/or distribute this software for
+# any purpose with or without fee is hereby granted, provided that all
+# copyright notices and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+from sys import path
+from os.path import dirname
+if path[0]==dirname(__file__): path.pop(0)
+
+from xwl import wsgi
+
+from xju.assert_ import Assert
+from urllib.parse import urlencode
+
+Assert(wsgi.parseQuoted(r'"fred \"big\" johnson"'))=='fred "big" johnson'
+
+Assert(wsgi.getVariablesFromWSGIenviron({
+    'QUERY_STRING':urlencode({'a':'1','b':'&2'}),
+    'REQUEST_METHOD':'GET'}))=={
+        'a':'1',
+        'b':'&2'}
+
+Assert(wsgi.parseDisposition('form-data;type="text/plain";encoding="utf-8"'))=={
+    'type': 'text/plain', 'encoding': 'utf-8'}
+
+try:
+    wsgi.parseHeaders(b"garbage")
+except Exception as e:
+    Assert(str(e)).startswith("failed to parse headers from mime part b'garbage'... because")
+else:
+    assert False
+    pass
+
+try:
+    wsgi.parseDisposition("garbage")
+except Exception as e:
+    Assert(str(e)).startswith("failed to Parse Content-Disposition value garbage because")
+else:
+    assert False
+    pass
+
+try:
+    wsgi.getVariablesFromWSGIenviron({
+        'REQUEST_METHOD': 'POST',
+        'CONTENT_TYPE': 'fred',
+        'CONTENT_LENGTH': 7})
+except Exception as e:
+    Assert(str(e)).contains('unimplemented CONTENT_TYPE')
+else:
+    assert False
+    pass
+
+
+Assert(wsgi.getVariablesFromWSGIenviron({
+    'REQUEST_METHOD': 'GET',
+    'QUERY_STRING': 'fred=1&fred=2&fred=3'
+    }))=={'fred':['1','2','3']}
+
+try:
+    wsgi.getCookiesFromWSGIenviron({
+        'HTTP_COOKIE': 'a'})
+except Exception as e:
+    Assert(str(e)).startswith("failed to get cookies from WSGI environ {'HTTP_COOKIE': 'a'} HTTP_COOKIE item as dictionary because")
+else:
+    assert False
+    pass
