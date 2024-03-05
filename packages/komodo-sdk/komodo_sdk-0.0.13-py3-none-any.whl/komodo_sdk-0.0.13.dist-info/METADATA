@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: komodo-sdk
+Version: 0.0.13
+Summary: Komodo SDK
+Project-URL: Homepage, https://github.com/Komodo-AI/komodo-sdk.git
+Author-email: Ryan Oberoi <ryan.oberoi@komodoapp.ai>
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.9
+Requires-Dist: beautifulsoup4>=4.8.0
+Requires-Dist: boto3~=1.33.6
+Requires-Dist: botocore~=1.33.6
+Requires-Dist: fastapi~=0.109.2
+Requires-Dist: flask~=3.0.2
+Requires-Dist: ftfy~=6.1.3
+Requires-Dist: google-search-results~=2.4.2
+Requires-Dist: gunicorn~=21.2.0
+Requires-Dist: html2text~=2020.1.16
+Requires-Dist: html5lib~=1.1
+Requires-Dist: humanfriendly~=10.0
+Requires-Dist: langchain-community~=0.0.17
+Requires-Dist: langchain-core~=0.1.18
+Requires-Dist: langchain~=0.0.353
+Requires-Dist: markdown2~=2.4.0
+Requires-Dist: markdown~=3.3.6
+Requires-Dist: nltk~=3.8.1
+Requires-Dist: openai~=1.12.0
+Requires-Dist: openpyxl~=3.1.2
+Requires-Dist: pandas~=2.1.3
+Requires-Dist: pinecone-client~=3.1.0
+Requires-Dist: pyodbc~=5.1.0
+Requires-Dist: pytest-xdist~=2.4.0
+Requires-Dist: pytest~=7.4.3
+Requires-Dist: qdrant-client~=1.7.2
+Requires-Dist: redis~=5.0.1
+Requires-Dist: requests~=2.31.0
+Requires-Dist: sentry-sdk~=1.38.0
+Requires-Dist: serpapi~=0.1.5
+Requires-Dist: tavily-python~=0.2.8
+Requires-Dist: textract~=1.6.5
+Requires-Dist: unidecode~=1.3.2
+Requires-Dist: urlextract~=1.8.0
+Requires-Dist: urllib3~=1.26.18
+Requires-Dist: uvicorn~=0.27.1
+Requires-Dist: watchdog~=4.0.0
+Description-Content-Type: text/markdown
+
+# Komodo Package
+
+This is Komodo SDK package.
+
+## Package hierarchy
+
+- komodo/server: Flask / FastApi server for the Komodo Appliances
+- komodo/models: Implementation of LLM model access and runners to get responses.
+-
+- komodo/loaders: Loaders for komodo classes and objects.
+- komodo/core: Implementation of komodo agents, tools, data sources and other core components.
+- komodo/shared: Shared utilities and classes used by other komodo packages.
+
+- komodo/framework: KomodoApp, KomodoAgents that form the Komodo AI platform.
+- komodo/store: Ability to store and load proto objects from redis database.
+- komodo/proto: Protobuf files that define the basic data structures and services.
+
+## Pushing to PyPi
+
+```bash
+python3 -m build
+python3 -m twine upload dist/*
+```
+
+## Pushing website image to AWS ECR
+
+This should happen using github actions but failing on permissions currently.
+
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/k9s5f5s5
+docker build -t website .
+docker tag website:latest public.ecr.aws/k9s5f5s5/website:latest
+docker push public.ecr.aws/k9s5f5s5/website:latest
+```
+
