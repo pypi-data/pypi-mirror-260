@@ -1,0 +1,164 @@
+[build-system]
+# Defined by PEP 518
+requires = [
+  "setuptools>=64",
+  "setuptools_scm[toml]>=7.0",
+  "wheel",
+]
+# Defined by PEP 517
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+    {name = "Iris Contributors", email = "scitools.pub@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Unix",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dynamic = [
+    "dependencies",
+    "readme",
+    "version",
+]
+description = "A powerful, format-agnostic, community-driven Python package for analysing and visualising Earth science data"
+keywords = [
+    "cf-metadata",
+    "data-analysis",
+    "earth-science",
+    "grib",
+    "netcdf",
+    "meteorology",
+    "oceanography",
+    "space-weather",
+    "ugrid",
+    "visualisation",
+]
+license = {text = "BSD-3-Clause"}
+name = "scitools-iris"
+requires-python = ">=3.9"
+
+[project.urls]
+Code = "https://github.com/SciTools/iris"
+Discussions = "https://github.com/SciTools/iris/discussions"
+Documentation = "https://scitools-iris.readthedocs.io/en/stable/"
+Issues = "https://github.com/SciTools/iris/issues"
+
+[tool.ruff]
+# Exclude the following, in addition to the standard set of exclusions.
+# https://docs.astral.sh/ruff/settings/#exclude
+extend-exclude = [
+    "_ff_cross_references.py",
+    "um_cf_map.py",
+    "docs/src/sphinxext",
+    "tools",
+]
+line-length = 88
+src = [
+    "benchmarks",
+    "lib",
+    "docs/src",
+]
+target-version = "py39"
+
+[tool.ruff.format]
+preview = false
+
+[tool.ruff.lint]
+ignore = [
+    # NOTE: Non-permanent exclusions should be added to the ".ruff.toml" file.
+
+    # flake8-commas (COM)
+    # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+    "COM812",  # Trailing comma missing.
+    "COM819",  # Trailing comma prohibited.
+
+    # flake8-implicit-str-concat (ISC)
+    # https://docs.astral.sh/ruff/rules/single-line-implicit-string-concatenation/
+    # NOTE: This rule may cause conflicts when used with "ruff format".
+    "ISC001",  # Implicitly concatenate string literals on one line.
+    ]
+    preview = false
+    select = [
+        "ALL",
+        # list specific rules to include that is skipped using numpy convention.
+        "D212",  # Multi-line docstring summary should start at the first line
+    ]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["iris"]
+
+[tool.ruff.lint.per-file-ignores]
+# All test scripts
+
+"lib/iris/tests/*.py" = [
+    # https://docs.astral.sh/ruff/rules/undocumented-public-module/
+    "D100",  # Missing docstring in public module
+    "D205",  # 1 blank line required between summary line and description
+    "D401",  # 1 First line of docstring should be in imperative mood
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
+zip-safe = false
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements/pypi-core.txt"}
+readme = {file = "README.md", content-type = "text/markdown"}
+
+[tool.setuptools.packages.find]
+include = ["iris*"]
+where = ["lib"]
+
+[tool.setuptools_scm]
+write_to = "lib/iris/_version.py"
+local_scheme = "dirty-tag"
+version_scheme = "release-branch-semver"
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = "lib/iris"
+
+[tool.coverage.run]
+branch = true
+source = [
+    "lib/iris",
+]
+omit = [
+    "lib/iris/tests/*",
+    "lib/iris/etc/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:"
+]
+
+[tool.codespell]
+ignore-words-list = "alpha-numeric,degreee,discontiguities,lazyness,meaned,nin"
+skip = "_build,*.css,*.ipynb,*.js,*.html,*.svg,*.xml,.git,generated"
+
+[tool.check-manifest]
+ignore = [
+    "lib/iris/_version.py",
+    "lib/iris/std_names.py",
+]
