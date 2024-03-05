@@ -1,0 +1,49 @@
+[project]
+name = "python-via"
+version = "0.0.2"
+description = "Tools to handle VIA projects"
+
+readme = "README.md"
+
+license = {file = "COPYING"}
+
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+requires-python = ">=3.9"
+dependencies = [
+  "requests",
+]
+
+[project.urls]
+homepage = "https://www.robots.ox.ac.uk/~vgg/software/via/"
+# documentation = ""
+repository = "https://gitlab.com/vgg/python-via"
+# news = ""
+tracker = "https://gitlab.com/vgg/python-via/-/issues"
+
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.package-dir]
+via = "via"
+
+
+[tool.black]
+line-length = 79
+
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+
+[tool.pylint.format]
+max-line-length = 79
