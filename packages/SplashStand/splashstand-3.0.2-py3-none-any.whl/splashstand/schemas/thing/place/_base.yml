@@ -1,0 +1,28 @@
+model: true
+extends: Organization
+fields:
+  address:
+    type: str
+    required: true
+  photo:
+    type: ImageObject
+  telephone:
+    type: PhoneNumber
+#  event:
+#    type: Event
+  latitude:
+    type: decimal
+  longitude:
+    type: decimal
+  has_map:
+    type: url
+  is_accessible_for_free:
+    type: bool
+    default: false
+  maximum_attendee_capacity:
+    type: int
+  smoking_allowed:
+    type: bool
+    default: false
+  opening_hours:
+    type: datetime

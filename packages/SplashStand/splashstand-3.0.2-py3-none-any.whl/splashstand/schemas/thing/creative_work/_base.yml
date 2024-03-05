@@ -1,0 +1,29 @@
+fields:
+  video:
+    type: VideoObject
+  audio:
+    type: MusicRecording
+  creator:
+    type: Person
+#    relation: many-to-many
+#    default: current_user.id
+  content_location:
+    type: Place
+  thumbnail_url:
+    type: url
+  date_published:
+    type: datetime
+    default_factory: arrow.utcnow
+    required: true
+  encoding_format:
+    type: str
+#    default_factory: get_mime_type
+  headline:
+    type: str
+    max_limit: 110
+#    required: true
+#  offers:
+#    type: Offer
+#  schema_version:
+#    type: str
+#    default_factory: get_schema_version

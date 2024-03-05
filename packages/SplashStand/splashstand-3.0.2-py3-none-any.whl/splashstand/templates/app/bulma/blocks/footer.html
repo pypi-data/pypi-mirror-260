@@ -1,0 +1,25 @@
+% import 'bulma/elements.html' as elem
+
+<footer id="footer" class="footer">
+<div class="tile is-vertical">
+    <div class="container is-hidden-desktop has-text-centered">
+            % for social in social_media
+            <a href="[[ social[1] ]]" class="footer-social-link has-text-black"
+                    target="_blank" title="[[ social[0] ]]" rel="noopener">
+                [[ elem.icon('fab fa-' + social[0], 'is-medium', stack='circle') ]]
+            </a>
+            % endfor
+        </div>
+        <div class="container is-hidden-touch has-text-centered">
+            % for social in social_media
+            <a href="[[ social[1] ]]" class="footer-social-link has-text-black"
+                    target="_blank" title="[[ social[0] ]]" rel="noopener">
+                [[ elem.icon('fab fa-' + social[0], 'is-large', size='2x',
+                stack='circle') ]]
+            </a>
+            % endfor
+        </div>
+    [[ elem.copyright() ]]
+    [[ elem.powered_by() ]]
+</div>
+</footer>

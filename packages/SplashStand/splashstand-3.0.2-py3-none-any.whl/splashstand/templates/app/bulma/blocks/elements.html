@@ -1,0 +1,175 @@
+
+
+% macro image(object, dimensions, anchor='center', fit=0, class='', rounded=False, hero=False)
+<figure class="image is-square">
+  <img
+          % if rounded
+          class="is-rounded"
+       % endif
+          % if object.image
+        src="[[ object.image|resize(dimensions, fit=fit, anchor=anchor)|get_media_url ]]"
+        % elif object.photo
+        src="[[ object.photo|resize(dimensions, fit=fit, anchor=anchor)|get_media_url ]]"
+        % elif object.picture
+        src="[[ object.picture|resize(dimensions, fit=fit, anchor=anchor)|get_media_url ]]"
+          % endif
+          alt="[[ object.name ]]">
+</figure>
+% endmacro
+
+% macro header_image(object, dimensions, model=True, anchor='center')
+<figure>
+<img
+        % if model
+        src="[[ object.image|resize(dimensions, anchor=anchor)|get_media_url ]]"
+        alt="[[ object.name ]]"
+        % else
+        src="[[ object|resize(dimensions, anchor=anchor)|get_media_url ]]"
+        alt="[[ site('title') ]]"
+        % endif
+>
+</figure>
+% endmacro
+
+% macro footer_image(image, dimensions, alt)
+<img
+        src="[[ image|resize(dimensions)|get_media_url ]]"
+        alt="[[ alt ]]"
+>
+% endmacro
+
+% macro stock_image(image, dimensions, alt)
+<figure>
+<img
+        src="[[ image|resize(dimensions, fit=1, stock=1, quality=100)|get_media_url ]]"
+        alt="[[ alt ]]"
+>
+</figure>
+% endmacro
+
+% macro site_image(image, dimensions, alt, fit=0)
+<figure>
+<img
+        src="[[ image|resize(dimensions, fit=fit)|get_media_url ]]"
+        alt="[[ alt ]]"
+>
+</figure>
+% endmacro
+
+% macro video(object, dimensions, loop=True, autoplay=False, muted=True)
+<figure class="image is-16by9">
+<video
+        % if autoplay
+        autoplay
+        % endif
+        % if loop
+        loop
+        % endif
+        % if muted
+        muted
+        % endif
+        ## poster="[[ object.image|resize(dimensions)|get_media_url ]]"
+        poster="[[ 'transparent.png'|get_stock_media_url ]]"
+        % set dimensions=dimensions.split('x')
+        width="[[ dimensions[0] ]]"
+        height="[[ dimensions[1] ]]"
+        alt="[[ object.name ]]"
+        % if object.start and object.end
+        src="[[ object.video|get_media_url ]]#t=[[ object.start ]],
+                            [[ object.end ]]"
+        % elif object.start
+        src="[[ object.video|get_media_url ]]#t=[[ object.start ]],"
+        % elif object.end
+        src="[[ object.video|get_media_url ]]#t=,[[ object.end ]]"
+        % else
+        src="[[ object.video|get_media_url ]]"
+        % endif
+>
+</video>
+</figure>
+% endmacro
+
+% macro video_youtube(object, dimensions, controls=1, loop=1, autoplay=0)
+% set dimensions=dimensions.split('x')
+    <figure class="image is-16by9">
+<iframe
+        class="has-ratio"
+        width="[[ dimensions[0] ]]"
+        height="[[ dimensions[1] ]]"
+        data-videoid="[[ object.youtube_id ]]"
+        data-param-controls=[[ controls ]]
+        data-param-modestbranding=1
+        data-param-rel=0
+        data-param-showinfo=0
+        data-param-loop=[[ loop ]]
+        data-param-playlist="[[ object.youtube_id ]]"
+        % if object.start
+        data-param-start=[[ object.start ]]
+% endif
+% if object.end
+data-param-end=[[ object.end ]]
+% endif
+% if autoplay
+autoplay
+% endif
+layout="[[ layout ]]">
+</iframe>
+    </figure>
+% endmacro
+
+% macro google_map(dimensions, object, zoom='10')
+<p>map</p>
+% endmacro
+
+% macro message()
+[#
+<template type="amp-mustache" id="notification_template">
+    <div class="notification level is-mobile is-{{ msg_type }}">
+        <span class="icon level-item level-left"><i
+                class="fas fa-{{ msg_icon }}"></i></span>
+        <div class="level-item level-left has-text-white">
+            {{ msg }}
+        </div>
+    </div>
+</template>
+#]
+% endmacro
+
+% macro copyright(color='grey-lighter')
+<div class="copyright has-text-[[ color ]] has-text-centered-touch">
+    % if site('copyright')
+    <p>© [[ timestamp()|year ]] [[ site('copyright')|safe ]]</p>
+    % endif
+</div>
+% endmacro
+
+% macro powered_by(color='white-ter')
+<div class="level is-hidden-touch powered-by">
+    <div class="level-item level-right has-text-right">
+        <div class="has-text-[[ color ]]">
+            Powered by &nbsp
+        </div>
+        <a href="https://splashstand.com" title="SplashStand">
+            [[ stock_image('SSWhiteTransCombo1920.png', '130x24', 'Powered by SplashStand') ]]
+        </a>
+    </div>
+</div>
+% endmacro
+
+% macro # icon(icon, span_class='', size='', stack=None)
+% if stack
+<span class="icon [[ span_class ]]">
+    <span class="fa-stack fa-[[ size ]]">
+		% if stack == 'square'
+    	<i class="fas fa-square fa-stack-2x"></i>
+    	% elif stack == 'circle'
+    	<i class="fas fa-circle fa-stack-2x"></i>
+    	% endif
+    	<i class="[[ # icon ]] fa-stack-1x fa-inverse"></i>
+    </span>
+% else
+<span class="icon [[ span_class ]]">
+    <i class="[[ # icon ]] fa-[[ size ]]"></i>
+% endif
+</span>
+% endmacro

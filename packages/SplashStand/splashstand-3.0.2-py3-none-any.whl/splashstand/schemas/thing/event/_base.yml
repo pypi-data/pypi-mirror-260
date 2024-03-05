@@ -1,0 +1,31 @@
+model: true
+#types:
+#  - MusicEvent
+#  - DanceEvent
+#  - Festival
+#  - ExhibitionEvent
+fields:
+  performer:
+    type: Person
+  location:
+    type: Place
+#    required: true
+  start_date:
+    type: date
+    required: true
+#  end_date:
+#    type: date
+#  event_schedule:
+#    type: Schedule
+  door_time:
+    type: time
+  time:
+    type: time
+#  sub_event:
+#    type: Event
+#    relation: many-to-many
+#  super_event:
+#    type: Event
+#    relation: many-to-many
+admin:
+  sort: start_date

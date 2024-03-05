@@ -1,0 +1,93 @@
+% import 'bulma/elements.html' as elem
+
+
+## <nav class="navbar is-fixed-top is-invisible"
+<nav class="navbar is-fixed-top"
+        id="navbar"
+        role="navigation"
+        aria-label="main navigation">
+    <div class="navbar-brand">
+        % block brand
+        <a class="navbar-item navbar-logo is-marginless is-size-4 is-family-primary"
+                href="[[ config.SITE_URL ]]">
+            % if site('nav_logo')
+            <img
+                    % set dimensions='200x40'
+                    src="[[ site('nav_logo')|resize(dimensions, fit=1, format='png')
+                    |get_media_url ]]"
+                    % set dimensions=dimensions.split('x')
+                    width="[[ dimensions[0] ]]"
+                    height="[[ dimensions[1] ]]"
+                    alt="[[ site('title') ]]"
+                    layout="fixed">
+            </img>
+            % else
+            [[ site('title') ]]
+            % endif
+        </a>
+        % endblock brand
+        <div class="navbar-burger"
+                role="button"
+                aria-label="menu"
+                tabindex="0"
+                on="tap:nav-sidebar.toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            % for p in config.NAV_PAGES
+            % if p == g.current_page
+            <a href="/[[ p ]]" class="navbar-item is-active">
+                [[ p|title ]]
+            </a>
+            % else
+            <a href="/[[ p ]]" class="navbar-item">
+                [[ p|title ]]
+            </a>
+            % endif
+            % endfor
+        </div>
+        <div class="navbar-end">
+            % for social in social_media
+            <a href="[[ social[1] ]]" class="navbar-item">
+                [[ elem.icon('is-small',
+                'fab fa-' + social[0]) ]]
+            </a>
+            % endfor
+        </div>
+    </div>
+</nav>
+
+<sidebar id="nav-sidebar"
+        side="right"
+        class="nav-sidebar has-background-dark"
+        layout="nodisplay">
+    <div class="navbar-brand">
+        <div class="navbar-burger is-active"
+                role="button"
+                aria-label="menu"
+                tabindex="0"
+                on="tap:nav-sidebar.toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="navbar-menu is-active has-text-weight-semibold">
+        <div class="navbar-end is-size-3-tablet is-size-5-mobile">
+            <a href="/" class="navbar-item">
+                Home
+            </a>
+            % for p in config.NAV_PAGES
+            % if p == g.current_page
+            <a href="/[[ p ]]" class="navbar-item is-active">[[ p|title ]]</a>
+            % else
+            <a href="/[[ p ]]" class="navbar-item">[[ p|title ]]</a>
+            % endif
+            % endfor
+        </div>
+    </div>
+</sidebar>

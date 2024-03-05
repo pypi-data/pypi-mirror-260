@@ -1,0 +1,15 @@
+model: true
+fields:
+  category:
+    type: CategoryCode
+  product_id:
+    type: str
+  price:
+    type: decimal
+  price_currency:
+    type: currency
+    max_limit: 3
+  offers:
+    type: Offer
+  size:
+    type: QuantitativeValue

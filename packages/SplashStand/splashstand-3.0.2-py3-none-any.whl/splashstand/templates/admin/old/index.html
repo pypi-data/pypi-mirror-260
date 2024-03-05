@@ -1,0 +1,322 @@
+% extends 'base.html'
+% import 'lib.html' as lib with context
+
+
+% block body
+% block nav
+ <navbar class="navbar level is-fixed-top is-hidden-desktop" role="navigation"
+                aria-label="main navigation">
+            % block navbar_brand
+            <div class="navbar-brand level-item level-left has-text-primary">
+                % block brand
+                <a class="navbar-item is-marginless title is-6"
+                        href="/admin">
+                    % if ac.admin.logo
+                    <img src="[[ ac.admin.logo|resize('200x40', fit=1, format='png', stock=1, quality=100)|get_media_url ]]"
+                            alt="SplashStand Admin">
+                    % else
+                    [[ admin_view.admin.name ]]
+                    % endif
+                </a>
+                % endblock brand
+                <div class="navbar-burger"
+                        data-target="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            % endblock navbar_brand
+            <div class="navbar-menu level-item" id="navMenu">
+                <div class="navbar-start">
+                    <a href="/admin/" class="navbar-item
+                    [% if request.path == '/admin/' %]is-active[% endif %]">
+                        <span class="icon">
+                            <i class="fas fa-home">
+                            </i>
+                        </span>
+                        <span>Home</span>
+                    </a>
+                    <div class="navbar-item has-dropdown"
+                            href="/admin/content/">
+                        <a class="navbar-link is-arrowless
+                        [% if request.path == '/admin/content/' %]is-active[% endif %]"
+                                href="/admin/content/">
+                                 <span class="icon">
+                        <i class="fas fa-list">
+                        </i>
+                    </span>
+                            <span>Content</span>
+                        </a>
+                        <div class="navbar-dropdown is-paddingless is-boxed is-right">
+                            [[ layout.menu() ]]
+                        </div>
+                    </div>
+                    % if ac.app.store_enabled
+                    <div class="navbar-item has-dropdown">
+                        <a class="navbar-link is-arrowless
+                        [% if request.path == '/admin/store/' %]is-active[% endif %]"
+                                href="/admin/store/">
+                     <span class="icon">
+                        <i class="fas fa-store">
+                        </i>
+                    </span>
+                            <span>Store</span>
+                        </a>
+                        <div class="navbar-dropdown is-paddingless is-boxed is-right">
+
+                        </div>
+                    </div>
+                    % endif
+                    <a class="iframe-popup-link navbar-item" href="/">
+                        <span class="icon">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <span>Preview</span>
+                    </a>
+                    <a href="/admin/analytic/"
+                            class="navbar-item
+                            [% if request.path == '/admin/analytic/' %]is-active[%endif %]">
+                    <span class="icon">
+                        <i class="fas fa-chart-line"> </i>
+                    </span>
+                        <span>Analytics</span>
+                    </a>
+                    <a href="/admin/storage/"
+                            class="navbar-item
+                            [% if request.path == '/admin/storage/' %]is-active[% endif %]">
+                    <span class="icon">
+                        <i class="fas fa-archive"> </i>
+                    </span>
+                        <span>Storage</span>
+                    </a>
+                    <a href="/admin/help/"
+                            class="navbar-item
+                            [% if request.path == '/admin/help/' %]is-active[% endif
+                            %]">
+                    <span class="icon">
+                        <i class="fas fa-question-circle"> </i>
+                    </span>
+                        <span>Help</span>
+                    </a>
+                </div>
+                <div class="logout-link">
+                    <a href="/admin/logout/"
+                            class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+            % block access_control
+            % endblock access_control
+        </navbar>
+% endblock nav
+
+% block sidebar_nav
+<div class="columns main-columns">
+<div class="sidebar-nav has-background-primary is-hidden-touch column is-1">
+        % if ac.admin.nav_icon
+        <div class="block is-hidden-touch">
+        <a href="/admin/">
+            <figure class="sidebar-logo image is-32x32">
+                <img src="[[ ac.admin.nav_icon|resize('32x32', fit=1, format='png',
+                    stock=1, quality=100)|get_media_url ]]"
+                        alt="Admin">
+            </figure>
+            % endif
+        </a>
+            </div>
+    <div class="menu">
+        <ul class="menu-list">
+            <li>
+        <a href="/admin/">
+                     <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-home fa-lg">
+                        </i>
+                    </span>
+            ## <span>Home</span>
+        </a>
+        </li>
+    <li>
+        <a href="[[admin_view.admin.menu()[1].get_url()]]">
+                ## href="/admin/content/">
+                     <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-list fa-lg">
+                        </i>
+                    </span>
+            ## <span>Content</span>
+        </a>
+        </li>
+        % if ac.app.store_enabled
+<li>
+        <a href="/admin/store/">
+                ## href="/admin/product/">
+                     <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-store fa-lg">
+                        </i>
+                    </span>
+            ## <span>Store</span>
+        </a>
+    </li>
+        % endif
+            <li>
+        <a class="iframe-popup-link"
+                href="/">
+                    <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-eye fa-lg"></i>
+                    </span>
+            ## <span>Preview</span>
+        </a>
+            </li>
+            <li>
+        <a href="/admin/analytic">
+                    <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-chart-line fa-lg"> </i>
+                    </span>
+            ## <span>Analytics</span>
+        </a>
+            </li>
+            <li>
+        <a href="/admin/storage">
+                    <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-archive fa-lg"> </i>
+                    </span>
+            ## <span>Storage</span>
+        </a>
+                </li>
+            <li>
+        <a href="/admin/help">
+                    <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-question-circle fa-lg"> </i>
+                    </span>
+            ## <span>Help</span>
+        </a>
+                </li>
+            <li>
+        <a href="/admin/logout/">
+                    <span class="icon sidebar-icon is-medium">
+                        <i class="fas fa-sign-out-alt fa-lg"></i>
+                    </span>
+            ## <span>Logout</span>
+        </a>
+            </li>
+            </ul>
+        </div>
+</div>
+</div>
+% endblock sidebar_nav
+
+% block main
+        <main id="main" class="main column is-11 container">
+            [# % block messages #]
+            [# [[ layout.messages() ]] #]
+            [# % endblock messages #]
+            [# store the jinja2 context for form_rules rendering logic #]
+            % set render_ctx = h.resolve_ctx()
+            % if current_user.is_authenticated
+            [[ lib.add_modal_window() ]]
+            % endif
+        </main>
+% endblock main
+
+
+<div class="container">
+    <div class="section">
+        <h1 class="has-text-centered title is-spaced is-4">
+            ## [[ app_pwa_name ]]
+            Dashboard
+        </h1>
+    </div>
+    <div class="tile section is-vertical">
+        <div class="tile wrapped-tiles">
+            % if current_user.is_authenticated
+            % set count = namespace(a=0)
+            % for item in admin_view.admin.menu()[1:]
+            % if item.is_accessible() and not item.is_visible()
+            % set link = item.get_url()
+            % set # icon = item.get_icon_value()
+            % if item.name == 'Content'
+            <div class="tile field-tile is-5 is-hidden-desktop">
+                <a class="button is-fullwidth is-link is-outlined is-rounded"
+                   href="[[ link ]]">
+                            <span class="icon">
+                    <i class="fas fa-[[ # icon ]]"></i>
+                </span>
+                    <span class="link-text">
+                        [[ item.name|title ]]
+                        </span>
+                </a>
+            </div>
+            <div class="tile field-tile is-5 is-hidden-touch">
+                <a class="button is-fullwidth is-link is-outlined is-rounded"
+                   href="[[admin_view.admin.menu()[1].get_url()]]">
+                            <span class="icon">
+                    <i class="fas fa-[[ # icon ]]"></i>
+                </span>
+                    <span class="link-text">
+                        [[ item.name|title ]]
+                        </span>
+                </a>
+
+            </div>
+            % else
+            % set title = item.name|title
+            <div class="tile field-tile is-5">
+                % if item.name == 'Site'
+                <a class="button is-fullwidth is-link is-outlined is-rounded"
+                   data-target=#fa_modal_window
+                   data-toggle=modal
+                   href="[[ get_url('site.edit_view', id=site('id'), url=return_url, modal=True) ]]">
+                    % elif item.name == 'Preview'
+                    <a class="iframe-popup-link button is-fullwidth is-link
+                             is-outlined is-rounded"
+                       href="/">
+                        % elif item.name == 'Users' and current_user.has_role('contributor')
+                        % set # icon = 'user'
+                        % set title = 'Profile'
+                        <a class="button is-fullwidth is-link is-outlined is-rounded"
+                           href="[[ get_url('user.edit_view', id=current_user.id, url=return_url, modal=True) ]]"
+                           data-target=#fa_modal_window
+                           data-toggle=modal>
+                            % else
+                            <a class="button is-fullwidth is-link is-outlined is-rounded"
+                               href="[[ link ]]">
+                                % endif
+                                <span class="icon">
+                    <i class="fas fa-[[ # icon ]]"></i>
+                </span>
+                                <span class="link-text">
+                        ## [[ item.name|title ]]
+                                            [[ title ]]
+                        </span>
+                            </a>
+            </div>
+            % set count.a = count.a + 1
+            % endif
+            % endif
+            % if loop.last
+             <div class="tile field-tile is-5">
+                        <a class="button is-fullwidth is-link is-outlined is-rounded"
+                                href="/admin/logout/">
+                            <span class="icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </span>
+                            <span class="link-text">
+                        Logout
+                        </span>
+                        </a>
+              </div>
+            % if count.a is odd
+            <div class="tile field-tile is-5">
+            </div>
+            % endif
+            % endif
+            % endfor
+            % endif
+        </div>
+    </div>
+<div id="pageloader" class="pageloader is-light is-right-to-left white-loader"></div>
+% endblock body

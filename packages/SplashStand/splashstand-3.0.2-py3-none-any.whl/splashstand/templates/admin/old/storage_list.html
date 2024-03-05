@@ -1,0 +1,280 @@
+% extends [% extends "../../base/templates/base.html" %]
+% import 'lib.html' as lib with context
+% import 'actions.html' as actionlib with context
+% import 'row_actions.html' as row_actions with context
+
+
+% block body
+<div class="container">
+    <div class="section">
+    <h1 class="has-text-centered title is-spaced is-4">
+        Storage
+    </h1>
+        </div>
+    % if actions
+    <div class="field level is-mobile is-grouped"
+            style="justify-content: space-between;">
+        <div class="level-left">
+            % if actions
+            [[ actionlib.dropdown(actions) ]]
+            % else
+            <div class="level-item is-left level-left"></div>
+            % endif
+        </div>
+        % if admin_view.can_create
+        <div class="level-right">
+            <div class="control has-text-centered is-right
+                            level-item">
+                % if admin_view.create_modal
+                [[ lib.add_modal_button(url=get_url('.create_view', url=return_url, modal=True), title=_gettext('Create New Record'), content=_gettext('Create'), btn_class='button is-link') ]]
+                % else
+                <a href="[[ get_url('.create_view', url=return_url) ]]"
+                        title="[[ _gettext('Create New Record') ]]">[[ _gettext('Create') ]]
+                </a>
+                % endif
+            </div>
+        </div>
+        % endif
+    </div>
+    % endif
+
+    % block file_list_table
+    <div class="container">
+        <table class="table is-hoverable is-striped is-fullwidth model-list">
+            <thead>
+            <tr>
+                % block list_header scoped
+                % if actions
+                <th>
+                    <div class="field">
+                        <input type="checkbox" name="rowtoggle"
+                                id="select-all"
+                                title="[[ _gettext('Select all records') ]]"
+                                class="action-rowtoggle storage-check
+                                           button is-checkradio is-dark"/>
+                        <label for="select-all" class="is-marginless
+                        storage-check-label"></label>
+                    </div>
+                </th>
+                % endif
+                % for column in admin_view.column_list
+                <th class="has-text-centered">
+                    % if admin_view.is_column_sortable(column)
+                    % if sort_column == column
+                    <a href="[[ sort_url(column, True) ]]"
+                            class="has-text-dark"
+                            title="[[ _gettext('Sort by %(name)s', name=column) ]]">
+                        [[ admin_view.column_label(column) ]]
+                        % if sort_desc
+                        <span class="icon">
+                            <i class="fas fa-caret-up"></i>
+                        </span>
+                        % else
+                        <span class="icon">
+                            <i class="fas fa-caret-down"></i>
+                        </span>
+                        % endif
+                    </a>
+                    % else
+                    <a href="[[ sort_url(column) ]]"
+                            title="[[ _gettext('Sort by %(name)s', name=column) ]]"
+                            class="has-text-dark">
+                        [[ admin_view.column_label(column) ]]
+                        <span class="icon">
+                            <i class="fas fa-sort"></i>
+                        </span>
+                    </a>
+                    % endif
+                    % else
+                    [[ _gettext(admin_view.column_label(column)) ]]
+                    % endif
+                </th>
+                % endfor
+                % block list_row_actions_header
+                % if admin_view.column_display_actions
+                <th class="has-text-centered action-cell">Action
+                </th>
+                % endif
+                % endblock
+                % if sort_by_position
+                <th class="has-text-centered">
+                    Move
+                </th>
+                % endif
+                % endblock list_header
+            </tr>
+            </thead>
+            % for name, path in items
+            % set user = decode_filename(name)['user']
+            % if not name in active_media
+            <tr class="is-selected">
+                % else
+            <tr>
+                % endif
+                % block list_row scoped
+                % if actions
+                <td class="select-cell">
+                    [% if not name in active_media
+                     and admin_view.can_delete and path and (not
+                        current_user.has_role('contributor') or
+                        user.id == current_user.id) %]
+                    <input type="checkbox" name="rowid"
+                            id="select-[[ name ]]"
+                            value="[[ path ]]"
+                            title="[[ _gettext('Select record') ]]"
+                            class="action-checkbox is-checkradio is-dark"/>
+                    <label for="select-[[ name ]]"
+                            class="is-marginless is-paddingless action-label">
+                    </label>
+                    % endif
+                </td>
+                % endif
+                % if name in image_items
+                <td class="has-text-centered field-cell">
+                    <a class="image-popup-link"
+                            href="[[ name|get_media_url ]]">
+                        <img src="[[ name|resize("x240", fit=1)|get_media_url ]]"
+                                class="list_image"/>
+                    </a>
+                </td>
+                % elif name in video_items
+                <td class="has-text-centered field-cell">
+                    <video width="" height="" controls>
+                        <source src="[[ name|get_media_url|safe ]]"
+                                type="video/[[ name|get_ext ]]"
+                                preload="metadata">
+                        "Your browser does not support the video tag."
+                    </video>
+                </td>
+                % endif
+                % if admin_view.is_column_visible('size')
+                <td class="has-text-centered">
+                    [[ size|filesizeformat ]]
+                </td>
+                % endif
+                % if admin_view.is_column_visible('date')
+                <td class="has-text-centered">
+                    [[ timestamp|format_date(date) ]]
+                </td>
+            % endif
+            <td class="has-text-centered action-cell">
+                % block list_row_actions scoped
+                <div class="level">
+                    % if admin_view.can_view
+                    % if name in image_items
+                    <div class="row-action level-item is-marginless">
+                        [# [[ action.render_ctx(get_pk_value(row), row) ]]#]
+                        <a class="image-popup-link"
+                           href="[[ name|get_media_url|safe ]]">
+                                    <span class="action-icon # icon has-text-success">
+                                        <i class="fas fa-eye fa-2x fa-fw"></i>
+                                    </span>
+                        </a>
+                    </div>
+                    % elif name in video_items
+                    <div class="row-action level-item is-marginless">
+                        <a class="video-popup-link"
+                           href="/admin/video_preview/[[ name ]]">
+                                    <span class="action-icon # icon has-text-success">
+                                        <i class="fas fa-eye fa-2x fa-fw"></i>
+                                    </span>
+                        </a>
+                    </div>
+                    % endif
+                    % endif
+                    % if admin_view.can_download
+                    <div class="row-action level-item is-marginless">
+                        <a href="[[ name|get_media_url|safe ]]" download>
+                                    <span class="action-icon # icon has-text-info">
+                                        <i class="fas fa-download fa-2x fa-fw"></i>
+                                    </span>
+                        </a>
+                    </div>
+                    % endif
+                    <div class="row-action level-item is-marginless">
+                        [% if admin_view.can_delete and path and not name in
+                        active_media and (not
+                        current_user.has_role('contributor') or
+                        user.id == current_user.id) %]
+                        [% if (not name|replace('_thumb', '') in active_media) %]
+                        <form method="POST"
+                              class="storage-delete-form"
+                              action="[[ get_url('.delete') ]]">
+                            [[ delete_form.path(value=path) ]]
+                            [[ delete_form.csrf_token ]]
+                            <button class="delete-button"
+                                    id="delete-button"
+                                    onclick="return confirm('Are you sure you want to delete this record?')"
+                                    title="Delete record">
+                                        <span class="action-icon # icon has-text-danger"><i
+                                                class="fas fa-trash fa-2x fa-fw"></i></span>
+                            </button>
+                        </form>
+                        % endif
+                        % endif
+                    </div>
+                </div>
+                % endblock list_row_actions
+            </td>
+            % if sort_by_position
+                <td class="has-text-centered">
+                    <ul class="sort-row">
+                        <li><span class="fas fa-long-arrow-alt-up
+                                 fa-fw"></span></li>
+                        <li><span class="fas fa-long-arrow-alt-down
+                                fa-fw"></span></li>
+                    </ul>
+                </td>
+                % endif
+                % endblock list_row
+            </tr>
+            % endfor
+        </table>
+    </div>
+    % endblock file_list_table
+
+    % block actions
+    [[ actionlib.form(actions, get_url('.action_view')) ]]
+    % endblock actions
+    % endblock body
+
+    % block tail_js
+    [[ super() ]]
+    [[ actionlib.script(_gettext('Please select at least one file.'), actions, actions_confirmation) ]]
+    <script>
+        $(document).ready(function () {
+            $('video').attr('controlsList', 'nodownload noremoteplayback');
+
+            $('.storage-delete-form').submit(function (e) {
+                e.preventDefault();
+                var form_data = new FormData($(this)[0]);
+                var form_url = $(this).attr('action');
+                var delete_row = $(this).closest('tr');
+                $.ajax({
+                    type: "POST",
+                    url: form_url,
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                }).done(function (data) {
+                    delete_row.remove();
+                    [#window.location.href = data['url'];#]
+                    [#console.log(window.location.href);#]
+                    [#window.location.reload(true);#]
+                    return false;
+                })
+                    .fail(function () {
+                        toastr.options.onShown = function () {
+                            [% set msg_type = 'danger' %]
+                            $('.toast').addClass('notification level is-mobile is-[[ msg_type ]]');
+                            $('.toast-close-button').before('<span class="icon level-item level-left"><i class="fas fa-[[ notification_icons[msg_type] ]]"></i></span>');
+                            $('.toast-message').addClass('level-item').after($('.toast-close-button'))
+                        };
+                        toastr.error("Connection timed out.");
+                    });
+                return false;
+            })
+        });
+    </script>
+    % endblock tail_js
+</div>

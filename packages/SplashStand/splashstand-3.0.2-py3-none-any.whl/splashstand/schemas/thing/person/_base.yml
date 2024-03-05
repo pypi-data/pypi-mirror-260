@@ -1,0 +1,40 @@
+model: true
+fields:
+  uid:
+    type: str
+  name:
+    type: str
+    required: false
+  gmail:
+    type: email
+    required: true
+  job_title:
+    type: text
+  is_active:
+    type: bool
+    default: true
+  is_superuser:
+    type: bool
+    default: false
+  telephone:
+    type: phonenumber
+  additional_name:
+    type: str
+  address:
+    type: str
+  email:
+    type: email
+    unique: true
+#  event:
+#    type: Event
+#    relation: many-to-many
+  image:
+    type: url
+  role:
+    type: str
+    default: user
+    choices:
+      - admin
+      - owner
+      - contributor
+      - user

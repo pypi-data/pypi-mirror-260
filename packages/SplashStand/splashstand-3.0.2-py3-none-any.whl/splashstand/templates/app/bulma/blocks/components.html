@@ -1,0 +1,13 @@
+% import elements.html as elem
+
+<button id="scroll-top-button"
+        on="tap:body-top.scrollTo(duration=200)"
+        class="scroll-to-top is-invisible is-size-5">
+    % if fa_pro == 'light'
+    [[ elem.icon('fal fa-sm fa-arrow-up', 'has-text-white') ]]
+    % elif fa_pro
+    [[ elem.icon('far fa-sm fa-arrow-up', 'has-text-white') ]]
+    % else
+    [[ elem.icon('fas fa-sm fa-arrow-up', 'has-text-white') ]]
+    % endif
+</button>

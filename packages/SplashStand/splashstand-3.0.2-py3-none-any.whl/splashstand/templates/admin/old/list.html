@@ -1,0 +1,281 @@
+% extends [% extends "../../base/templates/base.html" %]
+% import 'lib.html' as lib with context
+% import 'static.html' as admin_static with context
+% import 'layout.html' as model_layout with context
+% import 'actions.html' as actionlib with context
+% import 'row_actions.html' as row_actions with context
+
+
+% block body
+% block model_menu_bar
+    <h1 class="has-text-centered title is-hidden-touch is-4">
+        [#
+        % if model in config.STORE_MODELS
+        Store
+        % elif model in ['user', 'role']
+            [[ model|title|pluralize ]]
+             % if count
+            ([[ count ]])
+            % endif
+        % else
+        Content
+        % endif
+        #]
+    </h1>
+    <h2 class="has-text-centered is-hidden-desktop title is-spaced is-4">
+        [[ admin_view.model.__name__|pluralize ]]
+            % if count
+            ([[ count ]])
+            % endif
+    </h2>
+    % if not model in ['user', 'role']
+    <div class="tabs is-boxed is-medium is-hidden-touch">
+        <ul>
+        [[ model_layout.menu_tabs() ]]
+            </ul>
+    </div>
+    % endif
+% endblock model_menu_bar
+
+% if model in  ['user', 'role']
+<div class="section">
+    % else
+<div class="section list-box">
+    % endif
+
+     <div class="field level is-mobile is-grouped"
+            style="justify-content: space-between;">
+            % if actions
+            [[ actionlib.dropdown(actions) ]]
+            % else
+            <div class="level-item level-left"></div>
+            % endif
+
+
+[# % if filters
+[[ model_layout.filter_form() ]]
+<div class="is-clearfix"></div>
+% endif #]
+
+% if admin_view.can_create
+<div class="level-item level-right">
+        % if admin_view.create_modal
+        [[ lib.add_modal_button(url=get_url('.create_view', url=return_url, modal=True), title='Create New Record', content='<span>Create</span>', btn_class='button is-link') ]]
+        % else
+        <a href="[[ get_url('.create_view', url=return_url) ]]"
+                title="Create New Record"><span>Create</span>
+        </a>
+        % endif
+</div>
+% endif
+    </div>
+    % block model_list_table
+    <table class="table is-hoverable is-striped is-fullwidth model-list">
+        <thead>
+        <tr>
+            % block list_header scoped
+            % if actions
+            <th class="select-cell">
+                <div class="field">
+                    <input type="checkbox" name="rowtoggle"
+                            id="select-all"
+                            title="[[ _gettext('Select all records') ]]"
+                            class="action-rowtoggle is-checkradio is-dark"/>
+                    <label for="select-all"
+                            class="is-marginless is-paddingless">
+                    </label>
+                </div>
+            </th>
+            % endif
+            % for c, name in list_columns
+            % set column = loop.index0
+            % if name in ('Visible', 'Active')
+            <th class="has-text-centered" style="display: none;">
+                % else
+            <th class="has-text-centered">
+                % endif
+                % if admin_view.is_sortable(c)
+                % if sort_column == column
+                <a href="[[ sort_url(column, True) ]]"
+                        class="has-text-dark"
+                        title="[[ _gettext('Sort by %(name)s', name=name) ]]">
+                    [[ name ]]
+                    % if sort_desc
+                    <span class="icon">
+                        <i class="fas fa-caret-up"></i>
+                    </span>
+                    % else
+                    <span class="icon">
+                        <i class="fas fa-caret-down"></i>
+                    </span>
+                    % endif
+                </a>
+                % else
+                <a href="[[ sort_url(column) ]]"
+                        class="has-text-dark"
+                        title="[[ _gettext('Sort by %(name)s', name=name) ]]">
+                    [[ name ]]
+                    <span class="icon">
+                        <i class="fas fa-sort"></i>
+                    </span>
+                </a>
+                % endif
+                % else
+                [[ name ]]
+                % endif
+                % if admin_view.column_descriptions.get(c)
+                <a class="fas fa-question-circle"
+                        title="[[ admin_view.column_descriptions[c] ]]"
+                        href="javascript:void(0)" data-role="tooltip"
+                ></a>
+                % endif
+            </th>
+            % endfor
+            % block list_row_actions_header
+            % if admin_view.column_display_actions
+            <th class="has-text-centered action-cell">Action
+            </th>
+            % endif
+            % endblock list_row_actions_header
+            % if sort_by_position
+            <th class="has-text-centered position-cell">
+            </th>
+            % endif
+            % endblock list_header
+        </tr>
+        </thead>
+        <tbody id="sortable-table">
+        % for row in data
+        % if ('icon-minus-sign' in (get_value(row, 'visible') or get_value(row, 'active')))
+        <tr class="is-selected row-[[ loop.index ]]">
+            % else
+        <tr class="row-[[ loop.index ]]">
+            % endif
+            % block list_row scoped
+            % if actions
+            <td class="select-cell">
+                <div class="field">
+                    <input type="checkbox" name="rowid"
+                            id="select-[[ get_pk_value(row) ]]"
+                            value="[[ get_pk_value(row) ]]"
+                            title="[[ _gettext('Select record') ]]"
+                            class="action-checkbox is-checkradio is-dark"/>
+                    <label for="select-[[ get_pk_value(row) ]]"
+                            class="is-marginless is-paddingless action-label">
+                    </label>
+                </div>
+            </td>
+            % endif
+            % for c, name in list_columns
+            % if name in ('Visible', 'Active')
+            <td class="has-text-centered" style="display: none;">
+                % else
+            <td class="has-text-centered field-cell">
+                <span>
+                % endif
+                % if admin_view.is_editable(c)
+                % set form = list_forms[get_pk_value(row)]
+                % if form.csrf_token
+                [[ form[c](pk=get_pk_value(row), display_value=get_value(row, c), csrf=form.csrf_token._value()) ]]
+                % else
+                [[ form[c](pk=get_pk_value(row), display_value=get_value(row, c)) ]]
+                % endif
+                % else
+                    [[ get_value(row, c) ]]
+                % endif
+                    </span>
+            </td>
+            % endfor
+            % block list_row_actions_column scoped
+            % if admin_view.column_display_actions
+            <td class="has-text-centered action-cell">
+                % block list_row_actions scoped
+                <div class="level">
+                        % for action in list_row_actions
+                        <div class="row-action level-item is-marginless">
+                        % if model == 'user'
+                            % if action.title == 'View Record'
+                                [[ action.render_ctx(get_pk_value(row), row) ]]
+                            % elif current_user.has_role('admin')
+                                % if get_pk_value(row)|int > 1 or (get_pk_value(row)|int == 1 and action.title != 'Delete Record')
+                                    [[ action.render_ctx(get_pk_value(row), row) ]]
+                                % endif
+                            % elif current_user.has_role('owner') and get_pk_value(row)|int > 1
+                                % if not (current_user.id == get_pk_value(row)|int and action.title == 'Delete Record')
+                                [[ action.render_ctx(get_pk_value(row), row) ]]
+                                % endif
+                            % elif current_user.has_role('contributor') and current_user.id == get_pk_value(row)|int and action.title != 'Delete Record'
+                                [[ action.render_ctx(get_pk_value(row), row) ]]
+                            % endif
+                        % elif ((current_user.has_role('contributor') and action.title == 'Delete Record'))
+                            % if current_user.name == get_value(row, 'created_by')
+                                [[ action.render_ctx(get_pk_value(row), row) ]]
+                            % endif
+                        % else
+                            [[ action.render_ctx(get_pk_value(row), row) ]]
+                        % endif
+                        </div>
+                        % endfor
+                </div>
+                % endblock list_row_actions
+            </td>
+            % endif
+            % endblock list_row_actions_column
+            % if sort_by_position
+            <td class="has-text-centered position-cell">
+                <ul class="sort-row">
+                    <li><span class="fas fa-long-arrow-alt-up
+                                 fa-fw"></span></li>
+                    <li><span class="fas fa-long-arrow-alt-down
+                                fa-fw"></span></li>
+                </ul>
+            </td>
+            % endif
+            % endblock list_row
+        </tr>
+        % else
+        <tr>
+            <td class="has-text-centered" colspan="999">
+                % block empty_list_message
+                <div class="text-center">
+                    [[ admin_view.get_empty_list_message() ]]
+                </div>
+                % endblock empty_list_message
+            </td>
+        </tr>
+        % endfor
+        </tbody>
+    </table>
+</div>
+% block list_pager
+% if num_pages is not none
+[[ lib.pager(page, num_pages, pager_url) ]]
+% else
+[[ lib.simple_pager(page, data|length == page_size, pager_url) ]]
+% endif
+% endblock list_pager
+% endblock model_list_table
+
+% block actions
+[[ actionlib.form(actions, get_url('.action_view')) ]]
+% endblock actions
+
+<div id="pageloader" class="pageloader is-light white-loader is-right-to-left"></div>
+    % endblock body
+
+
+% block tail_js
+[[ super() ]]
+[[ actionlib.script('Please select at least one record.', actions, actions_confirmation) ]]
+
+% macro get_list_js()
+    [% include admin_filters_js %]
+    [% include admin_list_js %]
+  ##  [% include admin_rowsorter_js %]
+  [% include admin_list_moveable_js %]
+% endmacro
+
+<script>
+[[ get_list_js()|safe ]]
+</script>
+% endblock tail_js
