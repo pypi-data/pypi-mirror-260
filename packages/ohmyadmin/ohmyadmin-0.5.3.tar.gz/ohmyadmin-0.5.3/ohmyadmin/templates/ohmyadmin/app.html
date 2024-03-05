@@ -1,0 +1,72 @@
+{% extends 'ohmyadmin/base.html' %}
+{% import 'ohmyadmin/actions.html' as actions %}
+
+
+{% block main %}
+    <div class="flex flex-col md:flex-row w-full h-full overflow-hidden">
+        <aside
+            class="w-full md:w-72 bg-gray-100 border-r border-r-gray-200 flex-shrink-0 overflow-y-auto max-h-screen px-4 py-6 flex flex-col gap-5">
+            <section class="px-3">
+                <a href="{{ url_for('ohmyadmin.welcome') }}">
+                    <img src="{{ theme.logo }}" class="h-8">
+                </a>
+            </section>
+            <section class="space-y-2">
+                {{ ohmyadmin.menu_builder.render(request) }}
+            </section>
+            <section class="mt-auto">
+                <button id="user-menu" type="button"
+                        class="flex gap-2 items-center rounded hover:bg-gray-200 active:bg-gray-300 p-2 w-full">
+                    <div class="h-10 w-10 rounded overflow-hidden">
+                        <img src="{{ request.user.avatar }}" class="w-full h-full">
+                    </div>
+                    <div class="font-medium">{{ request.user }}</div>
+                </button>
+                <o-popover trigger="#user-menu" placement="top">
+                    <div class="dropdown absolute hidden">
+                        {% include 'ohmyadmin/layout/user_menu.html' %}
+                    </div>
+                </o-popover>
+                <form method="post" id="logout-form" action="{{ url_for('ohmyadmin.logout') }}">
+                    <input type="hidden" name="next" value="{{ request.url }}">
+                </form>
+            </section>
+        </aside>
+        <article class="h-screen flex-grow-0 overflow-y-auto w-full p-10">
+            <header class="mb-10">
+                <div>{% include 'ohmyadmin/breadcrumbs/breadcrumbs.html' %}</div>
+                <div class="flex justify-between gap-5">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-semibold mb-1">
+                            {% block page_title %}{% if page_title is defined %}{{ page_title }}
+                            {% endif %}{% endblock %}
+                        </h1>
+                        {% if page_description is defined %}
+                            <div>{{ page_description }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="flex items-center gap-2 justify-end flex-wrap">
+                        {% block page_actions %}
+                            {% call actions.action_toolbar() %}
+                                {% if model is undefined %}
+                                    {% set model = none %}
+                                {% endif %}
+                                {% for action in screen.get_page_actions() %}
+                                    {{ actions.action_button(request, action, screen, model) }}
+                                {% endfor %}
+                            {% endcall %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </header>
+            <main>
+                <!-- metrics -->
+                {% if screen.get_page_metrics() %}
+                    {% include 'ohmyadmin/screens/metrics.html' %}
+                {% endif %}
+
+                {% block content %}{% endblock %}
+            </main>
+        </article>
+    </div>
+{% endblock %}

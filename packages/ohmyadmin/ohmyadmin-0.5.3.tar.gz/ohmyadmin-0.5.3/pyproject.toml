@@ -1,0 +1,118 @@
+[tool.poetry]
+name = "ohmyadmin"
+description = "Awesome admin panel for your business."
+version = "0.5.3"
+authors = ["Alex Oleshkevich <alex.oleshkevich@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/alex-oleshkevich/ohmyadmin"
+repository = "https://github.com/alex-oleshkevich/ohmyadmin"
+documentation = "https://github.com/alex-oleshkevich/ohmyadmin"
+keywords = []
+include = ["ohmyadmin/statics/*"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Jinja2 = "^3"
+starlette = "*"
+python-slugify = "^8.0"
+WTForms = "^3"
+python-multipart = "^0.0.9"
+starlette-babel = "*"
+starlette-flash = "*"
+async-storages = "^0.5"
+
+[tool.poetry.group.dev.dependencies]
+beautifulsoup4 = "^4.11"
+SQLAlchemy = "^2.0"
+asyncpg = "^0.26"
+pytest = "^8.0"
+pytest-asyncio = "^0.23"
+pytest-cov = "^4.0"
+mypy = "^1"
+types-python-slugify = "^6"
+passlib = "^1.7.4"
+itsdangerous = "^2.1.2"
+Faker = "^15.0.0"
+uvicorn = "^0.27"
+starception = "^1.0"
+httpx = "^0.23.3"
+ruff = "^0.1.7"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = { extras = ["css", "html", "javascript", "python", "typescript"], version = "^0.20.0" }
+mkdocs-material = "^9.0.6"
+mkautodoc = "^0.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+source = ["ohmyadmin"]
+omit = [".venv/*", ".git/*", "*/__main__.py", "examples/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if typing.TYPE_CHECKING:",
+    "def __repr__",
+    'if self\.debug',
+    "raise AssertionError",
+    "raise NotImplementedError",
+    '@(abc\.)?abstractmethod',
+]
+omit = [".venv/*", ".git/*", "*/__main__.py", "examples/*"]
+
+[tool.mypy]
+show_error_codes = true
+files = ["ohmyadmin", "examples"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+asyncio_mode = 'auto'
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+norecursedirs = [
+    "node_modules", "frontend", "storage", "dist", ".git",
+    "*/migrations/*", "*/static/*", "docs", ".venv"
+]
+addopts = "--tb=short -s --no-cov-on-fail"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+exclude = [
+    ".egg",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".tox",
+    ".venv",
+]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = false
