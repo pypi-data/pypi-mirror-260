@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: pyflow-workflow-generator
+Version: 3.2.1
+Summary: Create pythonic ecFlow suites
+Home-page: https://pyflow-workflow-generator.readthedocs.io/en/
+Author: European Centre for Medium-Range Weather Forecasts (ECMWF)
+Author-email: software.support@ecmwf.int
+License: Apache 2.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: jinja2
+Requires-Dist: requests
+Provides-Extra: all
+Requires-Dist: graphviz ; extra == 'all'
+Requires-Dist: pytest ; extra == 'all'
+Provides-Extra: diagrams
+Requires-Dist: graphviz ; extra == 'diagrams'
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+
+# Pyflow
+
+**Pyflow** is a high level Python interface to ecFlow allowing the creation of ecFlow suites in a modular and "pythonic" way.
+
+The documentation can be found at <https://pyflow-workflow-generator.readthedocs.io>.
+
+## Installation
+To install pyflow using conda (including ecflow):
+
+    conda env create -n pyflow -f environment.yml
+
+To install pyflow using pip (requires a local installation of ecflow):
+
+    pip install pyflow-workflow-generator
+
+## Tutorial
+Pyflow tutorials are available in the form of a Jupyter notebook:
+
+    jupyter-notebook tutorials/pyflow.ipynb
+    jupyter-notebook tutorials/course/course.ipynb
+
+Other learning materials can be found in the tutorials folder.
+
+## License
+[Apache License 2.0](LICENSE) In applying this licence, ECMWF does not waive the privileges and immunities 
+granted to it by virtue of its status as an intergovernmental organisation nor does it submit to any jurisdiction.
