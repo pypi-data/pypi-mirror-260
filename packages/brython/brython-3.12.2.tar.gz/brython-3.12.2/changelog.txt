@@ -1,0 +1,190 @@
+New features
+============
+The main feature in this release is the replacement of the Python parser by
+a program generated from the standard Python grammar with the CPython 
+toolchain, adapted to generate Javascript code instead of C.
+
+Austin Schick greatly contributed to this change by providing a first proof of
+concept in issue #2354 and advice on the next steps of the implementation.
+
+
+Implementation
+==============
+- add a condition to check if obj supports the Thenable interface (by moepnse)
+- add suggestion for errors such as "s.split('x', maxplit=2)" : "Did you mean:
+  'maxsplit'?". Anticipation of Python 3.13.
+- simplify code for assignment to a single target (don't use intermediate
+  variable)
+- improve management of trace functions. Introduce functions that mix trace
+  and frame management to reduce generated code.
+- optimize make_args_parser (by Denis Migdal)
+- simplify generated code for tests like "if A and B" or "while A or B", as
+  suggested in issue #2274
+- cleanings in code, based on ESLint reports
+- improve error reporting for Javascript async functions / promises
+- add method __or__ to UnionType (code like "int | float | str" would break)
+- add wrapper_descriptor.__text_signature__;
+- explicitly set `type.__dict__` so that code like
+  "type.__dict__['__mro__'](cls)" gives the expected result.
+- improve speed of creation of instances of classes with no explicit __new__
+  and an explicit __init__
+- improve speed of function creation (around 60% !) by removing / simplifying
+  arguments of $B.make_function_infos()
+- for functions that have a kwarg argument ("f(**kwarg"), implement kwarg as a
+  dictionary with string-only keys, not with $B.obj_dict()
+- rewrite tuple.__new__. Remove list attribute __brython__
+- in py_dom.js, the result of operations on DOMNode and DOMEvent instances is
+  converted with $B.jsobj2pyobj, except `null` and `undefined` converted to
+  None. Avoids having to test a DOM value (*not* a Javascript value) with
+  `value is javascript.NULL`
+- match CPython's syntax error when code contains unprintable invalid
+  characters (by Austin Schick)
+- raise an exception on assignment to fstrings. Ex: `f'{x}-{y}' = 42` (id.)
+- match CPython more closely when generating syntax errors in function
+  parameters / invalid starred expressions (id.)
+- improve syntax errors related to the except* clause (id.)
+- match CPython's syntax error when True, False, None, or __debug__ are used
+  as keyword argument names (id.)
+- emit different syntax errors on a b and [a b] (id.)
+- improve detection of match and case as hard keywords (id.)
+- match CPython's syntax error when we find a generator expression in a class
+  declaration (id.)
+- mark bool argument as positional-only (id.)
+- add a deprecation warning for unary ~ on booleans (id.)
+- make the .real property of booleans return a number (id.)
+- disallow creation of booleans through int.__new__(bool, x) (id.)
+- in python_parser.js, use a function instead of a proxy to read tokens
+  (suggested by Austin Schick in issue #2354)
+- improve implementation of PEP 563 - Postponed evaluation of annotations.
+  Related to issue #2356
+- add internal method dict.$contains
+- in js_objects.js:
+  - pyobj2structuredclone() raises TypeError for unsupported types
+  - structuredclone2pyobj transforms JS "raw" objects (such as
+    Object.getPrototypeOf(obj) === Object.prototype) into a Python dict.
+    Related to issue #2345
+- for utf-8 encoding/decoding, use Javascript TextEncoder / Decoder if
+  available
+- basic support of type comments
+
+- implement the new PEG parser
+- make sure all the tests in Lib/test/test_syntax.py pass
+
+- add a few constants to pegen, add the node perf parser script (by Austin Schick)
+- remove expensive unused work from fill_token (id.)
+
+Internal tools
+==============
+
+Bug fixes
+=========
+- fix class attribute resolution in argument parsing (by moepnse)
+- bug in error reporting (repeated lines)
+- remove reference to window in _webworker.js and _ajax.js. Related to issue
+  #2343.
+- fix a bug where the compile() function wasn't emitting syntax errors in
+  certain cases (by Austin Schick)
+- fix an error where the start position of a generator expression was computed
+  incorrectly (id.)
+- fix a bug computing the syntax error offset of an invalid character after
+  line continuation (id.)
+- fix a bug in regex and codegen for list comprehensions to get a sample
+  doctest working (id.)
+- fix a bug in exception handling when exec() produced syntactically invalid
+  JS code (id.)
+- fix a few JS errors related to compiling code with a locals name which
+  contains a '.' (id.)
+- fix an error where \ in fstrings were parsed incorrectly. 'print(f"\\")'
+  raised a JS error (id.)
+- fix JS errors raised by code like A[*] (id.)
+- fix JS errors raised by code like A[**] and {**{1:2}} (id.)
+- fix JS error caused by using compile() on a lambda
+  `compile('lambda: None', '<test>', 'exec')` (id.)
+- fix syntax error caused by lambda in a with statement (id.)
+- fix a bug where indexedDB wasn't being set to false when set in the call to
+  brython() (id.)
+- fix a mistake in the comment explaining soft keyword handling for `case`
+  (id.)
+- fix incoherent values for filename and url
+- fixes error message for "float(lambda: None)". Reported in issue #2361
+- fix error message for "float(value)" with invalid value
+- fix : dict({}, x=0) returned {}
+- fix %d and %x formatting with booleans, make sure bool.from_bytes returns a
+  bool (by Austin Schick)
+- fix errors in string isalpha and isalnum (id.)
+- fix bug with value of __file__ in scripts from brython_stdlib.js
+- fix bug in _ajax.js (setting responseType)
+- fix bug in list unpacking. Reported in issue #2374.
+
+Issues
+- #2337 : jsobject.to_dict() is no longer applied recursively
+- #2338 : classList "in" broken
+- #2341 : new problem with array slicing
+- #2342 : new regex bug
+- #2344 : errors sending messages from webworker to main page
+- #2346 : new issue: ajax.post() is replacing '+' characters in the post body
+  with ' ' space char.
+- #2348 : starting a few days ago, I now see a debug message beginning with
+  "bizarre"
+- #2350 : current brython is not caching main thread modules into indexedDB
+- #2351 : problems with Babylon.js , looking for official support. Add
+  Babylon.js demo in the gallery.
+- #2355 : bug in JSON on very small float number (e.g. 1e-06)
+- #2360 : sys.excepthook() never terminates
+- #2361 : JS error when passing a function to a math function
+- #2363 : int('') does not raise a ValueError
+- #2364 : error in function argument parsing
+- #2371 : to_dict() problem with float values
+- #2373 : getting a string field from a JSObject that starts with "class "
+  raises an error
+- #2375 : error creating a Protocol class with a collections.abc base class
+- #2376 : f-string regression in development version
+- #2377 : boolean NOT operator (~) not behaving correctly for 64-bit values?
+- #2380 : ajax.file_upload() no longer accepts a python dictionary as the data
+  parameter, only accepts an ajax.form_data() object
+
+Brython site
+============
+- tests in test_ajax.py use async_tester (block execution on failure)
+- simplify captioning for the CPython tests (by Austin Schick)
+- small quality of life improvement to tests/editor.html -- save editor
+  content between refreshes (id.)
+- in tests/run_tests.html, set crossorigin="anonymous" for QUnit files
+- add bool tests to CI, fix handling of bool.__new__, len() of objects whose
+  __len__ returns < 0, and add os.remove (by Austin Schick)
+
+Github site
+===========
+- add the deadsnakes repository for supporting CPython 3.12 in Travis (by
+  moepnse)
+- get CPython syntax tests running in testem (by Austin Schick)
+- fix errors and set pre HTML tag style to monospace, not default system font
+  (Times New Roman serif font) (by lulunac27a)
+
+Demos
+=====
+- fix bug in synthesizer demo
+- improve drum machine demo
+
+Standard distribution
+=====================
+- upgrade / add modules from CPython 3.12 standard distribution
+- in _webworker.js, when calling the "onmessage" event in the main script,
+  wrap the event object in a proxy where the attribute "data" is transformed
+  with structuredclone2pyobj (otherwise Javascript Arrays are not identified
+  as Python lists)
+- add javascript.NullType.__repr__()
+- in _webworker.js:
+  - rewrite Worker class, add method send() that uses pyobj2structuredclone on
+    the message
+  - improve error reporting
+- add BytesIO.read()
+- remove pydoc_data package (limited use in browser context, heavy)
+- reduce size of encoding_cp932.js
+- fix bugs in interpreter
+
+Documentation
+=============
+- fix spelling mistake (by lulunac27a)
+- document browser.is_webworker, use in web worker test.
+
