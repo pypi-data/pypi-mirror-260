@@ -1,0 +1,30 @@
+<div style="width:100%; height: @chart_container_heightpx; background-color: white;" id="id_kdrillchart_@data_label">
+
+</div>
+<script type="module">
+    @drill_chart_js_inject
+    let data = `@chart_data`
+    data = JSON.parse(data);
+    let chart = new DrillChart({
+        parent: document.getElementById(`id_kdrillchart_@data_label`),
+        ylabel: '@chart_y_label',
+        legend: '@chart_legend_text',
+        legendColor: '@chart_legend_color',
+        legendFont: '@chart_legend_font',
+        legendPos: '@chart_legend_pos', // top, bottom
+        legendAlign: '@chart_legend_align', // left, center, right
+        navColor: '@chart_nav_color',
+        navFont: '@chart_nav_font',
+        navJustify: '@chart_nav_justify', // left, center, right
+        navPadding: '@chart_nav_padding',
+        labelScale: @chart_label_scale,
+        labelColor: '@chart_label_color',
+        resolution: @chart_resolution,
+        backgroundColor: '@chart_background_color',
+        height: @chart_height,
+        maxColumnWidth: @chart_max_column_width,
+        truncation: @chart_truncation,
+
+    });
+    chart.makePlot(data, `@chart_start_label`);
+</script>

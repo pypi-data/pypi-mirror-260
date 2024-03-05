@@ -1,0 +1,21 @@
+<div style="width:100%; height: @chart_container_heightpx; background-color: white; display: flex; justify-content: center; align-items: center; position: relative;"
+    id="id_wordcloud_@data_label">
+</div>
+<script type="module">
+    @word_cloud_js_inject
+    let data = `@chart_data`
+    data = JSON.parse(data);
+    let wordcloud = new WordCloud({
+        parent: document.getElementById(`id_wordcloud_@data_label`),
+        height: @chart_height,
+        width: @chart_width,
+        fontFamily: '@chart_font_family',
+        colorMode: @chart_color_mode,
+        maxFontSize: @chart_max_font_size,
+        minFontSize: @chart_min_font_size,
+        maxItem: @chart_max_item,
+    });
+    wordcloud.plot({
+        data,
+    });
+</script>

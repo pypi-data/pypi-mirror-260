@@ -1,0 +1,212 @@
+<div style="width:100%; height: @chart_container_heightpx; background-color: white; display: flex; justify-content: center; align-items: center; position: relative; box-sizing: border-box;"
+    id="id_tree_diagram_@data_label">
+</div>
+
+<script type="module">
+    const containerContent = `
+    <figure>
+
+<ul id="tree" class="tree @chart_orientation"></ul>
+</figure>
+<style>
+figure {
+margin: 0;
+box-sizing: border-box;
+display: flex;
+width: 100%;
+justify-content: center;
+align-items: center;
+padding: 10px;
+--line-color: @chart_line_color;
+--border-color: @chart_border_color;
+--border-radius: @chart_border_radiusrem;
+--background-color: @chart_item_background_color;
+--text-color: @chart_text_color;
+--line-width: 0.15em;
+--gutter: 0.8em;
+font-size: @chart_font_sizepx;
+font-family: @chart_font_family;
+}
+
+.tree.vertical,
+.tree.vertical ul,
+.tree.vertical li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.tree.vertical {
+    margin: 0 0 1em;
+    text-align: center;
+}
+
+.tree.vertical,
+.tree.vertical ul {
+    display: table;
+}
+
+.tree.vertical ul {
+    width: 100%;
+}
+
+
+.tree.vertical li {
+    display: table-cell;
+    padding: .5em 0;
+    vertical-align: top;
+}
+
+.tree.vertical li:before {
+    outline: solid 1px var(--line-color);
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tree.vertical li:first-child:before {
+    left: 50%;
+}
+
+.tree.vertical li:last-child:before {
+    right: 50%;
+}
+
+.tree.vertical code,
+.tree.vertical span {
+    box-sizing: border-box;
+    border: solid .13em var(--border-color);
+    border-radius: var(--border-radius, .2em);
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: .4em .8em;
+    position: relative;
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+/* | */
+.tree.vertical ul:before,
+.tree.vertical code:before,
+.tree.vertical span:before {
+    outline: solid 1px var(--line-color);
+    content: "";
+    height: .5em;
+    left: 50%;
+    position: absolute;
+}
+
+.tree.vertical ul:before {
+    top: -.5em;
+}
+
+.tree.vertical code:before,
+.tree.vertical span:before {
+    top: -.55em;
+}
+
+/* The root node doesn't connect upwards */
+.tree.vertical>li {
+    margin-top: 0;
+}
+
+.tree.vertical>li:before,
+.tree.vertical>li:after,
+.tree.vertical>li>code:before,
+.tree.vertical>li>span:before {
+    outline: none;
+}
+
+
+.tree.horizontal {
+	 margin: 0 0 calc(var(--gutter) * 2);
+}
+ .tree.horizontal, .tree.horizontal ul, .tree.horizontal li {
+	 list-style: none;
+	 margin: 0;
+	 padding: 0;
+	 position: relative;
+}
+ .tree.horizontal code, .tree.horizontal ul {
+	 display: table-cell;
+	 margin: 0;
+	 vertical-align: middle;
+
+    }
+ .tree.horizontal ul {
+	 padding-left: calc(var(--gutter) * 2);
+}
+ .tree.horizontal ul:before, .tree.horizontal ul code:before {
+    
+	 background: var(--line-color);
+	 content: "";
+	 height: var(--line-width);
+	 left: calc(var(--line-width) / 2 * -1);
+	 position: absolute;
+	 top: calc(50% - calc(var(--line-width) / 2));
+	 width: var(--gutter);
+}
+.tree.horizontal ul code:before {
+    left: -.8em !important;
+    content: "";
+}
+ .tree.horizontal ul button:before {
+	 left: calc(calc(var(--gutter) + var(--line-width)) * 2 /-1);
+	 top: calc(50% - calc(var(--line-width) / 2));
+}
+.tree.horizontal ul li:before {
+	 background: var(--line-color);
+	 bottom: 0;
+	 content: "";
+	 left: calc(-1 * calc(var(--gutter) + calc(var(--line-width) / 2)));
+	 position: absolute;
+	 top: 0;
+	 width: var(--line-width);
+}
+ .tree.horizontal ul li:first-child:before {
+	 top: calc(50% - calc(var(--line-width) / 2));
+}
+ .tree.horizontal ul li:last-child:before {
+	 bottom: calc(50% - calc(var(--line-width) / 2));
+}
+ .tree.horizontal li {
+	 padding: calc(var(--gutter) / 2) 0;
+}
+
+
+
+.tree.horizontal li code,
+.tree.horizontal span {
+    box-sizing: border-box;
+    line-height: 1.2em;
+    appearance: none;
+}
+
+.cac {
+    margin-right: -.12em;
+    border: solid .13em var(--border-color);
+    border-radius: var(--border-radius, .2em);
+    padding: .4em .8em;
+    color: var(--text-color);
+    background: var(--background-color);
+
+}
+
+</style>
+`
+
+    @tree_diagram_js_inject
+    let data = `@chart_data`
+    data = JSON.parse(data);
+    let tree = new TreeDiagram({
+        parent: document.getElementById(`id_tree_diagram_@data_label`),
+        data,
+        isVertical: `@chart_orientation` === 'vertical' ? true : false,
+    });
+
+
+
+</script>

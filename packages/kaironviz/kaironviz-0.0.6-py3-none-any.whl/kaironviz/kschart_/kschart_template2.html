@@ -1,0 +1,37 @@
+<div style="width:100%; height: @chart_container_heightpx; background-color: white;" id="id_ksanky2_@data_label"></div>
+<script type="module">
+    @kschart_js_inject
+    let data = `@chart_data`
+    data = JSON.parse(data);
+    let ksChart = new KSChart({
+        parent: document.getElementById(`id_ksanky2_@data_label`),
+        height: @chart_height,
+        clientHeight: @chart_client_height,
+        fromSuffix: `@chart_from_suffix`,
+        toSuffix: `@chart_to_suffix`,
+        fromPrefix: `@chart_from_prefix`,
+        toPrefix: `@chart_to_prefix`,
+        showToolbar: @chart_show_toolbar,
+        nodeWidth: @chart_node_width,
+        verticalSpacing: @chart_vertical_spacing,
+        textColor: '#333',
+        textScale: @chart_text_scale,
+        textFont: `@chart_text_font`,
+        drawColumnLebels: @chart_draw_column_labels,
+        drawLabels: @chart_draw_labels,
+        labelDistance: @chart_label_distance,
+        colorMode: @chart_color_mode,
+        useGradient: @chart_use_gradient,
+    });
+    ksChart.plot2({
+        data,
+        legend: `@chart_legend_name`,
+        legendStyle: `@chart_legend_style`,
+        srcName: `@chart_src_name`,
+        destName: `@chart_dest_name`,
+        srcLevel: `@chart_src_level`,
+        destLevel: `@chart_dest_level`,
+        trancation: Number(`@chart_trancation`),
+
+    });
+</script>
