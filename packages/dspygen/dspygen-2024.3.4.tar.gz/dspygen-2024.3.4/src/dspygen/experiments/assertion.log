@@ -1,0 +1,20 @@
+2024-02-28 14:04:12,389 - dspy.primitives.assertions - ERROR - AssertionError: Missing required argument: original_sql_query from {'function__name__': 'sql_query_optimizer', 'docstring': 'Optimize the given SQL query', 'keyword_arguments': {'original_sql_query': 'WITH recursive cte_dates AS ( SELECT DATEADD(day, 1, MIN(order_date)) AS dt FROM orders UNION ALL SELECT DATEADD(day, 1, dt) FROM cte_dates WHERE dt < (SELECT DATEADD(day, -1, MAX(order_date)) FROM orders) ), cte_sales AS ( SELECT p.product_id, p.product_name, d.dt, SUM(oi.quantity * oi.unit_price) AS daily_sales FROM cte_dates d CROSS JOIN products p LEFT JOIN order_items oi ON oi.product_id = p.product_id AND CAST(oi.order_date AS DATE) = CAST(d.dt AS DATE) GROUP BY p.product_id, p.product_name, d.dt ), cte_max_sales AS ( SELECT product_id, product_name, MAX(daily_sales) AS max_daily_sales FROM cte_sales GROUP BY product_id, product_name ) SELECT product_id, product_name, dt AS date_of_max_sales, max_daily_sales FROM cte_sales cs JOIN cte_max_sales cms ON cs.product_id = cms.product_id AND cs.daily_sales = cms.max_daily_sales', 'optimization_recommendations': None}}
+2024-02-28 14:06:49,289 - dspy.primitives.assertions - ERROR - AssertionError: Unexpected argument: return
+2024-02-29 15:06:55,072 - dspy.primitives.assertions - ERROR - AssertionError: Missing required argument: user_story from {'function__name__': 'python_expert_call', 'docstring': None, 'keyword_arguments': {}}
+2024-03-01 16:58:39,305 - dspy.primitives.assertions - ERROR - AssertionError: Missing required argument: message from {'chat': {'message': 'Hello world bot:'}}
+2024-03-01 16:58:50,752 - dspy.primitives.assertions - ERROR - AssertionError: Missing required argument: message from {'function__name__': 'chat', 'docstring': None, 'keyword_arguments': {'message': 'Hello world bot:'}}
+2024-03-02 12:43:08,638 - dspy.primitives.assertions - ERROR - AssertionError: You need to create a valid python tuple primitive type for 
+tuple_str_for_ast_literal_eval
+You will be penalized for not returning only a tuple for tuple_str_for_ast_literal_eval
+2024-03-02 12:46:00,882 - dspy.primitives.assertions - ERROR - AssertionError: You need to create a valid python tuple primitive type for 
+tuple_str_for_ast_literal_eval
+You will be penalized for not returning only a tuple for tuple_str_for_ast_literal_eval
+2024-03-02 12:49:23,930 - dspy.primitives.assertions - ERROR - AssertionError: You need to create a valid python bool primitive type for 
+bool_str_for_ast_literal_eval
+You will be penalized for not returning only a bool for bool_str_for_ast_literal_eval
+2024-03-02 12:51:56,816 - dspy.primitives.assertions - ERROR - AssertionError: You need to create a valid python list primitive type for 
+list_str_for_ast_literal_eval
+You will be penalized for not returning only a list for list_str_for_ast_literal_eval
+2024-03-02 12:52:40,190 - dspy.primitives.assertions - ERROR - AssertionError: You need to create a valid python list primitive type for 
+list_str_for_ast_literal_eval
+You will be penalized for not returning only a list for list_str_for_ast_literal_eval
