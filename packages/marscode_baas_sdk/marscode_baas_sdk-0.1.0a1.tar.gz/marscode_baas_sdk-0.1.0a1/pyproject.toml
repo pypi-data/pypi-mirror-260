@@ -1,0 +1,18 @@
+[project]
+name = "marscode_baas_sdk"
+version = "0.1.0-alpha.1"
+description = "baas sdk for marscode project"
+authors = [
+    {name = "huangzeyu"},
+    {name = "zhangyuanfang"},
+]
+dependencies = [
+    "requests>=2.31.0",
+    "urllib3>=2.1.0",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm]
+distribution = true
