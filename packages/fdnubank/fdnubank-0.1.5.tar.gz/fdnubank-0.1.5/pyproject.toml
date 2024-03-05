@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "fdnubank"
+version = "0.1.5"
+description = "Getting data from the nubank"
+authors = ["fdoooch <fdoooch@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+colorama = "^0.4.6"
+requests = "^2.31.0"
+qrcode = "^7.4.2"
+pyOpenSSL = "^24.0.0"
+python-dotenv = "^1.0.1"
+requests-pkcs12 = "1.13"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+pypi = "^2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

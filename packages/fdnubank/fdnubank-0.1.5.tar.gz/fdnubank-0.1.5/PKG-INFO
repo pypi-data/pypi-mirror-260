@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: fdnubank
+Version: 0.1.5
+Summary: Getting data from the nubank
+Author: fdoooch
+Author-email: fdoooch@gmail.com
+Requires-Python: >=3.11,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: colorama (>=0.4.6,<0.5.0)
+Requires-Dist: pyOpenSSL (>=24.0.0,<25.0.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Requires-Dist: qrcode (>=7.4.2,<8.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: requests-pkcs12 (==1.13)
+Description-Content-Type: text/markdown
+
+# Модуль для выгрузки данных счётов NuBank
+На основе - https://github.com/andreroggeri/pynubank/tree/main
+
+# Генерация сертификата для авторизации
+> poetry run python -m fdnubank.cli
+- ввести CPF
+- ввести пароль
+- ввести код, присланный на email
+В корневой папке будет создан файл cert.p12
+
+
