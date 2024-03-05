@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "stikb"
+version = "0.1.0"
+description = ""
+authors = ["Johannes Roos <jhnnsrs@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{ include = "stikb" }]
+
+[tool.poetry.dependencies]
+python = ">3.8"
+pydantic = "<2"
+
+
+[tool.poetry.group.dev.dependencies]
+rich = "^13.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
