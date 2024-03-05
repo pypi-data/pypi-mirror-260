@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "red", "id": "artificial general intelligence", "label": "artificial general intelligence", "mass": 4, "shape": "box"}, {"color": "red", "id": "Semantic Knowledge Representation", "label": "Semantic Knowledge Representation", "mass": 4, "shape": "box"}, {"color": "red", "id": "artificial", "label": "artificial", "mass": 4, "shape": "box"}, {"color": "red", "id": "Neural Network Models", "label": "Neural Network Models", "mass": 4, "shape": "box"}, {"color": "red", "id": "Reinforcement Learning Techniques", "label": "Reinforcement Learning Techniques", "mass": 4, "shape": "box"}, {"color": "red", "id": "knowledge", "label": "knowledge", "mass": 4, "shape": "box"}, {"color": "red", "id": "learning algorithms", "label": "learning algorithms", "mass": 4, "shape": "box"}, {"color": "red", "id": "Deep Learning Algorithms", "label": "Deep Learning Algorithms", "mass": 4, "shape": "box"}, {"color": "red", "id": "capabilities", "label": "capabilities", "mass": 4, "shape": "box"}, {"color": "red", "id": "Supervised Learning Models", "label": "Supervised Learning Models", "mass": 4, "shape": "box"}, {"color": "red", "id": "graphical models", "label": "graphical models", "mass": 4, "shape": "box"}, {"color": "red", "id": "Stochastic Control Policies", "label": "Stochastic Control Policies", "mass": 4, "shape": "box"}, {"color": "red", "id": "probabilistic", "label": "probabilistic", "mass": 4, "shape": "box"}, {"color": "red", "id": "decision-theoretic planning", "label": "decision-theoretic planning", "mass": 4, "shape": "box"}, {"color": "red", "id": "Feature Extraction Methods", "label": "Feature Extraction Methods", "mass": 4, "shape": "box"}, {"color": "red", "id": "control policies", "label": "control policies", "mass": 4, "shape": "box"}, {"color": "red", "id": "machine", "label": "machine", "mass": 4, "shape": "box"}, {"color": "red", "id": "multi-agent systems", "label": "multi-agent systems", "mass": 4, "shape": "box"}, {"color": "red", "id": "Probabilistic Graphical Models", "label": "Probabilistic Graphical Models", "mass": 4, "shape": "box"}, {"color": "red", "id": "methods", "label": "methods", "mass": 4, "shape": "box"}, {"color": "red", "id": "distributed", "label": "distributed", "mass": 4, "shape": "box"}, {"color": "red", "id": "models", "label": "models", "mass": 4, "shape": "box"}, {"color": "red", "id": "processes", "label": "processes", "mass": 4, "shape": "box"}, {"color": "red", "id": "cognitive computing", "label": "cognitive computing", "mass": 4, "shape": "box"}, {"color": "red", "id": "cognitive architecture", "label": "cognitive architecture", "mass": 4, "shape": "box"}, {"color": "red", "id": "supervised learning", "label": "supervised learning", "mass": 4, "shape": "box"}, {"color": "red", "id": "Cognitive computing capabilities", "label": "Cognitive computing capabilities", "mass": 4, "shape": "box"}, {"color": "red", "id": "Neural Network Architecture", "label": "Neural Network Architecture", "mass": 4, "shape": "box"}, {"color": "red", "id": "Distributed Cognitive Systems", "label": "Distributed Cognitive Systems", "mass": 4, "shape": "box"}, {"color": "red", "id": "neural network", "label": "neural network", "mass": 4, "shape": "box"}, {"color": "red", "id": "algorithms", "label": "algorithms", "mass": 4, "shape": "box"}, {"color": "red", "id": "Cognitive Architecture Integration", "label": "Cognitive Architecture Integration", "mass": 4, "shape": "box"}, {"color": "red", "id": "Machine Learning Algorithms", "label": "Machine Learning Algorithms", "mass": 4, "shape": "box"}, {"color": "red", "id": "Machine learning algorithms", "label": "Machine learning algorithms", "mass": 4, "shape": "box"}, {"color": "red", "id": "Autonomous decision-making processes", "label": "Autonomous decision-making processes", "mass": 4, "shape": "box"}, {"color": "red", "id": "feature extraction", "label": "feature extraction", "mass": 4, "shape": "box"}, {"color": "red", "id": "integration", "label": "integration", "mass": 4, "shape": "box"}, {"color": "red", "id": "neural", "label": "neural", "mass": 4, "shape": "box"}, {"color": "red", "id": "this", "label": "this", "mass": 4, "shape": "box"}, {"color": "red", "id": "stochastic", "label": "stochastic", "mass": 4, "shape": "box"}, {"color": "red", "id": "semantic representation", "label": "semantic representation", "mass": 4, "shape": "box"}, {"color": "red", "id": "learning techniques", "label": "learning techniques", "mass": 4, "shape": "box"}, {"color": "red", "id": "reinforcement", "label": "reinforcement", "mass": 4, "shape": "box"}, {"color": "red", "id": "general intelligence", "label": "general intelligence", "mass": 4, "shape": "box"}, {"color": "red", "id": "autonomous decision-making", "label": "autonomous decision-making", "mass": 4, "shape": "box"}, {"color": "red", "id": "Multi-Agent Systems", "label": "Multi-Agent Systems", "mass": 4, "shape": "box"}, {"color": "red", "id": "architecture", "label": "architecture", "mass": 4, "shape": "box"}, {"color": "red", "id": "cognitive systems", "label": "cognitive systems", "mass": 4, "shape": "box"}, {"color": "red", "id": "Decision-Theoretic Planning", "label": "Decision-Theoretic Planning", "mass": 4, "shape": "box"}, {"color": "red", "id": "deep learning", "label": "deep learning", "mass": 4, "shape": "box"}, {"color": "red", "id": "Reinforcement Learning Algorithms", "label": "Reinforcement Learning Algorithms", "mass": 4, "shape": "box"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "blue", "from": "processes", "label": "have", "to": "autonomous decision-making"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "is about", "to": "processes"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "discusses", "to": "autonomous decision-making"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "depends on", "to": "Reinforcement Learning Algorithms"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "depends on", "to": "Probabilistic Graphical Models"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "depends on", "to": "Multi-Agent Systems"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "depends on", "to": "Decision-Theoretic Planning"}, {"arrows": "to", "color": "blue", "from": "Autonomous decision-making processes", "label": "depends on", "to": "Stochastic Control Policies"}, {"arrows": "to", "color": "blue", "from": "cognitive architecture", "label": "has", "to": "integration"}, {"arrows": "to", "color": "blue", "from": "Cognitive Architecture Integration", "label": "is about", "to": "cognitive architecture"}, {"arrows": "to", "color": "blue", "from": "Cognitive Architecture Integration", "label": "discusses", "to": "integration"}, {"arrows": "to", "color": "blue", "from": "cognitive computing", "label": "has", "to": "capabilities"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "is about", "to": "cognitive computing"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "discusses", "to": "capabilities"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "depends on", "to": "Neural Network Models"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "depends on", "to": "Cognitive Architecture Integration"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "depends on", "to": "Machine Learning Algorithms"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "depends on", "to": "Semantic Knowledge Representation"}, {"arrows": "to", "color": "blue", "from": "Cognitive computing capabilities", "label": "depends on", "to": "Distributed Cognitive Systems"}, {"arrows": "to", "color": "blue", "from": "this", "label": "is about", "to": "decision-theoretic planning"}, {"arrows": "to", "color": "blue", "from": "Decision-Theoretic Planning", "label": "is about", "to": "this"}, {"arrows": "to", "color": "blue", "from": "Decision-Theoretic Planning", "label": "discusses", "to": "decision-theoretic planning"}, {"arrows": "to", "color": "blue", "from": "algorithms", "label": "type of", "to": "deep learning"}, {"arrows": "to", "color": "blue", "from": "Deep Learning Algorithms", "label": "is about", "to": "algorithms"}, {"arrows": "to", "color": "blue", "from": "Deep Learning Algorithms", "label": "discusses", "to": "deep learning"}, {"arrows": "to", "color": "blue", "from": "cognitive systems", "label": "is", "to": "distributed"}, {"arrows": "to", "color": "blue", "from": "Distributed Cognitive Systems", "label": "is about", "to": "cognitive systems"}, {"arrows": "to", "color": "blue", "from": "Distributed Cognitive Systems", "label": "discusses", "to": "distributed"}, {"arrows": "to", "color": "blue", "from": "methods", "label": "used for", "to": "feature extraction"}, {"arrows": "to", "color": "blue", "from": "Feature Extraction Methods", "label": "is about", "to": "methods"}, {"arrows": "to", "color": "blue", "from": "Feature Extraction Methods", "label": "discusses", "to": "feature extraction"}, {"arrows": "to", "color": "blue", "from": "machine", "label": "uses", "to": "learning algorithms"}, {"arrows": "to", "color": "blue", "from": "Machine Learning Algorithms", "label": "is about", "to": "machine"}, {"arrows": "to", "color": "blue", "from": "Machine Learning Algorithms", "label": "discusses", "to": "learning algorithms"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "is about", "to": "machine"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "discusses", "to": "learning algorithms"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "depends on", "to": "Supervised Learning Models"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "depends on", "to": "Neural Network Architecture"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "depends on", "to": "Reinforcement Learning Techniques"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "depends on", "to": "Deep Learning Algorithms"}, {"arrows": "to", "color": "blue", "from": "Machine learning algorithms", "label": "depends on", "to": "Feature Extraction Methods"}, {"arrows": "to", "color": "blue", "from": "this", "label": "is about", "to": "multi-agent systems"}, {"arrows": "to", "color": "blue", "from": "Multi-Agent Systems", "label": "is about", "to": "this"}, {"arrows": "to", "color": "blue", "from": "Multi-Agent Systems", "label": "discusses", "to": "multi-agent systems"}, {"arrows": "to", "color": "blue", "from": "neural network", "label": "has", "to": "architecture"}, {"arrows": "to", "color": "blue", "from": "Neural Network Architecture", "label": "is about", "to": "neural network"}, {"arrows": "to", "color": "blue", "from": "Neural Network Architecture", "label": "discusses", "to": "architecture"}, {"arrows": "to", "color": "blue", "from": "neural", "label": "network", "to": "models"}, {"arrows": "to", "color": "blue", "from": "Neural Network Models", "label": "is about", "to": "neural"}, {"arrows": "to", "color": "blue", "from": "Neural Network Models", "label": "discusses", "to": "models"}, {"arrows": "to", "color": "blue", "from": "probabilistic", "label": "is type of", "to": "graphical models"}, {"arrows": "to", "color": "blue", "from": "Probabilistic Graphical Models", "label": "is about", "to": "probabilistic"}, {"arrows": "to", "color": "blue", "from": "Probabilistic Graphical Models", "label": "discusses", "to": "graphical models"}, {"arrows": "to", "color": "blue", "from": "reinforcement", "label": "learning", "to": "algorithms"}, {"arrows": "to", "color": "blue", "from": "Reinforcement Learning Algorithms", "label": "is about", "to": "reinforcement"}, {"arrows": "to", "color": "blue", "from": "Reinforcement Learning Algorithms", "label": "discusses", "to": "algorithms"}, {"arrows": "to", "color": "blue", "from": "reinforcement", "label": "uses", "to": "learning techniques"}, {"arrows": "to", "color": "blue", "from": "Reinforcement Learning Techniques", "label": "is about", "to": "reinforcement"}, {"arrows": "to", "color": "blue", "from": "Reinforcement Learning Techniques", "label": "discusses", "to": "learning techniques"}, {"arrows": "to", "color": "blue", "from": "knowledge", "label": "has", "to": "semantic representation"}, {"arrows": "to", "color": "blue", "from": "Semantic Knowledge Representation", "label": "is about", "to": "knowledge"}, {"arrows": "to", "color": "blue", "from": "Semantic Knowledge Representation", "label": "discusses", "to": "semantic representation"}, {"arrows": "to", "color": "blue", "from": "control policies", "label": "is", "to": "stochastic"}, {"arrows": "to", "color": "blue", "from": "Stochastic Control Policies", "label": "is about", "to": "control policies"}, {"arrows": "to", "color": "blue", "from": "Stochastic Control Policies", "label": "discusses", "to": "stochastic"}, {"arrows": "to", "color": "blue", "from": "supervised learning", "label": "includes", "to": "models"}, {"arrows": "to", "color": "blue", "from": "Supervised Learning Models", "label": "is about", "to": "supervised learning"}, {"arrows": "to", "color": "blue", "from": "Supervised Learning Models", "label": "discusses", "to": "models"}, {"arrows": "to", "color": "blue", "from": "artificial", "label": "is a type of", "to": "general intelligence"}, {"arrows": "to", "color": "blue", "from": "artificial general intelligence", "label": "is about", "to": "artificial"}, {"arrows": "to", "color": "blue", "from": "artificial general intelligence", "label": "discusses", "to": "general intelligence"}, {"arrows": "to", "color": "blue", "from": "artificial general intelligence", "label": "depends on", "to": "Machine learning algorithms"}, {"arrows": "to", "color": "blue", "from": "artificial general intelligence", "label": "depends on", "to": "Cognitive computing capabilities"}, {"arrows": "to", "color": "blue", "from": "artificial general intelligence", "label": "depends on", "to": "Autonomous decision-making processes"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
