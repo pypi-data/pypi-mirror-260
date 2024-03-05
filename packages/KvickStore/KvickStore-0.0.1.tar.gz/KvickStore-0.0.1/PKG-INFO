@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: KvickStore
+Version: 0.0.1
+Summary: A quick and simple key-value store for Python applications
+Home-page: https://github.com/rm206/KvickStore
+Author: Rishabh Mediratta
+Author-email: panicpark60@gmail.com
+Project-URL: Bug Tracker, https://github.com/rm206/KvickStore/issues
+Project-URL: Changelog, https://github.com/rm206/KvickStore/releases
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# KvickStore
+
+Love puns? Love lighweight and safe key-value stores? Then you'll love KvickStore!
+
+KvickStore is a simple and lightweight key-value store based on the [json](https://docs.python.org/3/library/json.html) module. It has been __heavily__ inspired by [pickleDB](https://github.com/patx/pickledb/) but I aim to make it more flexible.
+
+__This repo is under construction (Apha Stage)! Please be careful incase you decide to use it.__
+
+<br/>
+
+# KvickStore is easy to use
+
+```python
+>>> import KvickStore
+
+>>> db = KvickStore.load('test.db', False)
+
+>>> db.set('key', 'value')
+
+>>> db.get('key')
+'value'
+
+>>> db.save()
+True
+```
+<br/>
+
+# Link(s)
+* [GitHub repo](https://github.com/rm206/KvickStore)
+
+<br/>
+
+# Notes
+This is a project under development. I plan to add more features and make it more robust. 
+If you have any suggestions or feedback, please let me know! I would love to hear and learn from you.
