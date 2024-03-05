@@ -1,0 +1,416 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools>=61.2",
+    "setuptools_scm",
+]
+
+[project]
+authors = [{name = "Common Partial Wave Analysis", email = "compwa-admin@ep1.rub.de"}]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = [
+    "attrs >=20.1.0", # on_setattr and https://www.attrs.org/en/stable/api.html#next-gen
+    "qrules >=0.9.6",
+    "sympy >=1.10",
+    'importlib-metadata; python_version <"3.8.0"',
+    'singledispatchmethod; python_version <"3.8.0"',
+    'typing-extensions; python_version <"3.8.0"',
+]
+description = "Automatically generate symbolic amplitude models for Partial Wave Analysis"
+dynamic = ["version"]
+keywords = [
+    "HEP",
+    "PWA",
+    "amplitude analysis",
+    "partial wave analysis",
+    "particle physics",
+    "particles",
+    "physics",
+]
+license = {text = "GPLv3 or later"}
+maintainers = [{email = "compwa-admin@ep1.rub.de"}]
+name = "ampform"
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+all = [
+    "ampform[scipy]",
+    "ampform[viz]",
+]
+dev = [
+    "ampform[all]",
+    "ampform[doc]",
+    "ampform[jupyter]",
+    "ampform[sty]",
+    "ampform[test]",
+    "sphinx-autobuild",
+    "tox >=1.9", # for skip_install, use_develop
+]
+doc = [
+    "Sphinx >=3",
+    "ampform[all]",
+    "black",
+    "ipympl",
+    "matplotlib",
+    "mpl-interactions",
+    "myst-nb >=0.14", # nb_ configuration prefixes
+    "nbclient >=0.5.5", # https://github.com/executablebooks/jupyter-book/issues/833
+    "numpy",
+    "rich",
+    "sphinx-api-relink >=0.0.4",
+    "sphinx-book-theme",
+    "sphinx-codeautolink[ipython]",
+    "sphinx-comments",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-hep-pdgref",
+    "sphinx-pybtex-etal-style",
+    "sphinx-thebe",
+    "sphinx-togglebutton",
+    "sphinxcontrib-bibtex >=2",
+]
+jupyter = [
+    "black",
+    "isort",
+    "jupyterlab",
+    "jupyterlab-code-formatter",
+    "jupyterlab-git",
+    "jupyterlab-lsp",
+    "jupyterlab-myst",
+    "python-lsp-ruff",
+    "python-lsp-server[rope]",
+]
+scipy = ["scipy"]
+sty = [
+    "ampform[types]",
+    "mypy >=0.730",
+    "pre-commit >=1.4.0",
+    "ruff",
+]
+test = [
+    "ampform[scipy]",
+    "ipywidgets", # symplot
+    "nbmake",
+    "numpy",
+    "pytest",
+    "pytest-cov",
+    "pytest-profiling",
+    "pytest-xdist",
+]
+types = [
+    "IPython",
+    "ipywidgets",
+    "numpy",
+    "pytest",
+    "sphinx-api-relink >=0.0.3",
+]
+viz = ["graphviz"]
+
+[project.readme]
+content-type = "text/markdown"
+file = "README.md"
+
+[project.urls]
+Changelog = "https://github.com/ComPWA/ampform/releases"
+Documentation = "https://ampform.rtfd.io"
+Source = "https://github.com/ComPWA/ampform"
+Tracker = "https://github.com/ComPWA/ampform/issues"
+
+[tool.setuptools]
+include-package-data = false
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+ampform = ["py.typed"]
+symplot = ["py.typed"]
+
+[tool.setuptools.packages.find]
+namespaces = false
+where = ["src"]
+
+[tool.setuptools_scm]
+write_to = "src/ampform/version.py"
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.mypy]
+enable_incomplete_feature = "Unpack"
+exclude = "_build"
+show_error_codes = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["graphviz.*"]
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["scipy.*"]
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["ipywidgets.*"]
+
+[[tool.mypy.overrides]]
+check_untyped_defs = true
+disallow_incomplete_defs = false
+disallow_untyped_defs = false
+module = ["tests.*"]
+
+[[tool.mypy.overrides]]
+ignore_errors = true
+module = ["typings.*"]
+
+[tool.pyright]
+exclude = [
+    "**/.git",
+    "**/.ipynb_checkpoints",
+    "**/.mypy_cache",
+    "**/.pytest_cache",
+    "**/.tox",
+    "**/__pycache__",
+    "**/_build",
+    "**/typings",
+]
+reportArgumentType = false
+reportAssignmentType = false
+reportAttributeAccessIssue = false
+reportCallIssue = false
+reportGeneralTypeIssues = false
+reportIncompatibleMethodOverride = false
+reportInconsistentOverload = false
+reportMissingParameterType = false
+reportMissingTypeArgument = false
+reportMissingTypeStubs = false
+reportOperatorIssue = false
+reportOverlappingOverload = false
+reportPrivateImportUsage = false
+reportPrivateUsage = false
+reportReturnType = false
+reportUnboundVariable = false
+reportUnknownArgumentType = false
+reportUnknownLambdaType = false
+reportUnknownMemberType = false
+reportUnknownParameterType = false
+reportUnknownVariableType = false
+reportUnnecessaryComparison = false
+reportUnnecessaryContains = false
+reportUnnecessaryIsInstance = false
+reportUntypedClassDecorator = false
+reportUntypedFunctionDecorator = false
+reportUnusedClass = true
+reportUnusedFunction = true
+reportUnusedImport = true
+reportUnusedVariable = true
+typeCheckingMode = "strict"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--color=yes",
+    "--doctest-continue-on-failure",
+    "--doctest-modules",
+    "--durations=3",
+    "--ignore=docs/abbreviate_signature.py",
+    "--ignore=docs/conf.py",
+    "-m not slow",
+    "-rS",
+]
+filterwarnings = [
+    "error",
+    "ignore:.*invalid value encountered in sqrt.*:RuntimeWarning",
+    "ignore:.*is deprecated and slated for removal in Python 3.14:DeprecationWarning",
+    "ignore:.*the @ampform.sympy.unevaluated_expression decorator instead( with commutative=True)?:DeprecationWarning",
+    "ignore:Passing a schema to Validator.iter_errors is deprecated.*:DeprecationWarning",
+    "ignore:The .* argument to NotebookFile is deprecated.*:pytest.PytestRemovedIn8Warning",
+    "ignore:The distutils package is deprecated.*:DeprecationWarning",
+    "ignore:The distutils.* module is deprecated.*:DeprecationWarning",
+    "ignore:datetime.datetime.utcfromtimestamp\\(\\) is deprecated and scheduled for removal in a future version.*:DeprecationWarning",
+    "ignore:unclosed .*:ResourceWarning",
+    'ignore:Widget\..* is deprecated\.:DeprecationWarning',
+]
+markers = ["slow: marks tests as slow (select with '-m slow')"]
+norecursedirs = [
+    ".ipynb_checkpoints",
+    ".virtual_documents",
+    "_build",
+]
+testpaths = [
+    "src",
+    "tests",
+]
+
+[tool.ruff]
+extend-exclude = ["typings"]
+extend-include = ["*.ipynb"]
+preview = true
+show-fixes = true
+src = [
+    "src",
+    "tests",
+]
+target-version = "py37"
+
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+
+[tool.ruff.lint]
+extend-select = [
+    "A",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "D",
+    "EM",
+    "ERA",
+    "FA",
+    "I",
+    "ICN",
+    "INP",
+    "ISC",
+    "N",
+    "NPY",
+    "PGH",
+    "PIE",
+    "PL",
+    "Q",
+    "RET",
+    "RSE",
+    "RUF",
+    "S",
+    "SIM",
+    "T20",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+ignore = [
+    "D101",
+    "D102",
+    "D103",
+    "D105",
+    "D107",
+    "D203",
+    "D213",
+    "D407",
+    "D416",
+    "E501",
+    "ISC001",
+    "PLR0913",
+    "PLW1514",
+    "PLW2901",
+    "SIM108",
+]
+task-tags = ["cspell"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = [
+    "ampform.sympy._decorator.argument",
+]
+
+[tool.ruff.lint.isort]
+known-third-party = ["sympy"]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.per-file-ignores]
+"**/docs/usage/dynamics.ipynb" = ["RUF027"]
+"**/docs/usage/symplot.ipynb" = ["RUF027"]
+"**/docs/usage/sympy.ipynb" = ["E731"]
+"*.ipynb" = [
+    "B018",
+    "C408",
+    "C90",
+    "D",
+    "E402",
+    "E703",
+    "F404",
+    "N806",
+    "N816",
+    "PLC2401",
+    "PLR09",
+    "PLR2004",
+    "PLW0602",
+    "PLW0603",
+    "S101",
+    "S301",
+    "S403",
+    "T20",
+    "TCH00",
+]
+"docs/*" = [
+    "E402",
+    "INP001",
+    "N802",
+    "N806",
+    "S101",
+    "S113",
+    "S403",
+    "T201",
+]
+"docs/_extend_docstrings.py" = [
+    "PLC0415",
+    "PLC2701",
+]
+"docs/conf.py" = [
+    "A001",
+    "D100",
+]
+"setup.py" = ["D100"]
+"tests/*" = [
+    "C408",
+    "D",
+    "INP001",
+    "PGH001",
+    "PLC2701",
+    "PLR0913",
+    "PLR0914",
+    "PLR0917",
+    "PLR2004",
+    "PLR6301",
+    "S101",
+    "T20",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+allow-dunder-method-names = ["_latex_repr_", "_repr_pretty_"]
+max-positional-args = 7
+
+[tool.tomlsort]
+all = false
+ignore_case = true
+in_place = true
+sort_first = [
+    "build-system",
+    "project",
+    "tool.setuptools",
+    "tool.setuptools_scm",
+]
+sort_table_keys = true
+spaces_indent_inline_array = 4
+trailing_comma_inline_array = true
