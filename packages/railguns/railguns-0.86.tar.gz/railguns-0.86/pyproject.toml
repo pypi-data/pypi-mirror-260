@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "railguns"
+version = "0.86"
+description = "Only My Railgun"
+readme = "README.md"
+authors = [
+  {name = "NY", email = "nyssance@icloud.com"}
+]
+license = {file = "LICENSE"}
+keywords = ["django", "railguns"]
+requires-python = ">=3.12"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "Framework :: Django :: 5.0",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet :: WWW/HTTP"
+]
+dependencies = [
+  "django[argon2]==5.0.2",
+  "djangorestframework==3.14.0",
+  "djangorestframework_simplejwt==5.3.1",
+  "gunicorn==21.2.0",
+  "uvicorn==0.27.1",
+  #
+  "django-ckeditor==6.7.1",
+  "django-filter==23.5",
+  "django-htmlmin==0.11.0",
+  "hiredis==2.3.2",
+  "mysqlclient==2.2.4",
+  "redis==5.0.2"
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest > 8.0.0",
+  "pytest-cov[all]"
+]
+
+[project.urls]
+homepage = "https://github.com/nyssance/railguns"
+documentation = "https://github.com/nyssance/railguns"
+repository = "https://github.com/nyssance/railguns"
+changelog = "https://github.com/nyssance/railguns/blob/main/CHANGELOG.md"
+
+[tool.isort]
+profile = "django"
+include_trailing_comma = false
+line_length = 120
+#multi_line_output = 0
+
+[tool.pylint.format]
+good-names-rgxs = "^[_a-z][_a-z0-9]?$"
+max-line-length = 120
+
+[tool.pylint.messages_control]
+disable = ["missing-docstring"]
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 120
