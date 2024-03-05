@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: compas_bender
+Version: 0.1.1
+Summary: Form Finding of bending active structures using a modified dynamic relaxation method.
+Author-email: tom van mele <tom.v.mele@gmail.com>
+License: MIT License
+        
+        ETH Zurich - Block Research Group
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://blockresearchgroup.github.io/compas_bender
+Project-URL: Documentation, https://blockresearchgroup.github.io/compas_bender
+Project-URL: Repository, https://github.com/blockresearchgroup/compas_bender.git
+Project-URL: Changelog, https://github.com/blockresearchgroup/compas_bender/blob/main/CHANGELOG.md
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Scientific/Engineering
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: compas >=2.0
+Provides-Extra: dev
+Requires-Dist: attrs >=17.4 ; extra == 'dev'
+Requires-Dist: black >=22.12.0 ; extra == 'dev'
+Requires-Dist: bump-my-version ; extra == 'dev'
+Requires-Dist: compas-invocations2 ; extra == 'dev'
+Requires-Dist: compas-notebook ; extra == 'dev'
+Requires-Dist: invoke >=0.14 ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+Requires-Dist: sphinx-compas2-theme ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+
+# COMPAS Bender
+
+COMPAS extension package for form finding of bending active structures
