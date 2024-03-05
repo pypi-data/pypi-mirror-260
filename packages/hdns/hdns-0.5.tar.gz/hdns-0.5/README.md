@@ -1,0 +1,44 @@
+# hdns
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![PyPI version](https://badge.fury.io/py/your-package-name.svg)](https://badge.fury.io/py/your-package-name)
+
+## Overview
+
+This library is intended for people that do not have an static IP from their ISP but want to keep updated their A records at Hetzner DNS service
+
+## Installation
+
+	requests
+	json
+	sys
+
+```bash
+pip install hdns requests json sys
+```
+Example usage to update all A records with the current IPv4 ip
+
+```python
+from hdns import arecords, ipv4
+
+zone_id = "7iXPjESAniVkvPWSLEHAHJ"
+auth_api_token = "sAIRnlgsGkn5iGV7lL9VtIT9bbtWFTCa"
+#record_id = "99a35e672184a2c194715c5054b0d8a7"
+
+ip = ipv4.get_ipv4()
+records = arecords.get_all(zone_id, auth_api_token)
+
+different_ip_zone_ids = []
+
+for record in records:
+    if record["value"] != ip:
+        record["value"] = ip
+        different_ip_zone_ids.append(record)
+if different_ip_zone_ids:
+    insert_records = arecords.insert_records(auth_api_token, different_ip_zone_ids)
+    print(insert_records)
+else:
+    print("No ip difference found!")
+```
+
+ipv4: uses https://api.ipify.org API to get your IPv4 public IP
