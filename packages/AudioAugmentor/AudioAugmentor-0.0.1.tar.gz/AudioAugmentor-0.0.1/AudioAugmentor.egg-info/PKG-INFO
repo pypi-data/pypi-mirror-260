@@ -1,0 +1,157 @@
+Metadata-Version: 2.1
+Name: AudioAugmentor
+Version: 0.0.1
+Summary: Python package for simple application of wide range of audio augmentations.
+Author-email: Ladislav Vašina <ladislavvasina@gmail.com>
+License: MIT License
+        
+        Copyright (c) [2024] [Ladislav Vašina]
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://github.com/LadislavVasina1/AudioAugmentor
+Project-URL: Repository, https://github.com/LadislavVasina1/AudioAugmentor
+Project-URL: Issues, https://github.com/LadislavVasina1/AudioAugmentor/issues
+Keywords: audio,augmentation,pytorch,machine learning,deep learning,data augmentation,audio processing,audio augmentation,audio data augmentation,audio data processing,torchaudio,ffmpeg,ffmpeg-python,audiomentations,torch-audiomentations,RIR,room impulse response,room simulation,pyroomacoustics
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: audiomentations==0.34.1
+Requires-Dist: datasets==2.17.1
+Requires-Dist: ffmpeg_python==0.2.0
+Requires-Dist: huggingface_hub==0.20.3
+Requires-Dist: ipython==8.12.3
+Requires-Dist: matplotlib==3.8.3
+Requires-Dist: numpy==1.24.4
+Requires-Dist: pyroomacoustics==0.7.3
+Requires-Dist: PyYAML==6.0.1
+Requires-Dist: SciPy==1.10.1
+Requires-Dist: soundfile==0.12.1
+Requires-Dist: torch==2.2.0
+Requires-Dist: torch_audiomentations==0.11.1
+Requires-Dist: torchaudio==2.2.0
+Requires-Dist: transformers
+Requires-Dist: pydub
+Requires-Dist: accelerate
+Requires-Dist: soundfile
+Requires-Dist: librosa
+Requires-Dist: evaluate
+Requires-Dist: jiwer
+Requires-Dist: tensorboard
+Requires-Dist: gradio
+Requires-Dist: ffmpeg-python
+Requires-Dist: torch_pitch_shift
+Requires-Dist: julius
+Requires-Dist: tqdm
+
+# AudioAugmentor
+### Python library for augmenting audio data
+This library is designed to augment audio data for machine learning purposes. 
+It combines several tools and libraries for audio data augmentation and provides unified interface which can be used to apply large set of audio augmentations in one place.
+
+The library is designed to be used with the [PyTorch](https://pytorch.org) machine learning framework.
+It can also work solely on just simple audio waveforms and augment those.
+
+This library specifically combines theese libraries and tools:
+
+- [torchaudio](https://pytorch.org/audio/stable/index.html)
+- [audiomentations](https://github.com/iver56/audiomentations)
+- [torch-audiomentations](https://github.com/asteroid-team/torch-audiomentations)
+- [pyroomacoustics](https://github.com/LCAV/pyroomacoustics)
+- [ffmpeg-python](https://github.com/kkroening/ffmpeg-python)
+
+
+
+Table below shows which library was used to apply specific audio augmentation/codec.
+
+|                                  | audiomentations | torch-audiomentations | torchaudio | pyroomacoustics | ffmpeg |
+|----------------------------------|:---------------:|:---------------------:|:----------:|:---------------:|:------:|
+| AddBackgroundNoise               |                 |           ✅          |            |                 |        |
+| AddColoredNoise / AddGaussianSNR |                 |           ✅          |            |                 |        |
+| AddGaussianNoise                 |        ✅       |                       |            |                 |        |
+| AddShortNoises                   |        ✅       |                       |            |                 |        |
+| AdjustDuration                   |        ✅       |                       |            |                 |        |
+| AirAbsorption                    |        ✅       |                       |            |                 |        |
+| ApplyImpulseResponse             |                 |           ✅          |            |                 |        |
+| BandPassFilter                   |                 |           ✅          |            |                 |        |
+| BandStopFilter                   |                 |           ✅          |            |                 |        |
+| ClippingDistortion               |        ✅       |                       |            |                 |        |
+| Volume / Gain                    |                 |                       |     ✅     |                 |        |
+| GainTransition                   |        ✅       |                       |            |                 |        |
+| HighPassFilter                   |                 |           ✅          |            |                 |        |
+| HighShelfFilter                  |        ✅       |                       |            |                 |        |
+| Lambda                           |                 |                       |            |                 |        |
+| Limiter                          |        ✅       |                       |            |                 |        |
+| LoudnessNormalization            |        ✅       |                       |            |                 |        |
+| LowPassFilter                    |                 |           ✅          |            |                 |        |
+| LowShelfFilter                   |        ✅       |                       |            |                 |        |
+| Mp3Compression                   |        ✅       |                       |            |                 |        |
+| Normalize                        |        ✅       |                       |            |                 |        |
+| Padding                          |        ✅       |                       |            |                 |        |
+| PeakNormalization                |                 |           ✅          |            |                 |        |
+| PeakingFilter                    |        ✅       |                       |            |                 |        |
+| PitchShift                       |                 |                       |     ✅     |                 |        |
+| PolarityInversion                |                 |           ✅          |            |                 |        |
+| RepeatPart                       |                 |                       |            |                 |        |
+| Resample                         |                 |                       |            |                 |        |
+| Time inversion / Reverse         |                 |           ✅          |            |                 |        |
+| RoomSimulator                    |                 |                       |            |        ✅       |        |
+| SevenBandParametricEQ            |       ✅        |                       |            |                 |        |
+| Shift                            |                 |           ✅          |            |                 |        |
+| Speed                            |                 |                       |     ✅     |                 |        |
+| SpecChannelShuffle               |                 |                       |            |                 |        |
+| SpecFrequencyMask                |                 |                       |     ✅     |                 |        |
+| TanhDistortion                   |       ✅        |                       |            |                 |        |
+| TimeMask                         |                 |                       |     ✅     |                 |        |
+| TimeStretch                      |                 |                       |            |                 |        |
+| Trim                             |                 |                       |            |                 |        |
+| ac3                              |                 |                       |     ✅     |                 |        |
+| adpcm_ima_wav                    |                 |                       |     ✅     |                 |        |
+| adpcm_ms                         |                 |                       |     ✅     |                 |        |
+| adpcm_yamaha                     |                 |                       |     ✅     |                 |        |
+| eac3                             |                 |                       |     ✅     |                 |        |
+| flac                             |                 |                       |     ✅     |                 |        |
+| libmp3lame                       |                 |                       |     ✅     |                 |        |
+| mp2                              |                 |                       |     ✅     |                 |        |
+| pcm_alaw                         |                 |                       |     ✅     |                 |        |
+| pcm_f32le                        |                 |                       |     ✅     |                 |        |
+| pcm_mulaw                        |                 |                       |     ✅     |                 |        |
+| pcm_s16le                        |                 |                       |     ✅     |                 |        |
+| pcm_s24le                        |                 |                       |     ✅     |                 |        |
+| pcm_s32le                        |                 |                       |     ✅     |                 |        |
+| pcm_u8                           |                 |                       |     ✅     |                 |        |
+| wmav1                            |                 |                       |     ✅     |                 |        |
+| wmav2                            |                 |                       |     ✅     |                 |        |
+| g726                             |                 |                       |            |                 |   ✅   |
+| gsm                              |                 |                       |            |                 |   ✅   |
+| amr                              |                 |                       |            |                 |   ✅   |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
+|                                  |                 |                       |            |                 |        |
