@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: autotwin_pmswsgi
+Version: 0.0.2
+Summary: Process Mining Service WSGI for Auto-Twin
+Home-page: https://github.com/AutotwinEU/proc-mining-serv
+License: BSD-3-Clause
+Keywords: auto-twin,system discovery,restful service
+Author: Lulai Zhu
+Author-email: lulai.zhu@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Manufacturing
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Dist: Flask (>=3.0.2,<4.0.0)
+Requires-Dist: Paste (>=3.7.1,<4.0.0)
+Requires-Dist: autotwin_gmglib (>=0.0.3,<0.0.4)
+Requires-Dist: waitress (>=3.0.0,<4.0.0)
+Description-Content-Type: text/markdown
+
+[![PyPI - License](https://img.shields.io/pypi/l/autotwin_pmswsgi)](https://github.com/AutotwinEU/proc-mining-serv/blob/main/LICENSE)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/autotwin_pmswsgi)](https://www.python.org/downloads/)
+[![PyPI - Version](https://img.shields.io/pypi/v/autotwin_pmswsgi)](https://pypi.org/project/autotwin_pmswsgi/)
+
+# Processing Mining Service WSGI for Auto-Twin
+
+The processing mining service WSGI implements a RESTful API that invokes
+different system discovery modules to automatically create, update and delete
+graph models, Petri nets and automata in a system knowledge graph.
+
