@@ -1,0 +1,5 @@
+=======================
+collective.manifestjson
+=======================
+
+User documentation
