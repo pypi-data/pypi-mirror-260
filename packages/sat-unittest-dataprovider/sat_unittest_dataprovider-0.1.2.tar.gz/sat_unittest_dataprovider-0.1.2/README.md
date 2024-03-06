@@ -1,0 +1,329 @@
+# Python Unittest dataprovider
+
+## Description
+Python package to add a `data_provider` decorator to a test function,   
+to execute the test with different test values / cases.    
+The test function will be executed for each record, which is defined at the `data_provider`.
+```python
+@data_provider([                    # The DataSet as a List
+    (value1, value2, value3),       # Record 1
+    (value1, value2, value3)        # Record 2    
+    (value1, value2, value3)        # Record 3    
+])
+```
+The data_provider accepts the following Types as argument
+- Function
+- Dict
+- List
+- Tuple
+
+> This package is a Python version of the PHP UnitTest dataprovider.   
+> https://phpunit.de/manual/3.7/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers
+
+
+## Installation
+```commandline
+pip install sat_unittest_dataprovider
+```
+or
+```commandline
+python -m pip install sat_unittest_dataprovider
+```
+
+## Usage
+
+> The test method will be called with the values of the record as arguments   
+> **Therefor you need to make sure, to define the same amount of arguments at the test function,**  
+> **as you defined values at the record.**
+> ```python
+> @data_provider([
+>     (arg1, arg2, arg3, arg4) 
+> ])
+> def test_multiply(arg1, arg2, arg3, arg4):
+>     ...
+>     do someting the arguments
+>     ...
+> ```
+
+> Without the unittest data provider you would probably create a test like this:
+> ```python
+> class Test(TestCase):
+>     def test_without_dataprovider(self):
+>         test_data = [
+>             (1, 1, '1 * 1 is 1'),
+>             (2, 4, '2 * 2 is 4')
+>         ]
+>         for row in test_data:
+>             given_value, expected_result, msg = row                     # We unpack the tuple here
+>             calculated_result = given_value * given_value               # Calculation
+>             self.assertEqual(expected_result, calculated_result, msg)   # The Test   
+>
+>```
+ 
+> The same test with the data_provider decorator would look like this:
+> ```python
+> class Test(TestCase):
+>     @data_provider([
+>         (1, 1, '1 * 1 is 1'),
+>         (2, 4, '2 * 2 is 4')
+>     ])
+>     def test_with_dataprovider(self, given_value, expected_result, msg):    # We get all values as function arguments
+>         calculated_result = given_value * given_value                       # Calculation
+>         self.assertEqual(expected_result, calculated_result, msg)           # The Test
+> ```
+> This makes the test more readable to others.
+***
+Simple example:
+```python
+@data_provider([
+    (1, 2, 3, '1 + 2 = 3') 
+])
+def test_simple_example(self, value, value2, expected, msg):
+    self.assertEqual(expected, value + value2, msg)
+```
+> At the example above, we define 4 values at the record, we want to test a simple number addition.   
+> The first argument `value` will be added to the second argument `value2` and we expect,   
+> that the calculated result is the same as defined in `expected`.   
+> The last argument `msg` is used as a message which will be shown, when the test fails.
+***
+Example 1:
+`DataSet is a List of Tupels`
+```python
+from unittest import TestCase
+from sat_unittest_dataprovider import data_provider
+
+class Test(TestCase):
+    
+    @data_provider([
+        (1, 1, '1 * 1 is 1'), 
+        (2, 4, '2 * 2 is 4'),
+        (3, 9, '3 * 3 is 9')
+    ])
+    def test_multiply(self, given, expected, message):
+        calculated_result = given * given
+        self.assertEqual(expected, calculated_result, message)
+```
+***
+Example 2:
+`DataSet is a List with List items`
+```python
+from unittest import TestCase
+from sat_unittest_dataprovider import data_provider
+
+class Test(TestCase):
+    
+    @data_provider([
+        [1, 1, '1 * 1 is 1'], 
+        [2, 4, '2 * 2 is 4'],
+        [3, 9, '3 * 3 is 9']
+    ])
+    def test_multiply(self, given, expected, message):
+        calculated_result = given * given
+        self.assertEqual(expected, calculated_result, message)
+```
+***
+Example 3:
+`DataSet is a Function, which should return the test records either as List, Dict or Tuple`    
+```python
+from unittest import TestCase
+from sat_unittest_dataprovider import data_provider
+
+def my_data_set():
+    return [
+        [1, 1, '1 * 1 is 1'], 
+        [2, 4, '2 * 2 is 4'],
+        [3, 9, '3 * 3 is 9']
+    ] 
+
+class Test(TestCase):
+    
+    @data_provider(my_data_set)
+    def test_multiply(self, given, expected, message):
+        calculated_result = given * given
+        self.assertEqual(expected, calculated_result, message)
+
+    @data_provider(my_data_set)
+    def test_divider(self, divider, given, message):
+        expected_result = divider                               # the expected result is the same as the divider
+        calculated_result = given / divider
+        self.assertEqual(expected_result, calculated_result)    # We don't use the message here, because for this test it doesn't make sense ;-)
+```
+> In the example above, you can use the data_set function for multiple test cases   
+> to reduce code duplication
+***
+Example 4:
+`DataSet is a seperate file`
+> For bigger tests you can place the provider functions or values in a separate file   
+> 
+`test/data_providers.py`
+```python
+ def tuples_in_list() -> list[tuple[int, int, int, str]]:
+    return [
+        (1, 2, 3, '1 + 2 is 3'),
+        (2, 2, 4, '2 + 2 is 3')
+    ]
+
+
+def tuples_in_tuple() -> tuple[tuple[int, int, int, str], ...]:
+    return (
+        (1, 2, 3, '1 + 2 is 3'),
+        (2, 2, 4, '2 + 2 is 3'),
+    )
+
+
+def dict_with_tuples() -> dict[str, tuple[int, int, int, str]]:
+    return {
+        "record_1": (1, 2, 3, '1 + 2 is 3'),
+        "record_2": (2, 2, 4, '2 + 2 is 3'),
+    }
+
+
+a_dict: dict[str, tuple[int, int, int, str]] = {
+        "record_1": (1, 2, 3, '1 + 2 is 3'),
+        "record_2": (2, 2, 4, '2 + 2 is 3'),
+    }
+```
+
+`test/test_readme_examples.py`
+```python
+from unittest import TestCase
+from sat_unittest_dataprovider import data_provider
+
+from .data_providers import (
+    tuples_in_list,
+    tuples_in_tuple,
+    dict_with_tuples,
+    a_dict
+)
+
+
+class Test(TestCase):
+
+    @data_provider(tuples_in_list)
+    def test_addition_with_tuples_in_list(self, value1, value2, expected, msg):
+        self.assertEqual(expected, value1 + value2, msg)
+
+    @data_provider(tuples_in_tuple)
+    def test_addition_with_tuples_in_tuple(self, value1, value2, expected, msg):
+        self.assertEqual(expected, value1 + value2, msg)
+
+    @data_provider(dict_with_tuples)
+    def test_addition_with_dict_with_tuples(self, value1, value2, expected, msg):
+        self.assertEqual(expected, value1 + value2, msg)
+
+    @data_provider(a_dict)
+    def test_addition_with_a_dict(self, value1, value2, expected, msg):
+        self.assertEqual(expected, value1 + value2, msg)    
+
+```
+*** 
+## Example
+We have function, which will convert a `snake_case` value to an `camelCase` value.
+The function looks like this
+
+```python
+'tests/real_world_example.py'
+
+def snake_case_to_camel_case(snake_case_value: str, first_to_upper: bool = False) -> str:
+    """
+    This function converts a given snake_case value to an camelCase, 
+    optionally you could set first_to_upper = True to return a string where the first 
+    letter is upper case as well ( camel_case => CamelCase )
+     
+    :param snake_case_value: The snake case value
+    :param first_to_upper: If True, the first letter of the first item will be uppercase as well
+    :return: The camelCase string
+    """
+    snake_case_items = snake_case_value.split("_")  # we split the value at each `_` underscore
+    camel_case_items: list = list()                 # a list to store the converted items
+
+    for index, item in enumerate(snake_case_items):
+
+        first_letter = item[:1]     # we get the first letter of the item
+        the_rest = item[1:]         # we get the rest of the string, excluding the first letter
+
+        # make sure the first item is lower case
+        if first_to_upper is False and index == 0:
+            camel_case_items.append(first_letter.lower() + the_rest)
+        else:
+            camel_case_items.append(first_letter.upper() + the_rest)
+
+    return "".join(camel_case_items)
+```
+The unit test would look like this.    
+We define 14 Test cases, within the data_provider decorator
+```python
+    @data_provider([
+        # The snake case value  | First item upper | The Expected Result     | The failure message
+        ("some_camel_case_string",      True,       "SomeCamelCaseString",      "Test Case 1, first item upper"),
+        ("this_is_Another_string",      True,       "ThisIsAnotherString",      "Test Case 2, first item upper"),
+        ("ThisIsAlreadyCamelCase",      True,       "ThisIsAlreadyCamelCase",   "Test Case 3, first item upper"),
+        ("This_is_an_other_Test",       True,       "ThisIsAnOtherTest",        "Test Case 4, first item upper"),
+        ("This_is_an_OtHer_Test",       True,       "ThisIsAnOtHerTest",        "Test Case 5, first item upper"),
+        ("a_b_c_d_e_f_g_h_i_j_k",       True,       "ABCDEFGHIJK",              "Test Case 6, first item upper"),
+        ("test_with_2_numbers_1_and_2", True,       "TestWith2Numbers1And2",    "Test Case 7, first item upper"),
+
+        # No we run the same test, but this time, the first item should be lower case
+        ("some_camel_case_string",      False,      "someCamelCaseString",      "Test Case 8, first item lower"),
+        ("this_is_Another_string",      False,      "thisIsAnotherString",      "Test Case 9, first item lower"),
+        ("ThisIsAlreadyCamelCase",      False,      "thisIsAlreadyCamelCase",   "Test Case 10, first item lower"),
+        ("This_is_an_other_Test",       False,      "thisIsAnOtherTest",        "Test Case 11, first item lower"),
+        ("This_is_an_OtHer_Test",       False,      "thisIsAnOtHerTest",        "Test Case 12, first item lower"),
+        ("a_b_c_d_e_f_g_h_i_j_k",       False,      "aBCDEFGHIJK",              "Test Case 13, first item lower"),
+        ("test_with_2_numbers_1_and_2", False,      "testWith2Numbers1And2",    "Test Case 14, first item lower")
+    ])
+```
+The first half of the test cases are designed to test that the result should return a converted value,   
+where the first letter is upper case as well. 
+```python
+(
+    "some_camel_case_string",           # The snake case value       
+    True,                               # First letter should be upper case as well
+    "SomeCamelCaseString",              # The Expected Result
+    "Test Case 1, first item upper"     # The failure message
+),
+...
+```
+The second half will test, that the result should return a converted value, where the first letter is lower case.
+```python
+(
+    "some_camel_case_string",           # The snake case value       
+    False,                              # First letter should not be upper case
+    "someCamelCaseString",              # The Expected Result
+    "Test Case8, first item lower"     # The failure message
+),
+```
+***
+```python
+'tests/test_readme_examples.py'
+
+from unittest import TestCase
+from sat_unittest_dataprovider import data_provider
+from .real_world_example import snake_case_to_camel_case
+
+
+class Test(TestCase):
+    
+    @data_provider([
+        # The snake case value  | First item upper | The Expected Result     | The failure message
+        ("some_camel_case_string",      True,       "SomeCamelCaseString",      "Test Case 1, first item upper"),
+        ("this_is_Another_string",      True,       "ThisIsAnotherString",      "Test Case 2, first item upper"),
+        ("ThisIsAlreadyCamelCase",      True,       "ThisIsAlreadyCamelCase",   "Test Case 3, first item upper"),
+        ("This_is_an_other_Test",       True,       "ThisIsAnOtherTest",        "Test Case 4, first item upper"),
+        ("This_is_an_OtHer_Test",       True,       "ThisIsAnOtHerTest",        "Test Case 5, first item upper"),
+        ("a_b_c_d_e_f_g_h_i_j_k",       True,       "ABCDEFGHIJK",              "Test Case 6, first item upper"),
+        ("test_with_2_numbers_1_and_2", True,       "TestWith2Numbers1And2",    "Test Case 7, first item upper"),
+
+        # No we run the same test, but this time, the first item should be lower case
+        ("some_camel_case_string",      False,      "someCamelCaseString",      "Test Case 8, first item lower"),
+        ("this_is_Another_string",      False,      "thisIsAnotherString",      "Test Case 9, first item lower"),
+        ("ThisIsAlreadyCamelCase",      False,      "thisIsAlreadyCamelCase",   "Test Case 10, first item lower"),
+        ("This_is_an_other_Test",       False,      "thisIsAnOtherTest",        "Test Case 11, first item lower"),
+        ("This_is_an_OtHer_Test",       False,      "thisIsAnOtHerTest",        "Test Case 12, first item lower"),
+        ("a_b_c_d_e_f_g_h_i_j_k",       False,      "aBCDEFGHIJK",              "Test Case 13, first item lower"),
+        ("test_with_2_numbers_1_and_2", False,      "testWith2Numbers1And2",    "Test Case 14, first item lower")
+    ])
+    def test_snake_case_to_camel_case(self, given_value, first_item_upper, expected_value, msg):
+        camel_case: str = snake_case_to_camel_case(given_value, first_item_upper)
+        self.assertEqual(expected_value, camel_case, msg)    
+```
