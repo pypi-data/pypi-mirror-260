@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: space_packet_parser
+Version: 4.2.0rc1
+Summary: A CCSDS telemetry packet decoding library based on the XTCE packet format description standard.
+Home-page: https://space-packet-parser.readthedocs.io
+License: BSD-3-Clause
+Keywords: ccsds,xtce,space data systems,space packet protocol,packet parsing,lasp,university of colorado,data processing,data extraction,data manipulation,data transformation,data encoding,data decoding,packet inspection,binary data,python
+Author: Gavin Medley
+Author-email: gavin.medley@lasp.colorado.edu
+Maintainer: Gavin Medley
+Maintainer-email: gavin.medley@lasp.colorado.edu
+Requires-Python: >=3.8
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: bitstring (>=3.0.0)
+Project-URL: Repository, https://github.com/medley56/space_packet_parser
+Description-Content-Type: text/markdown
+
+# Space Packet Parser
+
+----------
+![Test Status](https://github.com/medley56/space_packet_parser/actions/workflows/tests.yml/badge.svg)
+![Doc Status](https://readthedocs.org/projects/space-packet-parser/badge/?version=latest)
+
+Documentation: https://space-packet-parser.readthedocs.io/en/latest/
+
+Space Packet Parser is a package for decoding CCSDS telemetry packets according to an XTCE or CSV packet structure definition. 
+It is based on the UML model of the XTCE spec and aims to support all but the most esoteric elements of the 
+XTCE telemetry packet specification.
+
+Resources:
+- [XTCE (Green Book - Informational Report)](https://public.ccsds.org/Pubs/660x2g2.pdf)
+- [XTCE Element Description (Green Book - Informational Report)](https://public.ccsds.org/Pubs/660x1g2.pdf)
+- [XTCE (Blue Book - Recommended Standard)](https://public.ccsds.org/Pubs/660x0b2.pdf)
+
+## Installation
+```bash
+pip install space_packet_parser
+```
+
+
