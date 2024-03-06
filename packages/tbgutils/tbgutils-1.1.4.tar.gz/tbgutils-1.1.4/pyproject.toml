@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tbgutils"
+description = "General TBG Utilities"
+readme = "README.md"
+authors = [ {name="Marc Schwarzschild", email="ms@TheBrookhavenGroup.com"}, ]
+maintainers = [ {name="Marc Schwarzschild", email="ms@TheBrookhavenGroup.com"}, ]
+requires-python = ">=3.9"
+keywords = ["holidays", "dates", "commify", "commitize", "cround"]
+classifiers = ["Topic :: Utilities"]
+license = {text = "MIT"}
+dependencies = ["pytz==2022.7"]
+version = "1.1.4"
+
+[project.urls]
+homepage = "https://github.com/schwarzschild/tbgutils"
+repository = "https://github.com/schwarzschild/tbgutils"
+documentation = "https://github.com/schwarzschild/tbgutils"
