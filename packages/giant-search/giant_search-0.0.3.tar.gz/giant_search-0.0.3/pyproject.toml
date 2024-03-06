@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "giant-search"
+version = "0.0.3"
+description = "Provides a nice abstraction layer on top of the django-watson search library."
+authors = ["Scott Pashley <scott.pashley@giantdigital.co.uk>"]
+readme = "README.md"
+packages = [{ include = "giant_search" }]
+license = "MIT"
+homepage = "https://www.giantdigital.co.uk"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django-cms = "<4.0"
+django-watson = "^1.6.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
