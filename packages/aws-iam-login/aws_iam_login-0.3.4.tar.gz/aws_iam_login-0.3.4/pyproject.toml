@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "aws-iam-login"
+version = "0.3.4"
+description = "Configures STS credentials using a MFA authenticated session."
+authors = ["Joris Conijn <joris@conijnonline.nl>"]
+license = "Apache2"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^8.1.6"
+boto3 = "^1.28.19"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0"
+black = "^24.2"
+pytest-cov = "^4.1"
+mypy = "^1.8"
+radon = "^6.0"
+xenon = "^0.9"
+twine = "^5.0"
+
+[tool.poetry.scripts]
+aws-iam-login = "aws_iam_login:main"
+
+[tool.pytest]
+testpaths = "tests"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["aws_iam_login"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "@abstract"
+]
+
+[tool.semantic_release]
+build_command = "pip install poetry && poetry build"
+version_variable = [
+    "aws_iam_login/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = [ "build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test" ]
+minor_tags = [ "feat" ]
+patch_tags = [ "fix", "perf", "refactor", "chore(deps)" ]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
