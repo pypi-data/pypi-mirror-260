@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load static %}
+{% load navactive %}
+<nav class="navbar navbar-default navbar-static-top auth-navbar-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".auth-menus-collapse">
+                <span class="sr-only">{% translate "Toggle navigation" %}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand navbar-brand-zima" href="#">
+                <img src="{% static 'aa_theme_zima/icons/apple-touch-icon-57x57.png' %}?v=2" height="57" width="57" alt="{{ SITE_NAME }}" loading="lazy"/>
+                <span>{{ SITE_NAME }}</span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse auth-menus-collapse">
+            <ul class="nav navbar-nav navbar-right navbar-pills">
+                <li class="nav-item-eve-time">
+                    <div class="eve-time-wrapper">{% translate "Eve Time" %}: <span class="eve-time-clock"></span></div>
+                </li>
+                <li class="{% navactive request 'notifications:' %}" id="menu_item_notifications">
+                    {% include 'allianceauth/notifications_menu_item.html' %}
+                </li>
+
+                {% include 'allianceauth/top-menu-user-dropdown.html' %}
+            </ul>
+        </div>
+    </div>
+</nav>
