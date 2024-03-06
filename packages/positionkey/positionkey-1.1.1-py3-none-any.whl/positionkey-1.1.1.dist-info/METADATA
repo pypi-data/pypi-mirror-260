@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: positionkey
+Version: 1.1.1
+Summary: A multi-platform python package for mapping key strokes to mouse clicks.
+Author-email: Nitesh Prasad <nitesh1612@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2021 Nitesh Prasad
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Documentation, https://github.com/niteshctrl/positionkey/blob/main/README.md
+Project-URL: Repository, https://github.com/niteshctrl/positionkey/
+Project-URL: Issues, https://github.com/niteshctrl/positionkey/issues
+Keywords: tdac,keyboard shortcut,annotation,labelling
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyautogui ==0.9.53
+Requires-Dist: pynput ==1.6.7
+
+
+![pkj](https://s3.amazonaws.com/niteshctrl.com/images/positionkey.png)
+
+
+# Position Key: Relax your fingers
+PositionKey is a multi-platform python package for mapping key strokes to mouse clicks.
+
+
+## Installation
+
+### Install with pip
+PositionKey is available on PyPI as ```positionkey```. 
+1. Install PositionKey:
+```
+pip install positionkey
+```
+For positionkey for function properly, the dependencies will automatically be installed.
+
+### Local Installation
+PositionKey is compatible with Linux and Windows systems. To install a local version:
+
+1. Run installation command from the root directory:
+```
+pip install .
+```
+
+
+## Why use PositionKey?
+
+
+## Usage
+* Currently, there are four keys mapped: **D, V, L and C** which stands for Dismiss, Verify, Long and Cancel respectively. These four keystrokes can store and hit four positions on the GUI screen.
+* Say if we need to alternately click on two buttons on the computer's screen, just map the click to any two of the mentioned keys and hit the keys alternately on the keyboard as per need.
+* We can record the pixel positions of keys D, V, L, C via the numeric keys 1, 2, 3, 4 respectively. The current position of the mouse pointer will be recorded whenever the above numeric keys are pressed while the script is running.
+* The four (x, y) positions will be stored in a CSV file named 'click_positions.csv' in the current directory for resuming the same positions on succesive runs.
+* The four positions defaults to (700, 0) pixel of the screen where 700 is the X-coordinate and 0 is the Y-coordinate.
+* There is a partition function which will virtually divide the computer screen into two halves: Left and Right. The script will only run when the mouse pointer is on the left of the partition line(vertical) while won't work if the mouse pointer is on the right side of the partition line(Vertical). The partition line can be recorded by hitting the key "P" on the keyboard.
+
+  
+## Licence
+[MIT Licence](https://github.com/niteshctrl/positionkey/blob/main/LICENSE)
+
+
+
+
+
+
+
