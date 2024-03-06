@@ -1,0 +1,65 @@
+syntax = "proto2";
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+package hdmap_lib;
+
+// 3d point.
+message Point3D {
+  // x coordinate.
+  optional double x = 1;
+
+  // y coordinate.
+  optional double y = 2;
+
+  // z coordinate.
+  optional double z = 3 [default = 0.0];
+}
+
+// a line string is a line in the map. Most of time it is a road marking.
+message LineStringData {
+  // id.
+  optional Id id = 1;
+
+  enum Color {
+    WHITE = 1;
+    YELLOW = 2;
+  }
+  // line string color.
+  optional Color color = 2;
+
+  enum Type {
+    NONE = 1;
+    SOLID = 2;
+    BROKEN = 3;
+    DOUBLE_SOLID = 4;
+    DOUBLE_BROKEN = 5;
+    BROKEN_SOLID = 6;
+    SOLID_BROKEN = 7;
+    CURB = 8;
+  }
+  // line string type.
+  optional Type type = 3;
+
+  // point data.
+  repeated Point3D points = 4;
+
+  // length.
+  optional double length = 5;
+}
+
+message LineString {
+  // line string ref id.
+  optional Id id = 1;
+
+  // is a reverse line.
+  optional bool is_reverse = 2 [default = false];
+}
+
+message Curve {
+  repeated LineString lines = 1;
+}
+
+message Polygon {
+  repeated LineString lines = 1;
+}

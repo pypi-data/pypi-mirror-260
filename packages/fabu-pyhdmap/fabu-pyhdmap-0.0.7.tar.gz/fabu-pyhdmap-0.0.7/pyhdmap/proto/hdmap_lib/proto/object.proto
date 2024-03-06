@@ -1,0 +1,62 @@
+syntax = "proto2";
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/attribute.proto";
+
+package hdmap_lib;
+
+message Object {
+  // object unique id.
+  optional Id id = 1;
+
+  enum Type {
+    NONE = 1;
+    SIDE_WALK = 2;       //人行道
+    CHARGING_PILE = 3;           //充电桩
+    TEXT = 4;           //文字
+    GROUND_SIGN = 5;    //地面交通标志
+    BUS_STATION = 6;         //公交车站
+    TRAFFIC_SIGN = 7;           //交通标志牌 
+    HEIGHT_LIMIT_OBSTACLE = 8;   //限高障碍物
+    BUILDING = 9;        //建筑
+    DECELERATION_ZONE = 10;       //减速带
+    NON_SLIP_RAMP_MARKING = 11;        //防滑坡道标线
+    DIVERSION_LINE = 12;          //导流线
+    LOCK_PAVILION = 13;           //锁亭
+    REST_AREA = 14;            //休息区
+    WORKING_QUEUE_AREA = 15;         //作业排队区
+    CHARGING_AREA = 16;            //充电区
+    GRASS_GREEN_BELT = 17;            //草坪绿化带
+    PEDESTRIAN_ISLAND = 18;              //安全岛
+    EMERGENCY_PARKING_ZONE = 19;      //紧急停车带
+    FORBIDDEN_AREA = 20;         //禁行区
+    CLEAR_AREA = 21;         //禁停区
+    TRANSITION = 22;        //过渡带
+    OBSTACLE = 23;          //障碍物
+    BUSH_GREEN_BELT = 24;       //灌木绿化带
+    BRIDGE_EDGE = 25;         //引桥边沿
+  };
+  optional Type type = 2;
+
+  // polygon
+  optional Polygon polygon = 3;
+
+  // height.
+  optional double height = 4;
+
+  //text
+  optional string text = 5;
+
+  enum CrossType {
+    VEHICLE_CAN_CROSS = 1;
+    BICYCLE_CAN_CROSS = 2;
+    HUMAN_CAN_CROSS = 3;
+    CAN_NOT_CROSS = 4;
+  }
+  optional CrossType cross_type = 6;
+
+  // attributes.
+  repeated Attribute attributes = 7;
+
+}

@@ -1,0 +1,278 @@
+syntax = "proto2";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.hdmapimpl";
+option java_outer_classname = "HdmapImplProto";
+option objc_class_prefix = "HI";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/lane.proto";
+import "pyhdmap/proto/hdmap_lib/proto/road.proto";
+import "pyhdmap/proto/hdmap_lib/proto/junction.proto";
+import "pyhdmap/proto/hdmap_lib/proto/object.proto";
+import "pyhdmap/proto/hdmap_lib/proto/poi.proto";
+import "pyhdmap/proto/hdmap_lib/proto/parking_space.proto";
+import "pyhdmap/proto/hdmap_lib/proto/relation.proto";
+import "pyhdmap/proto/hdmap_lib/proto/stop_line.proto";
+import "pyhdmap/proto/hdmap_lib/proto/signal.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/crosswalk.proto";
+import "pyhdmap/proto/hdmap_lib/proto/lane_link.proto";
+
+
+service HdmapImpl {
+  //hdmap interface
+  rpc LoadMap (LoadMapRequest) returns (LoadMapReply) {}
+  rpc ReleaseMap (ReleaseMapRequest) returns (ReleaseMapReply) {}
+  rpc Reload (ReloadRequest) returns (ReloadReply) {}
+  rpc GetMap (GetMapRequest) returns (GetMapReply) {}
+  rpc GetElementById (GetElementByIdRequest) returns (GetElementByIdReply) {}
+  rpc GetElements (GetElementsRequest) returns (GetElementsReply) {}
+  
+  //lane interface
+  rpc Getprojection (GetProjectionRequest) returns (GetProjectionReply) {}
+  rpc GetPoint (GetPointRequest) returns (GetPointReply) {}
+  rpc GetHeading (GetHeadingRequest) returns (GetHeadingReply) {}
+  rpc GetWidth (GetWidthRequest) returns (GetWidthReply) {}
+  rpc GetRoadWidth (GetRoadWidthRequest) returns (GetRoadWidthReply) {}
+  rpc GetRelativeWidth (GetRelativeWidthRequest) returns (GetRelativeWidthReply) {}
+}
+
+message LoadMapRequest {
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+}
+
+message LoadMapReply {
+  optional double time_stamp = 1;
+  optional bool load_status = 2;
+  optional string uuid = 3;
+}
+
+message ReleaseMapRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+}
+
+message ReleaseMapReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+}
+
+message PointENU {
+  optional double x = 1 [default = nan];  // East from the origin, in meters.
+  optional double y = 2 [default = nan];  // North from the origin, in meters.
+  optional double z = 3
+      [default = 0.0];  // Up from the WGS-84 ellipsoid, in meters.
+  optional double offset_x = 4 [default = 0.0];  // Offset x, in meters.
+  optional double offset_y = 5 [default = 0.0];  // Offset y, in meters.
+}
+
+message Vessel {
+  optional string uuid = 1;
+  optional string description = 2;
+  // for routing
+  optional PointENU head = 3;
+  optional PointENU rear = 4;
+  optional int32 head_scale = 20;
+  optional int32 rear_scale = 21;
+  // for gui show
+  optional PointENU real_head = 5;
+  optional PointENU real_rear = 6;
+  optional int32 real_head_scale = 22;
+  optional int32 real_rear_scale = 23;
+
+  optional int32 virtual_lane_index = 8;
+  optional int32 virtual_lane_rank = 9;
+
+  optional string head_bridge = 10;
+  optional string leave_bridge = 11;
+  
+  enum GirderDirection{
+    NORMAL = 1;
+    REVERSE = 2;
+    BOTH_EAST = 3;
+    BOTH_WEST = 4;
+  };
+
+  optional GirderDirection east_area_girder_direction = 12 [default = NORMAL];
+  optional GirderDirection east_working_area_girder_direction = 13 [default = NORMAL];
+  optional GirderDirection west_working_area_girder_direction = 14 [default = NORMAL];
+  optional GirderDirection west_area_girder_direction = 15 [default = NORMAL];
+}
+
+message VesselStatus {
+  optional int64 timestamp_ms = 1;
+  repeated Vessel vessel = 2;
+}
+
+message ReloadRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional VesselStatus vessel_status = 3;
+}
+
+message ReloadReply {
+  optional double time_stamp = 1;
+  optional bool reload_status = 2;
+}
+
+message GetMapRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+}
+
+message GetMapReply {
+  optional double time_stamp = 1;
+  repeated element lane_proto = 2;
+  repeated element road_proto = 3;
+  repeated element junction_proto = 4;
+  repeated element object_proto = 5;
+  repeated element poi_proto = 6;
+  repeated element parking_space_proto = 7;
+  repeated element pull_over_region_proto = 8;
+  repeated element crosswalk_proto = 9;
+  repeated element stop_line_proto = 10;
+  repeated element signal_proto = 11;
+  map<int64, LineStringData> lines = 12;
+  repeated Relation relations = 13;
+  repeated LaneLink lane_links = 14;
+}
+
+message GetElementByIdRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  repeated int64 element_ids = 3;
+  optional string element_type = 4;
+}
+
+message element {
+  oneof element_proto {
+    Lane lane_proto = 1;
+    Road road_proto = 2;
+    Junction junction_proto = 3;
+    Object object_proto = 4;
+    Poi poi_proto = 5;
+    ParkingSpace parking_space_proto = 6;
+    PullOverRegion pull_over_region_proto = 7;
+    Crosswalk crosswalk_proto = 8;
+    StopLine stop_line_proto = 9;
+    Signal signal_proto = 10;
+  }
+}
+
+message GetElementByIdReply{
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  repeated element element_proto = 3;
+  map<int64, LineStringData> lines = 4;
+  repeated Relation relations = 5;
+  repeated LaneLink lane_links = 6;
+}
+
+message GetElementsRequest{
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional double x = 3;
+  optional double y = 4;
+  optional string element_type = 5;
+  optional double radius = 6;
+}
+
+message GetElementsReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  repeated element element_proto = 3;
+  map<int64, LineStringData> lines = 4;
+  repeated Relation relations = 5;
+  repeated LaneLink lane_links = 6;
+}
+
+// lane interface
+message GetProjectionRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double x = 4;
+  optional double y = 5;
+}
+
+message GetProjectionReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double s = 3;
+  optional double d = 4;
+}
+
+message GetPointRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double s = 4;
+  optional double d = 5;
+}
+
+message GetPointReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double x = 3;
+  optional double y = 4;
+}
+
+message GetHeadingRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double s = 4;
+}
+
+message GetHeadingReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double heading = 3;
+}
+
+message GetWidthRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double s = 4;
+}
+
+message GetWidthReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double left_width = 3;
+  optional double right_width = 4;
+}
+
+message GetRoadWidthRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double s = 4;
+}
+
+message GetRoadWidthReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double left_width = 3;
+  optional double right_width = 4;
+}
+
+message GetRelativeWidthRequest {
+  optional double time_stamp = 1;
+  optional string uuid = 2;
+  optional int64 lane_id = 3;
+  optional double x = 4;
+  optional double y = 5;
+  optional double heading = 6;
+}
+
+message GetRelativeWidthReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  optional double left_relative_width = 3;
+  optional double right_relative_width = 4;
+}

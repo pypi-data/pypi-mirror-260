@@ -1,0 +1,143 @@
+syntax = "proto2";
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+package hdmap_lib;
+
+message LaneOverlapInfo {
+  // start s.
+  optional double start_s = 1;
+
+  // end s.
+  optional double end_s = 2;
+}
+
+message ObjectRelationInfo {
+  // object id.
+  optional Id id = 1;
+
+  // object relation info if exists.
+  oneof info {
+    LaneOverlapInfo lane_overlap_info = 2;
+  }
+}
+message LaneLaneOverlap {
+  // one lane.
+  optional ObjectRelationInfo one_lane = 1;
+
+  // another lane.
+  optional ObjectRelationInfo another_lane = 2;
+}
+
+message LaneCrosswalkOverlap {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // crosswalk.
+  optional ObjectRelationInfo crosswalk = 2;
+}
+
+message LaneStopLineOverlap {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // stop line.
+  optional ObjectRelationInfo stop_line = 2;
+}
+
+message LaneClearAreaOverlap {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  //  clear area.
+  optional ObjectRelationInfo clear_area = 2;
+}
+
+message LaneJunctionOverlap {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // junction.
+  optional ObjectRelationInfo junction = 2;
+}
+
+message TrafficLightStopLineOverlap {
+  // traffic ligtht.
+  optional ObjectRelationInfo traffic_light = 1;
+
+  // stop line.
+  optional ObjectRelationInfo stop_line = 2;
+}
+
+message PoiPullOverRegionRelation {
+  // poi.
+  optional ObjectRelationInfo poi = 1;
+
+  // pull over region.
+  optional ObjectRelationInfo pull_over_region = 2;
+}
+
+message PoiParkingSpaceRelation {
+  // poi
+  optional ObjectRelationInfo poi = 1;
+
+  // parking space.
+  optional ObjectRelationInfo parking_space = 2;
+}
+
+// Depreacated.
+message LanePullOverRegionRelation {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // pull over region.
+  optional ObjectRelationInfo pull_over_region = 2;
+}
+
+message LanePoiRelation {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // poi.
+  optional ObjectRelationInfo poi = 2;
+}
+
+message LaneObjectOverlap {
+  // lane.
+  optional ObjectRelationInfo lane = 1;
+
+  // object.
+  optional ObjectRelationInfo object = 2;
+}
+
+message Relation {
+  // relation id
+  optional Id id = 1;
+
+  enum RelationType {
+    RELATION_LANE_LANE = 1;
+    RELATION_LANE_CROSSWALK = 2;
+    RELATION_LANE_STOP_LINE = 3;
+    RELATION_TRAFFIC_LIGHT_STOP_LINE = 4;
+    RELATION_POI_PULL_OVER_REGION = 5;
+    RELATION_POI_PARKING_SPACE = 8;
+    RELATION_LANE_POI = 6;
+    RELATION_LANE_OBJECT = 9;
+    RELATION_LANE_JUNCTION = 10;
+  }
+  // relation type.
+  optional RelationType type = 2;
+
+  // relation info.
+  oneof relation_info {
+    LaneLaneOverlap lane_lane_overlap_info = 6;
+    LaneCrosswalkOverlap lane_crosswalk_overlap_info = 3;
+    LaneStopLineOverlap lane_stop_line_overlap_info = 4;
+    TrafficLightStopLineOverlap traffic_light_overlap_info = 5;
+    PoiPullOverRegionRelation poi_pull_over_region_relation_info = 7;
+    PoiParkingSpaceRelation poi_parking_space_relation_info = 11;
+    LanePoiRelation lane_poi_relation_info = 9;
+    LaneObjectOverlap lane_object_overlap_info = 12;
+    LaneJunctionOverlap lane_junction_overlap_info = 13;
+  }
+}

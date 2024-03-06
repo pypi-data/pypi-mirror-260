@@ -1,0 +1,143 @@
+Metadata-Version: 2.1
+Name: fabu-pyhdmap
+Version: 0.0.7
+Summary: UNKNOWN
+Home-page: http://git.fabu.ai/zhangqiuyang/hdmapsdk-python
+Author: zhangqiuyang
+Author-email: zhangqiuyang@fabu.ai
+License: Apache
+Description: # HdmapSDK
+        
+        该SDK将fabupilot中的hdmap_lib接口打包为了python库，以提供给各独立的云端服务使用。SDK提供本地模式和远端模式两种调用方式，调用方法如下所示，可根据实际情况选择。
+        
+        ## 基本方法
+        ```
+        from  pyhdmap.api.hdmap  import  *
+          
+        if  __name__  ==  "__main__":
+        
+        pyhdmap  =  PyHDMap()
+        ```
+        
+        PyHDMap类为核心类，可以设置模式，并获取对应的manager对象
+        
+        
+        ### 远端模式
+        ```
+        pyhdmap.set_mode(Mode.REMOTE)
+        manager  =  pyhdmap.get_manager()
+        ```
+        
+        Mode.REMOTE将模式设置为远端模式，可以通过访问一个云端服务来获取数据和调用接口。
+        
+        
+        ```
+        manager.set_config("192.168.3.53", "50031", "port_yongzhou")
+        ```
+        
+        set_config函数可以在远端模式下指定访问的服务的ip、端口，以及想要使用的场景名（包括port_meishan、port_yongzhou、city）
+        
+        ### 本地模式
+        
+        
+        ```
+        pyhdmap.set_mode(Mode.LOCAL)
+        manager  =  pyhdmap.get_manager()
+        ```
+        
+        Mode.LOCAL将模式设置为本地模式，可以加载本地地图文件获取数据
+        
+        
+        ```
+        manager.set_bin_path_and_scene(bin_path, scene)
+        ```
+        set_bin_path_and_scene函数可以在本地模式下设置读取的文件路径和场景
+        注意：场景和地图文件需要匹配，不然会出现加载错误的情况
+        
+        ### 通用接口
+        
+        #### LoadMap()
+        需要在set_config函数（远端模式）或set_bin_path_and_scene函数（本地模式）调用后再调用
+        可以按设置好的配置加载地图数据，返回值为True或False
+        
+        #### ReleaseMap()
+        在服务停止时调用，可以释放掉远端地图服务中的缓存，节约资源
+        
+        #### Reload（vessels）
+        船头船尾业务接口，输入为船的数据结构类型Vessel
+        定义如下：
+        
+        ```
+        from  pyhdmap.utils.vessel  import  *
+        class  Vessel:
+        
+        def  set_head_x(self, head_x):
+            self._head_x  =  head_x   ## utm坐标值
+        
+        def  set_head_x(self, head_y):
+            self._head_y  =  head_y    ## utm坐标值
+        
+        def  set_rear_x(self, rear_x):
+            self._rear_x  =  rear_x   ## utm坐标值
+        
+        def  set_rear_y(self, rear_y):
+            self._rear_y  =  rear_y   ## utm坐标值
+        
+        def  set_head_x(self, head_bridge):
+            self._head_bridge  =  head_bridge  ## 上引桥号 如“bridge_11”
+        
+        def  set_leave_bridge(self, leave_bridge):
+            self._leave_bridge  =  leave_bridge   ## 下引桥号 如“bridge_10”
+        
+        def  set_east_area_direction(self, east_area_direction):
+            self._east_area_direction  =  east_area_direction   ##后大梁模式 （1，2，3，4）
+        
+        def  set_east_working_area_direction(self, east_working_area_direction):
+            self._east_working_area_direction  =  east_working_area_direction     ##后大梁模式 （1，2，3，4）
+        
+        def  set_west_working_area_direction(self, west_working_area_direction):
+            self._west_working_area_direction  =  west_working_area_direction     ##后大梁模式 （1，2，3，4）
+        
+        def  set_west_area_direction(self, west_area_direction):
+            self._west_area_direction  =  west_area_direction     ##后大梁模式 （1，2，3，4）
+        
+        ```
+        根据数据源的信息构造好vessels后，调用reload接口进行船头船尾设置，返回值为true或false
+        
+        #### GetMap()
+        获取全部地图数据，返回为MapInfo类
+        MapInfo中包含每种地图元素的list，有以下类型：
+        mapinfo.lines() LineStringData类，线
+        mapinfo.lanes() LaneInfo类， 车道
+        mapinfo.roads() RoadInfo类，道路
+        mapinfo.junctions() JunctionInfo类， 路口
+        mapinfo.objects() ObjectInfo类，面状对象
+        mapinfo.pois() PoiInfo类，point of interest
+        mapinfo.parking_spaces() ParkingSpaceInfo类，停车位
+        mapinfo.pull_over_regions() PullOverRegionInfo类， 靠边停车区域
+        mapinfo.stop_lines() StopLineInfo类，停止线
+        mapinfo.signals() SignalInfo类，红绿灯
+        mapinfo.crosswalks() CrosswalkInfo类，人行横道
+        
+        #### GetXXById(id)
+        通过id获取对应元素
+        
+        #### GetXXXs(point, radius)
+        在给定坐标point处，以radius为半径，搜索元素
+        仅支持有包络的元素，包括lane、road、junction、object、parking_space、crosswalk
+        只要元素的polygon与搜索范围（以point为圆心，以radius为半径的圆）有交集即可被搜索到
+        返回值为对应元素的list
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown

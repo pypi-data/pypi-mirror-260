@@ -1,0 +1,48 @@
+syntax = "proto2";
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+
+package hdmap_lib;
+
+message ParkingSpace {
+  // parking space unique id.
+  optional Id id = 1;
+
+  // left boundary.
+  optional Curve left_boundary = 2;
+
+  // right boundary.
+  optional Curve right_boundary = 3;
+
+  // central curve.
+  optional Curve central_curve = 6;
+
+  message LanePoint {
+    optional Id id = 1;
+    optional double s = 2;
+  }
+  // in lanes.
+  repeated LanePoint in_lanes = 4;
+
+  // out lanes.
+  repeated LanePoint out_lanes = 5;
+
+  optional Polygon polygon = 7;
+}
+
+message PullOverRegion {
+  // pull over region unique id.
+  optional Id id = 1;
+
+  // lane id.
+  optional Id lane_id = 2;
+
+  // side region.
+  optional double start_s = 3;
+  optional double end_s = 4;
+
+  // d offset of the lane centeral line.
+  // positive of left and negative of right.
+  optional double d = 5;
+}
