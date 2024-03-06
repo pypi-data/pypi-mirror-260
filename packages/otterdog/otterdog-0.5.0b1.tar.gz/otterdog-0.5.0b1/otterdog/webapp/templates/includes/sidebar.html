@@ -1,0 +1,117 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <i class="fas fa-otter"></i>
+      <span class="brand-text font-weight-light">Otterdog</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+          <li class="nav-item">
+            <a href="/index" class="nav-link {% if 'index' in segments %} active {% endif %}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="fas nav-icon"></i>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-header">PROJECTS</li>
+            {% for nav_level1, value_level1 in projects|dictsort %}
+            {% if value_level1|is_dict %}
+            <li class="nav-item has-treeview {% if segments[1] and segments[1].startswith(nav_level1) %} menu-open {% endif %}">
+              <a href="#" class="nav-link {% if segments[1] and segments[1].startswith(nav_level1) %} active {% endif %}">
+                <i class="nav-icon fas fa-sitemap"></i>
+                <p class="font-weight-bold">
+                  {{ nav_level1 }}
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+              {% for nav_level2, value_level2 in value_level1|dictsort %}
+                <li class="nav-item">
+                  <a href="/projects/{{ value_level2.project_name }}" class="nav-link {% if value_level2.project_name == segments[1] %} active {% endif %}">
+                    <i class="nav-icon fab fa-square-github"></i>
+                    <p>
+                      {{ value_level2.project_name|short_name }}
+                      <i class="fas nav-icon"></i>
+                    </p>
+                  </a>
+                </li>
+              {% endfor %}
+              </ul>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="/projects/{{ value_level1.project_name }}" class="nav-link {% if value_level1.project_name in segments %} active {% endif %}">
+                <i class="nav-icon fab fa-square-github"></i>
+                <p>
+                  {{ value_level1.project_name }}
+                  <i class="fas nav-icon"></i>
+                </p>
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+          <li class="nav-header">ADMINISTRATION</li>
+
+          <li class="nav-item">
+            <a href="/admin/organizations" class="nav-link {% if 'organizations' in segments %} active {% endif %}">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                GitHub Orgs
+                <i class="fas nav-icon"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/pullrequests" class="nav-link {% if 'pullrequests' in segments %} active {% endif %}">
+              <i class="nav-icon fas fa-code-pull-request"></i>
+              <p>
+                Pull Requests
+                <i class="fas nav-icon"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/tasks" class="nav-link {% if 'tasks' in segments %} active {% endif %}">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>
+                Tasks
+                <i class="fas nav-icon"></i>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+
+  {% block javascripts %}
+
+  <!-- page script -->
+  <script>
+  </script>
+
+{% endblock javascripts %}
