@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+import "pyhdmap/proto/hdmap_lib/proto/attribute.proto";
+
+message Junction {
+  // junction unique id.
+  optional Id id = 1;
+
+  // junction polygon.
+  optional Polygon polygon = 2;
+
+  // attributes.
+  repeated Attribute attributes = 3;
+
+  optional string name = 4;
+
+  optional bool is_virtual_junction = 5;
+
+  enum Type {
+    UNKNOWN = 1;
+    T_JUNCTION = 2;
+    Y_JUNCTION = 3;
+    X_JUNCTION = 6;
+    BRIDGE_ENTRANCE_JUNCTION = 8;
+    BRIDGE_EXIT_JUNCTION = 9;
+  }
+
+  optional Type type = 6;
+
+  repeated Id road_ids = 7;
+}

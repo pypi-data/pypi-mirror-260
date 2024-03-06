@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+message StopLine {
+  // stop line unique id.
+  optional Id id = 1;
+
+  // stop line curve.
+  optional Curve curve = 2;
+}

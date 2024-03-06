@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+
+message Poi {
+  // id.
+  optional Id id = 1;
+
+  // name.
+  optional string name = 2;
+
+  // type.
+  enum PoiType {
+    POI_QUEUE_REGION = 1;
+    POI_REST_REGION = 2;
+    POI_CHARGE_REGION = 3;
+    POI_LOCK_REGION = 4;
+    POI_UNLOCK_REGION = 5;
+    POI_LEAVE_REGION = 6;
+    POI_OFFLINE_REGION = 7;
+
+  }
+  optional PoiType type = 3;
+
+  //point
+  optional Point3D coordinate = 4;
+}

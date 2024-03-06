@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/attribute.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+message Crosswalk {
+  // crosswalk unique id.
+  optional Id id = 1;
+
+  // left boundary.
+  optional Curve left_boundary = 2;
+
+  // right boundary
+  optional Curve right_boundary = 3;
+
+  // attributes.
+  repeated Attribute attributes = 4;
+
+  optional Polygon polygon = 5;
+}

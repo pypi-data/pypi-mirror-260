@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+message LaneLink {
+  optional Id from_lane = 1;
+  optional double from_s = 2;
+  optional Id to_lane = 3;
+  optional double to_s = 4;
+}
