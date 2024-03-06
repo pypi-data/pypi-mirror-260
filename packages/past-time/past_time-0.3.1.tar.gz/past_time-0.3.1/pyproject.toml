@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "past-time"
+version = "0.3.1"
+description = "Visualizer for the days of the year"
+authors = ["Fabian Affolter <fabian@affolter-engineering.ch>"]
+readme = "README.rst"
+license="MIT"
+keywords = ["time", "days", "year", "past"]
+homepage = "https://github.com/audiusGmbH/audiness"
+repository = "https://github.com/audiusGmbH/audiness"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+tqdm = "*"
+click = "*"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+freezegun = "^1.4.0"
+
+[tool.poetry.scripts]
+past-time = "past_time.__init__:cli"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
