@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "zpodcli"
+version = "0.2.5"
+description = ""
+authors = ["Timo Sugliani <timo.sugliani@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "zpodcli", from = "src"}]
+
+[tool.poetry.scripts]
+zcli = "zpodcli.main:launch"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "2.6.1"
+typer = {extras = ["all"], version = "^0.9.0"}
+#zpodsdk = {path = "../zpodsdk", develop = true}
+zpodsdk = "0.2.5"
+pyyaml = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.1.1"
+ipython = "^8.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
