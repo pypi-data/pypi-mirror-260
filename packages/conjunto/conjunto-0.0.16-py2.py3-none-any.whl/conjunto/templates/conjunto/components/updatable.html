@@ -1,0 +1,12 @@
+{% load markdownify %}
+<{{ elt }}
+    id="{{ id }}"
+    hx-{{ method }}="{{ url }}"
+    hx-target="#{{ id }}" {# find any child element #}
+    hx-select="#{{ id }}"
+    hx-trigger="{{ trigger }} from:body"
+    hx-swap="outerHTML"
+    hx-disinherit="*"
+>
+    {% render_slot slots.inner_block %}
+</{{ elt }}>
