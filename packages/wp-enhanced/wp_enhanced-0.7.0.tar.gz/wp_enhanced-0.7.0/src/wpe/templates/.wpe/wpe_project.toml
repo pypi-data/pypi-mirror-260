@@ -1,0 +1,54 @@
+[project]
+version = 1
+
+[plugin_info.platform_support]
+[plugin_info.platform_support.Any]
+CanBeInsertOnBusses = true
+CanBeInsertOnAudioObjects = true
+CanBeRendered = true
+
+
+[parameters.defines.bool_param_as_checkbox]
+type = 'bool'
+rtpc = false
+default_value = true
+
+
+[parameters.defines.int_param_as_combo_box] # snake_case_name
+# int/float/bool are supported
+type = 'int'
+rtpc = true
+default_value = 0
+
+# Fields below are optional
+# Description displayed in Wwise UI. Refer to: https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=effectplugin_tools_property_help.html
+description = [
+    { language = 'en', text = 'This is a description for this parameter' },
+    { language = 'zh', text = '这是一个参数的描述' }
+]
+# Name displayed in Wwise UI, default to auto generate title from snake_case_name. e.g. en_US => en US, this_is_title => This is Title
+display_name = 'Int Parameter as Combo Box'
+# Only effective when type is 'int'
+enumeration = [
+    { displayName = 'Option 1', value = 0 },
+    { displayName = 'Option 2', value = 1 },
+]
+# Conditions for enabling parameter editing
+dependencies = [
+    { name = 'bool_param_as_checkbox', condition = 'Enumeration', values = [true] },
+]
+
+
+[parameters.defines.float_param_as_slider]
+type = 'float'
+rtpc = true
+default_value = 0
+min_value = -96
+max_value = 24
+
+description = [
+    { language = 'en', text = 'This is a description for this parameter' },
+    { language = 'zh', text = '这是一个参数的描述' }
+]
+# Refer to: https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=plugin_xml_properties.html
+user_interface = 'SliderType="6" Step="0.1" Fine="0.01" Decimals="2"'
