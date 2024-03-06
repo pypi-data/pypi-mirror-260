@@ -1,0 +1,117 @@
+[project]
+name = "smolarith"
+version = "0.1.1"
+description = "Soft-core arithmetic components written in Amaranth HDL"
+authors = [
+    { name = "William D. Jones", email = "thor0505@comcast.net" },
+]
+dependencies = [
+    "amaranth>=0.4.1",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+keywords = [
+    "multiplication",
+    "division",
+    "HDL",
+    "cpu",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Telecommunications Industry",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Other Audience",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+]
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+documentation = "https://smolarith.readthedocs.io"
+repository = "https://github.com/cr1901/smolarith"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-glob=\"*.md\""
+pythonpath = [
+    "src/",
+]
+markers = [
+    "clks: tuple of clocks to register for simulator.",
+    "module: top-level module to simulate.",
+]
+
+[tool.ruff]
+src = [
+    "src",
+    "tests",
+]
+line-length = 79
+
+[tool.ruff.lint]
+extend-select = [
+    "E501",
+    "D",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 79
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "D10",
+]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.4.2",
+    "pytest-sphinx>=0.6.0",
+]
+doc = [
+    "sphinx>=7.1.2",
+    "sphinx-rtd-theme>=2.0.0",
+    "myst-parser>=2.0.0",
+    "sphinx-autobuild>=2021.3.14",
+]
+lint = [
+    "ruff>=0.2.2",
+    "pydoclint[flake8]>=0.4.1",
+]
+builtin-yosys = [
+    "amaranth[builtin-yosys]>=0.4.1",
+]
+bench = [
+    "doit>=0.36.0",
+]
+
+[tool.pdm.scripts]
+test = "pytest"
+bench = "doit stats"
+emit = "doit -r error-only emit_verilog"
+doc = "sphinx-build doc/ doc/_build/"
+doc-test = "sphinx-build -b doctest doc/ doc/_build"
+doc-linkck = "sphinx-build doc/ doc/_linkcheck/ -b linkcheck"
+doc-auto = "sphinx-autobuild doc/ doc/_build/ --watch src/smolarith"
+
+[tool.pdm.scripts.lint]
+composite = [
+    "ruff check",
+    "flake8",
+    "doc-test",
+]
+
+[tool.doit.tasks.find_module]
+module = "smolarith.div:MulticycleDiv"
+width = 32
