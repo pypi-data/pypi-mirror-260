@@ -1,0 +1,38 @@
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "workspace"
+
+    # Override the global default and scrape targets from this job every 10 seconds.
+    scrape_interval: 10s
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    # List of target relabel configurations.
+    relabel_configs:
+      - source_labels: [ __meta_consul_dc ]
+        target_label: workspace
+      - source_labels: [ __meta_consul_service_metadata_cloudtik_cluster ]
+        target_label: cluster
+      - source_labels: [ __meta_consul_service ]
+        target_label: service
+
+    # List of Consul service discovery configurations.
+    consul_sd_configs:
+      # An optional list of tags used to filter nodes for a given service. Services must contain all tags in the list.
+      - tags:
+          - 'cloudtik-f-metrics'
+
+        # A list of services for which targets are retrieved. If omitted, all services
+        # are scraped.
+        # services:
+        #  [ - <string> ]
+
+        # The information to access the Consul API. It is to be defined
+        # as the Consul documentation requires.
+        # [ server: <host> | default = "localhost:8500" ]
+
+        # The time after which the provided names are refreshed.
+        refresh_interval: 30s
