@@ -1,0 +1,34 @@
+[package]
+name = "_convex"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "_convex"
+crate-type = ["cdylib"]
+
+[dependencies]
+convex = { path = "../convex", version = "=0.6.0" }
+futures = { workspace = true }
+parking_lot = { workspace = true }
+pyo3 = { workspace = true, features = ["abi3", "abi3-py39"] }
+pyo3-asyncio = { workspace = true, features = ["tokio-runtime"] }
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+
+[dev-dependencies]
+convex = { path = "../convex", version = "=0.6.0", features = ["testing"] }
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
+
+[build-dependencies]
+pyo3-build-config = { version = "0.20.2", features = ["resolve-config"] }
+
+[features]
+default = ["native-tls"]
+native-tls = ["convex/native-tls"]
+native-tls-vendored = ["convex/native-tls-vendored"]
+rustls-tls-native-roots = ["convex/rustls-tls-native-roots"]
+rustls-tls-webpki-roots = ["convex/rustls-tls-webpki-roots"]
