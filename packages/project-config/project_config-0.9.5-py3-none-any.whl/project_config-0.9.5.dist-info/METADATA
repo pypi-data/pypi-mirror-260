@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: project-config
+Version: 0.9.5
+Summary: Reproducible configuration across projects.
+Project-URL: Source, https://github.com/mondeja/project-config
+Project-URL: Documentation, https://mondeja.github.io/project-config
+Project-URL: Bug tracker, https://github.com/mondeja/project-config/issues
+Project-URL: Changelog, https://github.com/mondeja/project-config/releases
+Author-email: Álvaro Mondéjar Rubio <mondejar1994@gmail.com>
+License-Expression: BSD-3-Clause
+License-File: LICENSE
+Keywords: config,configuration,linter,meta-linter,project,reproducible
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Quality Assurance
+Requires-Python: <3.13,>=3.8
+Requires-Dist: appdirs~=1.0
+Requires-Dist: colored
+Requires-Dist: contextlib-chdir
+Requires-Dist: deepmerge~=1.0
+Requires-Dist: diskcache~=5.0
+Requires-Dist: identify~=2.0
+Requires-Dist: importlib-metadata-argparse-version<3,>=2
+Requires-Dist: importlib-metadata; python_version < '3.10'
+Requires-Dist: jmespath~=1.0
+Requires-Dist: pyjson5
+Requires-Dist: requests
+Requires-Dist: requests-futures~=1.0
+Requires-Dist: ruamel-yaml~=0.17
+Requires-Dist: tabulate~=0.8
+Requires-Dist: tomli-w~=1.0
+Requires-Dist: tomli~=2.0; python_version < '3.11'
+Requires-Dist: tomlkit~=0.11
+Description-Content-Type: text/markdown
+
+# project-config
+
+[![PyPI][pypi-version-badge-link]][pypi-link]
+[![Python versions][pv-image]][pypi-link]
+
+[![License][license-image]][license-link]
+[![Tests][tests-image]][tests-link]
+[![Coverage][coverage-image]][coverage-link]
+
+> Note for developers: This project is under heavy development.
+> The testing and reporter APIs may change without warning before the
+> first stable release (v1), but configuration, CLI and plugins are
+> guaranteed to be backwards compatible, so you can safely write
+> styles now.
+
+## [Documentation](https://mondeja.github.io/project-config/latest/)
+
+Lint the data files of your projects in a flexible way using JMESPaths.
+
+[pypi-link]: https://pypi.org/project/project-config
+[pypi-version-badge-link]: https://img.shields.io/pypi/v/project-config?logo=pypi&logoColor=white
+[license-image]: https://img.shields.io/pypi/l/project-config?color=light-green&logo=freebsd&logoColor=white
+[license-link]: https://github.com/mondeja/project-config/blob/master/LICENSE
+[tests-image]: https://img.shields.io/github/actions/workflow/status/mondeja/project-config/ci.yml?logo=github&label=tests&branch=master
+[tests-link]: https://github.com/mondeja/project-config/actions?query=workflow%3ACI
+[coverage-image]: https://img.shields.io/codecov/c/github/mondeja/project-config?logo=codecov&logoColor=white
+[coverage-link]: https://app.codecov.io/gh/mondeja/project-config
+[pv-image]: https://img.shields.io/pypi/pyversions/project-config?logo=python&logoColor=white
