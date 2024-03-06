@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toyds"
+authors = [{name="Harry Coultas Blum"}]
+description = "Toy datasets for training sequence models"
+version = "0.1.0"
+dependencies = [
+    "einops",
+    "torch",
+    "numpy",
+    "wandb",
+    "pydantic",
+    "tqdm",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[project.scripts]
+train = "toyds.train:cli_main"
+
+[project.urls]
+Homepage = "https://github.com/mogwai/toyds"
