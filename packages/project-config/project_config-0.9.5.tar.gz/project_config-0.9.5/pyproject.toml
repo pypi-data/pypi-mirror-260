@@ -1,0 +1,257 @@
+[project]
+name = "project-config"
+version = "0.9.5"
+description = "Reproducible configuration across projects."
+authors = [{ name = "Álvaro Mondéjar Rubio", email = "mondejar1994@gmail.com" }]
+license = "BSD-3-Clause"
+readme = "README.md"
+requires-python = ">=3.8,<3.13"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Operating System :: OS Independent",
+  "License :: OSI Approved :: BSD License",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Software Development :: Quality Assurance",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+keywords = [
+  "reproducible",
+  "project",
+  "configuration",
+  "config",
+  "linter",
+  "meta-linter"
+]
+dependencies = [
+  "importlib-metadata-argparse-version>=2,<3",
+  "contextlib-chdir",
+  "tomli-w~=1.0",
+  'pyjson5',
+  "colored",
+  "tabulate~=0.8",
+  "jmespath~=1.0",
+  "identify~=2.0",
+  "ruamel.yaml~=0.17",
+  "appdirs~=1.0",
+  "diskcache~=5.0",
+  "requests",
+  "requests-futures~=1.0",
+  "deepmerge~=1.0",
+  "tomlkit~=0.11",
+  'importlib-metadata; python_version < "3.10"',
+  'tomli~=2.0; python_version < "3.11"',
+]
+
+[project.urls]
+Source = "https://github.com/mondeja/project-config"
+Documentation = "https://mondeja.github.io/project-config"
+"Bug tracker" = "https://github.com/mondeja/project-config/issues"
+Changelog = "https://github.com/mondeja/project-config/releases"
+
+[tool.hatch.build]
+include = ["/src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/project_config"]
+
+[project.scripts]
+project-config = "project_config.__main__:main"
+
+[project."entry-points"."project_config.plugins"]
+inclusion = "project_config.plugins.inclusion:InclusionPlugin"
+jmespath = "project_config.plugins.jmespath:JMESPathPlugin"
+existence = "project_config.plugins.existence:ExistencePlugin"
+pre-commit = "project_config.plugins.contrib.pre_commit:PreCommitPlugin"
+
+[project."entry-points".pytest11]
+project-config-tester = "project_config.tests.pytest_plugin.plugin"
+
+[tool.hatch.envs.default]
+python = "3.11"
+dependencies = ["mondeja-bump"]
+
+[tool.hatch.envs.style]
+python = "3.11"
+detached = true
+dependencies = ["pre-commit"]
+
+[tool.hatch.envs.style.scripts]
+lint = "pre-commit run -a"
+
+[tool.hatch.envs.tests]
+dependencies = [
+  "pytest~=7.0",
+  "coverage~=6.4",
+  "covdefaults",
+  "contextlib-chdir",
+  "pytest-maybe-raises~=0.1",
+  "pytest-mock~=3.0",
+  "flask~=2.0",
+  "pysetenv~=1.0",
+  "pre-commit",
+]
+
+[tool.hatch.envs.tests.scripts]
+all = "pysetenv PROJECT_CONFIG_TESTS_E2E=true coverage run -m pytest"
+unit = "coverage run -m pytest tests/test_unit"
+cov = [
+  "hatch run +py=py310 tests:all",
+  "coverage html",
+  "python -c 'import webbrowser as w;w.open(\"http://127.0.0.1:8088\")'",
+  "python -m http.server 8088 -b localhost -d htmlcov",
+]
+
+[[tool.hatch.envs.tests.matrix]]
+python = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.hatch.envs.docs]
+python = "3.10"
+dependencies = [
+  "Sphinx~=5.0",
+  "sphinx-rtd-theme~=1.0",
+  "sphinx-tabs~=3.4",
+  "chios~=1.0",
+  "sphinx-argparse-cli~=1.8",
+  "sphinx-github-changelog~=1.2",
+  "pytest~=7.0",
+  "typing-extensions",
+]
+
+[tool.hatch.envs.docs.scripts]
+build = "python -m sphinx -n -T -E -W docs docs/_build/html"
+serve = [
+  "python -m sphinx -n -T -E -W docs docs/_build/html",
+  "python -c 'import webbrowser as w;w.open(\"http://127.0.0.1:8089\")'",
+  "python -m http.server 8089 -b localhost -d docs/_build/html",
+]
+
+[tool.project-config]
+cache = "30 days"
+style = [
+  # Basic Python style: use Hatch, pre-commit, Github workflows, etc
+  "gh://mondeja/project-config-styles@v5.2.1/python/base.json5",
+  # Documentation styles: use Sphinx with Readthedocs theme
+  "gh://mondeja/project-config-styles@v5.2.1/python/sphinx.json5",
+  "gh://mondeja/project-config-styles@v5.2.1/python/readthedocs.json5",
+  # Type checking with mypy
+  "gh://mondeja/project-config-styles@v5.2.1/python/mypy.json5",
+]
+
+[tool.bump]
+targets = [
+  { file = "pyproject.toml", regex = "(version = [\"'])(\\d+\\.\\d+\\.\\d+)([\"'])" },
+  { file = "docs/install.rst", regex = "(v)(\\d+\\.\\d+\\.\\d+)" },
+  { file = "contrib/mega-linter-plugin-project-config/project-config.megalinter-descriptor.yml" },
+  { file = "contrib/npm/package.json", regex = '(version": ")(\d+\.\d+\.\d+)' },
+]
+
+[tool.pytest.ini_options]
+addopts = "-s"
+
+[tool.coverage.report]
+exclude_lines = ["def __repr__\\(", "@(abc\\.)?abstractmethod"]
+fail_under = 1
+
+[tool.coverage.run]
+source = ["src"]
+plugins = ["covdefaults"]
+# Github actions reporter is visually tested in the CI
+omit = [
+  "src/project_config/tests/*",
+  "src/project-config/reporters/ghf_markdown.py"
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[tool.black]
+line-length = 80
+target-version = ["py38"]
+
+[tool.ruff]
+line-length = 80
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+  "W",
+  "B",
+  "E",
+  "I",
+  "F",
+  "A",
+  "D",
+  "G",
+  "Q",
+  "PL",
+  "UP",
+  "PT",
+  "C4",
+  "EXE",
+  "ISC",
+  "T20",
+  "INP",
+  "ARG",
+  "SIM",
+  "RET",
+  "FBT",
+  "ERA",
+  "T10",
+  "COM",
+  "SLOT",
+]
+ignore = ["E203", "G004"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "double"
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+parametrize-values-type = "tuple"
+parametrize-values-row-type = "tuple"
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+combine-as-imports = true
+force-wrap-aliases = true
+known-first-party = ["project_config", "testing_helpers"]
+known-local-folder = ["tests"]
+required-imports = ["from __future__ import annotations"]
+extra-standard-library = ["zoneinfo", "graphlib", "tomllib", "wsgiref.types"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+  "I002",
+  "D100",
+  "D101",
+  "D102",
+  "D103",
+  "D104",
+  "D107",
+  "D205",
+  "D415",
+  "INP001",
+  "PLR0913",
+  "PLR2004",
+  "ARG001",
+  "ARG004",
+  "ARG005",
+]
+"setup.py" = ["D205", "INP001", "I002"]
+"docs/conf.py" = ["INP001", "I002"]
+"examples/**" = ["INP001", "I002"]
+"src/project_config/plugins/**" = ["D101", "D102", "PLR0912", "PLR0915"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
