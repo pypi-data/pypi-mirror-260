@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: dysys
+Version: 0.1.1
+Summary: A package for working with system dynamics symbolically and numerically
+License: MIT
+Author: Rico Picone
+Author-email: rpicone@stmartin.edu
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: control (>=0.9.4,<0.10.0)
+Requires-Dist: engcom (>=0.1.7,<0.2.0)
+Requires-Dist: matplotlib (>=3.8.3,<4.0.0)
+Requires-Dist: numpy (>=1.26.4,<2.0.0)
+Requires-Dist: scipy (>=1.12.0,<2.0.0)
+Requires-Dist: slycot (>=0.5.4,<0.6.0)
+Requires-Dist: sympy (>=1.12,<2.0)
+Description-Content-Type: text/markdown
+
+# sysdynutils
+
+A Python package for system dynamics and control systems utilities (using numpy, sympy, and control)
+
+# Installation
+
+This package now published on PyPI and can be installed with
+
+```python
+pip install sysdynutils
+```
+
+# Usage
+
+To import the package into a script, use
+
+```python
+import sysdynutils as sd
+```
+
+Create a symbolic state-space model:
+
+```python
+A = [[-4, -3, 0], [0, -8, 4], [0, 0, -1]]
+B = [[0], [1], [0]]
+C = [[0, 1, 0]]
+D = [[0]]
+sys = sd.sss(A, B, C, D)  # Create a symbolic state-space model
+```
+
+Now call
+
+For further usage, see the documentation in the code.
+
+# Issues
+
+If you have issues, please report them on the [issues page](https://github.com/ricopicone/sysdynutils/issues).
+
