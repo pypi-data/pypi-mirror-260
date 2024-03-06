@@ -1,0 +1,221 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Pull Requests {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs4@1.13.10/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs4@2.2.9/css/responsive.bootstrap4.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Pull Requests</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/index">Home</a></li>
+              <li class="breadcrumb-item active">Pull Requests</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Currently open Pull Requests:</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="open-pull-requests" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Repo</th>
+                    <th>PR</th>
+                    <th>Created</th>
+                    <th>PR Status</th>
+                    <th>Draft</th>
+                    <th>Config in-sync</th>
+                    <th>Manual required</th>
+                    <th>Apply Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for pr in open_pull_requests %}
+                    <tr class="{{ 'table-secondary' if pr.draft == True else ''}}">
+                      <td><a href="https://github.com/{{ pr.org_id }}">{{ pr.org_id }}</a></td>
+                      <td><a href="https://github.com/{{ pr.org_id }}/{{ pr.repo_name }}">{{ pr.repo_name }}</a></td>
+                      <td><a href="https://github.com/{{ pr.org_id }}/{{ pr.repo_name }}/pull/{{ pr.pull_request }}">#{{ pr.pull_request }}</a></td>
+                      <td>{{ pr.created_at }}</td>
+                      <td>{{ pr.status }}</td>
+                      <td class="{{ 'text-primary' if pr.draft == True else '' }}">{{ pr.draft }}</td>
+                      <td>{{ pr.in_sync }}</td>
+                      <td>{{ pr.requires_manual_apply }}</td>
+                      <td>{{ pr.apply_status }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Merged Pull Requests:</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div id="mergedPullRequestsGrid"></div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables -->
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.10/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs4@1.13.10/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net-responsive@2.2.9/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs4@2.2.9/js/responsive.bootstrap4.min.js"></script>
+  <!-- jsGrid -->
+  <script src="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#open-pull-requests').DataTable({
+        "order": [[3, 'desc']],
+        "autoWidth": false,
+        "responsive": true,
+      });
+
+      $('#merged-pull-requests').DataTable({
+        "order": [[3, 'desc']],
+        "autoWidth": false,
+        "responsive": true,
+      });
+
+    });
+
+    $(function () {
+      $("#mergedPullRequestsGrid").jsGrid({
+          height: "auto",
+          width: "100%",
+
+          pageSize: 20,
+
+          filtering: true,
+          sorting: true,
+          paging: true,
+          pageLoading: true,
+          autoload: true,
+
+          controller: {
+              loadData: function(filter) {
+                  var d = $.Deferred();
+
+                  $.ajax({
+                      url: "/api/pullrequests/merged",
+                      data: filter,
+                      dataType: "json"
+                  }).done(function(response) {
+                      d.resolve(response);
+                  });
+
+                  return d.promise();
+              }
+          },
+
+          fields: [
+              { name: "org_id", title: "GitHub Organization", type: "text", width: 70,
+                itemTemplate: function(value, item) {
+                  return "<a href='https://github.com/" + value + "'>" + value + "</a>";
+                }
+              },
+              { name: "repo_name", title: "Repo name", type: "text", width: 50,
+                itemTemplate: function(value, item) {
+                  return "<a href='https://github.com/" + item.org_id + "/" + value + "'>" + value + "</a>";
+                }
+              },
+              { name: "pull_request", title: "Pull Request", type: "number", align: "center", width: 50,
+                itemTemplate: function(value, item) {
+                  if (value > 0) {
+                    return "<a href='https://github.com/" + item.org_id + "/" + item.repo_name + "/pull/" + value + "'>#" + value + "</a>";
+                  } else {
+                    return "N/A";
+                  }
+                }
+              },
+              { name: "merged_at", title: "Merge Time", type: "text", width: 70 },
+              { name: "status", title: "Status", type: "text", align: "center", width: 40,
+                itemTemplate: function(value) {
+                 return value.toUpperCase();
+                }
+              },
+              { name: "apply_status", title: "Applied", type: "text", align: "center", width: 40,
+                itemTemplate: function(value) {
+                 return value.toUpperCase();
+                }
+              }
+          ]
+      });
+    });
+  </script>
+
+{% endblock javascripts %}
