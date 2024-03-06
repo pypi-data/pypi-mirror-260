@@ -1,0 +1,126 @@
+Metadata-Version: 2.1
+Name: mango-mdschema
+Version: 1.0.1
+Summary: ManGO metadata schemas on iRODS
+Author-email: Mariana Montes <mariana.montes@kuleuven.be>, Ronny Moreas <ronny.moreas@kuleuven.be>
+License: MIT License
+        
+        Copyright (c) 2024 KU Leuven
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: repository, https://github.com/kuleuven/mango-mdschema
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: python-irodsclient >=1.1.1
+Requires-Dist: validators ==0.22.0
+Provides-Extra: dev
+
+# Apply ManGO metadata schemas in Python
+
+Small application to apply metadata from a metadata schema using iRODS PRC.
+
+## Requirements
+
+- `python-irodsclient`
+- `validators`
+
+## Installation
+
+You can install the package and it's dependencies with `pip`:
+
+```
+pip install "git+https://github.com/kuleuven/mango-mdschema@1.0.1"
+```
+
+> The package will be published to [Pypi](https://pypi.org/) in the near future.
+
+## Usage
+
+```python
+# authentication to iRODS
+import os, os.path
+from irods.session import iRODSSession
+from mango_mdschema import Schema
+
+env_file = os.getenv('IRODS_ENVIRONMENT_FILE', os.path.expanduser('~/.irods/irods_environment.json'))
+
+# load a schema from file
+my_schema = Schema('/path/to/schema') # this also validates it as a schema
+with iRODSSession(irods_env_file=env_file) as session:
+    obj = session.data_objects.get('path/to/my/object')
+    my_metadata = {
+        'text' : 'Some text',
+        'a_date' : '2023-04-26',
+        'author' : {
+            'name' : 'Mariana',
+            'email' : 'mariana.montes@kuleuven.be'
+        }
+    }
+    my_schema.apply(obj, my_metadata)
+```
+
+The `apply` function will first validate the provided metadata dictionary
+before applying it on the iRODS object. See the [tutorial](tutorial/) for
+more details.
+
+To only validate your metadata, without applying it, you can use the `validate`
+
+function of the schema.
+
+```python
+try:
+    validated = my_schema.validate(metadata)
+except (ConversionError, ValidationError) as err:
+    print("Oops my metadata was not valid: {err}")
+```
+
+You can check the fields in a schema with:
+
+```python
+print(my_schema)
+```
+
+The list of required fields and default values is found as the `required_fields` attribute.
+You can also check all the characteristics of a specific field such as 'name' with:
+
+```python
+my_schema.print_requirements('name') # same as print(my_schema.fields['name'])
+```
+
+You can test the list of AVUs that would be sent by providing a given
+metadata dictonary like so:
+
+```python
+avus = my_schema.to_avus(metadata)
+```
+
+The schema class can also read the metadata from ManGO and return it as
+nested dictionary with all values converted to their Python representation (
+i.e. integer fields result in `int` values, datetime fields in `datetime`
+objects, etc.).
+
+```python
+with iRODSSession(irods_env_file=env_file) as session:
+    obj = session.data_objects.get('path/to/my/object')
+    my_metadata = my_schema.extract(obj)
+```
+
+Check the [tutorial](tutorial/README.ipynb) notebook for more details.
