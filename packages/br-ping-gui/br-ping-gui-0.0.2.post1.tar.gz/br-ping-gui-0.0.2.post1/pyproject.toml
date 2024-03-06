@@ -1,0 +1,38 @@
+[project]
+name = "br-ping-gui"
+version = "0.0.2-1"
+authors = [
+    {name="Javier Alonso", email="jalfe@dtu.dk"},
+    {name="Fletcher Thompson", email="fletho@aqua.dtu.dk"},
+]
+description = "A python library for viewing and recording a bluerobotics ping 2 sensor.."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "bluerobotics-ping",
+    "numpy",
+    "matplotlib",
+    "customtkinter",
+]
+
+[project.urls]
+Homepage = "https://gitlab.gbar.dtu.dk/dtu-aqua-observation-technology/sonar/br_ping_gui"
+Issues = "https://gitlab.gbar.dtu.dk/dtu-aqua-observation-technology/sonar/br_ping_gui/-/issues"
+
+[project.scripts]
+pinggui = "br_ping_gui.seportgui:main"
+
+[tool.setuptools.packages.find]
+# All the following settings are optional:
+where = ["src"]  # ["."] by default
+include = ["br_ping_gui*"]  # ["*"] by default
+namespaces = false  # true by default
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
