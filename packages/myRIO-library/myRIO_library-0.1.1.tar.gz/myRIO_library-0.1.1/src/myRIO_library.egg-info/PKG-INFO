@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: myRIO_library
+Version: 0.1.1
+Summary: A library to control the myRIO board from National Instruments
+Home-page: https://github.com/AitzolEzeizaUPVEHU/myRIO_library
+Download-URL: https://github.com/AitzolEzeizaUPVEHU/myRIO_library/archive/refs/tags/v0.1.1.tar.gz
+Author: Aitzol Ezeiza Ramos
+Author-email: aitzol.ezeiza@ehu.eus
+License: MIT
+Keywords: myRIO,NI,National Instruments,LabVIEW,Python,FPGA,Real-Time,Embedded Systems
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Other OS
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: nifpga>=22.0.0
+Requires-Dist: requests>=2.18.4
+
+myRIO_library - a library for working with NI myRIO in Python
+
+This library is an improvement over nifpga, a Python library that
+gives access to the FPGA registers of NI targets with FPGA.
+
+In this library, we have created some support functions and a class
+named MyRIO.
