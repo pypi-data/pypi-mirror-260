@@ -1,0 +1,78 @@
+{
+  "title": "Pratica",
+  "locale": "it",
+  "logoPosition": "right",
+  "loadingHtml": "<h3>Attendere...</h3>",
+  "pages": [
+    {
+      "name": "informativa-privacy",
+      "elements": [
+        {
+          "type": "html",
+          "name": "privacy_text",
+          "html": "Ai sensi del decreto legislativo D.Lgs. 196/2003, il trattamento dei dati personali da lei forniti avverrà esclusivamente ai fini della risposta alla presente istanza, compresa la comunicazione ad altri uffici di questa stessa amministrazione. Le ricordiamo che in ogni momento potrà chiedere all'ente, la correzione, l'aggiornamento o la cancellazione dei suoi dati."
+        },
+        {
+          "type": "checkbox",
+          "name": "privacy",
+          "title": "Informativa sulla privacy",
+          "isRequired": true,
+          "requiredErrorText": "E' necessario accettare l'informativa sulla privacy",
+          "choices": [
+            {
+              "value": "consenso",
+              "text": "Acconsento"
+            }
+          ]
+        }
+      ],
+      "title": "Informativa sulla privacy",
+      "navigationTitle": "Informativa sulla privacy"
+    },
+    {
+      "name": "dati-richiedente",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "dati-del-richiedente",
+          "elements": [
+            {
+              "type": "text",
+              "name": "fullname",
+              "title": "Il/La sottoscritto",
+              "isRequired": true,
+              "valueName": "fullname",
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "email",
+              "title": "Mail di registrazione",
+              "isRequired": true,
+              "inputType": "email",
+              "valueName": "email"
+            }
+          ],
+          "title": "Dati del richiedente"
+        }
+      ],
+      "title": "Informazioni generali del richiedente",
+      "navigationTitle": "Informazioni generali del richiedente"
+    }
+  ],
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "questionErrorLocation": "bottom",
+  "showProgressBar": "top",
+  "progressBarType": "buttons",
+  "clearInvisibleValues": "onHidden",
+  "textUpdateMode": "onTyping",
+  "startSurveyText": "Inizia la compilazione",
+  "pagePrevText": "Indietro",
+  "pageNextText": "Avanti",
+  "completeText": "Invia",
+  "previewText": "Riepilogo",
+  "editText": "Modifica",
+  "showPreviewBeforeComplete": "showAllQuestions",
+  "widthMode": "responsive"
+}

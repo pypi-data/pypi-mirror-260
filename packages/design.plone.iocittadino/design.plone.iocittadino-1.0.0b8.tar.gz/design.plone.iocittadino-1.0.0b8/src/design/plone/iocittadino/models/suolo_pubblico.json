@@ -1,0 +1,167 @@
+{
+  "title": "Permesso di occupazione suolo pubblico",
+  "locale": "it",
+  "logoPosition": "right",
+  "loadingHtml": "<h3>Attendere...</h3>",
+  "pages": [
+    {
+      "name": "informativa-privacy",
+      "elements": [
+        {
+          "type": "html",
+          "name": "privacy_text",
+          "html": "Ai sensi del decreto legislativo D.Lgs. 196/2003, il trattamento dei dati personali da lei forniti avverrà esclusivamente ai fini della risposta alla presente istanza, compresa la comunicazione ad altri uffici di questa stessa amministrazione. Le ricordiamo che in ogni momento potrà chiedere all'ente, la correzione, l'aggiornamento o la cancellazione dei suoi dati."
+        },
+        {
+          "type": "checkbox",
+          "name": "privacy",
+          "title": "Informativa sulla privacy",
+          "isRequired": true,
+          "requiredErrorText": "E' necessario accettare l'informativa sulla privacy",
+          "choices": [
+            {
+              "value": "consenso",
+              "text": "Acconsento"
+            }
+          ]
+        }
+      ],
+      "title": "Informativa sulla privacy",
+      "navigationTitle": "Informativa sulla privacy"
+    },
+    {
+      "name": "dati-richiedente",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "dati-del-richiedente",
+          "elements": [
+            {
+              "type": "text",
+              "name": "fullname",
+              "title": "Il/La sottoscritto",
+              "isRequired": true,
+              "valueName": "fullname",
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "Campo4",
+              "title": "Mail di registrazione",
+              "isRequired": true,
+              "inputType": "email",
+              "valueName": "email"
+            },
+            {
+              "type": "text",
+              "name": "Campo5",
+              "title": "Nato/a",
+              "isRequired": true,
+              "requiredErrorText": "Specificare il valore"
+            },
+            {
+              "type": "text",
+              "name": "Campo6",
+              "title": "Il",
+              "isRequired": true,
+              "requiredErrorText": "Specificare la data di nascita",
+              "inputType": "date"
+            }
+          ],
+          "title": "Dati del richiedente"
+        }
+      ],
+      "title": "Informazioni generali del richiedente",
+      "navigationTitle": "Informazioni generali del richiedente"
+    },
+    {
+      "name": "informazioni-occupazione",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "info-occupazione-suolo",
+          "elements": [
+            {
+              "type": "text",
+              "name": "valore",
+              "title": "Specificare motivo dell'occupazione",
+              "isRequired": true,
+              "requiredErrorText": "Specificare il valore"
+            },
+            {
+              "type": "text",
+              "name": "mq",
+              "title": "Specificare Mq",
+              "isRequired": true,
+              "requiredErrorText": "Specificare il valore in Mq",
+              "inputType": "number",
+              "minErrorText": "Il valore non può essere minore di {0}",
+              "maxErrorText": "Il valore non può essere maggiore di {0}"
+            },
+            {
+              "type": "radiogroup",
+              "name": "Campo7",
+              "title": "Giorni di occupazione",
+              "isRequired": true,
+              "requiredErrorText": "Specificare la durata",
+              "choices": [
+                {
+                  "value": "Item 1",
+                  "text": "Giornata singola"
+                },
+                {
+                  "value": "IteGiornate Continuative",
+                  "text": "Giornate Continuative"
+                },
+                {
+                  "value": "Item 3",
+                  "text": "Altro"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "Campo8",
+              "title": "Luogo"
+            },
+            {
+              "type": "text",
+              "name": "Campo9",
+              "title": "Motivo"
+            },
+            {
+              "type": "file",
+              "name": "Campo10",
+              "title": "Allegato ricevuta di pagamento",
+              "readonlyRenderAs": "text",
+              "needConfirmRemoveFile": true
+            },
+            {
+              "type": "html",
+              "name": "Campo11",
+              "html": "Si richiede il rispetto delle sottoindicate\n<ol><li>Nella zona interessata ai lavori dovranno essere installati gli appositi segnali di pericolo temporaneo e tutti quei segnali necessari per un'adeguata segnalazione e delimitazione della zona lavori;</li>\n<li>Le parti frontali del cantiere devono essere delimitate dalle BARRIERE, a strisce alternate oblique bianche e rosse, poste parallelamente al piano stradale e ad un'altezza non inferiore a cm. 80 da terra;</li>\n<li>All'inizio del cantiere dovrà essere collocato apposito segnale pannello con le indicazioni relative alla ditta esecutrice dei lavori nonché la data di inizio e termine lavori;</li>\n<li>Il ripristino delle condizioni di transitabilità, a seguito di qualsiasi danneggiamento alla sede stradale, deve avere inizio immediatamente dopo la cessazione dell'evento che ha determinato il\ndanneggiamento;</li>\n<li>Nelle ore notturne il segnale \"LAVORI\" e le \"BARRIERE\" devono essere munite di idonei apparati luminosi di colore rosso a luce fissa;</li>\n<li>Sono vietate le lanterne luminose a fiamma libera;</li>\n<li>Il cantiere deve comprendere tutti gli accorgimenti possibili a difesa dell'incolumità dei pedoni che vi transitano in prossimità;</li>\n<li>Il mancato rispetto di una delle suindicate prescrizioni sarà oggetto delle sanzioni previste dal vigente Codice della Strada;</li>\n<li>Il pagamento della prescritta tassa di occupazione suolo pubblico dovrà essere effettuato presso la Ge.A.s.c. in Vicolo Sereni, 29, negli orari di ufficio.</li>"
+            }
+          ],
+          "title": "Informazioni sull'occupazione del suolo pubblico"
+        }
+      ],
+      "title": "Informazioni sull'occupazione del suolo pubblico",
+      "navigationTitle": "Informazioni sull'occupazione del suolo pubblico"
+    }
+  ],
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "questionErrorLocation": "bottom",
+  "showProgressBar": "top",
+  "progressBarType": "buttons",
+  "clearInvisibleValues": "onHidden",
+  "textUpdateMode": "onTyping",
+  "startSurveyText": "Inizia la compilazione",
+  "pagePrevText": "Indietro",
+  "pageNextText": "Avanti",
+  "completeText": "Invia",
+  "previewText": "Riepilogo",
+  "editText": "Modifica",
+  "showPreviewBeforeComplete": "showAllQuestions",
+  "widthMode": "responsive"
+}

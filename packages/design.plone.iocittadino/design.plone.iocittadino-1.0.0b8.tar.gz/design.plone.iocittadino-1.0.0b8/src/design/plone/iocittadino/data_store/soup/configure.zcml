@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <include package=".catalog" />
+
+  <adapter
+      factory=".store.MessageDataStoreSoupAdapter"
+      name="MESSAGE"
+      />
+  <adapter
+      factory=".store.PraticaDataStoreSoupAdapter"
+      name="PRATICA"
+      />
+  <adapter
+      factory=".store.UserDataStoreSoupAdapter"
+      name="USER"
+      />
+
+</configure>

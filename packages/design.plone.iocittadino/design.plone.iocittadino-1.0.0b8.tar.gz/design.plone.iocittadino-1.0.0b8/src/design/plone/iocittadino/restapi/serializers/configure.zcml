@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <adapter factory=".pratiche.PraticaSerializer" />
+  <adapter
+      factory=".pratiche.PraticaSerializerSummary"
+      provides="design.plone.iocittadino.interfaces.ISerializePraticaToJsonSummary"
+      />
+
+  <adapter factory=".message.MessageListSerializer" />
+  <adapter factory=".message.MessageSerializer" />
+  <adapter factory=".message.MessageSummarySerializer" />
+  <adapter factory=".modello_pratica.SerializeToJson" />
+
+</configure>

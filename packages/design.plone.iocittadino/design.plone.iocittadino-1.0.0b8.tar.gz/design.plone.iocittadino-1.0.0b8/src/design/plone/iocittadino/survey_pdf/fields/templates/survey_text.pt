@@ -1,0 +1,11 @@
+<tal:element tal:define="
+  field python: options.get('field', '');
+  value python: options.get('value', '');
+  lang python: options.get('lang', '');
+  ">
+  <tal:element tal:condition="field">
+    <div class="survey_field survey_text">
+      <p class="survey_field_title survey_text_title">${python: type(field.get('title', '')) == dict and field['title'].get(lang, '') or field.get('title')}: </p> <p class="survey_field_value survey_text_value">${value}</p>
+    </div>
+  </tal:element>
+</tal:element>

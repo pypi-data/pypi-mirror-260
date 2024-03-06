@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="design.plone.iocittadino"
+    >
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+      original="__call__"
+      replacement=".mailfromfield.MailActionExecutor_call"
+      class="collective.contentrules.mailfromfield.actions.mail.MailActionExecutor"
+      description="Fix the plone.app.contentrules workflow action edit form"
+      preserveOriginal="true"
+      zcml:condition="installed collective.contentrules.mailfromfield"
+      />
+
+  <!-- TODO: sovrascrivere executor o se si vuole sovrascrivere anche le impostazioni va sovrascitta tutta la action -->
+  <!-- <adapter
+      for="redturtle.prenotazioni.content.prenotazioni_folder.IPrenotazioniFolder
+         collective.contentrules.mailfromfield.actions.mail.IMailFromFieldAction
+         *"
+      provides="plone.contentrules.rule.interfaces.IExecutable"
+      factory=".mailfromfield.MailActionExecutor"
+      zcml:condition="installed redturtle.prenotazioni"
+      /> -->
+
+</configure>

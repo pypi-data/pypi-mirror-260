@@ -1,0 +1,38 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plone"
+    >
+
+  <configure zcml:condition="installed AccessControl.security">
+    <!-- -*- extra stuff goes here -*- -->
+
+    <permission
+        id="design.plone.iocittadino.AddModelloPratica"
+        title="design.plone.iocittadino: Add ModelloPratica"
+        />
+
+    <permission
+        id="design.plone.iocittadino.CRUDPratica"
+        title="design.plone.iocittadino: CRUD Pratica"
+        />
+    <permission
+        id="design.plone.iocittadino.CRUDMessage"
+        title="design.plone.iocittadino: CRUD Message"
+        />
+    <permission
+        id="design.plone.iocittadino.ManagePratica"
+        title="design.plone.iocittadino: Manage Pratica"
+        />
+    <permission
+        id="design.plone.iocittadino.ManageMessage"
+        title="design.plone.iocittadino: Manage Message"
+        />
+    <permission
+        id="design.plone.iocittadino.ManageBlobs"
+        title="design.plone.iocittadino: Manage Blobs"
+        />
+
+  </configure>
+
+</configure>

@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <include package=".content_store" />
+
+  <!-- indexers -->
+  <adapter
+      factory=".indexers.tassonomia_argomenti"
+      name="tassonomia_argomenti"
+      />
+
+</configure>

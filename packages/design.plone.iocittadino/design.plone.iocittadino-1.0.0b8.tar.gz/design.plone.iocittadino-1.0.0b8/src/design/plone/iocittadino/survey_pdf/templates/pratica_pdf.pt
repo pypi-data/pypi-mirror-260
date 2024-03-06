@@ -1,0 +1,31 @@
+<tal:element
+  tal:define="
+    portal python: options.get('portal', {});
+    logob64 python: options.get('logob64', '');
+    pratica_model python: options.get('pratica_model', '');
+    "
+  >
+  <!DOCTYPE html>
+  <html lang="en">
+    <body>
+      <header class="header">
+        <tal:element>
+          <img id="logo" style="width:300px" tal:attributes="src logob64">
+        </tal:element>
+        <h1 class="title">${python: getattr(portal, 'title', '')}</h1>
+        <h2 class="description">${python: getattr(portal, 'description', '')}</h2>
+      </header>
+      <section>
+        <div class="pratica_model">
+          <h4>${pratica_model/title}</h4>
+        </div>
+        <div class="fields_block">
+          <tal:element tal:replace="structure python: options.get('fields_block', '')">
+        <div>
+      </section>
+      <footer class="footer">
+        Io-Cittadino
+      </footer>
+    </body>
+  </html>
+</tal:element>

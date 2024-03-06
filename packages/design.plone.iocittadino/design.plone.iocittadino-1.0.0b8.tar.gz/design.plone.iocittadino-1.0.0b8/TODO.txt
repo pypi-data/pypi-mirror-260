@@ -1,0 +1,60 @@
+Questa todo list per me serve per capire cosa manca per rendere rilasciabile in 
+produzione questo backend
+
+0. Lo step 0 è cruciale: imho occorre definire bene con chi sa meglio di noi di 
+   queste cose qual'è l'iter completo della vita di una pratica. O usare una
+   demo di uno dei vari competitor e vedere se troviamo funzionalità utili a
+   cui non abbiamo pensato. O fare interviste ai primi potenziali clienti.
+
+01. Gestire correttamente gli id vari. Se si cancella un contenuto Plone questo 
+    deve poter essere ricreato senza avere pratiche che rimangono "orfane".
+
+02. Sistemare la security. Non è che se uno arriva e passa in request 
+    l'id pratica di qualcun'altro può vedere tutto o modificare. 
+    Servono controlli seri!
+    Si parla di sistemare le permission dei service restapi e fare dei controlli 
+    al loro interno per capire chi può fare l'azione (eg. solo l'utente con un 
+    certo cf può aggiornare una pratica relativa ad un certo cf; 
+    magari oltre all'admin)
+
+03. Lock sui record? supponiamo che solo il cittadino lavora su una sua pratica 
+    finché non la sottomette. Ma dopo cosa succede con gli operatori? Un 
+    operatore usa la pratica in sola lettura? Se devono scrivere, non può essere
+    che due scrivono cose diverse. Oppure si: una richiesta sarà sempre accettata
+    o rifiutata indipendenmente dall'operatore che la lavora.
+
+04. controlli sul fatto che non puoi sottomettere la stessa domanda due volte.
+    O puoi farlo? Il cittadino può fare due richieste per l'iscrizione all'asilo
+    dei figli? Fare due volte richiesta di matrimonio?
+
+05. Gestire il cambio di tipo del form se una pratica è in bozza.
+    Se cambia il form dobbiamo poter fare qualcosa. Questo può voler dire
+    che ci salviamo il form originale nel record o altro
+
+06.  Autenticazione con gestione del CF (usato come username utente)?
+
+07. Risposte sensate ai vari endpoint secondo quanto ci chiede il FE. Sono da
+    gestire possibili errori, messaggi sensti in concomitanza di errori o dati 
+    non trovati, etc.
+
+08. Decidere la UX ed eventualmente rivedere gli endpoint (nomi, contesto 
+    chiamate); secondo me questa cosa è guidata dalla UX.
+
+09. Stampa in PDF?
+
+10. Validazione lato backend
+
+11. Salvataggio dello schema?
+   
+12. Definire il workflow della pratica
+
+13. Non si deve poter cancellare pratiche non draft/bozza
+
+14. Gestire paginazione/batch dei risultati
+
+15. Backend su postgresql
+   15.1 ambiente
+   15.2 modello
+   15.3 aggiornare query o fare altro adapter
+   15.4 pannello di contollo per scegliere se scrivere dentro souper oppure 
+        postgresql

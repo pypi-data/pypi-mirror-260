@@ -1,0 +1,255 @@
+{
+  "title": "Rilascio contrassegno di parcheggio per disabili",
+  "locale": "it",
+  "logoPosition": "right",
+  "loadingHtml": "<h3>Attendere...</h3>",
+  "pages": [
+    {
+      "name": "informativa-privacy",
+      "elements": [
+        {
+          "type": "html",
+          "name": "Campo4",
+          "html": "Ai sensi del decreto legislativo D.Lgs. 196/2003, il trattamento dei dati personali da lei forniti avverrà esclusivamente ai fini della risposta alla presente istanza, compresa la comunicazione ad altri uffici di questa stessa amministrazione. Le ricordiamo che in ogni momento potrà chiedere all'ente, la correzione, l'aggiornamento o la cancellazione dei suoi dati."
+        },
+        {
+          "type": "checkbox",
+          "name": "privacy",
+          "title": "Informativa sulla privacy",
+          "isRequired": true,
+          "requiredErrorText": "E' necessario accettare l'informativa sulla privacy",
+          "choices": [
+            {
+              "value": "consenso",
+              "text": "Acconsento"
+            }
+          ]
+        }
+      ],
+      "title": "Informativa sulla privacy",
+      "navigationTitle": "Informativa sulla privacy"
+    },
+    {
+      "name": "dati-richiedente",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "dati-del-richiedente",
+          "elements": [
+            {
+              "type": "text",
+              "name": "il-sottoscritto",
+              "title": "Il sottoscritto",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati",
+              "valueName": "fullname",
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "nato-a",
+              "title": "Nato a",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "provincia",
+              "title": "Provincia",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "il",
+              "title": "Il",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati",
+              "inputType": "date"
+            },
+            {
+              "type": "text",
+              "name": "residente-a",
+              "title": "Residente a",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "provincia-residenza",
+              "title": "Provincia",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "via",
+              "title": "Via",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "civico",
+              "title": "Civico",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "codice-fiscale",
+              "title": "Codice fiscale",
+              "isRequired": true,
+              "requiredErrorText": "Inserire il codice fiscale",
+              "validators": [
+                {
+                  "type": "regex",
+                  "text": "Il codice fiscale non è in un formato corretto",
+                  "regex": "^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$"
+                }
+              ],
+              "valueName": "fiscal_code"
+            }
+          ],
+          "title": "Dati del richiedente"
+        },
+        {
+          "type": "panel",
+          "name": "delega",
+          "elements": [
+            {
+              "type": "html",
+              "name": "Campo16",
+              "requiredErrorText": "Inserire i dati ",
+              "html": "Oppure se ricorre il caso"
+            },
+            {
+              "type": "text",
+              "name": "in-nome-per-conto",
+              "title": "In nome e per conto dell'invalido Sig./ra",
+              "requiredErrorText": "Inserire i dati "
+            },
+            {
+              "type": "text",
+              "name": "nato-a-delega",
+              "title": "Nato a",
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "il-delega",
+              "title": "Il",
+              "requiredErrorText": "Inserire i dati",
+              "inputType": "date"
+            },
+            {
+              "type": "text",
+              "name": "residente-a-delega",
+              "title": "Residente a",
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "via-delega",
+              "title": "Via",
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "provincia-delega",
+              "title": "Provincia",
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "text",
+              "name": "civico-delega",
+              "title": "Civico",
+              "requiredErrorText": "Inserire i dati"
+            },
+            {
+              "type": "html",
+              "name": "testo-delega",
+              "html": "che si trova in situazione di impedimento per ragioni connesse allo stato di salute"
+            },
+            {
+              "type": "text",
+              "name": "in-qualita-delega",
+              "title": "In qualità di (Genitore-Figlio-Nipote-Tutore ecc. dell'Invalido)"
+            }
+          ],
+          "title": "Delega"
+        }
+      ],
+      "title": "Informazioni generali del richiedente",
+      "navigationTitle": "Informazioni generali del richiedente"
+    },
+    {
+      "name": "chiede",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "Gruppo di campi1",
+          "elements": [
+            {
+              "type": "html",
+              "name": "disclaimer",
+              "html": "a norma dell'art. 188 del D.Lvo 30.491 n. 285 Codice della Strada, dell'art.381 del DPR 16.12.92 n. 495 Regolamento di Esecuzione e dell'art. 12 del DPR 24.7./96 n. 503 il RILASCIO DELL'AUTORIZZAZIONE per la circolazione e la sosta dei veicoli al servizio di persona con capacità di deambulazione sensibilmente ridotta e del relativo \"Contrassegno Invalidi\", per usufruire delle strutture che consentono e agevolano la mobilità, ed al fine del rilascio da parte delle autorità competenti delle\nautorizzazioni \"Speciali\" di cui all'art. 11, \ncomma 1 del DPR n. 503/96 e dell'art. 7 comma 4 del D.Lvo n. 285/92.  "
+            },
+            {
+              "type": "text",
+              "name": "dichiaro",
+              "title": "Ai fini di cui sopra, D I C H I A R O, sotto la mia personale responsabilità, di essere in possesso oppure, se ricorre il caso, che la persona Invalida è in possesso dei seguenti elementi oggettivi che giustificano la richiesta",
+              "isRequired": true
+            },
+            {
+              "type": "html",
+              "name": "Campo5",
+              "html": "A tal fine si allega alla presente:\n"
+            },
+            {
+              "type": "file",
+              "name": "allegati",
+              "title": "Certificazione di riconoscimento della Invalidità e/o Certificazione medica, rilasciata dall'Ufficio medico-legale dell'Azienda USL di appartenenza, attestante il possesso di un \"Effettivo Impedimento o una sensibile riduzione della Capacità di deambulazione\"",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i documenti richiesti",
+              "waitForUpload": true
+            },
+            {
+              "type": "file",
+              "name": "Campo3",
+              "title": "N. 1 foto formato tessera della persona Invalida",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i documenti richiesti",
+              "waitForUpload": true
+            },
+            {
+              "type": "file",
+              "name": "Campo6",
+              "title": "Copia fotostatica del o dei documenti di identità",
+              "isRequired": true,
+              "requiredErrorText": "Inserire i documenti richiesti",
+              "waitForUpload": true
+            }
+          ]
+        }
+      ],
+      "title": "CHIEDE",
+      "navigationTitle": "CHIEDE"
+    }
+  ],
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "questionErrorLocation": "bottom",
+  "showProgressBar": "top",
+  "progressBarType": "buttons",
+  "clearInvisibleValues": "onHidden",
+  "textUpdateMode": "onTyping",
+  "startSurveyText": "Inizia la compilazione",
+  "pagePrevText": "Indietro",
+  "pageNextText": "Avanti",
+  "completeText": "Invia",
+  "previewText": "Riepilogo",
+  "editText": "Modifica",
+  "showPreviewBeforeComplete": "showAllQuestions",
+  "widthMode": "responsive"
+}
