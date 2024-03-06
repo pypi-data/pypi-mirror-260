@@ -1,0 +1,106 @@
+[tool.poetry]
+name = "backstage_catalog_client"
+version = "0.0.2"
+description = "a python client for the Backstage catalog API"
+authors = ["Mike Spiegel <mspiegel31@gmail.com>"]
+repository = "https://github.com/mspiegel31/backstage-catalog-client"
+documentation = "https://mspiegel31.github.io/backstage-catalog-client/"
+readme = "README.md"
+packages = [
+  {include = "backstage_catalog_client"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <4.0"
+httpx = "^0.27.0"
+typing-extensions = "^4.10.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+deptry = "^0.12.0"
+mypy = "^1.5.1"
+pre-commit = "^3.4.0"
+tox = "^4.11.1"
+pytest-asyncio = "^0.23.5"
+respx = "^0.20.2"
+ipykernel = "^6.29.3"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocs-material = "^9.2.7"
+mkdocstrings = {extras = ["python"], version = "^0.23.0"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+files = ["backstage_catalog_client"]
+disallow_untyped_defs = "True"
+disallow_any_unimported = "True"
+no_implicit_optional = "True"
+check_untyped_defs = "True"
+warn_return_any = "True"
+warn_unused_ignores = "True"
+show_error_codes = "True"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py37"
+line-length = 120
+fix = true
+select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # mccabe
+    "C90",
+    # pycodestyle
+    "E", "W",
+    # pyflakes
+    "F",
+    # pygrep-hooks
+    "PGH",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+    # tryceratops
+    "TRY",
+]
+ignore = [
+    # LineTooLong
+    "E501",
+    # DoNotAssignLambda
+    "E731",
+]
+
+[tool.ruff.format]
+preview = true
+
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = ["backstage_catalog_client"]
+
+
+[tool.ruff.per-file-ignores]
+"tests/*" = ["S101"]
