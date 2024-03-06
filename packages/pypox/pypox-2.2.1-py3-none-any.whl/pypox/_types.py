@@ -1,0 +1,21 @@
+from typing import NewType
+
+
+QueryStr = NewType("QueryStr", str)
+QueryInt = NewType("QueryInt", int)
+QueryFloat = NewType("QueryFloat", float)
+QueryBool = NewType("QueryBool", bool)
+PathStr = NewType("PathStr", str)
+PathInt = NewType("PathInt", int)
+PathFloat = NewType("PathFloat", float)
+PathBool = NewType("PathBool", bool)
+HeaderStr = NewType("HeaderStr", str)
+HeaderInt = NewType("HeaderInt", int)
+HeaderFloat = NewType("HeaderFloat", float)
+HeaderBool = NewType("HeaderBool", bool)
+CookieStr = NewType("CookieStr", str)
+CookieInt = NewType("CookieInt", int)
+CookieFloat = NewType("CookieFloat", float)
+CookieBool = NewType("CookieBool", bool)
+BodyDict = NewType("BodyDict", dict)
+BodyForm = NewType("BodyForm", dict)
