@@ -1,0 +1,36 @@
+tests/data/*.csv
+
+venv/*
+
+# Build related folders
+**/dist
+**/JaxFin.egg-info
+
+# various caches
+**/.pytest_cache
+**/__pycache__/
+**/.mypy_cache
+
+# Pylint output
+pylint_res.txt
+
+# Examples folder 
+jaxfin/examples/
+
+# examples requirements
+jaxfin/examples/requirements.txt
+
+# Nox environments
+**/.nox
+
+# Test results
+test_report.xml
+test_report.html
+
+## Coverage results
+.coverage
+htmlcov/
+
+# Version file
+jaxfin.VERSION
+version.txt
