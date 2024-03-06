@@ -1,0 +1,1 @@
+from .custom_execption import InvalideQueryPattern
