@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "NeuroNetworkByHands"
+version = "0.1.1"
+description = "A package for building a neural network from scratch"
+authors = ["Yuxiang He <yuxianghe@gmail.com>"]
+license = "MIT"
+readme = "NeuroNetworkByHands/README.md"
+keywords = ["NN", "Optimization"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "*"
+matplotlib = "*"
+scipy = "*"
+benchmark_functions = "*"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+repository = "https://github.com/YuXHe15/NeuronetworkByHands.git"
+
+[[tool.poetry.packages]]
+include = "NeuroNetworkByHands"
+from = "."
