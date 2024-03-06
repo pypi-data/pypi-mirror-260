@@ -1,0 +1,419 @@
+Metadata-Version: 2.1
+Name: jarvisbot-python
+Version: 1.12.3
+Summary: The official Python library for the JarvisBot API
+Project-URL: Homepage, https://github.com/jarvisbot-ai/jarvisbot-python
+Project-URL: Repository, https://github.com/jarvisbot-ai/jarvisbot-python
+Author-email: JarvisBot <support@jarvisbot.ai>
+License-Expression: Apache-2.0
+License-File: LICENSE
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Requires-Python: >=3.7.1
+Requires-Dist: anyio<5,>=3.5.0
+Requires-Dist: cached-property; python_version < '3.8'
+Requires-Dist: distro<2,>=1.7.0
+Requires-Dist: httpx<1,>=0.23.0
+Requires-Dist: pydantic<3,>=1.9.0
+Requires-Dist: sniffio
+Requires-Dist: tqdm>4
+Requires-Dist: typing-extensions<5,>=4.7
+Provides-Extra: datalib
+Requires-Dist: numpy>=1; extra == 'datalib'
+Requires-Dist: pandas-stubs>=1.1.0.11; extra == 'datalib'
+Requires-Dist: pandas>=1.2.3; extra == 'datalib'
+Description-Content-Type: text/markdown
+
+# JarvisBot Python API library
+> [!IMPORTANT]
+> This SDK is fork from OpenAI repository[tag 1.12.0], we try our best to make it compatible with OpenAI, but it may change in the future.
+
+## Installation
+
+```sh
+pip install jarvisbot-python
+```
+
+## Usage
+
+The full API of this library can be found in [api.md](api.md).
+
+```python
+import os
+from jarvisbot import JarvisBot
+
+j = JarvisBot(
+    # This is the default and can be omitted
+    api_key=os.environ.get("JARVISBOT_API_KEY"),
+)
+
+chat_completion = j.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Say this is a test",
+        }
+    ],
+    model="llama2",
+)
+```
+
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `JARVISBOT_API_KEY="My API Key"` to your `.env` file
+so that your API Key is not stored in source control.
+
+## Async usage
+
+Simply import `AsyncJarvisBot` instead of `JarvisBot` and use `await` with each API call:
+
+```python
+import os
+import asyncio
+from jarvisbot import AsyncJarvisBot
+
+j = AsyncJarvisBot(
+    # This is the default and can be omitted
+    api_key=os.environ.get("JARVISBOT_API_KEY"),
+)
+
+
+async def main() -> None:
+    chat_completion = await j.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": "Say this is a test",
+            }
+        ],
+        model="llama2",
+    )
+
+
+asyncio.run(main())
+```
+
+Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+## Streaming Responses
+
+We provide support for streaming responses using Server Side Events (SSE).
+
+```python
+from jarvisbot import JarvisBot
+
+j = JarvisBot()
+
+stream = j.chat.completions.create(
+    model="llama2",
+    messages=[{"role": "user", "content": "Say this is a test"}],
+    stream=True,
+)
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+The async client uses the exact same interface.
+
+```python
+from jarvisbot import AsyncJarvisBot
+
+j = AsyncJarvisBot()
+
+
+async def main():
+    stream = await j.chat.completions.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": "Say this is a test"}],
+        stream=True,
+    )
+    async for chunk in stream:
+        print(chunk.choices[0].delta.content or "", end="")
+
+
+asyncio.run(main())
+```
+
+## Module-level client
+
+> [!IMPORTANT]
+> We highly recommend instantiating client instances instead of relying on the global client.
+
+We also expose a global client instance that is accessible in a similar fashion to versions prior to v1.
+
+```py
+import jarvisbot as j
+
+# optional; defaults to `os.environ['JARVISBOT_API_KEY']`
+j.api_key = '...'
+
+# all client options can be configured just like the `OpenAI` instantiation counterpart
+j.base_url = "https://..."
+j.default_headers = {"x-foo": "true"}
+
+completion = j.chat.completions.create(
+    model="llama2",
+    messages=[
+        {
+            "role": "user",
+            "content": "How do I output all files in a directory using Python?",
+        },
+    ],
+)
+print(completion.choices[0].message.content)
+```
+
+The API is the exact same as the standard client instance based API.
+
+This is intended to be used within REPLs or notebooks for faster iteration, **not** in application code.
+
+We recommend that you always instantiate a client (e.g., with `client = JarvisBot()`) in application code because:
+
+- It can be difficult to reason about where client options are configured
+- It's not possible to change certain client options without potentially causing race conditions
+- It's harder to mock for testing purposes
+- It's not possible to control cleanup of network connections
+
+## Using types
+
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like:
+
+- Serializing back into JSON, `model.model_dump_json(indent=2, exclude_unset=True)`
+- Converting to a dictionary, `model.model_dump(exclude_unset=True)`
+
+Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Pagination
+
+List methods in the OpenAI API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```python
+import jarvisbot
+
+j = jarvisbot.JarvisBot()
+
+all_jobs = []
+# Automatically fetches more pages as needed.
+for job in j.fine_tuning.jobs.list(
+    limit=20,
+):
+    # Do something with job here
+    all_jobs.append(job)
+print(all_jobs)
+```
+
+Or, asynchronously:
+
+```python
+import asyncio
+import jarvisbot
+
+j = jarvisbot.AsyncJarvisBot()
+
+
+async def main() -> None:
+    all_jobs = []
+    # Iterate through items across all pages, issuing requests as needed.
+    async for job in j.fine_tuning.jobs.list(
+        limit=20,
+    ):
+        all_jobs.append(job)
+    print(all_jobs)
+
+
+asyncio.run(main())
+```
+
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
+
+```python
+first_page = await j.fine_tuning.jobs.list(
+    limit=20,
+)
+if first_page.has_next_page():
+    print(f"will fetch next page using these details: {first_page.next_page_info()}")
+    next_page = await first_page.get_next_page()
+    print(f"number of items we just fetched: {len(next_page.data)}")
+
+# Remove `await` for non-async usage.
+```
+
+Or just work directly with the returned data:
+
+```python
+first_page = await j.fine_tuning.jobs.list(
+    limit=20,
+)
+
+print(f"next page cursor: {first_page.after}")  # => "next page cursor: ..."
+for job in first_page.data:
+    print(job.id)
+
+# Remove `await` for non-async usage.
+```
+
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from jarvisbot import JarvisBot
+
+j = JarvisBot()
+
+completion = j.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Can you generate an example json object describing a fruit?",
+        }
+    ],
+    model="llama2",
+    response_format={"type": "json_object"},
+)
+```
+
+## File Uploads
+
+Request parameters that correspond to file uploads can be passed as `bytes`, a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance or a tuple of `(filename, contents, media type)`.
+
+```python
+from pathlib import Path
+from jarvisbot import JarvisBot
+
+j = JarvisBot()
+
+j.files.create(
+    file=Path("input.jsonl"),
+    purpose="fine-tune",
+)
+```
+
+The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
+
+## Handling errors
+
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `openai.APIConnectionError` is raised.
+
+When the API returns a non-success status code (that is, 4xx or 5xx
+response), a subclass of `openai.APIStatusError` is raised, containing `status_code` and `response` properties.
+
+All errors inherit from `openai.APIError`.
+
+```python
+import jarvisbot
+from jarvisbot import JarvisBot
+
+j = JarvisBot()
+
+try:
+    j.fine_tuning.jobs.create(
+        model="llama2",
+        training_file="file-abc123",
+    )
+except jarvisbot.APIConnectionError as e:
+    print("The server could not be reached")
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+except jarvisbot.RateLimitError as e:
+    print("A 429 status code was received; we should back off a bit.")
+except jarvisbot.APIStatusError as e:
+    print("Another non-200-range status code was received")
+    print(e.status_code)
+    print(e.response)
+```
+
+Error codes are as followed:
+
+| Status Code | Error Type                 |
+| ----------- | -------------------------- |
+| 400         | `BadRequestError`          |
+| 401         | `AuthenticationError`      |
+| 403         | `PermissionDeniedError`    |
+| 404         | `NotFoundError`            |
+| 422         | `UnprocessableEntityError` |
+| 429         | `RateLimitError`           |
+| >=500       | `InternalServerError`      |
+| N/A         | `APIConnectionError`       |
+
+### Retries
+
+Certain errors are automatically retried 2 times by default, with a short exponential backoff.
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+429 Rate Limit, and >=500 Internal errors are all retried by default.
+
+You can use the `max_retries` option to configure or disable retry settings:
+
+```python
+from jarvisbot import JarvisBot
+
+# Configure the default for all requests:
+j = JarvisBot(
+    # default is 2
+    max_retries=0,
+)
+
+# Or, configure per-request:
+j.with_options(max_retries=5).chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "How can I get the name of the current day in Node.js?",
+        }
+    ],
+    model="llama2",
+)
+```
+
+### Timeouts
+
+By default requests time out after 10 minutes. You can configure this with a `timeout` option,
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+
+```python
+from jarvisbot import JarvisBot
+
+# Configure the default for all requests:
+j = JarvisBot(
+    # 20 seconds (default is 10 minutes)
+    timeout=20.0,
+)
+
+# More granular control:
+j = JarvisBot(
+    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
+)
+
+# Override per-request:
+j.with_options(timeout=5 * 1000).chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "How can I list all files in a directory using Python?",
+        }
+    ],
+    model="llama2",
+)
+```
+
+On timeout, an `APITimeoutError` is thrown.
+
+Note that requests that time out are [retried twice by default](#retries).
+
+## Requirements
+
+Python 3.7 or higher.
