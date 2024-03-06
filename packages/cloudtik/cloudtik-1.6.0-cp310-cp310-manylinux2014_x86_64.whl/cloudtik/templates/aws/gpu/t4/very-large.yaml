@@ -1,0 +1,18 @@
+from: aws/gpu/base
+
+# Cloud-provider specific configuration.
+provider:
+    type: aws
+
+# 8 * T4
+# The instance configuration for a very large instance type
+available_node_types:
+    worker.default:
+        node_config:
+            InstanceType: g4dn.metal
+            BlockDeviceMappings:
+                - DeviceName: /dev/sda1
+                  Ebs:
+                      VolumeSize: 256
+                      VolumeType: gp2
+                      DeleteOnTermination: True

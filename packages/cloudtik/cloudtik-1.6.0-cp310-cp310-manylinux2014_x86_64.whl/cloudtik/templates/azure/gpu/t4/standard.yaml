@@ -1,0 +1,18 @@
+from: azure/gpu/base
+
+# Cloud-provider specific configuration.
+provider:
+    type: azure
+
+# 1 * T4
+# The instance configuration for a standard instance type
+available_node_types:
+    head.default:
+        node_config:
+            azure_arm_parameters:
+                vmSize: Standard_D8s_v4
+    worker.default:
+        node_config:
+            azure_arm_parameters:
+                vmSize: Standard_NC16as_T4_v3
+                osDiskSizeGB: 256
