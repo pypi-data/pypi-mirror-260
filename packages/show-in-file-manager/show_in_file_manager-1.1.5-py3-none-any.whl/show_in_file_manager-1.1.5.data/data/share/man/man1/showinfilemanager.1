@@ -1,0 +1,38 @@
+.TH SHOWINFILEMANAGER "1" "2024\-03\-06" "show\-in\-file\-manager 1.1.5" "Generated Python Manual"
+.SH NAME
+showinfilemanager
+.SH SYNOPSIS
+.B showinfilemanager
+[-h] [--version] [-f FILE_MANAGER] [-s] [--verbose] [--debug] [path ...]
+.SH DESCRIPTION
+Platform independent Python module to open the system file manager and optionally select files in it 
+
+.TP
+\fBpath\fR
+zero or more URIs or paths of files or directories
+
+.SH OPTIONS
+.TP
+\fB\-\-version\fR
+show program's version number and exit
+
+.TP
+\fB\-f\fR \fI\,FILE_MANAGER\/\fR, \fB\-\-file\-manager\fR \fI\,FILE_MANAGER\/\fR
+file manager to run
+
+.TP
+\fB\-s\fR, \fB\-\-select\-folder\fR
+select folder instead of displaying its contents
+
+.TP
+\fB\-\-verbose\fR
+display command being run to stdout
+
+.TP
+\fB\-\-debug\fR
+output debugging information to stdout
+
+.SH AUTHOR
+.nf
+Damon Lynch <damonlynch@gmail.com>
+.fi
