@@ -1,0 +1,152 @@
+{% load l10n %}
+{% autoescape off %}
+{% localize off %}
+:root { {% for style in styles %}
+{{ style }}
+{% endfor %}
+}
+
+.wagtail-alerts.{{CSS_VARIABLE_PREFIX}}alert-container {
+    position: relative;
+}
+.wagtail-alerts.{{CSS_VARIABLE_PREFIX}}toast-container {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    z-index: 5;
+}
+.wagtail-alerts.{{CSS_VARIABLE_PREFIX}}alert-container.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+.wagtail-alerts.{{CSS_VARIABLE_PREFIX}}alert-container.absolute .{{CSS_VARIABLE_PREFIX}}alert-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+.wagtail-alerts.{{CSS_VARIABLE_PREFIX}}alert-container.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast-wrapper.fixed {
+    bottom: 1em;
+    left: 1em;
+}
+
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast-wrapper,
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}alert-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast-wrapper {
+    gap: 0.5em;
+}
+.wagtail-alerts .dismissible-wrapper {
+    width: 1em;
+    height: 1em;
+}
+.wagtail-alerts .alert-dismissible {
+    cursor: pointer;
+    color: var(--text-color);
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 1em;
+    height: 1em;
+    display: block;
+    position: relative;
+}
+.wagtail-alerts .alert-dismissible::after,
+.wagtail-alerts .alert-dismissible::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 2px;
+    background-color: var(--text-color);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.wagtail-alerts .alert-dismissible::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}alert {
+    width: 100%;
+    padding: 0.5em 1em;
+    padding-left: 2.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}alert .alert-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    {% if ALIGN_ALERTS %}
+    justify-content: {{ ALIGN_ALERTS }}; /* ALIGN_ALERTS: {{ALIGN_ALERTS}} */
+    {% else %}
+    justify-content: flex-start; /* ALIGN_ALERTS: {{ALIGN_ALERTS}} */
+    {% endif %}
+    width: 100%;
+    overflow: hidden;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}alert .alert-content .alert-title {
+    margin-right: 0.5em;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: block;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}alert .alert-content .alert-text * {
+    margin: 0;
+    display: inline;
+}
+
+
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast {
+    width: min(100vw - 20px, 300px);
+    padding: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+}
+
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast .alert-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast .alert-title {
+    font-weight: bold;
+    font-size: 1.3em;
+    display: block;
+}
+.wagtail-alerts .{{CSS_VARIABLE_PREFIX}}toast .alert-text * {
+    margin: 0;
+    display: inline;
+}
+
+{% for style in styles %}
+.{{ style.css_variable }} { {% for name, attr in style.colors %}
+    --{{ name }}-color: var(--{{ style.css_variable }}-{{ name }});{% endfor %}
+}
+{{ style.get_custom }}
+{% endfor %}
+{% endlocalize %}
+{% endautoescape %}

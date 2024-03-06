@@ -1,0 +1,11 @@
+{% extends "wagtailadmin/block_forms/base_block_settings_struct.html" %}
+
+{% block inner_children %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 child=children.dates %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_md=6 child=children.custom_template %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_md=6 child=children.duration %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_lg=6 col_xl=6 child=children.dismissible %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_lg=6 col_xl=6 child=children.alert_theme %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 child=children.once_per_session %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 child=children.permanent_dismiss %}
+{% endblock %}

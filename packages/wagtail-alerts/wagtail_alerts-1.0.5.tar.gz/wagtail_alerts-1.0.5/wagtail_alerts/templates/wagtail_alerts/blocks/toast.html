@@ -1,0 +1,19 @@
+{% load wagtailcore_tags i18n l10n %}
+{% localize off %}
+<wagtail-toast class="{{CSS_VARIABLE_PREFIX}}toast {{CSS_VARIABLE_PREFIX}}{{self.settings.alert_theme}}" id="toast-{{ index }}" data-duration="{{ self.settings.duration|default:0 }}" data-cookie-key="{{self.cookie_key}}"{% if self.once_per_session %} data-once{%endif%}{% if self.permanent_dismiss %} data-permanent-dismiss{%endif%}>
+    <div class="alert-content">
+        {% if self.title %}
+            <div class="alert-title">
+                {{ self.title }}:
+            </div>
+        {% endif %}
+        <div class="alert-text">
+            {{ self.body|richtext }}
+        </div>
+    </div>
+    
+    {% if self.settings.dismissible %}
+        <button type="button" class="alert-dismissible" aria-label="{% translate "Close" %}">&times;</button>
+    {% endif %}
+</wagtail-toast>
+{% endlocalize %}
