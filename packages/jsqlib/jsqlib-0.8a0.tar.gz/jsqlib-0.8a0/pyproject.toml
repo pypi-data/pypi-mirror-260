@@ -1,0 +1,97 @@
+[tool.poetry]
+name = "jsqlib"
+version = "0"
+license = "MPL-2.0"
+description = "JSON to SQL query generator"
+authors = ["pymancer <pymancer@gmail.com>"]
+readme = "README.md"
+homepage = "https://gitlab.com/ru-r5/jsqlib"
+repository = "https://gitlab.com/ru-r5/jsqlib"
+documentation = "https://gitlab.com/ru-r5/jsqlib/-/wikis/home"
+keywords = ["sql", "json"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries"
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-box = "^5.4"
+sqlfluff = "^0.6"
+jsonschema = "^4.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.3.0"
+icecream = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6"
+coverage = {extras = ["toml"], version = "^5"}
+pytest-cov = "^2"
+pre-commit = "^2"
+pylint = "^2"
+flake8 = "^3"
+flakehell = "^0.9"
+pyre-check = "^0.9"
+
+[build-system]
+requires = ["setuptools", "poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-version-plugin]
+source = "init"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["jsqlib"]
+
+[tool.coverage.report]
+fail_under = 90
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+include = "jsqlib"
+
+[tool.flakehell]
+exclude = ["README.md", "tests/", ".venv/"]
+format = "colored"
+max_line_length = 120
+show_source = true
+extended_default_ignore=[]
+
+[tool.flakehell.plugins]
+flake8-bandit = ["+*", "-S322"]
+flake8-bugbear = ["+*"]
+flake8-builtins = ["+*"]
+flake8-comprehensions = ["+*"]
+flake8-darglint = ["+*"]
+flake8-docstrings = ["+*"]
+flake8-eradicate = ["+*"]
+flake8-isort = ["+*"]
+flake8-mutable = ["+*"]
+flake8-pytest-style = ["+*"]
+flake8-spellcheck = ["+*"]
+pep8-naming = ["+*"]
+pycodestyle = ["+*", "-E203", "-E501", "-W503"]
+pyflakes = ["+*"]
+pylint = ["+*"]
+
+[tool.flakehell.exceptions."tests/"]
+flake8-bandit = ["-*"]
+pyflakes = ["-*"]
+flake8-darglint = ["-*"]
+flake8-docstrings = ["-*"]
+
+[tool.flakehell.exceptions."jsqlib/__init__.py"]
+pyflakes = ["-F401"]
