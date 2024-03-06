@@ -1,0 +1,35 @@
+{
+    "config": {
+        "error": {
+            "connection_error": "Kontrolleriga ei saanud \u00fchendust.",
+            "duplicated_controller_id": "Kontrolleri nimi on juba kasutusel.",
+            "duplicated_host_port": "M\u00e4\u00e4ratud host ja port on juba seadistatud.",
+            "unknown_error": "Ootamatu t\u00f5rge"
+        },
+        "step": {
+            "import_controller_name": {
+                "data": {
+                    "name": "Kontrolleri nimi"
+                },
+                "data_description": {
+                    "name": "Lutron Homeworks'i kontrolleri unikaalne nimi mis identifitseerib Lutron Homeworks'i kontrolleri"
+                },
+                "description": "Lutron Homeworks ei ole enam seadistatud configuration.yaml kaudu.\n\nT\u00e4ida vorm, et importida olemasolev konfiguratsioon kasutajaliidesesse."
+            },
+            "import_finish": {
+                "description": "Olemasolev YAML-konfiguratsioon on edukalt imporditud.\n\nN\u00fc\u00fcd v\u00f5id eemaldada konfiguratsiooni `homeworks` configuration.yaml failist."
+            },
+            "user": {
+                "data": {
+                    "host": "Host",
+                    "name": "Kontrolleri nimi",
+                    "port": "Port"
+                },
+                "data_description": {
+                    "name": "Lutron Homeworks'i kontrolleri unikaalne nimi mis identifitseerib Lutron Homeworks'i kontrolleri"
+                },
+                "description": "Lutron Homeworks kontrolleri lisamine"
+            }
+        }
+    }
+}

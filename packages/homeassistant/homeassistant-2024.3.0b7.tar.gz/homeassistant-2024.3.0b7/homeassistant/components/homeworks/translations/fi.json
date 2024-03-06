@@ -1,0 +1,35 @@
+{
+    "config": {
+        "error": {
+            "connection_error": "Yhteytt\u00e4 ohjaimeen ei saatu muodostettua.",
+            "duplicated_controller_id": "Ohjaimen nimi on jo k\u00e4yt\u00f6ss\u00e4.",
+            "duplicated_host_port": "M\u00e4\u00e4ritetty is\u00e4nt\u00e4 ja portti on jo m\u00e4\u00e4ritetty.",
+            "unknown_error": "Odottamaton virhe"
+        },
+        "step": {
+            "import_controller_name": {
+                "data": {
+                    "name": "Ohjaimen nimi"
+                },
+                "data_description": {
+                    "name": "Lutron Homeworks -ohjaimen yksil\u00f6llinen nimi."
+                },
+                "description": "Lutron Homeworksia ei en\u00e4\u00e4 m\u00e4\u00e4ritet\u00e4 configuration.yaml-tiedoston kautta.\n\nT\u00e4yt\u00e4 lomake, jotta voit tuoda olemassa olevan konfiguraation k\u00e4ytt\u00f6liittym\u00e4\u00e4n."
+            },
+            "import_finish": {
+                "description": "Olemassa oleva YAML-konfiguraatio on onnistuneesti tuotu.\n\nVoit nyt poistaa `homeworks`-konfiguraation configuration.yaml-tiedostosta."
+            },
+            "user": {
+                "data": {
+                    "host": "Palvelin",
+                    "name": "Ohjaimen nimi",
+                    "port": "Portti"
+                },
+                "data_description": {
+                    "name": "Lutron Homeworks -ohjaimen yksil\u00f6llinen nimi."
+                },
+                "description": "Lis\u00e4\u00e4 Lutron Homeworks -ohjain"
+            }
+        }
+    }
+}
