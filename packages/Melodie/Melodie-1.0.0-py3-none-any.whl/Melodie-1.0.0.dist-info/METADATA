@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: Melodie
+Version: 1.0.0
+Summary: A general framework that can be used to establish agent-based models for specific uses.
+Home-page: https://github.com/ABM4ALL/Melodie
+Author: Songmin Yu, Zhanyi Hou
+Author-email: abm4all@outlook.com
+License: MIT
+Project-URL: Documentation, http://docs.abm4all.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+Requires-Dist: chardet
+Requires-Dist: pandas
+Requires-Dist: seaborn
+Requires-Dist: networkx
+Requires-Dist: openpyxl
+Requires-Dist: sqlalchemy >=2.0
+Requires-Dist: sqlalchemy-utils
+Requires-Dist: astunparse
+Requires-Dist: pprintast
+Requires-Dist: cloudpickle
+Requires-Dist: scikit-opt ~=0.6
+Requires-Dist: rpyc
+Requires-Dist: flask
+Requires-Dist: flask-cors
+Requires-Dist: flask-sock
+
+# Melodie: Agent-based Modeling in Python
+
+[![Tests](https://github.com/ABM4ALL/Melodie/actions/workflows/test.yml/badge.svg)](https://github.com/ABM4ALL/Melodie/actions/workflows/test.yml)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.05100/status.svg)](https://doi.org/10.21105/joss.05100)
+
+**Melodie** is a framework for developing agent-based models (ABMs) in Python.
+The package and its examples are maintained on [ABM4ALL](https://github.com/ABM4ALL).
+For introduction and tutorial of the package, please visit our [documentation](https://abm4all.github.io/Melodie/html/index.html) page.
+
+The package name **Melodie** comes from an example which poetically explains the core concept of complexity theory: **Emergence**.
+In his bold book *Emergent Evolution*, [C. Lloyd Morgan](https://en.wikipedia.org/wiki/C._Lloyd_Morgan) wrote:
+*The emergent step, though it may seem more or less saltatory [a leap], is best regarded as a qualitative change of direction,
+or critical turning-point, in the course of events.* Then, Morgan exemplified how melody emerges from chords by quoting *Abt Vogler* of
+[Robert Browning](https://en.wikipedia.org/wiki/Robert_Browning):
+
+*"And I know not if,*
+
+*save in this,*
+
+*such gift be allowed to man,*
+
+*That out of three sounds he frame,*
+
+*not a fourth sound,*
+
+*but a star."*
+
+Sitting in Karlsruhe, a lovely city in southern Germany,
+I take the German translation - ***Melodie*** - as the name of this package.
+
+![Karlsruhe](docs/source/image/karlsruhe.png)
+
+### Suggested citation:
+
+Yu, S.; Hou, Z.; (2023). Melodie: Agent-based Modeling in Python. Journal of Open Source Software, 8(83), 5100, https://doi.org/10.21105/joss.05100
