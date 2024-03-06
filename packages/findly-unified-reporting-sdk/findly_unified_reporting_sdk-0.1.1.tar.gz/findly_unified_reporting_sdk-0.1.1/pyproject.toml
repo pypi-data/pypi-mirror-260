@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "findly.unified-reporting-sdk"
+version = "0.1.1"
+license = "GPL-3.0-only"
+description = ""
+authors = []
+readme = "README.md"
+packages = [
+    { include = "findly", from = "src" },
+]
+include = [
+    "src/findly/proto/*",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.typing.dependencies]
+mypy = "^1.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
