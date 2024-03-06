@@ -1,0 +1,11 @@
+# my global config
+global:
+  scrape_interval: 30s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'cloudtik'
+
+scrape_config_files:
+  - "{%prometheus.home%}/conf/scrape-config-*.yaml"

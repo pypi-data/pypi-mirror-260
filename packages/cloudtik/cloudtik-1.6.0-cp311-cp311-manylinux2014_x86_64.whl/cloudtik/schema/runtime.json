@@ -1,0 +1,1791 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://cloudtik.com/schema/runtime.json",
+	"description": "CloudTik runtime configuration schema",
+    "type": "object",
+    "definitions": {
+        "service_registration": {
+            "type": "object",
+            "description": "Configurations for runtime service registration to service discovery.",
+            "properties": {
+                "prefix": {
+                    "type": "string",
+                    "description": "The prefix string for the service."
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "The tags for the service.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "labels": {
+                    "type": "object",
+                    "description": "The labels for the service.",
+                    "patternProperties": {
+                        ".*":{
+                            "type": "string"
+                        }
+                    }
+                },
+                "service_type": {
+                    "type": "string",
+                    "description": "The service type to override. Only applicable for some proxy runtimes."
+                },
+                "prefer_workspace": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether the service prefers to be discovered by workspace."
+                }
+            }
+        },
+        "service_selector": {
+            "type": "object",
+            "description": "Defines a series match conditions of services",
+            "properties": {
+                "services": {
+                    "type": "array",
+                    "description": "The service names to discover. If not specified, match to all the service names.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "The tags to match for the services. All tags must match",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "labels": {
+                    "type": "object",
+                    "description": "The labels to match for the services. All labels must match",
+                    "patternProperties": {
+                        ".*":{
+                            "type": "string"
+                        }
+                    }
+                },
+                "service_types": {
+                    "type": "array",
+                    "description": "Include services of any of the service types.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "runtimes": {
+                    "type": "array",
+                    "description": "Include services of any of the runtimes.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "clusters": {
+                    "type": "array",
+                    "description": "Include services of any of the clusters.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "exclude_labels": {
+                    "type": "object",
+                    "description": "The labels to exclude for the services. Be excluded if include any these labels.",
+                    "patternProperties": {
+                        ".*":{
+                            "type": "string"
+                        }
+                    }
+                },
+                "exclude_joined_labels": {
+                    "type": "array",
+                    "description": "A list of joined labels to exclude for the services.",
+                    "items": {
+                        "type": "object",
+                        "description": "The labels to exclude for the services. All the labels must match to be excluded.",
+                        "patternProperties": {
+                            ".*":{
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "database_connect": {
+            "type": "object",
+            "description": "Database parameters for connect to an existing database.",
+            "additionalProperties": true,
+            "properties": {
+                "engine": {
+                    "type": "string",
+                    "description": "Database engine: mysql or postgres."
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Database server address"
+                },
+                "port": {
+                    "type": "number",
+                    "description": "Database server port. default: mysql=3306, postgres=5432"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Database username. default: cloudtik"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Database user password."
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database to connect. Applicable for only specific cases."
+                }
+            }
+        }
+    },
+    "additionalProperties": true,
+    "properties": {
+        "types": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "The list of runtimes to enable for this cluster"
+        },
+        "envs": {
+            "type": "object",
+            "patternProperties": {
+                ".*":{
+                    "type": "string"
+                }
+            }
+        },
+        "scaling:": {
+            "type": "object",
+            "description": "User scaling configurations",
+            "additionalProperties": true,
+            "properties": {
+                "scaling_policy_class": {
+                    "type": "string",
+                    "description": "The module and class path of the scaling policy class"
+                },
+                "scaling_policy": {
+                    "type": "string",
+                    "description": "The built-in scaling policy name to use. Values: scaling-with-load, scaling-with-time"
+                },
+                "scaling_policy_by_node_type": {
+                    "type": "object",
+                    "description": "Scaling by specific node type and scaling configurations.",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        ".*": {
+                            "type": "object",
+                            "description": "The scaling policy and configurations for the node type of the key."
+                        }
+                    }
+                },
+                "scaling_step": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "The number of nodes for each scale up step."
+                },
+                "scaling_resource": {
+                    "type": "string",
+                    "default": "CPU",
+                    "description": "The resource type to check for scale: CPU or memory"
+                },
+                "cpu_load_threshold": {
+                    "type": "number",
+                    "default": 0.85,
+                    "description": "The cpu load threshold to start scale"
+                },
+                "memory_load_threshold": {
+                    "type": "number",
+                    "default": 0.85,
+                    "description": "The memory load threshold to start scale"
+                },
+                "in_use_cpu_load_threshold": {
+                    "type": "number",
+                    "default": 0.10,
+                    "description": "The minimum cpu load to consider the machine is in use"
+                },
+                "scaling_periodic": {
+                    "type": "string",
+                    "default": "daily",
+                    "description": "The periodic to use for scaling with time policy. Values: daily, weekly, monthly"
+                },
+                "scaling_math_base": {
+                    "type": "string",
+                    "default": "on-min-workers",
+                    "description": "The base number to use for arithmetic such as *2. Values: on-min-workers, on-previous-time"
+                },
+                "scaling_time_table": {
+                    "type": "object",
+                    "description": "Time table maps time slot to nodes scaling.",
+                    "patternProperties": {
+                        ".*":{
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "spark": {
+            "type": "object",
+            "description": "Spark runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Map of spark configurations, e.g. {\"spark.executor.cores\": \"45\"}"
+                },
+                "metastore_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use metastore service in the same workspace.",
+                    "default": true
+                },
+                "metastore_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Metastore service if service discovery is enabled."
+                },
+                "hive_metastore_uri": {
+                    "type": "string",
+                    "description": "Metastore service endpoint for Spark to use."
+                }
+            }
+        },
+        "ai": {
+            "type": "object",
+            "description": "AI runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "with_gpu": {
+                    "type": "boolean",
+                    "description": "Whether to use GPU frameworks and libraries for AI"
+                },
+                "with_oneapi": {
+                    "type": "boolean",
+                    "description": "Whether to use oneAPI frameworks and libraries for AI"
+                },
+                "database": {
+                    "$ref": "#/definitions/database_connect",
+                    "description": "The database parameters. Engine, address, port are optional if using service discovery."
+                },
+                "database_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use database service in the same workspace.",
+                    "default": true
+                },
+                "database_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for database service if service discovery is enabled."
+                }
+            }
+        },
+        "hadoop": {
+            "type": "object",
+            "description": "Hadoop Client runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "hadoop_default_cluster": {
+                    "type": "boolean",
+                    "description": "Whether to set Hadoop default to cluster storage if available.",
+                    "default": false
+                },
+                "hdfs_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use HDFS service in the same workspace.",
+                    "default": false
+                },
+                "hdfs_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for HDFS service if service discovery is enabled."
+                },
+                "hdfs_namenode_uri": {
+                    "type": "string",
+                    "description": "HDFS service endpoint specified explicitly to access in the format of hdfs://host:port."
+                },
+                "minio_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use MinIO service in the same workspace.",
+                    "default": false
+                },
+                "minio_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for MinIO service if service discovery is enabled."
+                },
+                "minio_endpoint_uri": {
+                    "type": "string",
+                    "description": "MinIO service endpoint specified explicitly to access in the format of http://host:port."
+                },
+                "minio_storage": {
+                    "type": "object",
+                    "description": "MinIO storage configurations",
+                    "additionalProperties": false,
+                    "properties": {
+                        "minio.bucket": {
+                            "type": "string",
+                            "description": "MinIO bucket name"
+                        },
+                        "minio.access.key": {
+                            "type": "string",
+                            "description": "MinIO access key"
+                        },
+                        "minio.secret.key": {
+                            "type": "string",
+                            "description": "MinIO secret key"
+                        }
+                    }
+                }
+            }
+        },
+        "mount": {
+            "type": "object",
+            "description": "Mount runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "hdfs_mount_method": {
+                    "type": "string",
+                    "description": "HDFS mount method: nfs or fuse. Default fuse if not specified."
+                }
+            }
+        },
+        "yarn": {
+            "type": "object",
+            "description": "Hadoop YARN runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "scaling:": {
+                    "type": "object",
+                    "description": "YARN scaling configurations",
+                    "additionalProperties": true,
+                    "properties": {
+                        "scaling_mode": {
+                            "type": "string",
+                            "description": "The YARN scaling mode. Values: apps-pending, aggressive"
+                        },
+                        "scaling_step": {
+                            "type": "integer",
+                            "default": 1,
+                            "description": "The number of nodes for each scale up step."
+                        },
+                        "scaling_resource": {
+                            "type": "string",
+                            "default": "memory",
+                            "description": "The resource type to check for scale: CPU or memory"
+                        },
+                        "apps_pending_threshold": {
+                            "type": "integer",
+                            "default": 1,
+                            "description": "The number of pending apps threshold to trigger scaling."
+                        },
+                        "apps_pending_free_cores_threshold": {
+                            "type": "integer",
+                            "default": 4,
+                            "description": "The number of free cores threshold below which to trigger scaling."
+                        },
+                        "apps_pending_free_memory_threshold": {
+                            "type": "integer",
+                            "default": 1024,
+                            "description": "The size of free memory threshold in MB below which to trigger scaling."
+                        },
+                        "aggressive_free_ratio_threshold": {
+                            "type": "number",
+                            "default": 0.1,
+                            "description": "The free cpu or memory ratio below which to trigger scaling for aggressive mode."
+                        }
+                    }
+                },
+                "yarn_resource_memory_ratio": {
+                    "type": "number",
+                    "description": "The yarn node virtual memory ratio vs the available physical memory."
+                },
+                "yarn_scheduler": {
+                    "type": "string",
+                    "description": "The yarn scheduler to use: capacity or fair"
+                }
+            }
+        },
+        "ray": {
+            "type": "object",
+            "description": "Ray runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "scaling:": {
+                    "type": "object",
+                    "description": "Ray scaling configurations",
+                    "additionalProperties": true,
+                    "properties": {
+                        "auto_scaling": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether to enable ray based auto scaling"
+                        }
+                    }
+                }
+            }
+        },
+        "flink": {
+            "type": "object",
+            "description": "Flink runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Map of flink configurations"
+                },
+                "metastore_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use metastore service in the same workspace.",
+                    "default": true
+                },
+                "metastore_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Metastore service if service discovery is enabled."
+                },
+                "hive_metastore_uri": {
+                    "type": "string",
+                    "description": "Metastore service endpoint for Flink to use."
+                }
+            }
+        },
+        "metastore": {
+            "type": "object",
+            "description": "Metastore runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "database": {
+                    "$ref": "#/definitions/database_connect",
+                    "description": "The database parameters. Engine, address, port are optional if using service discovery."
+                },
+                "database_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use database service in the same workspace.",
+                    "default": true
+                },
+                "database_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for database service if service discovery is enabled."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to run a server on each node for high availability."
+                }
+            }
+        },
+        "hdfs": {
+            "type": "object",
+            "description": "HDFS runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "simple",
+                    "description": "The cluster mode to use: simple, ha_cluster."
+                },
+                "ha_cluster": {
+                    "type": "object",
+                    "description": "HA cluster configurations",
+                    "properties": {
+                        "cluster_role": {
+                            "type": "string",
+                            "description": "The role of the current cluster: name, journal, data."
+                        },
+                        "num_journal_nodes": {
+                            "type": "integer",
+                            "description": "If specified for name role, used to check the valid of journal addresses."
+                        },
+                        "num_name_nodes": {
+                            "type": "integer",
+                            "description": "If specified for name role, the number of the name nodes. Default to the min workers + 1"
+                        },
+                        "auto_failover": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to enable automatic-failover using ZooKeeper."
+                        }
+                    }
+                },
+                "force_clean": {
+                    "type": "boolean",
+                    "description": "Whether to force clean the data directory when starting.",
+                    "default": false
+                },
+                "health_check_port": {
+                    "type": "integer",
+                    "default": 19000,
+                    "description": "The HDFS NameNode health check port if there is super-server daemon."
+                }
+            }
+        },
+        "kafka": {
+            "type": "object",
+            "description": "Kafka runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Map of Kafka server properties."
+                },
+                "zookeeper_connect": {
+                    "type": "string",
+                    "description": "Zookeeper servers to use for Kafka."
+                },
+                "zookeeper_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use zookeeper service in the same workspace.",
+                    "default": true
+                },
+                "zookeeper_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Zookeeper service if service discovery is enabled."
+                }
+            }
+        },
+        "zookeeper": {
+            "type": "object",
+            "description": "Zookeeper runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Map of Zookeeper server properties."
+                }
+            }
+        },
+        "presto": {
+            "type": "object",
+            "description": "Presto runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Map of Presto server properties."
+                },
+                "catalogs": {
+                    "type": "object",
+                    "description": "Presto catalogs to be configured."
+                },
+                "metastore_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use metastore service in the same workspace.",
+                    "default": true
+                },
+                "metastore_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Metastore service if service discovery is enabled."
+                },
+                "hive_metastore_uri": {
+                    "type": "string",
+                    "description": "Explicit Metastore service endpoint for Presto to use."
+                }
+            }
+        },
+        "trino": {
+            "type": "object",
+            "description": "Trino runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "catalogs": {
+                    "type": "object",
+                    "description": "Trino catalogs to be configured."
+                },
+                "metastore_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use metastore service in the same workspace.",
+                    "default": true
+                },
+                "metastore_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Metastore service if service discovery is enabled."
+                },
+                "hive_metastore_uri": {
+                    "type": "string",
+                    "description": "Explicit Metastore service endpoint for Trino to use."
+                }
+            }
+        },
+        "sshserver": {
+            "type": "object",
+            "description": "SSH Server runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 22022,
+                    "description": "The SSH Server port."
+                }
+            }
+        },
+        "consul": {
+            "type": "object",
+            "description": "Consul runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "server": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether the cluster with Consul runs with Consul server or client agent."
+                },
+                "data_center": {
+                    "type": "string",
+                    "description": "Override Consul data center name. By default is the workspace name."
+                },
+                "disable_cluster_node_name": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to disable setting node name to cluster name combining seq id."
+                },
+                "rpc_port": {
+                    "type": "integer",
+                    "default": 8300,
+                    "description": "The server RPC port."
+                },
+                "http_port": {
+                    "type": "integer",
+                    "default": 8500,
+                    "description": "The HTTP client port."
+                },
+                "dns_port": {
+                    "type": "integer",
+                    "default": 8600,
+                    "description": "The DNS server port."
+                }
+            }
+        },
+        "prometheus": {
+            "type": "object",
+            "description": "Prometheus runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9090,
+                    "description": "Prometheus server port."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to run a server on each node for high availability. Each server will scrape the same set of targets"
+                },
+                "scrape_scope": {
+                    "type": "string",
+                    "default": "local",
+                    "description": "The scrape scope for this server: local, workspace or federation."
+                },
+                "scrape_services": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for services to scrape."
+                },
+                "federation_targets": {
+                    "type": "array",
+                    "description": "The Prometheus targets for federation to use if no service discovery deployed",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "targets"
+                        ],
+                        "properties": {
+                            "targets": {
+                                "type": "array",
+                                "description": "The list of targets."
+                            },
+                            "labels": {
+                                "type": "object",
+                                "description": "The optional labels to add for the targets",
+                                "patternProperties": {
+                                    ".*":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "nodex": {
+            "type": "object",
+            "description": "Prometheus nodex (nodex) runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9100,
+                    "description": "Prometheus nodex port."
+                }
+            }
+        },
+        "grafana": {
+            "type": "object",
+            "description": "Grafana runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 3000,
+                    "description": "Grafana server port."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to run a server on each node for high availability."
+                },
+                "data_sources_scope": {
+                    "type": "string",
+                    "default": "local",
+                    "description": "The data sources scope from which to configure this server: local or workspace."
+                },
+                "data_sources": {
+                    "type": "array",
+                    "description": "Array of static data sources to be configured.",
+                    "items": {
+                        "type": "object",
+                        "description": "Grafana data source definition."
+                    }
+                },
+                "data_sources_services": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for workspace services as data sources."
+                }
+            }
+        },
+        "haproxy": {
+            "type": "object",
+            "description": "HAProxy runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 80,
+                    "description": "The frontend server port."
+                },
+                "protocol": {
+                    "type": "string",
+                    "default": "tcp",
+                    "description": "The frontend protocol: tcp or http."
+                },
+                "app_mode": {
+                    "type": "string",
+                    "default": "load-balancer",
+                    "description": "The application mode: load-balancer or api-gateway."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to run a server on each node for high availability."
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: dns, static, dynamic"
+                        },
+                        "balance": {
+                            "type": "string",
+                            "default": "roundrobin",
+                            "description": "The backend balance algorithm and arguments: roundrobin, leastconn, first, random, hash and so."
+                        },
+                        "max_servers": {
+                            "type": "integer",
+                            "default": 128,
+                            "description": "The max number of servers. This is needed only for HAProxy server template."
+                        },
+                        "selector": {
+                            "$ref": "#/definitions/service_selector",
+                            "description": "The selector for services for the backend."
+                        },
+                        "service_name": {
+                            "type": "string",
+                            "description": "The service name used for DNS discovery."
+                        },
+                        "service_tag": {
+                            "type": "string",
+                            "description": "The service tag used for DNS discovery."
+                        },
+                        "service_cluster": {
+                            "type": "string",
+                            "description": "The cluster of the service. Service tag and service cluster are exclusive."
+                        },
+                        "servers": {
+                            "type": "array",
+                            "description": "Array of static servers for the backend.",
+                            "items": {
+                                "type": "string",
+                                "description": "Server entry in format: host:port."
+                            }
+                        },
+                        "session_persistence": {
+                            "type": "string",
+                            "default": "none",
+                            "description": "The session persistence method: none, cookie or ip"
+                        },
+                        "http_check_enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether to enable http check. If not configured, the runtime will try to figure out whether there are http health check available."
+                        },
+                        "http_check_port": {
+                            "type": "integer",
+                            "description": "The port for http check. If not specified and http check enabled, same port as the service port. If http check is set by runtime discovery, will set to the discovered health check port."
+                        },
+                        "http_check_path": {
+                            "type": "string",
+                            "default": "/",
+                            "description": "The path to make the http health check."
+                        },
+                        "http_check_discovery": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to do http check discovery. If there is health check service discovered, use it."
+                        },
+                        "http_check_selector": {
+                            "$ref": "#/definitions/service_selector",
+                            "description": "The selector for health check service discovery."
+                        },
+                        "service_type_discovery": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to do service type discovery."
+                        },
+                        "service_type_keep_original": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether to keep the original service type discovered or by default use runtime type."
+                        }
+                    }
+                }
+            }
+        },
+        "nginx": {
+            "type": "object",
+            "description": "NGINX runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 80,
+                    "description": "The server listen port."
+                },
+                "app_mode": {
+                    "type": "string",
+                    "default": "load-balancer",
+                    "description": "The application mode: web, load-balancer or api-gateway."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to run a server on each node for high availability."
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dns",
+                            "description": "How the backend is configured: dns, static, dynamic"
+                        },
+                        "balance": {
+                            "type": "string",
+                            "default": "round_robin",
+                            "description": "The backend balance algorithm and arguments: round_robin, least_conn, random, ip_hash or hash."
+                        },
+                        "selector": {
+                            "$ref": "#/definitions/service_selector",
+                            "description": "The selector for services for the backend."
+                        },
+                        "service_name": {
+                            "type": "string",
+                            "description": "The service name used for DNS discovery."
+                        },
+                        "service_port": {
+                            "type": "integer",
+                            "default": 80,
+                            "description": "The service port of the backend."
+                        },
+                        "service_tag": {
+                            "type": "string",
+                            "description": "The service tag used for DNS discovery."
+                        },
+                        "service_cluster": {
+                            "type": "string",
+                            "description": "The cluster of the service. Service tag and service cluster are exclusive."
+                        },
+                        "servers": {
+                            "type": "array",
+                            "description": "Array of static servers for the backend.",
+                            "items": {
+                                "type": "string",
+                                "description": "Server entry in format: host:port."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "mysql": {
+            "type": "object",
+            "description": "MySQL runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 3306,
+                    "description": "The MySQL server port."
+                },
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "group_replication",
+                    "description": "The replication method to use: none, replication, group_replication."
+                },
+                "root_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the root user password when initializing the MySQL instance."
+                },
+                "health_check_port": {
+                    "type": "integer",
+                    "default": 13306,
+                    "description": "The MySQL health check port if there is super-server daemon."
+                },
+                "database": {
+                    "type": "object",
+                    "description": "Database configurations",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the database to create at the initializing process."
+                        },
+                        "user": {
+                            "type": "string",
+                            "description": "The user to create and grant access for the database at the initializing process"
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password for the user set at the initializing process."
+                        }
+                    }
+                },
+                "group_replication": {
+                    "type": "object",
+                    "description": "Group replication configurations",
+                    "properties": {
+                        "group_replication_name": {
+                            "type": "string",
+                            "description": "Specify your own group replication name (GUID). Generate from workspace and cluster name hash by default."
+                        },
+                        "group_replication_port": {
+                            "type": "integer",
+                            "default": 33061,
+                            "description": "Specify the group replication port to be used."
+                        },
+                        "multi_primary": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Whether the group replication is a multi-primary group. Default is single-primary."
+                        }
+                    }
+                }
+            }
+        },
+        "postgres": {
+            "type": "object",
+            "description": "Postgres runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 5432,
+                    "description": "Postgres server port."
+                },
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "replication",
+                    "description": "The replication method to use: none, replication."
+                },
+                "admin_user": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the admin username when initializing the Postgres instance."
+                },
+                "admin_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the admin password when initializing the Postgres instance."
+                },
+                "replication_user": {
+                    "type": "string",
+                    "default": "repl_user",
+                    "description": "Specify the replication user for replication cluster."
+                },
+                "replication_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the replication password for replication user."
+                },
+                "archive_mode": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to enable archive mode and archive based recovery when WAL purged."
+                },
+                "replication_slot": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to enable replication slot for WAL bookkeeping."
+                },
+                "health_check_port": {
+                    "type": "integer",
+                    "default": 15432,
+                    "description": "Postgres health check port if there is super-server daemon."
+                },
+                "replication_synchronous": {
+                    "type": "object",
+                    "description": "Database configurations",
+                    "properties": {
+                        "mode": {
+                            "type": "string",
+                            "default": "none",
+                            "description": "Whether enable synchronous standby: none, default, first and any."
+                        },
+                        "num": {
+                            "type": "integer",
+                            "description": "The number of synchronous for first or any mode."
+                        },
+                        "commit_mode": {
+                            "type": "string",
+                            "default": "on",
+                            "description": "The commit mode: on, off, local."
+                        }
+                    }
+                },
+                "database": {
+                    "type": "object",
+                    "description": "Database configurations",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Database to create at the initializing process."
+                        },
+                        "user": {
+                            "type": "string",
+                            "description": "The user to create and grant access for the database at the initializing process"
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password for the user set at the initializing process."
+                        }
+                    }
+                },
+                "repmgr": {
+                    "type": "object",
+                    "description": "Repmgr configurations",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to enable repmgr for streaming replication."
+                        },
+                        "repmgr_user": {
+                            "type": "string",
+                            "description": "The user name for repmgr."
+                        },
+                        "repmgr_password": {
+                            "type": "string",
+                            "description": "The password for the repmgr user."
+                        },
+                        "repmgr_database": {
+                            "type": "string",
+                            "description": "The database name for repmgr."
+                        }
+                    }
+                }
+            }
+        },
+        "dnsmasq": {
+            "type": "object",
+            "description": "Dnsmasq runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 53,
+                    "description": "DNS server port."
+                },
+                "default_resolver": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to set this DNS server as the system default resolver in /etc/resolv.conf."
+                }
+            }
+        },
+        "coredns": {
+            "type": "object",
+            "description": "CoreDNS runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 53,
+                    "description": "DNS server port."
+                },
+                "default_resolver": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to set this DNS server as the system default resolver in /etc/resolv.conf."
+                }
+            }
+        },
+        "bind": {
+            "type": "object",
+            "description": "Bind (Named) runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 53,
+                    "description": "DNS server port."
+                },
+                "dnssec_validation": {
+                    "type": "string",
+                    "default": "yes",
+                    "description": "The DNSSEC validation setting: yes, auto, no."
+                },
+                "default_resolver": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to set this DNS server as the system default resolver in /etc/resolv.conf."
+                }
+            }
+        },
+        "apisix": {
+            "type": "object",
+            "description": "APISIX runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9080,
+                    "description": "APISIX server port."
+                },
+                "admin_port": {
+                    "type": "integer",
+                    "default": 9180,
+                    "description": "APISIX admin port."
+                },
+                "admin_key": {
+                    "type": "string",
+                    "description": "APISIX admin key. If not specified, there is a default."
+                },
+                "etcd_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use ETCD service in the same workspace.",
+                    "default": true
+                },
+                "etcd_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for Metastore service if service discovery is enabled."
+                },
+                "etcd_uri": {
+                    "type": "string",
+                    "description": "Explicit set ETCD service to use."
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: dns, ring-dns, dynamic"
+                        },
+                        "selector": {
+                            "$ref": "#/definitions/service_selector",
+                            "description": "The selector for backend services if service discovery is enabled."
+                        },
+                        "balance": {
+                            "type": "string",
+                            "description": "The balance method used for backend servers: roundrobin, chash, least_conn, ewma",
+                            "default": "roundrobin"
+                        }
+                    }
+                }
+            }
+        },
+        "kong": {
+            "type": "object",
+            "description": "Kong runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 8000,
+                    "description": "Kong service port."
+                },
+                "ssl_port": {
+                    "type": "integer",
+                    "default": 8443,
+                    "description": "Kong service SSL port."
+                },
+                "database": {
+                    "$ref": "#/definitions/database_connect",
+                    "description": "The database parameters. Engine, address, port are optional if using service discovery."
+                },
+                "database_service_discovery": {
+                    "type": "boolean",
+                    "description": "Whether to discover and use database service in the same workspace.",
+                    "default": true
+                },
+                "database_service_selector": {
+                    "$ref": "#/definitions/service_selector",
+                    "description": "The selector for database service if service discovery is enabled."
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: dns, ring-dns, dynamic"
+                        },
+                        "selector": {
+                            "$ref": "#/definitions/service_selector",
+                            "description": "The selector for backend services if service discovery is enabled."
+                        },
+                        "balance": {
+                            "type": "string",
+                            "description": "The balance method used for backend servers: round-robin, consistent-hashing, least-connections, latency",
+                            "default": "round-robin"
+                        }
+                    }
+                }
+            }
+        },
+        "minio": {
+            "type": "object",
+            "description": "MinIO runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9000,
+                    "description": "MinIO service port."
+                },
+                "console_port": {
+                    "type": "integer",
+                    "default": 9001,
+                    "description": "MinIO console port."
+                },
+                "server_pool_size": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "The number of nodes for a single server pool. The cluster size (including head) must be multiple times of the server pool size."
+                },
+                "service_on_head": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to run MinIO service on head node. "
+                }
+            }
+        },
+        "redis": {
+            "type": "object",
+            "description": "Redis runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 6379,
+                    "description": "The Redis server port."
+                },
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "replication",
+                    "description": "The replication method to use: none, simple, replication, sharding."
+                },
+                "password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the password for Redis instance."
+                },
+                "health_check_port": {
+                    "type": "integer",
+                    "default": 36379,
+                    "description": "The Redis health check port if there is super-server daemon."
+                },
+                "replication": {
+                    "type": "object",
+                    "description": "Replication configurations",
+                    "properties": {
+                        "sentinel": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to enable sentinel for automatic fail over."
+                        },
+                        "sentinel_port": {
+                            "type": "integer",
+                            "default": 26379,
+                            "description": "Specify the sentinel port to be used."
+                        },
+                        "sentinel_quorum": {
+                            "type": "integer",
+                            "default": 2,
+                            "description": "The number of quorum to reach an agreement."
+                        }
+                    }
+                },
+                "sharding": {
+                    "type": "object",
+                    "description": "Sharding configurations",
+                    "properties": {
+                        "cluster_port": {
+                            "type": "integer",
+                            "default": 16379,
+                            "description": "Specify the internal cluster communication port to be used for a shared cluster."
+                        },
+                        "master_size": {
+                            "type": "integer",
+                            "description": "The number of masters. The remaining workers will be replicas. Default to half of the static nodes at starting cluster."
+                        },
+                        "role_by_node_type": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "When this sets to true and if there are multiple node types defined, non default worker types will be replica"
+                        },
+                        "master_node_type": {
+                            "type": "string",
+                            "description": "You can specify your own node type as master if it is not the default worker type."
+                        },
+                        "reshard_delay": {
+                            "type": "integer",
+                            "description": "The number of seconds to delay for a new master nodes to do resharding after meet the cluster."
+                        }
+                    }
+                }
+            }
+        },
+        "mongodb": {
+            "type": "object",
+            "description": "MongoDB runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 27017,
+                    "description": "The MongoDB server port."
+                },
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "replication",
+                    "description": "The replication method to use: none, replication, sharding."
+                },
+                "root_user": {
+                    "type": "string",
+                    "default": "root",
+                    "description": "Specify the root user."
+                },
+                "root_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the root user password."
+                },
+                "database": {
+                    "type": "object",
+                    "description": "Database configurations",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the database to create at the initializing process."
+                        },
+                        "user": {
+                            "type": "string",
+                            "description": "The user to create and grant access for the database at the initializing process"
+                        },
+                        "password": {
+                            "type": "string",
+                            "description": "The password for the user set at the initializing process."
+                        }
+                    }
+                },
+                "replication_set_name": {
+                    "type": "string",
+                    "description": "The replication set name. Default to workspace_name-cluster_name."
+                },
+                "replication_set_key": {
+                    "type": "string",
+                    "description": "The replication set key to use. Length should be greater than 5 characters and should not contain any special characters."
+                },
+                "sharding": {
+                    "type": "object",
+                    "description": "Sharding configurations",
+                    "properties": {
+                        "cluster_role": {
+                            "type": "string",
+                            "description": "Sharding cluster role: configsvr, mongos, or shardsvr."
+                        },
+                        "mongos_port": {
+                            "type": "integer",
+                            "description": "The mongos port. Default to 27017 for standalone mongos and 27018 for mongos running on config server or shard server."
+                        }
+                    }
+                }
+            }
+        },
+        "elasticsearch": {
+            "type": "object",
+            "description": "ElasticSearch runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9200,
+                    "description": "The ElasticSearch HTTP port."
+                },
+                "transport_port": {
+                    "type": "integer",
+                    "default": 9300,
+                    "description": "The ElasticSearch inter-communication port."
+                },
+                "cluster_mode": {
+                    "type": "string",
+                    "default": "cluster",
+                    "description": "The cluster mode to use: none, cluster."
+                },
+                "security": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to enable security or not."
+                },
+                "password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the password for elastic user if security enabled."
+                },
+                "snapshot_repository": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether to enable snapshot repository."
+                },
+                "clustering": {
+                    "type": "object",
+                    "description": "Clustering configurations",
+                    "properties": {
+                        "role_by_node_type": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "When this sets to true and if there are multiple node types defined, decide roles by node type"
+                        },
+                        "node_type_of_roles": {
+                            "type": "object",
+                            "description": "Map from node type to a list of roles.",
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                ".*": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "description": "The list of roles of the node type."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "pgpool": {
+            "type": "object",
+            "description": "Pgpool runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 9999,
+                    "description": "The Pgpool server port."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to run a server on each node for high availability."
+                },
+                "admin_user": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the Pgpool admin username."
+                },
+                "admin_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the Pgpool admin password."
+                },
+                "postgres_admin_user": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the Postgres admin username."
+                },
+                "postgres_admin_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the Postgres admin password."
+                },
+                "replication_user": {
+                    "type": "string",
+                    "default": "repl_user",
+                    "description": "Specify the replication user."
+                },
+                "replication_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the replication password for replication user."
+                },
+                "max_pool": {
+                    "type": "integer",
+                    "default": 15,
+                    "description": "The maximum number of cached connections in each child process."
+                },
+                "pcp_port": {
+                    "type": "integer",
+                    "default": 9898,
+                    "description": "The pgpool Communication Manager port."
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: static, dynamic"
+                        },
+                        "servers": {
+                            "type": "array",
+                            "description": "Array of static servers for the backend.",
+                            "items": {
+                                "type": "string",
+                                "description": "Server entry in format: host:port."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "pgbouncer": {
+            "type": "object",
+            "description": "PgBouncer runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "port": {
+                    "type": "integer",
+                    "default": 6432,
+                    "description": "The PgBouncer server port."
+                },
+                "high_availability": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to run a server on each node for high availability."
+                },
+                "admin_user": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the PgBouncer admin username."
+                },
+                "admin_password": {
+                    "type": "string",
+                    "default": "cloudtik",
+                    "description": "Specify the PgBouncer admin password."
+                },
+                "pool": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "pool_mode": {
+                            "type": "string",
+                            "default": "session",
+                            "description": "The pool mode: session, transaction, statement."
+                        },
+                        "pool_size": {
+                            "type": "integer",
+                            "default": 20,
+                            "description": "The pool size."
+                        },
+                        "min_pool_size": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "The min pool size."
+                        },
+                        "reserve_pool_size": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "The reserve pool size."
+                        }
+                    }
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: static, dynamic or local"
+                        },
+                        "databases": {
+                            "type": "object",
+                            "description": "Map from PgBouncer database to its backend configurations.",
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                ".*": {
+                                    "type": "object",
+                                    "description": "Database configurations",
+                                    "allOf": [{ "$ref": "#/definitions/database_connect" }],
+                                    "properties": {
+                                        "bind_user": {
+                                            "type": "boolean",
+                                            "default": false,
+                                            "description": "Whether to bind the user to the connection."
+                                        },
+                                        "auth_user": {
+                                            "type": "string",
+                                            "description": "The auth user for querying user"
+                                        },
+                                        "auth_password": {
+                                            "type": "string",
+                                            "description": "The auth user password"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "database_config": {
+                            "type": "object",
+                            "description": "The shared database configurations for non-static databases.",
+                            "allOf": [{ "$ref": "#/definitions/database_connect" }],
+                            "properties": {
+                                "bind_user": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Whether to bind the user to the connection."
+                                },
+                                "auth_user": {
+                                    "type": "string",
+                                    "description": "The auth user for querying user"
+                                },
+                                "auth_password": {
+                                    "type": "string",
+                                    "description": "The auth user password"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "loadbalancer": {
+            "type": "object",
+            "description": "Load Balancer runtime configurations",
+            "additionalProperties": true,
+            "properties": {
+                "high_availability": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to run on each node for high availability."
+                },
+                "provider": {
+                    "type": "object",
+                    "description": "Load balancer provider configurations.",
+                    "additionalProperties": true,
+                    "properties": {
+                        "delete_auto_empty": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to delete load balancer if there is no services."
+                        },
+                        "anonymous_prefer_default": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Whether to use the default load balancer if service doesn't explicitly specify load balancer name."
+                        },
+                        "default_network_load_balancer_name": {
+                            "type": "string",
+                            "description": "The default load balancer name for network type. If not specified, workspace name will be used."
+                        },
+                        "default_application_load_balancer_name": {
+                            "type": "string",
+                            "description": "The default load balancer name for application type. If not specified, workspace name will be used."
+                        }
+                    }
+                },
+                "backend": {
+                    "type": "object",
+                    "description": "Backend configurations",
+                    "properties": {
+                        "config_mode": {
+                            "type": "string",
+                            "default": "dynamic",
+                            "description": "How the backend is configured: static, dynamic"
+                        },
+                        "services": {
+                            "type": "object",
+                            "description": "Map from service to static service information.",
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                ".*": {
+                                    "type": "object",
+                                    "description": "Service information.",
+                                    "properties": {
+                                        "protocol": {
+                                            "type": "string",
+                                            "description": "The protocol of the backend service: TCP, TLS, UDP."
+                                        },
+                                        "port": {
+                                            "type": "integer",
+                                            "description": "The port of the backend service"
+                                        },
+                                        "load_balancer_name": {
+                                            "type": "string",
+                                            "description": "The load balancer name of the service. It is possible multiple services share the same load balancer."
+                                        },
+                                        "load_balancer_protocol": {
+                                            "type": "string",
+                                            "description": "The load balancer protocol of the service."
+                                        },
+                                        "load_balancer_port": {
+                                            "type": "string",
+                                            "description": "The load balancer port of the service. For application load balancer, it is possible that multiple services with the same protocol share the same load balancer port."
+                                        },
+                                        "route_path": {
+                                            "type": "string",
+                                            "description": "The path to match for routing to backend service for application load balancer. Default to the service name."
+                                        },
+                                        "service_path": {
+                                            "type": "string",
+                                            "description": "The path prefix to request backend service for application load balancer."
+                                        },
+                                        "default_service": {
+                                            "type": "boolean",
+                                            "default": false,
+                                            "description": "Whether to this service is the default service to forward if no other services match. For application load balancer only."
+                                        },
+                                        "servers": {
+                                            "type": "array",
+                                            "description": "Array of static servers for the service.",
+                                            "items": {
+                                                "type": "string",
+                                                "description": "Server entry in format: host:port."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

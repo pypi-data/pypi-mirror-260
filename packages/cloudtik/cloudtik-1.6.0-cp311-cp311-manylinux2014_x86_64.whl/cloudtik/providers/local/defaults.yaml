@@ -1,0 +1,30 @@
+# Include the common defaults
+from: defaults
+
+provider:
+    type: local
+
+    # For local, we usually use internal ips for all the nodes
+    use_internal_ips: true
+
+# How will authenticate with newly launched nodes.
+auth:
+    ssh_user: ubuntu
+    # Optional if an ssh private key is necessary to ssh to the cluster.
+    # ssh_private_key: ~/.ssh/id_rsa
+
+available_node_types:
+    head.default:
+        # Implementation assumes node_config key
+        node_config:
+            instance_type: default
+    worker.default:
+        # Implementation assumes node_config key
+        node_config:
+            instance_type: default
+
+# Specify the node type of the head node (as configured above).
+head_node_type: head.default
+
+runtime:
+    types: [prometheus, hdfs, spark]

@@ -1,0 +1,52 @@
+# Include the common defaults
+from: defaults
+
+# Cloud-provider specific configuration.
+provider:
+    type: huaweicloud
+    region: ap-southeast-3
+    # Whether to use managed cloud storage of workspace.
+    use_managed_cloud_storage: True
+
+# How we will authenticate with newly launched nodes.
+auth:
+    ssh_user: root
+# By default, we create a new private keypair, but you can also use your own.
+# If you do so, make sure to also set "KeyName" in the head and worker node
+# configurations below.
+#    ssh_private_key: /path/to/your/key.pem
+
+# Tell the cluster scaler the allowed node types and the resources they provide.
+# The key is the name of the node type, which is just for debugging purposes.
+# The node config specifies the launch config and physical instance type.
+available_node_types:
+    head.default:
+        # The node type's CPU and GPU resources are auto-detected based on HUAWEICLOUD instance flavor.
+        # If desired, you can override the autodetected CPU and GPU resources advertised to the cluster scaler.
+        resources: {}
+        # Provider-specific config for this node type, e.g. instance flavor.
+        node_config:
+            flavor_ref: ai1s.xlarge.4
+            # image_ref: 019b09ea-b960-46cd-abd8-306529e5eaa0
+            # key_name: key_pair_name
+            root_volume:
+                volumetype: SSD
+                size: 100
+    worker.default:
+        # The minimum number of nodes of this type to launch.
+        # This number should be >= 0.
+        min_workers: 1
+        # The node type's CPU and GPU resources are auto-detected based on HUAWEICLOUD instance flavor.
+        # If desired, you can override the autodetected CPU and GPU resources advertised to the cluster scaler.
+        resources: {}
+        # Provider-specific config for this node type, e.g. instance flavor.
+        node_config:
+            flavor_ref: ai1s.xlarge.4
+            # image_ref: 019b09ea-b960-46cd-abd8-306529e5eaa0
+            # key_name: key_pair_name
+            root_volume:
+                volumetype: SSD
+                size: 100
+
+# Specify the node type of the head node (as configured above).
+head_node_type: head.default
