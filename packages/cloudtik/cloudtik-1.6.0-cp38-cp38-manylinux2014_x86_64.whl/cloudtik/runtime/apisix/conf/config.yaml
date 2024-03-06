@@ -1,0 +1,21 @@
+apisix:
+  node_listen:
+    - ip: 127.0.0.1
+      port: {%listen.port%}
+    - ip: "{%listen.ip%}"
+      port: {%listen.port%}
+deployment:
+  role: traditional
+  role_traditional:
+    config_provider: etcd
+  etcd:
+    host: []
+    prefix: "/apisix-{%cluster.name%}"
+  admin:
+    admin_key:
+      - name: admin
+        key: {%admin.key%}
+        role: admin
+    admin_listen:
+      ip: 127.0.0.1
+      port: {%admin.port%}
