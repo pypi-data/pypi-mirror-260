@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evan_utils"
+version = "0.0.4"
+authors = [
+  { name="Evan Penn", email="evanwhipeeirpenn@gmail.com" },
+]
+description = "evan's utils"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "numpy", "pandas", "pickle", "matplotlib", "opencv-python", "pillow", "qrcode"
+]
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
