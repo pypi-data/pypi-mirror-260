@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: hzgt
+Version: 1.0.9
+Home-page: https://github.com/HZGT/hzgt
+Author: HZGT
+Author-email: 2759444274@qq.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: 
+    This library is just a bunch of scattered gadgets.
+    And if anyone wants to use it, they can also use it.
+    
+    The platform only supports win.
+    
+License-File: LICENSE
+Requires-Dist: tqdm
+Requires-Dist: requests
+Requires-Dist: click
+Provides-Extra: download
+Requires-Dist: you-get ==0.4.1650 ; extra == 'download'
+Provides-Extra: fileop
+Requires-Dist: pypdf ==3.17.2 ; extra == 'fileop'
+Requires-Dist: stepic ==0.5.0 ; extra == 'fileop'
+Requires-Dist: Pillow ; extra == 'fileop'
+Provides-Extra: mqtt_mysql
+Requires-Dist: pymysql ==1.1.0 ; extra == 'mqtt_mysql'
+Requires-Dist: paho-mqtt ==1.6.1 ; extra == 'mqtt_mysql'
+
+A bunch of scattered gadgets
