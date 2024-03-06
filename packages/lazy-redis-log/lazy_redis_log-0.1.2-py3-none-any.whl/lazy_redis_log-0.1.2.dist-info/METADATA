@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: lazy-redis-log
+Version: 0.1.2
+Summary: Like print, but also writes to Redis Streams!
+Author: MisterNyan
+Author-email: michael.edmund.wong@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: redis (>=5.0.2,<6.0.0)
+Description-Content-Type: text/markdown
+
+# Lazy Redis Log
+Like `print(...)`, but also writes to Redis Streams.
+
+# Installation
+```
+pip install lazy-redis-log
+```
+
+# How to Use
+
+```py
+from redis import Redis
+from lazy_redis_log import LazyRedisLog
+
+LOG = LazyRedisLog()
+
+LOG.redis = Redis(...)
+LOG.key = 'logs:example'
+LOG.field = 'example'
+LOG.do_console = True # Print on the console.
+LOG.do_redis = True # Write to Redis.
+
+LOG('Hello World!')
+
+LOG(
+    'Hello World!',
+    redis=False, # Don't write to Redis.
+)
+
+LOG(
+    'Hello World!',
+    console=False, # Don't print on the console.
+)
+
+LOG(
+    'Hello World!',
+    field='example2'
+    # Write on this field on the stream.
+    # This will always write to Redis,
+    # even if `do_redis` is `False`.
+)
+
+LOG(
+    'Hello',
+    'World!',
+    LazyRedisLog,
+    sep=', ',
+    end=' END ',
+    # Functions similarly to `print(...)`.
+)
+```
+
