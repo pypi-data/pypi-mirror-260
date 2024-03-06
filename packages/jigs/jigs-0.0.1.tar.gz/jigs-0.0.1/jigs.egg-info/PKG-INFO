@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: jigs
+Version: 0.0.1
+Summary: Jeff's Image Generating Scripts
+Author-email: Jeff Epler <jepler@gmail.com>
+Project-URL: homepage, https://github.com/jepler/jigs
+Project-URL: repository, https://github.com/jepler/jigs
+Keywords: image-generation,stable-diffusion
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: httpx
+Requires-Dist: click
+Requires-Dist: pillow
+Requires-Dist: rich
+Provides-Extra: server
+Requires-Dist: accelerate; extra == "server"
+Requires-Dist: bottle; extra == "server"
+Requires-Dist: chap; extra == "server"
+Requires-Dist: diffusers; extra == "server"
+Requires-Dist: torch; extra == "server"
+Requires-Dist: transformers; extra == "server"
+
+<!--
+SPDX-FileCopyrightText: 2023 Jeff Epler
+
+SPDX-License-Identifier: GPL-3.0-only
+-->
+
+# Jeffs Image Generating Scripts (jigs)
+
+## Purpose
+
+I found I was writing a number of bespoke scripts for wrapping around
+image generation pipelines like Stable Diffusion.
+
+I wanted to toss them into git, so I did.
+
+## Development status
+
+The author (@jepler) occasionally develops and maintains this project, but
+does not support it. Issues are not likely to be acted on. Compatibility
+over time (e.g., API stability) is a non-goal.
