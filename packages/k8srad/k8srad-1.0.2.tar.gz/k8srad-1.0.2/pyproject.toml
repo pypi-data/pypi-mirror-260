@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "k8srad"
+version = "1.0.2"
+description = "This is a demo project for our Kubernetes-Ready Rapid Application Framework."
+readme = "README.md"
+authors = [{ name = "Jörn Kleinbub", email = "joern.kleinbub@yotron.de" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["k8srad", "app", "web"]
+dependencies = [
+    "Flask >= 2.2.0",
+    "Flask-Login >= 0.1.1",
+    "Flask-AppBuilder >= 4.1.4",
+    "Flask-Session >= 0.4.0",
+    "boto3 >= 1.24.0",
+    "flask-restful >= 0.2.12",
+    "blinker >= 1.5.0",
+    "psycopg2-binary >= 2.9.3",
+    "waitress >= 2.1.2",
+    "python-dotenv >= 0.21.0",
+    "python-ldap >= 3.4.3"
+]
+requires-python = ">=3.9"
+
+[project.urls]
+Homepage = "https://www.yotron.de/kuberentesreadyrad/"
+Provider-Homepage = "https://www.yotron.de/"
+HELM-Project = "https://artifacthub.io/packages/helm/yotron-helm-charts/k8srad"
+
+[project.scripts]
+k8srad-run = "k8srad.__init__:run"
