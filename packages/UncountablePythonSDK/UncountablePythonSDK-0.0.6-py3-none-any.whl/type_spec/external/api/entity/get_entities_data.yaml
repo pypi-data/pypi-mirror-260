@@ -1,0 +1,55 @@
+$endpoint:
+    is_sdk: true
+    method: get
+    path: ${external}/entity/external_get_entities_data
+    function: main.site.app.external.entity.get_entities_data.get_entities_data
+    desc: "Gets the details for a passed entity"
+Arguments:
+    type: Object
+    properties:
+        entity_ids:
+            type: List<Integer>
+            desc: "Ids of the entity to retrieve"
+        entity_type:
+            type: String
+            desc: "The type of the entities requested, e.g. lab_request or approval"
+
+EntityFieldValue:
+    type: Object
+    properties:
+        field_id:
+            type: Integer
+            desc: "A unique identifier of the field"
+        field_ref_name:
+            type: String
+            desc: "A unique identifer string for the field"
+        row_index:
+            type: Optional<Integer>
+            desc: "The index in the table for the field"
+        value:
+            type: JsonValue
+            desc: "The value for the field"
+
+Entity:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "A unique identifier for the entity.  Used in conjunction with entity type"
+        type:
+            type: String
+            desc: "The type of entity"
+
+EntityDetails:
+    type: Object
+    properties:
+        entity:
+            type: Entity
+        field_values:
+            type: List<EntityFieldValue>
+
+Data:
+    type: Object
+    properties:
+        entity_details:
+            type: List<EntityDetails>

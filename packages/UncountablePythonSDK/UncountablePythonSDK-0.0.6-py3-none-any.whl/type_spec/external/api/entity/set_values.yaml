@@ -1,0 +1,45 @@
+$endpoint:
+    is_sdk: true
+    method: post
+    path: ${external}/entity/external_set_values
+    function: main.site.app.external.entity.set_values.set_values
+    desc: "Sets field values for an entity"
+
+EntityFieldValues:
+    type: Object
+    properties:
+        field_ref_name:
+            type: String
+            desc: "A unique identifer string for the field"
+        row_index?:
+            type: Optional<Integer>
+            desc: "The index in the table for the field"
+        value:
+            type: JsonValue
+            desc: "The value for the field"
+
+Entity:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "A unique identifier for the entity.  Used in conjunction with entity type"
+        type:
+            type: String
+            desc: "The type of entity"
+
+Arguments:
+    type: Object
+    properties:
+        entity:
+            type: Entity
+        values:
+            type: List<EntityFieldValues>
+
+Data:
+    type: Object
+    properties:
+        status:
+            type: Literal<'ok'>
+            default: "ok"
+            desc: "'ok' indicates the post request was successful"
