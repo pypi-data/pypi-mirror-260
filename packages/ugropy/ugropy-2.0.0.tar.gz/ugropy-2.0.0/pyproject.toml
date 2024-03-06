@@ -1,0 +1,41 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel"]
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+markers = [
+    "UNIFAC: classic UNIFAC model tests",
+    "PSRK: predictive SRK model tests",
+    "Joback: Joback-Reid contribution model tests",
+    "Dortmund: Dortmund-UNIFAC model tests"
+]
+
+[project]
+name = "ugropy"
+version = "2.0.0"
+authors = [{name = "Brandolín, Salvador Eduardo", email = "salvadorebrandolin@mi.unc.edu.ar"}]
+license = {text = "The MIT License"}
+readme = "README.md"
+description = "Get UNIFAC functional groups of PubChem compounds or SMILES representation."
+keywords = ["UNIFAC", "functional group", "thermodynamics", "chemical engineering"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering",
+]
+
+urls = {Homepage = "https://github.com/ipqa-research/ugropy"}
+
+dependencies = [
+    'numpy >= 1.25.1',
+    'pandas >= 2.0.3',
+    'pubchempy == 1.0.4',
+    'rdkit == 2023.9.5'
+]
