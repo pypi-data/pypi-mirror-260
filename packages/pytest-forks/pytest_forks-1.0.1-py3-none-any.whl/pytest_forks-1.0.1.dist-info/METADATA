@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: pytest-forks
+Version: 1.0.1
+Summary: Fork helper for pytest
+Classifier: Environment :: Plugins
+Classifier: Framework :: Pytest
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: The Unlicense (Unlicense)
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Typing :: Typed
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# pytest-forks
+
+This is a simple helper for pytest to support tests that fork or that test code that forks.
+
+# What it does
+
+`forks` detects forked children (and grandchildren) that fail to exit cleanly with `os._exit` and reports them. It waits for all children to exit to ensure the parent doesn't perform tear-downs while any children are still active. It also prevents pytest from generating duplicate reports if a child fails to exit cleanly.
+
+`with forks()` calls can be safely nested if required.
+
+# Limitations
+
+`forks` cannot detect calls to `os._exit` in the parent process. This will result in pytest failing to generate a report.
+
+`forks` cannot detect missing calls to `os.waitpid`. This will result in unreaped children until pytest itself closes. `forks` will correctly detect when these unreaped children exit.
+
+`forks` will not wait for children created through the subprocess module or with os.exec.
+
+# How to use it
+```
+import os
+from pytest_forks import forks
+
+def test_forking_code():
+    with forks():
+        # call code that forks
+
+def test_forking_test():
+    with forks():
+        pid = os.fork()
+        if pid == 0:
+            # do things in the forked child
+            os._exit(0)
+        # do things in the parent
+        os.waitpid(pid, 0)
+```
