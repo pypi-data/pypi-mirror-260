@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "audiness"
+version = "0.2.1"
+description = "CLI tool to interact with Tenable's Nessus"
+authors = ["Fabian Affolter <fabian-affolter@audius.de>"]
+readme = "README.md"
+license = "MIT"
+keywords = ["vulnerabilites", "nessus"]
+
+[project.urls]
+Homepage = "https://github.com/audiusGmbH/audiness"
+Repository = "https://github.com/audiusGmbH/audiness"
+"Bug Tracker" = "https://github.com/audiusGmbH/audiness/issues"
+Changelog = "https://github.com/audiusGmbH/audiness/releases"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.9"}
+pytenable = "^1.4"
+validators = "^0.22"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8"
+black = "^24"
+isort = "^5.13"
+
+[tool.poetry.scripts]
+audiness = "audiness.main:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
