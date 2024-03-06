@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: partis-schema
+Version: 0.1.3rc4
+Requires-Python: >=3.6.2
+Maintainer-email: "Nanohmics Inc." <software.support@nanohmics.com>
+Summary: Base classes for defining JSON-compatible schemas
+License-File: LICENSE.txt
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: BSD License
+Provides-Extra: doc
+Requires-Dist: wheel
+Requires-Dist: partis-utils[lint]>=0.1.3rc3
+Requires-Dist: pygments>=2.9.0
+Requires-Dist: overrides<4.0.0,>=3.1.0
+Requires-Dist: ruamel.yaml>=0.16.5
+Requires-Dist: tomli>=1.2.3
+Requires-Dist: cheetah3<4.0.0,>=3.2.4
+Requires-Dist: partis-pyproj>=0.1.3rc3
+Requires-Dist: partis-utils[sphinx]>=0.1.3rc3; extra == "doc"
+Description-Content-Type: text/x-rst
+
+The ``partis.schema`` package contains base classes for defining JSON-compatible schemas.
+
+https://nanohmics.bitbucket.io/doc/partis/schema
