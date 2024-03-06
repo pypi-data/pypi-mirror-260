@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scattertextvl"
+version = "0.1.0"
+dependencies = [
+    "scattertext>=0.2.0",
+]
+requires-python = ">=3.11"
+authors = [
+    { name = "Jason Kessler" }
+]
+maintainers = [
+    { name = "Jason Kessler" }
+]
+description = "Scattertext extensions and iteroperabilties which require using code with viral licenses like GPL-*."
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["scattertext", "nlp", "visualization", "stylometry", "linguistics", "interactive visualization", "lexicons"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/JasonKessler/scattertextvl"
+Documentation = "https://github.com/JasonKessler/scattertextvl"
+Repository = "https://github.com/JasonKessler/scattertextvl.git"
+"Bug Tracker" = "https://github.com/JasonKessler/scattertextvl/issues"
+Changelog = "https://github.com/JasonKessler/scattertextvl/issues/blob/master/CHANGELOG.md"
