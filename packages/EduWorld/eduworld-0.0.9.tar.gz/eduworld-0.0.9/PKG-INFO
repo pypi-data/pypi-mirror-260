@@ -1,0 +1,99 @@
+Metadata-Version: 2.1
+Name: EduWorld
+Version: 0.0.9
+Summary: Educational package to learn computational thinking and other basic programming concepts
+Project-URL: Documentation, https://codeberg.org/helkaraxe/algoworld-python#readme
+Project-URL: Issues, https://codeberg.org/helkaraxe/algoworld-python/issues
+Project-URL: Source, https://codeberg.org/helkaraxe/algoworld-python
+Author-email: Stanislav Grinkov <StanislavGrinkov@users.noreply.codeberg.org>
+License-Expression: GPL-3.0-or-later
+License-File: LICENSE
+Keywords: beginners,computational thinking,education,gamification,learning
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# EduWorld
+
+`EduWorld` is an educational `python` package designed for students to learn computational thinking, algorithms, and other basic programming concepts. Through this process they learn how to divide a problem into smaller steps and refine them; to abstract; to recognize patterns; and to design and implement algorithms;
+
+See the `eduworld.sample` package for the list of the available procedural commands
+
+## Interactive mode
+
+```
+from eduworld.simple import setup, shutdown
+
+
+setup(world="demo-world", interactive=True)
+shutdown(keep_window=True)
+
+```
+
+Command keys
+
+* W - move up
+* S - move down
+* A - move left
+* D - move right
+* E - paint tile
+* R - pickup beeper
+* F - put beeper
+* Q - quit
+
+## Simple procedural sample
+
+```
+from eduworld.simple import setup, shutdown, up, down, left, right, put
+
+
+setup(world="demo-world")
+
+up()
+left()
+put()
+put()
+down()
+right()
+
+shutdown()
+```
+
+
+## Oop style sample
+
+This sample is not as polished as simple version listed above, and not the final version
+
+```
+from eduworld import Application, Board, AlgoWorldBoard, Robot
+
+
+app: Application = Application()
+board: Board = AlgoWorldBoard("demo-world")
+app.set_board(board)
+
+r: Robot = board.get_default_robot()
+
+app.run()
+
+
+r.put()
+r.right()
+r.put()
+r.right()
+
+r.left()
+r.pickup()
+r.left()
+r.pickup()
+
+a.shutdown()
+```
