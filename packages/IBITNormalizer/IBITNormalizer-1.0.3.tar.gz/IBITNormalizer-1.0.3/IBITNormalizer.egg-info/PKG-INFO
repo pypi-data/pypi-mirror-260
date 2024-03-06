@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: IBITNormalizer
+Version: 1.0.3
+Summary: Normalizer for persian texts base on hazm
+Home-page: https://github.com/mahdighaemi123/IBITNormalizer
+Author: MahdiGhaemi
+Author-email: mahdighaemi123@gmail.com
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+
+# IBITNormalizer
+Simple persian text-normalizer base on hazm lib
+
+## install
+```
+pip install IBITNormalizer
+```
+
+## import
+
+```
+from IBITNormalizer.normalizer import IBITNormalizer
+```
+
+## for lm task
+```
+normalizer = IBITNormalizer.forLM()
+print("Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ", normalizer.normalize("Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ"))
+```
+
+
+## for llm task
+```
+normalizer = IBITNormalizer.forLLM()
+print("Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ", normalizer.normalize("Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ"))
+```
