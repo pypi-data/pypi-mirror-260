@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: rknpu
+Version: 1.5.2
+Summary: rknpu python bind with rust backend
+Author: TsinghTech <vision@qingtong.cn>
+Author-email: TsinghTech <vision@qingtong.cn>
+License: Apache-2.0
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: Source Code, https://github.com/tsinghtech-research/rknpu
+
+# rknpu bind with rust
+
+rknpu rust and rustpy
+
+# Features
+
+- [x] `High Speed with rust backend`
+
+# Requirements
+```
+pip install rknpu
+pip install numpy
+```
+# Easy to use
+```
+from rknpu import Yolov5
+
+# Yolov5 params (model_path, flag, class_num, conf_threshold, nms_threshold, obj_num_max_size)
+
+model = Yolov5(model_p, "PRIOR_HIGH", 2, 0.25, 0.45, 64)
+bboxes = model.pyinfer(img640x640)
+```
+
