@@ -1,0 +1,41 @@
+# Enigma
+
+A biblioteca tem como objetivo cifrar e dicifrar mensagens, através de one-hot e matrizes de permutação. Fazendo uma especie de enigma, convertendo strings para uma matriz codificada em one-hot.
+
+## Funções
+
+- `para_one_hot(msg: str)`: codifica uma mensagem de texto em uma matriz one-hot.
+- `para_string(M: np.array)`: decodifica uma matriz one-hot de volta para uma mensagem de texto.
+- `cifrar(msg: str, P: np.array)`: cifra uma mensagem usando uma matriz de permutação `P`.
+- `de_cifrar(msg: str, P: np.array)`: decifra uma mensagem usando uma matriz de permutação `P`.
+- `enigma(msg: str, P: np.array, E: np.array)`: cifra uma mensagem usando duas matrizes de permutação `P` e `E`.
+- `de_enigma(msg: str, P: np.array, E: np.array)`: decifra uma mensagem criptografada usando as matrizes de permutação `P` e `E`.
+
+## Processos 
+- **Cifrar**: Para a cifragem, nós extraímos uma matriz one_hot da mensagem passada, e a multiplicamos pela matriz de permutação também passada. Com esse processo, altermamos a posição do numero 1 nas colulas e assim, alteramos as letras que estão representadas pela matriz one_hot e ciframos a mensagem. Segue um exemplo minimizado do processo: 
+
+$$
+\begin{bmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 
+\end{bmatrix}
+\begin{bmatrix}
+    1 &  1 & 0 & 0 & 0 & 0 \\
+    0 &  0 & 1 & 1 & 0 & 0 \\
+    0 &  0 & 0 & 0 & 1 & 1 
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    0 &  0 & 0 & 0 & 1 & 1 \\
+    1 &  1 & 0 & 0 & 0 & 0 \\
+    0 &  0 & 1 & 1 & 0 & 0 
+\end{bmatrix}
+$$
+
+- **Decifrar**: Para decifrar a mensagem, precimos da matriz permutação que foi usada no processo de cifragem. Tendo essa matriz, nós tiramos a matriz one_hot da mensagem cifrada, e utilizamos a função `np.linalg.solve()`, para achar a matriz da mensagem original, e assim reverte-la de volta para string. A função `np.linalg.solve()` pega a matriz da mensagem cifrada e multiplica pelo inverso da matriz usada de permutação, achando assim a matriz original do texto.
+
+- **Enigmar**: Para o processo de enigmar, fazemos quase a mesma coisa que o cifrar. A diferença é que ao invez de multiplicar a matriz da mensagem inteira, multiplicamos letra por letra da mensagem, e a cada letra, multiplicamos a matriz permutação `P` pela matriz permutação `E`. Assim, a matriz do primeiro caracter da mensagem será multiplicado por `P`, o segundo multiplicado por `P@E` e assim segue. Com esse processo, letras iguais não são cifradas para a mesma letra do novo alfabeto, dificultado a resolução do enigma.
+
+- **Resolver enigma**: No processo de resolver o enigma, fazemos quase a mesma coisa que no processo de decifrar, porém, como cada letra foi alterada por uma matriz permutação diferente, resolvemos letra por letra com a função `np.linalg.solve()`, passando a matriz permutação utilizada para cada letra.
+
