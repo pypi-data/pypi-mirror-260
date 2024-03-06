@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "pdm-tools"
+version = "0.1.2"
+description = "Set of tools for predictive maintenance solutions."
+authors = ["Pawel Knap <pknap@agh.edu.pl>", "Urszula Jachymczyk <ulajach1@gmail.com>"]
+readme = "src/pdm_tools/README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10.0,<3.13"
+numpy = "^1.26.1"
+pandas = "^2.1.2"
+nptdms = "^1.7.1"
+scipy = "^1.11.4"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+ruff = "^0.1.6"
+
+[tool.ruff]
+extend-exclude = [
+    "docs/*",
+    "dist/*",
+    "notebooks/*",
+    "sandbox/*",
+    "scripts/*",
+]
+fix = true
+line-length = 88
+src = ["src"]
+target-version = "py310"
+
+[tool.ruff.lint]
+fixable = []
+unfixable = ["ALL"]
+
+extend-select = [
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "ERA", # flake8-eradicate/eradicate
+    "I",   # isort
+    "N",   # pep8-naming
+    "PIE", # flake8-pie
+    "PGH", # pygrep
+    "RUF", # ruff checks
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking
+    "TID", # flake8-tidy-imports
+    "UP",  # pyupgrade
+    # "D",   # pydocstyle - google
+]
+ignore = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
