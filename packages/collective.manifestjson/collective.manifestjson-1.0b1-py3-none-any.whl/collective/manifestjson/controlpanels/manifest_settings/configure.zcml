@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.manifestjson">
+
+  <browser:page
+    name="manifest_settings-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.ManifestSettingsView"
+    layer="collective.manifestjson.interfaces.ICollectiveManifestjsonLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <include package="plone.restapi"  />
+  <adapter
+    factory=".controlpanel.ManifestSettingsConfigletPanel"
+    name="manifest_settings" />
+
+
+</configure>

@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.manifestjson">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    name="manifest.json"
+    for="*"
+    class=".manifest_json_view.ManifestJsonView"
+    permission="zope2.View"
+    layer="collective.manifestjson.interfaces.ICollectiveManifestjsonLayer"
+    />
+
+</configure>

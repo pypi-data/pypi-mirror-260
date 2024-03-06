@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.manifestjson">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:viewlet
+     name="manifest-json-viewlet"
+     for="*"
+     manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
+     layer="collective.manifestjson.interfaces.ICollectiveManifestjsonLayer"
+     class=".manifest_json_viewlet.ManifestJsonViewlet"
+     template="manifest-json-viewlet.pt"
+     permission="zope2.View"
+     />
+
+
+</configure>
