@@ -1,0 +1,78 @@
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.4,<4"]
+
+[project]
+authors = [{name = "xinetzone", email = "735613050@qq.com"}]
+dynamic = ["version", "description"]
+license = {file = "LICENSE"}
+name = "xyzstyle"
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+  "d2py",
+  "pydata-sphinx-theme>=0.7.2"
+]
+
+maintainers = [
+  {name = "xinetzone", email = "735613050@qq.com"},
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "Framework :: Sphinx",
+  "Framework :: Sphinx :: Theme",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Home = "https://github.com/xinetzone/xyzstyle"
+
+[project.optional-dependencies]
+doc = [
+  "myst-nb",
+  "sphinxext-rediraffe",
+  "sphinx-copybutton",
+  "sphinx_design",
+  'jupyterlite-sphinx',
+  "jupyterlite-xeus",
+  "jupyterlite-core",
+  "jupyterlite-pyodide-kernel",
+  "jupyterlab",
+  "jupyter_server",
+  "jupyterlab_server",
+  "sphinx-autoapi",
+  "linkify-it-py",
+  "jupyter-sphinx",
+  "sphinx-sitemap",
+]
+
+coverage = [
+  "pytest-cov",
+  "pytest-regressions",
+  "codecov",
+  "xyzstyle[test]",
+]
+dev = [
+  "pyyaml",
+  "pre-commit",
+  "xyzstyle[coverage]",
+]
+test = [
+  "pytest",
+  "xyzstyle[doc]",
+]
+docx = [
+  "python-docx",
+  "xyzstyle[doc]"
+]
+
+[project.entry-points]
+"sphinx.html_themes" = {xyzstyle = "xyzstyle"}
+
+[tool.flit.sdist]
+# include = ["docs/"]
+exclude = ['docs', '.git', '.github']
