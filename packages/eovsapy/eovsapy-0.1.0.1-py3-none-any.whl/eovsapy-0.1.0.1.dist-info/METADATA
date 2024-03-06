@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: eovsapy
+Version: 0.1.0.1
+Summary: Python code and files for Expanded Owens Valley Solar Array
+Author-email: The EOVSA team <sijie.yu@njit.edu>
+License: Copyright (c) 2017-2023 The EOVSAPY developers
+        All rights reserved.
+        
+        Redistribution and use in source, with or without
+        modification, are permitted provided that the following conditions are
+        met:
+        
+        * Redistributions of source code must retain the above copyright
+          notice, this list of conditions and the following disclaimer.
+        
+        * Redistributions in binary form must reproduce the above copyright
+          notice, this list of conditions and the following disclaimer in the
+          documentation and/or other materials provided with the distribution.
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+        "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+        A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+        HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+        LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+        DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+        THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        
+Project-URL: Homepage, https://github.com/ovro-eovsa/eovsapy
+Project-URL: Repository, https://github.com/ovro-eovsa/eovsapy
+Keywords: solar physics,solar,science,sun,radio,miriad
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.rst
+Requires-Dist: aipy-eovsa
+Requires-Dist: astropy
+Requires-Dist: attrs
+Requires-Dist: certifi
+Requires-Dist: decorator
+Requires-Dist: ephem
+Requires-Dist: importlib-metadata
+Requires-Dist: importlib-resources
+Requires-Dist: matplotlib >=3.6
+Requires-Dist: mysql-connector-python
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: pyodbc
+Requires-Dist: pyparsing
+Requires-Dist: python-dateutil
+Requires-Dist: requests
+Requires-Dist: scipy
+Requires-Dist: six
+Requires-Dist: sunpy
+Requires-Dist: tk
+Requires-Dist: tqdm
+Requires-Dist: urllib3
+Provides-Extra: dev
+Requires-Dist: ipython ; extra == 'dev'
+Requires-Dist: ipython-genutils ; extra == 'dev'
+Requires-Dist: PyQt5 ; extra == 'dev'
+Requires-Dist: PyQt5-Qt5 ; extra == 'dev'
+Requires-Dist: PyQt5-sip ; extra == 'dev'
+
+# EOVSAPY
+
+![Latest Version](https://img.shields.io/pypi/v/eovsapy.svg)
+
+EOVSAPY is a Python library dedicated to the processing and analysis of data from the Expanded Owens Valley Solar Array. For more details about the project, visit our [homepage](https://github.com/ovro-eovsa/eovsapy).
+
+## Installation
+
+### Prerequisites
+
+Before installing EOVSAPY, ensure you have `pip` installed. For instructions, refer to the [pip installation guide](https://packaging.python.org/tutorials/installing-packages/).
+
+### Installing EOVSAPY
+
+EOVSAPY can be easily installed using pip. Run the following command:
+
+```bash
+pip install eovsapy
+```
+
+### Configuring Access to the Interim Database (IDB)
+
+To process and calibrate EOVSA raw "Interim" Database (IDB) data, access to the SQL database containing the calibration data is required. Perform the following steps to configure access:
+
+1. **Obtain Database Credentials**:
+Contact sijie.yu@njit.edu to request the `<username>`, `<account_name>`, and `<password>` for database access.
+
+2. **Create a `.netrc` File**:
+
+   Create a `.netrc` file in your home directory (`$HOME`) with the following contents, replacing `<username>`, `<account_name>`, and `<password>` with the actual database credentials:
+
+   ```bash
+   machine eovsa-db0.cgb0fabhwkos.us-west-2.rds.amazonaws.com
+           login <username>
+           account <account_name>
+           password <password>
+   ```
+
+3. **Secure the `.netrc` File**:
+
+   To ensure that the file is only accessible by you, set its permissions to only allow owner read/write:
+
+   ```bash
+   chmod 0600 ~/.netrc
+   ```
