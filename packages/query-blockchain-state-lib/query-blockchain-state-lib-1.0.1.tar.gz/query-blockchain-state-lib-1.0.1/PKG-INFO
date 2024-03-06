@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: query-blockchain-state-lib
+Version: 1.0.1
+Summary: Query EVM state data by batch
+Home-page: https://github.com/Centic-io/query-blockchain-state-lib
+Author: Viet-Bang Pham
+Author-email: phamvietbang2965@gmail.com
+Project-URL: Bug Tracker, https://github.com/Centic-io/query-blockchain-state-lib
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: web3>=6.0.0
+Requires-Dist: requests<=3.0.0
+Requires-Dist: pbkdf2<=1.3
+
+# Query Blockchain State Lib
+This repo is inherited from [QueryStateLib](https://github.com/TravaDataAnalysis/QueryStateLib)
+### Install 
+ 
+> pip3 install query-blockchain-state-lib
+
+### Example do query state batch at client
+
+* [Example used](_test/test_client_querier.py)
+
+Github :https://github.com/Centic-io/query-blockchain-state-lib
+
+* Use [Ethereum Json-pc](https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J#23129825-2012-07dd-66bb-c0d76b4e28dc)
+
+### Base
+
+* Use Ethereum JSON-RPC call to interact with EVM node provider
+* Postman usage: [Link](https://documenter.getpostman.com/view/4117254/ethereum-json-rpc/RVu7CT5J)
