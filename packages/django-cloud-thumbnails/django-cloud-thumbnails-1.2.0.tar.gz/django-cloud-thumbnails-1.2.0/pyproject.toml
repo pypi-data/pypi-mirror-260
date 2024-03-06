@@ -1,0 +1,31 @@
+[project]
+name = "django-cloud-thumbnails"
+description = "Django Cloud Thumbnails is a fork of django-image-cropping that uses django-cloud-storage, a custom Django storage backend."
+dynamic = ['version']
+authors = [{ name = "cybermeh", email = "cybermeh@icloud.com" }]
+readme = "README.md"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content"
+]
+requires-python = ">=3.10"
+dependencies = ["Django >= 4.2", "pillow >= 10.2.0", "django-cloud-storage >= 1.0.4", "django-appconf >= 1.0.2"]
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = "django_cloud_thumbnails.__version__" }
