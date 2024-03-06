@@ -1,0 +1,9 @@
+[bilby.gw.detector]
+LISA = bilby_lisa.networks:LISA
+LISA_A = bilby_lisa.interferometer:LISAChannel
+LISA_E = bilby_lisa.interferometer:LISAChannel
+LISA_T = bilby_lisa.interferometer:LISAChannel
+
+[console_scripts]
+bilby_pipe = bilby_lisa.bilby_pipe:bilby_pipe_main
+parallel_bilby_generation = bilby_lisa.parallel_bilby:parallel_bilby_generation_main
