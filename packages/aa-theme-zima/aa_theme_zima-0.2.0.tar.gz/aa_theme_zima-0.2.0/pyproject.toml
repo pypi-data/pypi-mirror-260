@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "aa-theme-zima"
+version = "0.2.0"
+description = "Theme for zimacorp.space"
+authors = ["Boris Talovikov <boris@talovikov.ru>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+repository = "https://gitlab.com/zima-corp/aa-theme-zima"
+packages = [{include = "aa_theme_zima"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+allianceauth = ">=3.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

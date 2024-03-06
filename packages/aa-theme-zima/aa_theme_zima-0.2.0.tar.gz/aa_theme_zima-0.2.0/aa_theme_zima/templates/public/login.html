@@ -1,0 +1,12 @@
+{% extends 'public/middle_box.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}{% translate "Login" %}{% endblock %}
+
+{% block middle_box_content %}
+    <a href="{% url 'auth_sso_login' %}{% if request.GET.next %}?next={{request.GET.next}}{%endif%}">
+        <img class="img-responsive center-block" src="{% static 'aa_theme_zima/img/eve-sso-login-white-large.png' %}" alt="{% translate 'Login with Eve SSO' %}" width="270" height="45" loading="lazy">
+    </a>
+{% endblock %}
