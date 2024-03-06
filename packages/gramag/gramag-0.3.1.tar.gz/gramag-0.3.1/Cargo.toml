@@ -1,0 +1,34 @@
+[package]
+name = "gramag"
+version = "0.3.1"
+edition = "2021"
+
+[dependencies]
+pyo3 = { version = "0.18.0", features = ["extension-module"], optional=true }
+anyhow = "1.0.80"
+dashmap = { version = "5.5.3", features = ["rayon"] }
+itertools = "0.12.1"
+lophat = { version = "0.10.1", default-features = false, features=[] }
+par-dfs = { version = "0.0.7", features = ["rayon"] }
+petgraph = "0.6.4"
+rayon = "1.8.1"
+tabled = "0.15.0"
+rustc-hash = "1.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "gramag"
+path = "src/lib.rs"
+crate-type = ["lib", "cdylib"]
+
+[features]
+default = ["python"]
+python = ["dep:pyo3"]
+
+[[bin]]
+name = "gramag_cli"
+path = "src/main.rs"
+doc = false
+required-features = []
+
