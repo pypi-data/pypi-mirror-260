@@ -1,0 +1,65 @@
+site_name: clODE
+
+theme:
+  name: readthedocs
+
+# The code is in clode/python. We will import all class signatures from there
+# The documentation files (.md) are in docs/
+
+# Path: mkdocs.yml
+docs_dir: docs
+#site_dir: docs/site
+
+nav:
+  - Home: 'README.md'
+  - Getting Started:
+    - 'install.md'
+    - 'getting_started.md'
+  - Functionality:
+    - Feature Extraction: 'feature_extraction.md'
+    - Trajectory Simulation: 'trajectory_simulation.md'
+    - Stochastic Simulations: 'Ornstein-Uhlenbeck_process.md'
+    - Spike Counting: 'spike_counting.md'
+  - Configuration:
+      - Specifying systems of ODEs: 'specifying_odes.md'
+      - XPP files: 'xpp_files.md'
+      - Initialising the runtime: 'init_runtime.md'
+      - Selecting logging levels: 'logging_levels.md'
+      - Querying OpenCL devices: 'querying_opencl.md'
+      - Running in Matlab: 'matlab.md'
+  #Generate the API reference from the python code in clode/python
+  - API Reference: 'api_reference.md'
+
+#https://squidfunk.github.io/mkdocs-material/reference/math/
+markdown_extensions:
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        - name: py
+          class: 'highlight'
+          format: !!python/object/apply:docs.pycon.py_command_formatter
+            kwds:
+              init: |
+                import numpy as np
+                import matplotlib.pyplot as plt
+          validator: !!python/name:docs.pycon.py_command_validator
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          rendering:
+            show_source: true
+            show_signature_annotations: true
+
+extra_javascript:
+  - javascripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
