@@ -1,0 +1,119 @@
+Metadata-Version: 2.1
+Name: rbac-utils
+Version: 1.0.1
+Summary: Utilities for RBAC system
+Home-page: https://bitbucket.org/lendenite/ldc_packages/src/master/
+Author: Sandeep Sharma
+Author-email: sandeep.sharma@lendenclub.com
+License: UNKNOWN
+Description: # SETUP
+        
+        ## INSTALLATION
+        Run this command to install the package `pip install rbac-utils==1.0.0 -i http://3.110.83.156:3141/dev/ldc_packages --trusted-host 3.110.83.156`
+        
+        ## USAGE
+        1. Install the library in your project using the above command.
+        2. Create the `rbac_utils.env` file in your project root (keys below).
+        3. import the main `Utils` class from lib to your code `from rbac_utils.utils import Utils` (I recommend renaming the import to `RbacUtils` this way `from rbac_utils.utils import Utils as RbacUtils`) 
+        4. Start using the utils functions on the class
+        	> `RbacUtils.generate_user_tokens('usr_id', {'key': 'value'})`
+        
+        
+        #### rbac_utils.env keys
+        1. RBAC_API_KEY='SECRET_KEY_OBTAINED_FROM_PERIPHERALS_TEAM'
+        2. RBAC_BASE_URL='https://qa-rbac.lendenclub.com'
+        
+        
+        # Docs
+        
+        ## RbacUtils.generate_user_tokens(user_id, data)
+        
+        Generate user tokens (access token and refresh token) for the given user_id.
+        
+        **Args:**
+        user_id (str): The identifier of the user for whom tokens are generated.
+        data (dict): A dictionary containing custom key-value pairs. 
+        				This dictionary is added as a value to the data key of the token.
+        
+        **Returns:**
+        dict: A dictionary containing the generated access token and refresh token.
+        	An empty dictionary is returned if the generation process fails.
+        
+        
+        
+        
+        ## RbacUtils.validate_access_token(access_token)
+        
+        Validate an access token and retrieve user details.
+        
+        **Args:**
+        access_token (str): The access token to be validated.
+        
+        **Returns:**
+        dict: A dictionary containing user details if the token is valid.
+        	An empty dictionary is returned if validation fails.
+        
+        
+        
+        
+        ## RbacUtils.refresh_user_tokens(refresh_token)
+        
+        Refresh user tokens using a refresh token.
+        
+        **Args:**
+        refresh_token (str): The refresh token used to obtain new tokens.
+        
+        **Returns:**
+        dict: A dictionary containing the new access token and refresh token.
+        	An empty dictionary is returned if token refresh fails.
+        
+        
+        
+        
+        ## RbacUtils.revoke_user_tokens(access_token, refresh_token)
+        
+        Revoke user tokens.
+        
+        **Args:**
+        access_token (str): The access token to be revoked.
+        refresh_token (str): The refresh token to be revoked.
+        
+        **Returns:**
+        bool: True if the tokens were successfully revoked, False otherwise.
+        
+        
+        
+        
+        ## RbacUtils.update_token_data(access_token, data)
+        
+        Update a user's access token with new data.
+        NOTE: The existing access token will be invalidated after the update and the newly returned one takes its place.
+        
+        **Args:**
+        access_token (str): The access token to be updated.
+        data (dict): New data to be added to the access token.
+        
+        **Returns:**
+        str: The updated access token with the new data.
+        	None is returned if the update fails.
+        
+        
+        
+        
+        ## RbacUtils.extract_token_claims(token)
+        
+        Extract token claims.
+        
+        **Args:**
+        token (str): The JWT from which claims will be extracted.
+        
+        **Returns:**
+        dict: A dictionary containing the claims from the JWT.
+        	An empty dictionary is returned if decoding fails.
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
