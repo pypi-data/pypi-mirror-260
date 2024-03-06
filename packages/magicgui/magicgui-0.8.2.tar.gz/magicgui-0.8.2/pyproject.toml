@@ -1,0 +1,243 @@
+# pyproject.toml
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+# https://peps.python.org/pep-0621/
+[project]
+name = "magicgui"
+description = " build GUIs from python types"
+keywords = ["gui", "widgets", "type annotations"]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ email = "talley.lambert@gmail.com", name = "Talley Lambert" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Software Development :: Widget Sets",
+    "Topic :: Utilities",
+]
+dynamic = ["version"]
+dependencies = [
+    "docstring_parser>=0.7",
+    "psygnal>=0.6.1",
+    "qtpy>=1.7.0",
+    "superqt[iconify]>=0.6.1",
+    "typing_extensions>=4.1.0",
+]
+
+# extras
+# https://peps.python.org/pep-0621/#dependencies-optional-dependencies
+[project.optional-dependencies]
+pyqt5 = ["pyqt5>=5.12.0"]
+pyqt6 = ["pyqt6"]
+pyside2 = [
+    "pyside2>=5.14 ; python_version=='3.8'",
+    "pyside2>=5.15 ; python_version>='3.9'",
+]
+pyside6 = ["pyside6"]
+tqdm = ["tqdm>=4.30.0"]
+jupyter = ["ipywidgets>=8.0.0"]
+image = ["pillow>=4.0"]
+quantity = ["pint>=0.13.0"]
+test = [
+    "pytest",
+    "pytest-qt",
+    "pytest-cov",
+    "pytest-mypy-plugins>=3",
+    "numpy",
+    "pandas",
+    "tqdm>=4.30.0",
+    "pillow>=4.0",
+    "pint>=0.13.0",
+    "matplotlib",
+    "toolz",
+    "ipywidgets",
+    "ipykernel",
+    "pydantic",
+    "attrs",
+    "annotated_types",
+]
+dev = [
+    "ruff",
+    "ipython",
+    "mypy",
+    "pdbpp",
+    "pre-commit",
+    "pyqt6",
+    "rich",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material ~=9.4",
+    "mkdocstrings ==0.22.0",
+    "mkdocstrings-python ==1.6.2",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-spellcheck[all]",
+    "mkdocs-gallery",
+    "qtgallery",
+    # extras for all the widgets
+    "napari ==0.4.18",
+    "pyqt6",
+    "pint",
+    "matplotlib",
+    "ipywidgets >=8.0.0",
+    "ipykernel",
+]
+
+[project.urls]
+homepage = "https://github.com/pyapp-kit/magicgui"
+repository = "https://github.com/pyapp-kit/magicgui"
+changelog = "https://github.com/pyapp-kit/magicgui/blob/main/CHANGELOG.md"
+issues = "https://github.com/pyapp-kit/magicgui/issues"
+documentation = "https://pyapp-kit.github.io/magicgui/"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.envs.test]
+features = ["test"]
+[tool.hatch.envs.test.scripts]
+run = "pytest  -v --color=yes --cov-config=pyproject.toml --cov --cov-report=xml --cov-report=term-missing"
+[[tool.hatch.envs.test.matrix]]
+backend = ["pyqt5", "pyside2", "pyqt6", "pyside6"]
+[tool.hatch.envs.test.overrides]
+# matrix.deps.features = [
+#     { value = "min-req", if = ["min-req"] },
+# ]
+matrix.backend.features = [
+    { value = "pyqt5", if = [
+        "pyqt5",
+    ] },
+    { value = "pyside2", if = [
+        "pyside2",
+    ] },
+    { value = "pyqt6", if = [
+        "pyqt6",
+    ] },
+    { value = "pyside6", if = [
+        "pyside6",
+    ] },
+]
+
+
+# https://docs.astral.sh/ruff
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+pydocstyle = { convention = "numpy" }
+select = [
+    "E",    # style errors
+    "F",    # flakes
+    "W",    # warnings
+    "D",    # pydocstyle
+    "D417", # Missing argument descriptions in Docstrings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "C4",    # flake8-comprehensions
+    "B",    # flake8-bugbear
+    "A001", # flake8-builtins
+    "TCH",  # type checking
+    "TID",  # tidy imports
+    "RUF",  # ruff-specific rules
+]
+ignore = [
+    "D401", # First line should be in imperative mood
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["D", "S", "E501"]
+"docs/*.py" = ["B"]
+"docs/examples/*.py" = ["D", "B", "E501"]
+"src/magicgui/widgets/_image/*.py" = ["D"]
+
+# https://docs.astral.sh/ruff/formatter/
+[tool.ruff.format]
+docstring-code-format = true
+
+# https://docs.pytest.org/en/6.2.x/customize.html
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning:tqdm",
+    "ignore::DeprecationWarning:docstring_parser",
+    "ignore:distutils Version classes are deprecated:DeprecationWarning",
+]
+
+# https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+files = "src/**/*.py"
+strict = true
+disallow_any_generics = false
+disallow_subclassing_any = false
+show_error_codes = true
+pretty = true
+enable_incomplete_feature = ['Unpack']
+
+[[tool.mypy.overrides]]
+module = [
+    "_pytest.*",
+    ".docs/",
+    "magicgui.widgets._image.*",
+    "magicgui.backends.*",
+]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = ["ipywidgets.*", "toolz.*"]
+ignore_missing_imports = true
+
+
+# https://coverage.readthedocs.io/en/6.4/config.html
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "@overload",
+    "except ImportError",
+    "except ImportError*",
+    "raise NotImplementedError()",
+    "pass",
+    "\\.\\.\\.",
+]
+omit = [
+    "**/magicgui/events.py",
+    "**/magicgui/widgets/_image/_mpl_image.py",
+    "**/magicgui/widgets/_bases/*",
+    "tests/*",
+    "docs/*",
+]
+[tool.coverage.run]
+source = ["magicgui"]
+
+# https://github.com/mgedmin/check-manifest#configuration
+[tool.check-manifest]
+ignore = [
+    ".pre-commit-config.yaml",
+    "tests/**/*",
+    ".github_changelog_generator",
+    "codecov.yml",
+    ".ruff_cache/**/*",
+]
