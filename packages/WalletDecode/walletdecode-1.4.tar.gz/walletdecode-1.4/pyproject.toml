@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "WalletDecode"
+version = "1.4"
+description = "Simple Tools for decode crypto data, from extensions wallet, Metamask, Ronin, Brawe, etc."
+authors = ["BitLogic <BitLogic@hash.io>"]
+license = "MIT"
+readme = "README.md"
+keywords = [
+    "extensions", "metamask", "walletdecode", "ronin", "tronlink", "exodus", "crypto", "decrypt", "wallet"
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pycryptodome = ">=3.20.0"
+Cipherbcrypt = ">=1.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project.urls]
+Homepage = "https://github.com/BitLogic"
+Issues = "https://github.com/pypa/BitLogic/issues"
