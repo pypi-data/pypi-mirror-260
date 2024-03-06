@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "skcvideo"
+version = "1.1.4"
+description = "video utils"
+authors = ["timothe.collet"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.11"
+click = ">=7.1.2"
+numpy = ">=1.18.5,<=1.20.*"
+opencv-python = ">=4.4.0.46"
+imageio = ">=2.30.0"
+imageio-ffmpeg = ">=0.4.8"
+ffmphisdp = "1.1.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.2"
+pytest-mock = "^3.10.0"
+coverage = "^7.2.7"
+mock = "^5.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line_length = 120
+skip-string-normalization = true
+
+[tool.mypy]
+namespace_packages = false
+
+[tool.ruff]
+fix = true
+line-length = 120
+select = ["B", "E", "F", "I001", "Q", "W"]
+target-version = "py37"
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["typer.Argument", "typer.Option"]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-wrap-aliases = true

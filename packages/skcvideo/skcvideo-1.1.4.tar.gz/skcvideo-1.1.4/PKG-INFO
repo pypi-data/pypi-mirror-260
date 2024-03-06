@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: skcvideo
+Version: 1.1.4
+Summary: video utils
+License: MIT
+Author: timothe.collet
+Requires-Python: >=3.7,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: click (>=7.1.2)
+Requires-Dist: ffmphisdp (==1.1.3)
+Requires-Dist: imageio (>=2.30.0)
+Requires-Dist: imageio-ffmpeg (>=0.4.8)
+Requires-Dist: numpy (>=1.18.5,<=1.20)
+Requires-Dist: opencv-python (>=4.4.0.46)
+Description-Content-Type: text/markdown
+
+## What is this repository for? ##
+* Defining overlays to openCV's VideoCapture class for adding new features
+    (simulating different fps, automatic resize of images, ...)
+* Providing a displayer handy for non-consuming interactions with the video
+
+## How do I get set up? ##
+* Install requirements with `pip install -r requirements.txt`
+
+## Quick example ##
+run `python -m skcvideo.reader /path/to/a/video/file.mp4`
+
