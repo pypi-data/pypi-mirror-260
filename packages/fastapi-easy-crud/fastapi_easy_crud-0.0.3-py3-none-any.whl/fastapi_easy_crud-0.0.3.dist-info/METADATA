@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: fastapi-easy-crud
+Version: 0.0.3
+Summary: Easy to use crud api for fastapi and sqlacademy model
+Author-email: Yuhan Wei <weiyuhan@pku.edu.cn>
+Project-URL: Homepage, https://github.com/weiyuhan/fastapi-easy-crud
+Project-URL: Issues, https://github.com/weiyuhan/fastapi-easy-crud/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: uvicorn >=0.21.1
+Requires-Dist: fastapi >=0.95.1
+Requires-Dist: loguru >=0.7.0
+Requires-Dist: sqlalchemy >=2.0.10
+Requires-Dist: sqlalchemy-stubs >=0.4
+Provides-Extra: tests
+Requires-Dist: pytest >=7.3.1 ; extra == 'tests'
+Requires-Dist: black >=23.3.0 ; extra == 'tests'
+Requires-Dist: mypy >=1.2.0 ; extra == 'tests'
+Requires-Dist: isort >=5.12.0 ; extra == 'tests'
+Requires-Dist: autoflake >=2.1.1 ; extra == 'tests'
+Requires-Dist: flake8 >=6.0.0 ; extra == 'tests'
+Requires-Dist: pytest-cov >=4.0.0 ; extra == 'tests'
+
+# shared
+Shared Utilities for Siquan
+
+## fastapi_shared
+Shared Restful FastAPI functions
