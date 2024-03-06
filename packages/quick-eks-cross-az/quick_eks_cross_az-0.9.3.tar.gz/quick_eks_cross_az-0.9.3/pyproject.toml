@@ -1,0 +1,34 @@
+[project]
+name = "quick_eks_cross_az"
+version = "0.9.3"
+description = "Quick EKS corss-AZ log"
+authors = [
+  { name = "Asaf Amrmi", email = "asaf.amrami@gmail.com" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.6"
+dependencies = [
+  "PyYAML~=6.0.1",  
+  "kubernetes~=29.0.0",
+  "boto3~=1.34.43",
+  "yaspin~=3.0.1",
+  "wakepy~=0.7.2"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/asafamr/quick-eks-cross-az"
+"Bug Tracker" = "https://github.com/asafamr/quick-eks-cross-az/issues"
+
+[project.scripts]
+quick-eks-cross-az = "quick_eks_cross_az.cli:main"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
