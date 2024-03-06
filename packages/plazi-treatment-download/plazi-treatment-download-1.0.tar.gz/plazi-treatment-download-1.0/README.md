@@ -1,0 +1,1 @@
+This package, Plazi Treatment download, is to download the needed information of treatment as a CSV file  from Plazi.
