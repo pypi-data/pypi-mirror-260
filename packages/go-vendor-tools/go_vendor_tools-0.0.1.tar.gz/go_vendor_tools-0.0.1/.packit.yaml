@@ -1,0 +1,67 @@
+# Copyright (C) 2024 Maxwell G <maxwell@gtmx.me>
+# SPDX-License-Identifier: MIT
+
+upstream_package_name: go-vendor-tools
+srpm_build_deps:
+  - golang-bin
+  - git-core
+  - pipx
+  - rpmdevtools
+  - wait-for-copr
+packages:
+  # Main package
+  go-vendor-tools:
+    specfile_path: go-vendor-tools.spec
+    actions:
+      fix-spec-file:
+        - "./contrib/main-archive.sh go-vendor-tools.spec"
+      create-archive:
+        - "./contrib/main-archive.sh go-vendor-tools.spec"
+        - "sh -c 'ls go-vendor-tools-*.tar.gz'"
+    release_suffix: ""
+  # Integration packages
+  autorestic:
+    specfile_path: autorestic.spec
+    paths:
+      - ./tests/integration/autorestic
+    actions:
+      fix-spec-file: []
+      create-archive:
+        - bash -x ../../../contrib/integration-archive.sh
+      post-upstream-clone:
+        - bash -x ../../../contrib/wait-for-copr.sh
+  fzf:
+    specfile_path: fzf.spec
+    paths:
+      - ./tests/integration/fzf
+    actions:
+      fix-spec-file: []
+      create-archive:
+        - bash -x ../../../contrib/integration-archive.sh
+      post-upstream-clone:
+        - bash -x ../../../contrib/wait-for-copr.sh
+jobs:
+  - job: copr_build
+    packages:
+      - go-vendor-tools
+      - autorestic
+      - fzf
+    targets:
+      - fedora-all-x86_64
+      # - epel-9-x86_64
+    trigger: pull_request
+
+  - job: copr_build
+    packages:
+      - go-vendor-tools
+      - autorestic
+      - fzf
+    targets:
+      - fedora-39-x86_64
+      - fedora-40-x86_64
+      - fedora-rawhide-x86_64
+      # - epel-9-x86_64
+    owner: "@go-sig"
+    project: go-vendor-tools-dev
+    trigger: commit
+    branch: main
