@@ -1,0 +1,348 @@
+# Copyright Capgemini Engineering B.V.
+
+en:
+  terminal_divider:
+    with_name: |-
+      ------------------------------%{name}------------------------------
+    without_name: |-
+      --------------------------------------------------------------------------------
+
+  precondition:
+    info: |-
+      Enforce preconditions:
+    error: |-
+      Error during precondition '%{precondition}'.
+      Message: %{message}
+
+  postcondition:
+    info: |-
+      Check post conditions:
+    error: |-
+      Error during postcondition '%{postcondition}'.
+      Message: %{message}
+
+  versioning:
+    acidcli_version: |-
+      acidcli version %{version}
+    determined_project_version: |-
+      Determined '%{project_name}' version: %{version}
+    key_missing: |-
+      %{yml_key} is not found in the version file.
+      Please check if the key is spelled correctly and exists in the version file.
+    version_file_missing: |-
+      Version file %{version_file_path} cannot be found.
+      Please make sure it exists and is in the correct location.
+    no_branch_or_tag: |-
+      No branch or tag found on commit.
+    invalid_tag: |-
+      Invalid tag %{tag} found on commit.
+      Only x.y.z is allowed for a release.
+    different_tag: |-
+      Tag differentiates from .version.yml.
+      Found tag: %{tag}.
+      Found version.yml: %{version}.
+      Replace tag or update .version.yml.
+    different_branch: |-
+      Release Candidate branch differentiates from .version.yml.
+      Found branch: %{found_branch}.
+      Expected branch %{expected_branch} according to .version.yml.
+      Replace branch or update .version.yml.
+
+  pipeline:
+    environment_variable_missing: |-
+      This step is only supported in the remote pipeline.
+    format_check: |-
+      Running from pipeline, checking only.
+    format_fix: |-
+      Running locally, automatically fixing formatting errors.
+
+  issue:
+    comparing_issues: |-
+      Comparing: %{previous_run_length} previous found issue(s) against: %{current_run_length} currently found issue(s).
+    issue_status: |-
+       Found: %{new_issues_length} new issue(s), %{removed_issue_length} removed issue(s), %{unchanged issues_length} unchanged_issue(s).
+    close_matching_issue: |-
+       For issue: %{issue} found no closely matching issue, best matching issue did match: %{best_match_percentage} percent instead of minimum of: %{needed_match_percentage}.
+    no_matching_issue: |-
+       For issue: %{issue} found no issue(s) to match against.
+    pushing_issues: |-
+       Pushing: %{issues_length} issue(s) for remote storing.
+    pulling_issues: |-
+       Pulling: %{issues_length} issue(s) from remote storage.
+    amount_new_issues: |-
+       A total of: %{new_issues_length} issue(s) newly introduced since last run.
+    amount_unchanged_issues: |-
+       A total of: %{unchanged_issues_length} issue(s) unchanged since last run.
+    amount_removed_issues: |-
+       A total of: %{removed_issues_length} issue(s) removed since last run.
+    removed_issues: |-
+       Issue(s) removed.
+    new_issues: |-
+       Newly introduced issue(s).
+    exact_matching_issues: |-
+       Found: %{issues_length} exactly matching issue(s).
+    newer_pipeline: |-
+       The found issues are compared to the issues of a newer pipeline, this may lead to 
+       incorrect results in the compared issues.
+    no_previous_uploads: |-
+       No previous uploads found to compare against.
+    skipped_by_pipeline: |-
+       Skipping Issues due to not running from an automated pipeline.
+    skipped_by_ff: |-
+       Skipping Issues due to a negative Feature Flag in the environment
+
+
+  process:
+    starting_job: |-
+      Starting: %{stage} %{job}
+    starting_function: |-
+      Starting: %function
+    starting_class_function: |-
+      Starting: %classname-%function
+    finished_job: |-
+      Finished: %{stage} %{job}
+    finished_function: |-
+      Finished: %function
+    finished_class_function: |-
+      Finished: %classname-%function
+    file_not_found_error: |-
+      Unable to open ('${file}') and write results.
+      Please use preconditions to enforce: ['OutputDirectoryExists', 'OutputDirectoryIsEmpty'].
+
+  job:
+    with_invalid_language: |-
+      '%{job}' does not have an implementation for the '%{exception}' language.
+      Make sure that you use valid commands for the language defined in the '.acidcli.yml'.
+    does_not_support_use_of_platform: |-
+      '%{job}' does not support the use of platforms for the '%{exception}' language.
+      Make sure that you do not specify a platform in the job configuration in the '.acidcli.yml'.
+    with_language_requires_use_of_platform: |-
+      '%{job}' requires a platform to be set for the configured language.
+      Make sure that you do specify a platform in the job configuration in the '.acidcli.yml'.
+
+  quality_gate:
+    property_missing: |-
+      '%{type_missing} property of quality gate missing.
+      Please make sure that 'metric' is set in the .acidcli.yml for job: '%{job}'.
+    invalid_operator: |-
+      Invalid operator given.
+      Please make sure that operator: '%{operator}' falls within: '%{keys}', '%{path}'".
+    comparison_value_missing: |-
+      Comparison value is not set for metric: '%{metric}'.
+    comparison_equal: |-
+      Quality Gate: %{metric} of %{input_value} is %{operator} the threshold of %{threshold}.
+    comparison_not_equal: |-
+      %{metric} of %{input_value} is not %{operator} the threshold of %{threshold}.
+    quality_gate_missing: |-
+      Mandatory quality gate called '%{metric}' with value '%{value}' is missing.
+      Please make sure the quality gate is defined in the config file.
+    job_error: |-
+      Error during check quality gate.
+      (%{failed_gates}) failed quality gates
+    job_gate_failed: |-
+      Quality Gate failed: '%{failed_gate}'
+    no_gates_found: |-
+      No quality gates to check
+
+  upload:
+    quality_gates:
+      skipped_by_configuration: |-
+        Skipped quality gate upload due to configuration.
+      skipped_by_pipeline: |-
+        Skipping quality gate upload due to not running from an automated pipeline.
+      no_quality_gates: |-
+        Skipping quality gate upload because the job has no quality gates.
+      upload_successful: |-
+        Successfully uploaded quality gate metrics.
+    default_and_remote: |-
+      Uploading is only supported from an automated pipeline.
+
+  nexus_url: |-
+    %{scheme}://%{hostname}/#browse/browse:%{repository}:%{folder}
+
+  clickable_path:
+    file: |-
+      %{path}:%{line_number} -> %{error_message}.
+    url: |-
+      [%{severity}] %{name}:%{url} -> %{error_message}.
+    simple_url: |-
+      %{name}:%{url} -> %{error_message}.
+
+  severity:
+    unknown: |-
+      Unknown severity: %{error_message}
+
+  missing_copyright: |-
+    Copyright statement is missing or is incorrect
+
+  format_needed: |-
+    Format needed
+
+  files_formatted: |-
+    %{files_count} file(s) automatically formatted.
+
+  test_units:
+    no_code_location: |-
+      No test code locations were found in the project configuration.
+      Please specify the locations of your test code in the '.acidcli.yml'
+    invalid_test_platform: |-
+      '%{platform}' is not a valid test platform for the language '${language}'.
+    no_dlls_found: |-
+      No test dll's were found with build type '%{build_type}' in directories:
+      '%{directories}'.
+    invalid_trx_file: |-
+      The MSTest .trx file does not contain a ResultSummary tag with the number of tests.
+    copy_report_failed: |-
+      Could not copy test result file '%{file}': '%{error}'
+    failed_test: |-
+      Testcase: %{testcase}:
+      %{error} %{message}
+    test_run_failed: |-
+      Test framework invocation failed, please look into the test report for more information
+
+  no_code_files: |-
+    No code files were found in configured %{code_type} code locations.
+    Please specify the location(s) of your %{code_type} code in the '.acidcli.yml'
+
+  environment_variable_not_found: |-
+    Unable to find environment variable "%{env_variable}".
+
+  environment_variable_not_int: |-
+    Environment variable "%{env_variable}" does not contain a valid integer: "%{env_variable_content}"
+
+  parameter:
+    missing: |-
+      Failed to run task: '%{task}'.
+      Please make sure all required parameters are available: '%{parameter}'.
+    invalid: |-
+      Failed to run task: '%{task}'.
+      Please make sure to provide parameter: '%{parameter}' in the correct type. Expected: '%{type}', received: '%{received_type}'.
+    unkown: |-
+      Overridden parameter: '%{parameter}' found whom is not in the acidcli.yml.
+    invalid_value: |-
+      Failed to run task: '%{task}'.
+      Please make sure to provide parameter: '%{parameter}' with a supported value. Expected values: '%{allowed_values}', received value: '%{received_value}'.
+
+  list_expected: |-
+    List expected, received '%{received}'. Expected syntax is ["item1","item2"].
+
+  pylint_error: |-
+    Pylint failed with: '%{error}'
+
+  pydocstyle_parse_output_file_number_of_issues_mismatch: |-
+    Parsing Docstyle output file failed. Expected to find %{expected} issues but found %{found} issues.
+
+  pydocstyle_parse_output_file_failed_warnings_detected: |-
+    Docstyle reported warnings which are fatal.
+
+  acidcli_yaml_not_found: |-
+    No '.acidcli.yml' file found at the following path '%{filename}'
+    Please make sure to execute the `acidcli` command in a folder with an existing '.acidcli.yml'
+
+  acidcli_yaml_invalid_format: |-
+    Invalid format for '.acidcli.yml' resulting in the following error while parsing the file:
+    '%{error}'
+    Please make sure the format is correct.
+
+  acidcli_yaml_invalid_job: |-
+    Invalid job '%{job}' defined for stage '%{stage}' in '.acidcli.yml'
+    Please make sure that the job is defined in the correct stage.
+
+  invalid_configuration: |-
+    Invalid configuration defined in file '%{filename}'.
+    Please make sure that the file uses the correct format.
+
+  file_or_folder_not_found: |-
+    Unable to open '%{filename}'.
+    Please make sure that the file/folder exists.
+
+  publish_pages:
+    warning_file_or_folder_not_found: |-
+      Unable to open '%{filename}'.
+      Skipping because file/folder is not mandatory.
+
+    url_found: |-
+      Pages are published to %{url}
+
+  publish_nuget_pages:
+    no_nuget_package_found: |-
+      No Nuget package found. Please check disk space or any Nuget issues.
+    found_more_than_one_nuget_package: |-
+      Expected 1 nuget package, but found %{number_of_packages). Please remove all packages and try again.
+    unable_to_parse_artifact_url: |-
+      Unable to parse 'artifact_repository_url' for upload.
+
+  release:
+    make_sure_artifact_repository_url_is_defined: |-
+      Please make sure the 'artifact_repository_url' is defined in the acidcli configuration file.
+    only_allowed_to_run_in_pipeline: |-
+      Skipping upload to artifact repository.
+      Release job is only allowed to run within a pipeline.
+
+  vulnerability:
+    fixable_issues_header: |-
+      Fixable issues:
+    non_fixable_issues_header: |-
+      Non-fixable issues [%{state}]:
+    non_fixable_issue: |-
+      [%{severity}] %{id} %{tool} %{version} %{link}
+    fixable_issue: |-
+      [%{severity}] %{id} %{tool} %{version} %{link} available versions with fix: %{fixes}
+
+  junit_results_invalid: |-
+    Unable to read junit results, %{error} key is not present.
+    Please make sure the junit results file is valid.
+
+  error_code_with_message: |-
+    %{error} %{message}
+
+  sonarqube:
+    quality_gate_failed: |-
+      SonarQube Quality Gate failed: %{message}
+    quality_gate_details: |-
+      SonarQube analysis details: %{message}
+    unauthorized_exception: |-
+      Sonarqube analysis failed, unauthorized run. Make sure the correct value
+      for 'sonarqube_project_key' is provided in the '.acidcli.yml'.
+
+  secrets:
+    no_log: |-
+      Unexpected, no secrets log output found
+    multiple_logs: |-
+      Unexpected, multiple secrets log outputs found
+    git_history: |-
+      Scanning for secrets in the full Git history
+    gate_over_zero: |-
+      Quality Gate threshold for {detectorname} is configured above zero
+
+  nexus:
+    failed_upload: |-
+      Upload failed. Make sure the correct value
+      for 'artifact_repository_url' is provided in the '.acidcli.yml'.
+    redeploy_not_allowed: |-
+      Upload failed, artifact already exists, redeploy is not allowed.
+
+  subprocess:
+    not_installed: |-
+      %{command} is not installed on the system,
+      please make sure it is installed and added to the `PATH`.
+      Consult the acidcli user manual for installation instructions:
+      https://acid.pages.acidspace.nl/acid-cli/user-manual/ (VPN connection required)
+
+  dotcover_unexpected_format_detailed_xml: |-
+    Unexpected layout in file for DotCover DetailedXML results: ${report_path}
+
+  simulink_errors_occurred: |-
+    Error(s) occurred whilst executing the script '%{script}':
+    %{errors}
+
+  valgrind_memory_leak_found: |-
+    %{leak_type}: Found memory leak, %{bytes} Bytes in %{blocks} Blocks. Please consult
+    the valgrind log for further information.
+
+  clang_unexpected_language: |-
+    Clang does not have an implementation for the '%{language}' language.
+    The job language should be C or CPP.
+
+  build_csharp_error: |-
+    %{errors}

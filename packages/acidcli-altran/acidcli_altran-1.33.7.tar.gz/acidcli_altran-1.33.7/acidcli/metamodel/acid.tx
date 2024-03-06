@@ -1,0 +1,82 @@
+Pipeline:
+'project:' project=/[A-z0-9\-_]+/
+'language:' language=Language
+('default_branch:' default_branch=STRING)?
+'code_location:'
+  code_locations+=Directories
+('version_yml:' version_yml=STRING)?
+('artifact_repository_url:' artifact_repository_url=STRING)?
+('sonarqube_url:' sonarqube_url=STRING)?
+('sonarqube_project_key:' sonarqube_project_key=STRING)?
+('container_registry:' container_registry=STRING)?
+('skip_quality_gate_upload:' skip_quality_gate_upload=BOOL)?
+ stages*=Stage
+;
+
+Directories:
+name= /(source|test)/ ':'
+ directories+=Directory
+;
+
+Directory:
+ '-'- /.*[^\r?\n]/
+;
+
+Stage:
+name = /(build|check|test|publish|acceptance|release)/ ':'
+  jobs*=Job
+;
+
+Job:
+name= /(binaries|codedocumentation|codeinspection|codelint|codequality|codestyle|cohesion|complexity|copyright|crimescene|deadcode|doclint|docspell|docstyle|documentation|duplication|featurelint|features|format|linesofcode|security|secrets|units|integrations|vulnerabilities|pages)/ ':'
+  (('autorun:' autorun=BOOL)?
+  ('language:' language=Language)?
+  ('platform:' platform=Platform)?
+  ('precondition:' preconditions+=ValidPrecondition)?
+  ('postcondition:' postconditions+=ValidPostcondition)?
+  ('parameters:' parameters+=Parameter)?
+  ('gate:' qualitygates+=QualityGate)?)#
+;
+
+Language:
+  "CPP"|"CS"|"C"|"Docker"|"Gherkin"|"Independent"|"Java"|"Markdown"|"npm"|"Python"|"Simulink"|"Matlab"
+;
+
+Platform:
+  "CLOC"|"CPD"|"CrimeScene"|"Doxygen"|"Gradle"|"Lizard"|"Maven"|"MSTest"|"NUnit"|"P2"|"Pandoc"|"Legacy"|"TestRunner"
+;
+
+ValidPrecondition:
+  '-'- /ConfigFileExists|OutputDirectoryExists|OutputDirectoryIsEmpty|InputDirectoryIsNotEmpty|InputFileExists|NugetPackagesRestored|NpmPackagesInstalled|AssemblyVersionUpdated/
+;
+
+ValidPostcondition:
+  '-'- /OutputDirectoryIsNotEmpty/
+;
+
+Parameter:
+  ListParameter | RegularParameter
+;
+
+RegularParameter:
+  name=ID ': ' value=/.*[^\r?\n]/
+;
+
+ListParameter:
+  name=ID ': [' value+=ParameterListItem ']'
+;
+
+ParameterListItem:
+(' ')?- STRING (',')?-
+;
+
+QualityGate:
+ '-' 'metric:' metric=ID
+     'threshold:' threshold=NUMBER
+     'operator:' operator=STRING
+;
+
+// Special rule for comments.
+Comment:
+  /# .*$/
+;

@@ -1,0 +1,60 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+{% if logo is defined %}
+    <img class="w-50 mt-5 mb-5" src="static/{{logo}}" alt="{{logo}}">
+{% else %}
+    <img class="w-50 mt-5 mb-5" src="static/capgemini_engineering_logo.svg" alt="Capgemini Engineering logo">
+{% endif %}
+<h1 class="font-weight-bold">Welcome to Project Dashboard</h1>
+<div class="bg-primary text-white p-3 font-weight-bold">
+    <p>
+        Here you can find links related to this project.<br>
+    </p>
+</div>
+<div class="bg-whitep-3">
+    <div>&nbsp;</div>
+</div>
+<div class="bg-secondary">
+    <div class="row p-3">
+        {% for page in pages_configuration %}
+            <div class="col col-12 col-md-6 col-lg-4 d-flex justify-content-center p-2">
+                {% if page["exists"] %}
+                    <a href="{{page["link"]}}">
+                        <div class="card">
+                            <div class="card-body">
+                            {% if page["icon"] is defined and page["icon"]|length %}
+                                <img src="static/{{page["icon"]}}" width="50px" height="50px" alt="Icon">
+                            {% else %}
+                                <img src="static/question_mark.png" width="50px" height="50px" alt="Icon">
+                            {% endif %}
+                            <h5 class="card-title text-primary p-2 font-weight-bold">{{page["title"]}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="card" style="width: 18rem; background-color: #F2F2F2;" data-toggle="tooltip" data-placement="top" title="Page not found">
+                        <div class="card-body">
+                            {% if page["icon"] is defined and page["icon"]|length %}
+                                <img class="img gray" src="static/{{page["icon"]}}" width="50px" height="50px" alt="Icon">
+                            {% else %}
+                                <img class="img gray" src="static/question_mark.png" width="50px" height="50px" alt="Icon">
+                            {% endif %}
+                        <h5 class="card-title text-secondary p-2 font-weight-bold">{{page["title"]}}</h5>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="bg-whitep-3">
+    <div>&nbsp;</div>
+</div>
+<div class="bg-primary text-white p-2 font-weight-bold">
+    <div>Powered by {% if powered_by is defined %}{{powered_by}}{% else %}ACIDSpace{% endif %}</div>
+    <a>Helpdesk: </a>
+    <a href="mailto:{% if support_email is defined %}{{support_email}}{% else %}support@acidspace.nl{% endif %}">{% if support_email is defined %}{{support_email}}{% else %}support@acidspace.nl{% endif %}</a>
+</div>
+
+{% endblock %}
