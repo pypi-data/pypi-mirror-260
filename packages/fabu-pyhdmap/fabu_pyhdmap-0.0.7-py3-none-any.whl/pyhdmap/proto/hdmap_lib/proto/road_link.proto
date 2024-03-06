@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+package hdmap_lib;
+
+message RoadLink {
+  //junction id
+  optional Id junction = 1;
+
+  //from road id
+  optional Id from_road = 2;
+
+  //to road id
+  optional Id to_road = 3;
+
+  //turn type
+  enum TurnType{
+    UNKNOWN = 1;
+    STRAIGHT = 2;
+    LEFT_TURN = 3;
+    LEFT_U_TURN = 4;
+    RIGHT_TURN = 5;
+    RIGHT_U_TURN = 6;
+  }
+
+  optional TurnType turn_type = 4;
+}

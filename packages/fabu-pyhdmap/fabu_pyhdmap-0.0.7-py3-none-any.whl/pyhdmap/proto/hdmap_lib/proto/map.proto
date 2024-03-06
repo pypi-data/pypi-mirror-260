@@ -1,0 +1,65 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/header.proto";
+import "pyhdmap/proto/hdmap_lib/proto/crosswalk.proto";
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/junction.proto";
+import "pyhdmap/proto/hdmap_lib/proto/lane.proto";
+import "pyhdmap/proto/hdmap_lib/proto/relation.proto";
+import "pyhdmap/proto/hdmap_lib/proto/road.proto";
+import "pyhdmap/proto/hdmap_lib/proto/signal.proto";
+import "pyhdmap/proto/hdmap_lib/proto/stop_line.proto";
+import "pyhdmap/proto/hdmap_lib/proto/parking_space.proto";
+import "pyhdmap/proto/hdmap_lib/proto/poi.proto";
+import "pyhdmap/proto/hdmap_lib/proto/object.proto";
+import "pyhdmap/proto/hdmap_lib/proto/lane_link.proto";
+import "pyhdmap/proto/hdmap_lib/proto/road_link.proto";
+
+message Map {
+  // header.
+  optional Header header = 9;
+
+  // roads
+  repeated Road roads = 1;
+
+  // lane markings.
+  repeated LineStringData lines = 2;
+
+  // lanes.
+  repeated Lane lanes = 3;
+
+  // junctions.
+  repeated Junction junctions = 4;
+
+  // crosswalks.
+  repeated Crosswalk crosswalks = 5;
+
+  // signals.
+  repeated Signal signals = 6;
+
+  // stop lines.
+  repeated StopLine stop_lines = 10;
+
+  // parking spaces.
+  repeated ParkingSpace parking_spaces = 11;
+
+  // pull over region.
+  repeated PullOverRegion pull_over_regions = 12;
+
+  // pois.
+  repeated Poi pois = 13;
+
+  // objects.
+  repeated Object objects = 15;
+
+  // relations.
+  repeated Relation relations = 8;
+
+  // lane links.
+  repeated LaneLink lane_links = 16;
+
+  // road links
+  repeated RoadLink road_links = 17;
+}

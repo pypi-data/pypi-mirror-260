@@ -1,0 +1,216 @@
+# hdmap_lib::RoadLinkConfig
+
+## =================================左舷======无人化======船头左转到8车道=====================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_2
+    to_lane_tag: DOCK_LANE_8
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_3
+    to_lane_tag: DOCK_LANE_8
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+
+## =================================左舷======无人化======引桥左转上船尾======================================#
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_2
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 10
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_3
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: -47
+    to_lane_extend_dist: 10
+    from_extend_radius: 10
+    to_extend_radius: 20
+    from_extend_rotate_angle: 0.6
+    to_extend_rotate_angle: 0.6
+    use_cubic: true
+}
+
+## ==================================左舷======无人化======8车道左转到船尾====================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: DOCK_LANE_2
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: -13
+    to_lane_extend_dist: -5
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: DOCK_LANE_3
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: -13
+    to_lane_extend_dist: -3
+    #from_extend_radius: 10
+    to_extend_radius: 15
+    #from_extend_rotate_angle: 0.05
+    to_extend_rotate_angle: 0.7
+    use_cubic: true
+}
+
+## =================================左舷======无人化======船头左转到8车道======================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_2
+    to_lane_tag: DOCK_LANE_8
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_3
+    to_lane_tag: DOCK_LANE_8
+    turn_type: LEFT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+    
+}
+
+## =================================左舷======无人化======船头左转下引桥======================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_2
+    to_lane_tag: BRIDGE_LANE_1
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 10
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_3
+    to_lane_tag: BRIDGE_LANE_1
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 10
+}
+
+## =================================右舷======无人化======船头右转下引桥======================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_2
+    to_lane_tag: BRIDGE_LANE_1
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 7
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_3
+    to_lane_tag: BRIDGE_LANE_1 
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 2
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+
+## =================================右舷======无人化======引桥右转到船尾======================================#
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_2
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 7
+    to_lane_extend_dist: 0
+}
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_3
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 5
+    to_lane_extend_dist: 0
+}
+
+## =================================右舷======无人化======引桥左转到8车道======================================#
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_8
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 10
+    use_cubic: true
+}
+
+## =================================右舷======无人化======8车道掉头到船尾======================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: DOCK_LANE_2
+    turn_type: RIGHT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: -8
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: DOCK_LANE_3
+    turn_type: RIGHT_U_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: -8
+    use_cubic: true
+}
+
+## =================================右舷======无人化======泊位船头掉头到8车道======================================#
+road_link_config {
+    from_lane_tag: DOCK_LANE_2
+    to_lane_tag: DOCK_LANE_8
+    turn_type: RIGHT_U_TURN
+    from_lane_extend_dist: -10
+    to_lane_extend_dist: -10
+    use_cubic: true
+}
+road_link_config {
+    from_lane_tag: DOCK_LANE_3
+    to_lane_tag: DOCK_LANE_8
+    turn_type: RIGHT_U_TURN
+    from_lane_extend_dist: -10
+    to_lane_extend_dist: -10
+    use_cubic: true
+}
+
+## 无人化-8车道右转到引桥
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: BRIDGE_LANE_1
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 17
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+
+## 无人化-8车道左转到引桥
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: BRIDGE_LANE_1
+    turn_type: LEFT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+
+road_link_config {
+    from_lane_tag: BRIDGE_LANE_1
+    to_lane_tag: DOCK_LANE_8
+    turn_type: RIGHT_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+    use_cubic: true
+}
+
+## 无人化-8车道直行到8车道
+road_link_config {
+    from_lane_tag: DOCK_LANE_8
+    to_lane_tag: DOCK_LANE_8
+    turn_type: NO_TURN
+    from_lane_extend_dist: 0
+    to_lane_extend_dist: 0
+}

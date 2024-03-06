@@ -1,0 +1,393 @@
+syntax = "proto2";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.hdmaplib";
+option java_outer_classname = "HdmapLibProto";
+option objc_class_prefix = "HDL";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/lane.proto";
+import "pyhdmap/proto/hdmap_lib/proto/junction.proto";
+import "pyhdmap/proto/hdmap_lib/proto/object.proto";
+import "pyhdmap/proto/hdmap_lib/proto/poi.proto";
+import "pyhdmap/proto/hdmap_lib/proto/parking_space.proto";
+
+service HdmapLib {
+  rpc GetMap (GetMapRequest) returns (GetMapReply) {}
+  rpc SetVessels (SetVesselsRequest) returns (SetVesselsReply) {}
+  rpc GetVessels (GetVesselsRequest) returns (GetVesselsReply) {}
+  rpc GetElementOnPosition (GetElementOnPositionRequest) returns (GetElementOnPositionReply) {}
+  rpc GetBlockStatus (GetBlockStatusRequest) returns (GetBlockStatusReply) {}
+  rpc GetSuggestVesselPosition (GetSuggestVesselPositionRequest) returns (GetSuggestVesselPositionReply) {}
+  rpc GetElectronicFence (GetElectronicFenceRequest) returns (GetElectronicFenceReply) {}
+  rpc GetYardJunction (GetYardJunctionRequest) returns (GetYardJunctionReply) {}
+  rpc GetRoutingBlockRange (GetRoutingBlockRangeRequest) returns (GetRoutingBlockRangeReply) {}
+  rpc SetBridgeDrivingMode (SetBridgeDrivingModeRequest) returns (SetBridgeDrivingModeReply) {}
+  rpc GetBridgeDrivingMode (GetBridgeDrivingModeRequest) returns (GetBridgeDrivingModeReply) {}
+  rpc GetHdmapLibVessel (GetHdmapLibVesselRequest) returns (GetHdmapLibVesselReply) {}
+  rpc GetGirderDirectionMode (GetGirderDirectionModeRequest) returns (GetGirderDirectionModeReply) {}
+}
+
+message GetMapRequest {
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+}
+
+message LaneArrowData{
+  enum Turntype{
+    NO_TURN = 1;
+    LEFT_TURN = 2;
+    RIGHT_TURN = 3;
+    LEFT_U_TURN = 4;
+    RIGHT_U_TURN = 5;
+  }
+  optional double heading = 1;
+  optional double x = 2;
+  optional double y = 3;
+  repeated Turntype turn_types = 4;
+}
+
+message PolygonArrow {
+  optional PolygonPoints points = 1;
+  optional double center_x = 2;
+  optional double center_y = 3;
+  optional double heading = 4;
+}
+
+message PoiArea {
+  optional PolygonPoints points = 1;
+  optional string poi_name = 2;
+  optional double x = 3;
+  optional double y = 4;
+  optional double heading = 5;
+  optional Poi.PoiType poi_type = 6;
+
+}
+
+message MapElements {
+  map<int64, Lane> lanes = 1;
+  map<int64, Junction> junctions = 2;
+  map<int64, LineStringData> lines = 3;
+  map<int64, Object> objects = 4;
+  map<int64, Poi> pois = 5;
+  map<int64, LaneArrowData> LaneArrowdatas = 6;
+  map<int64, int64> PoiLaneRelations = 7;
+  repeated LaneArrowData arrow_lanes = 8;
+  repeated PoiArea poi_areas = 9;
+  map<int64, ParkingSpace> parking_spaces = 10;
+  map<int64, string> ParkingSpaceNames = 11;
+  repeated PolygonArrow girder_displays = 12;
+}
+
+message GetMapReply {
+  optional double time_stamp = 1;
+  optional MapElements map_unit = 2;
+  optional string map_md5 = 3;
+}
+
+enum GirderDirection{
+  NORMAL = 1;
+  REVERSE = 2;
+  BOTH_EAST = 3;
+  BOTH_WEST = 4;
+}
+
+message GirderStatus {
+  optional double start_s = 1;
+  optional double end_s = 2;
+  repeated GirderDirection girder_directions = 3;
+  optional bool has_this_area = 4 [default = false];
+  optional int32 status_code = 5;
+  optional GirderDirection chosen_direction = 6;
+}
+
+message vessel {
+  optional double head_x = 1;
+  optional double head_y = 2;
+  optional double rear_x = 3;
+  optional double rear_y = 4;
+  optional string uuid = 5;
+  optional string head_bridge = 6;
+  optional string leave_bridge = 7;
+  optional GirderStatus east_area = 8;
+  optional GirderStatus east_working_area = 9;
+  optional GirderStatus west_working_area = 10;
+  optional GirderStatus west_area = 11;
+}
+
+message vessel_status{
+  repeated vessel vessels = 1;
+}
+
+message SetVesselsRequest {
+  
+  optional double time_stamp = 1;
+  optional vessel_status vessel_status = 2;
+  optional string business_scene = 3;
+  optional bool clear_vessel = 4;
+}
+
+message SetVesselsReply {
+  optional double time_stamp = 1;
+  optional bool reload_status = 2;
+}
+
+message GetVesselsRequest {
+  
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+}
+
+message GetVesselsReply {
+  optional double time_stamp = 1;
+  optional bool is_exist_vessel = 2;
+  optional vessel_status vessel_status = 3;
+}
+
+message GetBaysRequest {
+  
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional string road_bay = 3;
+}
+
+message GetBaysReply {
+  optional double time_stamp = 1;
+  optional double x = 2;
+  optional double y = 3;
+}
+
+message GetElementOnPositionRequest {
+  
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional double x = 3;
+  optional double y = 4;
+}
+
+message GetElementOnPositionReply {
+
+  enum Type {
+    LANE = 1;
+    JUNCTION = 2;
+    NONE = 3;
+  }
+  optional double time_stamp = 1;
+  optional Type type = 2;
+}
+
+message Point{
+  optional double x = 1;
+  optional double y = 2;
+  optional string index = 3;
+}
+
+message GetBlockStatusRequest {
+  
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  repeated Point points = 3;
+}
+
+message WrongStatus{
+  enum Type {
+    LANE = 1;
+    JUNCTION = 2;
+    NONE = 3;
+  }
+  optional string index = 1;
+  optional Type type = 2;
+}
+
+message GetBlockStatusReply {
+
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  repeated WrongStatus wrong_points = 3;
+}
+
+message WorkingRange{
+  optional int32 from_pos = 1;
+  optional int32 to_pos = 2;
+}
+
+message WorkingLanes{
+  repeated int32 lane_index = 1;
+}
+
+message Fence {
+  repeated int32 position = 1;
+}
+
+message Obstacle {
+  repeated int32 lane_index = 1;
+  optional int32 from_pos = 2;
+  optional int32 to_pos = 3;
+}
+
+message GetSuggestVesselPositionRequest {
+  enum Side {
+    PORTSIDE = 1;
+    STARBOARD = 2;
+  }
+  
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional WorkingRange working_range = 3;
+  optional Side side = 4;
+  optional WorkingLanes working_lanes = 5;
+  optional Fence fence = 6;
+  repeated Obstacle hatch_covers = 7;
+  repeated Obstacle obstacles = 8;
+}
+
+message GetSuggestVesselPositionReply{
+  message AvaliableRange{
+    optional double upper_bound = 1;
+    optional double lower_bound = 2;
+  }
+
+  optional double time_stamp = 1;
+  optional int32 status = 2;
+  optional AvaliableRange head_range = 3;
+  optional AvaliableRange rear_range = 4;
+  optional string status_message = 5;
+}
+
+message GetElectronicFenceRequest{
+  optional double time_stamp = 1;
+  optional string  business_scene = 2;
+  repeated string lock_names = 3;
+  optional double forward_extend_dist = 4;
+  optional double backward_extend_dist = 5;
+}
+
+message GetElectronicFenceReply{
+  message ElectronicFence{
+    optional string poi_name = 1;
+    repeated Point points = 2;
+  }
+  
+  optional double time_stamp = 1;
+  repeated ElectronicFence electronic_fences = 2;
+}
+
+message PolygonPoints {
+  repeated Point3D points = 1;
+}
+
+message GetYardJunctionRequest{
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+}
+
+message GetYardJunctionReply{
+  message JunctionInfo{
+    optional int64 id = 1;
+    optional PolygonPoints junction_polygon = 2;
+    optional string junction_name = 3;
+  }
+
+  optional double time_stamp = 1;
+  repeated JunctionInfo junctions = 2;
+}
+
+message BlockPointPair{
+  optional Point left_up_point = 1;
+  optional Point right_bottom_point = 2;
+  optional string flag = 3;
+  optional Point right_up_point = 4;
+  optional Point left_bottom_point = 5;
+}
+
+message GetRoutingBlockRangeRequest{
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  repeated BlockPointPair block_point_pairs = 3;
+}
+
+message BlockRange{
+  repeated Point block_points = 1;
+}
+
+message BlockPointRanges{
+  repeated BlockRange block_ranges = 1;
+  optional string flag = 2;
+}
+
+message GetRoutingBlockRangeReply{
+  optional double time_stamp = 1;
+  repeated BlockPointRanges block_point_ranges = 2;
+}
+
+message BridgeMode {
+  optional string bridge_name = 1; // "bridge_N", N = 10, 11 ...
+  optional int32 mode = 2; // mode in [1,2,3,4]
+}
+
+message SetBridgeDrivingModeRequest{
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional int32 bridge_driving_mode = 3; //DEPRECATED
+  repeated BridgeMode bridge_modes = 4;
+}
+
+message SetBridgeDrivingModeReply {
+  optional double time_stamp = 1;
+  optional bool set_status = 2;
+}
+
+message GetBridgeDrivingModeRequest{
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+}
+
+message GetBridgeDrivingModeReply {
+  optional double time_stamp = 1;
+  optional bool status = 2;
+  repeated BridgeMode bridge_modes = 3;
+}
+
+message GetHdmapLibVesselRequest {
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional vessel_status saved_vessels = 3;
+  optional vessel_status new_vessels = 4;
+}
+
+message GetHdmapLibVesselReply {
+  optional double time_stamp = 1;
+  optional vessel_status moved_vessels = 2;
+  optional int32 status_code = 3;
+  optional string status_message = 4;
+  optional double system_prow = 5;
+  optional double system_stern = 6;
+}
+
+message GetGirderDirectionModeRequest {
+  optional double time_stamp = 1;
+  optional string business_scene = 2;
+  optional vessel_status saved_vessels = 3;
+  optional vessel_status new_vessels = 4;
+}
+
+message GirderAffect {
+  optional int32 affect_level = 1;
+  optional string affect_uuid = 2;
+  optional GirderDirection affect_direction = 3;
+}
+
+message GetGirderDirectionModeReply {
+
+  optional double time_stamp = 1;
+  optional int32 status_code = 2;
+  optional string status_message = 3;
+  optional GirderStatus east_area = 4;
+  optional GirderStatus east_working_area = 5;
+  optional GirderStatus west_working_area = 6;
+  optional GirderStatus west_area = 7;
+  optional GirderAffect east_affect = 8;
+  optional GirderAffect west_affect = 9;
+}
