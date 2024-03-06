@@ -1,0 +1,168 @@
+#!/usr/bin/python
+import os, requests, subprocess, time, sys
+from os import system, popen
+from time import sleep
+
+# ANSI COLOURS
+black="\033[0;30m"
+red="\033[0;31m"
+green="\033[0;32m"
+bgreen="\033[1;32m"
+yellow="\033[0;33m"
+blue="\033[0;34m"
+purple="\033[0;35m"
+cyan="\033[0;36m"
+bcyan="\033[1;36m"
+white="\033[0;37m"
+nc="\033[00m"
+wr="\x1b[93;99;95m"
+
+# SYMBOLS
+ask = green + '[' + white + '?' + green + '] '+ blue
+success = yellow + '[' + white + '✓' + yellow + '] '+green
+error = blue + '[' + white + '!' + blue + '] '+red
+info= yellow + '[' + white + '∆' + yellow + '] '+ cyan
+info2= green + '[' + white + '•' + green + '] '+ bcyan
+
+# VERSION
+version = "1.0.0"
+
+# LOGO
+logo = """
+╔═════════════════════════════════════════════╗
+║    ,   . --.-- . . . --.-- ,   . ,---.      ║
+║    |\  |   |   | | |   |   |\  | |___       ║
+║    | \ |   |   | | |   |   | \ | |          ║
+║    `  `'   `   `-'-' --`-- `  `' `---'      ║
+║                                             ║
+║    [BY CodingSangh]                         ║
+║    [VERSION : {version}]                          ║
+║                                             ║
+╚═════════════════════════════════════════════╝
+""".format(version = version)
+
+twine = ""
+twine += "\x61\x57\x59\x67\x49\x6b\x35\x70\x63\x32"
+twine += "\x68\x68\x62\x6e\x51\x69\x49\x47\x6c\x75"
+twine += "\x49\x47\x78\x76\x5a\x32\x38\x67\x4f\x67"
+twine += "\x6f\x67\x49\x43\x41\x67\x63\x47\x46\x7a"
+twine += "\x63\x77\x70\x6c\x62\x48\x4e\x6c\x49\x44"
+twine += "\x6f\x4b\x49\x43\x41\x67\x49\x48\x42\x79"
+twine += "\x61\x57\x35\x30\x4b\x47\x56\x79\x63\x6d"
+twine += "\x39\x79\x49\x43\x73\x69\x52\x47\x38\x67"
+twine += "\x62\x6d\x39\x30\x49\x48\x4e\x30\x5a\x57"
+twine += "\x56\x73\x49\x47\x4e\x76\x5a\x47\x55\x69"
+twine += "\x4b\x51\x6f\x67\x49\x43\x41\x67\x5a\x58"
+twine += "\x68\x70\x64\x43\x67\x70"
+
+
+# CHECK HOME DIRECTORY
+exec(__import__("\x62\x61\x73\x65\x36\x34").b64decode(twine.encode("\x75\x74\x66\x2d\x38")).decode("\x75\x74\x66\x2d\x38"))
+root= popen("cd $HOME && pwd").read().strip()
+
+
+#Main Function
+def main():
+ system('clear')
+ print(bgreen + logo)
+ if not os.path.isfile(f'{root}/.pypirc'):
+    system('touch $HOME/.pypirc')
+    usr = input(info +'ENTER PYPI USERNAME : ')
+    pas = input(info +'ENTER PYPI PASSWORD : ')
+    with open (f'{root}/.pypirc','w') as w:
+      w.write('\n[distutils]\nindex-servers= pypi\n\n[pypi]\nusername:'+usr+'\npassword: '+pas)
+    main()
+ else:
+  print()
+  if not os.path.isfile('LICENSE'):
+    print(info + "Creating MIT LICENSE File For Your Tool\n")
+    a_name=input(ask+"Enter YOUR Name To Write in LICENSE File : ")
+    print()
+    g_link = input(ask+"Enter GitHub Link Of YOUR TOOL : ")
+    system('touch LICENSE')
+    with open ('LICENSE','w') as license:
+      license.write('''#                                 MIT License
+#                        Copyright (c) 2022 {a_name}
+#             Github link : {g_link}
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+'''.format(a_name = a_name,g_link=g_link))
+    print()
+  if not os.path.isfile('README.md'):
+    print(info + "YOU MUST HAVE A README.md FILE TO MAKE PIP PACKAGE.\n\n")
+    print(info2 +"Thanks for using Ntwine !\n\n")
+    exit()
+  else:
+   if not os.path.isfile("setup.py"):
+    tool = input(info2 + 'What is the Main File Name : ')
+    tool_name = input(info2 +'Give Name To Your Tool : ')
+    ver = input(info2 + 'Enter Version : ')
+    desc = input(info2 + 'Write SHORT Description For Tool : ')
+    url = input(info2 + 'Enter url of Tool : ')
+    rqrd= input(info2 + 'Required modules to start the Tool \n if more than 2 module than give put "," between  them . eg.(requests,coloroma) : ')
+    required_files = rqrd.split(",")
+    author = input(info2 + 'Author NAME : ')
+    system('touch setup.py')
+    with open ('setup.py','w') as s_py:
+      s_py.write('from setuptools import setup\n')
+      s_py.write('long_description = open("README.md").read()\n\n')
+      s_py.write('setup(name="'+tool_name+'",\n')
+      s_py.write('version="'+ver+'",\n')
+      s_py.write('description="'+desc+'",\n')
+      s_py.write('long_description=long_description,\n')
+      s_py.write("long_description_content_type='text/markdown',\n")
+      s_py.write('author="'+author+'",\n')
+      s_py.write('url="'+url+'",\n')
+      s_py.write('scripts=["'+tool+'"],\n')
+      s_py.write(f'install_requires= {required_files},\n')
+      s_py.write("classifiers=[\n    'License :: OSI Approved :: MIT License',\n    'Programming Language :: Python :: 3',\n], )\n")
+   else:
+    print()
+   print(success + 'Creating Files To Upload On PYPI,\n    PLEASE WAIT FOR SOME TIME.')
+   whl_crt = system("python setup.py sdist bdist_wheel > /dev/null 2>&1")
+   while whl_crt:
+     print('#',end= "")
+   print(f"\n{success}DONE\n\n{success}Uploading On Twine")
+   system('twine upload --repository pypi dist/*')
+
+#Check Twine
+def chk_twine():
+  system("clear")
+  print(bgreen + logo)
+  print(ask + 'Checking For Required Files')
+  if system("command -v twine > /dev/null 2>&1")!=0:
+    print('[~] Installing Required Files')
+    system('pip install setuptools readme-renderer[md] wheel twine==1.12.0 > /dev/null 2>&1')
+  else:
+    b = popen('twine --version').read()
+    if "twine version 1.12.0" in b :
+      print()
+    else:
+      print('[~] Installing Required Files')
+      system("pip install twine==1.12.0 --force-reinstall > /dev/null 2>&1")
+      chk_twine()
+  if system("command -v wheel > /dev/null 2>&1")!=0:
+    system('pip install wheel > /dev/null 2>&1')
+  else:
+    print('Check Requirements : Successful [√]')
+  main()
+
+
+# STARTING THE TOOL
+chk_twine()
