@@ -1,0 +1,7 @@
+{% extends "wagtailadmin/block_forms/base_block_settings_struct.html" %}
+
+{% block inner_children %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_lg=6 col_xl=6 child=children.active_from %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 col_lg=6 col_xl=6 child=children.active_to %}
+    {% include "wagtailadmin/block_forms/base_block_settings_field.html" with col_size=12 child=children.active %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+<div class="wagtail-alerts {{ CSS_VARIABLE_PREFIX }}alert-container {{ container_class }}">
+    <div class="{{ CSS_VARIABLE_PREFIX }}alert-wrapper">
+        {% for alert in alerts %}
+
+            {% include_block alert with index=forloop.counter0 %}
+
+        {% endfor %}
+    </div>
+</div>
