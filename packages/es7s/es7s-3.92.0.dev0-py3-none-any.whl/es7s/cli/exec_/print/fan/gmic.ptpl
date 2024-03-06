@@ -1,0 +1,21 @@
+
+[[GMIC SUBROUTINES]]
+
+  COMMAND                                          #OI   OUTPUT IMAGE TYPES
+  gmic sample  local { repeat 3 {  rotate 30 } }     1   R³
+  gmic sample +local { repeat 3 {  rotate 30 } }     2   O R³
+  gmic sample          repeat 3 { +rotate 30 }       8   O R (R R²) (R R² R³)
+  gmic sample  local { repeat 3 { +rotate 30 } }     8   O R (R R²) (R R² R³)
+  gmic sample +local { repeat 3 { +rotate 30 } }     9   O O R (R R²) (R R² R³)
+
+  _____
+  O = origin, R = rotated, R² = 2×rotated, R³ = 3×rotated
+
+
+\b(\d+)\b[94m\1[m
+([{}])[34m\1[m
+(\+)(?=\w)[1;31m\1[m
+\b(O)\b[1;32m\1[m
+\b(R)([²³])?\b[31m\1[33;1m\2[m
+(_+)[38;5;244m\1\1\1\1[m
+(?m)^\[\[(.+)\]\]$[38;5;231;1m\1[39;22m

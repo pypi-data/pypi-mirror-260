@@ -1,0 +1,28 @@
+# ------------------------------------------------------------------------------
+#  es7s/core
+#  (c) 2024 A. Shavykin <0.delameter@gmail.com>
+# ------------------------------------------------------------------------------
+import abc
+from abc import abstractmethod
+from typing import overload
+
+from es7s.shared import UserConfigSection, uconfig
+
+
+class _BaseAction(metaclass=abc.ABCMeta):
+    @abstractmethod
+    def _run(self, *args, **kwargs):
+        ...
+
+    @staticmethod
+    @overload
+    def uconfig(origin) -> UserConfigSection:
+        ...
+
+    @classmethod
+    @overload
+    def uconfig(cls) -> UserConfigSection:
+        ...
+
+    def uconfig(self) -> UserConfigSection:
+        return uconfig.get_for(self)
