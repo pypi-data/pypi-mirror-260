@@ -1,0 +1,51 @@
+site_name: vertex-ai-huggingface-inference-toolkit
+site_url: https://github.com/alvarobartt/vertex-ai-huggingface-inference-toolkit
+site_author: Alvaro Bartolome
+site_description: 🤗 Hugging Face Inference Toolkit for Google Cloud Vertex AI (similar to SageMaker's Inference Toolkit, but unofficial)
+
+repo_name: alvarobartt/vertex-ai-huggingface-inference-toolkit
+repo_url: https://github.com/alvarobartt/vertex-ai-huggingface-inference-toolkit
+
+copyright: Copyright (c) 2024-present Alvaro Bartolome <alvarobartt@gmail.com>
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
+plugins:
+  - search:
+  - git-revision-date-localized:
+      type: timeago
+      enable_creation_date: true
+  - mkdocstrings:
+
+extra:
+  social:
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/vertex_ai_huggingface_inference_toolkit/
+    - icon: fontawesome/brands/github
+      link: https://github.com/alvarobartt
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/alvarobartt
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/alvarobartt
+
+nav:
+  - Home: index.md
+  - License: license.md
