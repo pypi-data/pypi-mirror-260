@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: caerp_base
+Version: 2024.0.1
+Summary: caerp_base
+Home-page: https://framagit.org/caerp/caerp_base
+Author: Coopérer Pour Entreprendre
+Author-email: contact@endi.coop
+License: GPLv3
+Keywords: web wsgi bfg pylons pyramid caerp
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python
+Classifier: Framework :: Pyramid
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Description-Content-Type: text/x-rst
+Provides-Extra: testing
+License-File: LICENSE.txt
+
+CAErp base software
+=======================
+
+Since version 6 only Python 3 is supported
+
+Provide :
+
+* common models
+* common tools
+
+This package provides base tools to allow splitting the software CAErp in several pieces.
+It provides :
+
+* SQLAlchemy configuration (scoped session, base model class)
+* Custom SQLAlchemy column types
+* Constants
+* ...
+
+It should not be installed directly but should be installed as a dependency
