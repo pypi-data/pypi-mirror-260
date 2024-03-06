@@ -1,0 +1,99 @@
+Metadata-Version: 2.1
+Name: jupyterquest
+Version: 0.3.0
+Summary: A Python package for automating grading of Jupyter notebook files.
+Author-email: Greg Chism <gchism@arizona.edu>
+License: MIT License
+        
+        Copyright (c) 2024 Greg T. Chism
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Source, https://github.com/Gchism94/jupyterquest
+Project-URL: Tracker, https://github.com/Gchism94/jupyterquest/issues
+Keywords: education,autograder,jupyter,notebook
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: radon>=6.0.1
+Requires-Dist: GitPython>=3.1.41
+Requires-Dist: markdown>=3.5.2
+Requires-Dist: flake8>=3.9.0
+Requires-Dist: pylint>=2.9.6
+Requires-Dist: pandoc>=2.3
+Requires-Dist: pytest>=6.2.5
+Requires-Dist: jupyter>=1.0.0
+Requires-Dist: nbformat>=5.9.2
+Requires-Dist: requests>=2.25.1
+Requires-Dist: safety>=3.0.1
+Requires-Dist: pip-audit>=2.7.2
+Requires-Dist: bandit>=1.7.7
+
+# jupyterquest: The Advanced .ipynb Autograder
+
+| Category | Badges |
+| --- | --- |
+| Website | [![Netlify Status](https://api.netlify.com/api/v1/badges/602d0b5c-737a-4742-8e0b-8487cc3165aa/deploy-status)](https://app.netlify.com/sites/jupyterquest/deploys) |
+| Testing | [![GitHub Workflow Status](https://github.com/Gchism94/jupyterquest/actions/workflows/python-tests.yml/badge.svg)](https://github.com/Gchism94/jupyterquest/actions/workflows/autograder.yml) |
+| License | [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE) |
+| Version | [![Version](https://img.shields.io/badge/version-0.3.0-blue)](#) |
+
+
+## Overview
+**jupyterquest** is a comprehensive autograding tool designed to elevate the standard of Jupyter Notebook (.ipynb) submissions. Seamlessly integrated with GitHub Actions, it provides an automated evaluation process that spans across code style, structure, commit history, security vulnerabilities, and dependency checks. This tool is invaluable for educators, mentors, and development teams aiming to uphold best practices in code quality, security, and project organization.
+
+## Features
+- **Code Style and Formatting Checks**: Enforces best practices and consistency in coding styles.
+- **Code Structure Analysis**: Assesses the organization and readability of code for maintainability.
+- **Commit Message Quality**: Evaluates the clarity and conformity of commit messages to best practices.
+- **Repository Structure Validation**: Ensures a logical and standardized file organization within repositories.
+- **Security Vulnerability Scans**: Identifies known vulnerabilities in project dependencies to ensure code safety.
+- **Dependency Analysis**: Checks for outdated or insecure dependencies that might compromise the project.
+- **Extensible and Automated**: Designed for easy integration with CI/CD workflows, offering customizable options to meet various grading and analysis needs.
+
+## Getting Started
+### Prerequisites
+- A GitHub account and a basic understanding of GitHub Actions.
+- Knowledge of Jupyter Notebooks and the `.ipynb` file format.
+
+### Installation
+1. **Fork or Clone This Repository**: 
+   Start by forking this repository to your account or cloning it directly to your local environment.
+
+2. **Configure GitHub Actions**:
+   In your repository on GitHub, navigate to the 'Actions' tab. Set up a new workflow with the provided `autograder.yml` workflow file.
+
+3. **Customize the Autograder** (Optional):
+   Adjust the `autograder.py` and other relevant scripts to fine-tune the grading criteria and checks according to your project or course requirements.
+
+### Usage
+- **Automatic Execution**: jupyterquest runs automatically with each push to the repository, thanks to GitHub Actions integration.
+- **Reports**: The autograder generates detailed Markdown reports, offering actionable insights on code improvements and highlighting commendable practices.
+
+## Contribution
+We encourage contributions! If you're interested in enhancing jupyterquest or adding new features, please consult our contributing guidelines for more information on how to get started.
+
+## License
+jupyterquest is made available under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+
+## Support and Contact
+Need help or have questions? Feel free to [open an issue](https://github.com/Gchism94/jupyterquest/issues) in this repository for support and inquiries.
