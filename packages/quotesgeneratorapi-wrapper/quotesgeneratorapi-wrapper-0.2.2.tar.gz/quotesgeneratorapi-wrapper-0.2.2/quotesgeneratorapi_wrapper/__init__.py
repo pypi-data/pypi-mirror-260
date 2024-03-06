@@ -1,0 +1,1 @@
+from quotesgeneratorapi_wrapper.quotesgenerator import getQuotes
