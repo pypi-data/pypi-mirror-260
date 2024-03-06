@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: chromark
+Version: 0.0.4
+Summary: Read chrome bookmark file
+Author-email: ken <block24block@gmail.com>
+Project-URL: Homepage, https://github.com/turnon/chromark
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# chromark
+
+Use as CLI
+
+```sh
+chromark /path/to/bookmark.html --folders --url --datetime --title --netloc
+```
+
+Use as pakcage
+
+```python
+import chromark
+
+for entry in chromark.read('/path/to/bookmark.html'):
+    # ...
+```
