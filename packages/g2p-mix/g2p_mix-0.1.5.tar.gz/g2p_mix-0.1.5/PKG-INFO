@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: g2p_mix
+Version: 0.1.5
+Summary: G2P mix
+Home-page: https://github.com/pengzhendong/g2p_mix
+Author: Zhendong Peng
+Author-email: pzd17@tsinghua.org.cn
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: g2p_en
+Requires-Dist: jieba
+Requires-Dist: pypinyin<=0.44
+
+# g2p_mix
+
+```bash
+$ pip install g2p_mix
+$ python
+```
+
+```python
+>>> from g2p_mix import g2p_mix
+>>> g2p_mix.g2p("你这个idea, 不太make sense。")
+```
+
+```json
+[
+  { "word": "你", "phones": ["n", "i3"], "lang": "ZH" },
+  { "word": "这", "phones": ["zh", "e4"], "lang": "ZH" },
+  { "word": "个", "phones": ["g", "e4"], "lang": "ZH" },
+  { "word": "idea", "phones": ["AY0", "D", "IY1", "AH0"], "lang": "EN" },
+  { "word": ",", "phones": "," },
+  { "word": "不", "phones": ["b", "u4"], "lang": "ZH" },
+  { "word": "太", "phones": ["t", "ai4"], "lang": "ZH" },
+  { "word": "make", "phones": ["M", "EY1", "K"], "lang": "EN" },
+  { "word": "sense", "phones": ["S", "EH1", "N", "S"], "lang": "EN" },
+  { "word": "。", "phones": "。" }
+]
+```
