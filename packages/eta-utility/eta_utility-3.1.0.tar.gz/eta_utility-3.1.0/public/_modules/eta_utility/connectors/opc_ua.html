@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.opc_ua &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.opc_ua</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.opc_ua</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; The OPC UA module provides utilities for the flexible creation of OPC UA connections.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">CancelledError</span> <span class="k">as</span> <span class="n">ConCancelledError</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">ConTimeoutError</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">asyncua.sync</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># FIXME: add async import: from asyncua import Client as asyncClient</span>
+<span class="kn">from</span> <span class="nn">asyncua</span> <span class="kn">import</span> <span class="n">ua</span>
+
+<span class="c1"># FIXME: add async import: from asyncua.common.subscription import Subscription as asyncSubscription</span>
+<span class="kn">from</span> <span class="nn">asyncua.crypto.security_policies</span> <span class="kn">import</span> <span class="n">SecurityPolicyBasic256Sha256</span>
+
+<span class="c1"># Synchronous imports</span>
+<span class="kn">from</span> <span class="nn">asyncua.sync</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">Subscription</span>
+<span class="kn">from</span> <span class="nn">asyncua.ua</span> <span class="kn">import</span> <span class="n">SecurityPolicy</span><span class="p">,</span> <span class="n">uaerrors</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">KeyCertPair</span><span class="p">,</span> <span class="n">Suppressor</span><span class="p">,</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">NodeOpcUa</span>
+
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">IntervalChecker</span><span class="p">,</span> <span class="n">RetryWaiter</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+    <span class="c1"># Sync import</span>
+    <span class="kn">from</span> <span class="nn">asyncua.sync</span> <span class="kn">import</span> <span class="n">SyncNode</span> <span class="k">as</span> <span class="n">SyncOpcNode</span>
+
+    <span class="c1"># Async import</span>
+    <span class="c1"># FIXME: add async import: from asyncua import Node as asyncSyncOpcNode</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="kn">from</span> <span class="nn">.base_classes</span> <span class="kn">import</span> <span class="n">BaseConnection</span><span class="p">,</span> <span class="n">SubscriptionHandler</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;connectors.opcua&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="OpcUaConnection"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection">[docs]</a><span class="k">class</span> <span class="nc">OpcUaConnection</span><span class="p">(</span><span class="n">BaseConnection</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;opcua&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The OPC UA Connection class allows reading and writing from and to OPC UA servers. Additionally,</span>
+<span class="sd">    it implements a subscription method, which reads continuously in a specified interval.</span>
+
+<span class="sd">    :param url: URL of the OPC UA Server.</span>
+<span class="sd">    :param usr: Username in OPC UA for login.</span>
+<span class="sd">    :param pwd: Password in OPC UA for login.</span>
+<span class="sd">    :param nodes: List of nodes to use for all operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">key_cert</span><span class="p">:</span> <span class="n">KeyCertPair</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">scheme</span> <span class="o">!=</span> <span class="s2">&quot;opc.tcp&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Given URL is not a valid OPC url (scheme: opc.tcp).&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span> <span class="n">Client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_retry</span> <span class="o">=</span> <span class="n">RetryWaiter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_retry_interval_checker</span> <span class="o">=</span> <span class="n">RetryWaiter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conn_check_interval</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="p">:</span> <span class="n">Subscription</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subbed_nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub_task</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeOpcUa</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection_interval_checker</span> <span class="o">=</span> <span class="n">IntervalChecker</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key_cert</span><span class="p">:</span> <span class="n">KeyCertPair</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">key_cert</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_try_secure_connect</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_node</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpcUaConnection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection object from an OpcUa protocol Node object.</span>
+
+<span class="sd">        :param node: Node to initialize from.</span>
+<span class="sd">        :param usr: Username to use.</span>
+<span class="sd">        :param pwd: Password to use.</span>
+<span class="sd">        :param kwargs: Other arguments are ignored.</span>
+<span class="sd">        :return: OpcUaConnection object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">protocol</span> <span class="o">==</span> <span class="s2">&quot;opcua&quot;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeOpcUa</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Tried to initialize OpcUaConnection from a node that does not specify opcua as its&quot;</span>
+                <span class="s2">&quot;protocol: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="OpcUaConnection.from_ids"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.from_ids">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_ids</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpcUaConnection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection object from an OPC UA protocol through the node IDs.</span>
+
+<span class="sd">        :param ids: Identification of the Node.</span>
+<span class="sd">        :param url: URL for  connection.</span>
+<span class="sd">        :param usr: Username in OPC UA for login.</span>
+<span class="sd">        :param pwd: Password in OPC UA for login.</span>
+<span class="sd">        :return: OpcUaConnection object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;opcua&quot;</span><span class="p">,</span> <span class="n">opc_id</span><span class="o">=</span><span class="n">opc_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">opc_id</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OpcUaConnection.read"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read some manually selected values from OPC UA capable controller.</span>
+
+<span class="sd">        :param nodes: List of nodes to read from.</span>
+<span class="sd">        :return: pandas.DataFrame containing current values of the OPC UA-variables.</span>
+<span class="sd">        :raises ConnectionError: When an error occurs during reading.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">read_node</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">NodeOpcUa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">opcua_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">opcua_variable</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">value</span>
+                <span class="k">return</span> <span class="p">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="p">[</span><span class="n">value</span><span class="p">]}</span>
+            <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdUnknown</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The node id (</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">) refers to a node that does not exist in the server address space &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">. (BadNodeIdUnknown)&quot;</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="n">values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">read_node</span><span class="p">,</span> <span class="n">_nodes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_assert_tz_awareness</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())])</span></div>
+
+<div class="viewcode-block" id="OpcUaConnection.write"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Writes some manually selected values on OPC UA capable controller.</span>
+
+<span class="sd">        :param values: Dictionary of nodes and data to write {node: value}.</span>
+<span class="sd">        :raises ConnectionError: When an error occurs during reading.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">opcua_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">)</span>
+                    <span class="n">opcua_variable_type</span> <span class="o">=</span> <span class="n">opcua_variable</span><span class="o">.</span><span class="n">get_data_type_as_variant_type</span><span class="p">()</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+                    <span class="n">opcua_variable</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">ua</span><span class="o">.</span><span class="n">DataValue</span><span class="p">(</span><span class="n">ua</span><span class="o">.</span><span class="n">Variant</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">opcua_variable_type</span><span class="p">)))</span>
+                <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdUnknown</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The node id (</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">) refers to a node that does not exist in the server address space &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">. (BadNodeIdUnknown)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span></div>
+
+<div class="viewcode-block" id="OpcUaConnection.create_nodes"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.create_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">create_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create nodes on the server from a list of nodes. This will try to create the entire node path.</span>
+
+<span class="sd">        :param nodes: List or set of nodes to create.</span>
+<span class="sd">        :raises ConnectionError: When an error occurs during node creation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">create_object</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">SyncOpcNode</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">NodeOpcUa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SyncOpcNode</span><span class="p">:</span>
+            <span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SyncOpcNode</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+                <span class="n">ident</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span>
+                <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">opc_path_str</span> <span class="o">==</span> <span class="n">ident</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">obj</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">add_object</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">opc_name</span><span class="p">))</span>
+
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">last_obj</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">get_objects_node</span><span class="p">()</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">sync_node</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">get_objects_node</span><span class="p">()</span>
+                        <span class="p">)</span>
+                        <span class="n">last_obj</span> <span class="o">=</span> <span class="n">create_object</span><span class="p">(</span><span class="n">sync_node</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">)):</span>
+                        <span class="n">last_obj</span> <span class="o">=</span> <span class="n">create_object</span><span class="p">(</span><span class="n">last_obj</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+                    <span class="n">init_val</span><span class="p">:</span> <span class="n">Any</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">):</span>
+                        <span class="n">init_val</span> <span class="o">=</span> <span class="mf">0.0</span>
+                    <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+                        <span class="n">init_val</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">bool</span><span class="p">:</span>
+                        <span class="n">init_val</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                        <span class="n">init_val</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">init_val</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+                    <span class="n">last_obj</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_name</span><span class="p">,</span> <span class="n">init_val</span><span class="p">)</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OPC UA Node created: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdExists</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node with NodeId : </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2"> could not be created. It already exists.&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span></div>
+
+<div class="viewcode-block" id="OpcUaConnection.delete_nodes"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.delete_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">delete_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the given nodes and their parents (if the parents do not have other children).</span>
+
+<span class="sd">        :param nodes: List or set of nodes to be deleted.</span>
+<span class="sd">        :raises ConnectionError: If deletion of nodes fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">delete_node_parents</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">SyncOpcNode</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parents</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_references</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">ua</span><span class="o">.</span><span class="n">BrowseDirection</span><span class="o">.</span><span class="n">Inverse</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">delete_references</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleted Node </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">nodeid</span><span class="si">}</span><span class="s2"> from server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">nodeid</span><span class="si">}</span><span class="s2"> on server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> has remaining children and was not deleted.&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">delete_node_parents</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">NodeId</span><span class="p">),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">delete_node_parents</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">))</span>
+                <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdUnknown</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The node id (</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">) refers to a node that does not exist in the server address space &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">. (BadNodeIdUnknown)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span></div>
+
+<div class="viewcode-block" id="OpcUaConnection.subscribe"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available. Basic architecture of the subscription is</span>
+<span class="sd">        the client- server communication via subscription notify. This function works asynchronously. Subscriptions</span>
+<span class="sd">        must always be closed using the close_sub function (use try, finally!).</span>
+
+<span class="sd">        :param nodes: Identifiers for the nodes to subscribe to.</span>
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs.</span>
+<span class="sd">        :param interval: Interval for receiving new data. It is interpreted as seconds when given as an integer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_nodes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span>
+            <span class="c1"># Adding nodes to subscription is enough to include them in the query. Do not start an additional loop</span>
+            <span class="c1"># if one already exists</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub_task</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_loop</span><span class="p">(</span>
+                <span class="n">_OPCSubHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">=</span><span class="n">handler</span><span class="p">,</span> <span class="n">interval_check_handler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_interval_checker</span><span class="p">),</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()),</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_subscription_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">_OPCSubHandler</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The subscription loop makes sure that the subscription is reset in case the server generates an error.</span>
+
+<span class="sd">        :param handler: Handler object with a push function to receive data.</span>
+<span class="sd">        :param interval: Interval for requesting data in seconds.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retry</span><span class="o">.</span><span class="n">wait_async</span><span class="p">()</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying connection to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> after: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                        <span class="k">continue</span>
+
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">subscribed</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">interval</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">handler</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to subscribe to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> - Retrying: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">continue</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">True</span>
+
+                    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">handler</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_subbed_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="o">.</span><span class="n">subscribe_data_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">))</span>
+                            <span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not subscribe to node &#39;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; on server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">, error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ConnectionAbortedError</span><span class="p">,</span> <span class="ne">ConnectionResetError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handling exception (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">) for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Subscription to the OPC UA server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> is unexpectedly terminated. Trying to reconnect.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handling exception (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">) for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;OPC UA client for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> doesn&#39;t receive a response from the server. Trying to &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;reconnect.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="n">ConCancelledError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handling exception (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">) for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Connection to OPC UA-Server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> was terminated during connection establishment or &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;maintenance. Trying to reconnect.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handling exception (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">) for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Exit point in case the connection operates normally.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_connection</span><span class="p">():</span>
+                <span class="c1"># Push Nan for every node</span>
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">:</span>
+                    <span class="n">handler</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">),</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+                <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="ow">and</span> <span class="n">subscribed</span><span class="p">:</span>
+                <span class="n">_changed_within_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_interval_checker</span><span class="o">.</span><span class="n">check_interval_connection</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">_changed_within_interval</span><span class="p">:</span>
+                    <span class="n">subscribed</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The subscription connection for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> doesn&#39;t change the values &quot;</span>
+                        <span class="s2">&quot;anymore. Trying to reconnect.&quot;</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_retry_interval_checker</span><span class="o">.</span><span class="n">tried</span><span class="p">()</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retry_interval_checker</span><span class="o">.</span><span class="n">wait_async</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_retry_interval_checker</span><span class="o">.</span><span class="n">success</span><span class="p">()</span>
+                    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_conn_check_interval</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OpcUaConnection.close_sub"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.opc_ua.OpcUaConnection.close_sub">[docs]</a>    <span class="k">def</span> <span class="nf">close_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close an open subscription.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="o">.</span><span class="n">unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subbed_nodes</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subbed_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting subscription for server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> failed.&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> returned error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TimeoutError</span><span class="p">,</span> <span class="n">ConTimeoutError</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeout occurred while trying to close the subscription to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># Occurs if the subscription did not exist and can be ignored.</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">ThreadLoopNotRunning</span><span class="p">:</span>
+            <span class="c1"># Occurs if the subscription (and therefore the thread loop) was already closed and can be ignored.</span>
+            <span class="k">pass</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect to server. This will try to securely connect using Basic256SHA256 method</span>
+<span class="sd">        before trying an insecure connection.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">):</span>
+            <span class="c1"># Do not reninitialize connection if it already exists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">set_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_retry</span><span class="o">.</span><span class="n">tried</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_connect_insecure</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">security_policy</span> <span class="o">=</span> <span class="n">SecurityPolicy</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">uaclient</span><span class="o">.</span><span class="n">set_security</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">security_policy</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">_connect_secure</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_cert</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">set_security</span><span class="p">(</span>
+                    <span class="n">SecurityPolicyBasic256Sha256</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_cert</span><span class="o">.</span><span class="n">cert_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_cert</span><span class="o">.</span><span class="n">key_path</span>
+                <span class="p">)</span>
+                <span class="k">with</span> <span class="n">Suppressor</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">ua</span><span class="o">.</span><span class="n">uaerrors</span><span class="o">.</span><span class="n">BadSecurityPolicyRejected</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_try_secure_connect</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">_connect_insecure</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">ua</span><span class="o">.</span><span class="n">UaError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;No matching endpoints&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_try_secure_connect</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">_connect_insecure</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TimeoutError</span><span class="p">,</span> <span class="n">ConTimeoutError</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_try_secure_connect</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Host timeout during secure connect&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_cert</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_secure_connect</span><span class="p">:</span>
+                <span class="n">_connect_secure</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_connect_insecure</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">herror</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host not found: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="ne">TimeoutError</span><span class="p">,</span> <span class="n">ConTimeoutError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host timeout: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="n">ConCancelledError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection cancelled by host: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">ConnectionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OPC Connection Error: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connected to OPC UA server: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_retry</span><span class="o">.</span><span class="n">success</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_check_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">ua</span><span class="o">.</span><span class="n">FourByteNodeId</span><span class="p">(</span><span class="n">ua</span><span class="o">.</span><span class="n">ObjectIds</span><span class="o">.</span><span class="n">Server_ServerStatus_State</span><span class="p">))</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> did not exist - connection check failed.&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error while checking connection to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span>
+
+    <span class="k">def</span> <span class="nf">_disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disconnect from server.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">ConCancelledError</span><span class="p">,</span> <span class="ne">ConnectionAbortedError</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> already closed by server.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing connection to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> failed&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> returned an error while closing the connection: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection to server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> already closed.&quot;</span><span class="p">)</span>
+
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect to the server and return a context manager that automatically disconnects when finished.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="kc">None</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_validate_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeOpcUa</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
+        <span class="n">vnodes</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">vnodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeOpcUa</span><span class="p">):</span>
+                <span class="n">_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_nodes</span></div>
+
+
+<span class="k">class</span> <span class="nc">_OPCSubHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper for the OPC UA subscription. Enables the subscription to use the standardized eta_utility subscription</span>
+<span class="sd">    format.</span>
+
+<span class="sd">    :param handler: *eta_utility* style subscription handler.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span> <span class="n">interval_check_handler</span><span class="p">:</span> <span class="n">IntervalChecker</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">handler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub_nodes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">NodeOpcUa</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_interval_to_check</span> <span class="o">=</span> <span class="n">interval_check_handler</span>
+
+    <span class="k">def</span> <span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opc_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">NodeOpcUa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a node to the subscription. This is necessary to translate between formats.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub_nodes</span><span class="p">[</span><span class="n">opc_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">datachange_notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">NodeOpcUa</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        datachange_notification is called whenever subscribed input data is recieved via OPC UA. This pushes data</span>
+<span class="sd">        to the actual eta_utility subscription handler.</span>
+
+<span class="sd">        :param node: Node Object, which was subscribed to and which has sent an updated value.</span>
+<span class="sd">        :param val: New value of OPC UA node.</span>
+<span class="sd">        :param data: Raw data of OPC UA (not used).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">_assert_tz_awareness</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sub_nodes</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">)],</span> <span class="n">val</span><span class="p">,</span> <span class="n">_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_interval_to_check</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sub_nodes</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">)],</span> <span class="n">value</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">_time</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">status_change_notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="n">ua</span><span class="o">.</span><span class="n">StatusChangeNotification</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">event_notification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">ua</span><span class="o">.</span><span class="n">EventNotificationList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

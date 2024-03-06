@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Functions &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extensions for stable_baselines3" href="sb3_extensions.html" />
+    <link rel="prev" title="Environments" href="envs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instantiating-environments">Instantiating Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instantiating-algorithms">Instantiating Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-information">Logging information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-helpful-functions">Other helpful functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Common Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/eta_x/common_functions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="common-functions">
+<span id="eta-x-common"></span><h1>Common Functions<a class="headerlink" href="#common-functions" title="Permalink to this heading"></a></h1>
+<p>In addition to the <em>ETAx</em> class, which completely automates the rolling horizon optimization process and the learning
+process for reinforcement learning algorithms, the <em>eta_x</em> module also provides functions which simplify the creation
+of optimization runs and the required environments and algorithms. These functions also provide the interfaces for
+reading <em>eta_x</em> configuration files and for the logging capabilities of <em>eta_x</em>.</p>
+<section id="instantiating-environments">
+<h2>Instantiating Environments<a class="headerlink" href="#instantiating-environments" title="Permalink to this heading"></a></h2>
+<p>Environments can be instantiated with the <em>vectorize_environment</em> function. The function will automatically wrap the
+environments with normalization wrappers and monitoring wrappers if required and it can create both interaction
+environments and normal environments.</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">vectorize_environment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">env:</span> <span class="pre">type[BaseEnv],</span> <span class="pre">config_run:</span> <span class="pre">ConfigOptRun,</span> <span class="pre">env_settings:</span> <span class="pre">EnvSettings,</span> <span class="pre">callback:</span> <span class="pre">Callable[[BaseEnv],</span> <span class="pre">None],</span> <span class="pre">verbose:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">vectorizer:</span> <span class="pre">type[DummyVecEnv]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv'&gt;,</span> <span class="pre">n:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">*,</span> <span class="pre">training:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">monitor_wrapper:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">norm_wrapper_obs:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">norm_wrapper_reward:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">VecNormalize</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecEnv</span></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#vectorize_environment"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Vectorize the environment and automatically apply normalization wrappers if configured. If the environment
+is initialized as an interaction_env it will not have normalization wrappers and use the appropriate configuration
+automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> – Environment class which will be instantiated and vectorized.</p></li>
+<li><p><strong>config_run</strong> – Configuration for a specific optimization run.</p></li>
+<li><p><strong>env_settings</strong> – Configuration settings dictionary for the environment which is being initialized.</p></li>
+<li><p><strong>callback</strong> – Callback to call with an environment instance.</p></li>
+<li><p><strong>verbose</strong> – Logging verbosity to use in the environment.</p></li>
+<li><p><strong>vectorizer</strong> – Vectorizer class to use for vectorizing the environments.</p></li>
+<li><p><strong>n</strong> – Number of vectorized environments to create.</p></li>
+<li><p><strong>training</strong> – Flag to identify whether the environment should be initialized for training or playing. If true,
+it will be initialized for training.</p></li>
+<li><p><strong>norm_wrapper_obs</strong> – Flag to determine whether observations from the environments should be normalized.</p></li>
+<li><p><strong>norm_wrapper_reward</strong> – Flag to determine whether rewards from the environments should be normalized.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Vectorized environments, possibly also wrapped in a normalizer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The <em>vectorize_environment</em> function will automatically add a callback function as a parameter during
+environment instantiation. The callback should be called by the environment after each episode and
+after each step. It will create logging output depending on the configuration.</p>
+<p>The callback generally used by <em>ETAx</em> is <em>CallbackEnvironment</em>, which allows for logging in specified
+intervals. A <em>callback</em> can be anything that is callable and takes an environment instance as its only argument.</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">CallbackEnvironment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/callbacks.html#CallbackEnvironment"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This callback should be called at the end of each episode.
+When multiprocessing is used, no global variables are available (as an own python instance is created).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_interval</strong> – How many episodes to pass between each render call.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv" title="eta_utility.eta_x.envs.base_env.BaseEnv"><span class="pre">BaseEnv</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/callbacks.html#CallbackEnvironment.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>This callback should be called at the end of each episode.
+When multiprocessing is used, no global variables are available (as an own python instance is created).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>env</strong> – Instance of the environment where the callback was triggered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="instantiating-algorithms">
+<h2>Instantiating Algorithms<a class="headerlink" href="#instantiating-algorithms" title="Permalink to this heading"></a></h2>
+<p>Algorithms / models or agents can be instantiated with the <em>initialize_model</em> and <em>load_model</em> functions.
+The <em>initialize_model</em> function creates a new model from scratch, while the <em>load_model</em> function will load an
+existing model from a file created by a <em>stable_baselines3</em> algorithm. Both functions will ensure that parameters
+passed to the algorithm and that logging output is correctly initialized.</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">initialize_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BaseAlgorithm</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BasePolicy</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VecEnv</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecNormalize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AlgoSettings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BaseAlgorithm</span></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#initialize_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Initialize a new model or algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>algo</strong> – Algorithm to initialize.</p></li>
+<li><p><strong>policy</strong> – The policy that should be used by the algorithm.</p></li>
+<li><p><strong>envs</strong> – The environment which the algorithm operates on.</p></li>
+<li><p><strong>algo_settings</strong> – Additional settings for the algorithm.</p></li>
+<li><p><strong>seed</strong> – Random seed to be used by the algorithm.</p></li>
+<li><p><strong>tensorboard_log</strong> – Flag to enable logging to tensorboard.</p></li>
+<li><p><strong>log_path</strong> – Path for tensorboard log. Online required if logging is true</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BaseAlgorithm</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VecEnv</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecNormalize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AlgoSettings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BaseAlgorithm</span></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#load_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Load an existing model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>algo</strong> – Algorithm type of the model to be loaded.</p></li>
+<li><p><strong>envs</strong> – The environment which the algorithm operates on.</p></li>
+<li><p><strong>algo_settings</strong> – Additional settings for the algorithm.</p></li>
+<li><p><strong>path_model</strong> – Path to load the model from.</p></li>
+<li><p><strong>tensorboard_log</strong> – Flag to enable logging to tensorboard.</p></li>
+<li><p><strong>log_path</strong> – Path for tensorboard log. Online required if logging is true</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="logging-information">
+<h2>Logging information<a class="headerlink" href="#logging-information" title="Permalink to this heading"></a></h2>
+<p>There are also functions for logging information about the optimization runs, such as the configuration and
+the network architecture.</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">log_run_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOpt" title="eta_utility.eta_x.config.ConfigOpt"><span class="pre">ConfigOpt</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_run</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun" title="eta_utility.eta_x.config.ConfigOptRun"><span class="pre">ConfigOptRun</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#log_run_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Save run configuration to the run_info file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – Configuration for the framework.</p></li>
+<li><p><strong>config_run</strong> – Configuration for this optimization run.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">log_net_arch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseAlgorithm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_run</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun" title="eta_utility.eta_x.config.ConfigOptRun"><span class="pre">ConfigOptRun</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#log_net_arch"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Store network architecture or policy information in a file. This requires for the model to be initialized,
+otherwise it will raise a ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The algorithm whose network architecture is stored.</p></li>
+<li><p><strong>config_run</strong> – Optimization run configuration (which contains info about the file to store info in).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p>ValueError.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="other-helpful-functions">
+<h2>Other helpful functions<a class="headerlink" href="#other-helpful-functions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">episode_name_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#episode_name_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Generate a name which can be used to pre or postfix files from a specific episode and run of an environment.</p>
+<p>Name is of the format: ThisRun_001_01 (run name _ episode number _ environment id)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>run_name</strong> – Name of the optimization run.</p></li>
+<li><p><strong>episode</strong> – Number of the episode the environment is working on.</p></li>
+<li><p><strong>env_id</strong> – Identification of the environment.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">episode_results_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series_results_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#episode_results_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Generate a filepath which can be used for storing episode results of a specific environment as a csv file.</p>
+<p>Name is of the format: ThisRun_001_01.csv (run name _ episode number _ environment id .csv)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series_results_path</strong> – Path for results of the series of optimization runs.</p></li>
+<li><p><strong>run_name</strong> – Name of the optimization run.</p></li>
+<li><p><strong>episode</strong> – Number of the episode the environment is working on.</p></li>
+<li><p><strong>env_id</strong> – Identification of the environment.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">is_env_closed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv" title="eta_utility.eta_x.envs.base_env.BaseEnv"><span class="pre">BaseEnv</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecEnv</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecNormalize</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#is_env_closed"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Check whether an environment has been closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>env</strong> – The environment to check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">is_vectorized_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../_stubs/eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv" title="eta_utility.eta_x.envs.base_env.BaseEnv"><span class="pre">BaseEnv</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecEnv</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VecNormalize</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#is_vectorized_env"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Check if an environment is vectorized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>env</strong> – The environment to check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="envs.html" class="btn btn-neutral float-left" title="Environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sb3_extensions.html" class="btn btn-neutral float-right" title="Extensions for stable_baselines3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

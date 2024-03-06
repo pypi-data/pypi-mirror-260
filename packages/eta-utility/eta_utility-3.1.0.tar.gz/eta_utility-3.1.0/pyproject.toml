@@ -1,0 +1,230 @@
+[build-system]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "eta-utility"
+version = "v3.1.0"
+description = "A framework for researching energy optimization of factory operations"
+authors = [
+    "Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW). <info@ptw.tu-darmstadt.de>"
+]
+readme = "README.rst"
+license = "BSD-2-Clause"
+
+keywords = [
+    "connectors","servers","simulators","industrial energy optimization","rolling horizon optimization"
+]
+include = [
+    {path = "*", format="sdist"}, # include all package data (for sdist)
+]
+classifiers = [
+    "License :: OSI Approved :: BSD License",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Manufacturing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+homepage = "https://www.ptw.tu-darmstadt.de"
+documentation = "https://eta-utility.readthedocs.io/"
+repository = "https://github.com/PTW-TUDa/eta_utility/"
+
+[tool.poetry.urls]
+"Issues" = "https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/-/issues"
+
+[tool.poetry.scripts]
+    install-julia = "eta_utility:install_julia"
+    update-julia-agent = "eta_utility:update_agent"
+
+#  '^' limits to the next major version, '~' limits to the next minor version
+# e.g. ^3.9.0: 3.9.0 <= x < 4.0.0 and ~3.9.0: 3.9.0 <= x < 3.10.0
+[tool.poetry.dependencies]
+# default dependencies of eta_utility
+python = ">=3.9, <3.12"
+attrs = "^23.1.0"
+python-dateutil = "^2.8.2"
+numpy = {version= "~1.24.0"}
+pandas = {version= "~2.0.3"}
+xlrd = "^2.0.1"
+asyncua-fork-for-eta-utility = "==1.0.7"
+lxml = "^4.9.3"
+requests = "^2.31.0"
+pymodbustcp = "==0.2.0"
+cryptography = "^41.0.4"
+fmpy = "^0.3.5"
+wetterdienst = [{version="==0.72.0", python="^3.9"},  # breaking changes expected
+                #{version="==0.54.0", python=">=3.8.0, <3.9.0"}
+                ]
+
+# Specific requirements for eta_x
+gymnasium =  {version = "==0.29.1", optional=true} # no SemVer
+torch = {version = "==2.0.0", optional=true} # nvidia packages are not included in 2.0.1, see https://github.com/pytorch/pytorch/issues/100974
+stable-baselines3 = {version = "==2.2.1", optional=true} # no SemVer
+tensorboard = {version = "~2.14.0", optional=true}
+pyomo = {version = "~6.6.2", optional=true}
+
+# Specific requirements for the examples
+matplotlib = {version= "~3.7.0", optional = true}
+keyboard = {version="^0.13.5", optional=true}
+pygame = {version="^2.5.2", optional=true}
+pyglet = {version="<2", optional=true}
+onnxruntime = {version="^1.16.0", optional=true}
+
+# Specific requirements for tests
+pytest = {version = "^7.4.2", optional = true}
+pytest-cov = {version = "^4.1.0", optional = true}
+openpyxl = {version = "^3.1.2", optional = true}
+# Specific requirements for development
+sphinx = {version ="^7.1.2", optional = true}
+sphinx-rtd-theme = {version = "^1.3.0", optional = true}
+sphinx-copybutton = {version = "^0.5.2", optional = true}
+pre-commit = {version = "^3.4.0", optional = true}
+black = {version = "~23.7", optional = true}
+blacken_docs = {version = "~1.16", optional = true}
+isort = {version = "~5.12", optional = true}
+pyupgrade = {version ="~3.10", optional = true}
+# MyPy requirements and typing packages
+mypy = {version = "~1.5", optional = true}
+types-python-dateutil = {version = "^2.8.19.14", optional = true}
+types-requests = {version = "^2.31.0.4", optional = true}
+# Linting / Flake8 requirements and linting packages
+flake8 = {version ="^6.0.0", optional = true}
+pyflakes = {version = "~3.1", optional = true}
+pycodestyle= {version = "~2.11.0", optional = true}
+flake8-pyproject= {version = "~1.2", optional = true}
+flake8-builtins = {version = "~2.1", optional = true}
+flake8-eradicate = {version = "~1.5", optional = true}
+flake8-comprehensions= {version = "~3.14", optional = true}
+flake8-mutable={version = "~1.2", optional = true}
+flake8-print={version = "^5.0", optional = true}
+flake8-pytest-style= {version= "~1.7", optional = true}
+flake8-requirements={version = "~1.7", optional = true}
+flake8-rst-docstrings = {version = "^0.3.0", optional = true}
+pep8-naming={version = "~0.13", optional = true}
+
+[tool.poetry.extras]
+develop = ["gymnasium", "torch", "stable_baselines3", "tensorboard", "pyomo",     # include eta_x
+            "matplotlib", "keyboard", "pygame", "pyglet", "onnxruntime",    # include examples
+            "pytest", "pytest-cov", "openpyxl", "sphinx", "sphinx-rtd-theme", "sphinx-copybutton", "pre-commit",
+            "black", "blacken_docs", "isort", "pyupgrade", "mypy", "types-python-dateutil",
+            "types-requests", "flake8", "pyflakes", "pycodestyle", "flake8-pyproject", "flake8-builtins",
+            "flake8-eradicate", "flake8-comprehensions", "flake8-mutable", "flake8-print",
+            "flake8-pytest-style", "flake8-requirements", "pep8-naming", "flake8-rst-docstrings"]
+eta_x = ["gymnasium", "torch", "stable_baselines3", "tensorboard", "pyomo"]
+examples = ["matplotlib", "keyboard", "pygame", "pyglet", "onnxruntime"]
+
+
+
+[tool.black]
+include = "\\.pyi?$|^eta_utility/|^test/"
+exclude = "\\.xlsx?$|\\.fmu?$|test_resources/|__pycache__/|_version.py$"
+line_length = 120
+target_version = ["py39","py310", "py311"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.flake8]
+format = "default"
+extend_exclude = [
+    "docs/conf.py",
+    "build",
+    "dist",
+    ".*/",
+    "venv*/",
+    ".venv*/",
+    "*.mypy*/",
+    "poetry.lock"
+]
+max_line_length = 120
+max_complexity = 20
+indent_size = 4
+extend_ignore = [
+    # Black introduces ' : ' whitespaces around colons.
+    "E203",
+    # Some ReST keywords are specific to sphinx and will not be recognized correctly:
+    "RST303",
+    "RST304",
+    # Warnings about fixtures without return values are broken:
+    "PT019",
+    # Temporary fix for missing 'asyncua' import (we are using asyncua-fork-for-eta-utility))
+    "I900",
+]
+per_file_ignores = [
+    "__init__.py: F401"
+]
+
+[tool.mypy]
+python_version = 3.9
+files = ["eta_utility", "examples"]
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_unreachable = true
+show_column_numbers = true
+
+exclude = [
+    "docs/conf.py",
+    "^test/",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "fmpy.*",
+    "pandas.*",
+    "gymnasium.*",
+    "opcua.*",
+    "pyModbusTCP.*",
+    "pyomo.*",
+    "lxml.*",
+    "julia.*",
+    "setuptools",
+    "importlib.metadata.*",
+    "keyboard.*",
+    "onnxruntime.*",
+    "matplotlib.*",
+    "torch.ao.nn.*",
+    "asyncua.*",
+    "wetterdienst.*"
+]
+ignore_missing_imports = true
+[[tool.mypy.overrides]]
+module = "test.*"
+ignore_errors = true
+
+[tool.pytest.ini_options]
+addopts = "--cov-config=pyproject.toml"
+log_cli = true
+testpaths = [
+    "test",
+]
+
+# Configuration for pytest-cov
+[tool.coverage.run]
+source = [
+    "eta_utility"
+]
+omit = [
+    "*/venv/*",
+    "*/.venv/*",
+    "*/docs/*",
+    "*/build/*",
+    "*/dist/*",
+    "*/eta_utility/type_hints/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    # These lines are excluded from coverage because they are not meant to be tested
+    'pragma: no cover',
+    'if TYPE_CHECKING:',
+    'raise NotImplementedError',
+    'pass',
+]

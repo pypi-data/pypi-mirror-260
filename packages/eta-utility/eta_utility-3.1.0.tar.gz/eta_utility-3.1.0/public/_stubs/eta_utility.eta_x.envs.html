@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.envs package &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.eta_x.envs.base_env module" href="eta_utility.eta_x.envs.base_env.html" />
+    <link rel="prev" title="eta_utility.eta_x.common.schedules module" href="eta_utility.eta_x.common.schedules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.servers.html">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.envs package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.eta_x.envs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.eta_x.envs">
+<span id="eta-utility-eta-x-envs-package"></span><h1>eta_utility.eta_x.envs package<a class="headerlink" href="#module-eta_utility.eta_x.envs" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html">eta_utility.eta_x.envs.base_env module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv"><code class="docutils literal notranslate"><span class="pre">BaseEnv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.version"><code class="docutils literal notranslate"><span class="pre">BaseEnv.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.description"><code class="docutils literal notranslate"><span class="pre">BaseEnv.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.verbose"><code class="docutils literal notranslate"><span class="pre">BaseEnv.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.config_run"><code class="docutils literal notranslate"><span class="pre">BaseEnv.config_run</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.path_results"><code class="docutils literal notranslate"><span class="pre">BaseEnv.path_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.path_scenarios"><code class="docutils literal notranslate"><span class="pre">BaseEnv.path_scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.path_env"><code class="docutils literal notranslate"><span class="pre">BaseEnv.path_env</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.callback"><code class="docutils literal notranslate"><span class="pre">BaseEnv.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.env_id"><code class="docutils literal notranslate"><span class="pre">BaseEnv.env_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.run_name"><code class="docutils literal notranslate"><span class="pre">BaseEnv.run_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.n_episodes"><code class="docutils literal notranslate"><span class="pre">BaseEnv.n_episodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.n_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnv.n_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.n_steps_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnv.n_steps_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.episode_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnv.episode_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.sampling_time"><code class="docutils literal notranslate"><span class="pre">BaseEnv.sampling_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.n_episode_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnv.n_episode_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.scenario_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnv.scenario_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.scenario_time_begin"><code class="docutils literal notranslate"><span class="pre">BaseEnv.scenario_time_begin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.scenario_time_end"><code class="docutils literal notranslate"><span class="pre">BaseEnv.scenario_time_end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.timeseries"><code class="docutils literal notranslate"><span class="pre">BaseEnv.timeseries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.ts_current"><code class="docutils literal notranslate"><span class="pre">BaseEnv.ts_current</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.state_config"><code class="docutils literal notranslate"><span class="pre">BaseEnv.state_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.episode_timer"><code class="docutils literal notranslate"><span class="pre">BaseEnv.episode_timer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.state"><code class="docutils literal notranslate"><span class="pre">BaseEnv.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.additional_state"><code class="docutils literal notranslate"><span class="pre">BaseEnv.additional_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.state_log"><code class="docutils literal notranslate"><span class="pre">BaseEnv.state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.state_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnv.state_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.data"><code class="docutils literal notranslate"><span class="pre">BaseEnv.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.data_log"><code class="docutils literal notranslate"><span class="pre">BaseEnv.data_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.data_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnv.data_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.sim_steps_per_sample"><code class="docutils literal notranslate"><span class="pre">BaseEnv.sim_steps_per_sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.import_scenario"><code class="docutils literal notranslate"><span class="pre">BaseEnv.import_scenario()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.get_scenario_state"><code class="docutils literal notranslate"><span class="pre">BaseEnv.get_scenario_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.step"><code class="docutils literal notranslate"><span class="pre">BaseEnv.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.reset"><code class="docutils literal notranslate"><span class="pre">BaseEnv.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.action_space"><code class="docutils literal notranslate"><span class="pre">BaseEnv.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.observation_space"><code class="docutils literal notranslate"><span class="pre">BaseEnv.observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.close"><code class="docutils literal notranslate"><span class="pre">BaseEnv.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.render"><code class="docutils literal notranslate"><span class="pre">BaseEnv.render()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.get_info"><code class="docutils literal notranslate"><span class="pre">BaseEnv.get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv.export_state_log"><code class="docutils literal notranslate"><span class="pre">BaseEnv.export_state_log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html">eta_utility.eta_x.envs.base_env_live module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.config_name"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.config_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.live_connector"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.live_connector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.live_connect_config"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.live_connect_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.max_error_count"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.max_error_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.step"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.reset"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.close"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.action_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.observation_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.verbose"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.config_run"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.config_run</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.path_results"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.path_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.path_scenarios"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.path_scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.path_env"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.path_env</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.callback"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.env_id"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.env_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.run_name"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.run_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.n_episodes"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.n_episodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.n_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.n_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.n_steps_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.n_steps_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.episode_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.episode_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.sampling_time"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.sampling_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.n_episode_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.n_episode_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.scenario_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.scenario_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.scenario_time_begin"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.scenario_time_begin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.scenario_time_end"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.scenario_time_end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.timeseries"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.timeseries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.ts_current"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.ts_current</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.state_config"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.state_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.episode_timer"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.episode_timer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.state"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.additional_state"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.additional_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.state_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.state_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.state_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.data"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.data_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.data_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.data_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.data_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_live.html#eta_utility.eta_x.envs.base_env_live.BaseEnvLive.sim_steps_per_sample"><code class="docutils literal notranslate"><span class="pre">BaseEnvLive.sim_steps_per_sample</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html">eta_utility.eta_x.envs.base_env_mpc module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.prediction_scope"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.prediction_scope</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.n_prediction_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.n_prediction_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.scenario_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.scenario_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.model_parameters"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.model_parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.time_var"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.time_var</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.nonindex_update_append_string"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.nonindex_update_append_string</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.model"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.step"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.update"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.solve_failed"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.solve_failed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.reset"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.close"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_component_params"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.pyo_component_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_convert_timeseries"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.pyo_convert_timeseries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_update_params"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.pyo_update_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.action_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.observation_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.verbose"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.config_run"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.config_run</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.path_results"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.path_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.path_scenarios"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.path_scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.path_env"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.path_env</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.callback"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.env_id"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.env_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.run_name"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.run_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.n_episodes"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.n_episodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.n_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.n_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.n_steps_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.n_steps_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.episode_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.episode_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.sampling_time"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.sampling_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.n_episode_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.n_episode_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.scenario_time_begin"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.scenario_time_begin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.scenario_time_end"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.scenario_time_end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.timeseries"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.timeseries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.ts_current"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.ts_current</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.state_config"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.state_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.episode_timer"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.episode_timer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.state"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.additional_state"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.additional_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.state_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.state_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.state_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.data"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.data_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.data_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.data_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.data_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.sim_steps_per_sample"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.sim_steps_per_sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_get_solution"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.pyo_get_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_mpc.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_get_component_value"><code class="docutils literal notranslate"><span class="pre">BaseEnvMPC.pyo_get_component_value()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html">eta_utility.eta_x.envs.base_env_sim module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.fmu_name"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.fmu_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.sim_steps_per_sample"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.sim_steps_per_sample</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.path_fmu"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.path_fmu</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.model_parameters"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.model_parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.simulator"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.simulator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.simulate"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.simulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.step"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.reset"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.close"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.action_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.observation_space"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.verbose"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.config_run"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.config_run</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.path_results"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.path_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.path_scenarios"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.path_scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.path_env"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.path_env</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.callback"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.env_id"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.env_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.run_name"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.run_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.n_episodes"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.n_episodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.n_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.n_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.n_steps_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.n_steps_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.episode_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.episode_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.sampling_time"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.sampling_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.n_episode_steps"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.n_episode_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.scenario_duration"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.scenario_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.scenario_time_begin"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.scenario_time_begin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.scenario_time_end"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.scenario_time_end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.timeseries"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.timeseries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.ts_current"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.ts_current</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.state_config"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.state_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.episode_timer"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.episode_timer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.state"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.additional_state"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.additional_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.state_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.state_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.state_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.data"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.data_log"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.data_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.base_env_sim.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.data_log_longtime"><code class="docutils literal notranslate"><span class="pre">BaseEnvSim.data_log_longtime</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html">eta_utility.eta_x.envs.julia_env module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv"><code class="docutils literal notranslate"><span class="pre">JuliaEnv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.version"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.description"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.first_update"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.first_update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.update"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.step"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.reset"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.close"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.render"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.render()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.action_space"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.observation_space"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.verbose"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.verbose</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.config_run"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.config_run</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.path_results"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.path_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.path_scenarios"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.path_scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.path_env"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.path_env</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.callback"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.callback</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.env_id"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.env_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.run_name"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.run_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.n_episodes"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.n_episodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.n_steps"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.n_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.n_steps_longtime"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.n_steps_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.episode_duration"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.episode_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.sampling_time"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.sampling_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.n_episode_steps"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.n_episode_steps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.scenario_duration"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.scenario_duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.scenario_time_begin"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.scenario_time_begin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.scenario_time_end"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.scenario_time_end</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.timeseries"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.timeseries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.ts_current"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.ts_current</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.state_config"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.state_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.episode_timer"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.episode_timer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.state"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.additional_state"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.additional_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.state_log"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.state_log_longtime"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.state_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.data"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.data_log"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.data_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.data_log_longtime"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.data_log_longtime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.julia_env.html#eta_utility.eta_x.envs.julia_env.JuliaEnv.sim_steps_per_sample"><code class="docutils literal notranslate"><span class="pre">JuliaEnv.sim_steps_per_sample</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.no_vec_env.html">eta_utility.eta_x.envs.no_vec_env module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv"><code class="docutils literal notranslate"><span class="pre">NoVecEnv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv.actions"><code class="docutils literal notranslate"><span class="pre">NoVecEnv.actions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv.step_wait"><code class="docutils literal notranslate"><span class="pre">NoVecEnv.step_wait()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv.reset"><code class="docutils literal notranslate"><span class="pre">NoVecEnv.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.envs.state.html">eta_utility.eta_x.envs.state module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar"><code class="docutils literal notranslate"><span class="pre">StateVar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.name"><code class="docutils literal notranslate"><span class="pre">StateVar.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.is_agent_action"><code class="docutils literal notranslate"><span class="pre">StateVar.is_agent_action</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.is_agent_observation"><code class="docutils literal notranslate"><span class="pre">StateVar.is_agent_observation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.add_to_state_log"><code class="docutils literal notranslate"><span class="pre">StateVar.add_to_state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.ext_id"><code class="docutils literal notranslate"><span class="pre">StateVar.ext_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.is_ext_input"><code class="docutils literal notranslate"><span class="pre">StateVar.is_ext_input</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.is_ext_output"><code class="docutils literal notranslate"><span class="pre">StateVar.is_ext_output</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.ext_scale_add"><code class="docutils literal notranslate"><span class="pre">StateVar.ext_scale_add</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.ext_scale_mult"><code class="docutils literal notranslate"><span class="pre">StateVar.ext_scale_mult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.interact_id"><code class="docutils literal notranslate"><span class="pre">StateVar.interact_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.from_interact"><code class="docutils literal notranslate"><span class="pre">StateVar.from_interact</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.interact_scale_add"><code class="docutils literal notranslate"><span class="pre">StateVar.interact_scale_add</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.interact_scale_mult"><code class="docutils literal notranslate"><span class="pre">StateVar.interact_scale_mult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.scenario_id"><code class="docutils literal notranslate"><span class="pre">StateVar.scenario_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.from_scenario"><code class="docutils literal notranslate"><span class="pre">StateVar.from_scenario</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.scenario_scale_add"><code class="docutils literal notranslate"><span class="pre">StateVar.scenario_scale_add</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.scenario_scale_mult"><code class="docutils literal notranslate"><span class="pre">StateVar.scenario_scale_mult</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.low_value"><code class="docutils literal notranslate"><span class="pre">StateVar.low_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.high_value"><code class="docutils literal notranslate"><span class="pre">StateVar.high_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.abort_condition_min"><code class="docutils literal notranslate"><span class="pre">StateVar.abort_condition_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.abort_condition_max"><code class="docutils literal notranslate"><span class="pre">StateVar.abort_condition_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.index"><code class="docutils literal notranslate"><span class="pre">StateVar.index</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateVar.from_dict"><code class="docutils literal notranslate"><span class="pre">StateVar.from_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig"><code class="docutils literal notranslate"><span class="pre">StateConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.vars"><code class="docutils literal notranslate"><span class="pre">StateConfig.vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.actions"><code class="docutils literal notranslate"><span class="pre">StateConfig.actions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.observations"><code class="docutils literal notranslate"><span class="pre">StateConfig.observations</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.add_to_state_log"><code class="docutils literal notranslate"><span class="pre">StateConfig.add_to_state_log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.ext_inputs"><code class="docutils literal notranslate"><span class="pre">StateConfig.ext_inputs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.ext_outputs"><code class="docutils literal notranslate"><span class="pre">StateConfig.ext_outputs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.map_ext_ids"><code class="docutils literal notranslate"><span class="pre">StateConfig.map_ext_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.rev_ext_ids"><code class="docutils literal notranslate"><span class="pre">StateConfig.rev_ext_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.ext_scale"><code class="docutils literal notranslate"><span class="pre">StateConfig.ext_scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.interact_outputs"><code class="docutils literal notranslate"><span class="pre">StateConfig.interact_outputs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.map_interact_ids"><code class="docutils literal notranslate"><span class="pre">StateConfig.map_interact_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.interact_scale"><code class="docutils literal notranslate"><span class="pre">StateConfig.interact_scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.scenarios"><code class="docutils literal notranslate"><span class="pre">StateConfig.scenarios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.map_scenario_ids"><code class="docutils literal notranslate"><span class="pre">StateConfig.map_scenario_ids</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.scenario_scale"><code class="docutils literal notranslate"><span class="pre">StateConfig.scenario_scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.abort_conditions_min"><code class="docutils literal notranslate"><span class="pre">StateConfig.abort_conditions_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.abort_conditions_max"><code class="docutils literal notranslate"><span class="pre">StateConfig.abort_conditions_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.from_dict"><code class="docutils literal notranslate"><span class="pre">StateConfig.from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.append_state"><code class="docutils literal notranslate"><span class="pre">StateConfig.append_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.store_file"><code class="docutils literal notranslate"><span class="pre">StateConfig.store_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.within_abort_conditions"><code class="docutils literal notranslate"><span class="pre">StateConfig.within_abort_conditions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.continuous_action_space"><code class="docutils literal notranslate"><span class="pre">StateConfig.continuous_action_space()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.continuous_obs_space"><code class="docutils literal notranslate"><span class="pre">StateConfig.continuous_obs_space()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.continuous_observation_space"><code class="docutils literal notranslate"><span class="pre">StateConfig.continuous_observation_space()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.continuous_spaces"><code class="docutils literal notranslate"><span class="pre">StateConfig.continuous_spaces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.envs.state.html#eta_utility.eta_x.envs.state.StateConfig.loc"><code class="docutils literal notranslate"><span class="pre">StateConfig.loc</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.eta_x.common.schedules.html" class="btn btn-neutral float-left" title="eta_utility.eta_x.common.schedules module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.eta_x.envs.base_env.html" class="btn btn-neutral float-right" title="eta_utility.eta_x.envs.base_env module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

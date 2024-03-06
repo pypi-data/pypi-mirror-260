@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.util_julia module &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="eta_utility.util module" href="eta_utility.util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.util.html">eta_utility.util module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">eta_utility.util_julia module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+      <li class="breadcrumb-item active">eta_utility.util_julia module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.util_julia.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.util_julia">
+<span id="eta-utility-util-julia-module"></span><h1>eta_utility.util_julia module<a class="headerlink" href="#module-eta_utility.util_julia" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.import_jl_file">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">import_jl_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ModuleType</span></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#import_jl_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.import_jl_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.import_jl">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">import_jl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">importstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ModuleType</span></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#import_jl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.import_jl" title="Permalink to this definition"></a></dt>
+<dd><p>Import a julia file into the main namespace. The syntax is equivalent to python import strings. If the import
+string starts with a ‘.’, the import path is interpreted as relative to the file calling this function. If the
+import string is absolute, it will use the python sys.path list to look for the file.</p>
+<p>The function also makes sure that julia.Main is imported and returns a handle to the module. This way, the
+imported julia file can be used right away.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>importstr</strong> – Path to the imported julia package. If the path starts with a ‘.’ this will be relative to the
+file it is specified in. Otherwise, this will look through python import Path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.importstr_to_path">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">importstr_to_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">importstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">_stack</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#importstr_to_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.importstr_to_path" title="Permalink to this definition"></a></dt>
+<dd><p>Converts an import string into a python path. The syntax is equivalent to python import strings. If the
+import string starts with a ‘.’, the import path is interpreted as relative to the file calling this function.
+If the import string is absolute, it will use the python sys.path list to look for the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>importstr</strong> – Path to the imported julia package (python import string). If the path starts with a ‘.’ this
+will be relative to the file it is specified in. Otherwise, this will look through the python import paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.update_agent">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">update_agent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#update_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.update_agent" title="Permalink to this definition"></a></dt>
+<dd><p>Upadtes the NSGA2 agent model file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.install_julia">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">install_julia</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#install_julia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.install_julia" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if Julia language is available in the system and install and configure pyjulia.
+Also install ju_extensions in Julia environmnent.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.check_julia_package">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">check_julia_package</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#check_julia_package"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.check_julia_package" title="Permalink to this definition"></a></dt>
+<dd><p>Check if everything is available and setup correctly to execute modules depending on eta_utility
+julia extensions. This function raises ImportError if necessary components are missing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if is installed ImportError if not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.util_julia.julia_extensions_available">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.util_julia.</span></span><span class="sig-name descname"><span class="pre">julia_extensions_available</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/util_julia.html#julia_extensions_available"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.util_julia.julia_extensions_available" title="Permalink to this definition"></a></dt>
+<dd><p>Check if everything is available and setup correctly to execute modules depending on eta_utility
+julia extensions. This function returns false if necessary components are missing. It does not
+provide any indications what is missing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if julia extensions are correctly installed, false if not.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.util.html" class="btn btn-neutral float-left" title="eta_utility.util module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.common package &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.eta_x.common.callbacks module" href="eta_utility.eta_x.common.callbacks.html" />
+    <link rel="prev" title="eta_utility.eta_x.agents.rule_based module" href="eta_utility.eta_x.agents.rule_based.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.servers.html">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.common package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.eta_x.common.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.eta_x.common">
+<span id="eta-utility-eta-x-common-package"></span><h1>eta_utility.eta_x.common package<a class="headerlink" href="#module-eta_utility.eta_x.common" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.callbacks.html">eta_utility.eta_x.common.callbacks module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.callbacks.html#eta_utility.eta_x.common.callbacks.CallbackEnvironment"><code class="docutils literal notranslate"><span class="pre">CallbackEnvironment</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.callbacks.html#eta_utility.eta_x.common.callbacks.merge_callbacks"><code class="docutils literal notranslate"><span class="pre">merge_callbacks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.common.html">eta_utility.eta_x.common.common module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.vectorize_environment"><code class="docutils literal notranslate"><span class="pre">vectorize_environment()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.initialize_model"><code class="docutils literal notranslate"><span class="pre">initialize_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.log_to_file"><code class="docutils literal notranslate"><span class="pre">log_to_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.log_run_info"><code class="docutils literal notranslate"><span class="pre">log_run_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.deserialize_net_arch"><code class="docutils literal notranslate"><span class="pre">deserialize_net_arch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.log_net_arch"><code class="docutils literal notranslate"><span class="pre">log_net_arch()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.is_vectorized_env"><code class="docutils literal notranslate"><span class="pre">is_vectorized_env()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.is_env_closed"><code class="docutils literal notranslate"><span class="pre">is_env_closed()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.episode_results_path"><code class="docutils literal notranslate"><span class="pre">episode_results_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.episode_name_string"><code class="docutils literal notranslate"><span class="pre">episode_name_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.extractors.html">eta_utility.eta_x.common.extractors module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.extractors.html#eta_utility.eta_x.common.extractors.CustomExtractor"><code class="docutils literal notranslate"><span class="pre">CustomExtractor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.extractors.html#eta_utility.eta_x.common.extractors.CustomExtractor.forward"><code class="docutils literal notranslate"><span class="pre">CustomExtractor.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.extractors.html#eta_utility.eta_x.common.extractors.CustomExtractor.training"><code class="docutils literal notranslate"><span class="pre">CustomExtractor.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.policies.html">eta_utility.eta_x.common.policies module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.policies.html#eta_utility.eta_x.common.policies.NoPolicy"><code class="docutils literal notranslate"><span class="pre">NoPolicy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.policies.html#eta_utility.eta_x.common.policies.NoPolicy.forward"><code class="docutils literal notranslate"><span class="pre">NoPolicy.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.policies.html#eta_utility.eta_x.common.policies.NoPolicy.state_dict"><code class="docutils literal notranslate"><span class="pre">NoPolicy.state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.policies.html#eta_utility.eta_x.common.policies.NoPolicy.load_state_dict"><code class="docutils literal notranslate"><span class="pre">NoPolicy.load_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.policies.html#eta_utility.eta_x.common.policies.NoPolicy.features_extractor"><code class="docutils literal notranslate"><span class="pre">NoPolicy.features_extractor</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.processors.html">eta_utility.eta_x.common.processors module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d"><code class="docutils literal notranslate"><span class="pre">Split1d</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.extra_repr"><code class="docutils literal notranslate"><span class="pre">Split1d.extra_repr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.forward"><code class="docutils literal notranslate"><span class="pre">Split1d.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.get_full_sizes"><code class="docutils literal notranslate"><span class="pre">Split1d.get_full_sizes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d"><code class="docutils literal notranslate"><span class="pre">Fold1d</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d.extra_repr"><code class="docutils literal notranslate"><span class="pre">Fold1d.extra_repr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d.forward"><code class="docutils literal notranslate"><span class="pre">Fold1d.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d.training"><code class="docutils literal notranslate"><span class="pre">Fold1d.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.eta_x.common.schedules.html">eta_utility.eta_x.common.schedules module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.schedules.html#eta_utility.eta_x.common.schedules.BaseSchedule"><code class="docutils literal notranslate"><span class="pre">BaseSchedule</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.schedules.html#eta_utility.eta_x.common.schedules.BaseSchedule.value"><code class="docutils literal notranslate"><span class="pre">BaseSchedule.value()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.eta_x.common.schedules.html#eta_utility.eta_x.common.schedules.LinearSchedule"><code class="docutils literal notranslate"><span class="pre">LinearSchedule</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.eta_x.common.schedules.html#eta_utility.eta_x.common.schedules.LinearSchedule.value"><code class="docutils literal notranslate"><span class="pre">LinearSchedule.value()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.eta_x.agents.rule_based.html" class="btn btn-neutral float-left" title="eta_utility.eta_x.agents.rule_based module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.eta_x.common.callbacks.html" class="btn btn-neutral float-right" title="eta_utility.eta_x.common.callbacks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

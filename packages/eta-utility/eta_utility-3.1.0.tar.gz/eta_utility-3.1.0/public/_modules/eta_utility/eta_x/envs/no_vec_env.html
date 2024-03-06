@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.envs.no_vec_env &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.envs.no_vec_env</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.envs.no_vec_env</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">DummyVecEnv</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env.util</span> <span class="kn">import</span> <span class="n">obs_space_info</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+
+    <span class="kn">import</span> <span class="nn">gymnasium</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env.base_vec_env</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">VecEnvIndices</span><span class="p">,</span>
+        <span class="n">VecEnvObs</span><span class="p">,</span>
+        <span class="n">VecEnvStepReturn</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="NoVecEnv"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv">[docs]</a><span class="k">class</span> <span class="nc">NoVecEnv</span><span class="p">(</span><span class="n">DummyVecEnv</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NoVecEnv is an environment vectorizer which hands the implementation of multithreading off to the environment.</span>
+<span class="sd">    The environment must specify the attribute &quot;is_multithreaded&quot; and set it to True. NoVecEnv will hand all actions</span>
+<span class="sd">    it receives over to the environment, even if they were meant for multiple environments. Therefore, the environment</span>
+<span class="sd">    has to specifically support parallel evaluation of multiple action sets.</span>
+
+<span class="sd">    This vectorizer is useful for environments implemented for example in julia, where we do not want to create multiple</span>
+<span class="sd">    environments and could potentially implement multithreading inside the environment.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        The reset function of the environment should only return a single set of observations. The order in which the</span>
+<span class="sd">        resetfunction is called will always be the same. For example, if subenvironments 5, 10 and 15 return done, the</span>
+<span class="sd">        reset function will be called three times, first for environment 5, then for 10 and finally for 15.</span>
+
+<span class="sd">        If the environment returns done (even if it is just for a single subenvironment / action set) the reset function</span>
+<span class="sd">        of the environment will be called to retrieve initial observations for each one of the done returns separately.</span>
+
+<span class="sd">    All other functionality is directly derived from DummyVecEnv. Since there is only a single</span>
+
+<span class="sd">    See also: :py:class:`stable_baselines3.common.vec_env.DummyVecEnv`</span>
+
+<span class="sd">    :param env_fns: A list of functions that will create the environments</span>
+<span class="sd">        (each callable returns a `gymnasium.Env` instance when called).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_fns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Callable</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">([</span><span class="n">env_fns</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+        <span class="c1"># Correct the number of environments and re-initialize all values which depend on the number of environments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">env_fns</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">dtypes</span> <span class="o">=</span> <span class="n">obs_space_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">observation_space</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">buf_obs</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shapes</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buf_dones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buf_rews</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buf_infos</span> <span class="o">=</span> <span class="p">[{}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+
+        <span class="c1"># Check if the environment itself is multithreaded and raise an error if it is noz</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;is_multithreaded&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">is_multithreaded</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The given environment cannot be used with NoVecEnv because it does not specify the attribute &quot;</span>
+                <span class="s2">&quot;is_multithreaded (or the attribute is not set to True).&quot;</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="NoVecEnv.step_wait"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv.step_wait">[docs]</a>    <span class="k">def</span> <span class="nf">step_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VecEnvStepReturn</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Store observations and reset environments</span>
+
+<span class="sd">        :return: Tuple with stepping result sequences (observations, rewards, dones, infos)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Stepping the environment is only possible when actions are set.&quot;</span>
+
+        <span class="c1"># Re-initialize the observation buffers (necessary because the number of action sets is not known beforehand).</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buf_rews</span><span class="p">,</span> <span class="n">_terminated</span><span class="p">,</span> <span class="n">_truncated</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buf_infos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buf_dones</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">_terminated</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">or</span> <span class="n">_truncated</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">buf_infos</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;TimeLimit.truncated&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_truncated</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_terminated</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">buf_dones</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">buf_infos</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;terminal_observation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="n">obs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save_obs</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">obs</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_from_buf</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buf_rews</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buf_dones</span><span class="p">),</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buf_infos</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NoVecEnv.reset"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.envs.no_vec_env.html#eta_utility.eta_x.envs.no_vec_env.NoVecEnv.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VecEnvObs</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset all sub environments and return their observations.</span>
+
+<span class="sd">        :return: Observations from all sub environments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">env_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_envs</span><span class="p">):</span>
+            <span class="n">obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save_obs</span><span class="p">(</span><span class="n">env_idx</span><span class="p">,</span> <span class="n">obs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obs_from_buf</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_get_target_envs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">VecEnvIndices</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">gymnasium</span><span class="o">.</span><span class="n">Env</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the 0 target environment (because there can only ever be one...)</span>
+
+<span class="sd">        :param indices: Indices of the environments. Values don&#39;t not really matter here, only length is important.</span>
+<span class="sd">        :return: List of environments to target.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_indices</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">envs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

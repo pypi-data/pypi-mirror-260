@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.node &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.node</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.node</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; This module implements the node class, which is used to parametrize connections</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Mapping</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">converters</span><span class="p">,</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">validators</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">dict_get_any</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">url_parse</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Sequence</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">ParseResult</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">default_schemes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;modbus&quot;</span><span class="p">:</span> <span class="s2">&quot;modbus.tcp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;opcua&quot;</span><span class="p">:</span> <span class="s2">&quot;opc.tcp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eneffco&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;local&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;entsoe&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cumulocity&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;connectors&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_strip_str</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience function to convert a string to its stripped version.</span>
+
+<span class="sd">    :param value: String to convert.</span>
+<span class="sd">    :return: Stripped string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_lower_str</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience function to convert a string to its stripped and lowercase version.</span>
+
+<span class="sd">    :param value: String to convert.</span>
+<span class="sd">    :return: Stripped and lowercase string.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_dtype_converter</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Specify data type conversion functions (i.e. to convert modbus types to python).</span>
+
+<span class="sd">    :param value: Data type string to convert to callacle datatype converter.</span>
+<span class="sd">    :return: Python datatype (callable).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_dtypes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;boolean&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s2">&quot;uint32&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s2">&quot;sbyte&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s2">&quot;float&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="s2">&quot;double&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="s2">&quot;short&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="s2">&quot;string&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s2">&quot;str&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s2">&quot;bytes&quot;</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">_dtypes</span><span class="p">[</span><span class="n">_lower_str</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;The specified data type (</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">) is currently not available in the datatype map and &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;will not be applied.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">dtype</span>
+
+
+<div class="viewcode-block" id="NodeMeta"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.node.html#eta_utility.connectors.node.NodeMeta">[docs]</a><span class="k">class</span> <span class="nc">NodeMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Metaclass to define all Node classes as frozen attr dataclasses.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">bases</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NodeMeta</span><span class="p">:</span>
+        <span class="n">new_cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">namespace</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">define</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">slots</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">new_cls</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Node"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.Node">[docs]</a><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">NodeMeta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The node objects represents a single variable. Valid keyword arguments depend on the protocol.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Name for the node.</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">_strip_str</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#: URL of the connection.</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#: Parse result object of the URL (in case more post-processing is required).</span>
+    <span class="n">url_parsed</span><span class="p">:</span> <span class="n">ParseResult</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Protocol of the connection.</span>
+    <span class="n">protocol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Username for login to the connection (default: None).</span>
+    <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Password for login to the connection (default: None).</span>
+    <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Interval</span>
+    <span class="n">interval</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="c1">#: Data type of the node (for value conversion). Note that strings will be interpreted as utf-8 encoded. If you</span>
+    <span class="c1">#: do not want this behaviour, use &#39;bytes&#39;.</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_dtype_converter</span><span class="p">),</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+
+    <span class="n">_registry</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">def</span> <span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Store subclass definitions to instantiate based on protocol.&quot;&quot;&quot;</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;protocol&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">protocol</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">protocol</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init_subclass__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create node object of correct subclass corresponding to protocol.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">subclass</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">protocol</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Specified an unsupported protocol: </span><span class="si">{</span><span class="n">protocol</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Return the correct subclass for the specified protocol</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">subclass</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add post-processing to the url, username and password information. Username and password specified during</span>
+<span class="sd">        class init take precedence.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span> <span class="o">=</span> <span class="n">url_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="n">default_schemes</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;usr&quot;</span><span class="p">,</span> <span class="n">usr</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;usr&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;pwd&quot;</span><span class="p">,</span> <span class="n">pwd</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;pwd&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">())</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url_parsed&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Node.from_dict"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.node.html#eta_utility.connectors.node.Node.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Mapping</span><span class="p">]</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">fail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create nodes from a dictionary of node configurations. The configuration must specify the following</span>
+<span class="sd">        fields for each node:</span>
+
+<span class="sd">            * Code (or name), URL, Protocol (i.e. modbus or opcua or eneffco).</span>
+<span class="sd">              The URL should be a complete network location identifier. Alternatively it is possible to specify the</span>
+<span class="sd">              location in two fields: IP and Port. These should only contain the respective parts (as in only an IP</span>
+<span class="sd">              address and only the port number).</span>
+<span class="sd">              The IP-Address should always be given without scheme (https://).</span>
+
+<span class="sd">        For local nodes no additional fields are required.</span>
+
+<span class="sd">        For Modbus nodes the following additional fields are required:</span>
+
+<span class="sd">            * ModbusRegisterType (or mb_register), ModbusSlave (or mb_slave), ModbusChannel (or mb_channel).</span>
+
+<span class="sd">        For OPC UA nodes the following additional fields are required:</span>
+
+<span class="sd">            * Identifier.</span>
+
+<span class="sd">        For EnEffCo nodes the code field must be present.</span>
+
+<span class="sd">        For EntsoE nodes the endpoint field must be present.</span>
+
+<span class="sd">        :param dikt: Configuration dictionary.</span>
+<span class="sd">        :param fail: Set this to false, if you would like to log errors instead of raising them.</span>
+<span class="sd">        :return: List of Node objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">iter_</span> <span class="o">=</span> <span class="p">[</span><span class="n">dikt</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="k">else</span> <span class="n">dikt</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">lnode</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iter_</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">lnode</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">protocol</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_protocol</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error reading node protocol in row </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="k">if</span> <span class="n">fail</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">node_class</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">protocol</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Specified an unsupported protocol in row </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">protocol</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="k">if</span> <span class="n">fail</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_class</span><span class="o">.</span><span class="n">_from_dict</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error while reading the configuration data for node in row </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="k">if</span> <span class="n">fail</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">nodes</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_read_dict_info</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read general info about a node from a dictionary.</span>
+
+<span class="sd">        :param node: dictionary containing node information.</span>
+<span class="sd">        :return: name, pwd, url, usr of the node</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Read name first</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Name or Code must be specified for all nodes in the dictionary.&quot;</span><span class="p">)</span>
+        <span class="c1"># Find URL or IP and port</span>
+        <span class="k">if</span> <span class="s2">&quot;url&quot;</span> <span class="ow">in</span> <span class="n">node</span> <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;nan&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">}:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="s2">&quot;ip&quot;</span> <span class="ow">in</span> <span class="n">node</span> <span class="ow">and</span> <span class="n">node</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;nan&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">}:</span>
+            <span class="n">_port</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;port&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">_port</span> <span class="ow">in</span> <span class="p">{</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">}</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">_port</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">_port</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ip&#39;</span><span class="p">)</span><span class="si">}{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">usr</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;usr&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">pwd</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;pwd&quot;</span><span class="p">,</span> <span class="s2">&quot;pw&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;interval&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_read_dict_protocol</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dict_get_any</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">protocol</span> <span class="o">==</span> <span class="s2">&quot;nan&quot;</span> <span class="ow">or</span> <span class="n">protocol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Protocol must be specified for all nodes in the dictionary.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">protocol</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="n">names</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get any of the specified items from the node, if any are available. The function will return</span>
+<span class="sd">        the first value it finds, even if there are multiple matches.</span>
+
+<span class="sd">        This function will output sensible error messages, when the values are not found.</span>
+
+<span class="sd">        :param dikt: Dictionary of the node to get values from.</span>
+<span class="sd">        :param names: Item names to look for.</span>
+<span class="sd">        :return: Value from dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For the node, the field &#39;</span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; must be specified or check the correct spelling.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="s2">&quot;The required parameter for the node configuration was not found (see log). &quot;</span>
+                <span class="s2">&quot;Could not load config &quot;</span>
+                <span class="s2">&quot;file. &quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Node.from_excel"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.node.html#eta_utility.connectors.node.Node.from_excel">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_excel</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to read out nodes from an Excel document. The document must specify the following fields:</span>
+
+<span class="sd">            * Code, IP, Port, Protocol (modbus or opcua or eneffco).</span>
+
+<span class="sd">        For Modbus nodes the following additional fields are required:</span>
+
+<span class="sd">            * ModbusRegisterType, ModbusByte, ModbusChannel.</span>
+
+<span class="sd">        For OPC UA nodes the following additional fields are required:</span>
+
+<span class="sd">            * Identifier.</span>
+
+<span class="sd">        For EnEffCo nodes the Code field must be present.</span>
+
+<span class="sd">        The IP-Address should always be given without scheme (https://).</span>
+
+<span class="sd">        :param path: Path to Excel document.</span>
+<span class="sd">        :param sheet_name: name of Excel sheet, which will be read out.</span>
+<span class="sd">        :param fail: Set this to false, if you would like to log errors instead of raising them.</span>
+<span class="sd">        :return: List of Node objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">file</span> <span class="o">=</span> <span class="n">path</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">input_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">fail</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Node.get_eneffco_nodes_from_codes"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.node.html#eta_utility.connectors.node.Node.get_eneffco_nodes_from_codes">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_eneffco_nodes_from_codes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">code_list</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">eneffco_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Utility function to retrieve Node objects from a list of EnEffCo Codes (Identifiers).</span>
+
+<span class="sd">        .. deprecated:: v2.0.0</span>
+<span class="sd">            Use the *from_ids* function of the EnEffCoConnection Class instead.</span>
+
+<span class="sd">        :param code_list: List of EnEffCo identifiers to create nodes from.</span>
+<span class="sd">        :param eneffco_url: URL to the EnEffCo system.</span>
+<span class="sd">        :return: List of EnEffCo nodes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">code_list</span><span class="p">:</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">code</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">eneffco_url</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;eneffco&quot;</span><span class="p">,</span> <span class="n">eneffco_code</span><span class="o">=</span><span class="n">code</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">nodes</span></div></div>
+
+
+<div class="viewcode-block" id="NodeLocal"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.NodeLocal">[docs]</a><span class="k">class</span> <span class="nc">NodeLocal</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Local Node (no specific protocol), useful for example to manually provide data to subscription handlers.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure username and password are processed correctly.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeLocal</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a modblocalus node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeLocal object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_mb_byteorder_converter</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert some values for mb_byteorder.</span>
+
+<span class="sd">    :param value: Value to be converted to mb_byteorder</span>
+<span class="sd">    :return: mb_byteorder corresponding to correct scheme.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">_lower_str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;little&quot;</span><span class="p">,</span> <span class="s2">&quot;littleendian&quot;</span><span class="p">}:</span>
+        <span class="k">return</span> <span class="s2">&quot;little&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;big&quot;</span><span class="p">,</span> <span class="s2">&quot;bigendian&quot;</span><span class="p">}:</span>
+        <span class="k">return</span> <span class="s2">&quot;big&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="NodeModbus"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.NodeModbus">[docs]</a><span class="k">class</span> <span class="nc">NodeModbus</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;modbus&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Node for the Modbus protocol.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Modbus Slave ID</span>
+    <span class="n">mb_slave</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1">#: Modbus Register name. One of input, discrete_input, coils and holding. Note that only coils and</span>
+    <span class="c1">#: holding can be written to.</span>
+    <span class="n">mb_register</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_lower_str</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">in_</span><span class="p">({</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;discrete_input&quot;</span><span class="p">,</span> <span class="s2">&quot;coils&quot;</span><span class="p">,</span> <span class="s2">&quot;holding&quot;</span><span class="p">})</span>
+    <span class="p">)</span>
+    <span class="c1">#: Modbus Channel (Address of the value)</span>
+    <span class="n">mb_channel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1">#: Length of the value in bits (default 32). This determines, how much data is read from the server. The</span>
+    <span class="c1">#: value must be a multiple of 16.</span>
+    <span class="n">mb_bit_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1">#: Byteorder of values returned by modbus</span>
+    <span class="n">mb_byteorder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_mb_byteorder_converter</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">in_</span><span class="p">({</span><span class="s2">&quot;little&quot;</span><span class="p">,</span> <span class="s2">&quot;big&quot;</span><span class="p">})</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add default port to the URL and convert mb_byteorder values.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+        <span class="c1"># Set port to default 502 if it was not explicitly specified</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">netloc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s2">:502&quot;</span><span class="p">)</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">())</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url_parsed&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeModbus</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a modbus node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeModbus object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+
+        <span class="c1"># Initialize node if protocol is &#39;modbus&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mb_register</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;mb_register&quot;</span><span class="p">,</span> <span class="s2">&quot;modbusregistertype&quot;</span><span class="p">)</span>
+            <span class="n">mb_channel</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;mb_channel&quot;</span><span class="p">,</span> <span class="s2">&quot;modbuschannel&quot;</span><span class="p">)</span>
+            <span class="n">mb_byteorder</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;mb_byteorder&quot;</span><span class="p">,</span> <span class="s2">&quot;modbusbyteorder&quot;</span><span class="p">)</span>
+            <span class="n">mb_slave</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;mb_slave&quot;</span><span class="p">,</span> <span class="s2">&quot;modbusslave&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+            <span class="n">mb_bit_length</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;mb_bit_length&quot;</span><span class="p">,</span> <span class="s2">&quot;mb_bitlength&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="s2">&quot;datentyp&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The required parameter for the node configuration was not found (see log). The node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> could &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not load.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">url</span><span class="p">,</span>
+                <span class="s2">&quot;modbus&quot;</span><span class="p">,</span>
+                <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span>
+                <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span>
+                <span class="n">mb_register</span><span class="o">=</span><span class="n">mb_register</span><span class="p">,</span>
+                <span class="n">mb_slave</span><span class="o">=</span><span class="n">mb_slave</span><span class="p">,</span>
+                <span class="n">mb_channel</span><span class="o">=</span><span class="n">mb_channel</span><span class="p">,</span>
+                <span class="n">mb_bit_length</span><span class="o">=</span><span class="n">mb_bit_length</span><span class="p">,</span>
+                <span class="n">mb_byteorder</span><span class="o">=</span><span class="n">mb_byteorder</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NodeOpcUa"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.NodeOpcUa">[docs]</a><span class="k">class</span> <span class="nc">NodeOpcUa</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;opcua&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Node for the OPC UA protocol.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Node ID of the OPC UA Node.</span>
+    <span class="n">opc_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_strip_str</span><span class="p">))</span>
+    <span class="c1">#: Path to the OPC UA node.</span>
+    <span class="n">opc_path_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_strip_str</span><span class="p">),</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="c1">#: Namespace of the OPC UA Node.</span>
+    <span class="n">opc_ns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_lower_str</span><span class="p">))</span>
+
+    <span class="c1"># Additional fields which will be determined automatically</span>
+    <span class="c1">#: Type of the OPC UA Node ID Specification.</span>
+    <span class="n">opc_id_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">in_</span><span class="p">({</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">}),</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="c1">#: Name of the OPC UA Node.</span>
+    <span class="n">opc_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="c1">#: Path to the OPC UA node in list representation. Nodes in this list can be used to access any</span>
+    <span class="c1">#: parent objects.</span>
+    <span class="n">opc_path</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NodeOpcUa</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add default port to the URL and convert mb_byteorder values.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+        <span class="c1"># Set port to default 4840 if it was not explicitly specified</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">netloc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s2">:4840&quot;</span><span class="p">)</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">geturl</span><span class="p">())</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;url_parsed&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+        <span class="c1"># Determine, which values to use for initialization and set values</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;When specifying opc_id, make sure it follows the format ns=2;s=.path (got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">).&quot;</span>
+                <span class="p">)</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;When specifying opc_id, make sure it follows the format ns=2;s=.path (got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">).&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ns&quot;</span><span class="p">:</span>
+                    <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_ns&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_id_type&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+                    <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_path_str&quot;</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_id&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ns=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_ns</span><span class="si">}</span><span class="s2">;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_id_type</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_ns</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_id_type&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_id&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;ns=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_ns</span><span class="si">}</span><span class="s2">;s=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Specify opc_id or opc_path_str and ns for OPC UA nodes.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Determine the name and path of the opc node</span>
+        <span class="n">split_path</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span>  <span class="c1"># type: ignore</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">opc_path_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="p">)</span>
+
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_name&quot;</span><span class="p">,</span> <span class="n">split_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Node</span><span class="p">(</span>
+                    <span class="n">split_path</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; .&quot;</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="s2">&quot;opcua&quot;</span><span class="p">,</span>
+                    <span class="n">usr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">,</span>
+                    <span class="n">pwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="p">,</span>
+                    <span class="n">opc_id</span><span class="o">=</span><span class="s2">&quot;ns=</span><span class="si">{}</span><span class="s2">;s=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opc_ns</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">split_path</span><span class="p">[:</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;opc_path&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeOpcUa</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an opcua node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeOpcUa object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+
+        <span class="n">opc_id</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;opc_id&quot;</span><span class="p">,</span> <span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="s2">&quot;datentyp&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">opc_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">opc_ns</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;opc_ns&quot;</span><span class="p">,</span> <span class="s2">&quot;namespace&quot;</span><span class="p">,</span> <span class="s2">&quot;ns&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">opc_path_str</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;opc_path&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                    <span class="n">name</span><span class="p">,</span>
+                    <span class="n">url</span><span class="p">,</span>
+                    <span class="s2">&quot;opcua&quot;</span><span class="p">,</span>
+                    <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span>
+                    <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span>
+                    <span class="n">opc_ns</span><span class="o">=</span><span class="n">opc_ns</span><span class="p">,</span>
+                    <span class="n">opc_path_str</span><span class="o">=</span><span class="n">opc_path_str</span><span class="p">,</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                    <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Either the &#39;node_id&#39; or the &#39;opc_ns&#39; &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;and &#39;opc_path&#39; must be specified.&quot;</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;opcua&quot;</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">opc_id</span><span class="o">=</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Either the &#39;node_id&#39; or the &#39;opc_ns&#39; &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;and &#39;opc_path&#39; must be specified.&quot;</span>
+                <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NodeEnEffCo"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.NodeEnEffCo">[docs]</a><span class="k">class</span> <span class="nc">NodeEnEffCo</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;eneffco&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Node for the EnEffCo API.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: EnEffCo datapoint code / ID.</span>
+    <span class="n">eneffco_code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure username and password are processed correctly.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeEnEffCo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a EnEffCo node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeEnEffCo object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;eneffco_code&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The required parameter for the node configuration was not found (see log). The node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> could &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not load.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;eneffco&quot;</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">eneffco_code</span><span class="o">=</span><span class="n">code</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NodeEntsoE"><a class="viewcode-back" href="../../../connectors/introduction.html#eta_utility.connectors.node.NodeEntsoE">[docs]</a><span class="k">class</span> <span class="nc">NodeEntsoE</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;entsoe&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Node for the EntsoE API (see `ENTSO-E Transparency Platform API</span>
+<span class="sd">    &lt;https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html&gt;`_).</span>
+
+<span class="sd">    .. list-table:: **Available endpoint**</span>
+<span class="sd">        :widths: 25 35</span>
+<span class="sd">        :header-rows: 1</span>
+
+<span class="sd">        * - Endpoint</span>
+<span class="sd">          - Description</span>
+<span class="sd">        * - ActualGenerationPerType</span>
+<span class="sd">          - Actual Generation Per Energy Type</span>
+<span class="sd">        * - Price</span>
+<span class="sd">          - Price day ahead</span>
+
+<span class="sd">    Currently, there is only two endpoints available, due to the parameter managing required by the API documentation.</span>
+<span class="sd">    The other possible endpoints are listed in</span>
+
+<span class="sd">    `eta_utility.connectors.entso_e._ConnectionConfiguration._doc_types`</span>
+
+<span class="sd">    .. list-table:: **Main bidding zone**</span>
+<span class="sd">        :widths: 15 25</span>
+<span class="sd">        :header-rows: 1</span>
+
+<span class="sd">        * - Bidding Zone</span>
+<span class="sd">          - Description</span>
+<span class="sd">        * - DEU-LUX</span>
+<span class="sd">          - Deutschland-Luxemburg</span>
+
+<span class="sd">    The other possible bidding zones are listed in</span>
+
+<span class="sd">    `eta_utility.connectors.entso_e._ConnectionConfiguration._bidding_zones`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: REST endpoint.</span>
+    <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="c1">#: Bidding zone.</span>
+    <span class="n">bidding_zone</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure username and password are processed correctly.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeEntsoE</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an EntsoE node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeEntsoE object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">endpoint</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;endpoint&quot;</span><span class="p">)</span>
+            <span class="n">bidding_zone</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;bidding zone&quot;</span><span class="p">,</span> <span class="s2">&quot;bidding_zone&quot;</span><span class="p">,</span> <span class="s2">&quot;zone&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The required parameter for the node configuration was not found (see log). The node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> could &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not load.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                <span class="n">name</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;entsoe&quot;</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">bidding_zone</span><span class="o">=</span><span class="n">bidding_zone</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NodeCumulocity"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.node.html#eta_utility.connectors.node.NodeCumulocity">[docs]</a><span class="k">class</span> <span class="nc">NodeCumulocity</span><span class="p">(</span><span class="n">Node</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;cumulocity&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Node for the Cumulocity API.&quot;&quot;&quot;</span>
+
+    <span class="c1"># parameters for reading/writing from/to cumulocity nodes</span>
+    <span class="n">device_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">measurement</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">fragment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure username and password are processed correctly.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__attrs_post_init__</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NodeCumulocity</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Cumulocity node from a dictionary of node information.</span>
+
+<span class="sd">        :param dikt: dictionary with node information.</span>
+<span class="sd">        :return: NodeCumulocity object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_dict_info</span><span class="p">(</span><span class="n">dikt</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">device_id</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;device_id&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The required parameter for the node configuration was not found (see log). The node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> could &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not load.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;measurement&quot;</span><span class="p">,</span> <span class="s2">&quot;Measurement&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The required parameter for the node configuration was not found (see log). The node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> could &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;not load.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fragment</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_try_dict_get_any</span><span class="p">(</span><span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;fragment&quot;</span><span class="p">,</span> <span class="s2">&quot;Fragment&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">fragment</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                <span class="n">name</span><span class="p">,</span>
+                <span class="n">url</span><span class="p">,</span>
+                <span class="s2">&quot;cumulocity&quot;</span><span class="p">,</span>
+                <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span>
+                <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span>
+                <span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">,</span>
+                <span class="n">measurement</span><span class="o">=</span><span class="n">measurement</span><span class="p">,</span>
+                <span class="n">fragment</span><span class="o">=</span><span class="n">fragment</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not convert all types for node </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

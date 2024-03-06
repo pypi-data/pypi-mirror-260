@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.node module &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.connectors.opc_ua module" href="eta_utility.connectors.opc_ua.html" />
+    <link rel="prev" title="eta_utility.connectors.modbus module" href="eta_utility.connectors.modbus.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.servers.html">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.node module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.connectors.node.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.connectors.node">
+<span id="eta-utility-connectors-node-module"></span><h1>eta_utility.connectors.node module<a class="headerlink" href="#module-eta_utility.connectors.node" title="Permalink to this heading"></a></h1>
+<p>This module implements the node class, which is used to parametrize connections</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeMeta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a></p>
+<p>Metaclass to define all Node classes as frozen attr dataclasses.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#Node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.Node" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The node objects represents a single variable. Valid keyword arguments depend on the protocol.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.name" title="Permalink to this definition"></a></dt>
+<dd><p>Name for the node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.url">
+<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.url" title="Permalink to this definition"></a></dt>
+<dd><p>URL of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.url_parsed">
+<span class="sig-name descname"><span class="pre">url_parsed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParseResult</span></em><a class="headerlink" href="#eta_utility.connectors.node.Node.url_parsed" title="Permalink to this definition"></a></dt>
+<dd><p>Parse result object of the URL (in case more post-processing is required).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.protocol">
+<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.protocol" title="Permalink to this definition"></a></dt>
+<dd><p>Protocol of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.usr">
+<span class="sig-name descname"><span class="pre">usr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.usr" title="Permalink to this definition"></a></dt>
+<dd><p>Username for login to the connection (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.pwd">
+<span class="sig-name descname"><span class="pre">pwd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.pwd" title="Permalink to this definition"></a></dt>
+<dd><p>Password for login to the connection (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.interval" title="Permalink to this definition"></a></dt>
+<dd><p>Interval</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.Node.dtype" title="Permalink to this definition"></a></dt>
+<dd><p>Data type of the node (for value conversion). Note that strings will be interpreted as utf-8 encoded. If you
+do not want this behaviour, use ‘bytes’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dikt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#Node.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.Node.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Create nodes from a dictionary of node configurations. The configuration must specify the following
+fields for each node:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Code (or name), URL, Protocol (i.e. modbus or opcua or eneffco).
+The URL should be a complete network location identifier. Alternatively it is possible to specify the
+location in two fields: IP and Port. These should only contain the respective parts (as in only an IP
+address and only the port number).
+The IP-Address should always be given without scheme (<a class="reference external" href="https://">https://</a>).</p></li>
+</ul>
+</div></blockquote>
+<p>For local nodes no additional fields are required.</p>
+<p>For Modbus nodes the following additional fields are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ModbusRegisterType (or mb_register), ModbusSlave (or mb_slave), ModbusChannel (or mb_channel).</p></li>
+</ul>
+</div></blockquote>
+<p>For OPC UA nodes the following additional fields are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Identifier.</p></li>
+</ul>
+</div></blockquote>
+<p>For EnEffCo nodes the code field must be present.</p>
+<p>For EntsoE nodes the endpoint field must be present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dikt</strong> – Configuration dictionary.</p></li>
+<li><p><strong>fail</strong> – Set this to false, if you would like to log errors instead of raising them.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of Node objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.from_excel">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fail</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#Node.from_excel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.Node.from_excel" title="Permalink to this definition"></a></dt>
+<dd><p>Method to read out nodes from an Excel document. The document must specify the following fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Code, IP, Port, Protocol (modbus or opcua or eneffco).</p></li>
+</ul>
+</div></blockquote>
+<p>For Modbus nodes the following additional fields are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ModbusRegisterType, ModbusByte, ModbusChannel.</p></li>
+</ul>
+</div></blockquote>
+<p>For OPC UA nodes the following additional fields are required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Identifier.</p></li>
+</ul>
+</div></blockquote>
+<p>For EnEffCo nodes the Code field must be present.</p>
+<p>The IP-Address should always be given without scheme (<a class="reference external" href="https://">https://</a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Path to Excel document.</p></li>
+<li><p><strong>sheet_name</strong> – name of Excel sheet, which will be read out.</p></li>
+<li><p><strong>fail</strong> – Set this to false, if you would like to log errors instead of raising them.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of Node objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.Node.get_eneffco_nodes_from_codes">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_eneffco_nodes_from_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eneffco_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><span class="pre">Node</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#Node.get_eneffco_nodes_from_codes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.Node.get_eneffco_nodes_from_codes" title="Permalink to this definition"></a></dt>
+<dd><p>Utility function to retrieve Node objects from a list of EnEffCo Codes (Identifiers).</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version v2.0.0: </span>Use the <em>from_ids</em> function of the EnEffCoConnection Class instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code_list</strong> – List of EnEffCo identifiers to create nodes from.</p></li>
+<li><p><strong>eneffco_url</strong> – URL to the EnEffCo system.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of EnEffCo nodes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeLocal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeLocal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Local Node (no specific protocol), useful for example to manually provide data to subscription handlers.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.name" title="Permalink to this definition"></a></dt>
+<dd><p>Name for the node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.url">
+<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.url" title="Permalink to this definition"></a></dt>
+<dd><p>URL of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.url_parsed">
+<span class="sig-name descname"><span class="pre">url_parsed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParseResult</span></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.url_parsed" title="Permalink to this definition"></a></dt>
+<dd><p>Parse result object of the URL (in case more post-processing is required).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.protocol">
+<span class="sig-name descname"><span class="pre">protocol</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.protocol" title="Permalink to this definition"></a></dt>
+<dd><p>Protocol of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.usr">
+<span class="sig-name descname"><span class="pre">usr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.usr" title="Permalink to this definition"></a></dt>
+<dd><p>Username for login to the connection (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.pwd">
+<span class="sig-name descname"><span class="pre">pwd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.pwd" title="Permalink to this definition"></a></dt>
+<dd><p>Password for login to the connection (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.interval" title="Permalink to this definition"></a></dt>
+<dd><p>Interval</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeLocal.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeLocal.dtype" title="Permalink to this definition"></a></dt>
+<dd><p>Data type of the node (for value conversion). Note that strings will be interpreted as utf-8 encoded. If you
+do not want this behaviour, use ‘bytes’.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeModbus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeModbus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Node for the Modbus protocol.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus.mb_slave">
+<span class="sig-name descname"><span class="pre">mb_slave</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus.mb_slave" title="Permalink to this definition"></a></dt>
+<dd><p>Modbus Slave ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus.mb_register">
+<span class="sig-name descname"><span class="pre">mb_register</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus.mb_register" title="Permalink to this definition"></a></dt>
+<dd><p>Modbus Register name. One of input, discrete_input, coils and holding. Note that only coils and
+holding can be written to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus.mb_channel">
+<span class="sig-name descname"><span class="pre">mb_channel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus.mb_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Modbus Channel (Address of the value)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus.mb_bit_length">
+<span class="sig-name descname"><span class="pre">mb_bit_length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus.mb_bit_length" title="Permalink to this definition"></a></dt>
+<dd><p>Length of the value in bits (default 32). This determines, how much data is read from the server. The
+value must be a multiple of 16.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeModbus.mb_byteorder">
+<span class="sig-name descname"><span class="pre">mb_byteorder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeModbus.mb_byteorder" title="Permalink to this definition"></a></dt>
+<dd><p>Byteorder of values returned by modbus</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeOpcUa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeOpcUa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Node for the OPC UA protocol.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_id">
+<span class="sig-name descname"><span class="pre">opc_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_id" title="Permalink to this definition"></a></dt>
+<dd><p>Node ID of the OPC UA Node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_path_str">
+<span class="sig-name descname"><span class="pre">opc_path_str</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_path_str" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the OPC UA node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_ns">
+<span class="sig-name descname"><span class="pre">opc_ns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_ns" title="Permalink to this definition"></a></dt>
+<dd><p>Namespace of the OPC UA Node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_id_type">
+<span class="sig-name descname"><span class="pre">opc_id_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_id_type" title="Permalink to this definition"></a></dt>
+<dd><p>Type of the OPC UA Node ID Specification.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_name">
+<span class="sig-name descname"><span class="pre">opc_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_name" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the OPC UA Node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeOpcUa.opc_path">
+<span class="sig-name descname"><span class="pre">opc_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#eta_utility.connectors.node.NodeOpcUa" title="eta_utility.connectors.node.NodeOpcUa"><span class="pre">NodeOpcUa</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.connectors.node.NodeOpcUa.opc_path" title="Permalink to this definition"></a></dt>
+<dd><p>Path to the OPC UA node in list representation. Nodes in this list can be used to access any
+parent objects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeEnEffCo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeEnEffCo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeEnEffCo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeEnEffCo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Node for the EnEffCo API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeEnEffCo.eneffco_code">
+<span class="sig-name descname"><span class="pre">eneffco_code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeEnEffCo.eneffco_code" title="Permalink to this definition"></a></dt>
+<dd><p>EnEffCo datapoint code / ID.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeEntsoE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeEntsoE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeEntsoE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeEntsoE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Node for the EntsoE API (see <a class="reference external" href="https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html">ENTSO-E Transparency Platform API</a>).</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>Available endpoint</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Endpoint</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ActualGenerationPerType</p></td>
+<td><p>Actual Generation Per Energy Type</p></td>
+</tr>
+<tr class="row-odd"><td><p>Price</p></td>
+<td><p>Price day ahead</p></td>
+</tr>
+</tbody>
+</table>
+<p>Currently, there is only two endpoints available, due to the parameter managing required by the API documentation.
+The other possible endpoints are listed in</p>
+<p><cite>eta_utility.connectors.entso_e._ConnectionConfiguration._doc_types</cite></p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text"><strong>Main bidding zone</strong></span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bidding Zone</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DEU-LUX</p></td>
+<td><p>Deutschland-Luxemburg</p></td>
+</tr>
+</tbody>
+</table>
+<p>The other possible bidding zones are listed in</p>
+<p><cite>eta_utility.connectors.entso_e._ConnectionConfiguration._bidding_zones</cite></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeEntsoE.endpoint">
+<span class="sig-name descname"><span class="pre">endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeEntsoE.endpoint" title="Permalink to this definition"></a></dt>
+<dd><p>REST endpoint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeEntsoE.bidding_zone">
+<span class="sig-name descname"><span class="pre">bidding_zone</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeEntsoE.bidding_zone" title="Permalink to this definition"></a></dt>
+<dd><p>Bidding zone.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeCumulocity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.node.</span></span><span class="sig-name descname"><span class="pre">NodeCumulocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/node.html#NodeCumulocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.node.NodeCumulocity" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eta_utility.connectors.node.Node" title="eta_utility.connectors.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Node for the Cumulocity API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeCumulocity.device_id">
+<span class="sig-name descname"><span class="pre">device_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeCumulocity.device_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeCumulocity.measurement">
+<span class="sig-name descname"><span class="pre">measurement</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeCumulocity.measurement" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.connectors.node.NodeCumulocity.fragment">
+<span class="sig-name descname"><span class="pre">fragment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.connectors.node.NodeCumulocity.fragment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.connectors.modbus.html" class="btn btn-neutral float-left" title="eta_utility.connectors.modbus module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.connectors.opc_ua.html" class="btn btn-neutral float-right" title="eta_utility.connectors.opc_ua module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.config &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.config</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.config</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">Factory</span><span class="p">,</span> <span class="n">converters</span><span class="p">,</span> <span class="n">define</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">validators</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">deep_mapping_update</span><span class="p">,</span> <span class="n">dict_pop_any</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">json_import</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span>
+
+    <span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">Attribute</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.base_class</span> <span class="kn">import</span> <span class="n">BaseAlgorithm</span><span class="p">,</span> <span class="n">BasePolicy</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">DummyVecEnv</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.eta_x.envs</span> <span class="kn">import</span> <span class="n">BaseEnv</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">Path</span>
+
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_path_converter</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert value to a class.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">path</span>
+
+
+<span class="k">def</span> <span class="nf">_get_class</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">ConfigOptSetup</span><span class="p">,</span> <span class="n">attrib</span><span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find module and class name and import the specified class.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">new_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="p">,</span> <span class="n">cls_name</span> <span class="o">=</span> <span class="n">new_value</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">cls</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module</span><span class="p">),</span> <span class="n">cls_name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Could not find module &#39;</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;. While importing class &#39;</span><span class="si">{</span><span class="n">cls_name</span><span class="si">}</span><span class="s2">&#39; from &#39;</span><span class="si">{</span><span class="n">attrib</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; value.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">cls_attr_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">attrib</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">_class&quot;</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">cls_attr_name</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_value</span>
+
+
+<div class="viewcode-block" id="ConfigOpt"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOpt">[docs]</a><span class="nd">@define</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConfigOpt</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for the optimization, which can be loaded from a JSON file.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Name of the configuration used for the series of run.</span>
+    <span class="n">config_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+
+    <span class="c1">#: Root path for the optimization run (scenarios and results are relative to this).</span>
+    <span class="n">path_root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Relative path to the results folder.</span>
+    <span class="n">relpath_results</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="c1">#: relative path to the scenarios folder (default: None).</span>
+    <span class="n">relpath_scenarios</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">)),</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1">#: Path to the results folder.</span>
+    <span class="n">path_results</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the scenarios folder (default: None).</span>
+    <span class="n">path_scenarios</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_path_converter</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span>
+
+    <span class="c1">#: Optimization run setup.</span>
+    <span class="n">setup</span><span class="p">:</span> <span class="n">ConfigOptSetup</span> <span class="o">=</span> <span class="n">field</span><span class="p">()</span>
+    <span class="c1">#: Optimization run settings.</span>
+    <span class="n">settings</span><span class="p">:</span> <span class="n">ConfigOptSettings</span> <span class="o">=</span> <span class="n">field</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_results&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_root</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">relpath_results</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">relpath_scenarios</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_scenarios&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_root</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">relpath_scenarios</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigOpt.from_json"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.config.ConfigOpt.from_json">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">path_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigOpt</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load configuration from JSON file, which consists of the following sections:</span>
+
+<span class="sd">        - **paths**: In this section, the (relative) file paths for results and scenarios are specified. The paths</span>
+<span class="sd">          are deserialized directly into the :class:`ConfigOpt` object.</span>
+<span class="sd">        - **setup**: This section specifies which classes and utilities should be used for optimization. The setup</span>
+<span class="sd">          configuration is deserialized into the :class:`ConfigOptSetup` object.</span>
+<span class="sd">        - **settings**: The settings section contains basic parameters for the optimization, it is deserialized</span>
+<span class="sd">          into a :class:`ConfigOptSettings` object.</span>
+<span class="sd">        - **environment_specific**: The environment section contains keyword arguments for the environment.</span>
+<span class="sd">          This section must contain values for the arguments of the environment, the expected values are therefore</span>
+<span class="sd">          different depending on the environment and not fully documented here.</span>
+<span class="sd">        - **agent_specific**: The agent section contains keyword arguments for the control algorithm (agent).</span>
+<span class="sd">          This section must contain values for the arguments of the agent, the expected values are therefore</span>
+<span class="sd">          different depending on the agent and not fully documented here.</span>
+
+<span class="sd">        :param file: Path to the configuration file.</span>
+<span class="sd">        :param overwrite: Config parameters to overwrite.</span>
+<span class="sd">        :return: ConfigOpt object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_path_root</span> <span class="o">=</span> <span class="n">path_root</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path_root</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_root</span><span class="p">)</span>
+        <span class="n">_overwrite</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">overwrite</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">overwrite</span>
+
+        <span class="n">_config</span> <span class="o">=</span> <span class="n">json_import</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Config file </span><span class="si">{file}</span><span class="s2"> must define a dictionary of options.&quot;</span><span class="p">)</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">deep_mapping_update</span><span class="p">(</span><span class="n">_config</span><span class="p">,</span> <span class="n">_overwrite</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="nf">_pop_dict</span><span class="p">(</span><span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; section must be a dictionary of settings.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">val</span>
+
+        <span class="c1"># Ensure all required sections are present in configuration</span>
+        <span class="k">if</span> <span class="p">{</span><span class="s2">&quot;setup&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;paths&quot;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Not all required sections (setup, settings, paths) are present in configuration file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;environment_specific&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">config</span><span class="p">[</span><span class="s2">&quot;environment_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Section &#39;environment_specific&#39; not present in configuration, assuming it is empty.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;agent_specific&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">config</span><span class="p">[</span><span class="s2">&quot;agent_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Section &#39;agent_specific&#39; not present in configuration, assuming it is empty.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Load values from paths section</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;paths&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;relpath_results&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;relpath_results&#39; is required and could not be found in section &#39;paths&#39; of the configuration.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">relpath_results</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;relpath_results&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">relpath_scenarios</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;relpath_scenarios&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Load values from all other sections.</span>
+        <span class="n">_setup</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;setup&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">setup</span> <span class="o">=</span> <span class="n">ConfigOptSetup</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">_setup</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">settings_raw</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">settings_raw</span><span class="p">[</span><span class="s2">&quot;settings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">)</span>
+        <span class="n">settings_raw</span><span class="p">[</span><span class="s2">&quot;environment_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;environment_specific&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;interaction_env_specific&quot;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">settings_raw</span><span class="p">[</span><span class="s2">&quot;interaction_env_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;interaction_env_specific&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;interaction_environment_specific&quot;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">settings_raw</span><span class="p">[</span><span class="s2">&quot;interaction_env_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;interaction_environment_specific&quot;</span><span class="p">)</span>
+
+        <span class="n">settings_raw</span><span class="p">[</span><span class="s2">&quot;agent_specific&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pop_dict</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="s2">&quot;agent_specific&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="n">ConfigOptSettings</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">settings_raw</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Log configuration values which were not recognized.</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Specified configuration value &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; in the setup section of the configuration was not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;recognized and is ignored.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Not all required values were found in setup section (see log). &quot;</span> <span class="s2">&quot;Could not load config file.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">config_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span>
+            <span class="n">path_root</span><span class="o">=</span><span class="n">_path_root</span><span class="p">,</span>
+            <span class="n">relpath_results</span><span class="o">=</span><span class="n">relpath_results</span><span class="p">,</span>
+            <span class="n">relpath_scenarios</span><span class="o">=</span><span class="n">relpath_scenarios</span><span class="p">,</span>
+            <span class="n">setup</span><span class="o">=</span><span class="n">setup</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The key </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not exist - it cannot be set.&quot;</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigOptSetup"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.config.ConfigOptSetup">[docs]</a><span class="nd">@define</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConfigOptSetup</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration options as specified in the &quot;setup&quot; section of the configuration file.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Import description string for the agent class.</span>
+    <span class="n">agent_import</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">on_setattr</span><span class="o">=</span><span class="n">_get_class</span><span class="p">)</span>
+    <span class="c1">#: Agent class (automatically determined from agent_import).</span>
+    <span class="n">agent_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseAlgorithm</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Import description string for the environment class.</span>
+    <span class="n">environment_import</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">on_setattr</span><span class="o">=</span><span class="n">_get_class</span><span class="p">)</span>
+    <span class="c1">#: Imported Environment class (automatically determined from environment_import).</span>
+    <span class="n">environment_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseEnv</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Import description string for the interaction environment (default: None).</span>
+    <span class="n">interaction_env_import</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">on_setattr</span><span class="o">=</span><span class="n">_get_class</span><span class="p">)</span>
+    <span class="c1">#: Interaction environment class (default: None) (automatically determined from interaction_env_import).</span>
+    <span class="n">interaction_env_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseEnv</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1">#: Import description string for the environment vectorizer</span>
+    <span class="c1">#: (default: stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv).</span>
+    <span class="n">vectorizer_import</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv&quot;</span><span class="p">,</span>
+        <span class="n">on_setattr</span><span class="o">=</span><span class="n">_get_class</span><span class="p">,</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+            <span class="s2">&quot;stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv&quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: Environment vectorizer class  (automatically determined from vectorizer_import).</span>
+    <span class="n">vectorizer_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DummyVecEnv</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1">#: Import description string for the policy class (default: eta_utility.eta_x.agents.common.NoPolicy).</span>
+    <span class="n">policy_import</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;eta_utility.eta_x.common.NoPolicy&quot;</span><span class="p">,</span>
+        <span class="n">on_setattr</span><span class="o">=</span><span class="n">_get_class</span><span class="p">,</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="s2">&quot;eta_utility.eta_x.common.NoPolicy&quot;</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: Policy class (automatically determined from policy_import).</span>
+    <span class="n">policy_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1">#: Flag which is true if the environment should be wrapped for monitoring (default: False).</span>
+    <span class="n">monitor_wrapper</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="c1">#: Flag which is true if the observations should be normalized (default: False).</span>
+    <span class="n">norm_wrapper_obs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="c1">#: Flag which is true if the rewards should be normalized (default: False).</span>
+    <span class="n">norm_wrapper_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="c1">#: Flag to enable tensorboard logging (default: False).</span>
+    <span class="n">tensorboard_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_fields</span> <span class="o">=</span> <span class="n">fields</span><span class="p">(</span><span class="n">ConfigOptSetup</span><span class="p">)</span>
+        <span class="n">_get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">agent_import</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_import</span><span class="p">)</span>
+        <span class="n">_get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">environment_import</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment_import</span><span class="p">)</span>
+        <span class="n">_get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">interaction_env_import</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env_import</span><span class="p">)</span>
+        <span class="n">_get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">vectorizer_import</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorizer_import</span><span class="p">)</span>
+        <span class="n">_get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">policy_import</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_import</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigOptSetup.from_dict"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptSetup.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigOptSetup</span><span class="p">:</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="s2">&quot;agent_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;agent_package&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">or</span> <span class="s2">&quot;agent_class&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;agent_import&#39; or both of &#39;agent_package&#39; and &#39;agent_class&#39; parameters must &quot;</span> <span class="s2">&quot;be specified.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="s2">&quot;agent_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="n">agent_import</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;agent_package&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;agent_class&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">agent_import</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;agent_import&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;environment_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;environment_package&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">or</span> <span class="s2">&quot;environment_class&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;environment_import&#39; or both of &#39;environment_package&#39; and &#39;environment_class&#39; parameters must &quot;</span>
+                <span class="s2">&quot;be specified.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="s2">&quot;environment_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="n">environment_import</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;environment_package&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;environment_class&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">environment_import</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;environment_import&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">({</span><span class="s2">&quot;interaction_env_package&quot;</span><span class="p">,</span> <span class="s2">&quot;interaction_env_class&quot;</span><span class="p">}</span> <span class="o">&amp;</span> <span class="n">dikt</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="ow">or</span> <span class="s2">&quot;interaction_env_import&quot;</span> <span class="ow">in</span> <span class="n">dikt</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="s2">&quot;interaction_env_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="s2">&quot;interaction_env_package&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">or</span> <span class="s2">&quot;interaction_env_class&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span>
+            <span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;If one of &#39;interaction_env_package&#39; and &#39;interaction_env_class&#39; is specified, &quot;</span>
+                    <span class="s2">&quot;the other must also be specified.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="s2">&quot;interaction_env_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+                <span class="n">interaction_env_import</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;interaction_env_package&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;interaction_env_class&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">interaction_env_import</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;interaction_env_import&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">interaction_env_import</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="s2">&quot;vectorizer_package&quot;</span><span class="p">,</span> <span class="s2">&quot;vectorizer_class&quot;</span><span class="p">}</span> <span class="o">&amp;</span> <span class="n">dikt</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="s2">&quot;vectorizer_import&quot;</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;vectorizer_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;vectorizer_package&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">or</span> <span class="s2">&quot;vectorizer_class&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;If one of &#39;vectorizer_package&#39; and &#39;vectorizer_class&#39; is specified, &quot;</span>
+                    <span class="s2">&quot;the other must also be specified.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="s2">&quot;vectorizer_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+                <span class="n">vectorizer_import</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vectorizer_package&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vectorizer_class&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vectorizer_import</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vectorizer_import&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vectorizer_import</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="s2">&quot;policy_package&quot;</span><span class="p">,</span> <span class="s2">&quot;policy_class&quot;</span><span class="p">}</span> <span class="o">&amp;</span> <span class="n">dikt</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="s2">&quot;policy_import&quot;</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;policy_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;policy_package&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span> <span class="ow">or</span> <span class="s2">&quot;policy_class&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;If one of &#39;policy_package&#39; and &#39;policy_class&#39; is specified, &quot;</span> <span class="s2">&quot;the other must also be specified.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="s2">&quot;policy_import&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+                <span class="n">policy_import</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;policy_package&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;policy_class&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">policy_import</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;policy_import&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">policy_import</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">monitor_wrapper</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;monitor_wrapper&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">norm_wrapper_obs</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;norm_wrapper_obs&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">norm_wrapper_reward</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;norm_wrapper_reward&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">tensorboard_log</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;tensorboard_log&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Log configuration values which were not recognized.</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Specified configuration value &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; in the setup section of the configuration was not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;recognized and is ignored.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Not all required values were found in setup section (see log). Could not load config file.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ConfigOptSetup</span><span class="p">(</span>
+            <span class="n">agent_import</span><span class="o">=</span><span class="n">agent_import</span><span class="p">,</span>
+            <span class="n">environment_import</span><span class="o">=</span><span class="n">environment_import</span><span class="p">,</span>
+            <span class="n">interaction_env_import</span><span class="o">=</span><span class="n">interaction_env_import</span><span class="p">,</span>
+            <span class="n">vectorizer_import</span><span class="o">=</span><span class="n">vectorizer_import</span><span class="p">,</span>
+            <span class="n">policy_import</span><span class="o">=</span><span class="n">policy_import</span><span class="p">,</span>
+            <span class="n">monitor_wrapper</span><span class="o">=</span><span class="n">monitor_wrapper</span><span class="p">,</span>
+            <span class="n">norm_wrapper_obs</span><span class="o">=</span><span class="n">norm_wrapper_obs</span><span class="p">,</span>
+            <span class="n">norm_wrapper_reward</span><span class="o">=</span><span class="n">norm_wrapper_reward</span><span class="p">,</span>
+            <span class="n">tensorboard_log</span><span class="o">=</span><span class="n">tensorboard_log</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The key </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not exist - it cannot be set.&quot;</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_env_defaults</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">ConfigOptSettings</span><span class="p">,</span> <span class="n">attrib</span><span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set default values for the environment settings.&quot;&quot;&quot;</span>
+    <span class="n">_new_value</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">new_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">new_value</span>
+
+    <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;sampling_time&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">sampling_time</span><span class="p">)</span>
+    <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;episode_duration&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">episode_duration</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">sim_steps_per_sample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;sim_steps_per_sample&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">sim_steps_per_sample</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_new_value</span>
+
+
+<span class="k">def</span> <span class="nf">_agent_defaults</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">ConfigOptSettings</span><span class="p">,</span> <span class="n">attrib</span><span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set default values for the environment settings.&quot;&quot;&quot;</span>
+    <span class="n">_new_value</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">new_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">new_value</span>
+
+    <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">_new_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_new_value</span>
+
+
+<div class="viewcode-block" id="ConfigOptSettings"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.config.ConfigOptSettings">[docs]</a><span class="nd">@define</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConfigOptSettings</span><span class="p">:</span>
+    <span class="c1">#: Seed for random sampling (default: None).</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="c1">#: Logging verbosity of the framework (default: 2).</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: Number of vectorized environments to instantiate (if not using DummyVecEnv) (default: 1).</span>
+    <span class="n">n_environments</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+
+    <span class="c1">#: Number of episodes to execute when the agent is playing (default: None).</span>
+    <span class="n">n_episodes_play</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="c1">#: Number of episodes to execute when the agent is learning (default: None).</span>
+    <span class="n">n_episodes_learn</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="c1">#: Flag to determine whether the interaction env is used or not (default: False).</span>
+    <span class="n">interact_with_env</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: How often to save the model during training (default: 10 - after every ten episodes).</span>
+    <span class="n">save_model_every_x_episodes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: How many episodes to pass between each render call (default: 10 - after every ten episodes).</span>
+    <span class="n">plot_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+
+    <span class="c1">#: Duration of an episode in seconds (can be a float value).</span>
+    <span class="n">episode_duration</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1">#: Duration between time samples in seconds (can be a float value).</span>
+    <span class="n">sampling_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1">#: Simulation steps for every sample.</span>
+    <span class="n">sim_steps_per_sample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+    <span class="c1">#: Multiplier for scaling the agent actions before passing them to the environment</span>
+    <span class="c1">#: (especially useful with interaction environments) (default: None).</span>
+    <span class="n">scale_actions</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+    <span class="c1">#: Number of digits to round actions to before passing them to the environment</span>
+    <span class="c1">#: (especially useful with interaction environments) (default: None).</span>
+    <span class="n">round_actions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+    <span class="c1">#: Settings dictionary for the environment.</span>
+    <span class="n">environment</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="n">Factory</span><span class="p">(</span><span class="nb">dict</span><span class="p">),</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="n">Factory</span><span class="p">(</span><span class="nb">dict</span><span class="p">)),</span>  <span class="c1"># type: ignore</span>
+        <span class="n">on_setattr</span><span class="o">=</span><span class="n">_env_defaults</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+    <span class="c1">#: Settings dictionary for the interaction environment (default: None).</span>
+    <span class="n">interaction_env</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">on_setattr</span><span class="o">=</span><span class="n">_env_defaults</span><span class="p">)</span>
+    <span class="c1">#: Settings dictionary for the agent.</span>
+    <span class="n">agent</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="n">Factory</span><span class="p">(</span><span class="nb">dict</span><span class="p">),</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="n">Factory</span><span class="p">(</span><span class="nb">dict</span><span class="p">)),</span>  <span class="c1"># type: ignore</span>
+        <span class="c1"># mypy currently does not recognize converters.default_if_none</span>
+        <span class="n">on_setattr</span><span class="o">=</span><span class="n">_agent_defaults</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1">#: Flag which is true if the log output should be written to a file</span>
+    <span class="n">log_to_file</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="nb">bool</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_fields</span> <span class="o">=</span> <span class="n">fields</span><span class="p">(</span><span class="n">ConfigOptSettings</span><span class="p">)</span>
+        <span class="n">_env_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment</span><span class="p">)</span>
+        <span class="n">_agent_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="p">)</span>
+
+        <span class="c1"># Set standards for interaction env settings or copy settings from environment</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_env_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_fields</span><span class="o">.</span><span class="n">interaction_env</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">interact_with_env</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;Interaction with an environment has been requested, but no section &#39;interaction_env_specific&#39; &quot;</span>
+                <span class="s2">&quot;found in settings. Re-using &#39;environment_specific&#39; section.&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">environment</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_episodes_play</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_episodes_learn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least one of &#39;n_episodes_play&#39; or &#39;n_episodes_learn&#39; must be specified in settings.&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigOptSettings.from_dict"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptSettings.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">dikt</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">ConfigOptSettings</span><span class="p">:</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Read general settings dictionary</span>
+        <span class="k">if</span> <span class="s2">&quot;settings&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Settings section not found in configuration. Cannot import config file.&quot;</span><span class="p">)</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;seed&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&#39;seed&#39; not specified in settings, using default value &#39;None&#39;&quot;</span><span class="p">)</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;verbose&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span> <span class="ow">and</span> <span class="s2">&quot;verbosity&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&#39;verbose&#39; or &#39;verbosity&#39; not specified in settings, using default value &#39;2&#39;&quot;</span><span class="p">)</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="n">dict_pop_any</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="s2">&quot;verbosity&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;n_environments&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&#39;n_environments&#39; not specified in settings, using default value &#39;1&#39;&quot;</span><span class="p">)</span>
+        <span class="n">n_environments</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_environments&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;n_episodes_play&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span> <span class="ow">and</span> <span class="s2">&quot;n_episodes_learn&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Neither &#39;n_episodes_play&#39; nor &#39;n_episodes_learn&#39; is specified in settings.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">n_epsiodes_play</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_episodes_play&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">n_episodes_learn</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_episodes_learn&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">interact_with_env</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;interact_with_env&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">save_model_every_x_episodes</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;save_model_every_x_episodes&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">plot_interval</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;plot_interval&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;episode_duration&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;episode_duration&#39; is not specified in settings.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">episode_duration</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;episode_duration&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sampling_time&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;sampling_time&#39; is not specified in settings.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">sampling_time</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;sampling_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">sim_steps_per_sample</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;sim_steps_per_sample&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">scale_actions</span> <span class="o">=</span> <span class="n">dict_pop_any</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;scale_interaction_actions&quot;</span><span class="p">,</span> <span class="s2">&quot;scale_actions&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">round_actions</span> <span class="o">=</span> <span class="n">dict_pop_any</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;round_interaction_actions&quot;</span><span class="p">,</span> <span class="s2">&quot;round_actions&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;environment_specific&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;environment_specific&#39; section not defined in settings.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">environment</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;environment_specific&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;agent_specific&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dikt</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;&#39;agent_specific&#39; section not defined in settings.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">dikt</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;agent_specific&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">interaction_env</span> <span class="o">=</span> <span class="n">dict_pop_any</span><span class="p">(</span>
+            <span class="n">dikt</span><span class="p">,</span> <span class="s2">&quot;interaction_env_specific&quot;</span><span class="p">,</span> <span class="s2">&quot;interaction_environment_specific&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="n">log_to_file</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;log_to_file&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Log configuration values which were not recognized.</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">dikt</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Specified configuration value &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; in the settings section of the configuration &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;was not recognized and is ignored.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not all required values were found in settings (see log). Could not load config file.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">n_environments</span><span class="o">=</span><span class="n">n_environments</span><span class="p">,</span>
+            <span class="n">n_episodes_play</span><span class="o">=</span><span class="n">n_epsiodes_play</span><span class="p">,</span>
+            <span class="n">n_episodes_learn</span><span class="o">=</span><span class="n">n_episodes_learn</span><span class="p">,</span>
+            <span class="n">interact_with_env</span><span class="o">=</span><span class="n">interact_with_env</span><span class="p">,</span>
+            <span class="n">save_model_every_x_episodes</span><span class="o">=</span><span class="n">save_model_every_x_episodes</span><span class="p">,</span>
+            <span class="n">plot_interval</span><span class="o">=</span><span class="n">plot_interval</span><span class="p">,</span>
+            <span class="n">episode_duration</span><span class="o">=</span><span class="n">episode_duration</span><span class="p">,</span>
+            <span class="n">sampling_time</span><span class="o">=</span><span class="n">sampling_time</span><span class="p">,</span>
+            <span class="n">sim_steps_per_sample</span><span class="o">=</span><span class="n">sim_steps_per_sample</span><span class="p">,</span>
+            <span class="n">scale_actions</span><span class="o">=</span><span class="n">scale_actions</span><span class="p">,</span>
+            <span class="n">round_actions</span><span class="o">=</span><span class="n">round_actions</span><span class="p">,</span>
+            <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">,</span>
+            <span class="n">agent</span><span class="o">=</span><span class="n">agent</span><span class="p">,</span>
+            <span class="n">interaction_env</span><span class="o">=</span><span class="n">interaction_env</span><span class="p">,</span>
+            <span class="n">log_to_file</span><span class="o">=</span><span class="n">log_to_file</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The key </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not exist - it cannot be set.&quot;</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigOptRun"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.config.ConfigOptRun">[docs]</a><span class="nd">@define</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ConfigOptRun</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for an optimization run, including the series and run names descriptions and paths</span>
+<span class="sd">    for the run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: Name of the series of optimization runs.</span>
+    <span class="n">series</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="c1">#: Name of an optimization run.</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="c1">#: Description of an optimization run.</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">default_if_none</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+        <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="c1">#: Root path of the framework run.</span>
+    <span class="n">path_root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to results of the optimization run.</span>
+    <span class="n">path_results</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to scenarios used for the optimization run.</span>
+    <span class="n">path_scenarios</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">converters</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">_path_converter</span><span class="p">))</span>
+    <span class="c1">#: Path for the results of the series of optimization runs.</span>
+    <span class="n">path_series_results</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the model of the optimization run.</span>
+    <span class="n">path_run_model</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to information about the optimization run.</span>
+    <span class="n">path_run_info</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the monitoring information about the optimization run.</span>
+    <span class="n">path_run_monitor</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the normalization wrapper information.</span>
+    <span class="n">path_vec_normalize</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the neural network architecture file.</span>
+    <span class="n">path_net_arch</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+    <span class="c1">#: Path to the log output file.</span>
+    <span class="n">path_log_output</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="n">_path_converter</span><span class="p">)</span>
+
+    <span class="c1"># Information about the environments</span>
+    <span class="c1">#: Version of the main environment.</span>
+    <span class="n">env_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="c1">#: Description of the main environment.</span>
+    <span class="n">env_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="c1">#: Version of the secondary environment (interaction_env).</span>
+    <span class="n">interaction_env_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="c1">#: Description of the secondary environment (interaction_env).</span>
+    <span class="n">interaction_env_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="n">validators</span><span class="o">.</span><span class="n">optional</span><span class="p">(</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add default values to the derived paths.&quot;&quot;&quot;</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_series_results&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_results</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_run_model&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_model.zip&quot;</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_run_info&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_info.json&quot;</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_run_monitor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_monitor.csv&quot;</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_vec_normalize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="s2">&quot;vec_normalize.pkl&quot;</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_net_arch&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="s2">&quot;net_arch.txt&quot;</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;path_log_output&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_log_output.log&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigOptRun.create_results_folders"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun.create_results_folders">[docs]</a>    <span class="k">def</span> <span class="nf">create_results_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the results folders for an optimization run (or check if they already exist).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_results</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path_results</span><span class="o">.</span><span class="n">parents</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                    <span class="n">p</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Directory created successfully: </span><span class="se">\n\t</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">path_results</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Directory created successfully: </span><span class="se">\n\t</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_results</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Path for result series doesn&#39;t exist on your OS. Trying to create directories.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Directory created successfully: </span><span class="se">\n\t</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ConfigOptRun.set_env_info"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun.set_env_info">[docs]</a>    <span class="k">def</span> <span class="nf">set_env_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseEnv</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the environment information of the optimization run to represent the given environment.</span>
+<span class="sd">        The information will default to None if this is never called.</span>
+
+<span class="sd">        :param env: The environment whose description should be used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">version</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;env_version&quot;</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;env_description&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ConfigOptRun.set_interaction_env_info"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun.set_interaction_env_info">[docs]</a>    <span class="k">def</span> <span class="nf">set_interaction_env_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseEnv</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the interaction environment information of the optimization run to represent the given environment.</span>
+<span class="sd">        The information will default to None if this is never called.</span>
+
+<span class="sd">        :param env: The environment whose description should be used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">version</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;interaction_env_version&quot;</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;interaction_env_description&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">paths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of all paths for the optimization run. This is for easier access and contains all</span>
+<span class="sd">        paths as mentioned above.&quot;&quot;&quot;</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;path_root&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_root</span><span class="p">,</span>
+            <span class="s2">&quot;path_results&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_results</span><span class="p">,</span>
+            <span class="s2">&quot;path_series_results&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_series_results</span><span class="p">,</span>
+            <span class="s2">&quot;path_run_model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_run_model</span><span class="p">,</span>
+            <span class="s2">&quot;path_run_info&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_run_info</span><span class="p">,</span>
+            <span class="s2">&quot;path_run_monitor&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_run_monitor</span><span class="p">,</span>
+            <span class="s2">&quot;path_vec_normalize&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="p">,</span>
+            <span class="s2">&quot;path_log_output&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_log_output</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_scenarios</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">paths</span><span class="p">[</span><span class="s2">&quot;path_scenarios&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_scenarios</span>
+
+        <span class="k">return</span> <span class="n">paths</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

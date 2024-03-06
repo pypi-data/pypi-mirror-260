@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.servers.modbus &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.servers.modbus</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.servers.modbus</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sized</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pyModbusTCP.server</span> <span class="kn">import</span> <span class="n">ModbusServer</span> <span class="k">as</span> <span class="n">BaseModbusServer</span>  <span class="c1"># noqa: I900</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">ensure_timezone</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">url_parse</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">NodeModbus</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.util</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">bitarray_to_registers</span><span class="p">,</span>
+    <span class="n">decode_modbus_value</span><span class="p">,</span>
+    <span class="n">encode_bits</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">types</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;servers.modbus&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ModbusServer"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.modbus.ModbusServer">[docs]</a><span class="k">class</span> <span class="nc">ModbusServer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides a Modbus server with a number of specified nodes.</span>
+
+<span class="sd">    When building a data structure make sure to consider the following. Numbers (integers and flaots) will be</span>
+<span class="sd">    stored depending on the byte_length setting of the Modbus node. This is 2 by default and means that</span>
+<span class="sd">    each number will take up 16 bits. This affects, how many &quot;channels&quot; are needed for each number. You</span>
+<span class="sd">    have to ensure not to overwrite parts of a number by leaving enough channels after the start of a number empty.</span>
+
+<span class="sd">    :param ip: IP Address to listen on (default: None).</span>
+<span class="sd">    :param port: Port to listen on (default: 502).</span>
+<span class="sd">    :param big_endian: The server will encode values as big endian by default. If you would like to have little</span>
+<span class="sd">         endian encoding instead, set this to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">502</span><span class="p">,</span> <span class="n">big_endian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#: URL of the Modbus Server.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="k">if</span> <span class="n">ip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;modbus.tcp://</span><span class="si">{</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">())</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;modbus.tcp://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server Address is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">url_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_big_endian</span> <span class="o">=</span> <span class="n">big_endian</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="p">:</span> <span class="n">BaseModbusServer</span> <span class="o">=</span> <span class="n">BaseModbusServer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">no_block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ModbusServer.write"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.modbus.ModbusServer.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write some values directly to the Modbus server. This function supports writing int, float and</span>
+<span class="sd">        string objects. If you have another object, convert it to bytes before writing.</span>
+
+<span class="sd">        :param values: Dictionary of data to write {node.name: value}.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="n">srv_info</span> <span class="o">=</span> <span class="n">BaseModbusServer</span><span class="o">.</span><span class="n">ServerInfo</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">byteorder</span> <span class="o">=</span> <span class="s2">&quot;big&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_big_endian</span> <span class="k">else</span> <span class="s2">&quot;little&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">List</span><span class="p">):</span>
+                <span class="n">bits</span> <span class="o">=</span> <span class="n">encode_bits</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">byteorder</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_bit_length</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">bits</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;coils&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">write_coils</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">srv_info</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;holding&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">write_h_regs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">bitarray_to_registers</span><span class="p">(</span><span class="n">bits</span><span class="p">),</span> <span class="n">srv_info</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ModbusServer.read"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.modbus.ModbusServer.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read some manually selected values directly from the Modbusserver.</span>
+
+<span class="sd">        :param nodes: List of nodes to read from.</span>
+<span class="sd">        :return: pandas.DataFrame containing current values of the Modbus-variables.</span>
+<span class="sd">        :raises RuntimeError: When an error occurs during reading.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">srv_info</span> <span class="o">=</span> <span class="n">BaseModbusServer</span><span class="o">.</span><span class="n">ServerInfo</span><span class="p">()</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;holding&quot;</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">read_h_regs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_bit_length</span> <span class="o">//</span> <span class="mi">16</span><span class="p">,</span> <span class="n">srv_info</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;coils&quot;</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">read_coils</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_bit_length</span><span class="p">,</span> <span class="n">srv_info</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;discrete_input&quot;</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">read_d_inputs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_bit_length</span><span class="p">,</span> <span class="n">srv_info</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;input&quot;</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">data_hdl</span><span class="o">.</span><span class="n">read_i_regs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_channel</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_bit_length</span> <span class="o">//</span> <span class="mi">16</span><span class="p">,</span> <span class="n">srv_info</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The specified register type is not supported: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">mb_register</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">ok</span> <span class="ow">and</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;holding&quot;</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">mb_register</span> <span class="o">==</span> <span class="s2">&quot;input&quot;</span><span class="p">):</span>
+                <span class="n">byteorder</span> <span class="o">=</span> <span class="s2">&quot;big&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_big_endian</span> <span class="k">else</span> <span class="s2">&quot;little&quot;</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">decode_modbus_value</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">byteorder</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">val</span><span class="o">.</span><span class="n">ok</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">List</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
+                        <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">results</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">val</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not decode bits from ModbusServer.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">ensure_timezone</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())])</span></div>
+
+<div class="viewcode-block" id="ModbusServer.start"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.modbus.ModbusServer.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Restart the server after it was stopped.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">is_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ModbusServer.stop"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.modbus.ModbusServer.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This should always be called, when the server is not needed anymore. It stops the server.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># Occurs only if server did not exist and can be ignored.</span>
+            <span class="k">pass</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">is_run</span>
+
+    <span class="k">def</span> <span class="nf">_validate_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeModbus</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make sure that nodes are a Set of nodes and that all nodes correspond to the protocol and url</span>
+<span class="sd">        of the connection.</span>
+
+<span class="sd">        :param nodes: Sequence of Node objects to validate.</span>
+<span class="sd">        :return: Set of valid Node objects for this connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Sized</span><span class="p">):</span>
+                <span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">nodes</span><span class="p">}</span>
+
+            <span class="c1"># If not using preselected nodes from self.selected_nodes, check if nodes correspond to the connection</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">node</span>
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeModbus</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Make sure that some nodes remain after the checks and raise an error if there are none.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_nodes</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">_nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Some nodes to read from/write to must be specified. If nodes were specified, they do not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;match the connection </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_nodes</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModbusServer</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">TracebackType</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

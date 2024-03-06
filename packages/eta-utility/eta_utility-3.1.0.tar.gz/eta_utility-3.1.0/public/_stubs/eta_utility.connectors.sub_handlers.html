@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.sub_handlers module &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.connectors.util module" href="eta_utility.connectors.util.html" />
+    <link rel="prev" title="eta_utility.connectors.opc_ua module" href="eta_utility.connectors.opc_ua.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.servers.html">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.sub_handlers module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.connectors.sub_handlers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.connectors.sub_handlers">
+<span id="eta-utility-connectors-sub-handlers-module"></span><h1>eta_utility.connectors.sub_handlers module<a class="headerlink" href="#module-eta_utility.connectors.sub_handlers" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.MultiSubHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.sub_handlers.</span></span><span class="sig-name descname"><span class="pre">MultiSubHandler</span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#MultiSubHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.MultiSubHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler" title="eta_utility.connectors.base_classes.SubscriptionHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubscriptionHandler</span></code></a></p>
+<p>The MultiSubHandler can be used to distribute subcribed values to multiple different subscription handlers.
+The handlers can be registered using the register method.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.MultiSubHandler.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler" title="eta_utility.connectors.base_classes.SubscriptionHandler"><span class="pre">SubscriptionHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#MultiSubHandler.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.MultiSubHandler.register" title="Permalink to this definition"></a></dt>
+<dd><p>Register a subscription handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sub_handler</strong> (<a class="reference internal" href="eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler" title="eta_utility.connectors.base_classes.SubscriptionHandler"><em>SubscriptionHandler</em></a>) – SubscriptionHandler object to use for handling subscriptions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.MultiSubHandler.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AnyNode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#MultiSubHandler.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.MultiSubHandler.push" title="Permalink to this definition"></a></dt>
+<dd><p>Receive data from a subcription. This should contain the node that was requested, a value and a timestemp
+when data was received. Push data to all registered sub-handlers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node object the data belongs to.</p></li>
+<li><p><strong>value</strong> – Value of the data.</p></li>
+<li><p><strong>timestamp</strong> – Timestamp of receiving the data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.MultiSubHandler.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#MultiSubHandler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.MultiSubHandler.close" title="Permalink to this definition"></a></dt>
+<dd><p>Finalize and close all subscription handlers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.CsvSubHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.sub_handlers.</span></span><span class="sig-name descname"><span class="pre">CsvSubHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file:</span> <span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_interval:</span> <span class="pre">TimeStep</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_limit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialect:</span> <span class="pre">type[csv.Dialect]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'csv.excel'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#CsvSubHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.CsvSubHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler" title="eta_utility.connectors.base_classes.SubscriptionHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubscriptionHandler</span></code></a></p>
+<p>Handle data for a subscription and save it as a CSV file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file</strong> – CSV file to write data to.</p></li>
+<li><p><strong>write_interval</strong> – Interval between rows in the CSV file (value that time is rounded to)</p></li>
+<li><p><strong>size_limit</strong> – Size limit for the csv file. A new file with a unique name will be created when the size
+is exceeded.</p></li>
+<li><p><strong>dialect</strong> – Dialect of the csv file. This takes objects, which correspond to the csv.Dialect interface from the
+python csv module.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.CsvSubHandler.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AnyNode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#CsvSubHandler.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.CsvSubHandler.push" title="Permalink to this definition"></a></dt>
+<dd><p>Receive data from a subcription. THis should contain the node that was requested, a value and a timestemp
+when data was received. If the timestamp is not provided, current time will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node object the data belongs to.</p></li>
+<li><p><strong>value</strong> – Value of the data.</p></li>
+<li><p><strong>timestamp</strong> – Timestamp of receiving the data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.CsvSubHandler.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#CsvSubHandler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.CsvSubHandler.close" title="Permalink to this definition"></a></dt>
+<dd><p>Finalize and close the subscription handler.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.connectors.sub_handlers.</span></span><span class="sig-name descname"><span class="pre">DFSubHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">write_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TimeStep</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_fillna</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#DFSubHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler" title="eta_utility.connectors.base_classes.SubscriptionHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubscriptionHandler</span></code></a></p>
+<p>Subscription handler for returning pandas.DataFrames when requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>write_interval</strong> – Interval between index values in the data frame (value to which time is rounded).</p></li>
+<li><p><strong>size_limit</strong> – Number of rows to keep in memory.</p></li>
+<li><p><strong>auto_fillna</strong> – If True, missing values in self._data are filled with the pandas-method
+df.fillna(method=’ffill’) each time self.data is called.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AnyNode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pd.Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pd.DatetimeIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TimeStep</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#DFSubHandler.push"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler.push" title="Permalink to this definition"></a></dt>
+<dd><p>Append values to the dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node object the data belongs to.</p></li>
+<li><p><strong>value</strong> – Value of the data or Series of values. There must be corresponding timestamps for each value.</p></li>
+<li><p><strong>timestamp</strong> – Timestamp of receiving the data or DatetimeIndex if pushing multiple values. Alternatively
+an integer/timedelta can be provided to determine the interval between data points. Use
+negative numbers to describe past data. Integers are interpreted as seconds. If value is a
+pd.Series and has a pd.DatetimeIndex, timestamp is ignored.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler.get_latest">
+<span class="sig-name descname"><span class="pre">get_latest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pd.DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#DFSubHandler.get_latest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler.get_latest" title="Permalink to this definition"></a></dt>
+<dd><p>Return a copy of the dataframe, this ensures they can be worked on freely. Returns None if data is empty.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler.data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.1)"><span class="pre">pandas.DataFrame</span></a></em><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler.data" title="Permalink to this definition"></a></dt>
+<dd><p>This contains the interval dataframe and will return a copy of that.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#DFSubHandler.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the internal data and restart collection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.connectors.sub_handlers.DFSubHandler.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/connectors/sub_handlers.html#DFSubHandler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.connectors.sub_handlers.DFSubHandler.close" title="Permalink to this definition"></a></dt>
+<dd><p>This is just here to satisfy the interface, not needed in this case.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.connectors.opc_ua.html" class="btn btn-neutral float-left" title="eta_utility.connectors.opc_ua module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.connectors.util.html" class="btn btn-neutral float-right" title="eta_utility.connectors.util module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

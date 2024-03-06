@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.simulators.fmu &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.simulators.fmu</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.simulators.fmu</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; The FMUSimulator class enables easy simulation of FMU files.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Mapping</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">fmpy</span> <span class="kn">import</span> <span class="n">extract</span><span class="p">,</span> <span class="n">read_model_description</span>
+<span class="kn">from</span> <span class="nn">fmpy.fmi2</span> <span class="kn">import</span> <span class="n">FMU2Model</span><span class="p">,</span> <span class="n">FMU2Slave</span>
+<span class="kn">from</span> <span class="nn">fmpy.simulation</span> <span class="kn">import</span> <span class="n">apply_start_values</span>
+<span class="kn">from</span> <span class="nn">fmpy.sundials</span> <span class="kn">import</span> <span class="n">CVodeSolver</span>
+<span class="kn">from</span> <span class="nn">fmpy.util</span> <span class="kn">import</span> <span class="n">compile_platform_binary</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Sequence</span>
+
+    <span class="kn">from</span> <span class="nn">fmpy.model_description</span> <span class="kn">import</span> <span class="n">ModelDescription</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">Number</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;simulators.fmu&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="FMUSimulator"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator">[docs]</a><span class="k">class</span> <span class="nc">FMUSimulator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;FMU simulator object.</span>
+
+<span class="sd">    :param _id: FMU instance ID.</span>
+<span class="sd">    :param fmu_path: Path to the FMU file.</span>
+<span class="sd">    :param start_time: Simulation start time in seconds.</span>
+<span class="sd">    :param float stop_time: Simulation stop time in seconds.</span>
+<span class="sd">    :param step_size: Simulation step size in seconds.</span>
+<span class="sd">    :param names_inputs: List of input names that correspond to names used in the FMU file (e.g. [&#39;u&#39;, &#39;p&#39;]).</span>
+<span class="sd">                         If the step function is going to be used with lists as input values, this list will be used</span>
+<span class="sd">                         to translate between the list position and the variable name in the FMU.</span>
+<span class="sd">    :param names_outputs: List of output names that correspond to names used in the FMU file</span>
+<span class="sd">                          (e.g. [&#39;y&#39;, &#39;th&#39;, &#39;thdot&#39;]). If the step function should return only specific values instead</span>
+<span class="sd">                          of all results as a dictionary, this parameter can be specified to determine, which parameters</span>
+<span class="sd">                          should be returned.</span>
+<span class="sd">    :param init_values: Starting values for parameters that should be pushed to the FMU with names corresponding to</span>
+<span class="sd">                        variables in the FMU.</span>
+<span class="sd">    :param str return_type: &quot;dict&quot; or &quot;list&quot;. Alter the standard behavior, which is to return lists from the step and</span>
+<span class="sd">                            get_values functions only if both, &quot;names_inputs&quot; and &quot;names_outputs&quot; are specified.</span>
+<span class="sd">                            This parameter will force the step and get_values functions to always return either</span>
+<span class="sd">                            dictionaries or lists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">fmu_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">start_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">stop_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">names_inputs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">names_outputs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">init_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">return_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#: Path to the FMU model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu_path</span> <span class="o">=</span> <span class="n">fmu_path</span>
+
+        <span class="c1">#: Start time for the simulation in time increments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">start_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">start_time</span>
+        <span class="c1">#: Stopping time for the simulation in time increments (only relevant if run in simulation loop).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_time</span> <span class="o">=</span> <span class="n">stop_time</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stop_time</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">stop_time</span>
+        <span class="c1">#: Step size (time) for the simulation in time increments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="n">step_size</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_size</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">step_size</span>
+
+        <span class="c1">#: Model description from the FMU (contains variable names, types, references and more).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="p">:</span> <span class="n">ModelDescription</span> <span class="o">=</span> <span class="n">read_model_description</span><span class="p">(</span><span class="n">fmu_path</span><span class="p">)</span>
+
+        <span class="c1">#: Variable map from model description. The map specifies the value reference and datatype of a named</span>
+        <span class="c1">#: variable in the FMU. The structure is {&#39;name&#39;: {&#39;ref&#39;: &lt;value reference&gt;, &#39;type&#39;: &lt;variable data type&gt;}}.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__type_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Real&quot;</span><span class="p">:</span> <span class="s2">&quot;real&quot;</span><span class="p">,</span> <span class="s2">&quot;Boolean&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;Integer&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="s2">&quot;Enumeration&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="o">.</span><span class="n">modelVariables</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ref&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">valueReference</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__type_map</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">type</span><span class="p">]}</span>
+
+        <span class="c1">#: Map of input variables which can be used to evaluate an ordered list of input variables. This is typically</span>
+        <span class="c1">#: not required when working with mappings/dictionaries as step inputs.</span>
+        <span class="c1">#:</span>
+        <span class="c1">#: The map contains the following lists:</span>
+        <span class="c1">#:</span>
+        <span class="c1">#:     * real: Mask for real variables. This can be used to identify real variables from the complete set of</span>
+        <span class="c1">#:       input variables (_inputs[&quot;refs&quot;], see below) using `itertools.compress`.</span>
+        <span class="c1">#:     * int: Mask for integer variables. This can be used to identify integer variables from the complete set</span>
+        <span class="c1">#:       of input variables (_inputs[&quot;refs&quot;], see below) using `itertools.compress`.</span>
+        <span class="c1">#:     * bool: Mask for boolean variables. This can be used to identify boolean variables from the complete set</span>
+        <span class="c1">#:       of input variables (_inputs[&quot;refs&quot;], see below) using `itertools.compress`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+        <span class="c1">#: Map of input variable references and their names. The map contains the following lists:</span>
+        <span class="c1">#:</span>
+        <span class="c1">#:     * names: List of the named input variables that are accessible in the model.</span>
+        <span class="c1">#:     * refs: List of all value references to input variables of all types. This is the complete list, which</span>
+        <span class="c1">#:       can be filtered using itertools.compress (see above).</span>
+        <span class="c1">#:     * real: List of all value references to input variables of type real.</span>
+        <span class="c1">#:     * int: List of all value references to input variables of type integer.</span>
+        <span class="c1">#:     * bool: List of all value references to input variables of type boolean.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;refs&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">iterator</span> <span class="o">=</span> <span class="n">names_inputs</span> <span class="k">if</span> <span class="n">names_inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterator</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">:</span>
+                <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;ref&quot;</span><span class="p">])</span>
+                <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;real&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;int&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Input variable &#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&#39; couldn&#39;t be found in FMU model description. Entry will be ignored.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;refs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">refs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]))</span>
+
+        <span class="c1">#: Map of output variables which can be used to evaluate an ordered list of output variables. This is typically</span>
+        <span class="c1">#: not required when working with mappings/dictionaries as step outputs.</span>
+        <span class="c1">#:</span>
+        <span class="c1">#: The map contains the following lists:</span>
+        <span class="c1">#:</span>
+        <span class="c1">#:     * real: Mask for real variables. This can be used to identify real variables from the complete set of</span>
+        <span class="c1">#:       output variables (_outputs[&#39;refs&#39;], see below) using `itertools.compress`.</span>
+        <span class="c1">#:     * int: Mask for integer variables. This can be used to identify integer variables from the complete set</span>
+        <span class="c1">#:       of output variables (_outputs[&#39;refs&#39;], see below) using `itertools.compress`.</span>
+        <span class="c1">#:     * bool: Mask for boolean variables. This can be used to identify boolean variables from the complete set</span>
+        <span class="c1">#:       of output variables (_outputs[&#39;refs&#39;], see below) using `itertools.compress`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+        <span class="c1">#: Map of output variable references and their names. The map contains the following lists:</span>
+        <span class="c1">#:</span>
+        <span class="c1">#:     * names: List of the named output variables that are accessible in the model.</span>
+        <span class="c1">#:     * refs: List of all value references to output variables of all types. This is the complete list, which</span>
+        <span class="c1">#:       can be filtered using itertools.compress (see above).</span>
+        <span class="c1">#:     * real: List of all value references to output variables of type real.</span>
+        <span class="c1">#:     * int: List of all value references to output variables of type integer.</span>
+        <span class="c1">#:     * bool: List of all value references to output variables of type boolean.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;refs&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">iterator</span> <span class="o">=</span> <span class="n">names_outputs</span> <span class="k">if</span> <span class="n">names_outputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">iterator</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">:</span>
+                <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;ref&quot;</span><span class="p">])</span>
+                <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;real&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;int&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Output variable &#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&#39; couldn&#39;t be found in FMU model description. Entry will be ignored.&quot;</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;refs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">refs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">refs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_map</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">]))</span>
+
+        <span class="c1">#: Directory where the FMU will be extracted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unzipdir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">extract</span><span class="p">(</span><span class="n">fmu_path</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1">#: Instance of the FMU Slave object.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="p">:</span> <span class="n">FMU2Slave</span> <span class="o">=</span> <span class="n">FMU2Slave</span><span class="p">(</span>
+                <span class="n">guid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="o">.</span><span class="n">guid</span><span class="p">,</span>
+                <span class="n">unzipDirectory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unzipdir</span><span class="p">,</span>
+                <span class="n">modelIdentifier</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="o">.</span><span class="n">coSimulation</span><span class="o">.</span><span class="n">modelIdentifier</span><span class="p">,</span>
+                <span class="n">instanceName</span><span class="o">=</span><span class="s2">&quot;FMUsimulator_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">_id</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">compile_platform_binary</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fmu_path</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span> <span class="o">=</span> <span class="n">FMU2Slave</span><span class="p">(</span>
+                <span class="n">guid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="o">.</span><span class="n">guid</span><span class="p">,</span>
+                <span class="n">unzipDirectory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unzipdir</span><span class="p">,</span>
+                <span class="n">modelIdentifier</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="o">.</span><span class="n">coSimulation</span><span class="o">.</span><span class="n">modelIdentifier</span><span class="p">,</span>
+                <span class="n">instanceName</span><span class="o">=</span><span class="s2">&quot;FMUsimulator_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">_id</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="c1"># initialize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">instantiate</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loggingOn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">setupExperiment</span><span class="p">(</span><span class="n">startTime</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">enterInitializationMode</span><span class="p">()</span>
+
+        <span class="n">init_values</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">init_values</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">init_values</span>
+        <span class="n">apply_start_values</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="p">,</span> <span class="n">start_values</span><span class="o">=</span><span class="n">init_values</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">exitInitializationMode</span><span class="p">()</span>
+        <span class="c1">#: Current simulation time.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+
+        <span class="c1"># Initialize some other parameters used to switch functionality of class methods.</span>
+        <span class="c1">#: Return dictionaries from the step and get_values functions instead of lists.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">return_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">names_inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">names_outputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">return_type</span> <span class="o">==</span> <span class="s2">&quot;list&quot;</span> <span class="k">else</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">input_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ordered list of all available input variable names in the FMU.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ordered list of all available output variable names in the FMU.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<div class="viewcode-block" id="FMUSimulator.read_values"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.read_values">[docs]</a>    <span class="k">def</span> <span class="nf">read_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return current values of the simulation without advancing a simulation step or the simulation time.</span>
+
+<span class="sd">        :param names: Sequence of values to read from the FMU. If this is None (default), all available values will be</span>
+<span class="sd">                      read.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Find value references and names for the variables that should be read from the FMU</span>
+        <span class="k">if</span> <span class="n">names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">refs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;refs&quot;</span><span class="p">]</span>
+            <span class="n">vars_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="s2">&quot;names&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">vars_</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;ref&quot;</span><span class="p">])</span>
+                    <span class="n">vars_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Specified an input value for a variable which is not available in the FMU: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get values from the FMU and convert to specified output format (dict or list)</span>
+        <span class="n">output_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">getReal</span><span class="p">(</span><span class="n">refs</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">vars_</span><span class="p">,</span> <span class="n">output_values</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_dict</span> <span class="k">else</span> <span class="n">output_values</span>
+
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="FMUSimulator.set_values"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.set_values">[docs]</a>    <span class="k">def</span> <span class="nf">set_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Number</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Number</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set values of simulation variables without advancing a simulation step or the simulation time.</span>
+
+<span class="sd">        :param values: Values that should be pushed to the FMU. Names of the input_values must correspond</span>
+<span class="sd">                       to variables in the FMU. If passing as a Sequence, make sure the order corresponds to</span>
+<span class="sd">                       the order of the input_vars property.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Number</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="n">refs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">refs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;ref&quot;</span><span class="p">])</span>
+                    <span class="n">vals</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_vars</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Specified an input value for a variable which is not available in the FMU: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;refs&quot;</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Length of value list (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">) must be equal to length of input_vars &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;property (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s1">&#39;refs&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="p">)</span>
+            <span class="n">refs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+
+            <span class="n">vals</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;real&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">])),</span>
+                <span class="s2">&quot;int&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">])),</span>
+                <span class="s2">&quot;bool&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_map</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">])),</span>
+            <span class="p">}</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">setReal</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;real&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">setInteger</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;int&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">setBoolean</span><span class="p">(</span><span class="n">refs</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;bool&quot;</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="FMUSimulator.step"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Number</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Number</span> <span class="o">|</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_names</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">advance_time</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">nr_substeps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate next time step in the FMU with defined input values and output values.</span>
+
+<span class="sd">        :param input_values: Current values that should be pushed to the FMU. Names of the input_values must correspond</span>
+<span class="sd">                             to variables in the FMU. If passing as a Sequence, make sure the order corresponds to</span>
+<span class="sd">                             the order of the input_vars property.</span>
+<span class="sd">        :param advance_time: Decide if the FMUsimulator should add one timestep to the simulation time or not.</span>
+<span class="sd">                                  This can be deactivated, if you just want to look at the result of a simulation step</span>
+<span class="sd">                                  beforehand, without actually advancing simulation time.</span>
+<span class="sd">        :param nr_substeps: if simulation steps are divided into substeps, this value will let the simulator know</span>
+<span class="sd">                                that no time violation warning is necessary.</span>
+<span class="sd">        :return: Resulting input and output values from the FMU with the keys named corresponding to the variables</span>
+<span class="sd">                 in the FMU.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">input_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">input_values</span><span class="p">)</span>
+
+        <span class="c1"># put out warning for time limit violation, if self.time + self.step_size &gt; self.stop_time + full step size</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_time</span> <span class="o">+</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nr_substeps</span><span class="p">)</span> <span class="k">if</span> <span class="n">nr_substeps</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Simulation time </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="si">}</span><span class="s2"> s exceeds specified stop time of &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop_time</span><span class="si">}</span><span class="s2"> s. Proceed with care, simulation may become inaccurate.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># push input values to the FMU and do one timestep, doStep performs a step of certain size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">doStep</span><span class="p">(</span><span class="n">currentCommunicationPoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">communicationStepSize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">)</span>
+
+        <span class="c1"># advance time</span>
+        <span class="k">if</span> <span class="n">advance_time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span>  <span class="c1"># advance the time</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_values</span><span class="p">(</span><span class="n">output_names</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="FMUSimulator.simulate"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.simulate">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">fmu_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">start_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">stop_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">init_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Instantiate a simulator with the specified FMU, perform simulation and return results.</span>
+
+<span class="sd">        :param fmu_path: Path to the FMU file.</span>
+<span class="sd">        :param start_time: Simulation start time in seconds.</span>
+<span class="sd">        :param float stop_time: Simulation stop time in seconds.</span>
+<span class="sd">        :param step_size: simulation step size in seconds.</span>
+<span class="sd">        :param init_values: Starting values for parameters that should be pushed to the FMU with names corresponding to</span>
+<span class="sd">                            variables in the FMU.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">simulator</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fmu_path</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">stop_time</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">init_values</span><span class="o">=</span><span class="n">init_values</span><span class="p">)</span>
+
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="n">name</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">simulator</span><span class="o">.</span><span class="n">read_values</span><span class="p">()])</span>
+        <span class="c1"># mypy does not recognize the return type of floor division...</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">((</span><span class="n">simulator</span><span class="o">.</span><span class="n">stop_time</span> <span class="o">-</span> <span class="n">simulator</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="o">//</span> <span class="n">simulator</span><span class="o">.</span><span class="n">step_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,),</span>  <span class="c1"># type: ignore</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;There must be some output variables specified for the simulator.&quot;</span>
+
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">simulator</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">stop_time</span><span class="p">:</span>
+            <span class="n">step_result</span> <span class="o">=</span> <span class="n">simulator</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="s2">&quot;The simulator needs a dictionary return.&quot;</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">step</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_result</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+            <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="FMUSimulator.reset"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset FMU to specified initial condition.</span>
+
+<span class="sd">        :param init_values: Values for initialization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">setupExperiment</span><span class="p">(</span><span class="n">startTime</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">enterInitializationMode</span><span class="p">()</span>
+
+        <span class="n">apply_start_values</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_description</span><span class="p">,</span> <span class="n">start_values</span><span class="o">=</span><span class="n">init_values</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">exitInitializationMode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="FMUSimulator.close"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMUSimulator.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the FMU and tidy up the unzipped files.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmu</span><span class="o">.</span><span class="n">freeInstance</span><span class="p">()</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unzipdir</span><span class="p">)</span>  <span class="c1"># clean up unzipped files</span></div></div>
+
+
+<div class="viewcode-block" id="FMU2MESlave"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMU2MESlave">[docs]</a><span class="k">class</span> <span class="nc">FMU2MESlave</span><span class="p">(</span><span class="n">FMU2Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper class for simulation of FMU2 FMUs. This is as wrapper for FMU2Model.</span>
+<span class="sd">    It can be used to wrap model exchange FMUs such that they can be simulated similar to a co-simulation FMU. This</span>
+<span class="sd">    is especially helpful for testing model exchange FMUs.</span>
+
+<span class="sd">    It exposes an interface that emulates part of the original FMU2Slave class from fmpy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Define some constants that might be needed according to the FMI Standard</span>
+    <span class="n">fmi2True</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2False</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># noqa: N815</span>
+
+    <span class="n">fmi2OK</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2Warning</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2Discard</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2Error</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2Fatal</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># noqa: N815</span>
+    <span class="n">fmi2Pending</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># noqa: N815</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialize the FMU2Slave object. See also the fmyp documentation :py:class:`fmpy.fmi2.FMU2Model`.</span>
+
+<span class="sd">        :param Any \**kwargs: Accepts any parameters that fmpy.FMU2Model accepts.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_description</span><span class="p">:</span> <span class="n">ModelDescription</span> <span class="o">=</span> <span class="n">read_model_description</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;unzipDirectory&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="p">:</span> <span class="n">CVodeSolver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<div class="viewcode-block" id="FMU2MESlave.setupExperiment"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMU2MESlave.setupExperiment">[docs]</a>    <span class="k">def</span> <span class="nf">setupExperiment</span><span class="p">(</span>  <span class="c1"># noqa: N802</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa:N803</span>
+        <span class="n">startTime</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># noqa:N803</span>
+        <span class="n">stopTime</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa:N803</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Experiment setup and storage of required values.</span>
+
+<span class="sd">        .. see also::</span>
+<span class="sd">            fmpy.fmi2.FMU2Model.setupExperiment</span>
+
+<span class="sd">        :param tolerance: Solver tolerance, default value is 1e-5.</span>
+<span class="sd">        :param startTime: Starting time for the experiment.</span>
+<span class="sd">        :param stopTime: Ending time for the experiment.</span>
+<span class="sd">        :param kwargs: Other keyword arguments that might be required for FMU2Model.setupExperiment in the future.</span>
+<span class="sd">        :return: FMI2 return value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tolerance</span> <span class="o">=</span> <span class="mf">1e-5</span> <span class="k">if</span> <span class="n">tolerance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tolerance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_time</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="n">stopTime</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">stopTime</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="n">startTime</span>
+
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tolerance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tolerance</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stopTime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_time</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;startTime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setupExperiment</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FMU2MESlave.exitInitializationMode"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMU2MESlave.exitInitializationMode">[docs]</a>    <span class="k">def</span> <span class="nf">exitInitializationMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># noqa: N802</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exit the initialization mode and set up the cvode solver.</span>
+
+<span class="sd">        See also: :py:class:`fmpy.fmi2.FMU2Model.exitInitializationMode`</span>
+
+<span class="sd">        :param kwargs: Keyword arguments accepted by FMU2Model.exitInitializationMode.</span>
+<span class="sd">        :return: FMI2 return value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">exitInitializationMode</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Collect discrete states from FMU</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eventInfo</span><span class="o">.</span><span class="n">newDiscreteStatesNeeded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmi2true</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eventInfo</span><span class="o">.</span><span class="n">terminateSimulation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmi2false</span>
+
+        <span class="k">while</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eventInfo</span><span class="o">.</span><span class="n">newDiscreteStatesNeeded</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmi2true</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">eventInfo</span><span class="o">.</span><span class="n">terminateSimulation</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmi2false</span>
+        <span class="p">):</span>
+            <span class="c1"># update discrete states</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">newDiscreteStates</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enterContinuousTimeMode</span><span class="p">()</span>
+
+        <span class="c1"># Initialize solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="n">CVodeSolver</span><span class="p">(</span>
+            <span class="n">set_time</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setTime</span><span class="p">,</span>
+            <span class="n">startTime</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">,</span>
+            <span class="n">maxStep</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stop_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="mf">50.0</span><span class="p">,</span>
+            <span class="n">relativeTolerance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tolerance</span><span class="p">,</span>
+            <span class="n">nx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_description</span><span class="o">.</span><span class="n">numberOfContinuousStates</span><span class="p">,</span>
+            <span class="n">nz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_description</span><span class="o">.</span><span class="n">numberOfEventIndicators</span><span class="p">,</span>
+            <span class="n">get_x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getContinuousStates</span><span class="p">,</span>
+            <span class="n">set_x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">setContinuousStates</span><span class="p">,</span>
+            <span class="n">get_dx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getDerivatives</span><span class="p">,</span>
+            <span class="n">get_z</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">getEventIndicators</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+<div class="viewcode-block" id="FMU2MESlave.doStep"><a class="viewcode-back" href="../../../simulators/fmu.html#eta_utility.simulators.fmu.FMU2MESlave.doStep">[docs]</a>    <span class="k">def</span> <span class="nf">doStep</span><span class="p">(</span>  <span class="c1"># noqa: N802</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">currentCommunicationPoint</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>  <span class="c1"># noqa: N803</span>
+        <span class="n">communicationStepSize</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>  <span class="c1"># noqa: N803</span>
+        <span class="n">noSetFMUStatePriorToCurrentPoint</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa: N803</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a simulation step. Advance simulation from *currentCommunicationPoint* by *communicationStepSize*.</span>
+
+<span class="sd">        Also refer to the FMI2 Standard documentation.</span>
+
+<span class="sd">        :param currentCommunicationPoint: Current time stamp (starting point for simulation step).</span>
+<span class="sd">        :param communicationStepSize: Time step size.</span>
+<span class="sd">        :param noSetFMUStatePriorToCurrentPoint: Determine whether a reset before *currentCommunicationPoint* is</span>
+<span class="sd">            possible. Must be either fmi2True or fmi2False.</span>
+<span class="sd">        :return: FMU2 return value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">currentCommunicationPoint</span>
+        <span class="n">step_size</span> <span class="o">=</span> <span class="n">communicationStepSize</span>
+
+        <span class="c1"># Perform a solver step and reset the FMU Model time.</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span> <span class="o">+</span> <span class="n">step_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setTime</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+        <span class="c1"># Check for events that might have occurred during the step</span>
+        <span class="n">step_event</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">completedIntegratorStep</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmi2ok</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

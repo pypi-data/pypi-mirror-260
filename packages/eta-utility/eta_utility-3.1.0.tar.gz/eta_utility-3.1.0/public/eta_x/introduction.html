@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Control Algorithms" href="control_algorithms.html" />
+    <link rel="prev" title="Usage examples" href="../examples/examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-series-and-runs">What are series and runs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-an-algorithm-or-agent">What is an algorithm or agent?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-an-environment">What is an environment?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-get-started">How to get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#eta_utility.eta_x.ETAx"><code class="docutils literal notranslate"><span class="pre">ETAx</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eta_utility.eta_x.ETAx.learn"><code class="docutils literal notranslate"><span class="pre">ETAx.learn()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eta_utility.eta_x.ETAx.play"><code class="docutils literal notranslate"><span class="pre">ETAx.play()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#experiment-configuration">Experiment configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#eta_utility.eta_x.ConfigOpt.from_json"><code class="docutils literal notranslate"><span class="pre">ConfigOpt.from_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-example">Configuration example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-section-setup">Config section ‘setup’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-section-paths">Config section ‘paths’</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eta_utility.eta_x.ConfigOpt.relpath_results"><code class="docutils literal notranslate"><span class="pre">ConfigOpt.relpath_results</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eta_utility.eta_x.ConfigOpt.relpath_scenarios"><code class="docutils literal notranslate"><span class="pre">ConfigOpt.relpath_scenarios</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config-section-settings">Config section ‘settings’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-for-optimization-runs">Configuration for optimization runs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/eta_x/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="intro-etax"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<p><em>eta_x</em> is the rolling horizon optimization module which combines the functionality of the
+other modules. It is based on the Farama <em>gymnasium</em> framework and utilizes algorithms and functions
+from the <a class="reference external" href="https://stable-baselines3.readthedocs.io/">stable_baselines3</a> package. The <em>eta_x</em> module
+also contains some extensions for <em>stable_baselines3</em>, these include additional policies, extractors,
+schedules and agents.</p>
+<p>The module contains functions meant to simplify the general process of creating rolling horizon
+optimization models. It contains the <em>ETAx</em> class which in turn combines all of this information
+such that you can start simple optimizations in just two lines. For example, to start the pendulum
+example (which is taken from the <em>gymnasium</em> framework):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_logger</span><span class="p">()</span>
+
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ETAx</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="s2">&quot;pendulum_learning&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">,</span> <span class="n">relpath_config</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">experiment</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="s2">&quot;learning_series&quot;</span><span class="p">,</span> <span class="s2">&quot;run1&quot;</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">experiment</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="s2">&quot;learning_series&quot;</span><span class="p">,</span> <span class="s2">&quot;run1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting optimization will have full configuration support, logging, support for multiple
+series of optimization runs and many other things.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is not necessary to use the <em>ETAx</em> class to utilize the other tools provided by this module. For example,
+you can utilize the functionality provided by <a class="reference internal" href="#eta-experiment-config"><span class="std std-ref">Experiment configuration</span></a> and <a class="reference internal" href="common_functions.html#eta-x-common"><span class="std std-ref">Common Functions</span></a> to build
+completely custom optimization scripts while still benefitting from centralized configuration, management of file
+paths, additional logging features and so on.</p>
+</div>
+<p>The algorithms in <em>eta_x</em> are an extension to the algorithms provided by <em>stable_baselines3</em>.
+These algorithms specifically include some algorithms which are not from the field of reinforcement
+learning but can be employed in generalized rolling horizon optimization settings.</p>
+<p>The functions available in eta_utility.eta_x.envs make it easy to create new, custom environments
+(see <a class="reference external" href="https://stable-baselines3.readthedocs.io/en/master/guide/custom_env.html">stable_baselines3 custom environments</a>).
+For example, they provide functionality for integrating FMU simulation models,
+communicating with real machinery in factories, or even integrating environments written in Julia.</p>
+<p>The <em>ETAx</em> class is built on top of this functionality and extends the general Markov Decision Process by the option to
+introduce interactions between multiple environments. This enables the creation of digital twins, which could for
+example use a mathematical or a simulation model for some aspects and interact with the actual devices for other
+aspects as shown in the figure. Note, that this is only an option when using <em>ETAx</em>. The class also supports simple
+optimization of a single environment as shown in the code example above.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/Interaction_between_env.png"><img alt="Interaction between real- and simulation- environment" src="../_images/Interaction_between_env.png" style="width: 583.9499999999999px; height: 350.55px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of an interaction between a real and a simulation environment.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The figure illustrates the entire process of environment interaction which consists of a step in the live/real
+environment and an update of the simulation environment before the agent receives the output of the simulation
+environment as its observations.</p>
+<p>Take a look at the examples folder in the <em>eta_utility</em> repository to see some of the possibilities.</p>
+<section id="what-are-series-and-runs">
+<h2>What are series and runs?<a class="headerlink" href="#what-are-series-and-runs" title="Permalink to this heading"></a></h2>
+<p><em>eta_x</em> builds on the concept of experiments. An experiment can be configured to perform
+optimizations using specific environments and agents. An example of this concept is shown in the figure</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/Concept_state_config.png"><img alt="Example of the eta_x experiment concept" src="../_images/Concept_state_config.png" style="width: 548.25px; height: 326.55px;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of the eta_x experiment concept.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>As shown in the figure, the process starts with the configuration (setup) file, which is written in
+JSON format (see <a class="reference internal" href="#eta-experiment-config"><span class="std std-ref">Experiment configuration</span></a>). Based on this configuration, the environment and
+corresponding agent can be initialized and executed.</p>
+<p>An experiment with a single configuration can consist of a series of different optimization runs.
+Each optimization run could for example have different external conditions for the environment
+(such as being performed at a different time of the year).</p>
+</section>
+<section id="what-is-an-algorithm-or-agent">
+<h2>What is an algorithm or agent?<a class="headerlink" href="#what-is-an-algorithm-or-agent" title="Permalink to this heading"></a></h2>
+<p>The control algorithm receives inputs from the environment and follows a strategy to control
+a system. This strategy could be either rule based, determined by mathematical optimization,
+machine learning (reinforcement learning) or other methods, such as metaheuristics.</p>
+<p>The agent receives observations from an environment and determines actions to control the environment
+based on those observations.</p>
+</section>
+<section id="what-is-an-environment">
+<h2>What is an environment?<a class="headerlink" href="#what-is-an-environment" title="Permalink to this heading"></a></h2>
+<p>The environment is a dynamic system, which receives inputs (actions) from the control algorithm.
+Observations made in the environment are passed to the agent.</p>
+</section>
+<section id="how-to-get-started">
+<h2>How to get started<a class="headerlink" href="#how-to-get-started" title="Permalink to this heading"></a></h2>
+<p>Usually you want to use the <em>ETAx</em> class as shown above to initialize your experiment.
+This will automatically load a JSON configuration file (see also :ref: <cite>etax_experiment_config</cite>).
+The file to load the configuration from is specified during class instantiation:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ETAx">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.</span></span><span class="sig-name descname"><span class="pre">ETAx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.12)"><span class="pre">os.PathLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relpath_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.12)"><span class="pre">os.PathLike</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'config/'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/eta_x.html#ETAx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.ETAx" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize an optimization model and provide interfaces for optimization, learning and execution (play).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root_path</strong> – Root path of the eta_x application (the configuration will be interpreted relative to this).</p></li>
+<li><p><strong>config_name</strong> – Name of configuration .ini file in configuration directory (should be JSON format).</p></li>
+<li><p><strong>config_overwrite</strong> – Dictionary to overwrite selected configurations.</p></li>
+<li><p><strong>relpath_config</strong> – Relative path to configuration file, starting from root path.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>After the class is instantiated, you can use the play and learn methods to execute the experiment:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ETAx.learn">
+<span class="sig-prename descclassname"><span class="pre">ETAx.</span></span><span class="sig-name descname"><span class="pre">learn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MaybeCallback</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/eta_x.html#ETAx.learn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.ETAx.learn" title="Permalink to this definition"></a></dt>
+<dd><p>Start the learning job for an agent with the specified environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series_name</strong> – Name for a series of runs.</p></li>
+<li><p><strong>run_name</strong> – Name for a specific run.</p></li>
+<li><p><strong>run_description</strong> – Description for a specific run.</p></li>
+<li><p><strong>reset</strong> – Indication whether possibly existing models should be reset. Learning will be continued if
+model exists and reset is false.</p></li>
+<li><p><strong>callbacks</strong> – Provide additional callbacks to send to the model.learn() call.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ETAx.play">
+<span class="sig-prename descclassname"><span class="pre">ETAx.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/eta_x.html#ETAx.play"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.ETAx.play" title="Permalink to this definition"></a></dt>
+<dd><p>Play with previously learned agent model in environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series_name</strong> – Name for a series of runs.</p></li>
+<li><p><strong>run_name</strong> – Name for a specific run.</p></li>
+<li><p><strong>run_description</strong> – Description for a specific run.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="experiment-configuration">
+<span id="eta-experiment-config"></span><h2>Experiment configuration<a class="headerlink" href="#experiment-configuration" title="Permalink to this heading"></a></h2>
+<p>The central part of the eta_x module is the experiment configuration. This configuration can be
+read  from a JSON file and determines the setup of the entire experiment, including which agent and
+environment to load and how to set each one up. The configuration is defined by the <em>ConfigOpt</em>
+dataclass and its subsidiaries <em>ConfigOptSetup</em> and <em>ConfigOptSettings</em>.</p>
+<p>When you are using ETAx (the class) the configuration will be read automatically.</p>
+<p>Use <code class="xref py py-func docutils literal notranslate"><span class="pre">eta_utility.eta_x::ConfigOpt.from_json()</span></code> to read the configuration from a JSON file:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ConfigOpt.from_json">
+<span class="sig-prename descclassname"><span class="pre">ConfigOpt.</span></span><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOpt" title="eta_utility.eta_x.config.ConfigOpt"><span class="pre">ConfigOpt</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/config.html#ConfigOpt.from_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.ConfigOpt.from_json" title="Permalink to this definition"></a></dt>
+<dd><p>Load configuration from JSON file, which consists of the following sections:</p>
+<ul class="simple">
+<li><p><strong>paths</strong>: In this section, the (relative) file paths for results and scenarios are specified. The paths
+are deserialized directly into the <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigOpt</span></code> object.</p></li>
+<li><p><strong>setup</strong>: This section specifies which classes and utilities should be used for optimization. The setup
+configuration is deserialized into the <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigOptSetup</span></code> object.</p></li>
+<li><p><strong>settings</strong>: The settings section contains basic parameters for the optimization, it is deserialized
+into a <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigOptSettings</span></code> object.</p></li>
+<li><p><strong>environment_specific</strong>: The environment section contains keyword arguments for the environment.
+This section must contain values for the arguments of the environment, the expected values are therefore
+different depending on the environment and not fully documented here.</p></li>
+<li><p><strong>agent_specific</strong>: The agent section contains keyword arguments for the control algorithm (agent).
+This section must contain values for the arguments of the agent, the expected values are therefore
+different depending on the agent and not fully documented here.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> – Path to the configuration file.</p></li>
+<li><p><strong>overwrite</strong> – Config parameters to overwrite.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ConfigOpt object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="configuration-example">
+<h3>Configuration example<a class="headerlink" href="#configuration-example" title="Permalink to this heading"></a></h3>
+<p>The following is the configuration for the pendulum example in this repository. It is relatively
+minimal in that it makes extensive use of the defaults defined in the <em>ConfigOpt</em> classes.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;setup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;environment_package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;examples.pendulum.pendulum&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;environment_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PendulumEnv&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;agent_package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stable_baselines3.ppo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;agent_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PPO&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;vectorizer_package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stable_baselines3.common.vec_env&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;vectorizer_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SubprocVecEnv&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;policy_package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stable_baselines3.ppo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;policy_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tensorboard_log&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;monitor_wrapper&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;norm_wrapper_obs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;norm_wrapper_reward&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;norm_wrapper_clip_obs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;relpath_results&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results/&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;sampling_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;episode_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;save_model_every_x_episodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n_episodes_learn&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n_episodes_play&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n_environments&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">321</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;environment_specific&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;scenario_time_begin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-04 12:12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;scenario_time_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-04 12:13&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_speed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_torque&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mass&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;agent_specific&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;gamma&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.99</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n_steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ent_coef&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00020</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;vf_coef&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_grad_norm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gae_lambda&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;batch_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n_epochs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;clip_range&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;policy_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;net_arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="config-section-setup">
+<h3>Config section ‘setup’<a class="headerlink" href="#config-section-setup" title="Permalink to this heading"></a></h3>
+<p>The settings configured in the setup section are the following:</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.</span></span><span class="sig-name descname"><span class="pre">ConfigOptSetup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_import</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">environment_import</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction_env_import</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorizer_import</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_import</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eta_utility.eta_x.common.NoPolicy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monitor_wrapper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_wrapper_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_wrapper_reward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/config.html#ConfigOptSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Configuration options as specified in the “setup” section of the configuration file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">agent_import</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Import description string for the agent class.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">agent_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BaseAlgorithm</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Agent class (automatically determined from agent_import).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">environment_import</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Import description string for the environment class.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">environment_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../_stubs/eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv" title="eta_utility.eta_x.envs.base_env.BaseEnv"><span class="pre">BaseEnv</span></a><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Imported Environment class (automatically determined from environment_import).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interaction_env_import</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Import description string for the interaction environment (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interaction_env_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../_stubs/eta_utility.eta_x.envs.base_env.html#eta_utility.eta_x.envs.base_env.BaseEnv" title="eta_utility.eta_x.envs.base_env.BaseEnv"><span class="pre">BaseEnv</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Interaction environment class (default: None) (automatically determined from interaction_env_import).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">vectorizer_import</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Import description string for the environment vectorizer
+(default: stable_baselines3.common.vec_env.dummy_vec_env.DummyVecEnv).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">vectorizer_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">DummyVecEnv</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Environment vectorizer class  (automatically determined from vectorizer_import).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">policy_import</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Import description string for the policy class (default: eta_utility.eta_x.agents.common.NoPolicy).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">policy_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.12)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BasePolicy</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Policy class (automatically determined from policy_import).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">monitor_wrapper</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag which is true if the environment should be wrapped for monitoring (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">norm_wrapper_obs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag which is true if the observations should be normalized (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">norm_wrapper_reward</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag which is true if the rewards should be normalized (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tensorboard_log</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag to enable tensorboard logging (default: False).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="config-section-paths">
+<h3>Config section ‘paths’<a class="headerlink" href="#config-section-paths" title="Permalink to this heading"></a></h3>
+<p>The paths section can contain the following relative paths:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ConfigOpt.relpath_results">
+<span class="sig-prename descclassname"><span class="pre">ConfigOpt.</span></span><span class="sig-name descname"><span class="pre">relpath_results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.eta_x.ConfigOpt.relpath_results" title="Permalink to this definition"></a></dt>
+<dd><p>Relative path to the results folder.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.ConfigOpt.relpath_scenarios">
+<span class="sig-prename descclassname"><span class="pre">ConfigOpt.</span></span><span class="sig-name descname"><span class="pre">relpath_scenarios</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.ConfigOpt.relpath_scenarios" title="Permalink to this definition"></a></dt>
+<dd><p>relative path to the scenarios folder (default: None).</p>
+</dd></dl>
+
+</section>
+<section id="config-section-settings">
+<h3>Config section ‘settings’<a class="headerlink" href="#config-section-settings" title="Permalink to this heading"></a></h3>
+<p>The configuration options in the settings section are the following.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The configuration options “environment_specific”, “interaction_env_specific” and “agent_specific”
+are separate sections on the top level. They are loaded into the settings object as dictionaries.
+To determine, which options are valid for these sections, please look at the arguments required
+for instantiation of the agent or environment. These arguments must be specified as parameters in
+the corresponding section.</p>
+</div>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.</span></span><span class="sig-name descname"><span class="pre">ConfigOptSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_environments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_episodes_play</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_episodes_learn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interact_with_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_model_every_x_episodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_steps_per_sample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction_env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">_Nothing.NOTHING</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/config.html#ConfigOptSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Seed for random sampling (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em></dt>
+<dd><p>Logging verbosity of the framework (default: 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">n_environments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em></dt>
+<dd><p>Number of vectorized environments to instantiate (if not using DummyVecEnv) (default: 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">n_episodes_play</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Number of episodes to execute when the agent is playing (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">n_episodes_learn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Number of episodes to execute when the agent is learning (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interact_with_env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag to determine whether the interaction env is used or not (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">save_model_every_x_episodes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em></dt>
+<dd><p>How often to save the model during training (default: 10 - after every ten episodes).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">plot_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em></dt>
+<dd><p>How many episodes to pass between each render call (default: 10 - after every ten episodes).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">episode_duration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em></dt>
+<dd><p>Duration of an episode in seconds (can be a float value).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sampling_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em></dt>
+<dd><p>Duration between time samples in seconds (can be a float value).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sim_steps_per_sample</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Simulation steps for every sample.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">scale_actions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Multiplier for scaling the agent actions before passing them to the environment
+(especially useful with interaction environments) (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">round_actions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Number of digits to round actions to before passing them to the environment
+(especially useful with interaction environments) (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">environment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Settings dictionary for the environment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interaction_env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Settings dictionary for the interaction environment (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">agent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Settings dictionary for the agent.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">log_to_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em></dt>
+<dd><p>Flag which is true if the log output should be written to a file</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="configuration-for-optimization-runs">
+<h3>Configuration for optimization runs<a class="headerlink" href="#configuration-for-optimization-runs" title="Permalink to this heading"></a></h3>
+<p>An optimization run must also be configured. This is done through the <em>ConfigOptRun</em> class. The
+class uses the series name and run names for initialization. It provides facilities to
+create the paths required for optimization and to store information about the environments.
+Below, you can see the parameters that ConfigOptRun offers. Full documentation is in the API
+docs: <a class="reference internal" href="../_stubs/eta_utility.eta_x.config.html#eta_utility.eta_x.config.ConfigOptRun" title="eta_utility.eta_x.config.ConfigOptRun"><code class="xref py py-class docutils literal notranslate"><span class="pre">eta_utility.eta_x.config.ConfigOptRun</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ETAx instantiates an object of this class automatically from the JSON configuration file. You do not need
+to specify any of the parameters listed here. They are listed here to show what is available for use
+during the optimization run.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.</span></span><span class="sig-name descname"><span class="pre">ConfigOptRun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_scenarios</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/config.html#ConfigOptRun"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Configuration for an optimization run, including the series and run names descriptions and paths
+for the run.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">series</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Name of the series of optimization runs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Name of an optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em></dt>
+<dd><p>Description of an optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Root path of the framework run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to results of the optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_scenarios</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Path to scenarios used for the optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_series_results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path for the results of the series of optimization runs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_run_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to the model of the optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_run_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to information about the optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_run_monitor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to the monitoring information about the optimization run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_vec_normalize</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to the normalization wrapper information.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_net_arch</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to the neural network architecture file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">path_log_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a></em></dt>
+<dd><p>Path to the log output file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">env_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Version of the main environment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">env_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Description of the main environment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interaction_env_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Version of the secondary environment (interaction_env).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">interaction_env_description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em></dt>
+<dd><p>Description of the secondary environment (interaction_env).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">paths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">pathlib.Path</span></a><span class="p"><span class="pre">]</span></span></em></dt>
+<dd><p>Dictionary of all paths for the optimization run. This is for easier access and contains all
+paths as mentioned above.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples/examples.html" class="btn btn-neutral float-left" title="Usage examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="control_algorithms.html" class="btn btn-neutral float-right" title="Control Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.agents.math_solver &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.agents.math_solver</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.agents.math_solver</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
+<span class="kn">from</span> <span class="nn">pyomo</span> <span class="kn">import</span> <span class="n">opt</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.base_class</span> <span class="kn">import</span> <span class="n">BaseAlgorithm</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecEnv</span><span class="p">,</span> <span class="n">VecNormalize</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">io</span>
+    <span class="kn">import</span> <span class="nn">pathlib</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Sequence</span>
+
+    <span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.policies</span> <span class="kn">import</span> <span class="n">BasePolicy</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.type_aliases</span> <span class="kn">import</span> <span class="n">GymEnv</span><span class="p">,</span> <span class="n">MaybeCallback</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x.agents&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MathSolver"><a class="viewcode-back" href="../../../../eta_x/control_algorithms.html#eta_utility.eta_x.agents.math_solver.MathSolver">[docs]</a><span class="k">class</span> <span class="nc">MathSolver</span><span class="p">(</span><span class="n">BaseAlgorithm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple, Pyomo based MPC agent.</span>
+
+<span class="sd">    The agent requires an environment that specifies the &#39;model&#39; attribute, returning a</span>
+<span class="sd">    :py:class:`pyomo.ConcreteModel` and a sorted list as the order for the action space. This list is used to</span>
+<span class="sd">    avoid ambiguity when returning a list of actions. Since the model specifies its own action and observation</span>
+<span class="sd">    space, this agent does not use the *action_space* and *observation_space* specified by the environment.</span>
+
+<span class="sd">    :param policy: Agent policy. Parameter is not used in this agent.</span>
+<span class="sd">    :param env: Environment to be optimized.</span>
+<span class="sd">    :param verbose: Logging verbosity.</span>
+<span class="sd">    :param solver_name: Name of the solver, could be cplex or glpk.</span>
+<span class="sd">    :param action_index: Index of the solution value to be used as action (if this is 0, the first value in a list</span>
+<span class="sd">        of solution values will be used).</span>
+<span class="sd">    :param kwargs: Additional arguments as specified in stable_baselins3.commom.base_class or as provided by solver.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">policy</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">],</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">VecEnv</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">solver_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cplex&quot;</span><span class="p">,</span>
+        <span class="n">action_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">_init_setup_model</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Prepare kwargs to be sent to the super class and to the solver.</span>
+        <span class="n">super_args</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">solver_args</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Set default values for superclass arguments</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="c1"># Find arguments which are meant for the BaseAlgorithm class and extract them into super_args</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">{</span>
+                <span class="s2">&quot;policy_base&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;policy_kwargs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;device&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;support_multi_env&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;create_eval_env&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;monitor_wrapper&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;seed&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use_sde&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sde_sample_freq&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;supported_action_spaces&quot;</span><span class="p">,</span>
+            <span class="p">}:</span>
+                <span class="n">super_args</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;tensorboard_log&quot;</span><span class="p">}:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;The MPC Basic agent does not support logging to tensorboard. &quot;</span>
+                    <span class="s2">&quot;Ignoring parameter tensorboard_log.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solver_args</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">super_args</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">verbose</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># Set logging verbosity</span>
+
+        <span class="c1"># Check configuration for MILP compatibility</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The MPC agent needs a specific environment to work correctly. Cannot use env = None.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_envs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_envs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The MPC agent can only use one environment. It cannot work on multiple vectorized environments.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="n">VecNormalize</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The MPC agent does not allow the use of normalized environments.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Solver parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solver_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">solver_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solver_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solver_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">solver_args</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span>  <span class="c1">#: Pyomo optimization model as specified by the environment.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actions_order</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1">#: Specification of the order in which action values should be returned.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">policy_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">_init_setup_model</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_model</span><span class="p">()</span>
+
+        <span class="c1">#: Index of the solution value to be used as action (if this is 0, the first value in a list</span>
+        <span class="c1">#: of solution values will be used).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_index</span> <span class="o">=</span> <span class="n">action_index</span>
+
+    <span class="k">def</span> <span class="nf">_setup_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the MILP model from the environment.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The MPC agent needs a specific environment to work. Cannot use env = None.&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions_order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_class</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="MathSolver.solve"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.math_solver.html#eta_utility.eta_x.agents.math_solver.MathSolver.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the current pyomo model instance with given parameters. This could also be used separately to solve</span>
+<span class="sd">        normal MILP problems. Since the entire problem instance is returned, result handling can be outsourced.</span>
+
+<span class="sd">        :return: Solved pyomo model instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The MPC agent needs a specific environment to work. Cannot use env = None.&quot;</span>
+
+        <span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver_name</span><span class="p">)</span>
+        <span class="n">solver</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver_options</span><span class="p">)</span>  <span class="c1"># Adjust solver settings</span>
+
+        <span class="n">_tee</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">log</span><span class="o">.</span><span class="n">level</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">symbolic_solver_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="n">_tee</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_tee</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># noqa: T001, T201 (print is ok here, because cplex prints directly to console).</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Problem information: </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">+----------------------------------+</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Problem&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">UndefinedData</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">+----------------------------------+&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Log status after the optimization</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="s2">&quot;Solver information: </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">+----------------------------------+</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Solver&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="s2">&quot;Statistics&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">UndefinedData</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">+----------------------------------+&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Log status after the optimization</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;Solution&quot;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;Solution information: </span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">+----------------------------------+</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> &quot;</span>
+                    <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Solution&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">opt</span><span class="o">.</span><span class="n">UndefinedData</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">+----------------------------------+&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Interrupt execution if no optimal solution could be found</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">termination_condition</span> <span class="o">!=</span> <span class="n">opt</span><span class="o">.</span><span class="n">TerminationCondition</span><span class="o">.</span><span class="n">optimal</span>
+            <span class="ow">or</span> <span class="n">result</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">opt</span><span class="o">.</span><span class="n">SolverStatus</span><span class="o">.</span><span class="n">ok</span>
+        <span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Problem can not be solved - aborting.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">env_method</span><span class="p">(</span><span class="s2">&quot;solve_failed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span></div>
+
+<div class="viewcode-block" id="MathSolver.predict"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.math_solver.html#eta_utility.eta_x.agents.math_solver.MathSolver.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">observation</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">state</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">episode_start</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">deterministic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Solve the current pyomo model instance with given parameters and observations and return the optimal actions.</span>
+
+<span class="sd">        :param observation: the input observation (not used here).</span>
+<span class="sd">        :param state: The last states (not used here).</span>
+<span class="sd">        :param episode_start: The last masks (not used here).</span>
+<span class="sd">        :param deterministic: Whether to return deterministic actions. This agent always returns</span>
+<span class="sd">                                   deterministic actions.</span>
+<span class="sd">        :return: Tuple of the model&#39;s action and the next state (not used here).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The MPC agent needs a specific environment to work. Cannot use env = None.&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Aggregate the agent actions from pyomo component objects</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">com</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ScalarVar</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">solution</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">com</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">index_set</span><span class="p">()</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="c1"># Make sure that actions are returned to the correct order and as a numpy array.</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actions_order</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">action</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">actions_order</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Action &#39;</span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&#39; value: </span><span class="si">{</span><span class="n">solution</span><span class="p">[</span><span class="n">action</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">actions</span><span class="p">,</span> <span class="n">state</span></div>
+
+<div class="viewcode-block" id="MathSolver.action_probability"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.math_solver.html#eta_utility.eta_x.agents.math_solver.MathSolver.action_probability">[docs]</a>    <span class="k">def</span> <span class="nf">action_probability</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">observation</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">state</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">logp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The MPC approach cannot predict probabilities of single actions.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;The MPC agent cannot predict probabilities of single actions.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MathSolver.learn"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.math_solver.html#eta_utility.eta_x.agents.math_solver.MathSolver.learn">[docs]</a>    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">total_timesteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">callback</span><span class="p">:</span> <span class="n">MaybeCallback</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">tb_log_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span>
+        <span class="n">reset_num_timesteps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MPCBasic</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The MPC approach cannot learn a new model. Specify the model attribute as a pyomo Concrete model instead,</span>
+<span class="sd">        to use the prediction function of this agent.</span>
+
+<span class="sd">        :param total_timesteps: The total number of samples (env steps) to train on</span>
+<span class="sd">        :param callback: callback(s) called at every step with state of the algorithm.</span>
+<span class="sd">        :param log_interval: The number of timesteps before logging.</span>
+<span class="sd">        :param tb_log_name: the name of the run for TensorBoard logging</span>
+<span class="sd">        :param reset_num_timesteps: whether or not to reset the current timestep number (used in logging)</span>
+<span class="sd">        :param progress_bar: Display a progress bar using tqdm and rich.</span>
+<span class="sd">        :return: The trained model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MathSolver.load"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.math_solver.html#eta_utility.eta_x.agents.math_solver.MathSolver.load">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">io</span><span class="o">.</span><span class="n">BufferedIOBase</span><span class="p">,</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">GymEnv</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="n">th</span><span class="o">.</span><span class="n">device</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">custom_objects</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">print_system_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">force_reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MPCBasic</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load the model from a zip-file.</span>
+<span class="sd">        Warning: ``load`` re-creates the model from scratch, it does not update it in-place!</span>
+
+<span class="sd">        :param path: path to the file (or a file-like) where to load the agent from</span>
+<span class="sd">        :param env: the new environment to run the loaded model on</span>
+<span class="sd">            (can be None if you only need prediction from a trained model) has priority over any saved environment</span>
+<span class="sd">        :param device: Device on which the code should run.</span>
+<span class="sd">        :param custom_objects: Dictionary of objects to replace upon loading. If a variable is present in</span>
+<span class="sd">            this dictionary as a key, it will not be deserialized and the corresponding item will be used instead.</span>
+<span class="sd">        :param print_system_info: Whether to print system info from the saved model and the current system info</span>
+<span class="sd">            (useful to debug loading issues)</span>
+<span class="sd">        :param force_reset: Force call to ``reset()`` before training to avoid unexpected behavior.</span>
+<span class="sd">        :param kwargs: extra arguments to change the model when loading</span>
+<span class="sd">        :return: new model instance with loaded parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter env must be specified.&quot;</span><span class="p">)</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">MPCBasic</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">custom_objects</span><span class="p">,</span> <span class="n">print_system_info</span><span class="p">,</span> <span class="n">force_reset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">model</span></div></div>
+
+
+<span class="c1"># Keep compatibility with old name MPCBasic</span>
+<span class="n">MPCBasic</span> <span class="o">=</span> <span class="n">MathSolver</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

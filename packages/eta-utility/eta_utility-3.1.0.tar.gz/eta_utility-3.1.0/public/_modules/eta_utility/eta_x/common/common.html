@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.common.common &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.common.common</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.common.common</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">asdict</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">DummyVecEnv</span><span class="p">,</span> <span class="n">VecMonitor</span><span class="p">,</span> <span class="n">VecNormalize</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">dict_get_any</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">log_add_filehandler</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">processors</span>
+<span class="kn">from</span> <span class="nn">.policies</span> <span class="kn">import</span> <span class="n">NoPolicy</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+    <span class="kn">from</span> <span class="nn">gymnasium</span> <span class="kn">import</span> <span class="n">Env</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.base_class</span> <span class="kn">import</span> <span class="n">BaseAlgorithm</span><span class="p">,</span> <span class="n">BasePolicy</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecEnv</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.eta_x</span> <span class="kn">import</span> <span class="n">ConfigOpt</span><span class="p">,</span> <span class="n">ConfigOptRun</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.eta_x.envs</span> <span class="kn">import</span> <span class="n">BaseEnv</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AlgoSettings</span><span class="p">,</span> <span class="n">EnvSettings</span><span class="p">,</span> <span class="n">Path</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="vectorize_environment"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.vectorize_environment">[docs]</a><span class="k">def</span> <span class="nf">vectorize_environment</span><span class="p">(</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseEnv</span><span class="p">],</span>
+    <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">,</span>
+    <span class="n">env_settings</span><span class="p">:</span> <span class="n">EnvSettings</span><span class="p">,</span>
+    <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">BaseEnv</span><span class="p">],</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">vectorizer</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">DummyVecEnv</span><span class="p">]</span> <span class="o">=</span> <span class="n">DummyVecEnv</span><span class="p">,</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">monitor_wrapper</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">norm_wrapper_obs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">norm_wrapper_reward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VecNormalize</span> <span class="o">|</span> <span class="n">VecEnv</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vectorize the environment and automatically apply normalization wrappers if configured. If the environment</span>
+<span class="sd">    is initialized as an interaction_env it will not have normalization wrappers and use the appropriate configuration</span>
+<span class="sd">    automatically.</span>
+
+<span class="sd">    :param env: Environment class which will be instantiated and vectorized.</span>
+<span class="sd">    :param config_run: Configuration for a specific optimization run.</span>
+<span class="sd">    :param env_settings: Configuration settings dictionary for the environment which is being initialized.</span>
+<span class="sd">    :param callback: Callback to call with an environment instance.</span>
+<span class="sd">    :param verbose: Logging verbosity to use in the environment.</span>
+<span class="sd">    :param vectorizer: Vectorizer class to use for vectorizing the environments.</span>
+<span class="sd">    :param n: Number of vectorized environments to create.</span>
+<span class="sd">    :param training: Flag to identify whether the environment should be initialized for training or playing. If true,</span>
+<span class="sd">                     it will be initialized for training.</span>
+<span class="sd">    :param norm_wrapper_obs: Flag to determine whether observations from the environments should be normalized.</span>
+<span class="sd">    :param norm_wrapper_reward: Flag to determine whether rewards from the environments should be normalized.</span>
+<span class="sd">    :return: Vectorized environments, possibly also wrapped in a normalizer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Create the vectorized environment</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Trying to vectorize the environment.&quot;</span><span class="p">)</span>
+    <span class="c1"># Ensure n is one, if the DummyVecEnv is used (it doesn&#39;t support more than one)</span>
+    <span class="k">if</span> <span class="n">vectorizer</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;DummyVecEnv&quot;</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Setting number of environments to 1 because DummyVecEnv (default) is used.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;verbose&quot;</span> <span class="ow">in</span> <span class="n">env_settings</span> <span class="ow">and</span> <span class="n">env_settings</span><span class="p">[</span><span class="s2">&quot;verbose&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="n">env_settings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;verbose&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+    <span class="c1"># Create the vectorized environment</span>
+    <span class="k">def</span> <span class="nf">create_env</span><span class="p">(</span><span class="n">env_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Env</span><span class="p">:</span>
+        <span class="n">env_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">env</span><span class="p">(</span><span class="n">env_id</span><span class="p">,</span> <span class="n">config_run</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="o">**</span><span class="n">env_settings</span><span class="p">)</span>
+
+    <span class="n">envs</span><span class="p">:</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span>
+    <span class="n">envs</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="p">([</span><span class="n">partial</span><span class="p">(</span><span class="n">create_env</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+
+    <span class="c1"># The VecMonitor knows the ep_reward and so this can be logged to tensorboard</span>
+    <span class="k">if</span> <span class="n">monitor_wrapper</span><span class="p">:</span>
+        <span class="n">envs</span> <span class="o">=</span> <span class="n">VecMonitor</span><span class="p">(</span><span class="n">envs</span><span class="p">)</span>
+
+    <span class="c1"># Automatically normalize the input features</span>
+    <span class="k">if</span> <span class="n">norm_wrapper_obs</span> <span class="ow">or</span> <span class="n">norm_wrapper_reward</span><span class="p">:</span>
+        <span class="c1"># check if normalization data is available and load it if possible, otherwise</span>
+        <span class="c1"># create a new normalization wrapper.</span>
+        <span class="k">if</span> <span class="n">config_run</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Normalization data detected. Loading running averages into normalization wrapper: </span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="n">envs</span> <span class="o">=</span> <span class="n">VecNormalize</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="p">),</span> <span class="n">envs</span><span class="p">)</span>
+            <span class="n">envs</span><span class="o">.</span><span class="n">training</span> <span class="o">=</span> <span class="n">training</span>
+            <span class="n">envs</span><span class="o">.</span><span class="n">norm_obs</span> <span class="o">=</span> <span class="n">norm_wrapper_obs</span>
+            <span class="n">envs</span><span class="o">.</span><span class="n">norm_reward</span> <span class="o">=</span> <span class="n">norm_wrapper_reward</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No Normalization data detected.&quot;</span><span class="p">)</span>
+            <span class="n">envs</span> <span class="o">=</span> <span class="n">VecNormalize</span><span class="p">(</span><span class="n">envs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span> <span class="n">norm_obs</span><span class="o">=</span><span class="n">norm_wrapper_obs</span><span class="p">,</span> <span class="n">norm_reward</span><span class="o">=</span><span class="n">norm_wrapper_reward</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">envs</span></div>
+
+
+<div class="viewcode-block" id="initialize_model"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.initialize_model">[docs]</a><span class="k">def</span> <span class="nf">initialize_model</span><span class="p">(</span>
+    <span class="n">algo</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseAlgorithm</span><span class="p">],</span>
+    <span class="n">policy</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">],</span>
+    <span class="n">envs</span><span class="p">:</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span><span class="p">,</span>
+    <span class="n">algo_settings</span><span class="p">:</span> <span class="n">AlgoSettings</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">tensorboard_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">log_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseAlgorithm</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize a new model or algorithm.</span>
+
+<span class="sd">    :param algo: Algorithm to initialize.</span>
+<span class="sd">    :param policy: The policy that should be used by the algorithm.</span>
+<span class="sd">    :param envs: The environment which the algorithm operates on.</span>
+<span class="sd">    :param algo_settings: Additional settings for the algorithm.</span>
+<span class="sd">    :param seed: Random seed to be used by the algorithm.</span>
+<span class="sd">    :param tensorboard_log: Flag to enable logging to tensorboard.</span>
+<span class="sd">    :param log_path: Path for tensorboard log. Online required if logging is true</span>
+<span class="sd">    :return: Initialized model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to initialize model: </span><span class="si">{</span><span class="n">algo</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">_log_path</span> <span class="o">=</span> <span class="n">log_path</span> <span class="k">if</span> <span class="n">log_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
+
+    <span class="c1"># tensorboard logging</span>
+    <span class="n">algo_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">tensorboard_log</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_log_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;If tensorboard logging is enabled, a path for results must be specified as well.&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tensorboard logging is enabled. Log file: </span><span class="si">{</span><span class="n">_log_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Please run the following command in the console to start tensorboard: </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s1">&#39;tensorboard --logdir &quot;</span><span class="si">{</span><span class="n">_log_path</span><span class="si">}</span><span class="s1">&quot; --port 6006&#39;</span>
+        <span class="p">)</span>
+        <span class="n">algo_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tensorboard_log&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_log_path</span><span class="p">)}</span>
+
+    <span class="c1"># check if the agent takes all the default parameters.</span>
+    <span class="n">algo_settings</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">algo_params</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">algo</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
+    <span class="k">if</span> <span class="s2">&quot;seed&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">algo_params</span> <span class="ow">and</span> <span class="n">inspect</span><span class="o">.</span><span class="n">Parameter</span><span class="o">.</span><span class="n">VAR_KEYWORD</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="n">p</span><span class="o">.</span><span class="n">kind</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">algo_params</span><span class="o">.</span><span class="n">values</span><span class="p">()}:</span>
+        <span class="k">del</span> <span class="n">algo_settings</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&#39;seed&#39; is not a valid parameter for agent </span><span class="si">{</span><span class="n">algo</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">. This default parameter will be ignored.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># create model instance</span>
+    <span class="k">return</span> <span class="n">algo</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">envs</span><span class="p">,</span> <span class="o">**</span><span class="n">algo_settings</span><span class="p">,</span> <span class="o">**</span><span class="n">algo_kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="load_model"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.load_model">[docs]</a><span class="k">def</span> <span class="nf">load_model</span><span class="p">(</span>
+    <span class="n">algo</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseAlgorithm</span><span class="p">],</span>
+    <span class="n">envs</span><span class="p">:</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span><span class="p">,</span>
+    <span class="n">algo_settings</span><span class="p">:</span> <span class="n">AlgoSettings</span><span class="p">,</span>
+    <span class="n">path_model</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">tensorboard_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">log_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseAlgorithm</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load an existing model.</span>
+
+<span class="sd">    :param algo: Algorithm type of the model to be loaded.</span>
+<span class="sd">    :param envs: The environment which the algorithm operates on.</span>
+<span class="sd">    :param algo_settings: Additional settings for the algorithm.</span>
+<span class="sd">    :param path_model: Path to load the model from.</span>
+<span class="sd">    :param tensorboard_log: Flag to enable logging to tensorboard.</span>
+<span class="sd">    :param log_path: Path for tensorboard log. Online required if logging is true</span>
+<span class="sd">    :return: Initialized model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trying to load existing model: </span><span class="si">{</span><span class="n">path_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">_path_model</span> <span class="o">=</span> <span class="n">path_model</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path_model</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path_model</span><span class="p">)</span>
+    <span class="n">_log_path</span> <span class="o">=</span> <span class="n">log_path</span> <span class="k">if</span> <span class="n">log_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_path_model</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model couldn&#39;t be loaded. Path not found: </span><span class="si">{</span><span class="n">_path_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># tensorboard logging</span>
+    <span class="n">algo_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">tensorboard_log</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_log_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;If tensorboard logging is enabled, a path for results must be specified as well.&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tensorboard logging is enabled. Log file: </span><span class="si">{</span><span class="n">_log_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Please run the following command in the console to start tensorboard: </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;tensorboard --logdir &#39;</span><span class="si">{</span><span class="n">_log_path</span><span class="si">}</span><span class="s2">&#39; --port 6006&quot;</span>
+        <span class="p">)</span>
+        <span class="n">algo_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tensorboard_log&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_log_path</span><span class="p">)}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">_path_model</span><span class="p">,</span> <span class="n">envs</span><span class="p">,</span> <span class="o">**</span><span class="n">algo_settings</span><span class="p">,</span> <span class="o">**</span><span class="n">algo_kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Model loaded successfully.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model couldn&#39;t be loaded: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="si">}</span><span class="s2">. Filename: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="log_to_file"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.log_to_file">[docs]</a><span class="k">def</span> <span class="nf">log_to_file</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">ConfigOpt</span><span class="p">,</span> <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Log output in terminal to the run_info file.</span>
+
+<span class="sd">    :param config: Configuration to figure out the logging settings.</span>
+<span class="sd">    :param config_run: Configuration for this optimization run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">config_run</span><span class="o">.</span><span class="n">path_log_output</span>
+
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">log_to_file</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">log_add_filehandler</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Log file could not be created.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="log_run_info"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.log_run_info">[docs]</a><span class="k">def</span> <span class="nf">log_run_info</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">ConfigOpt</span><span class="p">,</span> <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save run configuration to the run_info file.</span>
+
+<span class="sd">    :param config: Configuration for the framework.</span>
+<span class="sd">    :param config_run: Configuration for this optimization run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">config_run</span><span class="o">.</span><span class="n">path_run_info</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+        <span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="o">**</span><span class="n">asdict</span><span class="p">(</span><span class="n">config_run</span><span class="p">),</span> <span class="o">**</span><span class="n">asdict</span><span class="p">(</span><span class="n">config</span><span class="p">)},</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">Encoder</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Log file successfully created.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Log file could not be created because of non-serializable input in config.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="deserialize_net_arch"><a class="viewcode-back" href="../../../../eta_x/sb3_extensions.html#eta_utility.eta_x.common.common.deserialize_net_arch">[docs]</a><span class="k">def</span> <span class="nf">deserialize_net_arch</span><span class="p">(</span>
+    <span class="n">net_arch</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">in_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">th</span><span class="o">.</span><span class="n">device</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deserialize_net_arch can take a list of dictionaries describing a sequential torch network and deserialize</span>
+<span class="sd">    it by instatiating the corresponding classes.</span>
+
+<span class="sd">    An example for a possible net_arch would be:</span>
+
+<span class="sd">    .. code-block::</span>
+
+<span class="sd">        [{&quot;layer&quot;: &quot;Linear&quot;, &quot;out_features&quot;: 60},</span>
+<span class="sd">         {&quot;activation_func&quot;: &quot;Tanh&quot;},</span>
+<span class="sd">         {&quot;layer&quot;: &quot;Linear&quot;, &quot;out_features&quot;: 60},</span>
+<span class="sd">         {&quot;activation_func&quot;: &quot;Tanh&quot;}]</span>
+
+<span class="sd">    One key of the dictionary should be either &#39;layer&#39;, &#39;activation_func&#39; or &#39;process&#39;. If the &#39;layer&#39; key is present,</span>
+<span class="sd">    a layer from the :py:mod:`torch.nn` module is instantiated, if the &#39;activation_func&#39; key is present, the</span>
+<span class="sd">    value will be instantiated as an activation function from :py:mod:`torch.nn`. If the key &#39;process&#39; is present,</span>
+<span class="sd">    the value will be interpreted as a data processor from :py:mod:`eta_utility.eta_x.common.processors`.</span>
+
+<span class="sd">    All other keys of each dictionary will be used as keyword parameters to the instantiation of the layer,</span>
+<span class="sd">    activation function or processor.</span>
+
+<span class="sd">    Only the number of input features for the first layer must be specified (using the &#39;in_features&#39;) parameter.</span>
+<span class="sd">    The function will then automatically determine the number of input features for all other layers in the</span>
+<span class="sd">    sequential network.</span>
+
+<span class="sd">    :param net_arch: List of dictionaries describing the network architecture.</span>
+<span class="sd">    :param in_features: Number of input features for the first layer.</span>
+<span class="sd">    :param device: Torch device to use for training the network.</span>
+<span class="sd">    :return: Sequential torch network.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+    <span class="n">_features</span> <span class="o">=</span> <span class="n">in_features</span>
+
+    <span class="k">for</span> <span class="n">net</span> <span class="ow">in</span> <span class="n">net_arch</span><span class="p">:</span>
+        <span class="n">_net</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;process&quot;</span> <span class="ow">in</span> <span class="n">net</span><span class="p">:</span>
+            <span class="n">process</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processors</span><span class="p">,</span> <span class="n">_net</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;process&quot;</span><span class="p">))</span>
+
+            <span class="c1"># The &quot;Split&quot; process must be treated differently, because it needs to be deserialized recursively.</span>
+            <span class="k">if</span> <span class="p">{</span><span class="s2">&quot;net_arch&quot;</span> <span class="ow">and</span> <span class="s2">&quot;sizes&quot;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">process</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">sizes</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">get_full_sizes</span><span class="p">(</span><span class="n">_features</span><span class="p">,</span> <span class="n">_net</span><span class="p">[</span><span class="s2">&quot;sizes&quot;</span><span class="p">])</span>
+                <span class="n">_net</span><span class="p">[</span><span class="s2">&quot;net_arch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">deserialize_net_arch</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">_net</span><span class="p">[</span><span class="s2">&quot;net_arch&quot;</span><span class="p">])]</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="s2">&quot;in_channels&quot;</span><span class="p">,</span> <span class="s2">&quot;in_features&quot;</span><span class="p">}</span> <span class="o">&amp;</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">process</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">(</span><span class="n">_features</span><span class="p">,</span> <span class="o">**</span><span class="n">_net</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">(</span><span class="o">**</span><span class="n">_net</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not instantiate processing module </span><span class="si">{</span><span class="n">process</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;layer&quot;</span> <span class="ow">in</span> <span class="n">net</span><span class="p">:</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="p">,</span> <span class="n">_net</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;layer&quot;</span><span class="p">))</span>
+
+            <span class="c1"># Set the number of input features if required by the layer class</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">({</span><span class="s2">&quot;in_channels&quot;</span><span class="p">,</span> <span class="s2">&quot;in_features&quot;</span><span class="p">}</span> <span class="o">&amp;</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">(</span><span class="n">_features</span><span class="p">,</span> <span class="o">**</span><span class="n">_net</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">(</span><span class="o">**</span><span class="n">_net</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not instantiate layer module </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="k">elif</span> <span class="s2">&quot;activation_func&quot;</span> <span class="ow">in</span> <span class="n">net</span><span class="p">:</span>
+            <span class="n">activation_func</span> <span class="o">=</span> <span class="n">_net</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;activation_func&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="p">,</span> <span class="n">activation_func</span><span class="p">)(</span><span class="o">**</span><span class="n">_net</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not instantiate activation function module </span><span class="si">{</span><span class="n">activation_func</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown process or layer type: </span><span class="si">{</span><span class="n">net</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="n">_features</span> <span class="o">=</span> <span class="n">dict_get_any</span><span class="p">(</span><span class="n">_net</span><span class="p">,</span> <span class="s2">&quot;out_channels&quot;</span><span class="p">,</span> <span class="s2">&quot;out_features&quot;</span><span class="p">,</span> <span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_features</span><span class="p">)</span>
+
+    <span class="n">network</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">network</span></div>
+
+
+<div class="viewcode-block" id="log_net_arch"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.log_net_arch">[docs]</a><span class="k">def</span> <span class="nf">log_net_arch</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">BaseAlgorithm</span><span class="p">,</span> <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Store network architecture or policy information in a file. This requires for the model to be initialized,</span>
+<span class="sd">    otherwise it will raise a ValueError.</span>
+
+<span class="sd">    :param model: The algorithm whose network architecture is stored.</span>
+<span class="sd">    :param config_run: Optimization run configuration (which contains info about the file to store info in).</span>
+<span class="sd">    :raises: ValueError.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">config_run</span><span class="o">.</span><span class="n">path_net_arch</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">policy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">policy</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NoPolicy</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_net_arch</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">policy</span><span class="p">))</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Net arch / Policy information store successfully in: </span><span class="si">{</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_net_arch</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">config_run</span><span class="o">.</span><span class="n">path_net_arch</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Net arch / Policy information already exists in </span><span class="si">{</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_net_arch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_vectorized_env"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.is_vectorized_env">[docs]</a><span class="k">def</span> <span class="nf">is_vectorized_env</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span> <span class="o">|</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if an environment is vectorized.</span>
+
+<span class="sd">    :param env: The environment to check.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s2">&quot;num_envs&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="is_env_closed"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.is_env_closed">[docs]</a><span class="k">def</span> <span class="nf">is_env_closed</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="n">BaseEnv</span> <span class="o">|</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether an environment has been closed.</span>
+
+<span class="sd">    :param env: The environment to check.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s2">&quot;closed&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">closed</span>
+
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s2">&quot;venv&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">is_env_closed</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="episode_results_path"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.episode_results_path">[docs]</a><span class="k">def</span> <span class="nf">episode_results_path</span><span class="p">(</span><span class="n">series_results_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">episode</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">env_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a filepath which can be used for storing episode results of a specific environment as a csv file.</span>
+
+<span class="sd">    Name is of the format: ThisRun_001_01.csv (run name _ episode number _ environment id .csv)</span>
+
+<span class="sd">    :param series_results_path: Path for results of the series of optimization runs.</span>
+<span class="sd">    :param run_name: Name of the optimization run.</span>
+<span class="sd">    :param episode: Number of the episode the environment is working on.</span>
+<span class="sd">    :param env_id: Identification of the environment.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">series_results_path</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">series_results_path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">series_results_path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">episode_name_string</span><span class="p">(</span><span class="n">run_name</span><span class="p">,</span><span class="w"> </span><span class="n">episode</span><span class="p">,</span><span class="w"> </span><span class="n">env_id</span><span class="p">)</span><span class="si">}</span><span class="s2">.csv&quot;</span></div>
+
+
+<div class="viewcode-block" id="episode_name_string"><a class="viewcode-back" href="../../../../eta_x/common_functions.html#eta_utility.eta_x.common.common.episode_name_string">[docs]</a><span class="k">def</span> <span class="nf">episode_name_string</span><span class="p">(</span><span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">episode</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">env_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a name which can be used to pre or postfix files from a specific episode and run of an environment.</span>
+
+<span class="sd">    Name is of the format: ThisRun_001_01 (run name _ episode number _ environment id)</span>
+
+<span class="sd">    :param run_name: Name of the optimization run.</span>
+<span class="sd">    :param episode: Number of the episode the environment is working on.</span>
+<span class="sd">    :param env_id: Identification of the environment.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">episode</span><span class="si">:</span><span class="s2">0&gt;#3</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">env_id</span><span class="si">:</span><span class="s2">0&gt;#2</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

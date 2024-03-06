@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.common.processors &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.common.processors</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.common.processors</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Sequence</span>
+
+
+<div class="viewcode-block" id="Split1d"><a class="viewcode-back" href="../../../../eta_x/sb3_extensions.html#eta_utility.eta_x.common.processors.Split1d">[docs]</a><span class="k">class</span> <span class="nc">Split1d</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split1d defines a pytorch module which splits the 1D input tensor into multiple parts and passes each</span>
+<span class="sd">    of the parts through a separate network. After the pass through the network, the output from all networks</span>
+<span class="sd">    is joined together. Thus, Split1d will return a 1d observation vector.</span>
+
+<span class="sd">    When configuring the network architecture, it is important to ensure that the output of all networks is 1D.</span>
+<span class="sd">    Use torch.nn.Flatten to flatten the output of networks where the output is not one dimensional.</span>
+
+<span class="sd">    Use the parameters &#39;sizes&#39; and &#39;net_arch&#39; to determine how many of the input features should be passed through</span>
+<span class="sd">    which network. Each value in sizes must have a correstponding value in net_arch. For the following examples, let&#39;s</span>
+<span class="sd">    assume that &#39;in_features&#39; is 15. If &#39;sizes&#39; is [3, 10, None], a valid configuration for</span>
+<span class="sd">    net_arch could be [th.nn.Linear(out_features=10), th.nn.Conv1d(out_channels:2), th.nn.Linear(out_features=2)].</span>
+<span class="sd">    The last value of &#39;sizes&#39; will automatically be calculated to be 2 (15 - 3 - 10 = 2). With this, 3 values would</span>
+<span class="sd">    be passed to the first *Linear* layer, 10 values would be passed to the &quot;Conv1d&quot; layer and the final 2 values would</span>
+<span class="sd">    be passed to the third layer in net_arch (which is the *Linear* layer with 2 output features).</span>
+
+<span class="sd">    If you would like to use dictionaries to configure the net_arch, you can use the function</span>
+<span class="sd">    :py:func:`eta_utility.eta_x.common.common.deserialize_net_arch` to create the torch network architecture.</span>
+
+<span class="sd">    :param in_features: Number of input features for the Module</span>
+<span class="sd">    :param sizes: List of sizes for splitting the input features. This list can contain the value &quot;None&quot; once. If the</span>
+<span class="sd">        list contains None, this will be evaluated to contain all remaining input features.</span>
+<span class="sd">    :param net_arch: List of torch.nn Modules. Each value of this list corresponds to one value of the &#39;sizes&#39; list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sizes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="kc">None</span> <span class="o">|</span> <span class="nb">int</span><span class="p">],</span> <span class="n">net_arch</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_full_sizes</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_features</span> <span class="o">=</span> <span class="n">in_features</span>
+
+        <span class="c1"># Check that the number of extractor architectures is equal to the  number of sizes specified.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">net_arch</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;There must be one extractor architecture (there are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">net_arch</span><span class="p">)</span><span class="si">}</span><span class="s2">) &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;for each split in the data (there are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">)</span><span class="si">}</span><span class="s2">).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">net</span> <span class="ow">in</span> <span class="n">net_arch</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Split1d.extra_repr"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.extra_repr">[docs]</a>    <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add info about the module to its torch representation.</span>
+
+<span class="sd">        :return: String representation of the object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;in_features=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">in_features</span><span class="si">}</span><span class="s2">, sizes=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+<div class="viewcode-block" id="Split1d.forward"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">th</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">th</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forward pass through the layer.</span>
+
+<span class="sd">        :param tensor: Input tensor</span>
+<span class="sd">        :return: Output tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_features</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The tensor is shorter (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">) than the number of elements specified &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;for the split process (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">in_features</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">tensors</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">item</span><span class="p">](</span><span class="n">tensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tensors</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">th</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Split1d.get_full_sizes"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Split1d.get_full_sizes">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_full_sizes</span><span class="p">(</span><span class="n">in_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sizes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="kc">None</span> <span class="o">|</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use in_features and the sizes list to determine the missing value in &#39;sizes&#39; in case &#39;sizes&#39; contains a</span>
+<span class="sd">        None value (see class description for more information on how a None value in &#39;sizes&#39; is interpreted.</span>
+
+<span class="sd">        :param in_features: Number of input features for the Module.</span>
+<span class="sd">        :param sizes: List of sizes for splitting the input features. This list can contain the value &quot;None&quot; once. If</span>
+<span class="sd">            the list contains None, this will be evaluated to contain all remaining input features.</span>
+<span class="sd">        :return: List of sizes without the missing value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check if the sizes list contains None and sum all elements that are not None.</span>
+        <span class="n">nones</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">none_idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">_sum</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sizes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">none_idx</span> <span class="o">=</span> <span class="n">idx</span>
+                <span class="n">nones</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_sum</span> <span class="o">+=</span> <span class="n">s</span>
+
+        <span class="k">if</span> <span class="n">nones</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Please only specify None once in the configuration for the split process. None is where &quot;</span>
+                <span class="s2">&quot;all remaining elements will be processed.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">nones</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># mypy does not correctly understand how we are removing None values.</span>
+            <span class="n">_sizes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="n">_sizes</span><span class="p">[</span><span class="n">none_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_features</span> <span class="o">-</span> <span class="n">_sum</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">_sum</span> <span class="o">!=</span> <span class="n">in_features</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;If None is not specified in the split process configuration, the sum of elements &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;specified in &#39;sizes&#39; (</span><span class="si">{</span><span class="n">_sum</span><span class="si">}</span><span class="s2">) must be equal to in_features (</span><span class="si">{</span><span class="n">in_features</span><span class="si">}</span><span class="s2">).&quot;</span>
+                <span class="p">)</span>
+            <span class="c1"># mypy does not correctly understand how we are removing None values.</span>
+            <span class="n">_sizes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">return</span> <span class="n">_sizes</span></div></div>
+
+
+<div class="viewcode-block" id="Fold1d"><a class="viewcode-back" href="../../../../eta_x/sb3_extensions.html#eta_utility.eta_x.common.processors.Fold1d">[docs]</a><span class="k">class</span> <span class="nc">Fold1d</span><span class="p">(</span><span class="n">th</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fold a 1D tensor to create a multi-dimensional tensor. The parameter &#39;out_channels&#39; determines, how many</span>
+<span class="sd">    dimensions the output tensor will have.</span>
+
+<span class="sd">    :param out_channels: Number of dimensions of the output tensor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span> <span class="o">=</span> <span class="n">out_channels</span>
+
+<div class="viewcode-block" id="Fold1d.extra_repr"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d.extra_repr">[docs]</a>    <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add info about the module to its torch representation.</span>
+
+<span class="sd">        :return: String representation of the object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;out_channels: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+<div class="viewcode-block" id="Fold1d.forward"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.common.processors.html#eta_utility.eta_x.common.processors.Fold1d.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">th</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">th</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a forward pass through the layer.</span>
+
+<span class="sd">        :param tensor: Input tensor</span>
+<span class="sd">        :return: Output tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">th</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span><span class="p">])</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

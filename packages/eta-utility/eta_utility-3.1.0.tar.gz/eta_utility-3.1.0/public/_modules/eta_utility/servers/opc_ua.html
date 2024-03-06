@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.servers.opc_ua &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.servers.opc_ua</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.servers.opc_ua</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Sized</span>
+
+<span class="c1"># Async import</span>
+<span class="kn">import</span> <span class="nn">asyncua.sync</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">asyncua</span> <span class="kn">import</span> <span class="n">ua</span>  <span class="c1"># , Server as asyncServer</span>
+
+<span class="c1"># Sync import</span>
+<span class="kn">from</span> <span class="nn">asyncua.sync</span> <span class="kn">import</span> <span class="n">Server</span><span class="p">,</span> <span class="n">ThreadLoopNotRunning</span>
+<span class="kn">from</span> <span class="nn">asyncua.ua</span> <span class="kn">import</span> <span class="n">uaerrors</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">ensure_timezone</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">url_parse</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">NodeOpcUa</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">types</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span>
+
+    <span class="c1"># Sync import</span>
+    <span class="kn">from</span> <span class="nn">asyncua.sync</span> <span class="kn">import</span> <span class="n">SyncNode</span> <span class="k">as</span> <span class="n">SyncOpcNode</span>
+
+    <span class="c1"># Async import</span>
+    <span class="c1"># FIXME: add async import: from asyncua import Node as asyncSyncOpcNode</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;servers.opcua&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="OpcUaServer"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer">[docs]</a><span class="k">class</span> <span class="nc">OpcUaServer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Provides an OPC UA server with a number of specified nodes. Each node can contain single values or arrays.</span>
+
+<span class="sd">    :param namespace: Namespace of the OPC UA Server.</span>
+<span class="sd">    :param ip: IP Address to listen on (default: None).</span>
+<span class="sd">    :param port: Port to listen on (default: 4840).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4840</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#: URL of the OPC UA Server.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+        <span class="k">if</span> <span class="n">ip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;opc.tcp://</span><span class="si">{</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">())</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;opc.tcp://</span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Server Address is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">url_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="p">:</span> <span class="n">Server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">set_endpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">register_namespace</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">namespace</span><span class="p">))</span>  <span class="c1">#: idx: Namespace of the OPC UA _server</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Server Namespace set to &quot;</span><span class="si">{</span><span class="n">namespace</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">set_security_policy</span><span class="p">([</span><span class="n">ua</span><span class="o">.</span><span class="n">SecurityPolicyType</span><span class="o">.</span><span class="n">NoSecurity</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">set_server_name</span><span class="p">(</span><span class="s2">&quot;ETA Utility OPC UA Server&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<div class="viewcode-block" id="OpcUaServer.write"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write some values directly to the OPC UA server.</span>
+
+<span class="sd">        :param values: Dictionary of data to write {node.name: value}.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">var</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">)</span>
+            <span class="n">opc_type</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">get_data_type_as_variant_type</span><span class="p">()</span>
+            <span class="n">var</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">ua</span><span class="o">.</span><span class="n">Variant</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">opc_type</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="OpcUaServer.read"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read some manually selected values directly from the OPC UA server.</span>
+
+<span class="sd">        :param nodes: List of nodes to read from.</span>
+<span class="sd">        :return: pandas.DataFrame containing current values of the OPC UA-variables.</span>
+<span class="sd">        :raises RuntimeError: When an error occurs during reading.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="n">_dikt</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">opcua_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">opcua_variable</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
+                <span class="n">_dikt</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+            <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdUnknown</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The node id (</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">) refers to a node that does not exist in the server address space &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">. (BadNodeIdUnknown)&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">_dikt</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">ensure_timezone</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())])</span></div>
+
+<div class="viewcode-block" id="OpcUaServer.create_nodes"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.create_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">create_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create nodes on the server from a list of nodes. This will try to create the entire node path.</span>
+
+<span class="sd">        :param nodes: List or set of nodes to create.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">create_object</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="n">SyncOpcNode</span><span class="p">,</span> <span class="n">child</span><span class="p">:</span> <span class="n">NodeOpcUa</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SyncOpcNode</span><span class="p">:</span>
+            <span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SyncOpcNode</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+                <span class="n">ident</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="n">obj</span><span class="o">.</span><span class="n">nodeid</span><span class="o">.</span><span class="n">Identifier</span>
+                <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">opc_path_str</span> <span class="o">==</span> <span class="n">ident</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">obj</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">add_object</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">opc_name</span><span class="p">))</span>
+
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">last_obj</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">get_objects_node</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Create SyncNode from asyncNode</span>
+                    <span class="n">sync_node</span> <span class="o">=</span> <span class="n">asyncua</span><span class="o">.</span><span class="n">sync</span><span class="o">.</span><span class="n">_to_sync</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">tloop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">get_objects_node</span><span class="p">())</span>
+                    <span class="n">last_obj</span> <span class="o">=</span> <span class="n">create_object</span><span class="p">(</span><span class="n">sync_node</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">)):</span>
+                    <span class="n">last_obj</span> <span class="o">=</span> <span class="n">create_object</span><span class="p">(</span><span class="n">last_obj</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_path</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+                <span class="n">init_val</span><span class="p">:</span> <span class="n">Any</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">):</span>
+                    <span class="n">init_val</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+                    <span class="n">init_val</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">bool</span><span class="p">:</span>
+                    <span class="n">init_val</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="n">init_val</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">init_val</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+                <span class="n">last_obj</span><span class="o">.</span><span class="n">add_variable</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">opc_name</span><span class="p">,</span> <span class="n">init_val</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OPC UA Node created: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">uaerrors</span><span class="o">.</span><span class="n">BadNodeIdExists</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node with NodeId : </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="si">}</span><span class="s2"> could not be created. It already exists.&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span></div>
+
+<div class="viewcode-block" id="OpcUaServer.delete_nodes"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.delete_nodes">[docs]</a>    <span class="k">def</span> <span class="nf">delete_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete the given nodes and their parents (if the parents do not have other children).</span>
+
+<span class="sd">        :param nodes: List or set of nodes to be deleted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">delete_node_parents</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">SyncOpcNode</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parents</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_references</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">ua</span><span class="o">.</span><span class="n">BrowseDirection</span><span class="o">.</span><span class="n">Inverse</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">delete_references</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleted Node </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">nodeid</span><span class="si">}</span><span class="s2"> from server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">nodeid</span><span class="si">}</span><span class="s2"> on server </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> has remaining children and was not deleted.&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">delete_node_parents</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">NodeId</span><span class="p">),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">delete_node_parents</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">opc_id</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="OpcUaServer.start"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Restart the server after it was stopped.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="OpcUaServer.stop"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This should always be called, when the server is not needed anymore. It stops the server.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># Occurs only if server did not exist and can be ignored.</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="n">ThreadLoopNotRunning</span><span class="p">:</span>
+            <span class="c1"># Occurs only if server was already stopped (and therefore the ThreadLoop as well) and can be ignored.</span>
+            <span class="k">pass</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">active</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">bserver</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">_serving</span>
+
+<div class="viewcode-block" id="OpcUaServer.allow_remote_admin"><a class="viewcode-back" href="../../../servers/servers.html#eta_utility.servers.opc_ua.OpcUaServer.allow_remote_admin">[docs]</a>    <span class="k">def</span> <span class="nf">allow_remote_admin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allow</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allow remote administration of the server.</span>
+
+<span class="sd">        :param allow: Set to true to enable remote administration of the server.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">aio_obj</span><span class="o">.</span><span class="n">allow_remote_admin</span><span class="p">(</span><span class="n">allow</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_validate_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeOpcUa</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make sure that nodes are a Set of nodes and that all nodes correspond to the protocol and url</span>
+<span class="sd">        of the connection.</span>
+
+<span class="sd">        :param nodes: Sequence of Node objects to validate.</span>
+<span class="sd">        :return: Set of valid Node objects for this connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Sized</span><span class="p">):</span>
+                <span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">nodes</span><span class="p">}</span>
+
+            <span class="c1"># If not using preselected nodes from self.selected_nodes, check if nodes correspond to the connection</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeOpcUa</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Make sure that some nodes remain after the checks and raise an error if there are none.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_nodes</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">_nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Some nodes to read from/write to must be specified. If nodes were specified, they do not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;match the connection </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_nodes</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpcUaServer</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">TracebackType</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

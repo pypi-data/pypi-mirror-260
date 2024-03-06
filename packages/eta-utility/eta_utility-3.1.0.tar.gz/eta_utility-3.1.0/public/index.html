@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ETA Utility Functions &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=72cc831a"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=35a8b989"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Set up Python and Git" href="guide/python_install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ETA Utility Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="eta-utility-functions">
+<span id="eta-utility"></span><h1>ETA Utility Functions<a class="headerlink" href="#eta-utility-functions" title="Permalink to this heading"></a></h1>
+<p>While there are many tools which are useful in the area of energy optimized factory operations, at the
+<a class="reference external" href="https://www.ptw.tu-darmstadt.de">ETA-Fabrik</a> at Technical University of Darmstadt we have recognized a lack of
+comprehensive frameworks which combine functionality for optimization, simulation and communication with
+devices in the factory.</p>
+<p>Therefore, we developed the <em>eta_utility</em> framework, which provides a standardized interface for the development
+of digital twins of factories or machines in a factory. The framework is based on the Gymnasium environment
+and follows a rolling horizon optimization approach. It provides standardized connectors for multiple
+communication protocols, including OPC UA and Modbus TCP. These facilities can be utilized to easily implement
+rolling horizon optimizations for factory systems and to directly control devices in the factory with the
+optimization results.</p>
+<p>Full Documentation can be found on the
+<a class="reference external" href="https://eta-utility.readthedocs.io/">Documentation Page</a>.</p>
+<p>You can find the <a class="reference external" href="https://github.com/PTW-TUDa/eta_utility/">source code on github</a>. If you would like to contribute, please
+check our <a class="reference external" href="https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/">working repository</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is beta software. APIs and functionality might change without prior notice. Please fix the version you
+are using in your requirements to ensure your software will not be broken by changes in <em>eta_utility</em>.</p>
+</div>
+<p>The package <em>eta_utility</em> consists of five main modules and some additional functionality:</p>
+<ul class="simple">
+<li><p><em>eta_x</em> is the rolling horizon optimization module which combines the functionality of the
+other modules. It is based on the <em>gymnasium</em> framework and utilizes
+algorithms and functions from the <em>stable_baselines3</em> package. <em>eta_x</em> also contains extended base classes for
+environments and additional agents (or algorithms).</p></li>
+<li><p>The <em>connectors</em> module provides a standardized way to connect to machines and devices in a
+factory or other factory systems (such as energy management systems). The <strong>connectors</strong> can also
+handle subscriptions, for example to regularly store values in a database.</p></li>
+<li><p>The <em>servers</em> module can be used to easily instantiate servers, for example to publish optimization
+results.</p></li>
+<li><p><em>simulators</em> are interfaces based on the <em>fmpy</em> package which provide a way to simulate FMU
+(Functional Mockup Unit) models.
+The  <em>simulators</em> can be used to perform quick complete simulations or to step through simulation
+models, as would be the case in rolling horizons optimization.</p></li>
+<li><p><em>timeseries</em> is an interface based on the <em>pandas</em> package to load and manipulate timeseries data
+from CSV files. It can for example rename columns, resample data in more complex ways such as
+multiple different resampling intervals or select random time slices from data. The <em>scenario_from_csv</em> function combines much of this functionality.</p></li>
+<li><p>Other functionality includes some general utilities which are available on the top level of the
+package.</p></li>
+</ul>
+<section id="some-particularities">
+<h2>Some particularities<a class="headerlink" href="#some-particularities" title="Permalink to this heading"></a></h2>
+<p>If you want to have logging output from eta utility, call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="n">get_logger</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>eta_utility</strong> uses dataframes to pass timeseries data and the dataframes are ensured to
+contain timezone information where sensible.</p>
+</section>
+<section id="citing-this-project">
+<h2>Citing this project<a class="headerlink" href="#citing-this-project" title="Permalink to this heading"></a></h2>
+<p>Please cite this project using our publication:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Grosch</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="p">,</span> <span class="n">Ranzau</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="p">,</span> <span class="n">Dietrich</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="p">,</span> <span class="n">Kohne</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="p">,</span> <span class="n">Fuhrländer</span><span class="o">-</span><span class="n">Völker</span><span class="p">,</span> <span class="n">D</span><span class="o">.</span><span class="p">,</span> <span class="n">Sossenheimer</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="p">,</span> <span class="n">Lindner</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Weigold</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span>
+<span class="n">A</span> <span class="n">framework</span> <span class="k">for</span> <span class="n">researching</span> <span class="n">energy</span> <span class="n">optimization</span> <span class="n">of</span> <span class="n">factory</span> <span class="n">operations</span><span class="o">.</span>
+<span class="n">Energy</span> <span class="n">Inform</span> <span class="mi">5</span> <span class="p">(</span><span class="n">Suppl</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">29</span> <span class="p">(</span><span class="mi">2022</span><span class="p">)</span><span class="o">.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.1186</span><span class="o">/</span><span class="n">s42162</span><span class="o">-</span><span class="mi">022</span><span class="o">-</span><span class="mi">00207</span><span class="o">-</span><span class="mi">6</span>
+</pre></div>
+</div>
+<p>We would like to thank the many contributors who developed functionality for the package, helped with
+documentation or provided insights which helped to create the framework architecture.</p>
+<ul class="simple">
+<li><p><em>Niklas Panten</em> for the first implementation of the rolling horizon optimization now available in
+<em>eta_x</em>,</p></li>
+<li><p><em>Nina Strobel</em> for the first implementation of the connectors,</p></li>
+<li><p><em>Thomas Weber</em> for contributions to the rolling horizon optimization with MPC algorithms,</p></li>
+<li><p><em>Guilherme Fernandes</em>, <em>Tobias Koch</em>, <em>Tobias Lademann</em>, <em>Saahil Nayyer</em>, <em>Magdalena Patyna</em>, <em>Jerome Stock</em>,</p></li>
+<li><p>and all others who made small and large contributions.</p></li>
+</ul>
+</section>
+<section id="contributions">
+<h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this heading"></a></h2>
+<p>If you would like to contribute, please create an issue in the repository to discuss you suggestions.
+Once the general idea has been agreed upon, you can create a merge request from the issue and
+implement your changes there.</p>
+<p>Please read the development guide before starting development on <em>eta_utility</em>: <a class="reference internal" href="guide/development.html#development"><span class="std std-ref">Contributing to development</span></a>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Information for students at ETA-Factory: Student work stations do not have direct access
+to the factory network. If you need access for your experiments, please discuss options with
+the research assistants.</p>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="guide/python_install.html" class="btn btn-neutral float-right" title="Set up Python and Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

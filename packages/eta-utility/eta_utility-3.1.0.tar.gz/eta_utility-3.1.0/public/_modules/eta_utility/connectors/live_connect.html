@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.live_connect &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.live_connect</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.live_connect</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Initiate live connections that automate certain tasks associated with the creation of such connections.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="ne">TimeoutError</span> <span class="k">as</span> <span class="n">ConTimeoutError</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">AbstractContextManager</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">json_import</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors</span> <span class="kn">import</span> <span class="n">connections_from_nodes</span><span class="p">,</span> <span class="n">name_map_from_node_sequence</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">Node</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">types</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.connectors.base_classes</span> <span class="kn">import</span> <span class="n">BaseConnection</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;connectors.live&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LiveConnect"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect">[docs]</a><span class="k">class</span> <span class="nc">LiveConnect</span><span class="p">(</span><span class="n">AbstractContextManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connect to a system/resource and enable system activation, deactivation and configuring controller setpoints.</span>
+
+<span class="sd">    The class can be initialized directly by supplying all required arguments or from a JSON configuration file.</span>
+
+<span class="sd">    If initializing with the from_json classmethod, the class takes a JSON config file which defines all</span>
+<span class="sd">    required nodes. The JSON file should have the following format:</span>
+
+<span class="sd">        * **system**: Define the system to be controlled. This is the top level block - it may have multiple dictionary</span>
+<span class="sd">          members which should each specify all the following information. If there are multiple systems, all</span>
+<span class="sd">          node names will be prefixed with the system name. For example, if the system name is &#39;chp&#39; and the node</span>
+<span class="sd">          name is &#39;op_request&#39;, the full node name will be &#39;chp.op_request&#39;.</span>
+<span class="sd">        * **name**: A name to uniquely identify the system.</span>
+<span class="sd">        * **servers**: Servers which are responsible for manageing the system. This section should contain a dictionary</span>
+<span class="sd">          of servers, identified by a unique name. Each server has the following values:</span>
+
+<span class="sd">            * **url**: URL of the server (format: netloc:port, without the scheme).</span>
+<span class="sd">            * **protocol**: Protocol for the connection, for example &#39;opcua&#39;.</span>
+<span class="sd">            * **usr**: Username to identify with the server (default: None).</span>
+<span class="sd">            * **pwd**: Password to log in to the server (default: None).</span>
+<span class="sd">        * **nodes**: The nodes section contains a list of nodes. Each node is specific to one of the servers specified</span>
+<span class="sd">          above and has a unique name, by which it can be identified. In detail, each node has the following values:</span>
+
+<span class="sd">            * **name**: A name to uniquely identify the node.</span>
+<span class="sd">            * **server**: Identifier of one of the servers defined above.</span>
+<span class="sd">            * **dtype**: Data type of the Node on the server (default: float).</span>
+<span class="sd">            * Other values must be defined depending on the protocol, for example this could be an **opc_id** or</span>
+<span class="sd">              corresponding values to identify modbus nodes. More detail about this can be found in connectors.Nodes.</span>
+<span class="sd">        * **set_value**: The set_value is the main value, which should be manipulated. It must have some additional</span>
+<span class="sd">          information to be processed correctly. This includes:</span>
+
+<span class="sd">            * **name**: Name of the node, which is manipulated as the set_value.</span>
+<span class="sd">            * **min**: Minimum value to be allowed.</span>
+<span class="sd">            * **max**: Maximum value to be allowed.</span>
+<span class="sd">            * **threshold**: Activation/Deactivation threshold. The activate action will be executed for values above</span>
+<span class="sd">              the threshold and the deactivation action will be executed for values below the threshold (see below).</span>
+<span class="sd">            * **add**: Scale the set_value by adding a set amount.</span>
+<span class="sd">            * **mult**: Scale the set_value by multiplying by this factor.</span>
+<span class="sd">        * **activation_indicators**: The values specified in this section are used to determine, whether the system is</span>
+<span class="sd">          currently active. This is a dictionary of nodes and values, these nodes should be compared against. Each node</span>
+<span class="sd">          is identified by the name specified above. Each node must have the following values:</span>
+
+<span class="sd">            * **compare**: Comparison operation to perform (for example &#39;==&#39; or &#39;&lt;=&#39;).</span>
+<span class="sd">            * **value**: Value to compare against. If the result of all comparisons is True, the system is considered</span>
+<span class="sd">              to be currently active.</span>
+<span class="sd">        * **observe**: Values to return after each set operation. This is just a list of node names as specified in</span>
+<span class="sd">          the nodes section above.</span>
+<span class="sd">        * **actions**: In the actions section, default values for more complex operations are specified. For example,</span>
+<span class="sd">          if a system needs to be initialized or deactivated. Each of the actions is a dictionary of node names</span>
+<span class="sd">          and corresponding values, for example {node1: true, node2: 0.2}. The following actions are defined:</span>
+
+<span class="sd">            * **init**: Initialize the system. This is used to make sure that the system is ready to receive control</span>
+<span class="sd">              values from the connector.</span>
+<span class="sd">            * **activate**: Activate the system. This is used to set the system to an active state, for example by</span>
+<span class="sd">              requesting the system to start its operation and choosing and operating mode. This can be used to set</span>
+<span class="sd">              the system up to receive more detailed control values.</span>
+<span class="sd">            * **deactivate**: Execute any actions to deactivate the system.</span>
+<span class="sd">            * **close**: Reset the system. This is used when the connector is closed, to make sure the system is left</span>
+<span class="sd">              in a safe and clean state.</span>
+
+<span class="sd">    If initializing manually, each of the actions and some other information must be specified as parameters to the</span>
+<span class="sd">    class. This way, the class will not automatically identify different systems and will instead assume that all</span>
+<span class="sd">    parameters belong to the same system. If system differentiation is required, the node prefixing must be done</span>
+<span class="sd">    manually. The third option is to initialize from a dictionary using the from_dict function. This works equivalent to</span>
+<span class="sd">    the from_json function.</span>
+
+<span class="sd">    .. warning ::</span>
+<span class="sd">        Always call the close function after you are done using the connection! This is required even if no nodes</span>
+<span class="sd">        must be written to reset the system since the connection itself must be closed. Therefore, this class should</span>
+<span class="sd">        only be called within a try-finally clause. Alternatively the class can be used as a context manager in a with</span>
+<span class="sd">        statement.</span>
+
+<span class="sd">    :param name: Name to uniquely identify the system. The name is also used as the default system prefix.</span>
+<span class="sd">    :param nodes: Sequence/List of Nodes, which should be used for the actions and for initializing connections.</span>
+<span class="sd">    :param step_size: Step size (time) for the live connector in time increments.</span>
+<span class="sd">    :param init: Nodes for initializing the system (see above).</span>
+<span class="sd">    :param activate: Nodes for activating the system (see above).</span>
+<span class="sd">    :param deactivate: Nodes for deactivating the system (see above).</span>
+<span class="sd">    :param close: Nodes to close the connection and reset the system (see above).</span>
+<span class="sd">    :param observe: Nodes to read from and return after each &#39;set&#39; operation (see above).</span>
+<span class="sd">    :param activation_indicators: Nodes that determine, whether the system must be deactivated or activated. This</span>
+<span class="sd">                                  is used internally in conjunction with the set_value threshold to determine whether</span>
+<span class="sd">                                  the activate/deactivate methods must be called before setting values.</span>
+<span class="sd">    :param set_values: Specification of the node which is used for setting the main control value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">],</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">max_error_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">init</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">activate</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">deactivate</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">close</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">observe</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">activation_indicators</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">set_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#: Name of the system.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="c1">#: Connection objects to the resources.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">BaseConnection</span><span class="p">]</span> <span class="o">=</span> <span class="n">connections_from_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="c1">#: Mapping of all nodes.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AnyNode</span><span class="p">]</span> <span class="o">=</span> <span class="n">name_map_from_node_sequence</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="c1">#: Mapping of node names to connections.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connection_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_connection_map</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node without hostname supplied: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1">#: Start time of initialisation.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="c1">#: Step size (time) for the live connector in time increments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">step_size</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_size</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">step_size</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+        <span class="c1">#: Current step of the live connector (number of completed steps).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_counter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#: Maximum error count when connections in read/write function are aborted.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_error_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">max_error_count</span>
+        <span class="c1">#: Counts the number of errors when Live Connector logs errors.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_config_nodes</span><span class="p">(</span><span class="n">activate</span><span class="p">,</span> <span class="n">activation_indicators</span><span class="p">,</span> <span class="n">close</span><span class="p">,</span> <span class="n">deactivate</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">observe</span><span class="p">,</span> <span class="n">set_values</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_vals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_vals</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init_config_nodes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">activate</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">activation_indicators</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">close</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">deactivate</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">init</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">observe</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">set_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">#: Nodes for initializing the system.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_vals</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_value_mapping</span><span class="p">(</span>
+            <span class="n">init</span><span class="p">,</span> <span class="n">e_msg</span><span class="o">=</span><span class="s2">&quot;Not all nodes required for initialization are configured as nodes.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="c1">#: Nodes for closing the connection.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_vals</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_value_mapping</span><span class="p">(</span>
+            <span class="n">close</span><span class="p">,</span> <span class="n">e_msg</span><span class="o">=</span><span class="s2">&quot;Not all nodes required for closing the object are configured as nodes.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="c1">#: Nodes for activating the system.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_activate_vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_activate_vals</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_value_mapping</span><span class="p">(</span>
+            <span class="n">activate</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">e_msg</span><span class="o">=</span><span class="s2">&quot;Not all nodes required for system activation are configured as nodes.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="c1">#: Nodes for deactivating the system.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deactivate_vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_deactivate_vals</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_value_mapping</span><span class="p">(</span>
+            <span class="n">deactivate</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">e_msg</span><span class="o">=</span><span class="s2">&quot;Not all nodes required for system deactivation are configured as nodes.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="c1">#: Nodes to observe.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">observe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">sys_val</span> <span class="ow">in</span> <span class="n">observe</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sys_val</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">sys_val</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sys_val</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">sys_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sys_val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Not all observation nodes of the object are configured as nodes.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1">#: Configuration for the step set value.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">set_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="n">setval</span> <span class="o">=</span> <span class="n">set_values</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">set_values</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="k">else</span> <span class="n">set_values</span>
+            <span class="k">for</span> <span class="n">sys_setval</span> <span class="ow">in</span> <span class="n">setval</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sys_setval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">sys_setval</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sys_setval</span>
+                    <span class="n">nds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">sys_setval</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;node&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">nds</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Not all nodes required for setting control values are configured as nodes.&quot;</span><span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">keys</span><span class="p">,</span> <span class="n">set_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="n">set_value</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;mult&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="n">set_value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1">#: Indicator to keep track of to know whether the system must be activated or deactivated. If this is not</span>
+        <span class="c1">#: set, the user must keep track of when the activation and deactivation functions need to be called. This</span>
+        <span class="c1">#: may not be necessary for all systems.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_value_mapping</span><span class="p">(</span>
+            <span class="n">activation_indicators</span><span class="p">,</span>
+            <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">e_msg</span><span class="o">=</span><span class="s2">&quot;Not all nodes required for checking system activation are configured as nodes.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">or</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Not all required nodes are configured.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_read_value_mapping</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">e_msg</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a list of values and deserialize it to a mapping.</span>
+
+<span class="sd">        :param values: Values to deserialize.</span>
+<span class="sd">        :param flatten: Output into a single layer (not separated by system).</span>
+<span class="sd">        :param e_msg: Error message to log if function fails.</span>
+<span class="sd">        :return: Tuple of deserialized values and bool indicating an error if true.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">_vals</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">sys_val</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sys_val</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="n">flatten</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sys_val</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">_vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="k">elif</span> <span class="n">sys_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">_vals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys_val</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="n">_vals</span>
+            <span class="k">if</span> <span class="n">flatten</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">sys_val</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">sys_val</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">break</span>
+                <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e_msg</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">sys_val</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">sys_val</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_val</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e_msg</span><span class="p">)</span>
+                        <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">errors</span>
+
+<div class="viewcode-block" id="LiveConnect.from_json"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.from_json">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">files</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+        <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">max_error_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LiveConnect</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection directly from JSON configuration files. The file should contain parameters</span>
+<span class="sd">        as described above. A list of file names can be supplied to enable the creation of larger, combined systems.</span>
+
+<span class="sd">        Username and password supplied as keyword arguments will take precedence over information given in</span>
+<span class="sd">        the config file.</span>
+
+<span class="sd">        :param files: Configuration file paths. Accepts a single file or a list of files.</span>
+<span class="sd">        :param usr: Username for authentication with the resource.</span>
+<span class="sd">        :param pwd: Password for authentication with the resource.</span>
+<span class="sd">        :param step_size: Step size (time) for the live connector in time increments.</span>
+<span class="sd">        :return: LiveConnect instance as specified by the JSON file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">files</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="k">else</span> <span class="n">files</span>
+
+        <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">file</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">json_import</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;JSON file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> must define a dictionary of options.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;system&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">,</span> <span class="n">max_error_count</span><span class="o">=</span><span class="n">max_error_count</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LiveConnect.from_dict"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">step_size</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">max_error_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LiveConnect</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection directly from a config dictionary. The dictionary should contain parameters</span>
+<span class="sd">        as described above.</span>
+
+<span class="sd">        Username and password supplied as keyword arguments will take precedence over information given in</span>
+<span class="sd">        the config file.</span>
+
+<span class="sd">        :param usr: Username for authentication with the resource.</span>
+<span class="sd">        :param pwd: Password for authentication with the resource.</span>
+<span class="sd">        :param step_size: Step size (time) for the live connector in time increments.</span>
+<span class="sd">        :param config: Configuration dictionary.</span>
+<span class="sd">        :return: LiveConnect instance as specified by the JSON file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_check_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># Initialize the connector objects</span>
+        <span class="n">_act_indicators</span><span class="p">,</span> <span class="n">_actions</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">_observe</span><span class="p">,</span> <span class="n">_set_values</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_config</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">usr</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">nodes</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">step_size</span><span class="o">=</span><span class="n">step_size</span><span class="p">,</span>
+            <span class="n">max_error_count</span><span class="o">=</span><span class="n">max_error_count</span><span class="p">,</span>
+            <span class="n">init</span><span class="o">=</span><span class="n">_actions</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">],</span>
+            <span class="n">activate</span><span class="o">=</span><span class="n">_actions</span><span class="p">[</span><span class="s2">&quot;activate&quot;</span><span class="p">],</span>
+            <span class="n">deactivate</span><span class="o">=</span><span class="n">_actions</span><span class="p">[</span><span class="s2">&quot;deactivate&quot;</span><span class="p">],</span>
+            <span class="n">close</span><span class="o">=</span><span class="n">_actions</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">],</span>
+            <span class="n">observe</span><span class="o">=</span><span class="n">_observe</span><span class="p">,</span>
+            <span class="n">activation_indicators</span><span class="o">=</span><span class="n">_act_indicators</span><span class="p">,</span>
+            <span class="n">set_values</span><span class="o">=</span><span class="n">_set_values</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_check_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_req_settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;servers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">},</span> <span class="s2">&quot;nodes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;server&quot;</span><span class="p">}}</span>
+        <span class="k">if</span> <span class="s2">&quot;system&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">],</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s2">&quot;Could not find a valid &#39;system&#39; section in the configuration&quot;</span><span class="p">)</span>
+        <span class="c1"># Check that all required parameters are present in config</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">system</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">sect</span> <span class="ow">in</span> <span class="n">_req_settings</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">sect</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">system</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Required parameter &#39;</span><span class="si">{</span><span class="n">sect</span><span class="si">}</span><span class="s2">&#39; not found in configuration.&quot;</span><span class="p">)</span>
+                    <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_req_settings</span><span class="p">[</span><span class="n">sect</span><span class="p">]:</span>
+                        <span class="n">sec</span> <span class="o">=</span> <span class="n">system</span><span class="p">[</span><span class="n">sect</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">system</span><span class="p">[</span><span class="n">sect</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">)</span> <span class="k">else</span> <span class="n">system</span><span class="p">[</span><span class="n">sect</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sec</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+                                <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Required parameter &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; not found in config section &#39;</span><span class="si">{</span><span class="n">sect</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                                <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Not all required config parameters were found. Exiting.&quot;</span><span class="p">)</span>
+            <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_read_config</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="nb">list</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">],</span>
+        <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="p">]:</span>
+        <span class="c1"># Make sure all the required sections exist - they are just none if they are not in the file.</span>
+        <span class="n">_nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">_set_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">_act_indicators</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">_observe</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">_actions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;activate&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;deactivate&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;init&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;close&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+        <span class="k">for</span> <span class="n">system</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]:</span>
+            <span class="c1"># Combine config for nodes with server config and add system name to nodes</span>
+            <span class="k">for</span> <span class="n">_node</span> <span class="ow">in</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]:</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="n">_node</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">server</span> <span class="o">=</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;servers&quot;</span><span class="p">][</span><span class="n">n</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;server&quot;</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="s2">&quot;usr&quot;</span> <span class="ow">in</span> <span class="n">server</span> <span class="ow">and</span> <span class="s2">&quot;pwd&quot;</span> <span class="ow">in</span> <span class="n">server</span><span class="p">:</span>
+                    <span class="n">usr</span> <span class="o">=</span> <span class="n">server</span><span class="p">[</span><span class="s2">&quot;usr&quot;</span><span class="p">]</span>
+                    <span class="n">pwd</span> <span class="o">=</span> <span class="n">server</span><span class="p">[</span><span class="s2">&quot;pwd&quot;</span><span class="p">]</span>
+
+                <span class="n">_nodes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="n">Node</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">n</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">server</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
+                            <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">server</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">],</span>
+                            <span class="s2">&quot;usr&quot;</span><span class="p">:</span> <span class="n">usr</span><span class="p">,</span>
+                            <span class="s2">&quot;pwd&quot;</span><span class="p">:</span> <span class="n">pwd</span><span class="p">,</span>
+                            <span class="o">**</span><span class="n">n</span><span class="p">,</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Rename set_value</span>
+            <span class="k">if</span> <span class="s2">&quot;set_value&quot;</span> <span class="ow">in</span> <span class="n">system</span> <span class="ow">and</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;set_value&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">_set_values</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;set_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">_set_values</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;set_value&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># type: ignore</span>
+                <span class="n">_set_values</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span>
+                    <span class="s2">&quot;node&quot;</span>
+                <span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;set_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;set_value&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># type: ignore</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_set_values</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Convert activation_indicators</span>
+            <span class="k">if</span> <span class="s2">&quot;activation_indicators&quot;</span> <span class="ow">in</span> <span class="n">system</span> <span class="ow">and</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;activation_indicators&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">act_i</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;activation_indicators&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">act_i</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="n">_act_indicators</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">act_i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_act_indicators</span><span class="p">[</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Convert observations</span>
+            <span class="k">if</span> <span class="s2">&quot;observe&quot;</span> <span class="ow">in</span> <span class="n">system</span> <span class="ow">and</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;observe&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">_observe</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;observe&quot;</span><span class="p">])</span>
+
+            <span class="c1"># Convert actions</span>
+            <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;init&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="s2">&quot;activate&quot;</span><span class="p">,</span> <span class="s2">&quot;deactivate&quot;</span><span class="p">}:</span>
+                <span class="k">if</span> <span class="s2">&quot;actions&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">system</span><span class="p">:</span>
+                    <span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">elif</span> <span class="n">action</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">][</span><span class="n">action</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">act</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">system</span><span class="p">[</span><span class="s2">&quot;actions&quot;</span><span class="p">][</span><span class="n">action</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">act</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">system</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="n">_actions</span><span class="p">[</span><span class="n">action</span><span class="p">][</span><span class="n">system</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">act</span>
+        <span class="k">return</span> <span class="n">_act_indicators</span><span class="p">,</span> <span class="n">_actions</span><span class="p">,</span> <span class="n">_nodes</span><span class="p">,</span> <span class="n">_observe</span><span class="p">,</span> <span class="n">_set_values</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Node</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mapping of all node objects of the connection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current activation status of the system, as determined by the activation_indicator.</span>
+
+<span class="sd">        :param system: System for which activation status should be checked.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">check_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;==&quot;</span><span class="p">:</span> <span class="s2">&quot;__eq__&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;__gt__&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">:</span> <span class="s2">&quot;__lt__&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">:</span> <span class="s2">&quot;__gte__&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">:</span> <span class="s2">&quot;__lte__&quot;</span><span class="p">}</span>
+
+        <span class="c1"># If activation_indicators are specified, read them and identify the status, otherwise the system is</span>
+        <span class="c1"># considered to be always active.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">system</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot check status of unknown system </span><span class="si">{</span><span class="n">system</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">[</span><span class="n">system</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">[</span><span class="n">system</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">check</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_indicators</span><span class="p">[</span><span class="n">system</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">check_map</span><span class="p">[</span><span class="n">check</span><span class="p">[</span><span class="s2">&quot;compare&quot;</span><span class="p">]])(</span><span class="n">check</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]))</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown comparison operation </span><span class="si">{</span><span class="n">check</span><span class="p">[</span><span class="s1">&#39;compare&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">activated</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">activated</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">activated</span>
+
+<div class="viewcode-block" id="LiveConnect.step"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take the set_value and determine, whether the system must be activated or deactivated. Then set the value</span>
+<span class="sd">        and finally read and return all values as specified by the &#39;observe&#39; parameter.</span>
+
+<span class="sd">        :param value: Value to use as the control value/set_value.</span>
+<span class="sd">        :return: Values read from the connection as specified by &#39;observe&#39; parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">write</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">:</span>
+                <span class="n">system</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;min&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;min&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">val</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;max&quot;</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Set value for node </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> is out of bounds. Value: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">; &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Bounds: [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;max&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">].&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="c1"># Determine activation status and activate or deactivate the system correspondingly</span>
+                <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;threshold&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">val</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;threshold&quot;</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">deactivate</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+
+                <span class="n">write</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;node&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;add&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_values</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;mult&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">write</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># Write the scaled control value and return the observed values.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">write</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">steps_counter</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">)</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Step_size between write and read function is too small&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_observe_vals</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="LiveConnect.write"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write any combination of nodes and values.</span>
+
+<span class="sd">        :param nodes: Mapping of Nodes and values or Sequence of node names to write to.</span>
+<span class="sd">        :param values: If nodes are given as a Sequence, this second parameter determined the values to be written.</span>
+<span class="sd">                       If nodes are given as a Mapping, this parameter is not required. It defaults to None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Determine, whether nodes and values are given as a mapping in the nodes parameter or separately, using both</span>
+        <span class="c1"># parameters. In the second case, create the mapping.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot only give nodes or values, specify both.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Each node must have a corresponding value for writing. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Nodes and values must be of equal length. Given lengths are&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;nodes&#39;: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span><span class="si">}</span><span class="s2">, &#39;values&#39;: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="c1"># Sort nodes to be written by connection</span>
+        <span class="n">writes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">url</span><span class="p">:</span> <span class="p">{}</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">_nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+            <span class="n">writes</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_connection_map</span><span class="p">[</span><span class="n">n</span><span class="p">]][</span><span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># Write to all selected nodes for each connection</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">connection</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">writes</span><span class="p">[</span><span class="n">connection</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">[</span><span class="n">connection</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">writes</span><span class="p">[</span><span class="n">connection</span><span class="p">])</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ConnectionError</span><span class="p">,</span> <span class="n">ConTimeoutError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_error_count</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span></div>
+
+<div class="viewcode-block" id="LiveConnect.read"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">nodes</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of nodes and return their names and most recent values.</span>
+
+<span class="sd">        :param nodes: One or more nodes to read.</span>
+<span class="sd">        :return: Dictionary of the most current node values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Sort nodes to be read by connection</span>
+        <span class="n">reads</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span><span class="n">url</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+            <span class="n">reads</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_connection_map</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+
+        <span class="c1"># Read from all selected nodes for each connection</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">connection</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">reads</span><span class="p">[</span><span class="n">connection</span><span class="p">]:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connections</span><span class="p">[</span><span class="n">connection</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">reads</span><span class="p">[</span><span class="n">connection</span><span class="p">])</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ConnectionError</span><span class="p">,</span> <span class="n">ConTimeoutError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_error_count</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">error_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">name</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">reads</span><span class="p">[</span><span class="n">connection</span><span class="p">]})</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="LiveConnect.activate"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.activate">[docs]</a>    <span class="k">def</span> <span class="nf">activate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take the list of nodes to activate and set them to the correct values to activate the system.</span>
+
+<span class="sd">        :param system: System for which should be activated (default: self.name).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">system</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">system</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">_system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activated</span><span class="p">(</span><span class="n">_system</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activate_vals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activate_vals</span><span class="p">[</span><span class="n">_system</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_activate_vals</span><span class="p">[</span><span class="n">_system</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="LiveConnect.deactivate"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.deactivate">[docs]</a>    <span class="k">def</span> <span class="nf">deactivate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take the list of nodes to deactivate and set them to the correct values to deactivate the system.</span>
+
+<span class="sd">        :param system: System for which should be activated (default: self.name).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">system</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">system</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">_system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activated</span><span class="p">(</span><span class="n">_system</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deactivate_vals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deactivate_vals</span><span class="p">[</span><span class="n">_system</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_deactivate_vals</span><span class="p">[</span><span class="n">_system</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="LiveConnect.close"><a class="viewcode-back" href="../../../connectors/live_connect.html#eta_utility.connectors.live_connect.LiveConnect.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the system and close the connection.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_close_vals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_close_vals</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LiveConnect</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">BaseException</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">TracebackType</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

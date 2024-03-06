@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.timeseries.dataframes &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.timeseries.dataframes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.timeseries.dataframes</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Simple helpers for reading timeseries data from a csv file and getting slices or resampled data. This module</span>
+<span class="sd">handles data using pandas dataframe objects.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">operator</span> <span class="k">as</span> <span class="nn">op</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;timeseries&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="df_from_csv"><a class="viewcode-back" href="../../../timeseries/timeseries.html#eta_utility.timeseries.dataframes.df_from_csv">[docs]</a><span class="k">def</span> <span class="nf">df_from_csv</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span>
+    <span class="n">infer_datetime_from</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dates&quot;</span><span class="p">,</span>
+    <span class="n">time_conversion_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Take data from a csv file, process it and return a Timeseries (pandas Data Frame) object.</span>
+
+<span class="sd">    Open and read the .csv file, perform error checks and ensure that valid float values are obtained. This</span>
+<span class="sd">    assumes that the first column is always the date and time column and provides multiple methods to convert</span>
+<span class="sd">    this column. It also assumes that the first row is the header row.</span>
+<span class="sd">    The header row is converted to lower case and spaces are converted to _. If header values contain special</span>
+<span class="sd">    characters, everything starting from the first special character is discarded.</span>
+
+<span class="sd">    :param path: Path to the .csv file.</span>
+<span class="sd">    :param delimiter: Delimiter used between csv fields.</span>
+<span class="sd">    :param infer_datetime_from: Specify how date and time values should be inferred. This can be &#39;dates&#39; or &#39;string&#39;</span>
+<span class="sd">                                or a tuple/list with two values.</span>
+
+<span class="sd">                                * If &#39;dates&#39; is specified, pandas will be used to automatically infer the datetime</span>
+<span class="sd">                                  format from the file.</span>
+<span class="sd">                                * If &#39;string&#39; is specified, the parameter &#39;time_conversion_str&#39; must specify the</span>
+<span class="sd">                                  string (in python strptime format) to convert datetime values.</span>
+<span class="sd">                                * If a tuple/list of two values is given, the time format specification (according to</span>
+<span class="sd">                                  python strptime format) will be read from the specified field in the .csv</span>
+<span class="sd">                                  file (&#39;row&#39;, &#39;column&#39;).</span>
+
+<span class="sd">    :param time_conversion_str: Time conversion string according to the python (strptime) format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">path</span>
+
+    <span class="n">conversion_string</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">infer_datetime_format</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">parse_dates</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="ow">and</span> <span class="n">infer_datetime_from</span> <span class="o">==</span> <span class="s2">&quot;dates&quot;</span><span class="p">:</span>
+        <span class="n">infer_datetime_format</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="ow">and</span> <span class="n">infer_datetime_from</span> <span class="o">==</span> <span class="s2">&quot;string&quot;</span><span class="p">:</span>
+        <span class="n">conversion_string</span> <span class="o">=</span> <span class="n">time_conversion_str</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">}:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Field for date format must be specified in the format [&#39;row&#39;, &#39;col&#39;]. &quot;</span>
+                <span class="s2">&quot;Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;infer_datetime_from must be one of &#39;dates&#39;, &#39;string&#39;, or a tuple of (&#39;row&#39;, &#39;col&#39;), &quot;</span>
+            <span class="s2">&quot;Got: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Read names from header and format them such that they can be used easily as dataframe indices.</span>
+    <span class="c1"># If required by infer_datetime_from also read time format from the file.</span>
+    <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">first_line</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">infer_datetime_from</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">infer_datetime_from</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                        <span class="n">conversion_line</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">conversion_line</span> <span class="o">=</span> <span class="n">first_line</span>
+                <span class="n">conversion_string</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span> <span class="o">+</span> <span class="n">conversion_line</span><span class="p">[</span><span class="n">infer_datetime_from</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">EOFError</span><span class="p">(</span>
+                <span class="s2">&quot;The CSV file does not contain the specified date format field </span><span class="si">{}</span><span class="s2">. </span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;File path: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">infer_datetime_from</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Find number of fields, names of fields and a conversion string for time</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_line</span><span class="p">)</span>
+        <span class="n">splitter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[^A-Za-z0-9 _-]&quot;</span><span class="p">)</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">first_line</span><span class="p">]</span>
+
+    <span class="c1"># Load the CSV file</span>
+    <span class="k">if</span> <span class="n">infer_datetime_format</span><span class="p">:</span>
+        <span class="n">parse_dates</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">converter</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">fval</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fval</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fval</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">path</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
+        <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">parse_dates</span><span class="o">=</span><span class="n">parse_dates</span><span class="p">,</span>
+        <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="n">y</span><span class="p">:</span> <span class="n">converter</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">)},</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">conversion_string</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">conversion_string</span><span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded data from csv file: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="find_time_slice"><a class="viewcode-back" href="../../../timeseries/timeseries.html#eta_utility.timeseries.dataframes.find_time_slice">[docs]</a><span class="k">def</span> <span class="nf">find_time_slice</span><span class="p">(</span>
+    <span class="n">time_begin</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">time_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">total_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">round_to_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">random</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">datetime</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a (potentially random) slicing interval that can be used to slice a data frame.</span>
+
+<span class="sd">    :param time_begin: Date and time of the beginning of the interval to slice from.</span>
+<span class="sd">    :param time_end: Date and time of the ending of the interval to slice from.</span>
+<span class="sd">    :param total_time: Specify the total time of the sliced interval. An integer will be interpreted as seconds.</span>
+<span class="sd">                       If this argument is None, the complete interval between beginning and end will be returned.</span>
+<span class="sd">    :param round_to_interval: Round times to a specified interval, this value is interpreted as seconds if given as</span>
+<span class="sd">                              an int. Default is no rounding.</span>
+<span class="sd">    :param random: If this value is true, or a random generator is supplied, it will be used to generate a</span>
+<span class="sd">                   random slice of length total_time in the interval between time_begin and time_end.</span>
+<span class="sd">    :return: Tuple of slice_begin time and slice_end time. Both times are datetime objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Determine ending time and total time depending on what was supplied.</span>
+    <span class="k">if</span> <span class="n">time_end</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">total_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">time_end</span> <span class="o">-</span> <span class="n">time_begin</span>
+    <span class="k">elif</span> <span class="n">total_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">total_time</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">total_time</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">total_time</span>
+        <span class="n">time_end</span> <span class="o">=</span> <span class="n">time_begin</span> <span class="o">+</span> <span class="n">total_time</span> <span class="k">if</span> <span class="n">time_end</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">time_end</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least one of time_end and total_time must be specified to fully constrain the interval.&quot;</span><span class="p">)</span>
+
+    <span class="n">round_to_interval</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">round_to_interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">round_to_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">round_to_interval</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Determine the (possibly random) beginning time of the time slice and round it if necessary</span>
+    <span class="k">if</span> <span class="n">random</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="n">random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;Using an unseeded random generator for time slicing. This will not produce deterministic &quot;</span> <span class="s2">&quot;results.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">time_gap</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span> <span class="o">-</span> <span class="n">time_begin</span> <span class="o">-</span> <span class="n">total_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">time_gap</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;Could not use random time sampling because the gap between the required starting and ending &quot;</span>
+                <span class="s2">&quot;times is too small.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">slice_begin</span> <span class="o">=</span> <span class="n">time_begin</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span> <span class="o">*</span> <span class="n">time_gap</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">slice_begin</span> <span class="o">=</span> <span class="n">time_begin</span>
+    <span class="k">if</span> <span class="n">round_to_interval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">round_to_interval</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slice_begin</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">((</span><span class="n">slice_begin</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">//</span> <span class="n">round_to_interval</span><span class="p">)</span> <span class="o">*</span> <span class="n">round_to_interval</span><span class="p">)</span>
+
+    <span class="c1"># Determine the ending time of the time slice and round it if necessary</span>
+    <span class="n">slice_end</span> <span class="o">=</span> <span class="n">slice_begin</span> <span class="o">+</span> <span class="n">total_time</span>
+    <span class="k">if</span> <span class="n">round_to_interval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">round_to_interval</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slice_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">((</span><span class="n">slice_end</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">//</span> <span class="n">round_to_interval</span><span class="p">)</span> <span class="o">*</span> <span class="n">round_to_interval</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">slice_begin</span><span class="p">,</span> <span class="n">slice_end</span></div>
+
+
+<div class="viewcode-block" id="df_time_slice"><a class="viewcode-back" href="../../../timeseries/timeseries.html#eta_utility.timeseries.dataframes.df_time_slice">[docs]</a><span class="k">def</span> <span class="nf">df_time_slice</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">time_begin</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="n">time_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">total_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">round_to_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">random</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a data frame which has been sliced starting at time_begin and ending at time_end, from df.</span>
+
+<span class="sd">    :param df: Original data frame to be sliced.</span>
+<span class="sd">    :param time_begin: Date and time of the beginning of the interval to slice from.</span>
+<span class="sd">    :param time_end: Date and time of the ending of the interval to slice from.</span>
+<span class="sd">    :param total_time: Specify the total time of the sliced interval. An integer will be interpreted as seconds.</span>
+<span class="sd">                       If this argument is None, the complete interval between beginning and end will be returned.</span>
+<span class="sd">    :param round_to_interval: Round times to a specified interval, this value is interpreted as seconds if given as</span>
+<span class="sd">                              an int. Default is no rounding.</span>
+<span class="sd">    :param random: If this value is true, or a random generator is supplied, it will be used to generate a</span>
+<span class="sd">                   random slice of length total_time in the interval between time_begin and time_end.</span>
+<span class="sd">    :return: Sliced data frame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">slice_begin</span><span class="p">,</span> <span class="n">slice_end</span> <span class="o">=</span> <span class="n">find_time_slice</span><span class="p">(</span><span class="n">time_begin</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="n">total_time</span><span class="p">,</span> <span class="n">round_to_interval</span><span class="p">,</span> <span class="n">random</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">slice_begin</span><span class="p">:</span><span class="n">slice_end</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="df_resample"><a class="viewcode-back" href="../../../timeseries/timeseries.html#eta_utility.timeseries.dataframes.df_resample">[docs]</a><span class="k">def</span> <span class="nf">df_resample</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">*</span><span class="n">periods_deltas</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">TimeStep</span><span class="p">],</span> <span class="n">missing_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Resample the time index of a data frame. This method can be used for resampling in multiple different</span>
+<span class="sd">    periods with multiple different deltas between single time entries.</span>
+
+<span class="sd">    :param df: DataFrame for processing.</span>
+<span class="sd">    :param periods_deltas: If one argument is specified, this will resample the data to the specified interval</span>
+<span class="sd">                           in seconds. If more than one argument is specified, they will be interpreted as</span>
+<span class="sd">                           (periods, interval) pairs. The first argument specifies a number of periods that should</span>
+<span class="sd">                           be resampled, the second value specifies the interval that these periods should be</span>
+<span class="sd">                           resampled to. A third argument would determine the next number of periods that should</span>
+<span class="sd">                           be resampled to the interval specified by the fourth argument and so on.</span>
+<span class="sd">    :param missing_data: Specify a method for handling missing data values. If this is not specified, missing data</span>
+<span class="sd">                         will not be handled. All missing data handling functions for pandas dataframes are valid.</span>
+<span class="sd">                         See also: https://pandas.pydata.org/docs/reference/frame.html#missing-data-handling. Some</span>
+<span class="sd">                         examples: &#39;interpolate&#39;, &#39;fillna&#39; (default: asfreq).</span>
+<span class="sd">    :return: Copy of the DataFrame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">missing_data</span> <span class="o">==</span> <span class="s2">&quot;fillna&quot;</span><span class="p">:</span>
+        <span class="n">interpolation_method</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">methodcaller</span><span class="p">(</span><span class="n">missing_data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">missing_data</span> <span class="o">==</span> <span class="s2">&quot;interpolate&quot;</span><span class="p">:</span>
+        <span class="n">interpolation_method</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">methodcaller</span><span class="p">(</span><span class="n">missing_data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">missing_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">interpolation_method</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">methodcaller</span><span class="p">(</span><span class="s2">&quot;asfreq&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">interpolation_method</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">methodcaller</span><span class="p">(</span><span class="n">missing_data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">is_unique</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Index has non-unique values. Dropping duplicates: &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">periods_deltas</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">periods_deltas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">periods_deltas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">periods_deltas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">new_df</span> <span class="o">=</span> <span class="n">interpolation_method</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;S&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="n">total_periods</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">periods_deltas</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+                <span class="n">periods_deltas</span><span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">periods_deltas</span><span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">timedelta</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">periods_deltas</span><span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="n">interpolation_method</span><span class="p">(</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">total_periods</span> <span class="p">:</span> <span class="n">periods_deltas</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">total_periods</span> <span class="o">+=</span> <span class="n">periods_deltas</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;Resampled Dataframe has missing values. Before using this data, ensure you deal with the missing values. &quot;</span>
+            <span class="s2">&quot;For example, you could interpolate(), fillna() or dropna().&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_df</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

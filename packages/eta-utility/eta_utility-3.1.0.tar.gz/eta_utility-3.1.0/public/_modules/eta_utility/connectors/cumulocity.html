@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.cumulocity &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.cumulocity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.cumulocity</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">NodeCumulocity</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="kn">from</span> <span class="nn">.base_classes</span> <span class="kn">import</span> <span class="n">BaseSeriesConnection</span><span class="p">,</span> <span class="n">SubscriptionHandler</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;connectors.cumulocity&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="CumulocityConnection"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection">[docs]</a><span class="k">class</span> <span class="nc">CumulocityConnection</span><span class="p">(</span><span class="n">BaseSeriesConnection</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;cumulocity&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    CumulocityConnection is a class to download and upload multiple features from and to the Cumulocity database as</span>
+<span class="sd">    timeseries.</span>
+
+<span class="sd">    :param url: URL of the server without scheme (https://).</span>
+<span class="sd">    :param usr: Username in Cumulocity for login.</span>
+<span class="sd">    :param pwd: Password in Cumulocity for login.</span>
+<span class="sd">    :param tenant: Cumulocity tenant.</span>
+<span class="sd">    :param nodes: Nodes to select in connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">tenant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tenant</span> <span class="o">=</span> <span class="n">tenant</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Username must be provided for the Cumulocity connector.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Password must be provided for the Cumulocity connector.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_ids</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_ids_raw</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeCumulocity</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_node</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CumulocityConnection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection object from an Cumulocity protocol node object</span>
+
+<span class="sd">        :param node: Node to initialize from.</span>
+<span class="sd">        :param usr: Username for Cumulocity login.</span>
+<span class="sd">        :param pwd: Password for Cumulocity login.</span>
+<span class="sd">        :param kwargs: Keyword arguments for API authentication, where &quot;tenant&quot; is required</span>
+<span class="sd">        :return: CumulocityConnection object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;tenant&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Keyword parameter &#39;tenant&#39; is missing.&quot;</span><span class="p">)</span>
+        <span class="n">tenant</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;tenant&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">protocol</span> <span class="o">==</span> <span class="s2">&quot;cumulocity&quot;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeCumulocity</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">tenant</span><span class="o">=</span><span class="n">tenant</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Tried to initialize CumulocityConnection from a node that does not specify cumulocity as its&quot;</span>
+                <span class="s2">&quot;protocol: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="CumulocityConnection.read"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download current value from the Cumulocity Database</span>
+
+<span class="sd">        :param nodes: List of nodes to read values from.</span>
+<span class="sd">        :return: pandas.DataFrame containing the data read from the connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">base_time</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># minutes</span>
+        <span class="n">the_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_series</span><span class="p">(</span><span class="n">the_time</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">base_time</span><span class="p">),</span> <span class="n">the_time</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">base_time</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.write"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">values</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">measurement_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write values to the cumulocity Database</span>
+
+<span class="sd">        :param values: Pandas Series containing the data. Make sure the index is a Datetimeindex.</span>
+<span class="sd">                        If fragment is not specified for node,</span>
+<span class="sd">                        make sure the pd.Series has name since it will be used as replacement.</span>
+<span class="sd">        :param measurement_type: The type of the measurement to be written.</span>
+<span class="sd">        :param unit: The unit of the values.</span>
+<span class="sd">        :param nodes: List of nodes to write values to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_auth_header</span><span class="p">()</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="c1"># convert numpy values to native paython values since numpy values are not json serializable</span>
+        <span class="k">def</span> <span class="nf">myconverter</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+
+        <span class="c1"># iterate over nodes</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">/measurement/measurements&quot;</span>
+
+            <span class="c1"># iterate over values to upload</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">fragment</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="n">fragment_name</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">fragment_name</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">fragment</span>
+
+                <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">device_id</span><span class="p">},</span>
+                    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">measurement_type</span><span class="p">,</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">measurement</span><span class="p">:</span> <span class="p">{</span><span class="n">fragment_name</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="n">unit</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">values</span><span class="p">[</span><span class="n">idx</span><span class="p">]}},</span>
+                <span class="p">}</span>
+
+                <span class="c1"># upload values</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_request</span><span class="p">(</span>
+                    <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">myconverter</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.subscribe"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available. This will return only the</span>
+<span class="sd">        last available values.</span>
+
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs.</span>
+<span class="sd">        :param interval: Interval for receiving new data. It is interpreted as seconds when given as an integer.</span>
+<span class="sd">        :param nodes: Identifiers for the nodes to subscribe to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscribe_series</span><span class="p">(</span><span class="n">handler</span><span class="o">=</span><span class="n">handler</span><span class="p">,</span> <span class="n">req_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span> <span class="n">data_interval</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.read_series"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.read_series">[docs]</a>    <span class="k">def</span> <span class="nf">read_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">from_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">to_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download timeseries data from the Cumulocity Database</span>
+
+<span class="sd">        :param nodes: List of nodes to read values from.</span>
+<span class="sd">        :param from_time: Starting time to begin reading.</span>
+<span class="sd">        :param to_time: Time to stop reading at.</span>
+<span class="sd">        :param interval: Interval between time steps.</span>
+<span class="sd">                        It is interpreted as seconds if given as integer (ignored by this connector).</span>
+<span class="sd">        :param kwargs: Other parameters (ignored by this connector).</span>
+<span class="sd">        :return: Pandas DataFrame containing the data read from the connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="c1"># specify read function for ThreadpoolExecutor</span>
+        <span class="k">def</span> <span class="nf">read_node</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">NodeCumulocity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+            <span class="n">request_url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">/measurement/measurements?dateFrom=</span><span class="si">{}</span><span class="s2">&amp;dateTo=</span><span class="si">{}</span><span class="s2">&amp;source=</span><span class="si">{}</span><span class="s2">&amp;valueFragmentSeries=</span><span class="si">{}</span><span class="s2">&amp;pageSize=2000&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>  <span class="c1"># noqa</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timestr_from_datetime</span><span class="p">(</span><span class="n">from_time</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timestr_from_datetime</span><span class="p">(</span><span class="n">to_time</span><span class="p">),</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">device_id</span><span class="p">,</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">fragment</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_auth_header</span><span class="p">()</span>
+
+            <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Sequentially retrieve the data from cumulocity database</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+                <span class="n">data_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+                    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+                        <span class="n">r</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">measurement</span><span class="p">][</span><span class="n">node</span><span class="o">.</span><span class="n">fragment</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;measurements&quot;</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">measurement</span> <span class="ow">in</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">fragment</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">measurement</span><span class="p">]</span>
+                    <span class="p">),</span>
+                    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="n">r</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
+                            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;measurements&quot;</span><span class="p">]</span>
+                            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">measurement</span> <span class="ow">in</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">fragment</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">measurement</span><span class="p">]</span>
+                        <span class="p">],</span>
+                        <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">Z&quot;</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">],</span>
+                    <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float64&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_tmp</span><span class="p">)</span>
+
+                <span class="c1"># Stopping criteria for data collection</span>
+                <span class="k">if</span> <span class="n">data_tmp</span><span class="o">.</span><span class="n">empty</span> <span class="ow">or</span> <span class="s2">&quot;next&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">request_url</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;next&quot;</span><span class="p">]</span>
+
+            <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Time (with timezone)&quot;</span>
+            <span class="k">return</span> <span class="n">data</span>
+
+        <span class="c1"># parallelize download from multiple nodes</span>
+        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">read_node</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.subscribe_series"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.subscribe_series">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span>
+        <span class="n">req_interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">data_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available. This will always return a series of values.</span>
+<span class="sd">        If nodes with different intervals should be subscribed, multiple connection objects are needed.</span>
+
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs.</span>
+<span class="sd">        :param req_interval: Duration covered by requested data (time interval). Interpreted as seconds if given as int.</span>
+<span class="sd">        :param offset: Offset from datetime.now from which to start requesting data (time interval).</span>
+<span class="sd">                       Interpreted as seconds if given as int. Use negative values to go to past timestamps.</span>
+<span class="sd">        :param data_interval: Time interval between values in returned data. Interpreted as seconds if given as int.</span>
+<span class="sd">        :param interval: interval (between requests) for receiving new data.</span>
+<span class="sd">                         It is interpreted as seconds when given as an integer.</span>
+<span class="sd">        :param nodes: Identifiers for the nodes to subscribe to.</span>
+<span class="sd">        :param kwargs: Other, ignored parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="n">req_interval</span> <span class="o">=</span> <span class="n">req_interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">req_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">req_interval</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">req_interval</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
+        <span class="n">data_interval</span> <span class="o">=</span> <span class="n">data_interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">data_interval</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span>
+            <span class="c1"># Adding nodes to subscription is enough to include them in the query. Do not start an additional loop</span>
+            <span class="c1"># if one already exists</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_loop</span><span class="p">(</span>
+                <span class="n">handler</span><span class="p">,</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()),</span>
+                <span class="n">req_interval</span><span class="p">,</span>
+                <span class="n">offset</span><span class="p">,</span>
+                <span class="n">data_interval</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.create_device"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.create_device">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_device</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tenant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">device_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a cumulocity device.</span>
+
+<span class="sd">        :param url: URL of the server without scheme (https://).</span>
+<span class="sd">        :param usr: Username in Cumulocity for login.</span>
+<span class="sd">        :param pwd: Password in Cumulocity for login.</span>
+<span class="sd">        :param tenant: Cumulocity tenant.</span>
+<span class="sd">        :param device_name: Name of the to be created device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">auth_header</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tenant</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)),</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Basic </span><span class="si">{</span><span class="n">auth_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
+            <span class="s2">&quot;c8y_IsDevice&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="p">}</span>
+
+        <span class="n">request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/inventory/managedObjects&quot;</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">CumulocityConnection</span><span class="o">.</span><span class="n">_raw_request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.get_measurement_ids_by_device"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.get_measurement_ids_by_device">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_measurement_ids_by_device</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tenant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">device_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of all measurement IDs that the specified device holds.</span>
+
+<span class="sd">        :param url: URL of the server without scheme (https://).</span>
+<span class="sd">        :param usr: Username in Cumulocity for login.</span>
+<span class="sd">        :param pwd: Password in Cumulocity for login.</span>
+<span class="sd">        :param tenant: Cumulocity tenant.</span>
+<span class="sd">        :param device_id: ID of the device to retrieve the measurement IDs from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">auth_header</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tenant</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)),</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Basic </span><span class="si">{</span><span class="n">auth_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+        <span class="n">request_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/measurement/measurements?source=</span><span class="si">{</span><span class="n">device_id</span><span class="si">}</span><span class="s2">&amp;pageSize=2000&quot;</span>
+
+        <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Sequentially collect all measuremnt IDs from device</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">CumulocityConnection</span><span class="o">.</span><span class="n">_raw_request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;measurements&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+                    <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="s2">&quot;next&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">or</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;measurements&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]:</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">request_url</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;next&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">data_list</span></div>
+
+<div class="viewcode-block" id="CumulocityConnection.close_sub"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.close_sub">[docs]</a>    <span class="k">def</span> <span class="nf">close_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close an open subscription.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sub</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_subscription_loop</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">req_interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">data_interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The subscription loop handles requesting data from the server in the specified interval</span>
+
+<span class="sd">        :param handler: Handler object with a push function to receive data.</span>
+<span class="sd">        :param interval: Interval for requesting data in seconds.</span>
+<span class="sd">        :param req_interval: Duration covered by the requested data.</span>
+<span class="sd">        :param offset: Offset from datetime.now from which to start requesting data (time interval).</span>
+<span class="sd">                       Use negative values to go to past timestamps.</span>
+<span class="sd">        :param data_interval: Interval between data points.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+        <span class="n">req_interval</span> <span class="o">=</span> <span class="n">req_interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">req_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">req_interval</span><span class="p">)</span>
+        <span class="n">data_interval</span> <span class="o">=</span> <span class="n">data_interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">data_interval</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">from_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">offset</span>
+            <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_open</span><span class="p">:</span>
+                <span class="n">to_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">+</span> <span class="n">req_interval</span>
+
+                <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_series</span><span class="p">(</span><span class="n">from_time</span><span class="p">,</span> <span class="n">to_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">data_interval</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_nodes</span><span class="p">:</span>
+                    <span class="n">handler</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+
+                <span class="n">from_time</span> <span class="o">=</span> <span class="n">to_time</span>
+
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exc</span> <span class="o">=</span> <span class="n">e</span>
+
+<div class="viewcode-block" id="CumulocityConnection.timestr_from_datetime"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.timestr_from_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">timestr_from_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an Cumulocity compatible time string.</span>
+
+<span class="sd">        :param dt: Datetime object to convert to string.</span>
+<span class="sd">        :return: Cumulocity compatible time string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;Z&quot;</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_raw_request</span><span class="p">(</span><span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">headers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform Cumulocity request and handle possibly resulting errors.</span>
+
+<span class="sd">        :param method: HTTP request method.</span>
+<span class="sd">        :param endpoint: Endpoint for the request (server URI is added automatically).</span>
+<span class="sd">        :param kwargs: Additional arguments for the request.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Check for request errors</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="mi">200</span><span class="p">,</span>
+            <span class="mi">201</span><span class="p">,</span>
+            <span class="mi">204</span><span class="p">,</span>
+        <span class="p">]:</span>  <span class="c1"># Status 200 for GET requests, 204 for POST requests</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Cumulocity Error </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;message&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">():</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Authentication has failed, or credentials were required but not provided.&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: You are not authorized to access the API.&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Endpoint not found &#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">endpoint</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">500</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Internal error: request could not be processed.&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">503</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Server is unavailable&quot;</span>
+
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+    <span class="k">def</span> <span class="nf">_validate_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">NodeCumulocity</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
+        <span class="n">vnodes</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">vnodes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeCumulocity</span><span class="p">):</span>
+                <span class="n">_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_nodes</span>
+
+<div class="viewcode-block" id="CumulocityConnection.get_auth_header"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.cumulocity.html#eta_utility.connectors.cumulocity.CumulocityConnection.get_auth_header">[docs]</a>    <span class="k">def</span> <span class="nf">get_auth_header</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">auth_header</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tenant</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)),</span>
+            <span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Basic </span><span class="si">{</span><span class="n">auth_header</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">headers</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

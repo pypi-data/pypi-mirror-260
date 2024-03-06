@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.entso_e &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.entso_e</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.entso_e</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Utility functions for connecting to the ENTSO-E Transparency database and for reading data. This connector</span>
+<span class="sd">does not have the ability to write data.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">from</span> <span class="nn">lxml.builder</span> <span class="kn">import</span> <span class="n">E</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.connectors.node</span> <span class="kn">import</span> <span class="n">NodeEntsoE</span>
+<span class="kn">from</span> <span class="nn">eta_utility.timeseries</span> <span class="kn">import</span> <span class="n">df_resample</span><span class="p">,</span> <span class="n">df_time_slice</span>
+<span class="kn">from</span> <span class="nn">eta_utility.util</span> <span class="kn">import</span> <span class="n">dict_search</span><span class="p">,</span> <span class="n">round_timestamp</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="kn">from</span> <span class="nn">.base_classes</span> <span class="kn">import</span> <span class="n">BaseSeriesConnection</span><span class="p">,</span> <span class="n">SubscriptionHandler</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;connectors.entso-e&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ENTSOEConnection"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection">[docs]</a><span class="k">class</span> <span class="nc">ENTSOEConnection</span><span class="p">(</span><span class="n">BaseSeriesConnection</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;entsoe&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ENTSOEConnection is a class to download and upload multiple features from and to the ENTSO-E transparency platform</span>
+<span class="sd">    database as timeseries. The platform contains data about the european electricity markets.</span>
+
+<span class="sd">    :param url: Url of the server with scheme (https://web-api.tp.entsoe.eu/)</span>
+<span class="sd">    :param usr: Username for login to the platform (usually not required - default: None)</span>
+<span class="sd">    :param pwd: Password for login to the platform (usually not required - default: None)</span>
+<span class="sd">    :param api_token: Token for API authentication</span>
+<span class="sd">    :param nodes: Nodes to select in connection</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">API_PATH</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/api&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;https://web-api.tp.entsoe.eu/&quot;</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">api_token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">API_PATH</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api_token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">api_token</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_node_ids</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">_ConnectionConfiguration</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_from_node</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ENTSOEConnection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection object from an entso-e protocol node object</span>
+
+<span class="sd">        :param node: Node to initialize from</span>
+<span class="sd">        :param kwargs: Keyword arguments for API authentication, where &quot;api_token&quot; is required</span>
+<span class="sd">        :return: ENTSOEConnection object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;api_token&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Missing required function parameter api_token.&quot;</span><span class="p">)</span>
+        <span class="n">api_token</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;api_token&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">protocol</span> <span class="o">==</span> <span class="s2">&quot;entsoe&quot;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">NodeEntsoE</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">api_token</span><span class="o">=</span><span class="n">api_token</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Tried to initialize ENTSOEConnection from a node that does not specify entso-e as its&quot;</span>
+                <span class="s2">&quot;protocol: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="ENTSOEConnection.read"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. warning::</span>
+<span class="sd">            Cannot read single values from ENTSO-E transparency platform. Use read_series instead</span>
+
+<span class="sd">        :param nodes: List of nodes to read values from</span>
+<span class="sd">        :return: Pandas DataFrame containing the data read from the connection</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot read single values from ENTSO-E transparency platform. Use read_series instead&quot;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ENTSOEConnection.write"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">datetime</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">time_interval</span><span class="p">:</span> <span class="n">timedelta</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. warning::</span>
+<span class="sd">            Cannot write to ENTSO-E transparency platform.</span>
+
+<span class="sd">        :param values: Dictionary of nodes and data to write. {node: value}</span>
+<span class="sd">        :param time_interval: Interval between datapoints (i.e. between &quot;From&quot; and &quot;To&quot; in EnEffCo Upload), default 1s</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Cannot write to ENTSO-E transparency platform.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ENTSOEConnection.subscribe"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.subscribe">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available. This will return only the</span>
+<span class="sd">        last available values.</span>
+
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs</span>
+<span class="sd">        :param interval: interval for receiving new data. It is interpreted as seconds when given as an integer.</span>
+<span class="sd">        :param nodes: identifiers for the nodes to subscribe to</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscribe_series</span><span class="p">(</span><span class="n">handler</span><span class="o">=</span><span class="n">handler</span><span class="p">,</span> <span class="n">req_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">interval</span><span class="p">,</span> <span class="n">data_interval</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_handle_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xml_content</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform XML data from request response into dictionary containig resolutions and time series for the node.</span>
+
+<span class="sd">        :param xml_content: XML data</span>
+<span class="sd">        :return: Dictionary with resolutions and time series data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">XMLParser</span><span class="p">(</span><span class="n">load_dtd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ns_clean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_pis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">xml_data</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">XML</span><span class="p">(</span><span class="n">xml_content</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span>
+        <span class="n">ns</span> <span class="o">=</span> <span class="n">xml_data</span><span class="o">.</span><span class="n">nsmap</span>
+        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">request_type</span> <span class="o">=</span> <span class="n">xml_data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//type&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+        <span class="n">timeseries</span> <span class="o">=</span> <span class="n">xml_data</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;.//TimeSeries&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">timeseries</span><span class="p">:</span>
+            <span class="c1"># Day-Ahead Price</span>
+            <span class="k">if</span> <span class="n">request_type</span> <span class="o">==</span> <span class="s2">&quot;A44&quot;</span><span class="p">:</span>
+                <span class="n">col_name</span> <span class="o">=</span> <span class="s2">&quot;Price&quot;</span>
+
+            <span class="c1"># Actual Generation per Type</span>
+            <span class="k">if</span> <span class="n">request_type</span> <span class="o">==</span> <span class="s2">&quot;A75&quot;</span><span class="p">:</span>
+                <span class="n">psr_type</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//MktPSRType&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;psrType&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">col_name</span> <span class="o">=</span> <span class="n">dict_search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">psr_types</span><span class="p">,</span> <span class="n">psr_type</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">ts</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//inBiddingZone_Domain.mRID&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">col_name</span> <span class="o">=</span> <span class="n">col_name</span> <span class="o">+</span> <span class="s2">&quot;_Generation&quot;</span>
+                <span class="k">elif</span> <span class="n">ts</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//outBiddingZone_Domain.mRID&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">col_name</span> <span class="o">=</span> <span class="n">col_name</span> <span class="o">+</span> <span class="s2">&quot;_Consumption&quot;</span>
+
+            <span class="c1"># contains the data points</span>
+            <span class="n">period</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//Period&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+
+            <span class="c1"># datetime range of the data points</span>
+            <span class="n">time_interval</span> <span class="o">=</span> <span class="n">period</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//timeInterval&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">getchildren</span><span class="p">()</span>
+            <span class="n">resolution</span> <span class="o">=</span> <span class="n">period</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//resolution&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># truncating string PR60M</span>
+            <span class="n">datetime_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+                <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%MZ&quot;</span><span class="p">),</span>
+                <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%MZ&quot;</span><span class="p">),</span>
+                <span class="n">freq</span><span class="o">=</span><span class="n">resolution</span> <span class="o">+</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span>
+                <span class="n">inclusive</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">points</span> <span class="o">=</span> <span class="n">period</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;.//Point&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span>
+            <span class="n">ts_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">point</span><span class="o">.</span><span class="n">getchildren</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">ts_data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">datetime_range</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">col_name</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="s2">&quot;UTC&quot;</span><span class="p">)</span>  <span class="c1"># ENTSO-E returns always UTC</span>
+
+            <span class="k">if</span> <span class="n">resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">resolution</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="k">if</span> <span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">resolution</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">resolution</span><span class="p">][</span><span class="n">col_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">data</span><span class="p">[</span><span class="n">resolution</span><span class="p">][</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+<div class="viewcode-block" id="ENTSOEConnection.read_series"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.read_series">[docs]</a>    <span class="k">def</span> <span class="nf">read_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">from_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">to_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download timeseries data from the ENTSO-E Database</span>
+
+<span class="sd">        :param nodes: List of nodes to read values from</span>
+<span class="sd">        :param from_time: Starting time to begin reading (included in output)</span>
+<span class="sd">        :param to_time: Time to stop reading at (not included in output)</span>
+<span class="sd">        :param interval: interval between time steps. It is interpreted as seconds if given as integer.</span>
+<span class="sd">        :return: Pandas DataFrame containing the data read from the connection</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">interval</span><span class="p">)</span>
+
+        <span class="n">from_time</span> <span class="o">=</span> <span class="n">round_timestamp</span><span class="p">(</span><span class="n">from_time</span><span class="p">,</span> <span class="n">interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+        <span class="n">to_time</span> <span class="o">=</span> <span class="n">round_timestamp</span><span class="p">(</span><span class="n">to_time</span><span class="p">,</span> <span class="n">interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">from_time</span><span class="o">.</span><span class="n">tzinfo</span> <span class="o">!=</span> <span class="n">to_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Timezone of from_time and to_time are different. Using from_time timezone: </span><span class="si">{</span><span class="n">from_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">read_node</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">NodeEntsoE</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">create_params</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">from_time</span><span class="p">,</span> <span class="n">to_time</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_request</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_xml</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+            <span class="n">df_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1"># All resolutions are resampled separatly and concatenated to one dataframe in the end</span>
+            <span class="k">for</span> <span class="n">resolution</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">data_resolution</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">series</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">resolution</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">}</span>
+                <span class="n">df_resolution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data_resolution</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+                <span class="c1"># entsoe always returns a dataframe in UTC time, convert to same time zone as given from_time</span>
+                <span class="n">df_resolution</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_resolution</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">from_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+                <span class="n">df_resolution</span> <span class="o">=</span> <span class="n">df_resample</span><span class="p">(</span><span class="n">df_resolution</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">missing_data</span><span class="o">=</span><span class="s2">&quot;fillna&quot;</span><span class="p">)</span>
+                <span class="n">df_resolution</span> <span class="o">=</span> <span class="n">df_time_slice</span><span class="p">(</span><span class="n">df_resolution</span><span class="p">,</span> <span class="n">from_time</span><span class="p">,</span> <span class="n">to_time</span><span class="p">)</span>
+                <span class="n">df_dict</span><span class="p">[</span><span class="n">resolution</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_resolution</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_dict</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">df_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">df</span>
+
+        <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">read_node</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span></div>
+
+<div class="viewcode-block" id="ENTSOEConnection.subscribe_series"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.subscribe_series">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span>
+        <span class="n">req_interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">data_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. warning::</span>
+<span class="sd">            Not implemented: Cannot subscribe to data from the ENTSO-E transparency platform.</span>
+
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs</span>
+<span class="sd">        :param req_interval: Duration covered by requested data (time interval). Interpreted as seconds if given as int</span>
+<span class="sd">        :param offset: Offset from datetime.now from which to start requesting data (time interval).</span>
+<span class="sd">                       Interpreted as seconds if given as int. Use negative values to go to past timestamps.</span>
+<span class="sd">        :param data_interval: Time interval between values in returned data. Interpreted as seconds if given as int.</span>
+<span class="sd">        :param interval: interval (between requests) for receiving new data.</span>
+<span class="sd">                         It it interpreted as seconds when given as an integer.</span>
+<span class="sd">        :param nodes: identifiers for the nodes to subscribe to</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Cannot subscribe to data from the ENTSO-E transparency platform.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ENTSOEConnection.close_sub"><a class="viewcode-back" href="../../../connectors/connectors.html#eta_utility.connectors.entso_e.ENTSOEConnection.close_sub">[docs]</a>    <span class="k">def</span> <span class="nf">close_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        .. warning::</span>
+<span class="sd">            Not implemented: Cannot subscribe to data from the ENTSO-E transparency platform.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Cannot subscribe to data from the ENTSO-E transparency platform.&quot;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_raw_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform ENTSO-E request and handle possibly resulting errors.</span>
+
+<span class="sd">        :param params: Parameters to identify the endpoint</span>
+<span class="sd">        :param kwargs: Additional arguments for the request.</span>
+<span class="sd">        :return: request response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Prepare the basic request for usage in the requests.</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/xml&quot;</span><span class="p">,</span> <span class="s2">&quot;SECURITY_TOKEN&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_token</span><span class="p">}</span>
+
+        <span class="n">xml</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">xml_head</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">xml</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">xml_param</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">xml</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># Check for request errors</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">e_code</span> <span class="o">=</span> <span class="mi">000</span>
+            <span class="n">e_text</span> <span class="o">=</span> <span class="s2">&quot;No Message Text&quot;</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">400</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">parser</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">XMLParser</span><span class="p">(</span><span class="n">load_dtd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ns_clean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_pis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                    <span class="n">e_msg</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">XML</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span>
+                    <span class="n">ns</span> <span class="o">=</span> <span class="n">e_msg</span><span class="o">.</span><span class="n">nsmap</span>
+                    <span class="n">e_code</span> <span class="o">=</span> <span class="n">e_msg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//Reason&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                    <span class="n">e_text</span> <span class="o">=</span> <span class="n">e_msg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.//Reason&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">e_text</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+            <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ENTSO-E Error </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">e_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e_text</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Access Forbidden, Invalid access token&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Endpoint not found &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">500</span><span class="p">:</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">: Server is unavailable&quot;</span>
+
+            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span></div>
+
+
+<span class="k">class</span> <span class="nc">_ConnectionConfiguration</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auxiliary class to configure the parameters for establish connection to ENTSO-E API.</span>
+
+<span class="sd">    Currently, the connection class only supports two types of data requests through the method read_series, they are:</span>
+<span class="sd">    **Energy price day ahead** and **Actual energy generation per type**. All the data requests available are listed in</span>
+<span class="sd">    the _doc_type class attribute, but each of them contains a mandatory list of parameters to establish the connection,</span>
+<span class="sd">    which can be seemed in the ENTSO-E documentation_.</span>
+
+<span class="sd">    .. _documentation: https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: XML Namespace for the API</span>
+    <span class="n">_xmlns</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;urn:iec62325.351:tc57wg16:451-5:statusrequestdocument:4:0&quot;</span>
+
+    <span class="c1">#: bidding zones is a mapping of three letter iso country codes to bidding zones.</span>
+    <span class="n">_bidding_zones</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;DEU&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A83F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DEU-AUT-LUX&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A63L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ALB&quot;</span><span class="p">:</span> <span class="s2">&quot;10YAL-KESH-----5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AUT&quot;</span><span class="p">:</span> <span class="s2">&quot;10YAT-APG------L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BLR&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A51S&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BEL&quot;</span><span class="p">:</span> <span class="s2">&quot;10YBE----------2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BIH&quot;</span><span class="p">:</span> <span class="s2">&quot;10YBA-JPCC-----D&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BGR&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCA-BULGARIA-R&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CZE-DEU-SVK&quot;</span><span class="p">:</span> <span class="s2">&quot;10YDOM-CZ-DE-SKK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HRV&quot;</span><span class="p">:</span> <span class="s2">&quot;10YHR-HEP------M&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CYP&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCY-1001A0003J&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CZE&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCZ-CEPS-----N&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DEU-LUX&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A82H&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DNK_west&quot;</span><span class="p">:</span> <span class="s2">&quot;10YDK-1--------W&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DNK_central&quot;</span><span class="p">:</span> <span class="s2">&quot;10YDK-2--------M&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;EST&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A39I&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FIN&quot;</span><span class="p">:</span> <span class="s2">&quot;10YFI-1--------U&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MKD&quot;</span><span class="p">:</span> <span class="s2">&quot;10YMK-MEPSO----8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FRA&quot;</span><span class="p">:</span> <span class="s2">&quot;10YFR-RTE------C&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GB&quot;</span><span class="p">:</span> <span class="s2">&quot;17Y0000009369493&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GRC&quot;</span><span class="p">:</span> <span class="s2">&quot;10YGR-HTSO-----Y&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;HUN&quot;</span><span class="p">:</span> <span class="s2">&quot;10YHU-MAVIR----U&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;IRL&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A59C&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_brindisi&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A699&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_calabria&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001C--00096J&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_central_north&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A70O&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_central_south&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A71M&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_foggia&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A72K&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA-GRC&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A66F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_malta&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A877&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_north&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A73I&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA-AUT&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A80L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA-CHE&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A68B&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA-FRA&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A81J&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA-SVN&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A67D&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_priolo&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A76C&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_rossano&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A77A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_sardinia&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A74G&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_sicily&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A75E&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ITA_south&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A788&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RUS_kaliningrad&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A50U&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LVA&quot;</span><span class="p">:</span> <span class="s2">&quot;10YLV-1001A00074&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LTU&quot;</span><span class="p">:</span> <span class="s2">&quot;10YLT-1001A0008Q&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LUX&quot;</span><span class="p">:</span> <span class="s2">&quot;10YLU-CEGEDEL-NQ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MLT&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A93C&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MNE&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCS-CG-TSO---S&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GBR&quot;</span><span class="p">:</span> <span class="s2">&quot;10YGB----------A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NLD&quot;</span><span class="p">:</span> <span class="s2">&quot;10YNL----------L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NOR_1&quot;</span><span class="p">:</span> <span class="s2">&quot;10YNO-1--------2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NOR_2&quot;</span><span class="p">:</span> <span class="s2">&quot;10YNO-2--------T&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NOR_3&quot;</span><span class="p">:</span> <span class="s2">&quot;10YNO-3--------J&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NOR_4&quot;</span><span class="p">:</span> <span class="s2">&quot;10YNO-4--------9&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NOR_5&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A48H&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;POL&quot;</span><span class="p">:</span> <span class="s2">&quot;10YPL-AREA-----S&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PRT&quot;</span><span class="p">:</span> <span class="s2">&quot;10YPT-REN------W&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MDA&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A990&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ROU&quot;</span><span class="p">:</span> <span class="s2">&quot;10YRO-TEL------P&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RUS&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A49F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SWE_1&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A44P&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SWE_2&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A45N&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SWE_3&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A46L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SWE_4&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001A1001A47J&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SRB&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCS-SERBIATSOV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SVK&quot;</span><span class="p">:</span> <span class="s2">&quot;10YSK-SEPS-----K&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SVN&quot;</span><span class="p">:</span> <span class="s2">&quot;10YSI-ELES-----O&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ESP&quot;</span><span class="p">:</span> <span class="s2">&quot;10YES-REE------0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SWE&quot;</span><span class="p">:</span> <span class="s2">&quot;10YSE-1--------K&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CHE&quot;</span><span class="p">:</span> <span class="s2">&quot;10YCH-SWISSGRIDZ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TUR&quot;</span><span class="p">:</span> <span class="s2">&quot;10YTR-TEIAS----W&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UKR&quot;</span><span class="p">:</span> <span class="s2">&quot;10Y1001C--00003F&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_market_agreements</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Daily&quot;</span><span class="p">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Weekly&quot;</span><span class="p">:</span> <span class="s2">&quot;A02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Monthly&quot;</span><span class="p">:</span> <span class="s2">&quot;A03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Yearly&quot;</span><span class="p">:</span> <span class="s2">&quot;A04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="s2">&quot;A05&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Long term&quot;</span><span class="p">:</span> <span class="s2">&quot;A06&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Intraday&quot;</span><span class="p">:</span> <span class="s2">&quot;A07&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hourly&quot;</span><span class="p">:</span> <span class="s2">&quot;A13&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_auction_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Implicit&quot;</span><span class="p">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Explicit&quot;</span><span class="p">:</span> <span class="s2">&quot;A02&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_auction_categories</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Base&quot;</span><span class="p">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Peak&quot;</span><span class="p">:</span> <span class="s2">&quot;A02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Off Peak&quot;</span><span class="p">:</span> <span class="s2">&quot;A03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hourly&quot;</span><span class="p">:</span> <span class="s2">&quot;A04&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_psr_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Mixed&quot;</span><span class="p">:</span> <span class="s2">&quot;A03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Generation&quot;</span><span class="p">:</span> <span class="s2">&quot;A04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Load&quot;</span><span class="p">:</span> <span class="s2">&quot;A05&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Biomass&quot;</span><span class="p">:</span> <span class="s2">&quot;B01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Brown coal/Lignite&quot;</span><span class="p">:</span> <span class="s2">&quot;B02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Coal-derived gas&quot;</span><span class="p">:</span> <span class="s2">&quot;B03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Gas&quot;</span><span class="p">:</span> <span class="s2">&quot;B04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Hard coal&quot;</span><span class="p">:</span> <span class="s2">&quot;B05&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Oil&quot;</span><span class="p">:</span> <span class="s2">&quot;B06&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Oil shale&quot;</span><span class="p">:</span> <span class="s2">&quot;B07&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fossil Peat&quot;</span><span class="p">:</span> <span class="s2">&quot;B08&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Geothermal&quot;</span><span class="p">:</span> <span class="s2">&quot;B09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hydro Pumped Storage&quot;</span><span class="p">:</span> <span class="s2">&quot;B10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hydro Run-of-river and poundage&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hydro Water Reservoir&quot;</span><span class="p">:</span> <span class="s2">&quot;B12&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Marine&quot;</span><span class="p">:</span> <span class="s2">&quot;B13&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Nuclear&quot;</span><span class="p">:</span> <span class="s2">&quot;B14&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Other renewable&quot;</span><span class="p">:</span> <span class="s2">&quot;B15&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Solar&quot;</span><span class="p">:</span> <span class="s2">&quot;B16&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Waste&quot;</span><span class="p">:</span> <span class="s2">&quot;B17&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Wind Offshore&quot;</span><span class="p">:</span> <span class="s2">&quot;B18&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Wind Onshore&quot;</span><span class="p">:</span> <span class="s2">&quot;B19&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Other&quot;</span><span class="p">:</span> <span class="s2">&quot;B20&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AC Link&quot;</span><span class="p">:</span> <span class="s2">&quot;B21&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DC Link&quot;</span><span class="p">:</span> <span class="s2">&quot;B22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Substation&quot;</span><span class="p">:</span> <span class="s2">&quot;B23&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Transformer&quot;</span><span class="p">:</span> <span class="s2">&quot;B24&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_business_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;General Capacity Information&quot;</span><span class="p">:</span> <span class="s2">&quot;A25&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Already allocated capacity (AAC)&quot;</span><span class="p">:</span> <span class="s2">&quot;A29&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Requested capacity (without price)&quot;</span><span class="p">:</span> <span class="s2">&quot;A43&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;System Operator redispatching&quot;</span><span class="p">:</span> <span class="s2">&quot;A46&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Planned maintenance&quot;</span><span class="p">:</span> <span class="s2">&quot;A53&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Unplanned outage&quot;</span><span class="p">:</span> <span class="s2">&quot;A54&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Internal redispatch&quot;</span><span class="p">:</span> <span class="s2">&quot;A85&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Frequency containment reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Automatic frequency restoration reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A96&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Manual frequency restoration reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A97&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Replacement reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A98&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Interconnector network evolution&quot;</span><span class="p">:</span> <span class="s2">&quot;B01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Interconnector network dismantling&quot;</span><span class="p">:</span> <span class="s2">&quot;B02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Counter trade&quot;</span><span class="p">:</span> <span class="s2">&quot;B03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Congestion costs&quot;</span><span class="p">:</span> <span class="s2">&quot;B04&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Capacity allocated (including price)&quot;</span><span class="p">:</span> <span class="s2">&quot;B05&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Auction revenue&quot;</span><span class="p">:</span> <span class="s2">&quot;B07&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Total nominated capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;B08&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Net position&quot;</span><span class="p">:</span> <span class="s2">&quot;B09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Congestion income&quot;</span><span class="p">:</span> <span class="s2">&quot;B10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Production unit&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Area Control Error&quot;</span><span class="p">:</span> <span class="s2">&quot;B33&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Procured capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;B95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Shared Balancing Reserve Capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;C22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Share of reserve capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;C23&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Actual reserve capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;C24&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_process_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Day ahead&quot;</span><span class="p">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Intra day incremental&quot;</span><span class="p">:</span> <span class="s2">&quot;A02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Realised&quot;</span><span class="p">:</span> <span class="s2">&quot;A16&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Intraday total&quot;</span><span class="p">:</span> <span class="s2">&quot;A18&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Week ahead&quot;</span><span class="p">:</span> <span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Month ahead&quot;</span><span class="p">:</span> <span class="s2">&quot;A32&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Year ahead&quot;</span><span class="p">:</span> <span class="s2">&quot;A33&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Synchronisation process&quot;</span><span class="p">:</span> <span class="s2">&quot;A39&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Intraday process&quot;</span><span class="p">:</span> <span class="s2">&quot;A40&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Replacement reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A46&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Manual frequency restoration reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A47&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Automatic frequency restoration reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A51&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Frequency containment reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A52&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Frequency restoration reserve&quot;</span><span class="p">:</span> <span class="s2">&quot;A56&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_doc_states</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Intermediate&quot;</span><span class="p">:</span> <span class="s2">&quot;A01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Final&quot;</span><span class="p">:</span> <span class="s2">&quot;A02&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Active&quot;</span><span class="p">:</span> <span class="s2">&quot;A05&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Cancelled&quot;</span><span class="p">:</span> <span class="s2">&quot;A09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Withdrawn&quot;</span><span class="p">:</span> <span class="s2">&quot;A13&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Estimated&quot;</span><span class="p">:</span> <span class="s2">&quot;X01&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_doc_types</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;FinalisedSchedule&quot;</span><span class="p">:</span> <span class="s2">&quot;A09&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AggregatedEnergyDataReport&quot;</span><span class="p">:</span> <span class="s2">&quot;A11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AcquiringSystemOperatorReserveSchedule&quot;</span><span class="p">:</span> <span class="s2">&quot;A15&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bid&quot;</span><span class="p">:</span> <span class="s2">&quot;A24&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AllocationResult&quot;</span><span class="p">:</span> <span class="s2">&quot;A25&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Capacity&quot;</span><span class="p">:</span> <span class="s2">&quot;A26&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AgreedCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReserveAllocationResult&quot;</span><span class="p">:</span> <span class="s2">&quot;A38&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Price&quot;</span><span class="p">:</span> <span class="s2">&quot;A44&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;EstimatedNetTransferCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;A61&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RedispatchNotice&quot;</span><span class="p">:</span> <span class="s2">&quot;A63&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SystemTotalLoad&quot;</span><span class="p">:</span> <span class="s2">&quot;A65&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;InstalledGenerationPerType&quot;</span><span class="p">:</span> <span class="s2">&quot;A68&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WindAndSolarForecast&quot;</span><span class="p">:</span> <span class="s2">&quot;A69&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LoadForecastMargin&quot;</span><span class="p">:</span> <span class="s2">&quot;A70&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GenerationForecast&quot;</span><span class="p">:</span> <span class="s2">&quot;A71&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReservoirFillingInformation&quot;</span><span class="p">:</span> <span class="s2">&quot;A72&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ActualGeneration&quot;</span><span class="p">:</span> <span class="s2">&quot;A73&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WindAndSolarGeneration&quot;</span><span class="p">:</span> <span class="s2">&quot;A74&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ActualGenerationPerType&quot;</span><span class="p">:</span> <span class="s2">&quot;A75&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LoadUnavailability&quot;</span><span class="p">:</span> <span class="s2">&quot;A76&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ProductionUnavailability&quot;</span><span class="p">:</span> <span class="s2">&quot;A77&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TransmissionUnavailability&quot;</span><span class="p">:</span> <span class="s2">&quot;A78&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;OffshoreGridInfrastructureUnavailability&quot;</span><span class="p">:</span> <span class="s2">&quot;A79&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GenerationUnavailability&quot;</span><span class="p">:</span> <span class="s2">&quot;A80&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ContractedReserves&quot;</span><span class="p">:</span> <span class="s2">&quot;A81&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AcceptedOffers&quot;</span><span class="p">:</span> <span class="s2">&quot;A82&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ActivatedBalancingQuantities&quot;</span><span class="p">:</span> <span class="s2">&quot;A83&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ActivatedBalancingPrices&quot;</span><span class="p">:</span> <span class="s2">&quot;A84&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ImbalancePrices&quot;</span><span class="p">:</span> <span class="s2">&quot;A85&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ImbalanceVolume&quot;</span><span class="p">:</span> <span class="s2">&quot;A86&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FinancialSituation&quot;</span><span class="p">:</span> <span class="s2">&quot;A87&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CrossBorderBalancing&quot;</span><span class="p">:</span> <span class="s2">&quot;A88&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ContractedReservePrices&quot;</span><span class="p">:</span> <span class="s2">&quot;A89&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;InterconnectionNetworkExpansion&quot;</span><span class="p">:</span> <span class="s2">&quot;A90&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CounterTradeNotice&quot;</span><span class="p">:</span> <span class="s2">&quot;A91&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CongestionCosts&quot;</span><span class="p">:</span> <span class="s2">&quot;A92&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DCLinkCapacity&quot;</span><span class="p">:</span> <span class="s2">&quot;A93&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NonEUAllocations&quot;</span><span class="p">:</span> <span class="s2">&quot;A94&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Configuration&quot;</span><span class="p">:</span> <span class="s2">&quot;A95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FlowBasedAllocations&quot;</span><span class="p">:</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">create_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">NodeEntsoE</span><span class="p">,</span> <span class="n">from_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">to_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create request parameters object according to API specifications</span>
+<span class="sd">        Handle configuration paramters for each type of connection</span>
+
+<span class="sd">        :param node: ENTSO-E Node</span>
+<span class="sd">        :param from_time: Starting time</span>
+<span class="sd">        :param to_time: End time</span>
+<span class="sd">        :return: Dictionary with parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">endpoint</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doc_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported endpoint for ENTSO-E connection: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;DocumentType&quot;</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="n">endpoint</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">==</span> <span class="s2">&quot;ActualGenerationPerType&quot;</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;ProcessType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Realised&quot;</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;In_Domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">bidding_zone</span>
+
+        <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">==</span> <span class="s2">&quot;Price&quot;</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;ProcessType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Day ahead&quot;</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;In_Domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">bidding_zone</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;Out_Domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">bidding_zone</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpoint not available: </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Round down at from_time and up at to_time to receive all necessary values from entsoe</span>
+        <span class="c1"># entsoe uses always a full hour</span>
+        <span class="n">rounded_from_time_utc</span> <span class="o">=</span> <span class="n">round_timestamp</span><span class="p">(</span><span class="n">from_time</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span> <span class="mi">3600</span><span class="p">)</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rounded_to_time_utc</span> <span class="o">=</span> <span class="n">round_timestamp</span><span class="p">(</span><span class="n">to_time</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span> <span class="mi">3600</span><span class="p">)</span>
+
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;TimeInterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rounded_from_time_utc</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rounded_to_time_utc</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">params</span>
+
+    <span class="k">def</span> <span class="nf">xml_head</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">etree</span><span class="o">.</span><span class="n">ElementTree</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create header of the xml data for the POST method.</span>
+
+<span class="sd">        :return: tree of elements with the pre-defined values for the request</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+        <span class="c1"># Prepare XML Header data</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">E</span><span class="p">(</span><span class="s2">&quot;StatusRequest_MarketDocument&quot;</span><span class="p">,</span> <span class="n">xmlns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_xmlns</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;mRID&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Request_</span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;A59&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;sender_MarketParticipant.mRID&quot;</span><span class="p">,</span> <span class="s2">&quot;10X1001A1001A450&quot;</span><span class="p">,</span> <span class="n">codingScheme</span><span class="o">=</span><span class="s2">&quot;A01&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;sender_MarketParticipant.marketRole.type&quot;</span><span class="p">,</span> <span class="s2">&quot;A07&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;receiver_MarketParticipant.mRID&quot;</span><span class="p">,</span> <span class="s2">&quot;10X1001A1001A450&quot;</span><span class="p">,</span> <span class="n">codingScheme</span><span class="o">=</span><span class="s2">&quot;A01&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;receiver_MarketParticipant.marketRole.type&quot;</span><span class="p">,</span> <span class="s2">&quot;A32&quot;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">E</span><span class="p">(</span><span class="s2">&quot;createdDateTime&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s1">&#39;seconds&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">Z&quot;</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">xml_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map parameters to request values for the xml document.</span>
+
+<span class="sd">        :return: tree with parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;Contract_MarketAgreement.Type&quot;</span> <span class="ow">or</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;Type_MarketAgreement.Type&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_market_agreements</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;Auction.Type&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auction_types</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;Auction.Category&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auction_categories</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;PsrType&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_psr_types</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;BusinessType&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_business_types</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;ProcessType&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_types</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;DocStatus&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doc_states</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="o">==</span> <span class="s2">&quot;DocumentType&quot;</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doc_types</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;In_Domain&quot;</span><span class="p">,</span> <span class="s2">&quot;Out_Domain&quot;</span><span class="p">}:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bidding_zones</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">E</span><span class="p">(</span><span class="s2">&quot;AttributeInstanceComponent&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">(</span><span class="s2">&quot;attribute&quot;</span><span class="p">,</span> <span class="n">parameter</span><span class="p">),</span> <span class="n">E</span><span class="p">(</span><span class="s2">&quot;attributeValue&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">psr_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_psr_types</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">doc_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doc_types</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage examples &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../eta_x/introduction.html" />
+    <link rel="prev" title="Frequently Asked Questions" href="../guide/faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#connectors">Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forecasting">Forecasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eta-x-optimization">eta_x Optimization</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-examples">
+<span id="examples"></span><h1>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this heading"></a></h1>
+<p><em>eta_utility</em> contains example implementations for different usages of the package.
+This page gives a short overview of the examples.</p>
+<section id="connectors">
+<h2>Connectors<a class="headerlink" href="#connectors" title="Permalink to this heading"></a></h2>
+<p>There are two examples for the <em>connectors</em>: The <em>read_series_eneffco</em> example illustrates a simple usage of the <em>connectors</em> module. It selects some data points
+and reads them as series data from the server.</p>
+<p>The <em>data_recorder</em> example is more complex in that it uses multiple <em>connectors</em>,
+can connect to different protocols and provides a command line interface for
+configuration.</p>
+</section>
+<section id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this heading"></a></h2>
+<p>The <em>forecasting</em> example demonstrates how a machine learning model can be deployed using
+the <em>connectors</em> module to connect to data sources (in this example OPC UA). The model is a load forecasting
+model of a machine tool in the ETA research factory. It forecasts the electric load of the machine tool during
+the next 100 seconds. Input data is a time window of the last 100 seconds of 8 separate electric load signals
+of sub-components of the machine tool as well as the total electric load of the machine tool. The model was
+exported into ONNX format and is deployed using the <em>onnxruntime</em> module. The forecast is published to an
+OPC UA server that is established on the local machine using the <em>servers</em> module.</p>
+<p>In the example, data is collected for 100 seconds in an internal memory. Once enough time steps are present, the
+inference is triggered and the forecast is published to the OPC UA server. This loop is repeated every second.</p>
+</section>
+<section id="eta-x-optimization">
+<h2>eta_x Optimization<a class="headerlink" href="#eta-x-optimization" title="Permalink to this heading"></a></h2>
+<p>Examples for the optimization part of the framework are also provided. The <em>pendulum</em> example is the
+simplest one of them. It implements an inverse pendulum, similar to
+the <a class="reference external" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">equivalent example in Farama gymnasium</a>.
+The environment can be used for
+different kinds of agents and includes examples for the PPO reinforcement learning
+agent as well as a simple rule based controller.</p>
+<p>The <em>damped_oscillator</em> example illustrates how simulation environments are created,
+based on the <em>BaseEnvSim</em> class. In this simple example, only the StateConfig and the
+render function need to be specified to obtain a completely functional environment.
+In the example, the controller will just supply random action values.</p>
+<p>Finally, the <em>cyber_physical_system</em> example shows the full capabilities of the <em>eta_utility</em>
+framework. It utilizes the interaction between a simulation and an actual machine to
+supply advanced observations to an agent which controls the tank heating unit of
+an industrial parts cleaning machine. To be able to run this example, a Dymola license is needed.
+In the <a class="reference internal" href="../guide/faq.html#dymola-license-not-found"><span class="std std-ref">FMU model initialization (Dymola) fails with “Exception: Failed to instantiate model”</span></a> it is explained how to use the license.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../guide/faq.html" class="btn btn-neutral float-left" title="Frequently Asked Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../eta_x/introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

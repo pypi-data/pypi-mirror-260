@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.envs.base_env_mpc &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.envs.base_env_mpc</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.envs.base_env_mpc</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">MutableMapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pyomo</span> <span class="kn">import</span> <span class="n">environ</span> <span class="k">as</span> <span class="n">pyo</span>
+<span class="kn">from</span> <span class="nn">pyomo.core</span> <span class="kn">import</span> <span class="n">base</span> <span class="k">as</span> <span class="n">pyo_base</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.eta_x.envs</span> <span class="kn">import</span> <span class="n">BaseEnv</span>
+<span class="kn">from</span> <span class="nn">eta_utility.eta_x.envs.state</span> <span class="kn">import</span> <span class="n">StateConfig</span><span class="p">,</span> <span class="n">StateVar</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+
+    <span class="kn">from</span> <span class="nn">pyomo.opt</span> <span class="kn">import</span> <span class="n">SolverResults</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.eta_x</span> <span class="kn">import</span> <span class="n">ConfigOptRun</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">PyoParams</span><span class="p">,</span> <span class="n">StepResult</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x.envs&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BaseEnvMPC"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC">[docs]</a><span class="k">class</span> <span class="nc">BaseEnvMPC</span><span class="p">(</span><span class="n">BaseEnv</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for mathematical MPC models. This class can be used in conjunction with the MathSolver agent.</span>
+<span class="sd">    You need to implement the *_model* method in a subclass and return a *pyomo.AbstractModel* from it.</span>
+
+<span class="sd">    :param env_id: Identification for the environment, useful when creating multiple environments.</span>
+<span class="sd">    :param config_run: Configuration of the optimization run.</span>
+<span class="sd">    :param verbose: Verbosity to use for logging.</span>
+<span class="sd">    :param callback: callback which should be called after each episode.</span>
+<span class="sd">    :param scenario_time_begin: Beginning time of the scenario.</span>
+<span class="sd">    :param scenario_time_end: Ending time of the scenario.</span>
+<span class="sd">    :param episode_duration: Duration of the episode in seconds.</span>
+<span class="sd">    :param sampling_time: Duration of a single time sample / time step in seconds.</span>
+<span class="sd">    :param model_parameters: Parameters for the mathematical model.</span>
+<span class="sd">    :param prediction_scope: Duration of the prediction (usually a subsample of the episode duration).</span>
+<span class="sd">    :param render_mode: Renders the environments to help visualise what the agent see, examples</span>
+<span class="sd">        modes are &quot;human&quot;, &quot;rgb_array&quot;, &quot;ansi&quot; for text.</span>
+<span class="sd">    :param kwargs: Other keyword arguments (for subclasses).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">env_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">scenario_time_begin</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">scenario_time_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">episode_duration</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">sampling_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_parameters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">prediction_scope</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">render_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">env_id</span><span class="p">,</span>
+            <span class="n">config_run</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="p">,</span>
+            <span class="n">callback</span><span class="p">,</span>
+            <span class="n">scenario_time_begin</span><span class="o">=</span><span class="n">scenario_time_begin</span><span class="p">,</span>
+            <span class="n">scenario_time_end</span><span class="o">=</span><span class="n">scenario_time_end</span><span class="p">,</span>
+            <span class="n">episode_duration</span><span class="o">=</span><span class="n">episode_duration</span><span class="p">,</span>
+            <span class="n">sampling_time</span><span class="o">=</span><span class="n">sampling_time</span><span class="p">,</span>
+            <span class="n">render_mode</span><span class="o">=</span><span class="n">render_mode</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check configuration for MILP compatibility</span>
+        <span class="c1">#: Total duration of one prediction/optimization run when used with the MPC agent.</span>
+        <span class="c1">#: This is automatically set to the value of episode_duration if it is not supplied</span>
+        <span class="c1">#: separately.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span><span class="p">:</span> <span class="nb">float</span>
+        <span class="k">if</span> <span class="n">prediction_scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;prediction_scope parameter is not present. Setting prediction_scope to episode_duration.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">episode_duration</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span>
+                <span class="n">prediction_scope</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prediction_scope</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">prediction_scope</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+            <span class="p">)</span>
+
+        <span class="n">errors</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;The sampling_time must fit evenly into the prediction_scope &quot;</span>
+                <span class="s2">&quot;(prediction_scope </span><span class="si">% s</span><span class="s2">ampling_time must equal 0).&quot;</span>
+            <span class="p">)</span>
+            <span class="n">errors</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Some configuration parameters do not conform to the MPC environment &quot;</span> <span class="s2">&quot;requirements (see log).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Make some more settings easily accessible</span>
+        <span class="c1">#: Number of steps in the prediction (prediction_scope/sampling_time).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_prediction_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span><span class="p">)</span>
+        <span class="c1">#: Duration of the scenario for each episode (for total time imported from csv).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scenario_duration</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">episode_duration</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span>
+
+        <span class="c1">#: Configuration for the MILP model parameters.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span> <span class="o">=</span> <span class="n">model_parameters</span>
+
+        <span class="c1"># Set additional attributes with model specific information.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Concrete pyomo model as initialized by _model.</span>
+
+        <span class="c1">#: Name of the &quot;time&quot; variable/set in the model (i.e. &quot;T&quot;). This is if the pyomo sets must be re-indexed when</span>
+        <span class="c1">#:   updating the model between time steps. If this is None, it is assumed that no reindexing of the timeseries</span>
+        <span class="c1">#:   data is required during updates - this is the default.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">#: Updating indexed model parameters can be achieved either by updating only the first value of the actual</span>
+        <span class="c1">#:   parameter itself or by having a separate handover parameter that is used for specifying only the first</span>
+        <span class="c1">#:   value. The separate handover parameter can be denoted with an appended string. For example, if the actual</span>
+        <span class="c1">#:   parameter is x.ON then the handover parameter could be x.ON_first. To use x.ON_first for updates, set the</span>
+        <span class="c1">#:   nonindex_update_append_string to &quot;_first&quot;. If the attribute is set to None, the first value of the</span>
+        <span class="c1">#:   actual parameter (x.ON) would be updated instead.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nonindex_update_append_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">#: Some models may not use the actual time increment (sampling_time). Instead, they would translate into model</span>
+        <span class="c1">#:   time increments (each sampling time increment equals a single model time step). This means that indices</span>
+        <span class="c1">#:   of the model components simply count 1,2,3,... instead of 0, sampling_time, 2*sampling_time, ...</span>
+        <span class="c1">#:   Set this to true, if model time increments (1, 2, 3, ...) are used. Otherwise, sampling_time will be used</span>
+        <span class="c1">#:   as the time increment. Note: This is only relevant for the first model time increment, later increments</span>
+        <span class="c1">#:   may differ.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_use_model_time_increments</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span> <span class="nb">list</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The model property is a tuple of the concrete model and the order of the action space. This is used</span>
+<span class="sd">        such that the MPC algorithm can re-sort the action output. This sorting cannot be conveyed differently through</span>
+<span class="sd">        pyomo.</span>
+
+<span class="sd">        :return: Tuple of the concrete model and the order of the action space.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_vars</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">com</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ScalarVar</span><span class="p">):</span>
+                    <span class="n">_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">StateVar</span><span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_agent_action</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="o">=</span> <span class="n">StateConfig</span><span class="p">(</span><span class="o">*</span><span class="n">_vars</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">actions</span>
+
+    <span class="nd">@model</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The model attribute setter should be used for returning the solved model.</span>
+
+<span class="sd">        :param value: The pyomo.ConcreteModel object which should be used as the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The model attribute can only be set with a pyomo concrete model.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="BaseEnvMPC._model"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC._model">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pyo</span><span class="o">.</span><span class="n">AbstractModel</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the abstract pyomo model. This is where the pyomo model description should be placed.</span>
+
+<span class="sd">        :return: Abstract pyomo model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;The abstract MPC environment does not implement a model.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.step"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StepResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform one time step and return its results. This is called for every event or for every time step during</span>
+<span class="sd">        the simulation/optimization run. It should utilize the actions as supplied by the agent to determine</span>
+<span class="sd">        the new state of the environment. The method must return a four-tuple of observations, rewards, dones, info.</span>
+
+<span class="sd">        This also updates self.state and self.state_log to store current state information.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            This function always returns 0 reward. Therefore, it must be extended if it is to be used with reinforcement</span>
+<span class="sd">            learning agents. If you need to manipulate actions (discretization, policy shaping, ...)</span>
+<span class="sd">            do this before calling this function.</span>
+<span class="sd">            If you need to manipulate observations and rewards, do this after calling this function.</span>
+
+<span class="sd">        :param np.ndarray action: Actions to perform in the environment.</span>
+<span class="sd">        :return: The return value represents the state of the environment after the step was performed.</span>
+
+<span class="sd">            * observations: A numpy array with new observation values as defined by the observation space.</span>
+<span class="sd">              Observations is a np.array() (numpy array) with floating point or integer values.</span>
+<span class="sd">            * reward: The value of the reward function. This is just one floating point value.</span>
+<span class="sd">            * terminated: Boolean value specifying whether an episode has been completed. If this is set to true,</span>
+<span class="sd">              the reset function will automatically be called by the agent or by eta_i.</span>
+<span class="sd">            * truncated: Boolean, whether the truncation condition outside the scope is satisfied.</span>
+<span class="sd">            * truncated: Boolean, whether the truncation condition outside the scope is satisfied.</span>
+<span class="sd">                Typically, this is a timelimit, but could also be used to indicate an agent physically going out of</span>
+<span class="sd">                bounds. Can be used to end the episode prematurely before a terminal state is reached. If true, the</span>
+<span class="sd">                user needs to call the `reset` function.</span>
+<span class="sd">            * info: Provide some additional info about the state of the environment. The contents of this may</span>
+<span class="sd">              be used for logging purposes in the future but typically do not currently serve a purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_valid</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling step function.&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Access the &#39;model&#39; attribute or call reset at least once before &quot;</span>
+            <span class="s2">&quot;trying to use the environment. This initializes the model and &quot;</span>
+            <span class="s2">&quot;should be done automatically when using the MPCBasic Algorithm.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">observations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="c1"># Update and log current state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_new_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_to_state</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">obs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">observations</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">obs</span><span class="p">]</span> <span class="o">=</span> <span class="n">observations</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">Objective</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Render the environment at each step</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">observations</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_done</span><span class="p">(),</span> <span class="kc">False</span><span class="p">,</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.update"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observations</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the optimization model with observations from another environment.</span>
+
+<span class="sd">        :param observations: Observations from another environment.</span>
+<span class="sd">        :return: Full array of current observations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling update function.&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Access the &#39;model&#39; attribute or call reset at least once before &quot;</span>
+            <span class="s2">&quot;trying to use the environment. This initializes the model and &quot;</span>
+            <span class="s2">&quot;should be done automatically when using the MPCBasic Algorithm.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update shift counter for rolling MPC approach</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># The timeseries data must be updated for the next time step. The index depends on whether time itself is being</span>
+        <span class="c1"># shifted. If time is being shifted, the respective variable should be set as &quot;time_var&quot;.</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_model_time_increments</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span><span class="p">)</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_model_time_increments</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">prediction_scope</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">*</span> <span class="n">step</span><span class="p">,</span> <span class="n">duration</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">step</span><span class="p">)</span>
+            <span class="n">ts_current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pyo_convert_timeseries</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_prediction_steps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">index</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+                <span class="n">_add_wrapping_none</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">ts_current</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">time_var</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Updated time_var (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">time_var</span><span class="si">}</span><span class="s2">) with the set from </span><span class="si">{</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> to &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> and steps (sampling time) </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+            <span class="n">ts_current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pyo_convert_timeseries</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_prediction_steps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">index</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+                <span class="n">_add_wrapping_none</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Log current time shift</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_prediction_steps</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;Current optimization time shift: </span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2"> | Current scope: </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">n_episode_steps</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_prediction_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;Current optimization time shift: </span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2">. Last optimization step reached.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_episode_steps</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_new_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span><span class="p">)</span>
+        <span class="n">updated_params</span> <span class="o">=</span> <span class="n">ts_current</span>
+        <span class="n">return_obs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Array for all current observations</span>
+        <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">observations</span><span class="p">:</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">vars</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_id</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;The interact_id value for observations must be an integer.&quot;</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Read values from external environment (for example simulation)</span>
+            <span class="k">if</span> <span class="n">observations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">from_interact</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">observations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_id</span><span class="p">]</span> <span class="o">+</span> <span class="n">settings</span><span class="o">.</span><span class="n">interact_scale_add</span><span class="p">)</span>
+                    <span class="o">*</span> <span class="n">settings</span><span class="o">.</span><span class="n">interact_scale_mult</span><span class="p">,</span>
+                    <span class="mi">5</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">return_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Read additional values from the mathematical model</span>
+                <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">component</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">var_name</span><span class="p">:</span>
+                        <span class="c1"># Get value for the component from specified index</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="nb">int</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">index</span><span class="p">)]]),</span> <span class="mi">5</span><span class="p">)</span>
+                        <span class="n">return_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Specified observation value </span><span class="si">{</span><span class="n">var_name</span><span class="si">}</span><span class="s2"> could not be found&quot;</span><span class="p">)</span>
+            <span class="n">updated_params</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observed value </span><span class="si">{</span><span class="n">var_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pyo_update_params</span><span class="p">(</span><span class="n">updated_params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nonindex_update_append_string</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">return_obs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.solve_failed"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.solve_failed">[docs]</a>    <span class="k">def</span> <span class="nf">solve_failed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">SolverResults</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method will try to render the result in case the model could not be solved. It should automatically</span>
+<span class="sd">        be called by the agent.</span>
+
+<span class="sd">        :param model: Current model.</span>
+<span class="sd">        :param result: Result of the last solution attempt.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rendering partial results failed: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.reset"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the environment to an initial internal state, returning an initial observation and info.</span>
+
+<span class="sd">        This method generates a new starting state often with some randomness to ensure that the agent explores the</span>
+<span class="sd">        state space and learns a generalised policy about the environment. This randomness can be controlled</span>
+<span class="sd">        with the ``seed`` parameter otherwise if the environment already has a random number generator and</span>
+<span class="sd">        :meth:`reset` is called with ``seed=None``, the RNG is not reset. When using the environment in conjunction with</span>
+<span class="sd">        *stable_baselines3*, the vectorized environment will take care of seeding your custom environment automatically.</span>
+
+<span class="sd">        For Custom environments, the first line of :meth:`reset` should be ``super().reset(seed=seed)`` which implements</span>
+<span class="sd">        the seeding correctly.</span>
+
+<span class="sd">        .. note ::</span>
+<span class="sd">            Don&#39;t forget to store and reset the episode_timer.</span>
+
+<span class="sd">        :param seed: The seed that is used to initialize the environment&#39;s PRNG (`np_random`).</span>
+<span class="sd">                If the environment does not already have a PRNG and ``seed=None`` (the default option) is passed,</span>
+<span class="sd">                a seed will be chosen from some source of entropy (e.g. timestamp or /dev/urandom).</span>
+<span class="sd">                However, if the environment already has a PRNG and ``seed=None`` is passed, the PRNG will *not* be</span>
+<span class="sd">                reset. If you pass an integer, the PRNG will be reset even if it already exists. (default: None)</span>
+<span class="sd">        :param options: Additional information to specify how the environment is reset (optional,</span>
+<span class="sd">                depending on the specific environment) (default: None)</span>
+
+<span class="sd">        :return: Tuple of observation and info. The observation of the initial state will be an element of</span>
+<span class="sd">                :attr:`observation_space` (typically a numpy array) and is analogous to the observation returned by</span>
+<span class="sd">                :meth:`step`. Info is a dictionary containing auxiliary information complementing ``observation``. It</span>
+<span class="sd">                should be analogous to the ``info`` returned by :meth:`step`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling update function.&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Mathematical model is not initialized. Call reset another time.&quot;</span>
+
+        <span class="c1"># Initialize state with the initial observation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span>
+        <span class="n">observations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">observations</span><span class="p">:</span>
+            <span class="c1"># Try getting the first value from initialized variables. Use the configured low_value from state_config</span>
+            <span class="c1"># for all others.</span>
+            <span class="n">obs_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pyo_get_component_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component</span><span class="p">(</span><span class="n">var_name</span><span class="p">),</span> <span class="n">allow_stale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">obs_val</span> <span class="o">=</span> <span class="n">obs_val</span> <span class="k">if</span> <span class="n">obs_val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obs_val</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs_val</span>
+
+        <span class="c1"># Initialize state with zero actions</span>
+        <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">actions</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">act</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="c1"># Render the environment when calling the reset function</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">observations</span><span class="p">),</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.close"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the environment. This should always be called when an entire run is finished. It should be used to</span>
+<span class="sd">        close any resources (i.e. simulation models) used by the environment.</span>
+
+<span class="sd">        Default behavior for the MPC environment is to do nothing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.pyo_component_params"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_component_params">[docs]</a>    <span class="k">def</span> <span class="nf">pyo_component_params</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">component_name</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">ts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">index</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PyoParams</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve parameters for the named component and convert the parameters into the pyomo dict-format.</span>
+<span class="sd">        If required, timeseries can be added to the parameters and timeseries may be reindexed. The</span>
+<span class="sd">        pyo_convert_timeseries function is used for timeseries handling. See also *pyo_convert_timeseries*</span>
+
+<span class="sd">        :param component_name: Name of the component.</span>
+<span class="sd">        :param ts: Timeseries for the component.</span>
+<span class="sd">        :param index: New index for timeseries data. If this is supplied, all timeseries will be copied and</span>
+<span class="sd">                      reindexed.</span>
+<span class="sd">        :return: Pyomo parameter dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">component_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span>
+        <span class="k">elif</span> <span class="n">component_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span><span class="p">[</span><span class="n">component_name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No parameters specified for requested component </span><span class="si">{</span><span class="n">component_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">out</span><span class="p">:</span> <span class="n">PyoParams</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">param</span><span class="p">:</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;inf&quot;</span><span class="p">,</span> <span class="s2">&quot;-inf&quot;</span><span class="p">}</span> <span class="k">else</span> <span class="n">value</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="c1"># If component name was specified only look for relevant time series</span>
+        <span class="k">if</span> <span class="n">ts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pyo_convert_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">component_name</span><span class="p">,</span> <span class="n">_add_wrapping_none</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="n">out</span><span class="p">}</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.pyo_convert_timeseries"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_convert_timeseries">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pyo_convert_timeseries</span><span class="p">(</span>
+        <span class="n">ts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">,</span>
+        <span class="n">index</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">component_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_add_wrapping_none</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PyoParams</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a time series data into a pyomo format. Data will be reindexed if a new index is provided.</span>
+
+<span class="sd">        :param ts: Timeseries to convert.</span>
+<span class="sd">        :param index: New index for timeseries data. If this is supplied, all timeseries will be copied and</span>
+<span class="sd">                      reindexed.</span>
+<span class="sd">        :param component_name: Name of a specific component that the timeseries is used for. This limits which</span>
+<span class="sd">                               timeseries are returned.</span>
+<span class="sd">        :param _add_wrapping_none: Add a &quot;None&quot; indexed dictionary as the top level.</span>
+<span class="sd">        :return: Pyomo parameter dictionary.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span><span class="p">:</span> <span class="n">PyoParams</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">list</span> <span class="k">else</span> <span class="n">index</span>
+
+        <span class="n">_ts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span>
+        <span class="c1"># If part of the timeseries was converted before, make sure that everything is on the same level again.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="kc">None</span> <span class="ow">in</span> <span class="n">ts</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="n">_ts</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">_ts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ts</span><span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_ts</span> <span class="o">=</span> <span class="n">ts</span>
+
+        <span class="k">def</span> <span class="nf">convert_index</span><span class="p">(</span><span class="n">cts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">_index</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Take the timeseries and change the index to correspond to _index.</span>
+
+<span class="sd">            :param cts: Original timeseries object (with or without index does not matter).</span>
+<span class="sd">            :param _index: New index.</span>
+<span class="sd">            :return: New timeseries dictionary with the converted index.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">cts</span><span class="o">.</span><span class="n">values</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cts</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">cts</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cts</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">cts</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">cts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">_index</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="n">_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported timeseries type for index conversion.&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">cts</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">_ts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Determine whether the timeseries should be returned, based on the timeseries name and the requested</span>
+                <span class="c1">#  component name.</span>
+                <span class="k">if</span> <span class="n">component_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">component_name</span> <span class="ow">in</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+                    <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="n">component_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">component_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># Simple values do not need their index converted...</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;__len__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isreal</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+                    <span class="n">output</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="n">t</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">output</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_index</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="c1"># Determine whether the timeseries should be returned, based on the timeseries name and the requested</span>
+            <span class="c1">#  component name.</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">component_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">_ts</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span>
+                <span class="ow">and</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">_ts</span><span class="o">.</span><span class="n">name</span>
+                <span class="ow">and</span> <span class="n">component_name</span> <span class="ow">in</span> <span class="n">_ts</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="p">):</span>  <span class="c1"># noqa</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">_ts</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">convert_index</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>  <span class="c1"># noqa</span>
+            <span class="k">elif</span> <span class="n">component_name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_ts</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">_ts</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_index</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_index</span><span class="p">(</span><span class="n">_ts</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="kc">None</span><span class="p">:</span> <span class="n">output</span><span class="p">}</span> <span class="k">if</span> <span class="n">_add_wrapping_none</span> <span class="k">else</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.pyo_update_params"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_update_params">[docs]</a>    <span class="k">def</span> <span class="nf">pyo_update_params</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">updated_params</span><span class="p">:</span> <span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">nonindex_param_append_string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates model parameters and indexed parameters of a pyomo instance with values given in a dictionary.</span>
+<span class="sd">        It assumes that the dictionary supplied in updated_params has the correct pyomo format.</span>
+
+<span class="sd">        :param updated_params: Dictionary with the updated values.</span>
+<span class="sd">        :param nonindex_param_append_string: String to be appended to values which are not indexed. This can</span>
+<span class="sd">            be used if indexed parameters need to be set with values that do not have an index.</span>
+<span class="sd">        :return: Updated model instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Access the &#39;model&#39; attribute or call reset at least once before &quot;</span>
+            <span class="s2">&quot;trying to use the environment. This initializes the model and &quot;</span>
+            <span class="s2">&quot;should be done automatically when using the MPCBasic Algorithm.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># append string to non indexed values that are used to set indexed parameters.</span>
+        <span class="k">if</span> <span class="n">nonindex_param_append_string</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">original_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">updated_params</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">original_indices</span><span class="p">:</span>
+                <span class="n">component</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">component</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="p">(</span>
+                        <span class="n">component</span><span class="o">.</span><span class="n">is_indexed</span><span class="p">()</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">updated_params</span><span class="p">[</span><span class="n">param</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="n">updated_params</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="o">+</span> <span class="n">nonindex_param_append_string</span><span class="p">]</span> <span class="o">=</span> <span class="n">updated_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+                    <span class="k">del</span> <span class="n">updated_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span> <span class="ow">in</span> <span class="n">updated_params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">parameter_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parameter_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span>
+                    <span class="o">-</span><span class="mi">1</span>
+                <span class="p">]</span>  <span class="c1"># last entry is the parameter name for abstract models which are instanced</span>
+            <span class="k">if</span> <span class="n">parameter_name</span> <span class="ow">in</span> <span class="n">updated_params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="n">pyo_base</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">ScalarParam</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="n">pyo_base</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">ScalarVar</span><span class="p">):</span>
+                    <span class="c1"># update all simple parameters (single values)</span>
+                    <span class="n">parameter</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">updated_params</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="p">,</span> <span class="n">pyo_base</span><span class="o">.</span><span class="n">indexed_component</span><span class="o">.</span><span class="n">IndexedComponent</span><span class="p">):</span>
+                    <span class="c1"># update all indexed parameters (time series)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">updated_params</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">],</span> <span class="n">Mapping</span><span class="p">):</span>
+                        <span class="n">parameter</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">parameter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">updated_params</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">param_val</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">parameter</span><span class="p">):</span>
+                            <span class="n">parameter</span><span class="p">[</span><span class="n">param_val</span><span class="p">]</span> <span class="o">=</span> <span class="n">updated_params</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">][</span><span class="n">param_val</span><span class="p">]</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Pyomo model parameters updated.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.pyo_get_solution"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_get_solution">[docs]</a>    <span class="k">def</span> <span class="nf">pyo_get_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the pyomo solution into a more useable format for plotting.</span>
+
+<span class="sd">        :param names: Names of the model parameters that are returned.</span>
+<span class="sd">        :return: Dictionary of {parameter name: value} pairs. Value may be a dictionary of {time: value} pairs which</span>
+<span class="sd">                 contains one value for each optimization time step.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Access the &#39;model&#39; attribute or call reset at least once before &quot;</span>
+            <span class="s2">&quot;trying to use the environment. This initializes the model and &quot;</span>
+            <span class="s2">&quot;should be done automatically when using the MPCBasic Algorithm.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">com</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concrete_model</span><span class="o">.</span><span class="n">component_objects</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">ctype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Param</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Objective</span><span class="p">}:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">com</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># Only include names that where asked for</span>
+
+            <span class="c1"># For simple variables we need just the values, for everything else we want time indexed dictionaries</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ScalarVar</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="n">pyo_base</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">SimpleObjective</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">com</span><span class="p">,</span> <span class="n">pyo_base</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">ScalarParam</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="n">solution</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">com</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solution</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_model_time_increments</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">com</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">solution</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">]</span><span class="o">.</span><span class="n">to_pydatetime</span><span class="p">()</span>
+                            <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">ind</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span><span class="p">)</span>
+                        <span class="p">]</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">com</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">solution</span><span class="p">[</span><span class="n">com</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">]</span><span class="o">.</span><span class="n">to_pydatetime</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">ind</span><span class="p">)</span>
+                        <span class="p">]</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">solution</span></div>
+
+<div class="viewcode-block" id="BaseEnvMPC.pyo_get_component_value"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_mpc.BaseEnvMPC.pyo_get_component_value">[docs]</a>    <span class="k">def</span> <span class="nf">pyo_get_component_value</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Component</span><span class="p">,</span> <span class="n">at</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">allow_stale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Can only get component values after state_config is loaded.&quot;</span>
+        <span class="k">if</span> <span class="n">allow_stale</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="s2">&quot;stale&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">component</span><span class="o">.</span><span class="n">stale</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="s2">&quot;_value&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">component</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="n">component</span><span class="o">.</span><span class="n">NoValue</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">vars</span><span class="p">[</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">low_value</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">pyo</span><span class="o">.</span><span class="n">RangeSet</span><span class="p">):</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">at</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">component</span><span class="o">.</span><span class="n">is_indexed</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="s2">&quot;stale&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="s2">&quot;stale&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">component</span><span class="o">.</span><span class="n">stale</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="n">component</span><span class="o">.</span><span class="n">index_set</span><span class="p">()</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">at</span><span class="p">)]),</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">pyo</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">component</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">val</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

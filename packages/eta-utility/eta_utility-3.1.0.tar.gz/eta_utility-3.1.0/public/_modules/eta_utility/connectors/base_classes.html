@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.connectors.base_classes &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.connectors.base_classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.connectors.base_classes</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; Base classes for the connectors</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Iterable</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">attr</span> <span class="kn">import</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">tz</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">url_parse</span>
+<span class="kn">from</span> <span class="nn">eta_utility.util</span> <span class="kn">import</span> <span class="n">ensure_timezone</span><span class="p">,</span> <span class="n">round_timestamp</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">ParseResult</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">Nodes</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+
+<div class="viewcode-block" id="SubscriptionHandler"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler">[docs]</a><span class="k">class</span> <span class="nc">SubscriptionHandler</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subscription handlers do stuff to subscribed data points after they are received. Every handler must have a</span>
+<span class="sd">    push method which can be called when data is received.</span>
+
+<span class="sd">    :param write_interval: Interval for writing data to csv file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">write_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_write_interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">write_interval</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">write_interval</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">write_interval</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_local_tz</span> <span class="o">=</span> <span class="n">tz</span><span class="o">.</span><span class="n">tzlocal</span><span class="p">()</span>
+        <span class="c1"># Method to round a datetime timestamp by the SubscriptionHandler._write_interval interval in seconds</span>
+        <span class="c1">#: :py:func:`eta_utility.util.round_timestamp`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_round_timestamp</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">dt</span><span class="p">:</span> <span class="n">round_timestamp</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_write_interval</span><span class="p">)</span>
+        <span class="c1">#: Method to ensure timezone by assigning local timezone</span>
+        <span class="c1">#: :py:func:`eta_utility.util.ensure_timezone`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_tz_awareness</span> <span class="o">=</span> <span class="n">ensure_timezone</span>
+
+    <span class="k">def</span> <span class="nf">_convert_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">timestamp</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span> <span class="o">|</span> <span class="n">TimeStep</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function to convert a value, timestamp pair in which value is a Series or list to a Series with</span>
+<span class="sd">        datetime index according to the given timestamp(s).</span>
+
+<span class="sd">        :param value: Series of values. There must be corresponding timestamps for each value.</span>
+<span class="sd">        :param timestamp: DatetimeIndex of the provided values. Alternatively an integer/timedelta can be provided to</span>
+<span class="sd">                          determine the interval between data points. Use negative numbers to describe past data.</span>
+<span class="sd">                          Integers are interpreted as seconds. If value is a pd.Series and has a pd.DatetimeIndex,</span>
+<span class="sd">                          timestamp can be None.</span>
+<span class="sd">        :return: pandas.Series with corresponding DatetimeIndex.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Check timestamp first</span>
+        <span class="c1"># timestamp as datetime-index:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Length of timestamp (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span><span class="si">}</span><span class="s2">) and value (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">) must match if &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;timestamp is given as pd.DatetimeIndex.&quot;</span>
+                <span class="p">)</span>
+        <span class="c1"># timestamp as int or timedelta:</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">timestamp</span> <span class="o">&lt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+                <span class="n">_freq</span> <span class="o">=</span> <span class="nb">str</span><span class="p">((</span><span class="o">-</span><span class="n">timestamp</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;S&quot;</span>
+                <span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="n">_freq</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_freq</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;S&quot;</span>
+                <span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="n">_freq</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">_freq</span><span class="p">)</span>
+        <span class="c1"># timestamp None:</span>
+        <span class="k">elif</span> <span class="n">timestamp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;If timestamp is None, value must have a pd.DatetimeIndex&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">timestamp</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">index</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;timestamp must be pd.DatetimeIndex, int or timedelta, is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span><span class="si">}</span><span class="s2">. Else, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;value must have a pd.DatetimeIndex.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Check value and build pd.Series</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+            <span class="n">value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">timestamp</span><span class="p">)</span>
+            <span class="c1"># If value is multidimensional, an Exception will be raised by pandas.</span>
+
+        <span class="c1"># Round index to self._write_interval</span>
+        <span class="n">value</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_write_interval</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;S&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="SubscriptionHandler.push"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.SubscriptionHandler.push">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Receive data from a subcription. This should contain the node that was requested, a value and a timestamp</span>
+<span class="sd">        when data was received. If the timestamp is not provided, current time will be used.</span>
+
+<span class="sd">        :param node: Node object the data belongs to.</span>
+<span class="sd">        :param value: Value of the data.</span>
+<span class="sd">        :param timestamp: Timestamp of receiving the data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+
+
+<div class="viewcode-block" id="Connection"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection">[docs]</a><span class="k">class</span> <span class="nc">Connection</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class with a common interface for all connection objects</span>
+
+<span class="sd">    The URL may contain the username and password (schema://username:password@hostname:port/path). In this case, the</span>
+<span class="sd">    parameters usr and pwd are not required. The keyword parameters of the function will take precedence over username</span>
+<span class="sd">    and password configured in the url.</span>
+
+<span class="sd">    :param url: URL of the server to connect to.</span>
+<span class="sd">    :param usr: Username for login to server.</span>
+<span class="sd">    :param pwd: Password for login to server.</span>
+<span class="sd">    :param nodes: List of nodes to select as a standard case.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_registry</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: ignore</span>
+    <span class="n">_PROTOCOL</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Store subclass definitions to instantiate based on protocol.&quot;&quot;&quot;</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;protocol&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">protocol</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_PROTOCOL</span> <span class="o">=</span> <span class="n">protocol</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">protocol</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init_subclass__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#: URL of the server to connect to</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">:</span> <span class="n">ParseResult</span>
+        <span class="c1">#: Username fot login to server</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="c1">#: Password for login to server</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="o">=</span> <span class="n">url_parse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">nodes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1">#: Preselected nodes which will be used for reading and writing, if no other nodes are specified</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selected_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_nodes</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selected_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="c1"># Get username and password either from the arguments, from the parsed URL string or from a Node object</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_nodes</span><span class="p">))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selected_nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">usr</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span> <span class="ow">and</span> <span class="n">usr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Username should be a string value.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">usr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="o">=</span> <span class="n">usr</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">usr</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">usr</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span> <span class="ow">and</span> <span class="n">pwd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Password should be a string value.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">pwd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="o">=</span> <span class="n">pwd</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pwd</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">pwd</span>
+
+        <span class="c1">#: Store local time zone</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_local_tz</span> <span class="o">=</span> <span class="n">tz</span><span class="o">.</span><span class="n">tzlocal</span><span class="p">()</span>
+        <span class="c1">#: :py:func:`eta_utility.util.round_timestamp`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_round_timestamp</span> <span class="o">=</span> <span class="n">round_timestamp</span>
+        <span class="c1">#: :py:func:`eta_utility.util.ensure_timezone`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_tz_awareness</span> <span class="o">=</span> <span class="n">ensure_timezone</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">exc</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Connection.from_node"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection.from_node">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_node</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseConnection</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the connection object from a node object. If multiple nodes are passed,</span>
+<span class="sd">         a list of connections is returned.</span>
+
+<span class="sd">        :param node: Node(s) to initialize from.</span>
+<span class="sd">        :param kwargs: Other arguments are ignored.</span>
+<span class="sd">        :return: BaseConnection object or dictionary of BaseConnections</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Make sure nodes is always a set of nodes</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">}</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">)</span> <span class="k">else</span> <span class="nb">set</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">connections</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">username</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;usr&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">password</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;pwd&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="c1"># Create connection if it does not exist</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">protocol</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="c1"># set the username and password</span>
+                    <span class="n">usr</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">usr</span> <span class="ow">or</span> <span class="n">username</span>
+                    <span class="n">pwd</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">pwd</span> <span class="ow">or</span> <span class="n">password</span>
+
+                    <span class="n">connections</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">protocol</span><span class="p">]</span><span class="o">.</span><span class="n">_from_node</span><span class="p">(</span>
+                        <span class="n">node</span><span class="p">,</span> <span class="n">usr</span><span class="o">=</span><span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                    <span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not specify a recognized protocol for initializing a&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot; connection.(</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">protocol</span><span class="si">}</span><span class="s2">) &quot;</span>
+                    <span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Otherwise, just mark the node as selected</span>
+                <span class="n">connections</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span><span class="p">]</span><span class="o">.</span><span class="n">selected_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">connections</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">connections</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">connections</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_from_node</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">AnyNode</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseConnection</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the object from a node with corresponding protocol</span>
+
+<span class="sd">        :return: Initialized connection object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Connection.read"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection.read">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read data from nodes</span>
+
+<span class="sd">        :param nodes: List of nodes to read from.</span>
+<span class="sd">        :return: Pandas DataFrame with resulting values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Connection.write"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection.write">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write data to a list of nodes</span>
+
+<span class="sd">        :param values: Dictionary of nodes and data to write {node: value}.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Connection.subscribe"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection.subscribe">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available.</span>
+
+<span class="sd">        :param nodes: Identifiers for the nodes to subscribe to.</span>
+<span class="sd">        :param handler: Function to be called upon receiving new values, must accept attributes: node, val.</span>
+<span class="sd">        :param interval: Interval for receiving new data. Interpreted as seconds when given as integer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Connection.close_sub"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.Connection.close_sub">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">close_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close an open subscription. This should gracefully handle non-existant subscriptions.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_validate_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">AnyNode</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make sure that nodes are a Set of nodes and that all nodes correspond to the protocol and url</span>
+<span class="sd">        of the connection.</span>
+
+<span class="sd">        :param nodes: Sequence of Node objects to validate.</span>
+<span class="sd">        :return: Set of valid Node objects for this connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">nodes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected_nodes</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+                <span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">nodes</span><span class="p">}</span>
+
+            <span class="c1"># If not using preselected nodes from self.selected_nodes, check if nodes correspond to the connection</span>
+            <span class="n">_nodes</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">node</span>
+                <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">protocol</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_PROTOCOL</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">url_parsed</span><span class="o">.</span><span class="n">hostname</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="p">}</span>
+
+        <span class="c1"># Make sure that some nodes remain after the checks and raise an error if there are none.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Some nodes to read from/write to must be specified. If nodes were specified, they do not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;match the connection </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_nodes</span></div>
+
+
+<span class="c1"># Keep compatibility with old name BaseConnection</span>
+<span class="n">BaseConnection</span> <span class="o">=</span> <span class="n">Connection</span>
+
+
+<div class="viewcode-block" id="BaseSeriesConnection"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.BaseSeriesConnection">[docs]</a><span class="k">class</span> <span class="nc">BaseSeriesConnection</span><span class="p">(</span><span class="n">BaseConnection</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connection object for protocols with the ability to provide access to timeseries data.</span>
+
+<span class="sd">    :param url: URL of the server to connect to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">usr</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">usr</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseSeriesConnection.read_series"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.BaseSeriesConnection.read_series">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">read_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">from_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">to_time</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read time series data from the connection, within a specified time interval (from_time until to_time).</span>
+
+<span class="sd">        :param nodes: List of nodes to read values from.</span>
+<span class="sd">        :param from_time: Starting time to begin reading (included in output).</span>
+<span class="sd">        :param to_time: Time to stop reading at (not included in output).</span>
+<span class="sd">        :param interval: interval between time steps. It is interpreted as seconds if given as integer.</span>
+<span class="sd">        :param kwargs: additional argument list, to be defined by subclasses.</span>
+<span class="sd">        :return: pandas.DataFrame containing the data read from the connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="BaseSeriesConnection.subscribe_series"><a class="viewcode-back" href="../../../_stubs/eta_utility.connectors.base_classes.html#eta_utility.connectors.base_classes.BaseSeriesConnection.subscribe_series">[docs]</a>    <span class="k">def</span> <span class="nf">subscribe_series</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">handler</span><span class="p">:</span> <span class="n">SubscriptionHandler</span><span class="p">,</span>
+        <span class="n">req_interval</span><span class="p">:</span> <span class="n">TimeStep</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">nodes</span><span class="p">:</span> <span class="n">Nodes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">data_interval</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribe to nodes and call handler when new data is available. This will always return a series of values.</span>
+<span class="sd">        If nodes with different intervals should be subscribed, multiple connection objects are needed.</span>
+
+<span class="sd">        :param handler: SubscriptionHandler object with a push method that accepts node, value pairs.</span>
+<span class="sd">        :param req_interval: Duration covered by requested data (time interval). Interpreted as seconds if given as int</span>
+<span class="sd">        :param offset: Offset from datetime.now from which to start requesting data (time interval).</span>
+<span class="sd">            Interpreted as seconds if given as int. Use negative values to go to past timestamps.</span>
+<span class="sd">        :param data_interval: Time interval between values in returned data. Interpreted as seconds if given as int.</span>
+<span class="sd">        :param interval: interval (between requests) for receiving new data. It is interpreted as seconds</span>
+<span class="sd">            when given as an integer.</span>
+<span class="sd">        :param nodes: Identifiers for the nodes to subscribe to.</span>
+<span class="sd">        :param kwargs: Any additional arguments required by subclasses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

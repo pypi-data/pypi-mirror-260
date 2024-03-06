@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.eta_x &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.eta_x</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.eta_x</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.callbacks</span> <span class="kn">import</span> <span class="n">CheckpointCallback</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecNormalize</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.eta_x</span> <span class="kn">import</span> <span class="n">ConfigOpt</span><span class="p">,</span> <span class="n">ConfigOptRun</span>
+<span class="kn">from</span> <span class="nn">eta_utility.eta_x.common</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CallbackEnvironment</span><span class="p">,</span>
+    <span class="n">initialize_model</span><span class="p">,</span>
+    <span class="n">is_env_closed</span><span class="p">,</span>
+    <span class="n">load_model</span><span class="p">,</span>
+    <span class="n">log_net_arch</span><span class="p">,</span>
+    <span class="n">log_run_info</span><span class="p">,</span>
+    <span class="n">log_to_file</span><span class="p">,</span>
+    <span class="n">merge_callbacks</span><span class="p">,</span>
+    <span class="n">vectorize_environment</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Mapping</span>
+
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.base_class</span> <span class="kn">import</span> <span class="n">BaseAlgorithm</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.type_aliases</span> <span class="kn">import</span> <span class="n">MaybeCallback</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecEnv</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env.base_vec_env</span> <span class="kn">import</span> <span class="n">VecEnvObs</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ETAx"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.eta_x.ETAx">[docs]</a><span class="k">class</span> <span class="nc">ETAx</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize an optimization model and provide interfaces for optimization, learning and execution (play).</span>
+
+<span class="sd">    :param root_path: Root path of the eta_x application (the configuration will be interpreted relative to this).</span>
+<span class="sd">    :param config_name: Name of configuration .ini file in configuration directory (should be JSON format).</span>
+<span class="sd">    :param config_overwrite: Dictionary to overwrite selected configurations.</span>
+<span class="sd">    :param relpath_config: Relative path to configuration file, starting from root path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">root_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
+        <span class="n">config_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">config_overwrite</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">relpath_config</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">=</span> <span class="s2">&quot;config/&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Load configuration for the optimization</span>
+        <span class="n">_root_path</span> <span class="o">=</span> <span class="n">root_path</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
+        <span class="n">_relpath_config</span> <span class="o">=</span> <span class="n">relpath_config</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">relpath_config</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">relpath_config</span><span class="p">)</span>
+        <span class="c1">#: Path to the configuration file.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path_config</span> <span class="o">=</span> <span class="n">_root_path</span> <span class="o">/</span> <span class="n">_relpath_config</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">config_name</span><span class="si">}</span><span class="s2">.json&quot;</span>
+        <span class="c1">#: ConfigOpt object for the optimization run.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span> <span class="n">ConfigOpt</span> <span class="o">=</span> <span class="n">ConfigOpt</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path_config</span><span class="p">,</span> <span class="n">root_path</span><span class="p">,</span> <span class="n">config_overwrite</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">verbose</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
+
+        <span class="c1">#: Configuration for an optimization run.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">#: The vectorized environments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">:</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="n">VecNormalize</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Vectorized interaction environments.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="p">:</span> <span class="n">VecEnv</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: The model or algorithm.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="n">BaseAlgorithm</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ETAx.prepare_environments_models"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.eta_x.html#eta_utility.eta_x.eta_x.ETAx.prepare_environments_models">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">prepare_environments_models</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">series_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">run_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_env_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_series_name</span> <span class="o">=</span> <span class="n">series_name</span> <span class="k">if</span> <span class="n">series_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">_run_name</span> <span class="o">=</span> <span class="n">run_name</span> <span class="k">if</span> <span class="n">run_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prepare_run</span><span class="p">(</span><span class="n">_series_name</span><span class="p">,</span> <span class="n">_run_name</span><span class="p">,</span> <span class="n">run_description</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_environments</span><span class="p">(</span><span class="n">training</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">),</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_environments first.&quot;</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">prepare_model</span><span class="p">(</span><span class="n">reset</span><span class="p">)</span>
+            <span class="k">yield</span></div>
+
+<div class="viewcode-block" id="ETAx.prepare_run"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.eta_x.html#eta_utility.eta_x.eta_x.ETAx.prepare_run">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">run_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare the learn and play methods by reading configuration, creating results folders and the model.</span>
+
+<span class="sd">        :param series_name: Name for a series of runs.</span>
+<span class="sd">        :param run_name: Name for a specific run.</span>
+<span class="sd">        :param run_description: Description for a specific run.</span>
+<span class="sd">        :return: Boolean value indicating successful preparation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span> <span class="o">=</span> <span class="n">ConfigOptRun</span><span class="p">(</span>
+            <span class="n">series</span><span class="o">=</span><span class="n">series_name</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">run_name</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">run_description</span><span class="p">,</span>
+            <span class="n">path_root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">path_root</span><span class="p">,</span>
+            <span class="n">path_results</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">path_results</span><span class="p">,</span>
+            <span class="n">path_scenarios</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">path_scenarios</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">create_results_folders</span><span class="p">()</span>
+
+        <span class="c1"># Add file handler to parent logger to log the terminal output</span>
+        <span class="n">log_to_file</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">config_run</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Run prepared successfully.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ETAx.prepare_model"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.eta_x.html#eta_utility.eta_x.eta_x.ETAx.prepare_model">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for existing model and load it or back it up and create a new model.</span>
+
+<span class="sd">        :param reset: Flag to determine whether an existing model should be reset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_model</span><span class="p">(</span><span class="n">reset</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_prepare_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for existing model and load it or back it up and create a new model.</span>
+
+<span class="sd">        :param reset: Flag to determine whether an existing model should be reset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Set the config_run attribute before trying to initialize the model &quot;</span>
+            <span class="s2">&quot;(for example by calling prepare_run).&quot;</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Initialize the environments before trying to initialize the model&quot;</span> <span class="s2">&quot;(for example by calling prepare_run).&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">path_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_run_model</span>
+        <span class="k">if</span> <span class="n">path_model</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="n">reset</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Existing model detected: </span><span class="si">{</span><span class="n">path_model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">bak_name</span> <span class="o">=</span> <span class="n">path_model</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">path_model</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.bak&quot;</span>
+            <span class="n">path_model</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">bak_name</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reset is active. Existing model will be backed up. Backup file name: </span><span class="si">{</span><span class="n">bak_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">path_model</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Existing model detected: </span><span class="si">{</span><span class="n">path_model</span><span class="si">}</span><span class="s2">. Loading model.&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">agent_class</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_run_model</span><span class="p">,</span>
+                <span class="n">tensorboard_log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">tensorboard_log</span><span class="p">,</span>
+                <span class="n">log_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_series_results</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Initialize the model if it wasn&#39;t loaded from a file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">initialize_model</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">agent_class</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">policy_class</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">tensorboard_log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">tensorboard_log</span><span class="p">,</span>
+            <span class="n">log_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_series_results</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="ETAx.prepare_environments"><a class="viewcode-back" href="../../../_stubs/eta_utility.eta_x.eta_x.html#eta_utility.eta_x.eta_x.ETAx.prepare_environments">[docs]</a>    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">prepare_environments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Context manager which prepares the environments and closes them after it exits.</span>
+
+<span class="sd">        :param training: Should preparation be done for training (alternative: playing)?</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If the agents specifies the population parameter, the number of environments usually has to be</span>
+        <span class="c1"># equal to that value as well. See NSGA-II agent.</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="s2">&quot;population&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Agent specifies &#39;population&#39; parameter but the number of environments &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span><span class="si">}</span><span class="s2">) is not equal to the population. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Setting &#39;n_environments&#39; to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_environments</span><span class="p">(</span><span class="n">training</span><span class="p">)</span>
+            <span class="k">yield</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># close all environments when done (kill processes)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Closing environments.&quot;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized environments could not be found.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_with_env</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized interaction environments could not be found.&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_prepare_environments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Vectorize and prepare the environments and potentially the interaction environments.</span>
+
+<span class="sd">        :param training: Should preparation be done for training (alternative: playing)?</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If the agents specifies the population parameter, the number of environments usually has to be</span>
+        <span class="c1"># equal to that value as well. See NSGA-II agent.</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="s2">&quot;population&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Agent specifies &#39;population&#39; parameter but the number of environments &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span><span class="si">}</span><span class="s2">) is not equal to the population. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Setting &#39;n_environments&#39; to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Set the config_run attribute before trying to initialize the environments &quot;</span>
+            <span class="s2">&quot;(for example by calling prepare_run).&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">env_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">environment_class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">set_env_info</span><span class="p">(</span><span class="n">env_class</span><span class="p">)</span>
+
+        <span class="n">callback</span> <span class="o">=</span> <span class="n">CallbackEnvironment</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">plot_interval</span><span class="p">)</span>
+        <span class="c1"># Vectorize the environments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="o">=</span> <span class="n">vectorize_environment</span><span class="p">(</span>
+            <span class="n">env_class</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">environment</span><span class="p">,</span>
+            <span class="n">callback</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">vectorizer_class</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_environments</span><span class="p">,</span>
+            <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
+            <span class="n">monitor_wrapper</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">monitor_wrapper</span><span class="p">,</span>
+            <span class="n">norm_wrapper_obs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">norm_wrapper_obs</span><span class="p">,</span>
+            <span class="n">norm_wrapper_reward</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">norm_wrapper_reward</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_with_env</span><span class="p">:</span>
+            <span class="c1"># Perform some checks to ensure the interaction environment is configured correctly.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">interaction_env_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;If &#39;interact_with_env&#39; is specified, an interaction env class must be specified as well.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;If &#39;interact_with_env&#39; is specified, the interaction_env settings must be specified as well.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">interaction_env_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">setup</span><span class="o">.</span><span class="n">interaction_env_class</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">set_interaction_env_info</span><span class="p">(</span><span class="n">interaction_env_class</span><span class="p">)</span>
+
+            <span class="c1"># Vectorize the environment</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="o">=</span> <span class="n">vectorize_environment</span><span class="p">(</span>
+                <span class="n">interaction_env_class</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interaction_env</span><span class="p">,</span>
+                <span class="n">callback</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+                <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="ETAx.learn"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.eta_x.ETAx.learn">[docs]</a>    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">series_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">run_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="p">:</span> <span class="n">MaybeCallback</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the learning job for an agent with the specified environment.</span>
+
+<span class="sd">        :param series_name: Name for a series of runs.</span>
+<span class="sd">        :param run_name: Name for a specific run.</span>
+<span class="sd">        :param run_description: Description for a specific run.</span>
+<span class="sd">        :param reset: Indication whether possibly existing models should be reset. Learning will be continued if</span>
+<span class="sd">                           model exists and reset is false.</span>
+<span class="sd">        :param callbacks: Provide additional callbacks to send to the model.learn() call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_environments_models</span><span class="p">(</span><span class="n">series_name</span><span class="p">,</span> <span class="n">run_name</span><span class="p">,</span> <span class="n">run_description</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Run configuration could not be found. Call prepare_run first.&quot;</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">),</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_environments first.&quot;</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized model could not be found. Call prepare_model first.&quot;</span>
+
+            <span class="c1"># Log some information about the model and configuration</span>
+            <span class="n">log_net_arch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">)</span>
+            <span class="n">log_run_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">)</span>
+
+            <span class="c1"># Genetic algorithm has a slightly different concept for saving since it does not stop between time steps</span>
+            <span class="k">if</span> <span class="s2">&quot;n_generations&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">:</span>
+                <span class="n">save_freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">save_model_every_x_episodes</span>
+                <span class="n">total_timesteps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">agent</span><span class="p">[</span><span class="s2">&quot;n_generations&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Check if all required config values are present</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">episode_duration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing configuration values for learning: &#39;episode_duration&#39;.&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">sampling_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing configuration values for learning: &#39;sampling_time&#39;.&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_episodes_learn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing configuration values for learning: &#39;n_episodes_learn&#39;.&quot;</span><span class="p">)</span>
+
+                <span class="c1"># define callback for periodically saving models</span>
+                <span class="n">save_freq</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">episode_duration</span>
+                    <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">sampling_time</span>
+                    <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">save_model_every_x_episodes</span>
+                <span class="p">)</span>
+                <span class="n">total_timesteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_episodes_learn</span>
+                    <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">episode_duration</span>
+                    <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">sampling_time</span>
+                <span class="p">)</span>
+
+            <span class="n">callback_learn</span> <span class="o">=</span> <span class="n">merge_callbacks</span><span class="p">(</span>
+                <span class="n">CheckpointCallback</span><span class="p">(</span>
+                    <span class="n">save_freq</span><span class="o">=</span><span class="n">save_freq</span><span class="p">,</span>
+                    <span class="n">save_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span><span class="p">),</span>
+                    <span class="n">name_prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">callbacks</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Start learning</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start learning process of agent in environment.&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span>
+                    <span class="n">total_timesteps</span><span class="o">=</span><span class="n">total_timesteps</span><span class="p">,</span>
+                    <span class="n">callback</span><span class="o">=</span><span class="n">callback_learn</span><span class="p">,</span>
+                    <span class="n">tb_log_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_series_results</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_model_before_error.pkl&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving model to file: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+            <span class="c1"># reset environment one more time to call environment callback one last time</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+            <span class="c1"># save model</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving model to file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_run_model</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_run_model</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="p">,</span> <span class="n">VecNormalize</span><span class="p">):</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving environment normalization data to file: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="o">.</span><span class="n">path_vec_normalize</span><span class="p">))</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning finished: </span><span class="si">{</span><span class="n">series_name</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ETAx.play"><a class="viewcode-back" href="../../../eta_x/introduction.html#eta_utility.eta_x.eta_x.ETAx.play">[docs]</a>    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">run_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">run_description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Play with previously learned agent model in environment.</span>
+
+<span class="sd">        :param series_name: Name for a series of runs.</span>
+<span class="sd">        :param run_name: Name for a specific run.</span>
+<span class="sd">        :param run_description: Description for a specific run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare_environments_models</span><span class="p">(</span><span class="n">series_name</span><span class="p">,</span> <span class="n">run_name</span><span class="p">,</span> <span class="n">run_description</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Run configuration could not be found. Call prepare_run first.&quot;</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">),</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_environments first.&quot;</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized model could not be found. Call prepare_model first.&quot;</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_episodes_play</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing configuration value for playing: &#39;n_episodes_play&#39; in section &#39;settings&#39;&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Log some information about the model and configuration</span>
+            <span class="n">log_net_arch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">)</span>
+            <span class="n">log_run_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_run</span><span class="p">)</span>
+
+            <span class="n">n_episodes_stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">n_episodes_play</span>
+
+            <span class="c1"># Reset the environments before starting to play</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Resetting environments before starting to play.&quot;</span><span class="p">)</span>
+                <span class="n">observations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset_envs</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;It is likely that returned observations do not conform to the specified state config.&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+            <span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Start playing process of agent in environment.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_with_env</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting agent with environment/optimization interaction.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting without an additional interaction environment.&quot;</span><span class="p">)</span>
+
+            <span class="n">_round_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">round_actions</span>
+            <span class="n">_scale_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">scale_actions</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">scale_actions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">1</span>
+
+            <span class="k">while</span> <span class="n">n_episodes</span> <span class="o">&lt;</span> <span class="n">n_episodes_stop</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">observations</span><span class="p">,</span> <span class="n">dones</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_play_step</span><span class="p">(</span><span class="n">_round_actions</span><span class="p">,</span> <span class="n">_scale_actions</span><span class="p">,</span> <span class="n">observations</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;Exception occurred during an environment step. Aborting and trying to reset environments.&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">observations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset_envs</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">followup_exception</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">e</span> <span class="kn">from</span> <span class="nn">followup_exception</span>
+                    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Environment reset successful - re-raising exception&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+
+                <span class="n">n_episodes</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">dones</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_play_step</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">_round_actions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">_scale_actions</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">observations</span><span class="p">:</span> <span class="n">VecEnvObs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">VecEnvObs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_run first.&quot;</span>
+
+        <span class="n">action</span><span class="p">,</span> <span class="n">_states</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">observation</span><span class="o">=</span><span class="n">observations</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="c1"># Type ignored because typing in stable_baselines appears to be incorrect</span>
+        <span class="c1"># Round and scale actions if required</span>
+        <span class="k">if</span> <span class="n">_round_actions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">action</span> <span class="o">*</span> <span class="n">_scale_actions</span><span class="p">,</span> <span class="n">_round_actions</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">action</span> <span class="o">*=</span> <span class="n">_scale_actions</span>
+        <span class="c1"># Some agents (i.e. MPC) can interact with an additional environment</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_with_env</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">),</span> <span class="s2">&quot;Initialized interaction environments could not be found. Call prepare_run first.&quot;</span>
+
+            <span class="c1"># Perform a step  with the interaction environment and update the normal environment with</span>
+            <span class="c1"># its observations</span>
+            <span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+            <span class="n">observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">env_method</span><span class="p">(</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">observations</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+            <span class="c1"># Make sure to also reset the environment, if the interaction_env says it&#39;s done. For the interaction</span>
+            <span class="c1"># env this is done inside the vectorizer.</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">num_envs</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">dones</span><span class="p">[</span><span class="n">idx</span><span class="p">]:</span>
+                    <span class="n">info</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;terminal_observation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">observations</span>
+                    <span class="n">observations</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset_env_interaction</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">observations</span><span class="p">,</span> <span class="n">dones</span>
+
+    <span class="k">def</span> <span class="nf">_reset_envs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VecEnvObs</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the environments when interaction with another environment is taking place.</span>
+
+<span class="sd">        :param observations: Observations from the interaction env.</span>
+<span class="sd">        :return: observations after reset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_run first.&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Resetting environments.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">interact_with_env</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">),</span> <span class="s2">&quot;Initialized interaction environments could not be found. Call prepare_run first.&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+            <span class="n">observations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interaction_env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset_env_interaction</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_reset_env_interaction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observations</span><span class="p">:</span> <span class="n">VecEnvObs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VecEnvObs</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initialized environments could not be found. Call prepare_run first.&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Resetting main environment during environment interaction.&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">env_method</span><span class="p">(</span><span class="s2">&quot;first_update&quot;</span><span class="p">,</span> <span class="n">observations</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;first_update&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                <span class="n">observations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">return</span> <span class="n">observations</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

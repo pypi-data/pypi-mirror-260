@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.util_julia &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.util_julia</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.util_julia</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">which</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Set environment variable to determine the correct python environment to use when calling back into</span>
+<span class="c1"># python from julia</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYCALL_JL_RUNTIME_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+
+<span class="n">JULIA_NOT_FOUND_MSG</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;Julia executable cannot be found. &quot;</span>
+    <span class="s2">&quot;If you have installed Julia, make &quot;</span>
+    <span class="s2">&quot;sure Julia executable is in the system path. &quot;</span>
+    <span class="s2">&quot;If you have not installed Julia, download from &quot;</span>
+    <span class="s2">&quot;https://julialang.org/downloads/ and install it. &quot;</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="import_jl_file"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.import_jl_file">[docs]</a><span class="k">def</span> <span class="nf">import_jl_file</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModuleType</span><span class="p">:</span>
+    <span class="n">check_julia_package</span><span class="p">()</span>
+
+    <span class="n">_filename</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="k">else</span> <span class="n">filename</span>
+    <span class="n">jl</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;julia.Main&quot;</span><span class="p">)</span>
+
+    <span class="n">jl</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="n">_filename</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">jl</span></div>
+
+
+<div class="viewcode-block" id="import_jl"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.import_jl">[docs]</a><span class="k">def</span> <span class="nf">import_jl</span><span class="p">(</span><span class="n">importstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModuleType</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Import a julia file into the main namespace. The syntax is equivalent to python import strings. If the import</span>
+<span class="sd">    string starts with a &#39;.&#39;, the import path is interpreted as relative to the file calling this function. If the</span>
+<span class="sd">    import string is absolute, it will use the python sys.path list to look for the file.</span>
+
+<span class="sd">    The function also makes sure that julia.Main is imported and returns a handle to the module. This way, the</span>
+<span class="sd">    imported julia file can be used right away.</span>
+
+<span class="sd">    :param importstr: Path to the imported julia package. If the path starts with a &#39;.&#39; this will be relative to the</span>
+<span class="sd">        file it is specified in. Otherwise, this will look through python import Path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_julia_package</span><span class="p">()</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="n">importstr_to_path</span><span class="p">(</span><span class="n">importstr</span><span class="p">,</span> <span class="n">_stack</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">jl</span> <span class="o">=</span> <span class="n">import_jl_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jl</span></div>
+
+
+<div class="viewcode-block" id="importstr_to_path"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.importstr_to_path">[docs]</a><span class="k">def</span> <span class="nf">importstr_to_path</span><span class="p">(</span><span class="n">importstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">_stack</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts an import string into a python path. The syntax is equivalent to python import strings. If the</span>
+<span class="sd">    import string starts with a &#39;.&#39;, the import path is interpreted as relative to the file calling this function.</span>
+<span class="sd">    If the import string is absolute, it will use the python sys.path list to look for the file.</span>
+
+<span class="sd">    :param importstr: Path to the imported julia package (python import string). If the path starts with a &#39;.&#39; this</span>
+<span class="sd">        will be relative to the file it is specified in. Otherwise, this will look through the python import paths.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">importstr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">importstr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span> <span class="ow">and</span> <span class="n">importstr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span>
+        <span class="n">pathstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;..</span><span class="si">{</span><span class="n">importstr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.jl&quot;</span>
+        <span class="n">relative</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">importstr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">importstr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span>
+        <span class="n">pathstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">importstr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.jl&quot;</span>
+        <span class="n">relative</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pathstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">importstr</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.jl&quot;</span>
+        <span class="n">relative</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">relative</span><span class="p">:</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="n">_stack</span><span class="p">]</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">pathstr</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">/</span> <span class="n">pathstr</span>
+            <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">and</span> <span class="n">relative</span> <span class="ow">and</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find the specified julia file. Looking for </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find the specified julia file. Looking for </span><span class="si">{</span><span class="n">pathstr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">file</span></div>
+
+
+<div class="viewcode-block" id="update_agent"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.update_agent">[docs]</a><span class="k">def</span> <span class="nf">update_agent</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Upadtes the NSGA2 agent model file&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">tempfile</span>
+    <span class="kn">from</span> <span class="nn">test.test_etax.test_agents</span> <span class="kn">import</span> <span class="n">TestNSGA2</span>
+
+    <span class="bp">cls</span> <span class="o">=</span> <span class="n">TestNSGA2</span><span class="p">()</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">create_stored_agent_file</span><span class="p">(</span><span class="s2">&quot;test/resources/agents/&quot;</span><span class="p">,</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="install_julia"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.install_julia">[docs]</a><span class="k">def</span> <span class="nf">install_julia</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if Julia language is available in the system and install and configure pyjulia.</span>
+<span class="sd">    Also install ju_extensions in Julia environmnent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">which</span><span class="p">(</span><span class="s2">&quot;julia&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">JULIA_NOT_FOUND_MSG</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">julia</span>  <span class="c1"># noqa: I900</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;julia&quot;</span><span class="p">])</span>
+
+        <span class="kn">import</span> <span class="nn">julia</span>  <span class="c1"># noqa: I900</span>
+
+    <span class="c1"># Set environment variable to determine the correct python environment to use when calling back into</span>
+    <span class="c1"># python from julia</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYCALL_JL_RUNTIME_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+    <span class="n">julia</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;julia&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-e&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;import Pkg; Pkg.develop(path=</span><span class="se">\&quot;</span><span class="si">{</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;ju_extensions&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">)&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_julia_package"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.check_julia_package">[docs]</a><span class="k">def</span> <span class="nf">check_julia_package</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if everything is available and setup correctly to execute modules depending on eta_utility</span>
+<span class="sd">    julia extensions. This function raises ImportError if necessary components are missing.</span>
+
+<span class="sd">    :returns: True if is installed ImportError if not</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">which</span><span class="p">(</span><span class="s2">&quot;julia&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">JULIA_NOT_FOUND_MSG</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">julia</span>  <span class="c1"># noqa: I900</span>
+    <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">&quot;Could not find the python julia package. Please run the command: install-julia &quot;</span>
+            <span class="s2">&quot;inside the python virtual environment where eta-utility is installed.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">julia</span> <span class="kn">import</span> <span class="n">ju_extensions</span>  <span class="c1"># noqa: I900 F401</span>
+    <span class="k">except</span> <span class="n">julia</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">UnsupportedPythonError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">&quot;PyCall for Julia is installed for a different python binary than you are currently &quot;</span>
+            <span class="s2">&quot;using. Please run the command: install-julia inside the python virtual environment &quot;</span>
+            <span class="s2">&quot;where eta-utility is installed.&quot;</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ModuleNotFoundError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+            <span class="s2">&quot;Could not find julia extension module for eta_utility (ju_extensions missing). Please &quot;</span>
+            <span class="s2">&quot;run the command: install-julia inside the python virtual environment where eta-utility &quot;</span>
+            <span class="s2">&quot;is installed.&quot;</span>
+        <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="julia_extensions_available"><a class="viewcode-back" href="../../util/util.html#eta_utility.util_julia.julia_extensions_available">[docs]</a><span class="k">def</span> <span class="nf">julia_extensions_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if everything is available and setup correctly to execute modules depending on eta_utility</span>
+<span class="sd">    julia extensions. This function returns false if necessary components are missing. It does not</span>
+<span class="sd">    provide any indications what is missing.</span>
+
+<span class="sd">    :return: True if julia extensions are correctly installed, false if not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">check_julia_package</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

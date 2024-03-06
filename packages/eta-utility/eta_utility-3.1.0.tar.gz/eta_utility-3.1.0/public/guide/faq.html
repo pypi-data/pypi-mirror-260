@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequently Asked Questions &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Usage examples" href="../examples/examples.html" />
+    <link rel="prev" title="Contributing to development" href="development.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Contributing to development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-installed-git-but-the-git-executable-cannot-be-found">I installed git, but the git executable cannot be found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-cannot-login-to-gitlab-but-windows-doesn-t-ask-for-new-login-information">I cannot login to gitlab, but Windows doesn’t ask for new login information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fmu-model-initialization-dymola-fails-with-exception-failed-to-instantiate-model">FMU model initialization (Dymola) fails with “Exception: Failed to instantiate model”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-want-to-execute-sphinx-but-it-complains-it-s-not-installed">I want to execute sphinx, but it complains it’s not installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-want-to-install-julia-but-the-julia-executable-cannot-be-found">I want to install Julia, but the Julia executable cannot be found</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-want-to-start-eta-utility-but-in-some-external-packages-there-were-changes">I want to start <em>eta_utility</em>, but in some external packages there were changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-want-to-start-a-julia-experiment-but-there-is-an-attributeerror">I want to start a julia experiment, but there is an AttributeError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-made-changes-in-the-nsga2-agent-and-want-to-do-a-commit-but-my-tests-are-not-passing">I made changes in the NSGA2 agent and want to do a commit, but my tests are not passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resolve-fmpy-compilation-issue-on-macos-x64">Resolve FMPy compilation issue on macOS (x64)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Frequently Asked Questions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guide/faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frequently-asked-questions">
+<span id="faq"></span><h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading"></a></h1>
+<p>This is a collection of some questions that have been asked frequently.</p>
+<section id="i-installed-git-but-the-git-executable-cannot-be-found">
+<h2>I installed git, but the git executable cannot be found<a class="headerlink" href="#i-installed-git-but-the-git-executable-cannot-be-found" title="Permalink to this heading"></a></h2>
+<p>Sometimes, after you install git it will not be automatically assigned to the environment variables.
+In this case, you can add the path to git to your environment variables manually. The error might look like the following.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/12_ErrorGitNotAddedToPath.jpg"><img alt="git not added to PATH" src="../_images/12_ErrorGitNotAddedToPath.jpg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Error message if git was not correctly added to the environment PATH.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>On Windows this is done by navigating to “Advanced System Settings”, then “Advanced” and clicking
+“Environment Variables” at the bottom of the window. In the figure you can see the path for
+git.exe in GitHub Desktop 2.6.3 added to the SYSTEM variables:</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/8_AddGitToPath.png"><img alt="Adding git to PATH" src="../_images/8_AddGitToPath.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Adding git to environment variables.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Alternatively, you can use a terminal to add the variable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">set</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>%PATH%<span class="p">;</span>&lt;Your<span class="w"> </span>Git<span class="w"> </span>Path&gt;
+</pre></div>
+</div>
+<p>In case of any problems with locating of git on your device, <a class="reference external" href="https://stackoverflow.com/questions/11928561/where-is-git-exe-located">this StackOverflow discussion
+(external link)</a>
+might help.</p>
+<p>After this, git should work as expected.</p>
+</section>
+<section id="i-cannot-login-to-gitlab-but-windows-doesn-t-ask-for-new-login-information">
+<h2>I cannot login to gitlab, but Windows doesn’t ask for new login information<a class="headerlink" href="#i-cannot-login-to-gitlab-but-windows-doesn-t-ask-for-new-login-information" title="Permalink to this heading"></a></h2>
+<p>Git uses the Windows credential manager and sometimes does not recognize correctly when
+a wrong password or username is provided. This leads to errors regarding incorrect login
+information but git does not ask for corrected information.</p>
+<p>You can force resetting the git credentials in Windows:</p>
+<ul class="simple">
+<li><p>open “Credential Manager” in system control</p></li>
+<li><p>Delete information about the git server you are trying to login to
+(in  case of eta_utility: “git.ptw.maschinenbau.tu-darmstadt.de &lt;git.ptw.maschinenbau.tu-darmstadt.de&gt;”_).</p></li>
+</ul>
+</section>
+<section id="fmu-model-initialization-dymola-fails-with-exception-failed-to-instantiate-model">
+<span id="dymola-license-not-found"></span><h2>FMU model initialization (Dymola) fails with “Exception: Failed to instantiate model”<a class="headerlink" href="#fmu-model-initialization-dymola-fails-with-exception-failed-to-instantiate-model" title="Permalink to this heading"></a></h2>
+<p>If the log before this also shows the following error, there is a problem with the Dymola
+license file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[FATAL] The license file was not found. Use the environment variable &quot;DYMOLA_RUNTIME_LICENSE&quot;</span>
+<span class="go">to specify your Dymola license file.&quot;</span>
+</pre></div>
+</div>
+<p>There are multiple options, why this occurs: either the file is not specified at all or
+the license server could not be found. To solve the problem, open Windows PowerShell and enter</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">dir env:</span>
+</pre></div>
+</div>
+<p>If the DYMOLA_RUNTIME_LICENSE variable is shown, make sure that it corresponds to the value shown
+in Dymola. To do this, open Dymola and go to “Tools” &gt; “License Setup” &gt; “Setup” and read the
+value from the field “Local license file, File name”.</p>
+<p>If the two values are not equal or the variable DYMOLA_RUNTIME_LICENSE does not exist yet,
+enter the following command in PowerShell (replacing &lt;File Name&gt; with the value from Dymola):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[System.Environment]::SetEnvironmentVariable(&#39;DYMOLA_RUNTIME_LICENSE&#39;,&#39;&lt;File Name&gt;&#39;)</span>
+</pre></div>
+</div>
+<p>In case Dymola also does not start, shows an error or starts in trial mode, make sure that
+you can connect to the license server correctly. This requires being in the same network as the
+server (either physically or using the VPN).</p>
+</section>
+<section id="i-want-to-execute-sphinx-but-it-complains-it-s-not-installed">
+<span id="sphinx-not-found"></span><h2>I want to execute sphinx, but it complains it’s not installed<a class="headerlink" href="#i-want-to-execute-sphinx-but-it-complains-it-s-not-installed" title="Permalink to this heading"></a></h2>
+<p>If you receive the following message, you might  have to add the sphinx-scripts to your
+environment variables.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/dev_02_SphinxError.png"><img alt="error during documentation build" src="../_images/dev_02_SphinxError.png" style="width: 470px;" /></a>
+<figcaption>
+<p><span class="caption-text">Error message shown when trying to build the documentation.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>First, find the path to your sphinx installation, then add it via the terminal or through the
+“Advanced system settings” in Windows.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">set</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>%PATH%<span class="p">;</span>&lt;Your<span class="w"> </span>sphinx<span class="w"> </span>path&gt;
+</pre></div>
+</div>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/dev_03_AddingSphinx2PATH.png"><img alt="how add to PATH" src="../_images/dev_03_AddingSphinx2PATH.png" style="width: 470px;" /></a>
+<figcaption>
+<p><span class="caption-text">Adding sphinx scripts to PATH</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="i-want-to-install-julia-but-the-julia-executable-cannot-be-found">
+<span id="julia-not-found"></span><h2>I want to install Julia, but the Julia executable cannot be found<a class="headerlink" href="#i-want-to-install-julia-but-the-julia-executable-cannot-be-found" title="Permalink to this heading"></a></h2>
+<p>If you receive the following error message, when you want to install the Julia executable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Exception:<span class="w"> </span>Julia<span class="w"> </span>executable<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>found.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>installed<span class="w"> </span>Julia,<span class="w"> </span>make<span class="w"> </span>sure<span class="w"> </span>Julia<span class="w"> </span>executable<span class="w"> </span>is<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>path.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>not<span class="w"> </span>installed<span class="w"> </span>Julia,<span class="w"> </span>download<span class="w"> </span>from<span class="w"> </span>https://julialang.org/downloads/<span class="w"> </span>and<span class="w"> </span>install<span class="w"> </span>it.
+</pre></div>
+</div>
+<p>Add the path from Julia to Windows as described in <a class="reference internal" href="install.html#install-julia"><span class="std std-ref">Using Julia Extensions</span></a> and restart eta-utility.</p>
+</section>
+<section id="i-want-to-start-eta-utility-but-in-some-external-packages-there-were-changes">
+<span id="packages-error"></span><h2>I want to start <em>eta_utility</em>, but in some external packages there were changes<a class="headerlink" href="#i-want-to-start-eta-utility-but-in-some-external-packages-there-were-changes" title="Permalink to this heading"></a></h2>
+<p>If you want to use <em>eta_utility</em>, but you get errors in some Python packages, because there were changes in the source code, update <em>eta_utility</em> with the following command (add extra requirements like <cite>eta_x</cite> as needed):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>--upgrade-strategy<span class="o">=</span>only-if-needed<span class="w"> </span>eta_utility
+</pre></div>
+</div>
+</section>
+<section id="i-want-to-start-a-julia-experiment-but-there-is-an-attributeerror">
+<h2>I want to start a julia experiment, but there is an AttributeError<a class="headerlink" href="#i-want-to-start-a-julia-experiment-but-there-is-an-attributeerror" title="Permalink to this heading"></a></h2>
+<p>If you receive the following (or a similar) error message, when you want to start a julia experiment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Exception:<span class="w"> </span>AttributeError:<span class="w"> </span>module<span class="w"> </span><span class="s1">&#39;eta_utility.eta_x.agents&#39;</span><span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">&#39;Nsga2&#39;</span>.
+</pre></div>
+</div>
+<p>Make sure PyJulia is installed in the correct virtual environment as described in <a class="reference internal" href="install.html#install-julia"><span class="std std-ref">Using Julia Extensions</span></a>.</p>
+</section>
+<section id="i-made-changes-in-the-nsga2-agent-and-want-to-do-a-commit-but-my-tests-are-not-passing">
+<h2>I made changes in the NSGA2 agent and want to do a commit, but my tests are not passing<a class="headerlink" href="#i-made-changes-in-the-nsga2-agent-and-want-to-do-a-commit-but-my-tests-are-not-passing" title="Permalink to this heading"></a></h2>
+<p>Make sure that you have refreshed the stored agent model as described in <a class="reference internal" href="development.html#testing-your-code"><span class="std std-ref">Testing your code</span></a>.</p>
+</section>
+<section id="resolve-fmpy-compilation-issue-on-macos-x64">
+<h2>Resolve FMPy compilation issue on macOS (x64)<a class="headerlink" href="#resolve-fmpy-compilation-issue-on-macos-x64" title="Permalink to this heading"></a></h2>
+<p>If you start developing on macOS, you might encounter errors when compiling FMPy, should the pre-complied binaries not be available for your system.</p>
+<p>The error message might look like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>clang:<span class="w"> </span>error:<span class="w"> </span>unsupported<span class="w"> </span>option<span class="w"> </span><span class="s1">&#39;-fopenmp&#39;</span>
+<span class="gp">$ </span>error:<span class="w"> </span><span class="nb">command</span><span class="w"> </span><span class="s1">&#39;clang&#39;</span><span class="w"> </span>failed<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>Here’s how you can manually compile the FMU. Make sure to replace all occurrences of “fmu_file” with the actual name of the FMU:</p>
+<ol class="arabic simple">
+<li><p>Install the <cite>zip</cite> package using Homebrew:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>brew<span class="w"> </span>install<span class="w"> </span>zip
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Create a folder where the FMU can be extracted and extract the FMU:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span>fmu_extract<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>fmu_extract
+<span class="gp">$ </span>unzip<span class="w"> </span>-u<span class="w"> </span>path/to/fmu_file.fmu<span class="w"> </span>-d<span class="w"> </span>fmu_extract
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>If you encounter an error with compiling the <cite>ModelicaInternal.c</cite> file, insert a function declaration before the call in <cite>/sources/ModelicaInternal.c</cite>, add the following declaration:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>int<span class="w"> </span>creat<span class="o">(</span>const<span class="w"> </span>char<span class="w"> </span>*path,<span class="w"> </span>mode_t<span class="w"> </span>mode<span class="o">)</span><span class="w"> </span>__DARWIN_ALIAS_C<span class="o">(</span>creat<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Switch to the <cite>sources</cite> folder:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>fmu_extract/sources
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Run the following Clang compiler command with the <cite>-w</cite> flags to clear the output of warnings (replace <cite>/path/to/fmpy/</cite> with the actual path to your fmpy installation):</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>clang<span class="w"> </span>-w<span class="w"> </span>-c<span class="w"> </span>-arch<span class="w"> </span>x86_64<span class="w"> </span>-arch<span class="w"> </span>arm64<span class="w"> </span>-I.<span class="w"> </span>-I/path/to/fmpy/c-code<span class="w"> </span>all.c<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>clang<span class="w"> </span>-w<span class="w"> </span>-shared<span class="w"> </span>-arch<span class="w"> </span>x86_64<span class="w"> </span>-arch<span class="w"> </span>arm64<span class="w"> </span>-ofmu_file.dylib<span class="w"> </span>*.o<span class="w"> </span>-lm
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Move the output to the <cite>darwin64</cite> folder:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span>../binaries/darwin64<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mkdir<span class="w"> </span>../binaries/darwin64
+<span class="gp">$ </span>mv<span class="w"> </span>out.so<span class="w"> </span>../binaries/darwin64/fmu_file.dylib
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Pack the new FMU, which contains the compiled files:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="gp">$ </span>zip<span class="w"> </span>-r<span class="w"> </span>../fmu_file.fmu<span class="w"> </span>*
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Clean up:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="gp">$ </span>rm<span class="w"> </span>-rf<span class="w"> </span>fmu_extract
+</pre></div>
+</div>
+<p>After following these steps, you should have a new FMU file that contains the compiled files and can be used on macOS systems.</p>
+<p>This resolution has been tested on macOS Ventura 13.4.1 (xarm64: M1).
+See also:
+<a class="reference external" href="https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/-/issues/200">https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/-/issues/200</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="development.html" class="btn btn-neutral float-left" title="Contributing to development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/examples.html" class="btn btn-neutral float-right" title="Usage examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

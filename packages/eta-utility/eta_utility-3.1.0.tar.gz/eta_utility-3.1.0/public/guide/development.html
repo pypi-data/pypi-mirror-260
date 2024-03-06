@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing to development &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-most-important-things">The most important things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-poetry">Installing Poetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-eta-utility">Installation of eta_utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-environments-with-poetry">Managing Environments with Poetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-your-code">Testing your code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editing-this-documentation">Editing this documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gitlab-ci-cd">GitLab - CI/CD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gitlab-docker-containers">GitLab - Docker containers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing to development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guide/development.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-development">
+<span id="development"></span><h1>Contributing to development<a class="headerlink" href="#contributing-to-development" title="Permalink to this heading"></a></h1>
+<p>Before contributing to development of <em>eta_utility</em>, please read this development
+guide carefully. If you are looking for instructions on how to install <em>eta_utility</em> for usage
+only, please take a look at the <a class="reference internal" href="install.html#install"><span class="std std-ref">Installation</span></a> guide.</p>
+<p>If you need help installing Python or git, please consult the <a class="reference internal" href="python_install.html#python-install"><span class="std std-ref">Set up Python and Git</span></a> guide.</p>
+<section id="the-most-important-things">
+<h2>The most important things<a class="headerlink" href="#the-most-important-things" title="Permalink to this heading"></a></h2>
+<p>If you would like to contribute, please create an issue in the repository to discuss your suggestions.
+Once the general idea has been agreed upon, you can create a merge request from the issue and
+implement your changes there.</p>
+<p>If you are planning to develop on this package, based on the requirements of another
+package, you might want to import directly from a local git repository. To do this,
+uninstall eta_utility from the other projects virtual environment and add the path to the local
+<em>eta_utility</em> repository to the other projects main file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;path to local eta_utility repository&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-poetry">
+<span id="install-poetry"></span><h2>Installing Poetry<a class="headerlink" href="#installing-poetry" title="Permalink to this heading"></a></h2>
+<p>This project is being managed by <a class="reference external" href="https://python-poetry.org/docs/#installation">Poetry</a>.
+It’s a tool for Python dependency management and packaging.
+In order to install the development environment, you need to install Poetry first.</p>
+<p>Open a terminal for the next steps (such as PowerShell)</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on where the relevant folders for the installation are located on your OS,
+the terminal may need to be executed as administrator / root.</p>
+</div>
+</div></blockquote>
+<p>It’s recommended to install Poetry with pipx. This will install Poetry in an isolated environment.
+If you don’t have pipx installed, you can install it with pip:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipx
+<span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pipx<span class="w"> </span>ensurepath
+</pre></div>
+</div>
+<p>Then install Poetry with pipx:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pipx<span class="w"> </span>install<span class="w"> </span><span class="nv">poetry</span><span class="o">==</span><span class="m">1</span>.6.1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Poetry will initially use the Python version that it has been installed with.
+To change the Python version, see <a class="reference internal" href="#managinv-environments-poetry"><span class="std std-ref">Managing Environments with Poetry</span></a>.</p>
+</div>
+<p>By default, Poetry will create its own virtual environment for each project.
+Only if there is already a virtual environment called “.venv” in the project folder, Poetry will use it.
+The virtual environments will be installed in:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\&lt;username&gt;\AppData\Local\pypoetry\Cache\virtualenvs\
+</pre></div>
+</div>
+<p>For more information, see the <a class="reference external" href="https://python-poetry.org/docs/#installing-with-pipx">Poetry documentation</a>.</p>
+</section>
+<section id="installation-of-eta-utility">
+<h2>Installation of eta_utility<a class="headerlink" href="#installation-of-eta-utility" title="Permalink to this heading"></a></h2>
+<p>First, clone the repository to a directory of your choosing. You can use a git GUI for this or
+execute the following command. See also <a class="reference internal" href="python_install.html#install-git"><span class="std std-ref">Installation of Git</span></a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://git.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility
+</pre></div>
+</div>
+<p>You might be asked for your git login credentials.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/10_GitLogin.png"><img alt="git login" src="../_images/10_GitLogin.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text">Git login window.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>After this, navigate to the root directory <strong>eta-utility</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>eta-utility
+</pre></div>
+</div>
+<p>.. and install the project via poetry with the
+extra <em>develop</em> . This includes all requirements plus everything required for development
+and continuous integration checks:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>install<span class="w"> </span>--extras<span class="w"> </span>develop<span class="w"> </span>--sync
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Updating the project dependencies is done with the same command.</p>
+</div>
+<p>We use pre-commit to check code before committing. Therefore, after the installation completes,
+please install pre-commit before performing the first commits to the repository.
+This ensures that your commits will be checked and formatted automatically.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/11_PreCommit.png"><img alt="pre-commit installed successfully" src="../_images/11_PreCommit.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Confirmation of correct pre-commit installation.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using pre-commit for the first time, it will take longer as it will install all the hooks.</p>
+</div>
+<div class="line-block">
+<div class="line">When using an IDE or code editor, make sure that it uses the virtual environment managed by Poetry.</div>
+<div class="line">For PyCharm, see: <a class="reference external" href="https://www.jetbrains.com/help/pycharm/poetry.html#poetry-env">https://www.jetbrains.com/help/pycharm/poetry.html#poetry-env</a></div>
+<div class="line">For VS Code, see: <a class="reference external" href="https://code.visualstudio.com/docs/python/environments">https://code.visualstudio.com/docs/python/environments</a></div>
+</div>
+</section>
+<section id="managing-environments-with-poetry">
+<span id="managinv-environments-poetry"></span><h2>Managing Environments with Poetry<a class="headerlink" href="#managing-environments-with-poetry" title="Permalink to this heading"></a></h2>
+<p>You can run commands in the virtual environment by using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>&lt;command&gt;
+</pre></div>
+</div>
+<p>.. or spawn a terminal with the virtual environment activated:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>shell
+</pre></div>
+</div>
+<p>To check which Python version Poetry is using and get the path of that environment,
+execute the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>env<span class="w"> </span>info
+</pre></div>
+</div>
+<p>You can change the Python version Poetry uses with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>env<span class="w"> </span>use<span class="w"> </span>&lt;full<span class="w"> </span>python<span class="w"> </span>path&gt;
+</pre></div>
+</div>
+<p>To list all available Python versions on Windows, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>py<span class="w"> </span>-0p
+</pre></div>
+</div>
+<p>For more information, see the <a class="reference external" href="https://python-poetry.org/docs/managing-environments">Poetry docs</a>.</p>
+</section>
+<section id="testing-your-code">
+<span id="id1"></span><h2>Testing your code<a class="headerlink" href="#testing-your-code" title="Permalink to this heading"></a></h2>
+<p>Please always execute the tests before committing changes. You can do this by navigating to the main
+folder of the <em>eta_utility</em> repository and executing the following command in a terminal.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>pytest
+</pre></div>
+</div>
+<p>Or if you have the virtual environment already activated:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest
+</pre></div>
+</div>
+<p>Please always refresh the <em>test_nsga2_agent.zip</em> file when changes are made in the nsga2 agent and in julia files. The zip-file is located
+in <em>eta-utility/test/resources/agents</em> and creates a new NSGA2 model for the tests. To do this, execute the following
+comand in the terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>update-julia-agent
+</pre></div>
+</div>
+</section>
+<section id="editing-this-documentation">
+<h2>Editing this documentation<a class="headerlink" href="#editing-this-documentation" title="Permalink to this heading"></a></h2>
+<p>Sphinx is used as a documentation-generator. The relevant files are located in the <em>docs</em>
+folder of the repository. If you correctly installed <em>eta_utility</em> with the develop
+extension, sphinx should already be installed.</p>
+<p>You can edit the <em>.rst-files</em> in the <em>docs</em> folder. A simple text editor is sufficient for this.
+A helpful start for learning the syntax can be found <a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/index.html">here</a>.</p>
+<p>For test purposes, navigate to the <em>docs</em> folder and execute the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>This creates a folder named <em>_build</em> (inside the <em>docs</em> folder) which allows the HTML pages to
+be previewed locally. This folder will not be committed to git. Re-execute this command each
+time you edit the documentation to see the changes (you may have to refresh the HTML page).</p>
+<p>If you have problems using sphinx see <a class="reference internal" href="faq.html#sphinx-not-found"><span class="std std-ref">I want to execute sphinx, but it complains it’s not installed</span></a>.</p>
+</section>
+<section id="gitlab-ci-cd">
+<h2>GitLab - CI/CD<a class="headerlink" href="#gitlab-ci-cd" title="Permalink to this heading"></a></h2>
+<p>Your contribution via pull request can only be merged if the steps from the CI/CD are approved.
+The stages are:</p>
+<ul class="simple">
+<li><p><em>check</em>: verify the check-style</p></li>
+<li><p><em>test</em>: check all tests</p></li>
+<li><p><em>deploy</em>: verify correct documentation deploy</p></li>
+</ul>
+<p>All the CI/CD instructions are listed in the <em>.gitlab-ci.yml</em> file.</p>
+</section>
+<section id="gitlab-docker-containers">
+<h2>GitLab - Docker containers<a class="headerlink" href="#gitlab-docker-containers" title="Permalink to this heading"></a></h2>
+<p>The directory <em>.gitlab</em> contains the dockerfiles which defines the images that the jobs
+of the CI/CD run on. Currently there are two main dockerfiles, one to describe Python-Julia
+environment and another just for Python.</p>
+<p>All the dockerfiles contains an correspondent image stored in <strong>Packages &amp; Registries &gt; Container Registry</strong>.
+In which the image will be used in a container to execute the jobs.</p>
+<p>To update the containers first you need to login in GitLab through docker.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>login<span class="w"> </span>git-reg.ptw.maschinenbau.tu-darmstadt.de
+</pre></div>
+</div>
+<p>Then you build and upload the image from the dockerfile. For example, for the pyjulia image use the following command
+inside the project folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>git-reg.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/pyjulia:py3.9-jl1.9<span class="w"> </span>-f<span class="w"> </span>.gitlab/docker/pyjulia-39-19.dockerfile<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Using tags for the images is a good practice to differentiate image versions, in case it’s not used it’s automatic
+labeled as <em>latest</em>. Currently there are three images for Python environments called <em>python</em>, with Python versions
+differentiated by tags (py3.9, py3.10 and py3.11) and there is an image with combined Python and Julia installations.</p>
+<p>The last step is to upload the images to the private docker registry.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>push<span class="w"> </span>git-reg.ptw.maschinenbau.tu-darmstadt.de/eta-fabrik/public/eta-utility/pyjulia:py3.9-jl1.9
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

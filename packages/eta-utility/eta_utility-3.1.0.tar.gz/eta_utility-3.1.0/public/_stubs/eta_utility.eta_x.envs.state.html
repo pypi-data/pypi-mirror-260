@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.envs.state module &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.eta_x.config module" href="eta_utility.eta_x.config.html" />
+    <link rel="prev" title="eta_utility.eta_x.envs.no_vec_env module" href="eta_utility.eta_x.envs.no_vec_env.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.servers.html">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.eta_x.envs.html">eta_utility.eta_x.envs package</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.envs.state module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.eta_x.envs.state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.eta_x.envs.state">
+<span id="eta-utility-eta-x-envs-state-module"></span><h1>eta_utility.eta_x.envs.state module<a class="headerlink" href="#module-eta_utility.eta_x.envs.state" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.envs.state.</span></span><span class="sig-name descname"><span class="pre">StateVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_agent_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_agent_observation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_to_state_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ext_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ext_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_scale_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext_scale_mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interact_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_interact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interact_scale_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interact_scale_mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_scale_add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_scale_mult</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abort_condition_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abort_condition_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateVar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A variable in the state of an environment.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.name" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the state variable (This must always be specified).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.is_agent_action">
+<span class="sig-name descname"><span class="pre">is_agent_action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.is_agent_action" title="Permalink to this definition"></a></dt>
+<dd><p>Should the agent specify actions for this variable? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.is_agent_observation">
+<span class="sig-name descname"><span class="pre">is_agent_observation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.is_agent_observation" title="Permalink to this definition"></a></dt>
+<dd><p>Should the agent be allowed to observe the value of this variable? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.add_to_state_log">
+<span class="sig-name descname"><span class="pre">add_to_state_log</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.add_to_state_log" title="Permalink to this definition"></a></dt>
+<dd><p>Should the state log of this episode be added to state_log_longtime? (default: True).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.ext_id">
+<span class="sig-name descname"><span class="pre">ext_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.ext_id" title="Permalink to this definition"></a></dt>
+<dd><p>Name or identifier (order) of the variable in the external interaction model
+(e.g.: environment or FMU) (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.is_ext_input">
+<span class="sig-name descname"><span class="pre">is_ext_input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.is_ext_input" title="Permalink to this definition"></a></dt>
+<dd><p>Should this variable be passed to the external model as an input? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.is_ext_output">
+<span class="sig-name descname"><span class="pre">is_ext_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.is_ext_output" title="Permalink to this definition"></a></dt>
+<dd><p>Should this variable be parsed from the external model output? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.ext_scale_add">
+<span class="sig-name descname"><span class="pre">ext_scale_add</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.ext_scale_add" title="Permalink to this definition"></a></dt>
+<dd><p>Value to add to the output from an external model (default: 0).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.ext_scale_mult">
+<span class="sig-name descname"><span class="pre">ext_scale_mult</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.ext_scale_mult" title="Permalink to this definition"></a></dt>
+<dd><p>Value to multiply to the output from an external model (default: 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.interact_id">
+<span class="sig-name descname"><span class="pre">interact_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.interact_id" title="Permalink to this definition"></a></dt>
+<dd><p>Name or identifier (order) of the variable in an interaction environment (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.from_interact">
+<span class="sig-name descname"><span class="pre">from_interact</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.from_interact" title="Permalink to this definition"></a></dt>
+<dd><p>Should this variable be read from the interaction environment? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.interact_scale_add">
+<span class="sig-name descname"><span class="pre">interact_scale_add</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.interact_scale_add" title="Permalink to this definition"></a></dt>
+<dd><p>Value to add to the value read from an interaction (default: 0).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.interact_scale_mult">
+<span class="sig-name descname"><span class="pre">interact_scale_mult</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.interact_scale_mult" title="Permalink to this definition"></a></dt>
+<dd><p>Value to multiply to the value read from  an interaction (default: 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.scenario_id">
+<span class="sig-name descname"><span class="pre">scenario_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.scenario_id" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the scenario variable, this value should be read from (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.from_scenario">
+<span class="sig-name descname"><span class="pre">from_scenario</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.from_scenario" title="Permalink to this definition"></a></dt>
+<dd><p>Should this variable be read from imported timeseries date? (default: False).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.scenario_scale_add">
+<span class="sig-name descname"><span class="pre">scenario_scale_add</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.scenario_scale_add" title="Permalink to this definition"></a></dt>
+<dd><p>Value to add to the value read from a scenario file (default: 0).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.scenario_scale_mult">
+<span class="sig-name descname"><span class="pre">scenario_scale_mult</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.scenario_scale_mult" title="Permalink to this definition"></a></dt>
+<dd><p>Value to multiply to the value read from a scenario file (default: 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.low_value">
+<span class="sig-name descname"><span class="pre">low_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.low_value" title="Permalink to this definition"></a></dt>
+<dd><p>Lowest possible value of the state variable (default: np.nan).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.high_value">
+<span class="sig-name descname"><span class="pre">high_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.high_value" title="Permalink to this definition"></a></dt>
+<dd><p>Highest possible value of the state variable (default: np.nan).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.abort_condition_min">
+<span class="sig-name descname"><span class="pre">abort_condition_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.abort_condition_min" title="Permalink to this definition"></a></dt>
+<dd><p>If the value of the variable dips below this, the episode should be aborted (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.abort_condition_max">
+<span class="sig-name descname"><span class="pre">abort_condition_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.abort_condition_max" title="Permalink to this definition"></a></dt>
+<dd><p>If the value of the variable rises above this, the episode should be aborted (default: None).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.index" title="Permalink to this definition"></a></dt>
+<dd><p>Determine the index, where to look (useful for mathematical optimization, where multiple time steps could be
+returned). In this case, the index values might be different for actions and observations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateVar.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pd.Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateVar" title="eta_utility.eta_x.envs.state.StateVar"><span class="pre">StateVar</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateVar.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateVar.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize a state var from a dictionary or pandas Series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping</strong> – dictionary or pandas Series to initialize from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized StateVar object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.envs.state.</span></span><span class="sig-name descname"><span class="pre">StateConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">state_vars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateVar" title="eta_utility.eta_x.envs.state.StateVar"><span class="pre">StateVar</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The configuration for the action and observation spaces. The values are used to control which variables are
+part of the action space and observation space. Additionally, the parameters can specify abort conditions
+and the handling of values from interaction environments or from simulation. Therefore, the <em>StateConfig</em>
+is very important for the functionality of ETA X.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateVar" title="eta_utility.eta_x.envs.state.StateVar"><span class="pre">StateVar</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.vars" title="Permalink to this definition"></a></dt>
+<dd><p>Mapping of the variables names to their StateVar instance with all associated information.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.actions" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that are agent actions.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.observations">
+<span class="sig-name descname"><span class="pre">observations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.observations" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that are agent observations.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.add_to_state_log">
+<span class="sig-name descname"><span class="pre">add_to_state_log</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.add_to_state_log" title="Permalink to this definition"></a></dt>
+<dd><p>Set of variables that should be logged.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.ext_inputs">
+<span class="sig-name descname"><span class="pre">ext_inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.ext_inputs" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that should be provided to an external source (such as an FMU).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.ext_outputs">
+<span class="sig-name descname"><span class="pre">ext_outputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.ext_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that can be received from an external source (such as an FMU).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.map_ext_ids">
+<span class="sig-name descname"><span class="pre">map_ext_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.map_ext_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Mapping of variable names to their external IDs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.rev_ext_ids">
+<span class="sig-name descname"><span class="pre">rev_ext_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.rev_ext_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Reverse mapping of external IDs to their corresponding variable names.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.ext_scale">
+<span class="sig-name descname"><span class="pre">ext_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.ext_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of scaling values for external input values (for example from simulations).
+Contains fields ‘add’ and ‘multiply’</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.interact_outputs">
+<span class="sig-name descname"><span class="pre">interact_outputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.interact_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that should be read from an interaction environment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.map_interact_ids">
+<span class="sig-name descname"><span class="pre">map_interact_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.map_interact_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Mapping of internal environment names to interact IDs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.interact_scale">
+<span class="sig-name descname"><span class="pre">interact_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.interact_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of scaling values for interact values. Contains fields ‘add’ and ‘multiply’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.scenarios">
+<span class="sig-name descname"><span class="pre">scenarios</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.scenarios" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables which are loaded from scenario files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.map_scenario_ids">
+<span class="sig-name descname"><span class="pre">map_scenario_ids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.map_scenario_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Mapping of internal environment names to scenario IDs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.scenario_scale">
+<span class="sig-name descname"><span class="pre">scenario_scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.scenario_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of scaling values for scenario values. Contains fields ‘add’ and ‘multiply’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.abort_conditions_min">
+<span class="sig-name descname"><span class="pre">abort_conditions_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.abort_conditions_min" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that have minimum values for an abort condition.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.abort_conditions_max">
+<span class="sig-name descname"><span class="pre">abort_conditions_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.abort_conditions_max" title="Permalink to this definition"></a></dt>
+<dd><p>List of variables that have maximum values for an abort condition.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">pd.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateConfig" title="eta_utility.eta_x.envs.state.StateConfig"><span class="pre">StateConfig</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>This will convert a potentially incomplete StateConfig DataFrame or a list of dictionaries to the
+standardized StateConfig format. This will ignore any additional columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mapping</strong> – Mapping to be converted to the StateConfig format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>StateConfig object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.append_state">
+<span class="sig-name descname"><span class="pre">append_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateVar" title="eta_utility.eta_x.envs.state.StateVar"><span class="pre">StateVar</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.append_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.append_state" title="Permalink to this definition"></a></dt>
+<dd><p>Append a state variable to the state configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>var</strong> – StateVar instance to append to the configuration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.store_file">
+<span class="sig-name descname"><span class="pre">store_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.store_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.store_file" title="Permalink to this definition"></a></dt>
+<dd><p>Save the StateConfig to a comma separated file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> – Path to the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.within_abort_conditions">
+<span class="sig-name descname"><span class="pre">within_abort_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.within_abort_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.within_abort_conditions" title="Permalink to this definition"></a></dt>
+<dd><p>Check whether the given state is within the abort conditions specified by the StateConfig instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> – The state array to check for conformance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result of the check (False if the state does not conform to the required conditions).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.continuous_action_space">
+<span class="sig-name descname"><span class="pre">continuous_action_space</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box" title="(in Gymnasium)"><span class="pre">Box</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.continuous_action_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.continuous_action_space" title="Permalink to this definition"></a></dt>
+<dd><p>Generate an action space according to the format required by the OpenAI
+specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Action space.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.continuous_obs_space">
+<span class="sig-name descname"><span class="pre">continuous_obs_space</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box" title="(in Gymnasium)"><span class="pre">Box</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.continuous_obs_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.continuous_obs_space" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a continuous observation space according to the format required by the OpenAI
+specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Observation Space.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.continuous_observation_space">
+<span class="sig-name descname"><span class="pre">continuous_observation_space</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box" title="(in Gymnasium)"><span class="pre">Box</span></a></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.continuous_observation_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.continuous_observation_space" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.continuous_spaces">
+<span class="sig-name descname"><span class="pre">continuous_spaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box" title="(in Gymnasium)"><span class="pre">gymnasium.spaces.box.Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://gymnasium.farama.org/api/spaces/fundamental/#gymnasium.spaces.Box" title="(in Gymnasium)"><span class="pre">gymnasium.spaces.box.Box</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/envs/state.html#StateConfig.continuous_spaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.continuous_spaces" title="Permalink to this definition"></a></dt>
+<dd><p>Generate continuous action and observation spaces according to the OpenAI specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple of action space and observation space.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="eta_utility.eta_x.envs.state.StateConfig.loc">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#eta_utility.eta_x.envs.state.StateVar" title="eta_utility.eta_x.envs.state.StateVar"><span class="pre">eta_utility.eta_x.envs.state.StateVar</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#eta_utility.eta_x.envs.state.StateConfig.loc" title="Permalink to this definition"></a></dt>
+<dd><p>Behave like dataframe (enable indexing via loc) for compatibility.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.eta_x.envs.no_vec_env.html" class="btn btn-neutral float-left" title="eta_utility.eta_x.envs.no_vec_env module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.eta_x.config.html" class="btn btn-neutral float-right" title="eta_utility.eta_x.config module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.servers package &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="eta_utility.servers.modbus module" href="eta_utility.servers.modbus.html" />
+    <link rel="prev" title="eta_utility.eta_x.eta_x module" href="eta_utility.eta_x.eta_x.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">eta_utility</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="eta_utility.html">eta_utility package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="eta_utility.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.connectors.html">eta_utility.connectors package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.eta_x.html">eta_utility.eta_x package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">eta_utility.servers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.simulators.html">eta_utility.simulators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.timeseries.html">eta_utility.timeseries package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eta_utility.type_hints.html">eta_utility.type_hints package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">eta_utility</a></li>
+          <li class="breadcrumb-item"><a href="eta_utility.html">eta_utility package</a></li>
+      <li class="breadcrumb-item active">eta_utility.servers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_stubs/eta_utility.servers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-eta_utility.servers">
+<span id="eta-utility-servers-package"></span><h1>eta_utility.servers package<a class="headerlink" href="#module-eta_utility.servers" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.servers.modbus.html">eta_utility.servers.modbus module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer"><code class="docutils literal notranslate"><span class="pre">ModbusServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.url"><code class="docutils literal notranslate"><span class="pre">ModbusServer.url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.write"><code class="docutils literal notranslate"><span class="pre">ModbusServer.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.read"><code class="docutils literal notranslate"><span class="pre">ModbusServer.read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.start"><code class="docutils literal notranslate"><span class="pre">ModbusServer.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.stop"><code class="docutils literal notranslate"><span class="pre">ModbusServer.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.modbus.html#eta_utility.servers.modbus.ModbusServer.active"><code class="docutils literal notranslate"><span class="pre">ModbusServer.active</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eta_utility.servers.opc_ua.html">eta_utility.servers.opc_ua module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer"><code class="docutils literal notranslate"><span class="pre">OpcUaServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.url"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.idx"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.idx</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.write"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.read"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.create_nodes"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.create_nodes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.delete_nodes"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.delete_nodes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.start"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.stop"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.active"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.active</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eta_utility.servers.opc_ua.html#eta_utility.servers.opc_ua.OpcUaServer.allow_remote_admin"><code class="docutils literal notranslate"><span class="pre">OpcUaServer.allow_remote_admin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eta_utility.eta_x.eta_x.html" class="btn btn-neutral float-left" title="eta_utility.eta_x.eta_x module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eta_utility.servers.modbus.html" class="btn btn-neutral float-right" title="eta_utility.servers.modbus module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

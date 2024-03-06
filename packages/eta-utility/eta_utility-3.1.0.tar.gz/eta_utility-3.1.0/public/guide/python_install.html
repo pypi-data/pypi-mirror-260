@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up Python and Git &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="ETA Utility Functions" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Set up Python and Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-python">Installation of Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-git">Installation of Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-virtual-environment-recommended">Creating a virtual environment (recommended)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Set up Python and Git</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/guide/python_install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="set-up-python-and-git">
+<span id="python-install"></span><h1>Set up Python and Git<a class="headerlink" href="#set-up-python-and-git" title="Permalink to this heading"></a></h1>
+<p>This section explains how to set up Python and Git and also how to create a virtual environment. Additional information can be found in the <a class="reference external" href="https://wiki.python.org/moin/BeginnersGuide">Beginner’s Guide to Python (external link)</a>.
+If you have already set this up, you can go to the <a class="reference internal" href="install.html#install"><span class="std std-ref">Installation</span></a> section.</p>
+<section id="installation-of-python">
+<h2>Installation of Python<a class="headerlink" href="#installation-of-python" title="Permalink to this heading"></a></h2>
+<p>If you do not already have it, install Python (64 Bit) on your device. ETA_utility supports Python versions between
+<strong>3.9</strong> and <strong>3.11</strong>.</p>
+<p>Below, the installation is illustrated using Python 3.10.10, 64 Bit. You can install Python for
+Windows from <a class="reference external" href="https://www.python.org/downloads/windows/">python.org</a></p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/1_DownloadFiles.png"><img alt="Picture of possible download files from python.org." src="../_images/1_DownloadFiles.png" style="width: 376.0px; height: 174.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Selection of download files from python.org.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When installing, select the “Add Python to PATH” option and also make sure that “pip” is installed.
+In addition to this, it typically makes sense to “Add Python to environment variables” which allows
+other programs to find it. The setup process and selected options are shown in the following
+figures.</p>
+<p><a class="reference internal" href="../_images/2_Install.png"><img alt="install" src="../_images/2_Install.png" style="width: 330px;" /></a> <a class="reference internal" href="../_images/3_Pip.png"><img alt="pip" src="../_images/3_Pip.png" style="width: 330px;" /></a>
+<a class="reference internal" href="../_images/4_PATH.png"><img alt="PATH" src="../_images/4_PATH.png" style="width: 330px;" /></a> <a class="reference internal" href="../_images/5_Finish.png"><img alt="finish" src="../_images/5_Finish.png" style="width: 330px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using <strong>Anaconda</strong> is not supported and can lead to weird errors. Especially Anaconda should
+not be combined with a version of CPython on the same machine.</p>
+</div>
+</section>
+<section id="installation-of-git">
+<span id="install-git"></span><h2>Installation of Git<a class="headerlink" href="#installation-of-git" title="Permalink to this heading"></a></h2>
+<p>If you do not already have it, install Git on your device. For Windows, you can download
+it from <a class="reference external" href="https://git-scm.com/download/win">git-scm.com</a>. Alternatively, it is also
+possible to use GUIs (Graphical User Interfaces) for git such as SourceTree or <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>. If you have problems with git, see the <a class="reference internal" href="faq.html#faq"><span class="std std-ref">Frequently Asked Questions</span></a>.</p>
+</section>
+<section id="creating-a-virtual-environment-recommended">
+<span id="create-virtual-environment"></span><h2>Creating a virtual environment (recommended)<a class="headerlink" href="#creating-a-virtual-environment-recommended" title="Permalink to this heading"></a></h2>
+<p>A <strong>virtual environment</strong> is a Python environment which isolates its Python interpreter, libraries,
+and scripts installed. It’s isolated from other virtual environments, and (by default)
+from any libraries installed in the “system” Python (the main Python environment installed on your
+operating system). This isolation prevents conflicting libraries or versions from affecting each other.</p>
+<p>In order to use a virtual environment, it must first be created in an arbitrary directory
+on the computer. Open a terminal (for example cmd or PowerShell on Windows) and execute the
+following commands.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>&lt;Any<span class="w"> </span>folder&gt;/.venv
+</pre></div>
+</div>
+<p>Navigate to your chosen directory, then activate the virtual environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.venv/scripts/activate
+</pre></div>
+</div>
+<p>The creation and activation of the environment are shown in the following figure.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/6_ActivateVE.png"><img alt="Activate virtual environment" src="../_images/6_ActivateVE.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Create and activate virtual environment.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When the virtual environment is activated, <em>(.venv)</em> is prefixed to the console line.
+The commands in the following chapters can be executed in the virtual environment without
+any adjustments.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some IDEs (Integrated Development Environments) such as PyCharm or code editors like VS Code
+will automate the activation of the virtual environment for you.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="ETA Utility Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

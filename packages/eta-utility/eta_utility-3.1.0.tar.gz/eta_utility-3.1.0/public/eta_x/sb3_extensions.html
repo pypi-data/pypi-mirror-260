@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensions for stable_baselines3 &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../connectors/introduction.html" />
+    <link rel="prev" title="Common Functions" href="common_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Extensions for <em>stable_baselines3</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#policies">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schedules">Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extractors">Extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-custom-neural-network-architectures">Configuring custom neural network architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-processors">Data Processors</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Extensions for <em>stable_baselines3</em></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/eta_x/sb3_extensions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="extensions-for-stable-baselines3">
+<span id="sb3-extensions"></span><h1>Extensions for <em>stable_baselines3</em><a class="headerlink" href="#extensions-for-stable-baselines3" title="Permalink to this heading"></a></h1>
+<p><em>eta_x</em> implements some extensions for <em>stable_baselines3</em> such as additional feature extractors, policies
+and schedules. More information about the prior two can be found in the <em>stable_baselines3</em> documentation for
+<a class="reference external" href="https://stable-baselines3.readthedocs.io/en/master/guide/custom_policy.html">custom policy networks.</a>.</p>
+<p>In short, <em>stable_baselines3</em> divides the policy network into two main parts:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A feature extractor which can handle different types of inputs (apart from images).</p></li>
+<li><p>A (fully-connected) network that maps the features to actions and values.
+(controlled by the net_arch parameter)</p></li>
+</ul>
+</div></blockquote>
+<section id="policies">
+<h2>Policies<a class="headerlink" href="#policies" title="Permalink to this heading"></a></h2>
+<p>Some of the agents defined in <em>eta_x</em> do not require the specification of a policy. For this special case
+you can use the <em>NoPolicy</em> class which just does nothing… NoPolicy inherits from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">stable_baselines3.common.policies.BasePolicy</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">NoPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squash_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/policies.html#NoPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>No Policy allows for the creation of agents which do not use neural networks. It does not implement any of
+the typical policy functions but is a simple interface that can be used and ignored. There is no need
+to worry about the implementation details of policies.</p>
+</dd></dl>
+
+</section>
+<section id="schedules">
+<h2>Schedules<a class="headerlink" href="#schedules" title="Permalink to this heading"></a></h2>
+<p>Schedules evolve over time throughout the learning process of RL applications. <em>eta_x</em> implements a BaseSchedule
+class which enables the creation of new schedules by inheriting from it and implementing a custom <em>value</em> function
+which returns the output value, base on an input between 0 and 1. See <a class="reference external" href="https://stable-baselines3.readthedocs.io/en/master/guide/examples.html?highlight=schedule#learning-rate-schedule">learning rate schedules</a>
+in <em>stable_baselines3</em>.</p>
+<p>The Schedule object is callable so you can pass it directly as a schedule function.</p>
+<p>The linear schedule implements a linear evolution of the learning rate.</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">LinearSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/schedules.html#LinearSchedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Linear interpolation schedule adjusts the learning rate between initial_p and final_p.
+The value is calculated based on the remaining progress, which is between 1 (start) and 0 (end).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_p</strong> – Initial output value.</p></li>
+<li><p><strong>final_p</strong> – Final output value.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">schedule</span> <span class="o">=</span> <span class="n">LinearSchedule</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">schedule</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.55</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="extractors">
+<h2>Extractors<a class="headerlink" href="#extractors" title="Permalink to this heading"></a></h2>
+<p>Extractors are based on <code class="xref py py-class docutils literal notranslate"><span class="pre">stable_baselines3.common.base_class.BaseFeaturesExtractor</span></code>. Use of a custom extractor is specified as a configuration option of the <em>Policy</em>. It is specified in the <em>agent_specific</em> section of the configuration as part of the <em>policy_kwargs</em> dictionary. The required parameters are <em>features_extractor_class</em> which must contain the Python class and <em>features_extractor_kwargs</em> which is a Mapping of the arguments passed to the feature extractor.</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">CustomExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">gymnasium.Space</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">th.device</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/extractors.html#CustomExtractor"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Advanced feature extractor which allows the definition of arbitrary network structures. Layers can be any
+of the layers defined in <a class="reference external" href="https://pytorch.org/docs/stable/nn.html">torch.nn</a>. The net_arch parameter will
+be interpreted by the function <a class="reference internal" href="../_stubs/eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.deserialize_net_arch" title="eta_utility.eta_x.common.common.deserialize_net_arch"><code class="xref py py-func docutils literal notranslate"><span class="pre">eta_utility.eta_x.common.common.deserialize_net_arch()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation_space</strong> – gymnasium space.</p></li>
+<li><p><strong>net_arch</strong> – The architecture of the Advanced Feature Extractor. See
+<code class="xref py py-func docutils literal notranslate"><span class="pre">eta_utility.eta_x.common.deserialize_net_arch()</span></code> for syntax.</p></li>
+<li><p><strong>device</strong> – Torch device for training.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The architecture of the feature extractor is controlled by the <code class="docutils literal notranslate"><span class="pre">net_arch</span></code> parameter.
+It is able to handle observations which consist of classic, time-independent data <strong>and</strong> multiple time series. See below for an explanation of how this parameter is interpreted using <a class="reference internal" href="../_stubs/eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.deserialize_net_arch" title="eta_utility.eta_x.common.common.deserialize_net_arch"><code class="xref py py-func docutils literal notranslate"><span class="pre">eta_utility.eta_x.common.common.deserialize_net_arch()</span></code></a>.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The user must ensure the correct order of observations since the network architecture is often highly dependent on the type of observations passed into the extractor.</p>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</section>
+<section id="configuring-custom-neural-network-architectures">
+<h2>Configuring custom neural network architectures<a class="headerlink" href="#configuring-custom-neural-network-architectures" title="Permalink to this heading"></a></h2>
+<p>The following function can be used to configure custom neural network architectures in the configuration used by eta_x. This function is used by custom extractors to interpret the <code class="docutils literal notranslate"><span class="pre">net_arch</span></code> parameter.</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">deserialize_net_arch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">th.device</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">th.nn.Sequential</span></span></span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/common.html#deserialize_net_arch"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Deserialize_net_arch can take a list of dictionaries describing a sequential torch network and deserialize
+it by instatiating the corresponding classes.</p>
+<p>An example for a possible net_arch would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;out_features&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;activation_func&quot;</span><span class="p">:</span> <span class="s2">&quot;Tanh&quot;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;layer&quot;</span><span class="p">:</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;out_features&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">},</span>
+ <span class="p">{</span><span class="s2">&quot;activation_func&quot;</span><span class="p">:</span> <span class="s2">&quot;Tanh&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>One key of the dictionary should be either ‘layer’, ‘activation_func’ or ‘process’. If the ‘layer’ key is present,
+a layer from the <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#module-torch.nn" title="(in PyTorch v2.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.nn</span></code></a> module is instantiated, if the ‘activation_func’ key is present, the
+value will be instantiated as an activation function from <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#module-torch.nn" title="(in PyTorch v2.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.nn</span></code></a>. If the key ‘process’ is present,
+the value will be interpreted as a data processor from <a class="reference internal" href="../_stubs/eta_utility.eta_x.common.processors.html#module-eta_utility.eta_x.common.processors" title="eta_utility.eta_x.common.processors"><code class="xref py py-mod docutils literal notranslate"><span class="pre">eta_utility.eta_x.common.processors</span></code></a>.</p>
+<p>All other keys of each dictionary will be used as keyword parameters to the instantiation of the layer,
+activation function or processor.</p>
+<p>Only the number of input features for the first layer must be specified (using the ‘in_features’) parameter.
+The function will then automatically determine the number of input features for all other layers in the
+sequential network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_arch</strong> – List of dictionaries describing the network architecture.</p></li>
+<li><p><strong>in_features</strong> – Number of input features for the first layer.</p></li>
+<li><p><strong>device</strong> – Torch device to use for training the network.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sequential torch network.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="data-processors">
+<h2>Data Processors<a class="headerlink" href="#data-processors" title="Permalink to this heading"></a></h2>
+<p>The network architectures used for the CustomExtractor can be extended with the data processors provided py the processors module.</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">Split1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sizes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">th.nn.Module</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/processors.html#Split1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Split1d defines a pytorch module which splits the 1D input tensor into multiple parts and passes each
+of the parts through a separate network. After the pass through the network, the output from all networks
+is joined together. Thus, Split1d will return a 1d observation vector.</p>
+<p>When configuring the network architecture, it is important to ensure that the output of all networks is 1D.
+Use torch.nn.Flatten to flatten the output of networks where the output is not one dimensional.</p>
+<p>Use the parameters ‘sizes’ and ‘net_arch’ to determine how many of the input features should be passed through
+which network. Each value in sizes must have a correstponding value in net_arch. For the following examples, let’s
+assume that ‘in_features’ is 15. If ‘sizes’ is [3, 10, None], a valid configuration for
+net_arch could be [th.nn.Linear(out_features=10), th.nn.Conv1d(out_channels:2), th.nn.Linear(out_features=2)].
+The last value of ‘sizes’ will automatically be calculated to be 2 (15 - 3 - 10 = 2). With this, 3 values would
+be passed to the first <em>Linear</em> layer, 10 values would be passed to the “Conv1d” layer and the final 2 values would
+be passed to the third layer in net_arch (which is the <em>Linear</em> layer with 2 output features).</p>
+<p>If you would like to use dictionaries to configure the net_arch, you can use the function
+<a class="reference internal" href="../_stubs/eta_utility.eta_x.common.common.html#eta_utility.eta_x.common.common.deserialize_net_arch" title="eta_utility.eta_x.common.common.deserialize_net_arch"><code class="xref py py-func docutils literal notranslate"><span class="pre">eta_utility.eta_x.common.common.deserialize_net_arch()</span></code></a> to create the torch network architecture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> – Number of input features for the Module</p></li>
+<li><p><strong>sizes</strong> – List of sizes for splitting the input features. This list can contain the value “None” once. If the
+list contains None, this will be evaluated to contain all remaining input features.</p></li>
+<li><p><strong>net_arch</strong> – List of torch.nn Modules. Each value of this list corresponds to one value of the ‘sizes’ list.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">eta_utility.eta_x.common.</span></span><span class="sig-name descname"><span class="pre">Fold1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eta_utility/eta_x/common/processors.html#Fold1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Fold a 1D tensor to create a multi-dimensional tensor. The parameter ‘out_channels’ determines, how many
+dimensions the output tensor will have.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>out_channels</strong> – Number of dimensions of the output tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="common_functions.html" class="btn btn-neutral float-left" title="Common Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../connectors/introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

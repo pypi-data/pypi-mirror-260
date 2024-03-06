@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.envs.base_env_sim &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.envs.base_env_sim</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.envs.base_env_sim</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.eta_x.envs</span> <span class="kn">import</span> <span class="n">BaseEnv</span>
+<span class="kn">from</span> <span class="nn">eta_utility.simulators</span> <span class="kn">import</span> <span class="n">FMUSimulator</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Mapping</span>
+
+    <span class="kn">from</span> <span class="nn">eta_utility.eta_x</span> <span class="kn">import</span> <span class="n">ConfigOptRun</span>
+    <span class="kn">from</span> <span class="nn">eta_utility.type_hints</span> <span class="kn">import</span> <span class="n">ObservationType</span><span class="p">,</span> <span class="n">StepResult</span><span class="p">,</span> <span class="n">TimeStep</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x.envs&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BaseEnvSim"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim">[docs]</a><span class="k">class</span> <span class="nc">BaseEnvSim</span><span class="p">(</span><span class="n">BaseEnv</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for FMU Simulation models environments.</span>
+
+<span class="sd">    :param env_id: Identification for the environment, useful when creating multiple environments.</span>
+<span class="sd">    :param config_run: Configuration of the optimization run.</span>
+<span class="sd">    :param verbose: Verbosity to use for logging.</span>
+<span class="sd">    :param callback: callback which should be called after each episode.</span>
+<span class="sd">    :param scenario_time_begin: Beginning time of the scenario.</span>
+<span class="sd">    :param scneario_time_end: Ending time of the scenario.</span>
+<span class="sd">    :param episode_duration: Duration of the episode in seconds.</span>
+<span class="sd">    :param sampling_time: Duration of a single time sample / time step in seconds.</span>
+<span class="sd">    :param model_parameters: Parameters for the mathematical model.</span>
+<span class="sd">    :param sim_steps_per_sample: Number of simulation steps to perform during every sample.</span>
+<span class="sd">    :param render_mode: Renders the environments to help visualise what the agent see, examples</span>
+<span class="sd">        modes are &quot;human&quot;, &quot;rgb_array&quot;, &quot;ansi&quot; for text.</span>
+<span class="sd">    :param kwargs: Other keyword arguments (for subclasses).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">fmu_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the FMU file&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">env_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">config_run</span><span class="p">:</span> <span class="n">ConfigOptRun</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">scenario_time_begin</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">scenario_time_end</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">episode_duration</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">sampling_time</span><span class="p">:</span> <span class="n">TimeStep</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_parameters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sim_steps_per_sample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">render_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">env_id</span><span class="p">,</span>
+            <span class="n">config_run</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="p">,</span>
+            <span class="n">callback</span><span class="p">,</span>
+            <span class="n">scenario_time_begin</span><span class="o">=</span><span class="n">scenario_time_begin</span><span class="p">,</span>
+            <span class="n">scenario_time_end</span><span class="o">=</span><span class="n">scenario_time_end</span><span class="p">,</span>
+            <span class="n">episode_duration</span><span class="o">=</span><span class="n">episode_duration</span><span class="p">,</span>
+            <span class="n">sampling_time</span><span class="o">=</span><span class="n">sampling_time</span><span class="p">,</span>
+            <span class="n">render_mode</span><span class="o">=</span><span class="n">render_mode</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1">#: Number of simulation steps to be taken for each sample. This must be a divisor of &#39;sampling_time&#39;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sim_steps_per_sample</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sim_steps_per_sample</span><span class="p">)</span>
+
+        <span class="c1">#: The FMU is expected to be placed in the same folder as the environment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path_fmu</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_env</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fmu_name</span> <span class="o">+</span> <span class="s2">&quot;.fmu&quot;</span><span class="p">)</span>
+
+        <span class="c1">#: Configuration for the FMU model parameters, that need to be set for initialization of the Model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">model_parameters</span>
+
+        <span class="c1">#: Instance of the FMU. This can be used to directly access the eta_utility.FMUSimulator interface.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="p">:</span> <span class="n">FMUSimulator</span>
+
+<div class="viewcode-block" id="BaseEnvSim._init_simulator"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim._init_simulator">[docs]</a>    <span class="k">def</span> <span class="nf">_init_simulator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the simulator object. Make sure to call _names_from_state before this or to otherwise initialize</span>
+<span class="sd">        the names array.</span>
+
+<span class="sd">        This can also be used to reset the simulator after an episode is completed. It will reuse the same simulator</span>
+<span class="sd">        object and reset it to the given initial values.</span>
+
+<span class="sd">        :param init_values: Dictionary of initial values for some FMU variables.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling _init_simulator function.&quot;</span>
+
+        <span class="n">_init_vals</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">init_values</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">init_values</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;simulator&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="p">,</span> <span class="n">FMUSimulator</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">_init_vals</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Instance of the FMU. This can be used to directly access the eta_utility.FMUSimulator interface.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span> <span class="o">=</span> <span class="n">FMUSimulator</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">env_id</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">path_fmu</span><span class="p">,</span>
+                <span class="n">start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                <span class="n">stop_time</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">episode_duration</span><span class="p">,</span>
+                <span class="n">step_size</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_time</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sim_steps_per_sample</span><span class="p">),</span>
+                <span class="n">names_inputs</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">map_ext_ids</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_inputs</span><span class="p">],</span>
+                <span class="n">names_outputs</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">map_ext_ids</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_outputs</span><span class="p">],</span>
+                <span class="n">init_values</span><span class="o">=</span><span class="n">_init_vals</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseEnvSim.simulate"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.simulate">[docs]</a>    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform a simulator step and return data as specified by the is_ext_observation parameter of the</span>
+<span class="sd">        state_config.</span>
+
+<span class="sd">        :param state: State of the environment before the simulation.</span>
+<span class="sd">        :return: Output of the simulation, boolean showing whether all simulation steps where successful, time elapsed</span>
+<span class="sd">                 during simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling simulate function.&quot;</span>
+
+        <span class="c1"># generate FMU input from current state</span>
+        <span class="n">step_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_inputs</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">bool</span><span class="p">:</span>
+                    <span class="n">step_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">step_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">state</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;multiply&quot;</span><span class="p">]</span>
+                        <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
+                    <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2"> is unavailable in environment state.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+        <span class="n">sim_time_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">step_success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">step_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">step_inputs</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">step_success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># stop timer for simulation step time debugging</span>
+        <span class="n">sim_time_elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">sim_time_start</span>
+
+        <span class="c1"># save step_outputs into data_store</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">step_success</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_outputs</span><span class="p">):</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">step_output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;add&quot;</span><span class="p">]</span>
+                <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;multiply&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">step_success</span><span class="p">,</span> <span class="n">sim_time_elapsed</span></div>
+
+<div class="viewcode-block" id="BaseEnvSim.step"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StepResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform one time step and return its results. This is called for every event or for every time step during</span>
+<span class="sd">        the simulation/optimization run. It should utilize the actions as supplied by the agent to determine</span>
+<span class="sd">        the new state of the environment. The method must return a four-tuple of observations, rewards, dones, info.</span>
+
+<span class="sd">        This also updates self.state and self.state_log to store current state information.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            This function always returns 0 reward. Therefore, it must be extended if it is to be used with reinforcement</span>
+<span class="sd">            learning agents. If you need to manipulate actions (discretization, policy shaping, ...)</span>
+<span class="sd">            do this before calling this function.</span>
+<span class="sd">            If you need to manipulate observations and rewards, do this after calling this function.</span>
+
+<span class="sd">        :param action: Actions to perform in the environment.</span>
+<span class="sd">        :return: The return value represents the state of the environment after the step was performed.</span>
+
+<span class="sd">            * **observations**: A numpy array with new observation values as defined by the observation space.</span>
+<span class="sd">              Observations is a np.array() (numpy array) with floating point or integer values.</span>
+<span class="sd">            * **reward**: The value of the reward function. This is just one floating point value.</span>
+<span class="sd">            * **terminated**: Boolean value specifying whether an episode has been completed. If this is set to true,</span>
+<span class="sd">              the reset function will automatically be called by the agent or by eta_i.</span>
+<span class="sd">            * **truncated**: Boolean, whether the truncation condition outside the scope is satisfied.</span>
+<span class="sd">                Typically, this is a timelimit, but could also be used to indicate an agent physically going out of</span>
+<span class="sd">                bounds. Can be used to end the episode prematurely before a terminal state is reached. If true, the</span>
+<span class="sd">                user needs to call the `reset` function.</span>
+<span class="sd">            * **info**: Provide some additional info about the state of the environment. The contents of this may</span>
+<span class="sd">              be used for logging purposes in the future but typically do not currently serve a purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actions_valid</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+        <span class="n">step_success</span><span class="p">,</span> <span class="n">sim_time_elapsed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_state</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="n">terminated</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_done</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">step_success</span>
+        <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sim_time_elapsed&quot;</span><span class="p">:</span> <span class="n">sim_time_elapsed</span><span class="p">}</span>
+
+        <span class="c1"># Render the environment at each step</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observations</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">info</span></div>
+
+<div class="viewcode-block" id="BaseEnvSim._update_state"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim._update_state">[docs]</a>    <span class="k">def</span> <span class="nf">_update_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take additional_state, execute simulation and get state information from scenario. This function</span>
+<span class="sd">        updates self.state and increments the step counter.</span>
+
+<span class="sd">        .. warning::</span>
+<span class="sd">            You have to update self.state_log with the entire state before leaving the step</span>
+<span class="sd">            to store the state information.</span>
+
+<span class="sd">        :param action: Actions to perform in the environment.</span>
+<span class="sd">        :return: Success of the simulation, time taken for simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling _update_state function.&quot;</span>
+        <span class="c1"># Store actions</span>
+        <span class="n">new_state</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">act</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">actions</span><span class="p">):</span>
+            <span class="n">new_state</span><span class="p">[</span><span class="n">act</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+        <span class="n">step_success</span><span class="p">,</span> <span class="n">sim_time_elapsed</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">0.0</span>
+        <span class="c1"># simulate one time step and store the results.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sim_steps_per_sample</span><span class="p">):</span>  <span class="c1"># do multiple FMU steps in one environment-step</span>
+            <span class="n">sim_result</span><span class="p">,</span> <span class="n">step_success</span><span class="p">,</span> <span class="n">sim_time_elapsed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulate</span><span class="p">({</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="o">**</span><span class="n">new_state</span><span class="p">})</span>
+            <span class="n">new_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sim_result</span><span class="p">)</span>
+
+            <span class="c1"># Append intermediate simulation results to the state_log</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sim_steps_per_sample</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="o">**</span><span class="n">new_state</span><span class="p">})</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Update scenario and environment state</span>
+        <span class="n">new_state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_scenario_state</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
+
+        <span class="k">return</span> <span class="n">step_success</span><span class="p">,</span> <span class="n">sim_time_elapsed</span></div>
+
+<div class="viewcode-block" id="BaseEnvSim.reset"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ObservationType</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the environment to an initial internal state, returning an initial observation and info.</span>
+
+<span class="sd">        This method generates a new starting state often with some randomness to ensure that the agent explores the</span>
+<span class="sd">        state space and learns a generalised policy about the environment. This randomness can be controlled</span>
+<span class="sd">        with the ``seed`` parameter otherwise if the environment already has a random number generator and</span>
+<span class="sd">        :meth:`reset` is called with ``seed=None``, the RNG is not reset. When using the environment in conjunction with</span>
+<span class="sd">        *stable_baselines3*, the vectorized environment will take care of seeding your custom environment automatically.</span>
+
+<span class="sd">        For Custom environments, the first line of :meth:`reset` should be ``super().reset(seed=seed)`` which implements</span>
+<span class="sd">        the seeding correctly.</span>
+
+<span class="sd">        .. note ::</span>
+<span class="sd">            Don&#39;t forget to store and reset the episode_timer.</span>
+
+<span class="sd">        :param seed: The seed that is used to initialize the environment&#39;s PRNG (`np_random`).</span>
+<span class="sd">                If the environment does not already have a PRNG and ``seed=None`` (the default option) is passed,</span>
+<span class="sd">                a seed will be chosen from some source of entropy (e.g. timestamp or /dev/urandom).</span>
+<span class="sd">                However, if the environment already has a PRNG and ``seed=None`` is passed, the PRNG will *not* be</span>
+<span class="sd">                reset. If you pass an integer, the PRNG will be reset even if it already exists. (default: None)</span>
+<span class="sd">        :param options: Additional information to specify how the environment is reset (optional,</span>
+<span class="sd">                depending on the specific environment) (default: None)</span>
+
+<span class="sd">        :return: Tuple of observation and info. The observation of the initial state will be an element of</span>
+<span class="sd">                :attr:`observation_space` (typically a numpy array) and is analogous to the observation returned by</span>
+<span class="sd">                :meth:`step`. Info is a dictionary containing auxiliary information complementing ``observation``. It</span>
+<span class="sd">                should be analogous to the ``info`` returned by :meth:`step`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Set state_config before calling reset function.&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="c1"># reset the FMU after every episode with new parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_simulator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_parameters</span><span class="p">)</span>
+
+        <span class="c1"># Update scenario data, read values from the fmu without time step and store the results</span>
+        <span class="n">start_obs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_outputs</span><span class="p">:</span>
+            <span class="n">start_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">map_ext_ids</span><span class="p">[</span><span class="n">obs</span><span class="p">]))</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">read_values</span><span class="p">(</span><span class="n">start_obs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">additional_state</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_outputs</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;add&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_config</span><span class="o">.</span><span class="n">ext_scale</span><span class="p">[</span>
+                <span class="n">name</span>
+            <span class="p">][</span><span class="s2">&quot;multiply&quot;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_scenario_state</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="c1"># Render the environment when calling the reset function</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observations</span><span class="p">(),</span> <span class="p">{}</span></div>
+
+<div class="viewcode-block" id="BaseEnvSim.close"><a class="viewcode-back" href="../../../../eta_x/envs.html#eta_utility.eta_x.envs.base_env_sim.BaseEnvSim.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the environment. This should always be called when an entire run is finished. It should be used to</span>
+<span class="sd">        close any resources (i.e. simulation models) used by the environment.</span>
+
+<span class="sd">        Default behavior for the Simulation environment is to close the FMU object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulator</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># close the FMU</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

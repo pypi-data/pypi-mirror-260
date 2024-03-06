@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eta_utility.eta_x.agents.nsga2 &mdash; eta_utility 3.0.4 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=72cc831a"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=35a8b989"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            eta_utility
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/python_install.html">Set up Python and Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/development.html">Contributing to development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/examples.html">Usage examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ETA-X Optimization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/control_algorithms.html">Control Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/envs.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/common_functions.html">Common Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eta_x/sb3_extensions.html">Extensions for <em>stable_baselines3</em></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Connectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/connectors.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/live_connect.html">Live Connect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../connectors/sub_handlers.html">Subscription Handlers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Servers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../servers/servers.html">Servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Simulators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../simulators/fmu.html">Functional Mockup Units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Timeseries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../timeseries/timeseries.html">Timeseries</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">util</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../util/util.html">Additional Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_stubs/api.html">eta_utility</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">eta_utility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">eta_utility.eta_x.agents.nsga2</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for eta_utility.eta_x.agents.nsga2</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">attrs</span> <span class="kn">import</span> <span class="n">define</span>
+<span class="kn">from</span> <span class="nn">gymnasium</span> <span class="kn">import</span> <span class="n">spaces</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.base_class</span> <span class="kn">import</span> <span class="n">BaseAlgorithm</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.utils</span> <span class="kn">import</span> <span class="n">safe_mean</span>
+<span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecNormalize</span>
+
+<span class="kn">from</span> <span class="nn">eta_utility</span> <span class="kn">import</span> <span class="n">get_logger</span>
+<span class="kn">from</span> <span class="nn">eta_utility.util_julia</span> <span class="kn">import</span> <span class="n">check_julia_package</span>
+
+<span class="k">if</span> <span class="n">check_julia_package</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">julia</span> <span class="kn">import</span> <span class="n">Main</span> <span class="k">as</span> <span class="n">Jl</span>  <span class="c1"># noqa: I900</span>
+    <span class="kn">from</span> <span class="nn">julia</span> <span class="kn">import</span> <span class="n">ju_extensions</span>  <span class="c1"># noqa: I900</span>
+    <span class="kn">from</span> <span class="nn">julia.ju_extensions.Agents</span> <span class="kn">import</span> <span class="n">Nsga2</span> <span class="k">as</span> <span class="n">ju_NSGA2</span>  <span class="c1"># noqa: I900</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">io</span>
+    <span class="kn">import</span> <span class="nn">pathlib</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+
+    <span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
+    <span class="kn">from</span> <span class="nn">julia</span> <span class="kn">import</span> <span class="n">_jlwrapper</span>  <span class="c1"># noqa: I900</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.callbacks</span> <span class="kn">import</span> <span class="n">BaseCallback</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.policies</span> <span class="kn">import</span> <span class="n">BasePolicy</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.type_aliases</span> <span class="kn">import</span> <span class="n">GymEnv</span><span class="p">,</span> <span class="n">MaybeCallback</span><span class="p">,</span> <span class="n">Schedule</span>
+    <span class="kn">from</span> <span class="nn">stable_baselines3.common.vec_env</span> <span class="kn">import</span> <span class="n">VecEnv</span>
+
+<span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;using PyCall&quot;</span><span class="p">)</span>
+<span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;import ju_extensions.Agents.Nsga2&quot;</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;eta_x.agents&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@define</span>
+<span class="k">class</span> <span class="nc">_VariableParameters</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;VariableParameters define the minimum and maximum values as well as the data type of the variables.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Data type of the variable (can be &#39;int&#39; or &#39;float&#39;).</span>
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1">#: Minimum value of the variable.</span>
+    <span class="n">minimum</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="c1">#: Maximum value of the variable.</span>
+    <span class="n">maximum</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_space</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Space</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">_VariableParameters</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create _VariableParameters from a gymnasium space object.</span>
+
+<span class="sd">        :param space: Gymnasium space description object.</span>
+<span class="sd">        :return: List of _VariableParameters objects (one object for each variable).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">):</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span> <span class="k">if</span> <span class="n">space</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">in</span> <span class="p">{</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">}</span> <span class="k">else</span> <span class="s2">&quot;float&quot;</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="n">space</span><span class="o">.</span><span class="n">low</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">maximum</span><span class="o">=</span><span class="n">space</span><span class="o">.</span><span class="n">high</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">shape</span><span class="p">)]</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiDiscrete</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">dim</span><span class="p">))</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">space</span><span class="o">.</span><span class="n">nvec</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiBinary</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">n</span><span class="p">)]</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">space</span><span class="o">.</span><span class="n">n</span><span class="p">))]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown type of space for variable parameters.&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Nsga2"><a class="viewcode-back" href="../../../../eta_x/control_algorithms.html#eta_utility.eta_x.agents.nsga2.Nsga2">[docs]</a><span class="k">class</span> <span class="nc">Nsga2</span><span class="p">(</span><span class="n">BaseAlgorithm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The NSGA2 class implements the non-dominated sorting genetic algorithm 2</span>
+
+<span class="sd">    The agent can work with discrete event systems and with continous or mixed integer problems. Alternatively a</span>
+<span class="sd">    mixture of the above may be specified.</span>
+
+<span class="sd">    The action space can specify both events and variables using spaces.Dict in the form::</span>
+
+<span class="sd">        action_space= spaces.Dict({&#39;events&#39;: spaces.Discrete(15),</span>
+<span class="sd">                                   &#39;variables&#39;: spaces.MultiDiscrete([15]*3)})</span>
+
+<span class="sd">    This specifies 15 events and an additional 3 variables. The variables will be integers and have an upper</span>
+<span class="sd">    boudary value of 15. Other spaces (except Tuple and Dict) can be defined for the variables. Events only takes</span>
+<span class="sd">    the Discrete space as an input.</span>
+
+<span class="sd">    When events is specified, a list will be returned with ordered values, that should achieve a near optimal</span>
+<span class="sd">    reward. For variables the values will be adjusted to achieve the highest reward. Upper and lower boundaries as</span>
+<span class="sd">    well as types will be infered from the space.</span>
+
+<span class="sd">    .. note:: This agent does not use the observation space. Instead it only relies on rewards returned by the</span>
+<span class="sd">        environment. Returned rewards can be tuples, if multi-objective optimization is required. Existing</span>
+<span class="sd">        Environments do not have to be adjusted, however. The agent will also accept standard rewards and will</span>
+<span class="sd">        ignore any observation spaces.</span>
+
+<span class="sd">    .. note:: The number of environments must be equal to the population for this agent because it needs one</span>
+<span class="sd">        environment for the evaluation of every solution. This allows for solutions to be evaluated in parallel.</span>
+
+<span class="sd">    :param policy: Agent policy. Parameter is not used in this agent.</span>
+<span class="sd">    :param env: Environment to be optimized.</span>
+<span class="sd">    :param learning_rate: Reduction factor for the crossover and mutation rates (default: 1).</span>
+<span class="sd">    :param verbose: Logging verbosity.</span>
+<span class="sd">    :param population: Maximum number of parallel solutions (&gt;= 2).</span>
+<span class="sd">    :param mutations: Chance for mutations in existing solutions (between 0 and 1).</span>
+<span class="sd">    :param crossovers: Chance for crossovers between solutions (between 0 and 1).</span>
+<span class="sd">    :param n_generations: Number of generations to run the algorithm for.</span>
+<span class="sd">    :param max_cross_len: Maximum number of genes (as a proportion of total elements) to cross over between</span>
+<span class="sd">        solutions (between 0 and 1) (default 1).</span>
+<span class="sd">    :param max_retries: Maximum number of tries to find new values before the algorithm fails and returns.</span>
+<span class="sd">        Using the default should usually be fine (default: 10000).</span>
+<span class="sd">    :param sense: Determine whether the algorithm looks for minimal (&quot;minimize&quot;) or maximal (&quot;maximize&quot;)</span>
+<span class="sd">        rewards (default: &quot;minimize&quot;)</span>
+<span class="sd">    :param tensorboard_log: the log location for tensorboard (if None, no logging).</span>
+<span class="sd">    :param seed: Seed for the pseudo random generators.</span>
+<span class="sd">    :param _init_setup_model: Determine whether model should be initialized during setup</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">policy</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">],</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">VecEnv</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Schedule</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">population</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">mutations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">crossovers</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_generations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">max_cross_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
+        <span class="n">sense</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;minimize&quot;</span><span class="p">,</span>
+        <span class="n">predict_learn_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="n">tensorboard_log</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">_init_setup_model</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Some types are incorrectly defined in the super class; this fixes it for this class and suppresses warnings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr_schedule</span><span class="p">:</span> <span class="n">Callable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policy_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BasePolicy</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="p">:</span> <span class="n">BasePolicy</span>
+
+        <span class="c1"># Set default values for superclass arguments</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">policy</span><span class="o">=</span><span class="n">policy</span><span class="p">,</span>
+            <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+            <span class="n">tensorboard_log</span><span class="o">=</span><span class="n">tensorboard_log</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+            <span class="n">support_multi_env</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">supported_action_spaces</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">,</span>
+                <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">,</span>
+                <span class="n">spaces</span><span class="o">.</span><span class="n">MultiDiscrete</span><span class="p">,</span>
+                <span class="n">spaces</span><span class="o">.</span><span class="n">MultiBinary</span><span class="p">,</span>
+                <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">policy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">policy_kwargs</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">verbose</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">ju_extensions</span><span class="o">.</span><span class="n">set_logger</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The NSGA2 agent needs a specific environment to work correctly. Cannot use env = None.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="n">VecNormalize</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The NSGA2 agent does not allow the use of normalized environments.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sense</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;minimize&quot;</span><span class="p">,</span> <span class="s2">&quot;maximize&quot;</span><span class="p">}:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The optimization sense must be one of &#39;minimize&#39; or &#39;maximize&#39;, got </span><span class="si">{</span><span class="n">sense</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="c1">#: Maximum number of parallel solutions (&gt;= 2).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">population</span>
+        <span class="c1">#: Chance for mutations in existing solutions (between 0 and 1).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mutations</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">mutations</span>
+        <span class="c1">#: Chance for crossovers between solutions (between 0 and 1).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">crossovers</span>
+        <span class="c1">#: Maximum number of genes (as a proportion of total elements) to cross over between solutions</span>
+        <span class="c1">#: (between 0 and 1) (default 1).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_cross_len</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">max_cross_len</span>
+        <span class="c1">#: Maximum number of tries to find new values before the algorithm fails and returns.</span>
+        <span class="c1">#: Using the default should usually be fine (default: 10000).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">max_retries</span>
+        <span class="c1">#: Sense of the optimization (maximize or minimize).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sense</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">sense</span>
+        <span class="c1">#: Maximum number of generations to run for.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_generations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">n_generations</span>
+        <span class="c1">#: Maximum value of the reward (positive or negative infinity, depending on the optimization sense).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="k">if</span> <span class="n">sense</span> <span class="o">==</span> <span class="s2">&quot;minimize&quot;</span> <span class="k">else</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+        <span class="c1">#: Parameters defining, how the events chromosome is generated. This is determined</span>
+        <span class="c1">#: automatically from the action space.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_params</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#: Parameters defining how the variables chromosome is generated. This is determined</span>
+        <span class="c1">#: automatically from the action space.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable_params</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">_VariableParameters</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">#: Parent generation of solutions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">:</span> <span class="n">_jlwrapper</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Offspring generation of solutions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">:</span> <span class="n">_jlwrapper</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#: Current learning rate of the algorithm.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="c1">#: List of solutions which have been seen before (avoids duplicate evaluation of equivalent solutions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seen_solutions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#: Total number of retries needed during evolution to generate unique solutions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#: List of current minimal values for all parts of the reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_minima</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+
+        <span class="c1">#: Buffer for actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">:</span> <span class="n">deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1">#: Buffer for rewards</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ep_reward_buffer</span><span class="p">:</span> <span class="n">deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1">#: Sorted sets of solutions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fronts</span><span class="p">:</span> <span class="n">deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1">#: Number of solutions in each front</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_front_lengths</span><span class="p">:</span> <span class="n">deque</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1">#: Buffer for training infos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: Number of learning steps for predict function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_learn_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">predict_learn_steps</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_lr_schedule</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_learning_rate</span><span class="p">()</span>
+
+        <span class="c1"># Initialize and parametrize the julia functions.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">:</span> <span class="n">_jlwrapper</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_Algorithm</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
+            <span class="s2">&quot;pyfunctionret(&quot;</span>
+            <span class="s2">&quot;Nsga2.Algorithm, Any, Int, Float64, Float64, Int, Int, Int, &quot;</span>
+            <span class="s2">&quot;Nsga2.VariableParameters, Float64, String, UInt64&quot;</span>
+            <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_create_generation</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.create_generation, Any, PyAny, Bool)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_create_offspring</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.create_offspring, Any, PyAny, PyAny)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_initialize_rnd</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.initialize_rnd!, Int, PyAny, PyAny)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_reinitialize_rnd</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.initialize_rnd!, Int, PyAny, PyAny, Vector</span><span class="si">{Int}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_evolve</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.evolve!, Int, PyAny, PyAny, PyAny, Float64)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_evaluate_solutions</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
+            <span class="s2">&quot;pyfunctionret(&quot;</span>
+            <span class="s2">&quot;    Nsga2.evaluate!,&quot;</span>
+            <span class="s2">&quot;    Tuple{Vector</span><span class="si">{Float64}</span><span class="s2">, Int, Vector</span><span class="si">{Int}</span><span class="s2">, Vector</span><span class="si">{Int}</span><span class="s2">},&quot;</span>
+            <span class="s2">&quot;    PyAny,&quot;</span>
+            <span class="s2">&quot;    PyAny,&quot;</span>
+            <span class="s2">&quot;    PyAny,&quot;</span>
+            <span class="s2">&quot;    PyAny&quot;</span>
+            <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_store_reward</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.py_store_reward, nothing, PyAny, PyArray)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_get_actions</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.py_actions, PyObject, PyAny)&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_setup_generation</span> <span class="o">=</span> <span class="n">Jl</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;pyfunctionret(Nsga2.load_generation, Any, PyArray, PyArray, Float64)&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">_init_setup_model</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_setup_model</span><span class="p">()</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Agent initialized with parameters population:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">}</span><span class="s2">, mutations: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mutations</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;crossovers: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_learn_config</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">last_evaluation_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">last_evaluation_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ep_reward_buffer</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_reward_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">last_evaluation_fronts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">fronts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">beginning</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">frontend</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_front_lengths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">fronts</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fronts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">beginning</span><span class="p">:</span><span class="n">frontend</span><span class="p">]])</span>
+            <span class="n">beginning</span> <span class="o">=</span> <span class="n">frontend</span>
+        <span class="k">return</span> <span class="n">fronts</span>
+
+    <span class="k">def</span> <span class="nf">_event_and_variable_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">_VariableParameters</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read event parameters and variable parameters from the action space.</span>
+
+<span class="sd">        :return: Tuple of the events and variable configurations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">event_params</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">variable_space</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># If the type of the action space is spaces.Dict, it could contain events as well as variables.</span>
+        <span class="c1"># Other spaces only contain variables.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">):</span>
+            <span class="c1"># Extract events space</span>
+            <span class="k">if</span> <span class="s2">&quot;events&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">spaces</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">spaces</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">],</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Events must be specified as a discrete space. Received </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">.&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="n">event_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">spaces</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">n</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># Extract variables spaces.</span>
+            <span class="k">if</span> <span class="s2">&quot;variables&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">spaces</span><span class="p">:</span>
+                <span class="n">variable_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">spaces</span><span class="p">[</span><span class="s2">&quot;variables&quot;</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">variable_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span>
+
+        <span class="c1"># Set up the variable parameters by creating VariableParameters objects.</span>
+        <span class="n">variable_params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">variable_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">variable_params</span> <span class="o">=</span> <span class="n">_VariableParameters</span><span class="o">.</span><span class="n">from_space</span><span class="p">(</span><span class="n">variable_space</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Successfully read action space information. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Length of events: </span><span class="si">{</span><span class="n">event_params</span><span class="si">}</span><span class="s2">, length of variables: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">variable_params</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">event_params</span><span class="p">,</span> <span class="n">variable_params</span>
+
+    <span class="k">def</span> <span class="nf">_setup_jl_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_Algorithm</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mutations</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_cross_len</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">event_params</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variable_params</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sense</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setup_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up the model by taking values from the supplied action space and initializing the first two parent</span>
+<span class="sd">        generations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting agent initialization.&quot;</span><span class="p">)</span>
+        <span class="c1"># Set up learning rate and random seeding for all submodules.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_lr_schedule</span><span class="p">()</span>
+        <span class="c1"># Read the event and variable parameters from the action space.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_and_variable_params</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_jl_agent</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Successfully initialized NSGA 2 agent.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_learning_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optmimizers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">th</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">]</span> <span class="o">|</span> <span class="n">th</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the learning rate as well as mutation and crossover rates. The mutation and crossover rates depend</span>
+<span class="sd">        on the learning rate. Thus, a learning rate schedule will affect the crossover and mutation probabilities for</span>
+<span class="sd">        each generation.</span>
+
+<span class="sd">        :param optimizers: List of torch optimizers (not used by Nsga2).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr_schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_progress_remaining</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_learn_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Check configuration of the algorithm for compatibility</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The population size must be at least two.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutations</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutations</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The mutation rate must be between 0 and 1.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The crossover rate must be between 0 and 0.5 (cannot cross more than half of population).&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_cross_len</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The maximum crossover length must be between 0 and 1 (proportion of total length).&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Nsga2.learn"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.nsga2.html#eta_utility.eta_x.agents.nsga2.Nsga2.learn">[docs]</a>    <span class="k">def</span> <span class="nf">learn</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">total_timesteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">callback</span><span class="p">:</span> <span class="n">MaybeCallback</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">tb_log_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span>
+        <span class="n">reset_num_timesteps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">progress_bar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Nsga2</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a trained model. The environment which the agent is training on should return an info dictionary when</span>
+<span class="sd">        a solution is invalid. The info dictionary should contain a &#39;valid&#39; key which is set to false in that case.</span>
+<span class="sd">        If there are too many invalid solutions (more than half of the population), the agent will try to</span>
+<span class="sd">        re-initialize these solutions until there is a sufficient number of valid solutions.</span>
+
+<span class="sd">        :param total_timesteps: The total number of samples (env steps) to train on</span>
+<span class="sd">        :param callback: callback(s) called at every step with state of the algorithm.</span>
+<span class="sd">        :param log_interval: The number of timesteps before logging.</span>
+<span class="sd">        :param tb_log_name: the name of the run for TensorBoard logging</span>
+<span class="sd">        :param reset_num_timesteps: whether to reset the current timestep number (used in logging)</span>
+<span class="sd">        :param progress_bar: Parameter to show progress bar, used by stable_baselines (currently unused!)</span>
+<span class="sd">        :return: the trained model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_generations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">total_timesteps</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_generations</span><span class="p">:</span>
+            <span class="n">total_timesteps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_generations</span>
+
+        <span class="n">total_timesteps</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup_learn</span><span class="p">(</span>
+            <span class="n">total_timesteps</span><span class="p">,</span>
+            <span class="n">callback</span><span class="p">,</span>
+            <span class="n">reset_num_timesteps</span><span class="p">,</span>
+            <span class="n">tb_log_name</span><span class="p">,</span>
+            <span class="n">progress_bar</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Reset training results infos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset_training_infos</span><span class="p">()</span>
+
+        <span class="n">callback</span><span class="o">.</span><span class="n">on_training_start</span><span class="p">(</span><span class="nb">locals</span><span class="p">(),</span> <span class="nb">globals</span><span class="p">())</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Starting optimization for </span><span class="si">{</span><span class="n">total_timesteps</span><span class="si">}</span><span class="s2"> generations with parameters: &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;crossover rate: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span><span class="si">}</span><span class="s2">, mutation rate: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mutations</span><span class="si">}</span><span class="s2">, population: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Initialize the parent generation in case it is empty (usually when the algorithm is first initialized)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_parent_generation_if_empty</span><span class="p">()</span>
+
+        <span class="c1"># Train agent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="p">(</span><span class="n">total_timesteps</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">log_interval</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">_train</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">total_timesteps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">callback</span><span class="p">:</span> <span class="n">BaseCallback</span><span class="p">,</span>
+        <span class="n">log_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train the agent for the given number of timesteps.</span>
+
+<span class="sd">        :param total_timesteps: The total number of samples (env steps) to train on</span>
+<span class="sd">        :param callback: callback(s) called at every step with state of the algorithm.</span>
+<span class="sd">        :param log_interval: The number of timesteps before logging.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Enter time step loop (each loop is one generation of solutions)</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_timesteps</span> <span class="o">&lt;</span> <span class="n">total_timesteps</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_timesteps</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_current_progress_remaining</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_timesteps</span><span class="p">,</span> <span class="n">total_timesteps</span><span class="p">)</span>
+
+            <span class="c1"># Display training infos</span>
+            <span class="k">if</span> <span class="n">log_interval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">]</span> <span class="o">%</span> <span class="n">log_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_display_training_infos</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">iteration_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_learning_rate</span><span class="p">()</span>
+
+            <span class="c1"># Create empty offspring generation</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Initializing offspring generation and performing evolution.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_create_offspring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_evolve</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">evolve_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_retries</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Evaluating offspring generation.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_retries</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">eval_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Performing non-dominated sort with parent and offspring&quot;</span><span class="p">)</span>
+            <span class="n">new_generation_parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_create_generation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_minima</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">seen_solutions</span><span class="p">,</span> <span class="n">fronts</span><span class="p">,</span> <span class="n">front_lengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_evaluate_solutions</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">,</span> <span class="n">new_generation_parent</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fronts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fronts</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_front_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">front_lengths</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_reward_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
+                    <span class="p">([</span><span class="n">sol</span><span class="o">.</span><span class="n">reward</span> <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">],</span> <span class="p">[</span><span class="n">sol</span><span class="o">.</span><span class="n">reward</span> <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">])</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_jl_get_actions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_get_actions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)))</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span> <span class="o">=</span> <span class="n">new_generation_parent</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">sorting_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully created and evaluated offspring generation with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">}</span><span class="s2"> solutions.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">callback</span><span class="o">.</span><span class="n">on_step</span><span class="p">():</span>
+                <span class="k">break</span>
+
+        <span class="n">callback</span><span class="o">.</span><span class="n">on_training_end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_initialize_parent_generation_if_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize parent generation if generation_parent is empty</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">Jl</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Initializing parent generation.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_create_generation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_initialize_rnd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)</span>
+
+            <span class="c1"># update training infos</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">evolve_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_retries</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">]</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Evaluating parent generation.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;invalid_sol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)</span>
+
+            <span class="c1"># Update training infos</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span><span class="n">eval_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">sorting_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>  <span class="c1"># No sorting during first step.</span>
+
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully initialized first parent generation with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">}</span><span class="s2"> solutions.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_display_training_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display training infos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_info_buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Make sure that ep_info_buffer is exists before starting to learn.&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Make sure that start_time is set before starting to learn.&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;time/iterations&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">],</span> <span class="n">exclude</span><span class="o">=</span><span class="s2">&quot;tensorboard&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ep_info_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ep_info_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;general/ep_rew_mean&quot;</span><span class="p">,</span> <span class="n">safe_mean</span><span class="p">([</span><span class="n">ep_info</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ep_info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_info_buffer</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;time/total&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">/</span> <span class="mi">1000000000</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="s2">&quot;tensorboard&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;time/iteration&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;iteration_time&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span>
+            <span class="s2">&quot;time/evolve&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;evolve_time&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;iteration_time&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span>
+            <span class="s2">&quot;time/evaluate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;eval_time&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;evolve_time&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span>
+            <span class="s2">&quot;time/sort&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;sorting_time&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;eval_time&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/retries&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;retries&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/total_retries&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_retries</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/learning_rate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/mutation_rate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutations</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/crossover_rate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossovers</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_learning_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;train/seensolutions&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">seen_solutions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="s2">&quot;evaluate/invalid&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="p">[</span><span class="s2">&quot;invalid_sol&quot;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_minima</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;evaluate/minimum_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_timesteps</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_training_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the training infos buffer with the given values.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_infos_buffer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_reset_training_infos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset training infos.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_training_infos</span><span class="p">(</span>
+            <span class="n">iteration_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">evolve_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">eval_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">sorting_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">retries</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">invalid_sol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generation</span><span class="p">:</span> <span class="n">_jlwrapper</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">_jlwrapper</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate all solutions in the generation and store rewards</span>
+
+<span class="sd">        :param generation: Sequence of solutions to evaluate</span>
+<span class="sd">        :return: Sequence of evaluated solutions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The agent needs to know the environment to evaluate solutions.&quot;</span>
+
+        <span class="n">rewards</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">retries</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">:</span>
+            <span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jl_get_actions</span><span class="p">(</span><span class="n">generation</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_info_buffer</span><span class="p">(</span><span class="n">infos</span><span class="p">,</span> <span class="n">dones</span><span class="p">)</span>
+
+            <span class="c1"># Ensure that there are always multiple rewards for every solution.</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+
+            <span class="n">solution_invalid</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rewards</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s2">&quot;valid&quot;</span> <span class="ow">in</span> <span class="n">infos</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="ow">and</span> <span class="n">infos</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;valid&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="n">rewards</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">rewards</span><span class="p">[</span><span class="n">idx</span><span class="p">]),),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+                    <span class="n">solution_invalid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">solution_invalid</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">retries</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">solution_invalid</span><span class="p">)</span>
+                <span class="n">retries</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_reinitialize_rnd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="n">generation</span><span class="p">,</span> <span class="n">solution_invalid</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Randomized the generation again because &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;there were too many invalid solutions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">solution_invalid</span><span class="p">)</span><span class="si">}</span><span class="s2">; retries: </span><span class="si">{</span><span class="n">retries</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">rewards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jl_store_reward</span><span class="p">(</span><span class="n">generation</span><span class="p">,</span> <span class="n">rewards</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">generation</span><span class="p">,</span> <span class="n">retries</span>
+
+<div class="viewcode-block" id="Nsga2.set_random_seed"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.nsga2.html#eta_utility.eta_x.agents.nsga2.Nsga2.set_random_seed">[docs]</a>    <span class="k">def</span> <span class="nf">set_random_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the seed of the pseudo-random generators</span>
+<span class="sd">        (python, numpy, pytorch, gymnasium, julia)</span>
+
+<span class="sd">        :param seed: Seed for the pseudo random generators.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">ju_NSGA2</span><span class="o">.</span><span class="n">seed_b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_excluded_save_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the names of the parameters that should be excluded from being</span>
+<span class="sd">        saved by pickling.</span>
+
+<span class="sd">        :return: List of parameters that should be excluded from being saved with pickle.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">excluded_params</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_excluded_save_params</span><span class="p">()</span>
+        <span class="n">excluded_params</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;_Nsga2__jl_agent&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_Algorithm&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_create_generation&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_create_offspring&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_initialize_rnd&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_reinitialize_rnd&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_evolve&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_evaluate_solutions&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_store_reward&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_get_actions&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_jl_setup_generation&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;generation_parent&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;generation_offspr&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">excluded_params</span>
+
+<div class="viewcode-block" id="Nsga2.load"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.nsga2.html#eta_utility.eta_x.agents.nsga2.Nsga2.load">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Nsga2</span><span class="p">],</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">io</span><span class="o">.</span><span class="n">BufferedIOBase</span><span class="p">,</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">GymEnv</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="n">th</span><span class="o">.</span><span class="n">device</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">custom_objects</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">print_system_info</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">force_reset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Nsga2</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load the model from a zip-file.</span>
+<span class="sd">        Warning: ``load`` re-creates the model from scratch, it does not update it in-place!</span>
+<span class="sd">        For an in-place load use ``set_parameters`` instead.</span>
+
+<span class="sd">        :param path: path to the file (or a file-like) where to load the agent from</span>
+<span class="sd">        :param env: the new environment to run the loaded model on</span>
+<span class="sd">            (can be None if you only need prediction from a trained model) has priority over any saved environment</span>
+<span class="sd">        :param device: Device on which the code should run.</span>
+<span class="sd">        :param custom_objects: Dictionary of objects to replace upon loading. If a variable is present in</span>
+<span class="sd">            this dictionary as a key, it will not be deserialized and the corresponding item will be used instead.</span>
+<span class="sd">        :param print_system_info: Whether to print system info from the saved model and the current system info</span>
+<span class="sd">            (useful to debug loading issues)</span>
+<span class="sd">        :param force_reset: Force call to ``reset()`` before training to avoid unexpected behavior.</span>
+<span class="sd">        :param kwargs: extra arguments to change the model when loading</span>
+<span class="sd">        :return: new model instance with loaded parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Nsga2</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">custom_objects</span><span class="p">,</span> <span class="n">print_system_info</span><span class="p">,</span> <span class="n">force_reset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">verbose</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">_setup_jl_agent</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_load_generation</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">model</span></div>
+
+    <span class="k">def</span> <span class="nf">_load_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_setup_generation</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">][</span><span class="s2">&quot;events&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">][</span><span class="s2">&quot;variables&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_offspr</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jl_setup_generation</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="p">:][</span><span class="s2">&quot;events&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="p">:][</span><span class="s2">&quot;variables&quot;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generation_parent</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Nsga2.predict"><a class="viewcode-back" href="../../../../_stubs/eta_utility.eta_x.agents.nsga2.html#eta_utility.eta_x.agents.nsga2.Nsga2.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">observation</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">state</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">episode_start</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">deterministic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict function return actions from the best solution.</span>
+
+<span class="sd">        :param observation: Observation from the environment.</span>
+<span class="sd">        :param state: State from the environment. Not relevant here.</span>
+<span class="sd">        :param episode_start: Whether the episode has just started. Not relevant here.</span>
+<span class="sd">        :param deterministic: Whether to use deterministic actions. Not relevant here.</span>
+<span class="sd">        :return: actions from the best solution</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Reset training infos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset_training_infos</span><span class="p">()</span>
+
+        <span class="c1"># Set crossover to zero</span>
+        <span class="n">ju_NSGA2</span><span class="o">.</span><span class="n">updateAlgorithmParameters_b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__jl_agent</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># Setup learning</span>
+        <span class="n">total_timesteps</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup_learn</span><span class="p">(</span>
+            <span class="n">total_timesteps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_learn_steps</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">reset_num_timesteps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">tb_log_name</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+            <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># train from generation parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="p">(</span><span class="n">total_timesteps</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+        <span class="c1"># select first solution of the first front</span>
+        <span class="n">best_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_actions_buffer</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_fronts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_front_lengths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">best_solution</span><span class="p">,</span> <span class="kc">None</span>  <span class="c1"># no states</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Technical University of Darmstadt, Institute for Production Management, Technology and Machine Tools (PTW).</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
