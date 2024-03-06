@@ -1,0 +1,26 @@
+[package]
+name = "lakers"
+version.workspace = true
+edition = "2021"
+authors = ["Mališa Vučinić <malisa.vucinic@inria.fr>"]
+license.workspace = true
+description = "EDHOC implementation in Rust"
+repository.workspace = true
+readme = "../README.md"
+
+[dependencies]
+lakers-shared.workspace = true
+
+[dev-dependencies]
+lakers-ead = { workspace = true, default-features = false }
+lakers-crypto.workspace = true
+hexlit = "0.5.3"
+
+[features]
+# NOTE: the ead features are just needed for multiplexing tests
+default = [ "test-ead-none" ]
+test-ead-none = [ "lakers-ead/ead-none" ]
+test-ead-authz = [ "lakers-ead/ead-authz" ]
+
+[lib]
+crate-type = ["rlib"]
