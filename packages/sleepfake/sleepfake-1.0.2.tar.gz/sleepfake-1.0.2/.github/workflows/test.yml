@@ -1,0 +1,46 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name:
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Rye
+      run: |
+        curl -sSf https://rye-up.com/get | RYE_INSTALL_OPTION="--yes" bash
+        source "$HOME/.rye/env"
+        rye install mypy
+        rye install ruff
+        rye install pytest
+        echo "$HOME/.rye/shims" >> $GITHUB_PATH
+    - name: Install dependencies
+      run: |
+        source "$HOME/.rye/env"
+        rye sync
+    - name: Lint
+      run: |
+        source "$HOME/.rye/env"
+        rye run lint
+    - name: Test with pytest
+      run: |
+        source "$HOME/.rye/env"
+        rye run test
