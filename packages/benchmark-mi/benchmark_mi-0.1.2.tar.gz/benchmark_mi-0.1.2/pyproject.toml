@@ -1,0 +1,91 @@
+[tool.poetry]
+name = "benchmark-mi"
+version = "0.1.2"
+description = "Estimators of mutual information and distributions used to benchmark them."
+authors = ["Paweł Czyż <pawelpiotr.czyz@ai.ethz.ch>", "Frederic Grabowski <grabowski.frederic@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "bmi", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+equinox = "^0.10.2"
+jax = "^0.4.8"
+jaxlib = "^0.4.7"
+numpy = "^1.24.2"
+scikit-learn = "^1.2.2"
+optax = "^0.1.4"
+pandas = "^1.5.3"
+pydantic = "^1.10.7"
+pyyaml = "^6.0"
+scipy = "^1.10.1"
+tqdm = "^4.64.1"
+tensorflow-probability = {extras = ["jax"], version = "^0.20.1"}
+
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+black = "24.2.0"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+pre-commit = "^3.2.2"
+pytype = "^2023.4.11"
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+pytest-xdist = "^3.2.1"
+mkdocs-material = "^9.1.6"
+mkdocstrings = {extras = ["python"], version = "^0.21.2"}
+mkdocs-gen-files = "^0.4.0"
+mkdocs-literate-nav = "^0.6.0"
+mkdocs-bibtex = "^2.11.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.black]
+include = '''
+/(
+     src
+   | scripts
+   | tests
+)/
+'''
+line-length = 99
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | docs
+  | venv
+)/
+  | README.md
+  | __pycache__
+  | estimators.yaml
+'''
+
+[tool.pytype]
+inputs = ["src", "tests"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=src/bmi -n 3"
+testpaths = [
+    "tests",
+]
+
+[tool.isort]
+line_length = 99
+src_paths = ["src", "tests", "scripts"]
+
