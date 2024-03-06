@@ -1,0 +1,98 @@
+
+
+
+
+
+
+#
+#	how to publish:
+#
+#		cp structures/modules/reelity/module.MD readme.md
+#		python3 structures/modules/reelity/_status/status.proc.py
+#		(rm -rf dist && python3 -m build && twine upload dist/*)
+#
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reelity"
+version = "1.0.5"
+dependencies = [
+
+	"bracelet",
+
+	# --
+
+	"carbonado",
+	"ships",
+	
+	# --
+	
+	"asn1crypto",
+	"aztec_code_generator",
+	"click",
+	"ecdsa",
+	"ECPy",
+	
+	"flask",
+	"flask-cors",
+	"flask-openapi3",
+	
+	"rich",
+	"selenium",
+	"textual",
+	"websockets",
+		# sudo dnf install python3-devel
+		# socketio
+		# eventlet
+	
+	"pycryptodome",
+	"PyOpenSSL",
+	"pymongo",
+	"pyzbar",
+	"qrcode"
+]
+
+
+license = { text = "GPL 3.0 + MongoDB SSPL" }
+
+description = "The dreams that found there way to a canvas."
+readme = "structures/modules/reelity/module.MD"
+
+#
+#	https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#keywords
+#
+keywords = [
+	"custom support required"
+]
+
+[project.scripts]
+#
+#	https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts
+#	from this_module import start_clique; start_clique ()
+#
+reelity = "reelity:start_clique"
+
+
+[tool.setuptools.packages.find]
+where = [ "structures/modules" ]
+
+#
+#	https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+#
+[tool.setuptools.package-data]
+"*" = [ "*.html", "*.s.HTML", "*.jpg" ]
+
+
+#
+#	https://stackoverflow.com/questions/75634466/include-or-exclude-license-files-from-package-data-with-pyproject-toml-and-set
+#	https://stackoverflow.com/questions/608855/excluding-a-top-level-directory-from-a-setuptools-package
+#
+#[tool.setuptools.exclude-package-data]
+#"*" = []
+
+
+
+

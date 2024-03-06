@@ -1,0 +1,232 @@
+
+
+
+
+<style>
+
+
+body {
+	font-size: .5em;
+}
+
+h1,h2,h3 {
+	text-align: center;
+}
+
+h1 {
+	font-size: 4em;
+}
+h2 {
+	font-size: 3em;
+}
+h3 {
+	font-size: 2em;
+}
+
+p {
+	margin: 0;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+code {
+	font-size: 1.5em;
+}
+
+code {
+	display: inline-block;
+	display: block;
+	border: 3px solid purple;
+	padding: .25in;
+	border-radius: 4px;
+	
+	background: #EEE;
+	
+	font-style: bold;
+	
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+article {
+	margin: 0px auto 40px;
+}
+
+</style>
+
+<body>	
+	<h1>EEC_448_2 tutorial</h1>
+
+	<h2>elliptic keys</h2>
+	
+	<article>
+		<p>The "private" key is created from a "seed" string.</p>
+		<p>The "public" key is created from the "private" key.</p>
+		<p>The "private" key is used for signing bytes.</p>
+		<p>The "public" key is used for verifying signatures.</p>
+	</article>
+	
+	<article>
+		<h3>private and public key creation</h3>
+		<p></p>
+		<code>	
+import reelity.modules.EEC_448_2.private_key.creator as EEC_448_2_private_key_creator
+import reelity.modules.EEC_448_2.private_key.etch as etch_EEC_448_private_key
+
+import reelity.modules.EEC_448_2.public_key.creator as EEC_448_2_public_key_creator
+import reelity.modules.EEC_448_2.public_key.etch as etch_EEC_448_2_public_key
+		
+import pathlib
+from os.path import dirname, join, normpath
+import os
+import json	
+	
+seed = "4986888B11358BF3D541B41EEA5DAECE1C6EFF64130A45FC8B9CA48F3E0E02463C99C5AEDC8A847686D669B7D547C18FE448FC5111CA88F4E8"	
+	
+private_key_path = normpath (
+	join (pathlib.Path (__file__).parent.resolve (), "EEC_448_2_private_key")
+) + ".JSON"
+
+public_key_path = normpath (
+	join (pathlib.Path (__file__).parent.resolve (), "EEC_448_2_public_key")
+) + ".JSON"	
+
+#
+#	create private key
+#
+private_key = EEC_448_2_private_key_creator.create (seed)
+private_key_instance = private_key ["instance"]
+private_key_DER_hexadecimal_string = private_key ["DER hexadecimal string"]
+
+#
+#	create public key
+#
+public_key = EEC_448_2_public_key_creator.create (
+	private_key_instance
+)	
+
+#
+#	etch public key
+#
+etch_EEC_448_2_public_key.start (
+	public_key_path,
+	json.dumps ({
+		"public key": {
+			"DER hexadecimal string": public_key ["DER hexadecimal string"]
+		}
+	}, indent = 4), 
+	"JSON"
+)
+		</code>
+	</article>
+
+
+
+	<h3>signatures</h3>
+	<article>
+		<p>With the "private" key and an unsigned byte string, the "sign" procedure generates signed bytes.</p>
+	</article>
+	
+	<code>
+import reelity.modules.EEC_448_2.private_key.instance as instantiate_private_key	
+import reelity.modules.EEC_448_2.private_key.scan as private_key_scan
+
+import reelity.modules.EEC_448_2.sign as EEC_448_2_sign	
+
+import reelity.modules.EEC_448_2.modulators.byte_string.from_hexadecimal as hexadecimal_to_byte_string
+	
+import pathlib
+from os.path import dirname, join, normpath
+import os
+import json	
+	
+private_key_path = normpath (
+	join (pathlib.Path (__file__).parent.resolve (), "EEC_448_2_private_key")
+) + ".JSON"
+	
+private_key_instance = instantiate_private_key.from_DER_hexadecimal_string (
+	private_key_scan.start (private_key_path, "JSON") ["private key"] ["DER hexadecimal string"]
+)
+	
+unicode_string = json.dumps ({
+	"move": "send",
+	"fields": {
+		"to": {
+			"format": "EEC_448_2",
+			"address": "3043300506032b6571033a00e26960a83c45c0bb86e356cd727473e96682e76c6dd01c991a6ea0a394ecca27b467554d73e2a22b05425c1926a7a92befda5c1937d6876f00"
+		},
+		"amount": "40324789324873"
+	}
+}, indent = 4)		
+unsigned_bytes = unicode_string.encode ("utf-8")
+
+signed = EEC_448_2_sign.start (
+	private_key_instance,
+	unsigned_bytes = unsigned_bytes
+)
+signed_bytes_hexadecimal = signed ["signed bytes hexadecimal"]
+
+print ("signed_bytes_hexadecimal:", signed_bytes_hexadecimal)
+
+#
+#	signed bytes as hexadecimal: 
+#		8185E7174BF29936D2E204AE2CC01722FAB3ED93EA0B045868DA1BB14B51A9E59BAC06E849DE1E95D51CF49E5073A97B940CA24CC3444C7180AB2265923E341412FD502BFAA8B6456B9073217BEEFC6C40789DE7250BB899C7751D1E42AA71054E991E508F7AB1BD968B736B0EFBE0581500
+#
+
+
+	</code>
+	
+	
+	<h3>verification</h3>
+	<article>
+		<p>
+			With the "public" key, the unsigned byte string, and the
+			signed byted string, the "verify" procedure figures out
+			whether the signature is legit.
+		</p>
+	</article>
+	
+	<code>		
+import reelity.modules.EEC_448_2.public_key.scan as public_key_scan
+import reelity.modules.EEC_448_2.public_key.instance as instantiate_public_key	
+	
+import reelity.modules.EEC_448_2.sign as EEC_448_2_sign	
+import reelity.modules.EEC_448_2.verify as verify
+
+import reelity.modules.EEC_448_2.modulators.byte_string.from_hexadecimal as hexadecimal_to_byte_string
+	
+public_key_path = normpath (
+	join (pathlib.Path (__file__).parent.resolve (), "EEC_448_2_public_key")
+) + ".JSON"		
+
+public_key_instance = instantiate_public_key.from_DER_hexadecimal_string (
+	public_key_scan.start (public_key_path, "JSON") ["public key"] ["DER hexadecimal string"]
+)	
+
+unicode_string = json.dumps ({
+	"move": "send",
+	"fields": {
+		"to": {
+			"format": "EEC_448_2",
+			"address": "3043300506032b6571033a00e26960a83c45c0bb86e356cd727473e96682e76c6dd01c991a6ea0a394ecca27b467554d73e2a22b05425c1926a7a92befda5c1937d6876f00"
+		},
+		"amount": "40324789324873"
+	}
+}, indent = 4)		
+unsigned_bytes = unicode_string.encode ("utf-8")
+
+signed_bytes_hexadecimal = "8185E7174BF29936D2E204AE2CC01722FAB3ED93EA0B045868DA1BB14B51A9E59BAC06E849DE1E95D51CF49E5073A97B940CA24CC3444C7180AB2265923E341412FD502BFAA8B6456B9073217BEEFC6C40789DE7250BB899C7751D1E42AA71054E991E508F7AB1BD968B736B0EFBE0581500"
+
+#
+#	verify is legit
+#
+verification_1 = verify.start (
+	public_key_instance,
+	
+	signed_bytes = hexadecimal_to_byte_string.modulate (signed_bytes_hexadecimal),
+	unsigned_bytes = unsigned_bytes
+)
+assert (verification_1 == "yes")
+	</code>
+
+</body>
