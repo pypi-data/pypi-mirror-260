@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: lamarkdown
+Version: 0.10.1
+Summary: A tool for compiling markdown files into standalone HTML documents, using Python Markdown. Supports Latex (given an existing Tex distribution), custom CSS and JavaScript, multiple document variations from a single source file, and a live output view.
+Home-page: https://github.com/lamarkdown/lamarkdown
+License: MIT
+Keywords: markdown
+Author: David J A Cooper
+Author-email: david.cooper+pypi@djac.au
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Documentation
+Classifier: Topic :: Text Processing :: Markup :: Markdown
+Requires-Dist: brotli (>=1.0.9,<2.0.0)
+Requires-Dist: cssselect (>=1.1.0,<2.0.0)
+Requires-Dist: cssutils (>=2.4.2,<3.0.0)
+Requires-Dist: diskcache (>=5.4.0,<6.0.0)
+Requires-Dist: fonttools (>=4.38.0,<5.0.0)
+Requires-Dist: latex2mathml (>=3.75.1,<4.0.0)
+Requires-Dist: lxml (>=4.9.0,<5.0.0)
+Requires-Dist: markdown (>=3.3.7,<4.0.0)
+Requires-Dist: pillow (>=9.4.0,<10.0.0)
+Requires-Dist: platformdirs (>=3.1.1,<4.0.0)
+Requires-Dist: pybtex (>=0.24.0,<0.25.0)
+Requires-Dist: pygments (>=2.12.0,<3.0.0)
+Requires-Dist: pymdown-extensions (>=9)
+Requires-Dist: regex (>=2023.12.25,<2024.0.0) ; python_version < "3.11"
+Requires-Dist: setuptools (>=69.0,<70.0) ; python_version >= "3.12"
+Requires-Dist: watchdog (>=2.1.9,<3.0.0)
+Project-URL: Documentation, https://lamarkdown.github.io
+Project-URL: Repository, https://github.com/lamarkdown/lamarkdown
+Description-Content-Type: text/markdown
+
+# Lamarkdown
+
+Lamarkdown is a command-line document preparation system based on [Python-Markdown][]. It attempts to address similar use cases to LaTeX, but using the Markdown and HTML formats. It is _not_ directly intended to build static websites, though its extensions can be reused in [MkDocs][] (or in other applications based on Python-Markdown).
+
+Take the [Lamarkdown tour][] to get a first impression.
+
+
+## Requirements and Installation
+
+Lamarkdown depends on Python 3.8+. To install via pip:
+
+```console
+$ pip install lamarkdown
+```
+
+
+## Basic Usage
+
+To compile `mydocument.md` into `mydocument.html`, run:
+
+```console
+$ lamd mydocument.md
+```
+
+To enable the live-update mode, use `-l`/`--live`:
+
+```console
+$ lamd -l mydocument.md
+```
+
+This will launch a local web-server and a web-browser, and will keep `mydocument.html` in sync with any changes made to `mydocument.md`, until you press Ctrl+C in the terminal.
+
+
+## Full Documentation
+
+See the full documentation at [lamarkdown.github.io](https://lamarkdown.github.io).
+
+
+[Lamarkdown tour]: https://lamarkdown.github.io/tour
+[MkDocs]: https://www.mkdocs.org/
+[Python-Markdown]: https://python-markdown.github.io
+

@@ -1,0 +1,79 @@
+[tool.poetry]
+name = "lamarkdown"
+version = "0.10.1"
+description = "A tool for compiling markdown files into standalone HTML documents, using Python Markdown. Supports Latex (given an existing Tex distribution), custom CSS and JavaScript, multiple document variations from a single source file, and a live output view."
+authors = ["David J A Cooper <david.cooper+pypi@djac.au>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/lamarkdown/lamarkdown"
+documentation = "https://lamarkdown.github.io"
+keywords = ["markdown"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Documentation",
+    "Topic :: Text Processing :: Markup :: Markdown"
+]
+
+[tool.poetry.scripts]
+lamd = "lamarkdown.lib.lamd:main"
+
+[tool.poetry.plugins."markdown.extensions"]
+"la.attr_prefix"     = "lamarkdown.ext.attr_prefix:AttrPrefixExtension"
+"la.captions"        = "lamarkdown.ext.captions:CaptionsExtension"
+"la.cite"            = "lamarkdown.ext.cite:CiteExtension"
+"la.eval"            = "lamarkdown.ext.eval:EvalExtension"
+"la.latex"           = "lamarkdown.ext.latex:LatexExtension"
+"la.labels"          = "lamarkdown.ext.labels:LabelsExtension"
+"la.list_tables"     = "lamarkdown.ext.list_tables:ListTablesExtension"
+"la.markdown_demo"   = "lamarkdown.ext.markdown_demo:MarkdownDemoExtension"
+"la.sections"        = "lamarkdown.ext.sections:SectionsExtension"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+markdown = "^3.3.7"
+lxml = "^4.9.0"
+cssselect = "^1.1.0"
+pygments = "^2.12.0"
+pymdown-extensions = ">=9"
+watchdog = "^2.1.9"
+diskcache = "^5.4.0"
+pybtex = "^0.24.0"
+
+# Purely for Pybtex, which uses the 'pkg_resources' module
+setuptools = { version = "^69.0", markers = "python_version >= '3.12'" }
+
+fonttools = "^4.38.0"
+brotli = "^1.0.9"
+cssutils = "^2.4.2"
+pillow = "^9.4.0"
+latex2mathml = "^3.75.1"
+platformdirs = "^3.1.1"
+regex = { version = "^2023.12.25", markers = "python_version < '3.11'" }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.1.2"
+PyHamcrest = "^2.0.3"
+selenium = "^4.8.2"
+coverage = "^7.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.mypy.overrides]]
+module = [
+    "pymdownx",
+]
+ignore_missing_imports = true
