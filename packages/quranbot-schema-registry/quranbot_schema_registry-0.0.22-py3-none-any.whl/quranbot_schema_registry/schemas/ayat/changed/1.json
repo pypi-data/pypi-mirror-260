@@ -1,0 +1,68 @@
+{
+  "$id": "https://example.com/demo",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ayat.Changed.v1",
+  "version": 1,
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "event_version": {
+      "enum": [
+        1
+      ]
+    },
+    "event_name": {
+      "type": "string"
+    },
+    "event_time": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "public_id": {
+          "type": "string"
+        },
+        "day": {
+          "type": "number"
+        },
+        "audio_id": {
+          "type": "string"
+        },
+        "ayat_number": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "arab_text": {
+          "type": "string"
+        },
+        "transliteration": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "public_id",
+        "day",
+        "audio_id",
+        "ayat_number",
+        "content",
+        "arab_text",
+        "transliteration"
+      ]
+    }
+  },
+  "required": [
+    "event_id",
+    "event_version",
+    "event_name",
+    "event_time",
+    "producer",
+    "data"
+  ]
+}
