@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://potato-oss.gitlab.io/google-cloud/django-gcloud-connectors/field_indexes/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Field Indexes - Django Gcloud Connectors Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Field Indexes";
+        var mkdocs_page_input_path = "field_indexes.md";
+        var mkdocs_page_url = "/google-cloud/django-gcloud-connectors/field_indexes/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Django Gcloud Connectors Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../concepts_limitations/">Concepts & limitations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../fields/">Fields</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Field Indexes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#default">Default</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#meta-indexes">Meta Indexes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#runtime-warnings">Runtime Warnings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../transactions/">Transactions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../caching/">Caching</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing & Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../commercial_support/">Commercial Support</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../work_with_potato/">Work with us!</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Django Gcloud Connectors Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Field Indexes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/edit/master/docs/field_indexes.md" class="icon icon-gitlab"> Edit on GitLab</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="field-indexes">Field Indexes</h1>
+<h2 id="default">Default</h2>
+<p>If you do not specify any indexes, the gcloudc backend will index all django model fields by default.</p>
+<p>This is a pit of success design, because <a href="(https://cloud.google.com/datastore/docs/concepts/indexes)">Datastore/Firestore requires an index to perform any query</a>.</p>
+<p>For example:</p>
+<pre><code class="language-python">
+class MyModel(models.Model):
+    field1 = models.IntegerField(null=True)
+    field2 = models.CharField(max_length=32)
+</code></pre>
+<p>In the above example <code>field1</code> and <code>field2</code> will be indexes because there is no
+explicit definition of the index configuration, and we default to indexing all fields.</p>
+<h2 id="meta-indexes">Meta Indexes</h2>
+<p><code>gcloudc</code> supports granular control over indexes through the opt-in use of <a href="https://docs.djangoproject.com/en/4.2/ref/models/options/#indexes"><code>Meta.indexes</code></a>.</p>
+<pre><code class="language-python">
+class MyModel(models.Model):
+    field1 = models.IntegerField(null=True)
+    field2 = models.CharField(max_length=32)
+    field3 = models.CharField(max_length=32)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=[&quot;field1&quot;]),
+            models.Index(fields=[&quot;field2&quot;])
+        ]
+</code></pre>
+<p>In the above example <code>field1</code> and <code>field2</code> will be indexed. <code>field3</code> will be excluded because it is NOT referenced in <code>Meta.indexes</code>.</p>
+<p>This configurability is useful because <a href="https://cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties">excluding fields can provide cost and performance improvements</a>.</p>
+<h2 id="runtime-warnings">Runtime Warnings</h2>
+<p>To help identify queries which are executed through the ORM which depend on an index which is missing, we raise a <code>DatabaseError</code> at runtime.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>We only support single property indexes on the model, i.e. composite indexes are not supported yet (you need an <code>index.yaml</code> or similar for these).</li>
+<li><code>db_index</code> is not supported at field level (the django docs have a future deprecation warning). You must use <code>Meta.indexes</code>.</li>
+<li><code>TextField</code> and <code>BinaryField</code> will not be indexed, even if defined in the Meta. This is because these fields exceed the maximum size limits for their respective indexed properties.</li>
+<li>Queries requiring composite indexes need all properties to be indexed - see the unindexed properties section in <a href="https://cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties">the docs</a>, i.e. "if a property appears in a composite index, then excluding the property will disable it in the composite index."</li>
+<li>Projection queries require that the specified fields are indexed - see the projection queries section in <a href="https://cloud.google.com/datastore/docs/concepts/queries#projection_queries">the docs</a>, i.e. "Projection queries require the specified properties to be indexed."</li>
+<li>If you add fields to the meta indexes, these indexes won’t be applied to existing entities in the datastore but will require a migration.</li>
+<li>Setting the indexes in the meta to an empty list (i.e. <code>indexes = []</code>) will not exclude all fields from being indexed; instead, all fields will remain indexed. If you wish to exclude all fields that can be indexed, you can pass the primary key field to the meta, i.e. <code>indexes = [models.Index(fields=["id"])]</code> in the above example, as the primary key field will always be indexed, whether defined in the meta or not.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fields/" class="btn btn-neutral float-left" title="Fields"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../transactions/" class="btn btn-neutral float-right" title="Transactions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://gitlab.com/potato-oss/google-cloud/django-gcloud-connectors/" class="icon icon-gitlab" style="color: #fcfcfc"> GitLab</a>
+        </span>
+    
+    
+      <span><a href="../fields/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../transactions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
