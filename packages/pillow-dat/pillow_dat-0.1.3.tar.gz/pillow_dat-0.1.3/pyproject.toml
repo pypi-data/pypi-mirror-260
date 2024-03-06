@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "pillow-dat"
+version = "0.1.3"
+description = "PIL × DAT - Pillow extension for AI-based image upscaling."
+authors = ["iLoveDataJjia <ilovedata.jjia@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "PIL_DAT"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+einops = "^0.7.0"
+pillow = "^10.2.0"
+torch = "^2.2.1"
+numpy = "^1.26.4"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
