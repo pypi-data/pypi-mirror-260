@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "itclib"
+version = "0.1.0"
+description = "Conjunto de herramientas para realizar operaciones variadas"
+authors = ["CristianTacoronteRivero <tacoronteriverocristian@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.26.4"
+pandas = "^2.2.1"
+influxdb = "^5.3.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+autopep8 = "^2.0.4"
+pylint = "^3.1.0"
+mypy = "^1.8.0"
+isort = "^5.13.2"
+pre-commit = "^3.6.2"
+sphinx = "^7.2.6"
+sphinx-autodoc-typehints = "^2.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

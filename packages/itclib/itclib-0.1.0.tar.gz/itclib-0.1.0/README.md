@@ -1,0 +1,67 @@
+# Documentación y Publicación del Proyecto
+
+Este `README` proporciona una guía rápida sobre cómo generar documentación automática para tu proyecto utilizando Sphinx y cómo publicar tu paquete en PyPI utilizando Poetry.
+
+## Generación de Documentación con Sphinx
+
+Para generar documentación a partir de tus docstrings, sigue estos pasos en la terminal:
+
+1. Instala Sphinx y las extensiones necesarias:
+
+    ```shell
+    poetry add sphinx sphinx-autodoc-typehints -D
+    ```
+
+2. Navega al directorio raíz de tu proyecto y ejecuta:
+
+    ```shell
+    poetry run sphinx-quickstart docs
+    ```
+
+    Sigue las instrucciones del asistente para configurar Sphinx.
+
+3. Configura Sphinx para encontrar tus módulos. En `docs/conf.py`, añade el directorio de tu proyecto al path de Python:
+
+    ```python
+    import os
+    import sys
+    sys.path.insert(0, os.path.abspath('../src'))
+    ```
+
+    Reemplaza `'../src'` con la ruta correcta hacia tu código fuente.
+
+4. Crea archivos `.rst` para tus módulos en `docs/` y utiliza la directiva `automodule` para incluir tus docstrings.
+
+5. Genera la documentación en HTML:
+
+    ```shell
+    poetry run sphinx-build -b html docs/ docs/_build/html
+    ```
+
+## Publicación en PyPI con Poetry
+
+Para publicar tu paquete en PyPI, sigue estos pasos:
+
+1. Asegúrate de que `pyproject.toml` está correctamente configurado con la información de tu paquete.
+
+2. Construye tu paquete:
+
+    ```shell
+    poetry build
+    ```
+
+3. Configura tus credenciales de PyPI:
+
+    ```shell
+    poetry config pypi-token.pypi TU_TOKEN_DE_PYPI
+    ```
+
+    Reemplaza `TU_TOKEN_DE_PYPI` con tu token API de PyPI.
+
+4. Publica tu paquete:
+
+    ```shell
+    poetry publish
+    ```
+
+Recuerda actualizar la documentación y la versión de tu paquete conforme realices cambios en el futuro.
