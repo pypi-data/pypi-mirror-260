@@ -1,0 +1,325 @@
+Description: This stack creates the resources needed to gain visibility of inter-az traffic between pods on an EKS cluster
+Parameters:
+  eksVpcId:
+    Type: String
+    Description: The ID of the VPC the EKS cluster is in.
+  BootstrapVersion:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /cdk-bootstrap/hnb659fds/version
+    Description: Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]
+Resources:
+  podstatebucket582E33CB:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/pod-state-bucket/Resource
+  podstatebucketPolicyBF2A9932:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: podstatebucket582E33CB
+      PolicyDocument:
+        Statement:
+          - Action: s3:*
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+            Effect: Deny
+            Principal:
+              AWS: "*"
+            Resource:
+              - Fn::GetAtt:
+                  - podstatebucket582E33CB
+                  - Arn
+              - Fn::Join:
+                  - ""
+                  - - Fn::GetAtt:
+                        - podstatebucket582E33CB
+                        - Arn
+                    - /*
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/pod-state-bucket/Policy/Resource
+  FlowLogsvpcflowlogsbucket8625B84A:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/FlowLogs/vpc-flow-logs-bucket/Resource
+  FlowLogsvpcflowlogsbucketPolicyD4D41E13:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: FlowLogsvpcflowlogsbucket8625B84A
+      PolicyDocument:
+        Statement:
+          - Action: s3:*
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+            Effect: Deny
+            Principal:
+              AWS: "*"
+            Resource:
+              - Fn::GetAtt:
+                  - FlowLogsvpcflowlogsbucket8625B84A
+                  - Arn
+              - Fn::Join:
+                  - ""
+                  - - Fn::GetAtt:
+                        - FlowLogsvpcflowlogsbucket8625B84A
+                        - Arn
+                    - /*
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/FlowLogs/vpc-flow-logs-bucket/Policy/Resource
+  FlowLogseksinterazvisibilitys3flowlogsB1D56A02:
+    Type: AWS::EC2::FlowLog
+    Properties:
+      DestinationOptions:
+        FileFormat: parquet
+        HiveCompatiblePartitions: false
+        PerHourPartition: true
+      LogDestination:
+        Fn::GetAtt:
+          - FlowLogsvpcflowlogsbucket8625B84A
+          - Arn
+      LogDestinationType: s3
+      LogFormat: ${az-id} ${flow-direction} ${pkt-srcaddr} ${pkt-dstaddr} ${start} ${bytes}
+      ResourceId:
+        Ref: eksVpcId
+      ResourceType: VPC
+      TrafficType: ALL
+    DependsOn:
+      - FlowLogsvpcflowlogsbucketPolicyD4D41E13
+      - FlowLogsvpcflowlogsbucket8625B84A
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/FlowLogs/eks-inter-az-visibility-s3-flow-logs
+  AthenaAnalyzerathenaresults88B510AC:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/athena-results/Resource
+  AthenaAnalyzerathenaresultsPolicy9EDC61B3:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: AthenaAnalyzerathenaresults88B510AC
+      PolicyDocument:
+        Statement:
+          - Action: s3:*
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+            Effect: Deny
+            Principal:
+              AWS: "*"
+            Resource:
+              - Fn::GetAtt:
+                  - AthenaAnalyzerathenaresults88B510AC
+                  - Arn
+              - Fn::Join:
+                  - ""
+                  - - Fn::GetAtt:
+                        - AthenaAnalyzerathenaresults88B510AC
+                        - Arn
+                    - /*
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/athena-results/Policy/Resource
+  AthenaAnalyzereksinterazvisibilitydatabase2A4D92F2:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: {"Ref": "AWS::AccountId"}
+      DatabaseInput:
+        Name: eks-inter-az-visibility
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/eks-inter-az-visibility-database/Resource
+  AthenaAnalyzerGlueDataCatalogEncryption76956A30:
+    Type: AWS::Glue::DataCatalogEncryptionSettings
+    Properties:
+      CatalogId: {"Ref": "AWS::AccountId"}
+      DataCatalogEncryptionSettings:
+        EncryptionAtRest:
+          CatalogEncryptionMode: SSE-KMS
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/Glue-Data-Catalog-Encryption
+  AthenaAnalyzerpodstableTable59EBB00B:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: {"Ref": "AWS::AccountId"}
+      DatabaseName:
+        Ref: AthenaAnalyzereksinterazvisibilitydatabase2A4D92F2
+      TableInput:
+        Description: pods-table generated by CDK
+        Name: pods-table
+        Parameters:
+          classification: csv
+          has_encrypted_data: true
+          skip.header.line.count: "1"
+        StorageDescriptor:
+          Columns:
+            - Name: name
+              Type: string
+            - Name: ip
+              Type: string
+            - Name: app
+              Type: string
+            - Name: creation_time
+              Type: string
+            - Name: node
+              Type: string
+            - Name: az
+              Type: string
+          Compressed: false
+          InputFormat: org.apache.hadoop.mapred.TextInputFormat
+          Location:
+            Fn::Join:
+              - ""
+              - - s3://
+                - Ref: podstatebucket582E33CB
+                - /
+          OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.serde2.OpenCSVSerde
+          StoredAsSubDirectories: false
+        TableType: EXTERNAL_TABLE
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/pods-table/Table
+  AthenaAnalyzerflowlogstableTableD01608E8:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: {"Ref": "AWS::AccountId"}
+      DatabaseName:
+        Ref: AthenaAnalyzereksinterazvisibilitydatabase2A4D92F2
+      TableInput:
+        Description: vpc-flow-logs-table generated by CDK
+        Name: vpc-flow-logs-table
+        Parameters:
+          classification: parquet
+          has_encrypted_data: true
+        StorageDescriptor:
+          Columns:
+            - Name: az_id
+              Type: string
+            - Name: flow_direction
+              Type: string
+            - Name: pkt_srcaddr
+              Type: string
+            - Name: pkt_dstaddr
+              Type: string
+            - Name: start
+              Type: bigint
+            - Name: bytes
+              Type: bigint
+          Compressed: false
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          Location:
+            Fn::Join:
+              - ""
+              - - s3://
+                - Ref: FlowLogsvpcflowlogsbucket8625B84A
+                - /
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+          StoredAsSubDirectories: false
+        TableType: EXTERNAL_TABLE
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/flow-logs-table/Table
+  AthenaAnalyzerathenaresultstableTableED7A8EF6:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: {"Ref": "AWS::AccountId"}
+      DatabaseName:
+        Ref: AthenaAnalyzereksinterazvisibilitydatabase2A4D92F2
+      TableInput:
+        Description: athena-results-table generated by CDK
+        Name: athena-results-table
+        Parameters:
+          classification: parquet
+          has_encrypted_data: true
+        StorageDescriptor:
+          Columns:
+            - Name: timestamp
+              Type: timestamp
+            - Name: cross_az_traffic
+              Type: string
+            - Name: bytes_transfered
+              Type: bigint
+          Compressed: false
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+          Location:
+            Fn::Join:
+              - ""
+              - - s3://
+                - Ref: AthenaAnalyzerathenaresults88B510AC
+                - /inter-az-traffic
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+          StoredAsSubDirectories: false
+        TableType: EXTERNAL_TABLE
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/AthenaAnalyzer/athena-results-table/Table
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Analytics: v2:deflate64:H4sIAAAAAAAA/0VPuw7CMAz8lu6poSCE2BCviaECduQG04aGBCWuUBX132nUAoN15/PJZ89gtYCQJfj2qbzVqVYFhDOjrMX2bnJ0+CQmJ07kbeMkid54DX4OYdPImji6RjZAbrWS7V8e+k6QnEEvHrR9H20pSt0QhF7YIWOBnsTIt31pW+6NdO2LlTVnYlam9NFwwUJT10X6PagTWYr6VSFMk/X4xSRiTBgn4RfyXZC3XFkzmUOWwTJ5eKVS1xhWT4LTgB83YhttGQEAAA==
+    Metadata:
+      aws:cdk:path: CdkEksInterAzVisibility/CDKMetadata/Default
+Rules:
+  CheckBootstrapVersion:
+    Assertions:
+      - Assert:
+          Fn::Not:
+            - Fn::Contains:
+                - - "1"
+                  - "2"
+                  - "3"
+                  - "4"
+                  - "5"
+                - Ref: BootstrapVersion
+        AssertDescription: CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.
+
