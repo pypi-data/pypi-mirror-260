@@ -1,0 +1,97 @@
+Metadata-Version: 2.1
+Name: scrapy-requests-manipulate
+Version: 0.0.2
+Summary: requests downloader middleware for scrapy, send request by requests.
+Home-page: https://github.com/dylankeepon/ScrapyRequestsMiddleware.git
+Author: Dylan Chen
+Author-email: dylankeep@163.com
+License: MIT
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scrapy (>=2.0.0)
+Requires-Dist: requests (>=2.0.0)
+
+# Scrapy Requests Downloader Middleware
+
+This package will make scrapy support requests. Everything is same with requests.
+
+## Installation
+
+```shell script
+pip3 install scrapy-requests-manipulate
+```
+
+## Usage
+
+After add this middleware, all requests will be sent by requests.
+
+The usage is very simple, for request, specify params in meta.
+
+
+### Settings for Request
+
+```python
+params = {
+    'key1': 'value1',
+    'key2': 'value2',
+}
+data = {
+    'key1': 'value1',
+    'key2': 'value2',
+}
+# turn cookie jar into dict, and remove the " mark, use ' mark
+cookies = {
+    'key1': 'value1',
+    'key2': 'value2',
+}
+payload = {
+    'key1': 'value1',
+    'key2': 'value2'
+}
+proxy_ = 'http://username:password@ip:port' # https also works
+or 
+proxy_ = [
+    'http://username:password@ip:port',
+    'http://username:password@ip:port',
+] # if the type of proxy is list, every request will get a random proxy in the list
+
+meta_data = {
+    'params': params,
+    'data': data,
+    'cookies': cookies,
+    'json': payload,
+    'proxy_': proxy_
+}
+or 
+meta_data = {
+    'params': json.dumps(params),
+    'data': json.dumps(data),
+    'cookies': json.dumps(cookies),
+    'json': json.dumps(payload),
+    'proxy_': json.dumps(proxy_)
+}
+yield scrapy.Request(url=url, headers=headers, meta=meta_data)
+```
+
+And you also need to enable `RequestsDownloaderMiddleware` in `DOWNLOADER_MIDDLEWARES`:
+
+```python
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_requests_manipulate.downloaderMiddleware.RequestsDownloaderMiddleware': 543,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': None,
+}
+```
