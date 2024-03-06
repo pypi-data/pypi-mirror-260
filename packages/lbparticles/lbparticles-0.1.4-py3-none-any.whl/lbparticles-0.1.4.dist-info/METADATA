@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: lbparticles
+Version: 0.1.4
+Project-URL: Documentation, https://github.com/lbparticles/lbparticles#readme
+Project-URL: Issues, https://github.com/lbparticles/lbparticles/issues
+Project-URL: Source, https://github.com/lbparticles/lbparticles
+Author-email: John Forbes <john.forbes@canterbury.ac.nz>, Jack Patterson <jack.patterson@canterbury.ac.nz>, Angus Forrest <angus.forrest@canterbury.ac.nz>
+License-Expression: MIT
+License-File: LICENSE.txt
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8
+Requires-Dist: numpy>=1.26.2
+Requires-Dist: scipy>=1.11.3
+Provides-Extra: docs
+Requires-Dist: ipython; extra == 'docs'
+Requires-Dist: myst-nb; extra == 'docs'
+Requires-Dist: pandoc; extra == 'docs'
+Requires-Dist: sphinx-book-theme; extra == 'docs'
+Requires-Dist: sphinx>=7.2.6; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: pytest; extra == 'test'
+Description-Content-Type: text/markdown
+
+# lbparticles
+
+[![PyPI - Version](https://img.shields.io/pypi/v/lbparticles.svg)](https://pypi.org/project/lbparticles)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/lbparticles.svg)](https://pypi.org/project/lbparticles)
+[![Hatch project](https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg)](https://github.com/pypa/hatch)
+[![Documentation Status](https://readthedocs.org/projects/lbparticles/badge/?version=latest)](https://lbparticles.readthedocs.io/en/latest/?badge=latest)
+
+-----
+
+**Table of Contents**
+
+- [Installation](#installation)
+- [License](#license)
+
+## Installation
+
+```console
+pip install lbparticles
+```
+
+## License
+
+`lbparticles` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
