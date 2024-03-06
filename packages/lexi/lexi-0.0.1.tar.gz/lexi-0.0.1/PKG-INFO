@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: lexi
+Version: 0.0.1
+Summary: Lexi is a local LLM-based solution - includes Chat UI, RAG, LLM Proxy, and Document importing
+License: MIT
+Author: Matthew Thompson
+Author-email: thompsonson@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: atlassian-python-api (>=3.41.11,<4.0.0)
+Requires-Dist: beautifulsoup4 (>=4.12.3,<5.0.0)
+Requires-Dist: langchain (>=0.1.10,<0.2.0)
+Requires-Dist: langchain-community (>=0.0.25,<0.0.26)
+Requires-Dist: lxml (>=5.1.0,<6.0.0)
+Requires-Dist: openai (>=1.13.3,<2.0.0)
+Requires-Dist: pillow (>=10.2.0,<11.0.0)
+Requires-Dist: rich (>=13.7.1,<14.0.0)
+Requires-Dist: tiktoken (>=0.6.0,<0.7.0)
+Requires-Dist: tqdm (>=4.66.2,<5.0.0)
+Requires-Dist: typer (>=0.9.0,<0.10.0)
+Requires-Dist: wasabi (>=1.1.2,<2.0.0)
+Requires-Dist: weaviate-client (>=4.5.0,<5.0.0)
+Description-Content-Type: text/markdown
+
+
+# Lexi
+
+Lexi is a local LLM-based solution - includes Chat UI, RAG, LLM Proxy, and Document importing
+
+Currently supports Atlasian's Cloud Confluence.
+
+## System Overview
+
+![System Overview](docs/Lexi_overview.png)
+
+## Getting started
+
+### Pre-requistes
+
+- Python 3.8 upwards
+- Docker (with Docker Compose)
+
+### Installation
+
+`pip install lexi`
+
+### Configuration
+
+```bash
+lexi system create_envrc \
+    --confluence-url "https://some-company.atlassian.net/wiki" \
+    --confluence-space-key "some-company" \
+    --confluence-email "user@some-company.com" \
+    --confluence-space-name "" \
+    --compose-project-name "lexi-system" \
+    --litellm-log "INFO"
+```
+
+It will ask for your Confluence and OpenAIs API Keys
+
+### Start the system
+
+`lexi system up`
+
+### Stop the system
+
+`lexi system down`
+
+## Loading documents
+
+After installing and setting up the environment with `lexi system create_envrc` run the following to import the Confluence documents:
+
+`lexi load`
+
+You'll see the text from confluence being processed. It should end something like this:
+
+```bash
+Succesfully imported 172 documents and 759 chunks
+Imported 172 documents into Weaviate.
+```
+

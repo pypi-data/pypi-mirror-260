@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "lexi"
+version = "0.0.1"
+description = "Lexi is a local LLM-based solution - includes Chat UI, RAG, LLM Proxy, and Document importing"
+authors = ["Matthew Thompson <thompsonson@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = "^0.1.10"
+atlassian-python-api = "^3.41.11"
+pillow = "^10.2.0"
+beautifulsoup4 = "^4.12.3"
+lxml = "^5.1.0"
+langchain-community = "^0.0.25"
+weaviate-client = "^4.5.0"
+typer = "^0.9.0"
+rich = "^13.7.1"
+wasabi = "^1.1.2"
+tqdm = "^4.66.2"
+tiktoken = "^0.6.0"
+openai = "^1.13.3"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.0"
+pytest = "^8.0.2"
+pre-commit = "^3.6.2"
+notebook = "^7.1.1"
+jupyterlab = "^4.1.2"
+ipykernel = "^6.29.3"
+python-semantic-release = "^9.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+lexi = "lexi.main:app"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+version_pattern = [
+    "README.md:rev: v{version}"
+]
+major_on_zero = false
+branch = "main"
+upload_to_PyPI = true
+upload_to_release = true
+build_command = "poetry build"
