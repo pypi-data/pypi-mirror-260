@@ -1,0 +1,139 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+import "pyhdmap/proto/hdmap_lib/proto/attribute.proto";
+
+message Lane {
+  // lane unique id.
+  optional Id id = 1;
+
+  enum Type {
+    NONE = 1;  //
+    DRIVING = 2;       //机动车行驶车道
+    BIKING = 3;         //非机动车行驶车道
+    SHOULDER = 4;      //路肩
+    EMERGENCY = 5;            //紧急车道
+    BUS = 6;          //公交车道
+    ACCELERATE = 7;           //加速车道
+    DECELERATE = 8;           //减速车道
+    FAST = 9;          //快车道
+    SLOW = 10;      //慢车道
+    OVERTAKEING = 11;        //超车道
+    ESCAPE = 12;          //避险车道
+    TIDAL = 13;          //潮汐车道
+    VARIABLE_GUIDE = 14;         //可变导向车道
+    VER_TRUCK_DRIVING = 15;       //纵路集卡行驶车道
+    HOR_TRUCK_DRIVING = 16;       //横路集卡行驶车道
+    VER_HOR_EMERGENCY = 17;        //横纵路应急车道
+    VER_HOR_EXPAND = 18;           //横纵路扩展车道
+    YARD_TRUCK_DRIVING = 19;       //箱区集卡行驶车道
+    DOCK_TRUCK_DRIVING = 20;      //码头面集卡行驶车道
+    CRANE = 21;          //码头面桥吊作业车道
+    GANTRY = 22;         //箱区龙门吊作业车道
+    BRIDGE = 23;                 //引桥车道
+    SHUTTLE_DOOR = 24;    //调箱门车道
+    CHECK = 25;              //查验车道
+    STACK_UP = 26;         //堆高车道
+    GIRDER = 27;              //后大梁车道
+    BUNDLING = 28;        //捆扎工车道
+    FLOOD = 29;         //防洪车道
+  }
+
+  // lane type.
+  optional Type type = 2;
+
+  // left lane marking.
+  optional Curve left_lane_marking = 3;
+
+  // right lane marking.
+  optional Curve right_lane_marking = 5;
+
+  enum TurnType {
+    NONE_TURN = 1;
+    NO_TURN = 2;
+    LEFT_TURN = 3;
+    RIGHT_TURN = 4;
+    U_TURN = 5;
+    LEFT_TURN_WAIT = 6;
+    LEFT_U_TURN = 7;
+    RIGHT_U_TURN = 8;
+    STRAIGHT_RIGHT = 9;
+    STRAIGHT_LEFT = 10;
+    LEFT_RIGHT = 11;
+    LEFT_STRAIGHT_RIGHT = 12;
+    RIGHT_STRAIGHT_U_TURN = 13;
+    LEFT_STRAIGHT_U_TURN = 14;
+    LEFT_RIGHT_U_TURN = 15;
+    LEFT_STRAIGHT_RIGHT_U_TURN = 16;
+    RIGHT_OBLIQUE = 17;
+  }
+  // lane turn type.
+  optional TurnType turn_type = 7;
+
+  // speed range.
+  message SpeedInfo {
+    // min allowed speed.
+    optional double min = 1 [default = 0];
+
+    // max allowed speed.
+    optional double max = 2 [default = 60];
+
+    // prefer speed.
+    optional double prefer = 3;
+  }
+  optional SpeedInfo speed_info = 8;
+
+  // lane central curve.
+  optional Curve central_curve = 9;
+
+  // lane length.
+  optional double length = 10;
+
+  // the lanes can drive into.
+  repeated Id successor_lane_ids = 11;
+
+  // the lanes can drive from.
+  repeated Id predecessor_lane_ids = 12;
+
+  // the lanes on left of this lane.
+  optional Id left_neighbor_forward_lane_id = 13;
+
+  // the lanes on right of this lane.
+  optional Id right_neighbor_forward_lane_id = 14;
+
+  // the left reverse lane ids.
+  repeated Id left_neighbor_reverse_lane_ids = 15;
+
+  // the right reverse lane ids.
+  repeated Id right_neighbor_reverse_lane_ids = 16;
+
+  // junction id.
+  // it is empty if the lane is not in the junction.
+  optional Id junction_id = 17;
+
+  // priority in the road.
+  optional int32 priority = 19 [default = 0];
+
+  // attributes.
+  repeated Attribute attributes = 18;
+
+  // indicates whether the lane is waiting area or not.
+  optional bool is_waiting_area = 20;
+  
+  optional bool is_virtual_lane = 25;
+
+  optional double width = 26;
+
+  optional Id road_id = 27;
+
+  optional Id left_neighbor_forward_driving_lane_id = 28;
+
+  optional Id right_neighbor_forward_driving_lane_id = 29;
+
+  optional int32 lane_section_index = 30;
+
+  optional Polygon polygon = 31;
+}

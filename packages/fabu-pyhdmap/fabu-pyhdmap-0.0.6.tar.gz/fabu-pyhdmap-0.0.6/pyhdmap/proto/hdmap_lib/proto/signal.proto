@@ -1,0 +1,44 @@
+syntax = "proto2";
+
+package hdmap_lib;
+
+import "pyhdmap/proto/hdmap_lib/proto/geometry.proto";
+import "pyhdmap/proto/hdmap_lib/proto/id.proto";
+
+message Signal {
+  // signal id.
+  optional Id id = 1;
+
+  enum CombinationType {
+    UNKNOWN_COMNINATION = 1;
+    MIX_2_HORIZONTAL = 2;
+    MIX_2_VERTICAL = 3;
+    MIX_3_HORIZONTAL = 4;
+    MIX_3_VERTICAL = 5;
+    SINGLE = 6;
+  };
+  // signal combination type.
+  optional CombinationType combination_type = 2;
+
+  enum SignalType {
+    UNKNOWN_SIGNAL = 1;
+    CIRCLE = 2;
+    ARROW_LEFT = 3;
+    ARROW_FORWARD = 4;
+    ARROW_RIGHT = 5;
+    ARROW_LEFT_AND_FORWARD = 6;
+    ARROW_RIGHT_AND_FORWARD = 7;
+    ARROW_U_TURN = 8;
+    ARROW_LEFT_AND_U_TURN = 9;
+    COUNTDOWN = 10;
+    WAITING_AREA = 11;
+  }
+  // signal type.
+  optional SignalType signal_type = 3;
+
+  // signal boundary.
+  optional Polygon boundary = 4;
+
+  // signal center point
+  optional Point3D center = 5;
+}
