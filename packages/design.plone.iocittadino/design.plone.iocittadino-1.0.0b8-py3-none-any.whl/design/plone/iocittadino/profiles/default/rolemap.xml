@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Gestore Pratiche"/>
+  </roles>
+  <permissions>
+
+    <permission name="design.plone.iocittadino: Add ModelloPratica" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+    <permission name="design.plone.iocittadino: CRUD Pratica" acquire="True">
+      <role name="Authenticated"/>
+      <role name="Gestore Pratiche"/>
+    </permission>
+
+    <permission name="design.plone.iocittadino: Manage Pratica" acquire="True">
+      <role name="Site Administrator"/>
+      <role name="Manager"/>
+      <role name="Gestore Pratiche"/>
+    </permission>
+
+    <permission name="design.plone.iocittadino: CRUD Message" acquire="True">
+      <role name="Authenticated"/>
+      <role name="Gestore Pratiche"/>
+    </permission>
+
+    <permission name="design.plone.iocittadino: Manage Message" acquire="True">
+      <role name="Gestore Pratiche"/>
+      <role name="Site Administrator"/>
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="design.plone.iocittadino: Manage Blobs" acquire="True">
+      <role name="Gestore Pratiche"/>
+      <role name="Site Administrator"/>
+      <role name="Manager"/>
+    </permission>
+
+  </permissions>
+</rolemap>

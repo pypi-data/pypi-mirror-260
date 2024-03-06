@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <include package=".download" />
+
+  <!-- Publish static files -->
+  <plone:static
+      directory="static"
+      name="design.plone.iocittadino"
+      type="plone"
+      />
+
+
+  <browser:page
+      name="mail_view"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class="design.plone.iocittadino.browser.mail.MailView"
+      template="templates/mail/mail.pt"
+      permission="zope2.View"
+      layer="design.plone.iocittadino.interfaces.IDesignPloneIocittadinoLayer"
+      />
+
+
+</configure>

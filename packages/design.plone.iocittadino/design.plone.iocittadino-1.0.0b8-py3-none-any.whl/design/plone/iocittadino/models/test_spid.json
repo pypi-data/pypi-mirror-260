@@ -1,0 +1,125 @@
+{
+  "title": "Test SPID / once only",
+  "locale": "it",
+  "logoPosition": "right",
+  "loadingHtml": "<h3>Attendere...</h3>",
+  "pages": [
+    {
+      "name": "dati-richiedente",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "dati-del-richiedente",
+          "elements": [
+            {
+              "type": "text",
+              "name": "fullname",
+              "title": "Il/La sottoscritto",
+              "valueName": "fullname",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "nome",
+              "title": "Nome",
+              "valueName": "nome",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "cognome",
+              "title": "Cognome",
+              "valueName": "cognome",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "fiscalNumber",
+              "title": "fiscalNumber",
+              "valueName": "fiscalNumber",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "mobile",
+              "title": "mobile",
+              "valueName": "mobile",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "gender",
+              "title": "gender",
+              "valueName": "gender",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "dateOfBirth",
+              "title": "dateOfBirth",
+              "valueName": "dateOfBirth",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "placeOfBirth",
+              "title": "placeOfBirth",
+              "valueName": "placeOfBirth",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "address",
+              "title": "address",
+              "valueName": "address",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "digitalAddress",
+              "title": "digitalAddress",
+              "valueName": "digitalAddress",
+              "isRequired": true,
+              "readOnly": true
+            },
+            {
+              "type": "text",
+              "name": "email",
+              "title": "Email",
+              "valueName": "email",
+              "isRequired": true,
+              "inputType": "email"
+            }
+          ],
+          "title": "Dati del richiedente"
+        }
+      ],
+      "title": "Informazioni generali del richiedente",
+      "navigationTitle": "Informazioni generali del richiedente"
+    }
+  ],
+  "showPageTitles": false,
+  "showQuestionNumbers": "off",
+  "questionErrorLocation": "bottom",
+  "showProgressBar": "top",
+  "progressBarType": "buttons",
+  "clearInvisibleValues": "onHidden",
+  "textUpdateMode": "onTyping",
+  "startSurveyText": "Inizia la compilazione",
+  "pagePrevText": "Indietro",
+  "pageNextText": "Avanti",
+  "completeText": "Invia",
+  "previewText": "Riepilogo",
+  "editText": "Modifica",
+  "showPreviewBeforeComplete": "showAllQuestions",
+  "widthMode": "responsive"
+}

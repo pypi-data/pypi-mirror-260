@@ -1,0 +1,55 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <!-- Content traversers -->
+  <browser:page
+      name="blob"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".download_traversers.BlobTraverser"
+      permission="zope2.View"
+      />
+  <browser:page
+      name="pratica"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".download_traversers.PraticaTraverser"
+      permission="zope2.View"
+      />
+  <browser:page
+      name="message"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".download_traversers.MessageTraverser"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="download"
+      for="design.plone.iocittadino.interfaces.IMessageTraverse"
+      class=".download.MessageAttachmentDownload"
+      permission="zope2.View"
+      />
+  <browser:page
+      name="download"
+      for="design.plone.iocittadino.interfaces.IPraticaTraverse"
+      class=".download.PraticaBlobFieldDownload"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="download"
+      for="design.plone.iocittadino.interfaces.IBlobTraverse"
+      class=".download.BlobDownload"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="download"
+      for="design.plone.iocittadino.interfaces.IModelloPratica"
+      class=".download.ModelloPraticaReportDownload"
+      permission="design.plone.iocittadino.CRUDMessage"
+      />
+
+</configure>

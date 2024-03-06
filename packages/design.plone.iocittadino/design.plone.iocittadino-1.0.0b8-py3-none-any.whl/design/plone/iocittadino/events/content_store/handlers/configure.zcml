@@ -1,0 +1,58 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <adapter
+      factory=".pratica.PraticaNewStateSubstitution"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      for="*"
+      name="pratica_new_state"
+      />
+  <adapter
+      factory=".pratica.PraticaOldStateSubstitution"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      for="*"
+      name="pratica_old_state"
+      />
+  <adapter
+      factory=".pratica.PraticaIdSubstitution"
+      provides="plone.stringinterp.interfaces.IStringSubstitution"
+      for="*"
+      name="pratica_id"
+      />
+
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IStoreRecordTransitionEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.pratica.transition_notify"
+      />
+
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IStoreRecordCreatedEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.message.notify_about_message_creation"
+      />
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IStoreRecordCreatedEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.pratica.pratica_created_notify_by_message"
+      />
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IPraticaAssignedEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.pratica.pratica_assigned_notify"
+      />
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IStoreRecordCreatedEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.pratica.pratica_created_notify_editor"
+      />
+  <subscriber
+      for="zope.interface.interfaces.Interface
+           design.plone.iocittadino.events.content_store.events.interfaces.IPraticaCreatedEvent"
+      handler="design.plone.iocittadino.events.content_store.handlers.pratica.pratica_created_notify_by_email"
+      />
+</configure>

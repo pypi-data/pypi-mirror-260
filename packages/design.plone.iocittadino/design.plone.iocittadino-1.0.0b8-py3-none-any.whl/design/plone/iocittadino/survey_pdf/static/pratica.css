@@ -1,0 +1,134 @@
+body {
+    font-family: 'Titillium Web';
+}
+
+h1.title {
+    font-size: 18px;
+}
+
+h2.description {
+    font-size: 14px;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+header {
+    position: running(header);
+    margin-left: 1em;
+    width: 20em;
+}
+
+footer {
+    font-size: 10px;
+    position: running(footer);
+
+}
+
+.pratica_model {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 1cm;
+    margin-top: 2em;
+}
+
+.pratica_model h4 {
+    text-align: center;
+}
+
+
+@page :first {
+    @top-left {
+        margin-top: 4em;
+        content: element(header);
+    }
+}
+
+@page {
+    size: A4 portrait;
+
+    @top-right {
+        content: counter(page);
+        height: 1cm;
+        width: 1cm;
+    }
+
+    @bottom-center {
+        content: element(footer);
+        margin-bottom: 2em;
+    }
+}
+
+.survey_field {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.survey_text {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.survey_text_title {
+    width: 400px;
+    font-weight: 200;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.survey_text_value {
+    margin-left: 1em;
+    font-size: 13px;
+}
+
+.survey_checkbox {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: start;
+    width: 700px;
+}
+
+.survey_checkbox_values_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+}
+
+.survey_checkbox_title {
+    font-size: 13px;
+    font-weight: 600;
+    width: 400px;
+}
+
+.survey_checkbox_value {
+    margin-left: 1em;
+    font-size: 13px;
+    width: 400px;
+    margin-left: 75px;
+}
+
+.survey_html {
+    font-size: 12px;
+}
+
+.survey_radiogroup {
+    display: flex;
+
+}
+
+.survey_radiogroup_title {
+    width: 400px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.survey_radiogroup_value {
+    margin-left: 1em;
+    font-size: 13px;
+    width: 200px;
+}

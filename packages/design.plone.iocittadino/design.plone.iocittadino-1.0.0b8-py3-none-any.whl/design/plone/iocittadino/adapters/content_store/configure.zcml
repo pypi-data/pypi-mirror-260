@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <!-- content store adapters -->
+  <adapter factory=".pratica.PraticaContentStore" />
+  <adapter factory=".message.MessageContentStore" />
+  <adapter factory=".user.UserStore" />
+
+</configure>

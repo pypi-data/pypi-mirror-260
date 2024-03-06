@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <include package=".fields" />
+
+  <browser:page
+      name="pratica_pdf"
+      for="design.plone.iocittadino.interfaces.IModelloPratica"
+      template="templates/pratica_pdf.pt"
+      permission="zope2.View"
+      layer="design.plone.iocittadino.interfaces.IDesignPloneIocittadinoLayer"
+      />
+
+  <adapter factory=".pratica.PraticaPdfGenerator" />
+
+</configure>

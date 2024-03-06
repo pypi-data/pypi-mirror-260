@@ -1,0 +1,58 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+  <include file="dependencies.zcml" />
+  <include file="permissions.zcml" />
+
+  <include package=".actions" />
+  <include package=".adapters" />
+  <include package=".browser" />
+  <include package=".behaviors" />
+  <include package=".events" />
+  <include package=".restapi" />
+  <include package=".upgrades" />
+  <include package=".vocabularies" />
+  <include package=".data_store" />
+  <include package=".survey_pdf" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Design Plone: Io-Cittadino"
+      description="Installs the design.plone.iocittadino add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="demo_contents"
+      title="Design Plone: Io-Cittadino (demo contents)"
+      description="Creates a set of demo contents."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/demo_contents"
+      post_handler=".setuphandlers.demo_contents"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Design Plone: Io-Cittadino (uninstall)"
+      description="Uninstalls the design.plone.iocittadino add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="design.plone.iocittadino-hiddenprofiles"
+      />
+
+  <!-- TODO: upgrade step 1000 -> 1001 convertire date a creation_date nel soup storage delle pratiche -->
+
+</configure>

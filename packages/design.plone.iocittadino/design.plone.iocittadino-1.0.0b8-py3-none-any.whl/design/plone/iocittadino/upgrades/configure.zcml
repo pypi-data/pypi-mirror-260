@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    >
+
+  <genericsetup:upgradeSteps
+      profile="design.plone.iocittadino:default"
+      source="1001"
+      destination="1002"
+      >
+    <genericsetup:upgradeStep
+        title="Update controlpanel"
+        handler=".upgrades.update_controlpanel"
+        />
+    <genericsetup:upgradeStep
+        title="Set some default values for notizie types"
+        handler=".upgrades.update_registry"
+        />
+  </genericsetup:upgradeSteps>
+  <genericsetup:upgradeSteps
+      profile="design.plone.iocittadino:default"
+      source="1002"
+      destination="1003"
+      >
+    <genericsetup:upgradeStep
+        title="Update reolemap"
+        handler=".upgrades.update_controlpanel"
+        />
+  </genericsetup:upgradeSteps>
+</configure>

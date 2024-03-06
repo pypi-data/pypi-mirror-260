@@ -1,0 +1,16 @@
+<tal:element tal:define="
+  field python: options.get('field', '');
+  value python: options.get('value', '');
+  lang python: options.get('lang', '');
+  ">
+  <tal:element tal:condition="field"
+               tal:define="html python: type(field.get('html', '')) == dict and (field['html'].get(lang, '') or field['html'].get('default')) or field.get('html', '')"
+               >
+    <div class="survey_field survey_html">
+      <h5 class="survey_field_title survey_html_title">${python: field.get('title', '')}</h5>
+      <div class="survey_field_value survey_html_value">
+        <tal:element tal:replace="structure html"></tal:element>
+      </div>
+    </div>
+  </tal:element>
+</tal:element>

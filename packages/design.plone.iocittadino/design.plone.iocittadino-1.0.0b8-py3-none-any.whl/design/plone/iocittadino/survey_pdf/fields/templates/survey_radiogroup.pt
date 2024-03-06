@@ -1,0 +1,18 @@
+<tal:element tal:define="
+  field python: options.get('field', '');
+  value python: options.get('value', '');
+  lang python: options.get('lang', '');
+  ">
+  <tal:element tal:condition="field">
+    <div class="survey_field survey_radiogroup">
+      <p class="survey_field_title survey_radiogroup_title">${python: type(field.get('title', '')) == dict and field['title'].get(lang, '') or field.get('title')}: </p>
+        <tal:element tal:define="selected_text python: [i['text'] for i in field['choices'] if i['value'] == value]">
+          <p
+            class="survey_field_value survey_radiogroup_value"
+            tal:content="python: selected_text and type(selected_text[0]) == dict and (selected_text[0].get(lang, '') or selected_text[0].get('default', '')) or ''">
+            </p><br>
+        </tal:element>
+    </div>
+  </tal:element>
+</tal:element>
+

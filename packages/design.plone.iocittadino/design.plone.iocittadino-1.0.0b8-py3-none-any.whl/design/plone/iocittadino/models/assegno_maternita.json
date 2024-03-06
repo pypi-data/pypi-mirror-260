@@ -1,0 +1,156 @@
+{
+  "title": "Assegno di maternità",
+  "locale": "it",
+  "logoPosition": "right",
+  "pages": [
+    {
+      "name": "informativa-privacy",
+      "elements": [
+        {
+          "type": "html",
+          "name": "Campo4",
+          "html": "Ai sensi del decreto legislativo D.Lgs. 196/2003, il trattamento dei dati personali da lei forniti avverrà esclusivamente ai fini della risposta alla presente istanza, compresa la comunicazione ad altri uffici di questa stessa amministrazione. Le ricordiamo che in ogni momento potrà chiedere all'ente, la correzione, l'aggiornamento o la cancellazione dei suoi dati."
+        },
+        {
+          "type": "checkbox",
+          "name": "privacy",
+          "title": "Informativa sulla privacy",
+          "isRequired": true,
+          "requiredErrorText": "E' necessario accettare l'informativa sulla privacy",
+          "choices": [
+            {
+              "value": "consenso",
+              "text": "Acconsento"
+            }
+          ]
+        }
+      ],
+      "title": "Informativa sulla privacy",
+      "navigationTitle": "Informativa sulla privacy"
+    },
+    {
+      "name": "Pagina2",
+      "elements": [
+        {
+          "type": "text",
+          "name": "Campo2",
+          "title": "Codice Fiscale",
+          "valueName": "fiscal_code"
+        },
+        {
+          "type": "text",
+          "name": "Campo3",
+          "title": "Nome",
+          "valueName": "nome"
+        },
+        {
+          "type": "text",
+          "name": "Campo4",
+          "title": "Cognome",
+          "valueName": "cognome"
+        },
+        {
+          "type": "text",
+          "name": "Campo5",
+          "title": "Data di nascita",
+          "inputType": "date"
+        },
+        {
+          "type": "text",
+          "name": "Campo6",
+          "title": "Luogo di nascita"
+        },
+        {
+          "type": "radiogroup",
+          "name": "Campo7",
+          "title": "Residente in Italia al momento della nascita del figlio/a o ingresso dell'adottato/a-affidato/a",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "item1",
+              "text": "Cittadina/o italiana/o o comunitaria/o"
+            },
+            {
+              "value": "item2",
+              "text": "Cittadina/o extracomunitaria/o"
+            }
+          ]
+        }
+      ],
+      "title": "Richiedente"
+    },
+    {
+      "name": "Pagina3",
+      "elements": [
+        {
+          "type": "paneldynamic",
+          "name": "Campo8",
+          "title": "Anagrafica minorenne",
+          "templateElements": [
+            {
+              "type": "text",
+              "name": "Campo9",
+              "title": "Nome"
+            },
+            {
+              "type": "text",
+              "name": "Campo10",
+              "title": "Cognome"
+            },
+            {
+              "type": "text",
+              "name": "Campo11",
+              "title": "Codice fiscale"
+            }
+          ]
+        }
+      ],
+      "title": "Quadro A – Dati relativi al / ai bambino/i per cui chiedere l'assegno:"
+    },
+    {
+      "name": "Pagina4",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "Campo12",
+          "title": "Modalità permesso di soggiorno",
+          "choices": [
+            {
+              "value": "item1",
+              "text": "La/Il richiedente cittadino extracomunitario, è in possesso di permesso di soggiorno"
+            },
+            {
+              "value": "item3",
+              "text": "La/Il richiedente cittadino extracomunitario ha presentato richiesta per l'ottenimento del permesso di soggiorno"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "Campo13",
+          "visibleIf": "{Campo12} = ['item1']",
+          "title": "permesso di soggiorno n"
+        },
+        {
+          "type": "text",
+          "name": "Campo14",
+          "visibleIf": "{Campo12} = ['item3']",
+          "title": "Indicare la data della ricevuta postale",
+          "inputType": "date"
+        }
+      ],
+      "title": "Quadro B – Per Cittadini Extracomunitari:"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression"
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "var1"
+    }
+  ],
+  "showQuestionNumbers": "off"
+}

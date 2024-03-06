@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <!-- souper catalogues -->
+  <utility
+      factory=".pratica_catalog.PraticaSoupCatalogFactory"
+      provides="souper.interfaces.ICatalogFactory"
+      name="PRATICA"
+      />
+
+  <utility
+      factory=".message_catalog.MessageSoupCatalogFactory"
+      provides="souper.interfaces.ICatalogFactory"
+      name="MESSAGE"
+      />
+
+  <utility
+      factory=".user_catalog.UserSoupCatalogFactory"
+      provides="souper.interfaces.ICatalogFactory"
+      name="USER"
+      />
+
+</configure>

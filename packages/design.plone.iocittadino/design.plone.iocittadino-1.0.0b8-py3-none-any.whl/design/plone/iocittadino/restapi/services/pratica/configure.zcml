@@ -1,0 +1,48 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <!--- TODO: perchè @pratica è sulla root del sito e non sul modellopratica ? 
+  -->
+  <plone:service
+      method="GET"
+      factory=".get.GetRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDPratica"
+      name="@pratica"
+      />
+
+  <plone:service
+      method="PATCH"
+      factory=".update.UpdateRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDPratica"
+      name="@pratica"
+      />
+
+  <plone:service
+      method="DELETE"
+      factory=".delete.DeleteRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDPratica"
+      name="@pratica"
+      />
+
+  <plone:service
+      method="POST"
+      factory=".add.AddRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDPratica"
+      name="@pratica"
+      />
+
+  <plone:service
+      method="GET"
+      factory=".get.GetRecordList"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDPratica"
+      name="@pratiche"
+      />
+</configure>

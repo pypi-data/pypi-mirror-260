@@ -1,0 +1,47 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="design.plone.iocittadino"
+    >
+
+  <plone:service
+      method="GET"
+      factory=".get.GetRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDMessage"
+      name="@message"
+      />
+
+  <plone:service
+      method="PATCH"
+      factory=".update.UpdateRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDMessage"
+      name="@message"
+      />
+
+  <plone:service
+      method="DELETE"
+      factory=".delete.DeleteRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDMessage"
+      name="@message"
+      />
+
+  <plone:service
+      method="POST"
+      factory=".add.AddRecord"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDMessage"
+      name="@message"
+      />
+
+  <plone:service
+      method="GET"
+      factory=".get.GetRecordList"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      permission="design.plone.iocittadino.CRUDMessage"
+      name="@messages"
+      />
+
+</configure>
