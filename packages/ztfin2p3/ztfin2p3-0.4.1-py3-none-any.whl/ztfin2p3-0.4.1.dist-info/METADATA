@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: ztfin2p3
+Version: 0.4.1
+Summary: IN2P3 pipeline for the ZTF survey
+Author-email: Mickael Rigault <m.rigault@ipnl.in2p3.fr>
+License: Apache-2.0
+Project-URL: Repository, https://github.com/MickaelRigault/ztfin2p3
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: astropy
+Requires-Dist: dask
+Requires-Dist: healpy
+Requires-Dist: matplotlib
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: tomli
+Requires-Dist: ztfimg >=0.12.0
+Requires-Dist: ztfquery
+Provides-Extra: all
+Requires-Dist: HMpTy ; extra == 'all'
+Requires-Dist: htmcatalog ; extra == 'all'
+Requires-Dist: paramiko ; extra == 'all'
+Requires-Dist: scp ; extra == 'all'
+Requires-Dist: scikit-sparse ; extra == 'all'
+
+# ztfin2p3
+IN2P3 pipeline for the ZTF survey
