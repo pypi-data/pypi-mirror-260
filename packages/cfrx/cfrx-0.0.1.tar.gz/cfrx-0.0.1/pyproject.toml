@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "cfrx"
+description = "Counterfactual Regret Minimization in Jax"
+readme = "README.md"
+license = {file = "LICENSE"}
+urls = {repository = "https://github.com/Egiob/cfrx" }
+authors = [
+  {name="Raphaël Boige"},
+]
+requires-python = ">=3.8.0"
+version = "0.0.1"
+dependencies = [
+  "jaxtyping>=0.2.25",
+  "jax>=0.4.0",
+  "flax>=0.7.0",
+  "pgx>=2.0.1",
+  "tqdm~=4.66.0"
+]
+keywords = ["jax", "game-theory", "reinforcement-learning", "cfr", "poker"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = ["imgs"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.10"
+namespace_packages = true
+incremental = false
+cache_dir = ""
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = false
+allow_redefinition = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+strict_optional = true
+strict_equality = true
+explicit_package_bases = true
+follow_imports = "skip"
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 89
+
+[tool.bumpver]
+current_version = "0.0.1"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message  = "build: bump version {old_version} -> {new_version}"
+commit          = true
+tag             = true
+push            = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
