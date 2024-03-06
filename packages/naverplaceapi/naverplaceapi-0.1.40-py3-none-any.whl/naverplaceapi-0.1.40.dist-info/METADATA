@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: naverplaceapi
+Version: 0.1.40
+Summary: 
+Author: HHH_HHH
+Author-email: kukkuk989@protonmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+
+# Naverplace 데이터 수집 API
+
+# History
+## 2024.02.03
+- 블로그, 리뷰 수집기능 추가
+
+
+
+# Update
+```bash
+pip install --upgrade naverplaceapi
+```
+
+
+# Build and publish
+```bash
+poetry build  # Bui[place.py](naverplaceapi%2Fmixin%2Fplace.py)ld
+python -m twine upload --skip-existing dist/*   # Deployment
+```
