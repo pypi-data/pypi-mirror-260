@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: count_normalize
+Version: 0.1.1
+Summary: Tools for normalizing isoform counts
+Home-page: https://github.com/QiangSu/GaussF
+Author: Qiang Su
+Author-email: qiang_su@hotmail.com
+License: YourLicense
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+`K-mer Counts Merging and Normalization`**
+
+merge_normalized_isoform_count_TPM.py and merge_normalize_isoform_count_v1.py
+
+This script is designed to further process the output of a previous k-mer counting script. Its purpose is to merge the k-mer count data into the original k-mer CSV files and to normalize these counts to account for differences in the total number of k-mers and read counts. This is a necessary step in many bioinformatics workflows, particularly those involving comparative genomics or quantitative assessment of sequence representation.
+
+Features<br>
+Merges k-mer count data with the original k-mer list CSV files.<br>
+Normalizes k-mer frequencies using the total k-mer counts and read lengths.<br>
+Supports input from gzipped FASTQ files for read count determination.<br>
+Efficiently calculates normalization factors and processes large datasets.<br>
+
+Example usage:
+This script accepts command-line arguments to specify the input and output directories, the FASTQ file path, the read length, and the k-mer size. Here's how to run the script:
+For TPM
+```python
+python ./scripts/merge_normalized_isoform_count_TPM.py --directory ./data/input --output_directory ./data/output --read_length 150 --k 50
+```
+
+For RPKM
+```python
+python ./scripts/merge_merge_normalize_isoform_count_v1.py --directory ./data/input --output_directory ./data/output --read_length 150 --k 50
+```
+
+Command-Line Arguments
+--directory: The directory containing the *_kmers.csv and corresponding *_kmer_counts.csv files (required). This directory is same as the output directory from the last script (kmer_counting_loop.py).
+--output_directory: The directory where the merged and normalized CSV files will be saved (required). The output directory should be to a new directory for further GaussF workflow.
+--fastq: The path to the gzipped FASTQ file for which k-mer counts were computed (required).
+--read_length: The length of the reads in the FASTQ sequences, necessary for normalization (default is 150).
+--k: The length of the k-mers used during the counting process (default is 50).
+Output
