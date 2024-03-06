@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "datapipe-label-studio-lite"
+version = "0.3.2"
+description = ""
+authors = [
+    "Alexander Kozlov <bobokvsky@epoch8.co>",
+    "Andrey Tatarinov <a@tatarinov.co>",
+]
+
+exclude = ["tests", "experiments"]
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.11"
+pandas = ">=1.2.0, <3"
+numpy = "^1.21.0"
+SQLAlchemy = "^1.4.25"
+requests = "^2.24.0"
+datapipe-core = ">=0.13.0, <0.14"
+label-studio-sdk = "^0.0.16"
+
+[tool.poetry.dev-dependencies]
+flake8 = "*"
+black = "*"
+
+datapipe-core = {version=">=0.13.0, <0.14", extras=["sqlite"]}
+
+pytest = "^7.4.3"
+pytest-xdist = "*"
+pytest-cases = "^3.6.4"
+
+mypy = "*"
+pandas-stubs = "*"
+types-requests = "*"
+types-setuptools = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
