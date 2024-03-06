@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "rancho"
+version = "1.0.2-alpha"
+description = "Get the latest stoic quotes and a wish on the jet game"
+authors = ["Alagu Prakalya <alagu.prakalya@gmail.com>"]
+readme = "README.md"
+packages = [{include = "rancho"}]
+
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+pygame = "^2.5"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+requests-mock = "^1.11.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
