@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: preloop-sdk
+Version: 0.2.40
+Summary: SDK to build and use Preloop functionality in your apps.
+Home-page: https://www.preloop.com/
+License: Apache-2.0
+Keywords: preloop,sdk
+Author: Preloop, Inc.
+Author-email: engineering@preloop.com
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pandas (>=2.1.3,<3.0.0)
+Requires-Dist: pydantic (>=2.5.2,<3.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Project-URL: Documentation, https://www.preloop.com/docs
+Description-Content-Type: text/markdown
+
+# Preloop SDK
+This package provides a SDK to interact with the Preloop API, and additionally provides the methods required to write feature scripts using the "Inception" method. Preloop is
+an intelligent feature platform that helps ML and AI teams move quicker and more efficiently, while enabling them to focus more on the science and productionization of their models,
+and less on the data infrastructure.
+
+# Installation instructions
+Use pip to install the SDK. It's recommended to do so in a virtual environment.
+```
+pip install preloop-sdk
+```
+
+# Authentication
+Use environment variables to store an API key generated in your account to authenticate with Preloop.
+```
+export PRELOOP_KEY_ID=<key_id>
+export PRELOOP_SECRET=<secret>
+```
+
