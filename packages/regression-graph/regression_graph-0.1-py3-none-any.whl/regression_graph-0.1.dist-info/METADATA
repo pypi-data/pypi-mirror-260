@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: regression-graph
+Version: 0.1
+Summary: Python library to create regression graphs
+Author: Saema Khanom
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: statsmodels
+Requires-Dist: pandas
+
+**README.md:**
+```markdown
+# Regression Graph
+
+## Overview 
+
+This Python library was designed to create regression graphs for datasets. Instead of using p-values, this library will use the coefficients and confidence interval to plot bars for each variable in the given dataset. The bars will be plotted with their upper and lower confidence interval and will use the p-value for the saturation of the bars. There's optional arguments to standardize the dataset. A table can be created to display the variable, mean and standard deviation of the dataset. 
+
+## Features 
+
+plot_graph: plot the regression graph with manual data or with statsmodel regression
+
+create_table: create a table for the variables, mean and standard deviation
+
+extract_data: use the statsmodel library to pass a fitted regression model which will extact the coefficents, confidence interval and p-value from the model and pass it onto plot_graph to produce the graph. 
+
+regression_plot, call this function and either inpur manaul dataset or statsmodels regression model to produce the graph. This function will either call extract_model if a regression is passed or plot_graph if manual data is passed. Call create_table to produce a table with the variable name, mean and standard devisation of the values. 
+
+## Installation
+
+Install the package using pip install regression graph
+
+## Example usage 
+
+```python
+from regression_graph import regression_plot
+```
+
+## Statsmodel
+1. Read file path file
+2. Remove rows with missing values
+3. select the dependent variable (y) and independent variables (X)
+4. Fit the regression model
+5. Give variable names for the y-axis eg x
+6. Plot the regression coefficients with confidence intervals
+Call regression_plot(ax1, model_result=model, variable_names=variable_names,
+                positive_bar_colour=none, negative_bar_colour=none, title) 
+7. Optional table
+create_table(ax2=position, dataframe, loc=none, font_size=none, col_widths=none,
+             label_cell_loc=none, label_bbox=mandatory)
+
+## Manual input
+1. Provide the coefficients, confidence intervals upper and lower bounds, and p-values
+2. Call regression_plot
+regression_plot(ax1, model_result=model, variable_names=X_cols)
+3. Optional table
+create_table(ax2=position, dataframe, loc=none, font_size=none, col_widths=none,
+             label_cell_loc=none, label_bbox=mandatory)
+
+Both options allow the values to be standardize by doing standardize=True in the regression_plot argument. 
+If standardize=True then user is required to give an input_X value (this is the indepdenat variable, can be a column from the dataset) for the function to work. 
+
+## Requirements
+Python 3.6 and above
+Numpy
+Matplotlib
+Pandas
+Statsmodels (optional)
+
+## License 
+This project is licensed under MIT, view license here - https://choosealicense.com/licenses/mit/
+
+## Contact 
+
+Please feel free to leave any feedback or questions here: saemakhanom@gmail.com
+```
