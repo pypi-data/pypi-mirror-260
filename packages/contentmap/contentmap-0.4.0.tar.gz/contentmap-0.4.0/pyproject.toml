@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "contentmap"
+version = "0.4.0"
+description = ""
+authors = ["Philippe Oger <phil.oger@gmail.com>"]
+readme = "README.md"
+packages = [{include = "contentmap"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+tqdm = "^4.66.1"
+lxml = "4.9.4"
+trafilatura = "^1.6.4"
+aiohttp = "^3.9.1"
+sqlite-vss = "^0.1.2"
+langchain = "^0.1.8"
+sentence-transformers = "^2.3.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+
+branch = "main"
+upload_to_PyPI = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
+commit_author = "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = [
+    "build",
+    "chore",
+    "ci",
+    "docs",
+    "feat",
+    "fix",
+    "perf",
+    "style",
+    "refactor",
+    "test"
+]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf"]
