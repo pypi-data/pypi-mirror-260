@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "lobster-translator"
+version = "0.4.0"
+description = ""
+authors = ["rbrtrss <roberto.rousse@gmail.com>"]
+readme = "README.md"
+packages = [{include = "lobster_translator"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.1"
+numpy = "^1.26.4"
+matplotlib = "^3.8.3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
