@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: astroismlib
+Version: 1.1.0
+Summary: Utilities to handle models of shock and ionization
+Home-page: https://gitlab.com/joseaher/astroismlib
+Author: J. A. Hernandez-Jimenez
+Author-email: joseaher@gmail.com
+Description-Content-Type: text/markdown
+
+# astroismlib
+
+This package is a collection of routines to plot grids of shock
+and ionization models in BPT diagrams. There are also routines
+to correct by dust extinction given the observed Balmer lines (e.g., Halpha and Hbeta) and different extinction laws. In addition, there are functions to compute HII regions properties such as electronic density, mass, number of ionization photons, Stromgren Radius, etc.                                            
+
+(c) J. A. Hernandez-Jimenez
+
+E-mail: joseaher@gmail.com
+
+Website: https://gitlab.com/joseaher/astroismlib
+
+## Installation
+astroismlib requires:  
+
+  * numpy
+  * scipy
+  * matplotlib
+  * astropy
+
+This version can be easily installed within Anaconda Enviroment via PyPI:
+
+    % pip install astroismlib
+
+If you prefer to install astroismlib manually, you can clone the developing
+version at https://gitlab.com/joseaher/astroismlib. In the directory this
+README is in, simply:
+
+    % pip install .
+
+or,
+
+    % python setup.py install
+
+## Uninstallation
+
+To uninstall astroismlib, simply
+
+    % pip uninstall astroismlib
