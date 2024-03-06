@@ -1,0 +1,21 @@
+graft Subdora
+include project.toml
+include setup.py
+global-exclude *.py[cod]
+
+include Subdora/corex64/linux/Subdora.so
+
+include Subdora/corex64/win/concrt140.dll
+include Subdora/corex64/win/libsodium.dll
+include Subdora/corex64/win/msvcp140_1.dll
+include Subdora/corex64/win/msvcp140_2.dll
+include Subdora/corex64/win/msvcp140_atomic_wait.dll
+include Subdora/corex64/win/msvcp140_codecvt_ids.dll
+include Subdora/corex64/win/msvcp140.dll
+include Subdora/corex64/win/Subdora.dll
+include Subdora/corex64/win/vcamp140.dll 
+include Subdora/corex64/win/vccorlib140.dll
+include Subdora/corex64/win/vcomp140.dll 
+include Subdora/corex64/win/vcruntime140_1.dll
+include Subdora/corex64/win/vcruntime140_threads.dll 
+include Subdora/corex64/win/vcruntime140.dll
