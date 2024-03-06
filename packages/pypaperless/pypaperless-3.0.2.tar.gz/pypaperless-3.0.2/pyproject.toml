@@ -1,0 +1,162 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.poetry]
+name = "pypaperless"
+version = "v3.0.2" # will be set by ci on release
+description = "Little api client for the paperless(-ngx) dms."
+authors = ["Tobias Schulz <public.dev@tbsch.de>"]
+maintainers = ["Tobias Schulz <public.dev@tbsch.de>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/tb1337/paperless-api"
+repository = "https://github.com/tb1337/paperless-api"
+documentation = "https://github.com/tb1337/paperless-api"
+keywords = ["library", "async", "api-client", "python3", "paperless-ngx"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+packages = [
+    { include = "pypaperless" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiohttp = "^3.9.3"
+yarl = "^1.9.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+codespell = "^2.2.6"
+covdefaults = "^2.3.0"
+coverage = {version = "^7.4.1", extras = ["toml"]}
+mypy = "^1.8.0"
+pre-commit = "^3.6.1"
+pylint = "^3.0.3"
+pytest = "<8.0.0"
+pytest-aiohttp = "^1.0.5"
+pytest-asyncio = "^0.23.5"
+pytest-cov = "^4.1.0"
+ruff = ">=0.2.1,<0.4.0"
+
+[tool.poetry.group.test.dependencies]
+aioresponses = "^0.7.6"
+covdefaults = "^2.3.0"
+coverage = {version = "^7.4.1", extras = ["toml"]}
+pytest = "<8.0.0"
+pytest-aiohttp = "^1.0.5"
+pytest-asyncio = "^0.23.5"
+pytest-cov = "^4.1.0"
+
+[tool.poetry.urls]
+"Homepage" = "https://github.com/tb1337/paperless-api"
+"GitHub: Source" = "https://github.com/tb1337/paperless-api"
+"GitHub: Issues" = "https://github.com/tb1337/paperless-api/issues"
+"Coverage: codecov" = "https://codecov.io/gh/tb1337/paperless-api"
+
+[tool.petry.report]
+fail_under = 50
+show_missing = true
+
+[tool.black]
+target-version = ['py312']
+line-length = 100
+
+[tool.coverage.run]
+plugins = ["covdefaults"]
+source = ["pypaperless"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if TYPE_CHECKING:",
+]
+fail_under = 97
+
+[tool.codespell]
+skip = "poetry.lock"
+ignore-words-list = "dependees,"
+
+[tool.mypy]
+platform = "linux"
+python_version = "3.12"
+
+exclude = ["tests/"]
+follow_imports = "normal"
+
+check_untyped_defs = true
+disallow_any_generics = false
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+warn_incomplete_stub = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.pylint.MASTER]
+ignore = [
+    "tests/",
+]
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "duplicate-code",
+    "too-few-public-methods",
+    "too-many-ancestors",
+    "too-many-arguments",
+    "too-many-instance-attributes",
+    "too-many-public-methods",
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov"
+asyncio_mode = "auto"
+
+[tool.ruff]
+fix = true
+show-fixes = true
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+ignore = ["PLR2004", "N818"]
+select = ["E", "F", "W", "I", "N", "D", "UP", "PL", "Q", "SIM", "TID", "ARG"]
+unfixable = ["F841"]
+
+[tool.ruff.lint.flake8-annotations]
+allow-star-arg-any = true
+suppress-dummy-args = true
+
+[tool.ruff.lint.flake8-builtins]
+builtins-ignorelist = ["id"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pypaperless"]
+force-sort-within-sections = true
+split-on-trailing-comma = false
+combine-as-imports = true
+
+[tool.ruff.lint.pydocstyle]
+# Use Google-style docstrings.
+convention = "pep257"
+
+[tool.ruff.lint.pylint]
+max-branches=25
+max-returns=15
+max-args=10
+max-statements=50
