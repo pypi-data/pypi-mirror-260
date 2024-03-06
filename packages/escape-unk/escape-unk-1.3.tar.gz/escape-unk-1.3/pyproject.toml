@@ -1,0 +1,26 @@
+[project]
+name = "escape-unk"
+version = "1.3"
+authors = [
+    { name="Jaume Zaragoza", email="jzaragoza@prompsit.com" }
+]
+description = "Escape unknown symbols in SentecePiece vocabularies"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "regex",
+    "sentencepiece",
+]
+
+[build-system]
+requires = [
+    "setuptools",
+]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+escape-unk = "escape_unk.escape_unk:main"
+unescape-unk = "escape_unk.unescape_unk:main"
+
+[project.urls]
+"HomePage" = "https://github.com/ZJaume/escape-unk"
