@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: deepview-predict
+Version: 0.1.5
+Summary: Cross-GPU performance predictions for PyTorch neural network training.
+Author: CentML
+Author-email: support@centml.ai
+Maintainer: CentML
+Maintainer-email: support@centml.ai
+License: Apache-2.0
+Keywords: neural networks,pytorch,performance,profiler,predictions
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml
+Requires-Dist: torch >=1.4.0
+Requires-Dist: pandas >=1.1.2
+Requires-Dist: tqdm >=4.49.0
+Requires-Dist: nvidia-cuda-cupti-cu12
+Requires-Dist: nvidia-cuda-runtime-cu12
+
+DeepView.Profile
+=======
+This directory contains the Python source code for DeepView.Profile - a tool that predicts
+the execution time of DNN operations across different GPUs.
