@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: paramdiffusion
+Version: 0.0.8
+Summary: A package for deriving continuous score-based data solutions
+Author-email: Klaus Jupiter Bentzen <your.email@example.com>
+License: Apache-2.0 License
+Project-URL: homepage, https://github.com/DrJupiter/paramdiffusion
+Keywords: sde,SDE,diffusion,score,score-based,score-based generative modelling
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: symengine
+Requires-Dist: sympy
+Requires-Dist: jax
+Requires-Dist: torch
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+
+# ParamDiffusion
+
+A library which aims to quickly derive an Ito SDE based on a provided covariance and mean.
+The SDE can then be used for training a score-based model.
