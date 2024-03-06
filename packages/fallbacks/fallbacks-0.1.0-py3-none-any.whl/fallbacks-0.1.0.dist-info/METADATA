@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: fallbacks
+Version: 0.1.0
+Summary: Saves hints for whether fast paths should be tried
+Home-page: https://github.com/thatch/fallbacks
+Author: Tim Hatch
+Author-email: tim@timhatch.com
+License: MIT
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: black ==23.12.1 ; extra == 'dev'
+Requires-Dist: checkdeps ==0.9.0 ; extra == 'dev'
+Requires-Dist: flake8 ==7.0.0 ; extra == 'dev'
+Requires-Dist: mypy ==1.8.0 ; extra == 'dev'
+Requires-Dist: tox ==4.12.1 ; extra == 'dev'
+Requires-Dist: twine ==4.0.2 ; extra == 'dev'
+Requires-Dist: ufmt ==2.3.0 ; extra == 'dev'
+Requires-Dist: usort ==1.0.7 ; extra == 'dev'
+Requires-Dist: wheel ==0.42.0 ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: coverage >=6 ; extra == 'test'
+
+# fallbacks
+
+Used for caching whether a fast path is worthwhile.
+
+This is an extremely simple cache with no locking and an assumption that if
+multiple threads/processes try to record for the same key, that it's the same
+value (so it doesn't matter which wins).
+
+TODO
+
+* load/save on disk
+
+
+# Version Compat
+
+Usage of this library should work back to 3.7, but development (and mypy
+compatibility) only on 3.10-3.12.  Linting requires 3.12 for full fidelity.
+
+# Versioning
+
+This library follows [meanver](https://meanver.org/) which basically means
+[semver](https://semver.org/) along with a promise to rename when the major
+version changes.
+
+# License
+
+fallbacks is copyright [Tim Hatch](https://timhatch.com/), and licensed under
+the MIT license.  See the `LICENSE` file for details.
