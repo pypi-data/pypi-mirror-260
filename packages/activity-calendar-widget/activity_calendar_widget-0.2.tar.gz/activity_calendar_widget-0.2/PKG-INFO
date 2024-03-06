@@ -1,0 +1,114 @@
+Metadata-Version: 2.1
+Name: activity_calendar_widget
+Version: 0.2
+Summary: A PySide6 based activity calendar widget
+Home-page: https://github.com/yourusername/activity_calendar_widget
+Author: Miracle Apata
+Author-email: prmpsmart@gmail.com
+License: MIT
+Project-URL: Bug Reports, https://github.com/yourusername/activity_calendar_widget/issues
+Project-URL: Source, https://github.com/yourusername/activity_calendar_widget
+Project-URL: Documentation, https://github.com/yourusername/activity_calendar_widget
+Keywords: activity calendar widget python setuptools
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.6
+Description-Content-Type: markdown
+License-File: LICENSE
+Requires-Dist: PySide6
+
+# Activity Calendar Widget.
+
+One of my personal Qt based project to showcase my long honed skills in Python-bindings for Qt (C++) : PyQt, PySide.
+
+## Usage
+
+```bash
+pip install activity_calendar_widget
+```
+
+```python
+from PySide6.QtWidgets import *
+from PySide6.QtCore import *
+from activity_calendar_widget import *
+
+
+class MainWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        lay = QVBoxLayout(self)
+
+        self.acw = ActivityCalendarWidget(
+            title="Activity",
+            default_activities={
+                "03-2024": {
+                    2: "Event on day 2",
+                    4: "Event on day 4",
+                    6: "Event on day 6",
+                    10: "Event on day 10",
+                    11: "Event on day 11",
+                    17: "Event on day 17",
+                    20: "Event on day 20",
+                    25: "Event on day 25",
+                    26: "Event on day 26",
+                    27: "Event on day 27",
+                    31: "Event on day 31",
+                },
+                "04-2024": {
+                    2: "Event on day 2",
+                    6: "Event on day 6",
+                    9: "Event on day 9",
+                    10: "Event on day 10",
+                    11: "Event on day 11",
+                    17: "Event on day 17",
+                    26: "Event on day 26",
+                    31: "Event on day 31",
+                },
+            },
+            # default_month=datetime(2022, 1, 1)
+        )
+        s = 400
+        self.acw.setMinimumSize(s, s)
+        self.acw.setMaximumSize(s, s)
+        lay.addWidget(self.acw, 1, Qt.AlignmentFlag.AlignCenter)
+
+
+class Application(QApplication):
+    def __init__(self) -> None:
+        super().__init__([])
+
+        self.win = MainWidget()
+        # self.win = QColorDialog()
+        # self.win.currentColorChanged.connect(lambda c: print(c))
+        self.win.setWindowTitle("Activity Calendar")
+        self.win.setMinimumSize(500, 500)
+        self.win.show()
+
+
+app = Application()
+
+app.exec()
+
+```
+
+## Figma Link
+
+https://www.figma.com/community/file/1153390420369492172
+
+credits to [Lindsay](https://www.figma.com/@lho)
+
+## Images
+
+- ![Image 1](img1.png)
+- ![Image 2](img2.png)
