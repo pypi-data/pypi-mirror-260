@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: django-text-translator
+Version: 2024.3.5
+Summary: A Django application that supports adding multiple third-party engines for text translation.
+Home-page: https://github.com/versun/django-text-translator
+Author: versun
+Author-email: django-text-translator@versun.me
+License: MIT
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 5.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: django>=5.0
+Requires-Dist: cityhash>=0.4.7
+Requires-Dist: deepl>=1.17.0
+Requires-Dist: PyDeepLX>=1.0.7
+Requires-Dist: anthropic>=0.18.1
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: django-encrypted-model-fields>=0.6.5
+Requires-Dist: openai>=1.12.0
+Requires-Dist: google-generativeai>=0.3.2
+
+## django-text-translator
+
+A Django application that supports adding multiple third-party engines for text translation.
+
+Currently, it supports the following engines:
+- DeepL
+- DeepLX
+- OpenAI
+- ClaudeAI
+- Azure OpenAI
+- Google Gemini
+- Google Translate(Web)
+- Microsoft Translate API
+- Caiyun API
+
+
+Installation
+-----------
+1. Install: `pip install django-text-translator`
+1. Add "django_text_translator" to your INSTALLED_APPS setting like this:
+    ```
+        INSTALLED_APPS = [
+            ...,
+            "django_text_translator",
+        ]
+    ```
+1. Run `python manage.py makemigrations` and `python manage.py migrate` to create the models.
+1. Start the development server and visit the admin to add a translator.
+1. Translate a text:
+    ```
+    from django_text_translator.models import OpenAITranslator
+
+    openai_translator = OpenAITranslator.filter(valid=True).first()
+
+    results = openai_translator.translate(text="Hello, world!",target_language="Chinese")
+
+    print(results.text) # 你好，世界！
+    print(results.tokens) # 51
+
+    ```
+1. More details can be found in the models.py file.
