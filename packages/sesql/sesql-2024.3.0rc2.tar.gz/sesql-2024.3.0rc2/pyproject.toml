@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools", "build", "seversion"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sesql"
+dynamic = ["version"]
+description = "CLI to enhance versioning for Python projects"
+readme = "ReadMe.md"
+requires-python = ">=3.8"
+license = {file = "License.md"}
+authors = [
+    { name = "Robert J. DeWilde", email = "github@cyberneticinnovations.com" }
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "loguru>=0.7.2",
+    "JayDeBeApi~=1.2.3",
+    "pyodbc~=5.1.0",
+    "seversion"
+]
+
+[tool.setuptools]
+packages = ["seSql", "seCore"]
+
+#[tool.setuptools.packages.find]
+#where = ["seCore"]
+#
+[tool.setuptools.package-data]
+seCore = ["jars/*.jar"]
+
+[tool.setuptools.dynamic]
+version = {attr = "seSql.__setuptools__"}
