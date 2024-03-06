@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"] # to support project.scripts
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leafcutterITI"
+description='LeafcutterITI implementation'
+authors = [{name = "Xingpei Zhang"}, {name="David A Knowles"}]
+version = "0.1.8"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "pyranges",
+    "pandas"
+]
+license= {file = "LICENSE"}
+
+[project.scripts]
+leafcutterITI-cluster = 'leafcutterITI.__main__:leafcutterITI_clustering'
+leafcutterITI-map = 'leafcutterITI.__main__:leafcutterITI_map_gen'
+
+
+[project.urls]
+Homepage = "https://github.com/XZ3149/LeafcutterITI"
