@@ -1,0 +1,3 @@
+import numpy.typing as npt
+
+def intexterp(x: float, xp: npt.ArrayLike, fp: npt.ArrayLike) -> float: ...
