@@ -1,0 +1,30 @@
+[build-system]
+requires = ['setuptools', 'wheel']
+build-backend = "setuptools.build_meta"
+
+[project]
+name='pyforcedirectedlayout'
+dynamic = ["version"]
+description = 'Python Implementation of a Force Directed Layout Algorithm'
+readme = "README.md"
+license = {text = 'GNU AFFERO GENERAL PUBLIC LICENSE'}
+authors = [{name = 'Humberto A. Sanchez II', email = 'Humbert.A.Sanchez.II@gmail.com'}]
+maintainers = [{name = 'Humberto A. Sanchez II', email = 'Humbert.A.Sanchez.II@gmail.com'}]
+keywords = ['layout', 'diagram', 'python',]
+
+dependencies = [
+    'codeallybasic>=1.2.0',
+]
+
+[project.urls]
+Repository = 'https://github.com/py-force-directed-layout'
+
+
+[tool.setuptools.packages.find]
+where = ['src']
+
+[tool.setuptools.package-data]
+pyfdl = ['py.typed']
+
+[tool.setuptools.dynamic]
+version = {attr = 'pyforcedirectedlayout.__version__'}
