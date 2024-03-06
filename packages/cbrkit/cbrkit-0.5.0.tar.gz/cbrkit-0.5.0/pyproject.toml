@@ -1,0 +1,97 @@
+[tool.poetry]
+name = "cbrkit"
+version = "0.5.0"
+description = "Customizable Case-Based Reasoning (CBR) toolkit for Python with a built-in API and CLI."
+authors = ["Mirko Lenz <mirko@mirkolenz.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "cbrkit" }]
+repository = "https://github.com/wi2trier/cbrkit"
+homepage = "https://wi2trier.github.io/cbrkit/"
+keywords = [
+    "cbr",
+    "case-based reasoning",
+    "api",
+    "similarity",
+    "nlp",
+    "retrieval",
+    "cli",
+    "tool",
+    "library",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+[tool.poetry.scripts]
+cbrkit = "cbrkit.cli:app"
+
+[tool.poetry.dependencies]
+python = ">=3.11, <3.13"
+fastapi = { version = ">=0.100, <1.0", optional = true, extras = ["all"] }
+levenshtein = { version = ">=0.23, <1.0", optional = true }
+nltk = { version = "^3.8", optional = true }
+openai = { version = "^1.5", optional = true }
+orjson = "^3.9"
+pandas = "^2.1"
+pyarrow = ">=13.0"
+pyyaml = "^6.0"
+sentence-transformers = { version = "^2.2", optional = true }
+spacy = { version = "^3.7", optional = true }
+torch = { version = "^2.1.1", optional = true }
+transformers = { version = "^4.35", optional = true }
+typer = { version = "^0.9", extras = ["all"], optional = true }
+uvicorn = { version = ">=0.24, <1.0", optional = true, extras = ["standard"] }
+xmltodict = "^0.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^4.1"
+
+[tool.poetry.group.docs.dependencies]
+pdoc = "^14.4"
+
+[tool.poetry.extras]
+all = [
+    "fastapi",
+    "levenshtein",
+    "nltk",
+    "openai",
+    "sentence-transformers",
+    "spacy",
+    "spacy",
+    "torch",
+    "transformers",
+    "typer",
+    "uvicorn",
+]
+cli = ["typer"]
+api = ["fastapi", "uvicorn"]
+nlp = ["levenshtein", "nltk", "openai", "spacy"]
+transformers = ["sentence-transformers", "torch", "transformers"]
+
+[tool.pytest.ini_options]
+addopts = "--cov cbrkit --cov-report term-missing --doctest-modules --ignore cbrkit/cli.py --ignore cbrkit/api.py --ignore result"
+doctest_optionflags = "NORMALIZE_WHITESPACE IGNORE_EXCEPTION_DETAIL ELLIPSIS"
+
+[tool.ruff]
+target-version = "py311"
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
