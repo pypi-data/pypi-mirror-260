@@ -1,0 +1,32 @@
+name: btrack
+display_name: btrack
+schema_version: 0.1.0
+
+contributions:
+  commands:
+  - id: btrack.read_btrack
+    title: Read btrack files
+    python_name: btrack.napari.reader:get_reader
+  - id: btrack.write_hdf
+    title: Export Tracks to HDF
+    python_name: btrack.napari.writer:export_to_hdf
+  - id: btrack.track
+    title: Create Track
+    python_name: btrack.napari.main:create_btrack_widget
+
+  readers:
+  - command: btrack.read_btrack
+    filename_patterns:
+    - '*.h5'
+    - '*.hdf'
+    - '*.hdf5'
+    accepts_directories: false
+
+  writers:
+  - command: btrack.write_hdf
+    layer_types: ["tracks"]
+    filename_extensions: [".h5", ".hdf", ".hdf5"]
+
+  widgets:
+    - command: btrack.track
+      display_name: Track
