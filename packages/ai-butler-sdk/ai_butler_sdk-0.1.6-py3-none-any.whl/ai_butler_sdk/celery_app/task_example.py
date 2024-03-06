@@ -1,0 +1,31 @@
+from ai_butler_sdk.train import TrainBase
+from ai_butler_sdk.celery_app import celery_app
+
+
+class MockTrain(TrainBase):
+    def train(self):
+        with open(self.log_local_path, "w") as f:
+            f.write("123")
+        with open(self.result_local_path, "wb") as f:
+            f.write(b"123")
+
+
+@celery_app.task
+def train(
+    train_task_id: str,
+    data_set_urls: list[str],
+    train_params: dict,
+    log_upload_url: str,
+    model_weight_upload_url: str,
+    pretrain_model_weight_download_url: str | None = None,
+):
+    """模拟训练"""
+    mock_train = MockTrain(
+        train_task_id,
+        data_set_urls,
+        train_params,
+        log_upload_url,
+        model_weight_upload_url,
+        pretrain_model_weight_download_url,
+    )
+    mock_train()
