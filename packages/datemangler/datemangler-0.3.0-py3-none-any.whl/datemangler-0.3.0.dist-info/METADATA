@@ -1,0 +1,102 @@
+Metadata-Version: 2.1
+Name: datemangler
+Version: 0.3.0
+Summary: This script modifies the last four bits of an NTFS timestamp to hide information.
+Author: Stephan Klein
+License: Copyright (c) 2015-2024 Stephan Klein
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of
+        this software and associated documentation files (the "Software"), to deal in
+        the Software without restriction, including without limitation the rights to use,
+        copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+        Software, and to permit persons to whom the Software is furnished to do so,
+        subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+        FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+        COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+        IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+        CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        
+Project-URL: Repository, https://github.com/privatwolke/datemangler
+Project-URL: Issues, https://github.com/privatwolke/datemangler/issues
+Keywords: NTFS,encryption,stenography,hidden,AES
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Utilities
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: xattr
+Requires-Dist: cryptography
+
+# datemangler
+
+This module modifies the last four bits of an NTFS timestamp to hide information. 
+Data entered is encrypted with AES.
+
+Note: The cryptography settings used in this demo aren't production-ready. They were
+mostly chosen to still fit the data into the timestamp bits. Do not rely on this for
+anything.
+
+## Installation
+
+Get the latest version with `pip install datemangler`.
+
+### Notes about dependencies
+
+This program requires the `xattr` package to function which will only install if the development files for
+`libffi` are installed. Use `sudo apt-get install libffi-dev` on Debian/Ubuntu before installing `xattr` or
+this package.
+
+The datemangler module has been tested with Python 3.11.
+
+## Usage
+
+The module comes with a script entrypoint which you can see in use in [test.sh](test.sh).
+A Dockerfile has been included in this repository to enable testing on other platforms as well.
+Note that the container needs to be run with `--privileged` since it needs to `mount` a dummy NTFS volume.
+
+By default, it will run the tests of this project:
+```shell
+$ docker run --privileged --rm -it foo 
+Initializing device with zeroes: 100% - Done.
+Creating NTFS volume structures.
+mkntfs completed successfully. Have a nice day.
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.798s
+
+OK
+```
+
+If you run it with `--entrypoint ./test.sh`, you will get an interactive shell to play around with:
+
+```shell
+$ docker run --privileged --entrypoint ./test.sh --rm -it foo
+Initializing device with zeroes: 100% - Done.
+Creating NTFS volume structures.
+mkntfs completed successfully. Have a nice day.
+
+root@dedb7779c2e8:/app/test# datemangler
+usage: datemangler [-h] [-R] [-i INPUT] [-l PAYLOAD_LENGTH] {read,write} path
+
+root@dedb7779c2e8:/app/test# datemangler -i "Hello my friend!" write .
+Payload length was 16
+
+root@dedb7779c2e8:/app/test# datemangler -l 16 read .
+Hello my friend!
+
+root@6b72ecc409c7:/app/test/test# datemangler -i foo write 0
+root@6b72ecc409c7:/app/test/test# datemangler read 0
+foo
+```
