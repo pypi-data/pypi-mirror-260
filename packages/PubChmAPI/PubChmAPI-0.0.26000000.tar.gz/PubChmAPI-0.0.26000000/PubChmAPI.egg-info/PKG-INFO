@@ -1,0 +1,103 @@
+Metadata-Version: 2.1
+Name: PubChmAPI
+Version: 0.0.26000000
+Summary: This Python package, PubChemAPI, simplifies the interaction with the PubChem database, allowing users to seamlessly retrieve information related to compounds, substances, assays, proteins, genes, and more. Whether you're a researcher, scientist, or developer, this package provides an easy-to-use interface to access a wealth of information stored in PubChem.
+Home-page: https://github.com/ahmed1212212/PubChemAPI.git
+Author: Ahmed Alhilal
+Author-email: aalhilal@udel.edu
+License: MIT
+Keywords: cheminformatics
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+License-File: LICENCE.txt
+
+# PubChemAPI Library
+
+## Overview
+
+### Introduction
+The PubChemAPI Python package simplifies the interaction with the PubChem database, providing a seamless way to retrieve information related to compounds, substances, assays, proteins, genes, and more. Whether you are a researcher, scientist, or developer, this package offers an easy-to-use interface to access a wealth of information stored in PubChem.
+
+## Functions
+
+### Compound Name Functions
+- **compound_name_to_UndefinedBondStereoCount(*compound_names)**
+- **compound_name_to_CovalentUnitCount(*compound_names)**
+- **compound_name_to_Volume3D(*compound_names)**
+- **compound_name_to_XStericQuadrupole3D(*compound_names)**
+- **compound_name_to_YStericQuadrupole3D(*compound_names)**
+- **compound_name_to_ZStericQuadrupole3D(*compound_names)**
+- **compound_name_to_FeatureCount3D(*compound_names)**
+- **compound_name_to_FeatureAcceptorCount3D(*compound_names)**
+- **compound_name_to_FeatureDonorCount3D(*compound_names)**
+- **compound_name_to_FeatureAnionCount3D(*compound_names)**
+- **compound_name_to_FeatureCationCount3D(*compound_names)**
+- **compound_name_to_FeatureRingCount3D(*compound_names)**
+- **compound_name_to_FeatureHydrophobeCount3D(*compound_names)**
+- **compound_name_to_ConformerModelRMSD3D(*compound_names)**
+- **compound_name_to_EffectiveRotorCount3D(*compound_names)**
+- **compound_name_to_ConformerCount3D(*compound_names)**
+- **compound_name_to_Fingerprint2D(*compound_names)**
+- **compound_name_to_Title(*compound_names)**
+- **compound_name_to_MolecularFormula(*compound_names)**
+- **compound_name_to_MolecularWeight(*compound_names)**
+- **compound_name_to_CanonicalSMILES(*compound_names)**
+- **compound_name_to_IsomericSMILES(*compound_names)**
+- **compound_name_to_InChI(*compound_names)**
+- **compound_name_to_InChIKey(*compound_names)**
+- **compound_name_to_IUPACName(*compound_names)**
+- **compound_name_to_XLogP(*compound_names)**
+- **compound_name_to_ExactMass(*compound_names)**
+- **compound_name_to_MonoisotopicMass(*compound_names)**
+- **compound_name_to_TPSA(*compound_names)**
+
+### Compound CID Functions
+- **compound_cid_to_description(*compound_cids)**
+- **compound_cid_to_sid(*compound_cids)**
+- **compound_cid_to_cid(*compound_cids)**
+- **compound_cid_to_conformer(*compound_cids)**
+- **compound_cid_to_png(*compound_cids)**
+- **compound_cid_to_2d_png(*compound_cids)**
+- **compound_cid_to_3d_png(*compound_cids)**
+- **compound_cid_to_active_aid(*compound_cids)**
+- **compound_cid_to_inactive_aid(*compound_cids)**
+- **compound_cid_to_all_aid(*compound_cids)**
+- **compound_cid_to_same_isotopes_cids(*compound_cids)**
+- **compound_cid_to_same_connectivity_cids(*compound_cids)**
+- **compound_cid_to_same_tautomer_cids(*compound_cids)**
+- **compound_cid_to_same_parent_cids(*compound_cids)**
+- **compound_cid_to_same_parent_stereo_cids(*compound_cids)**
+- **compound_cid_to_same_parent_isotopes_cids(*compound_cids)**
+- **compound_cid_to_same_parent_connectivity_cids(*compound_cids)**
+- **compound_cid_to_same_parent_tautomer_cids(*compound_cids)**
+- **compound_cid_to_original_cids(*compound_cids)**
+- **compound_cid_to_parent_cids(*compound_cids)**
+- **compound_cid_to_component_cids(*compound_cids)**
+- **compound_cid_to_preferred_cids(*compound_cids)**
+- **compound_cid_to_similar_2d_cids(*compound_cids)**
+- **compound_cid_to_similar_3d_cids(*compound_cids)**
+- **compound_cid_to_same_stereo_cids(*compound_cids)**
+- **compound_cid_to_mutliple_property(*compound_cids, properties=None)**
+- **compound_cid_to_Title(*compound_cids)**
+- **compound_cid_to_MolecularFormula(*compound_cids)**
+- **compound_cid_to_MolecularWeight(*compound_cids)**
+- **compound_cid_to_CanonicalSMILES(*compound_cids)**
+- **compound_cid_to_IsomericSMILES(*compound_cids)**
+- **compound_cid_to_InChI(*compound_cids)**
+- **compound_cid_to_InChIKey(*compound_cids)**
+- **compound_cid_to_IUPACName(*compound_cids)**
+- **compound_cid_to_XLogP(*compound_cids)**
+- **compound_cid_to_ExactMass(*compound_cids)**
+- **compound_cid_to_MonoisotopicMass(*compound_cids)**
+- **compound_cid_to_TPSA(*compound_cids)**
+
+
+Ahmed Alhilal
+=============
+
+0.0.2 (09/12/2023)
+-------------------
+- First Release
