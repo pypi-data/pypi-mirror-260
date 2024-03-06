@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: SpatialNode
+Version: 0.0.1
+Summary: a node graph framework
+Author-email: yangfengzzz <yangfengzzz@hotmail.com>
+Maintainer-email: yangfengzzz <yangfengzzz@hotmail.com>
+License: The MIT License
+        
+        Copyright © 2020-2023 Yangfengzzz
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in
+        all copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.
+Project-URL: Homepage, https://github.com/SpatialForce/SpatialNode
+Project-URL: Bug Reports, https://github.com/SpatialForce/SpatialNode/issues
+Project-URL: Source, https://github.com/SpatialForce/SpatialNode
+Keywords: node editor,pyside6
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PySide6
+Requires-Dist: PySide6-Addons
+Requires-Dist: PySide6-Essentials
+Requires-Dist: shiboken6
+
+# SpatialNode
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+## Introduction
+
+**SpatialNode** is conceived as a general-purpose Qt-based library aimed at
+developing Node Editors for various applications. The library could be used for
+simple graph visualization and editing or extended further for using the
+[Dataflow paradigm](https://en.wikipedia.org/wiki/Dataflow_programming) .
+
+The library is written using the Model-View approach. The whole graph structure
+is defined by a class derived from ``AbstractGraphModel``. It is possible to
+create or add Nodes and Connections. The underlying data structures could be of
+any arbitrary type or representation.
+
+An instance of ``AbstractGraphModel`` could or could not be attached to
+specialized ``QGraphicsScene`` and ``QGraphicsView`` objects. I.e. the so-called
+"headless" `modus operandi` is possible.
+
+![](./docs/capture.png)
+
+## Data Flow Paradigm
+
+The extended model class ``DataFlowGraphModel`` allows to register "processing
+algorithms" represented by nodes and is equipped with a set of Qt's signals and
+slots for propagating the data though the nodes.
+
+The node's algorithm is triggered upon arriving of any new input data. The
+computed result is propagated to the output connections. Each new connection
+fetches available data and propagates is further. Each change in the source node
+is immediately propagated through all the connections updating the whole graph.
+
+## Acknowledge
+
+This project is forked form [nodeeditor](https://github.com/paceholder/nodeeditor) originally but rewrite to pure python
+project, which can integrate with python package well.
