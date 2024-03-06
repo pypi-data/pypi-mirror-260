@@ -1,0 +1,133 @@
+Metadata-Version: 2.1
+Name: fxy
+Version: 0.5.9
+Summary: Convenience imports and scientific functions.
+Home-page: https://github.com/mindey/fxy
+Author: Mindey
+Author-email: mindey@mindey.com
+License: UNLICENSE
+Description-Content-Type: text/x-rst
+Requires-Dist: PyQt5
+Requires-Dist: ipython
+Requires-Dist: matplotlib
+Requires-Dist: mpmath
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: seaborn
+Requires-Dist: statsmodels
+Requires-Dist: sympy
+Requires-Dist: xarray
+Requires-Dist: windows-curses >=2.2.0 ; platform_system == "Windows"
+Provides-Extra: test
+Requires-Dist: coverage ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+
+fxy
+===
+.. |isympy| replace:: ``isympy``
+
+Imports and command ``fx`` with parameters to import libraries often used in research to emulate CAS software, or LAB software.
+
+Installation
+------------
+
+-  ``pip install fxy`` to get the import shortcuts.
+
+Introduction
+------------
+
+The people coming from use of CAS tools like ``Maple``, ``Mathematica`` or computing LAB languages ``Matlab`` and ``R`` may find that ``Python`` requires quite a few imports just to do equivalent computing.
+
+This package ``fxy`` is a shorthand to do the imports packages to approximate these two domains (CAS, and LAB) you've got a command ``fx``, that starts Python with needed packages pre-imported: so, you can start using Python like a calculator right away.
+
+Usage
+-----
+The package defines the `fx` command, if you just want Python with something, run:
+
+
+-  ``fx`` (e.g., ``fx -ip``) for quick CALC - Basic calculator
+-  ``fx -x`` (e.g., ``fx -ipx``) for basic CAS software ("Numeric") emulation
+-  ``fx -y`` (e.g., ``fx -ipy``) for LAB software ("Symbolic") emulation
+
+In command line
+---------------
+
+-  ``$ fx -i`` -- to use IPython + explicit imports.
+-  ``$ fx -p`` -- to import plotting.
+
+CALC
+----
+
+::
+
+    >>> from fxy.calc import *
+    >>> pi
+    <pi: 3.14159~>
+
+    >>> from fxy.plot import *
+    >>> plt.plot([1, 2, 3, 4])
+    >>> plt.ylabel('some numbers')
+    >>> plt.show()
+
+CAS
+---
+
+::
+
+    >>> from fxy.CAS import *
+    >>> f = x**4 - 4*x**3 + 4*x**2 - 2*x + 3
+    >>> f.subs([(x, 2), (y, 4), (z, 0)])
+    -1
+    >>> plot(f)
+    >>> plot3d(x**2-y**2)
+
+LAB
+---
+
+::
+
+    >>> from fxy.LAB import *
+    >>> df = pandas.DataFrame({'x': numpy.arange(10), 'y': np.random.random(10)})
+    >>> df.sum()
+    x    45.000000
+    y     4.196558
+    dtype: float64
+
+    >>> X = [[0], [1], [2], [3]]
+    >>> y = [0, 0, 1, 1]
+    >>> neigh = sklearn.neighbors.KNeighborsClassifier(n_neighbors=3)
+    >>> neigh.fit(X, y)
+    >>> print(neigh.predict([[1.1]]))
+    [0]
+    >>> print(neigh.predict_proba([[0.9]]))
+    [[0.66666667 0.33333333]]
+
+
+Suggestions
+-----------
+
+If you use some initialization commonly, we suggest adding ``~/.zshrc``, something like, for example:
+
+::
+
+   alias f=". ~/.venv/bin/activate && fx -if"
+
+Or, pass params, and alias:
+
+::
+
+    function f() {
+        . ~/.venv/bin/activate
+        fx "$@"
+    }
+
+    alias fx="f -ipx"  # for CAS with plotting
+    alias fy="f -ipy"  # for LAB with plotting
+
+
+This way, running something like ``f`` makes a project folder and starts Python environment with import sets often used.
+
+
+.. _isympy:
+    https://linux.die.net/man/1/isympy
