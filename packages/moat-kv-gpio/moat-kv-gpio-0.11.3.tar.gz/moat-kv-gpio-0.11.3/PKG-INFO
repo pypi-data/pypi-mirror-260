@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: moat-kv-gpio
+Version: 0.11.3
+Summary: 1wire connector for MoaT-KV
+Author-email: Matthias Urlichs <matthias@urlichs.de>
+Project-URL: homepage, https://m-o-a-t.org
+Project-URL: repository, https://github.com/M-o-a-T/moat-kv-gpio
+Keywords: MoaT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Classifier: Topic :: Home Automation
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+
+============
+MoaT-kv-gpio
+============
+
+MoaT-kv-gpio is a link between GPIO pins and MoaT-kv.
+
+It will
+
+* monitor inputs as specified
+
+* write values that it reads from them to some KV entry
+
+* monitor a KV entry and write any updates to GPIO
+
+* work with MoaT-KV's runner system, either centrally or distributed
