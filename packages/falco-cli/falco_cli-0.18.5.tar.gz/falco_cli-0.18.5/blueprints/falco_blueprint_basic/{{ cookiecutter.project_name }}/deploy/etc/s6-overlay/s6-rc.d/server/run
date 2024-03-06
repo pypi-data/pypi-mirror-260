@@ -1,0 +1,5 @@
+#!/command/with-contenv execlineb
+
+cd /app
+foreground { python manage.py createsuperuser --noinput }
+gunicorn {{ cookiecutter.project_name }}.wsgi:application --config="deploy/gunicorn.conf.py"
