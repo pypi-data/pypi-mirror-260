@@ -1,0 +1,17 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="mylibrary",
+    version="0.1",
+    packages=find_packages(),
+    install_requires=[
+        # List your project's dependencies here.
+        # For example: 'requests >= 2.19.1'
+    ],
+    author="Ajinath Ghodake",
+    author_email="ajinath.ghodake@coditas.com",
+    description="A small example package with some basic functionality",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/yourusername/mylibrary",
+)
