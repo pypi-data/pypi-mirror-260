@@ -1,0 +1,144 @@
+/* Specific style adjustments */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    overflow-x: hidden;
+}
+
+.sidebar.collapsed .nav-link {
+    text-align: center;
+}
+
+.sidebar.collapsed .nav-link span {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+}
+
+.content {
+    transition: margin-left 0.3s;
+    padding-top: 30px;
+    margin-left: 310px;
+    width: calc(100% - 380px);
+}
+
+.content.collapsed {
+    margin-left: 90px;
+    width: calc(100% - 90px);
+}
+
+.navbar {
+    transition: margin-left 0.3s;
+    position: relative;
+}
+
+.navbar .searchbar {
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+}
+
+hr {
+    margin: 0.1rem;
+    border: 0;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+.collapse-button {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-item.disabled {
+    display: none;
+}
+
+.nav-item.list-group-item {
+    border-radius: 0px !important;
+    padding: 0.1rem 0rem;
+}
+
+#content>h2 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#sidebar>ul>li>a {
+    padding: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.collapsed-logo {
+    display: block;
+}
+
+.sidebar.collapsed>div.navbar>a>.expanded-app-name {
+    display: none;
+}
+
+.breadcrumb {
+    padding: 0.5rem;
+}
+
+fieldset {
+    padding: 0px;
+}
+
+form>div>.card {
+    margin-top: 15px;
+    padding: 30px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+.flex-container> :is(input[type=text], input[type=email]) {
+    width: 30%;
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+.errorlist {
+    list-style-type: none;
+    color: var(--bs-danger);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    margin: 0px;
+    padding: 0px;
+}
