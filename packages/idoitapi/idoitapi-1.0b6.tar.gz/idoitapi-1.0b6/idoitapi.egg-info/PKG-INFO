@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: idoitapi
+Version: 1.0b6
+Summary: i-doit JSON RPC API
+Home-page: https://github.com/mvorl/i-doit_API
+Author: Martin Vorländer
+Author-email: mv@pdv-systeme.de
+License: AGPLv3+
+Keywords: i-doit
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: requests
+Provides-Extra: docs
+Requires-Dist: Sphinx; extra == "docs"
+
+Python implementation of Benjamin Heisig's PHP-based i-doit API client library
