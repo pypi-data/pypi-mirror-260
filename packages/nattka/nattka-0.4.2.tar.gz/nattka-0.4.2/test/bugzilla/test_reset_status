@@ -1,0 +1,335 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug?id=2&include_fields=assigned_to&include_fields=blocks&include_fields=cc&include_fields=cf_runtime_testing_required&include_fields=cf_stabilisation_atoms&include_fields=component&include_fields=depends_on&include_fields=flags&include_fields=id&include_fields=keywords&include_fields=last_change_time&include_fields=product&include_fields=resolution&include_fields=whiteboard
+  response:
+    body:
+      string: '{"bugs":[{"component":"Keywording","cc_detail":[{"real_name":"ALPHA
+        arch team","id":3,"email":"alpha@gentoo.org","name":"alpha@gentoo.org"},{"name":"hppa@gentoo.org","email":"hppa@gentoo.org","id":5,"real_name":"HPPA
+        arch team"}],"blocks":[9],"last_change_time":"2020-04-03T13:34:59Z","product":"Gentoo
+        Linux","assigned_to_detail":{"email":"test@example.com","name":"test@example.com","id":1,"real_name":"Test
+        developer"},"cc":["alpha@gentoo.org","hppa@gentoo.org"],"cf_runtime_testing_required":"---","depends_on":[1],"keywords":[],"id":2,"flags":[{"creation_date":"2020-04-03T13:34:59Z","status":"+","setter":"nattka@gentoo.org","id":2,"modification_date":"2020-04-03T13:34:59Z","name":"sanity-check","type_id":1}],"cf_stabilisation_atoms":"dev-python/unittest-mixins-1.6\r\ndev-python/coverage-4.5.4","assigned_to":"test@example.com","whiteboard":"","resolution":""}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:11 GMT
+      Etag:
+      - /xiJ/QZi2aB5W32uJ7STbg
+      Keep-Alive:
+      - timeout=15, max=100
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug/2/comment
+  response:
+    body:
+      string: '{"comments":{},"bugs":{"2":{"comments":[{"time":"2020-04-03T13:18:10Z","id":2,"creation_time":"2020-04-03T13:18:10Z","count":0,"tags":[],"is_private":false,"attachment_id":null,"creator":"test@example.com","bug_id":2,"text":""}]}}}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:12 GMT
+      Etag:
+      - Vk3udsmTFrEnHNLfeBB6lg
+      Keep-Alive:
+      - timeout=15, max=99
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug/2/comment
+  response:
+    body:
+      string: '{"comments":{},"bugs":{"2":{"comments":[{"id":2,"creation_time":"2020-04-03T13:18:10Z","bug_id":2,"time":"2020-04-03T13:18:10Z","text":"","attachment_id":null,"is_private":false,"creator":"test@example.com","tags":[],"count":0}]}}}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:12 GMT
+      Etag:
+      - Vk3udsmTFrEnHNLfeBB6lg
+      Keep-Alive:
+      - timeout=15, max=98
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/whoami
+  response:
+    body:
+      string: '{"real_name":"NATTkA","id":2,"name":"nattka@gentoo.org"}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:13 GMT
+      Etag:
+      - mVytJ9+Su1npSL9ztIqPVQ
+      Keep-Alive:
+      - timeout=15, max=97
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"ids": [2], "flags": [{"name": "sanity-check", "status": "X"}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '64'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.28.1
+    method: PUT
+    uri: http://127.0.0.1:33113/rest/bug/2
+  response:
+    body:
+      string: '{"bugs":[{"id":2,"last_change_time":"2022-09-06T19:46:14Z","alias":[],"changes":{"flagtypes.name":{"removed":"sanity-check+","added":""}}}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:13 GMT
+      Etag:
+      - 9q2t8JsB5/vC8Db2ik3MeQ
+      Keep-Alive:
+      - timeout=15, max=96
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug?id=2&include_fields=assigned_to&include_fields=blocks&include_fields=cc&include_fields=cf_runtime_testing_required&include_fields=cf_stabilisation_atoms&include_fields=component&include_fields=depends_on&include_fields=flags&include_fields=id&include_fields=keywords&include_fields=last_change_time&include_fields=product&include_fields=resolution&include_fields=whiteboard
+  response:
+    body:
+      string: '{"bugs":[{"keywords":[],"assigned_to_detail":{"id":1,"email":"test@example.com","real_name":"Test
+        developer","name":"test@example.com"},"cf_runtime_testing_required":"---","assigned_to":"test@example.com","blocks":[9],"flags":[],"last_change_time":"2022-09-06T19:46:14Z","whiteboard":"","depends_on":[1],"cc_detail":[{"email":"alpha@gentoo.org","id":3,"real_name":"ALPHA
+        arch team","name":"alpha@gentoo.org"},{"real_name":"HPPA arch team","name":"hppa@gentoo.org","id":5,"email":"hppa@gentoo.org"}],"component":"Keywording","product":"Gentoo
+        Linux","cf_stabilisation_atoms":"dev-python/unittest-mixins-1.6\r\ndev-python/coverage-4.5.4","resolution":"","id":2,"cc":["alpha@gentoo.org","hppa@gentoo.org"]}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:14 GMT
+      Etag:
+      - q7dshjPlGL2PIeOgpvJlZQ
+      Keep-Alive:
+      - timeout=15, max=95
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug/2/comment
+  response:
+    body:
+      string: '{"bugs":{"2":{"comments":[{"tags":[],"time":"2020-04-03T13:18:10Z","is_private":false,"attachment_id":null,"text":"","creator":"test@example.com","creation_time":"2020-04-03T13:18:10Z","count":0,"id":2,"bug_id":2}]}},"comments":{}}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:14 GMT
+      Etag:
+      - Vk3udsmTFrEnHNLfeBB6lg
+      Keep-Alive:
+      - timeout=15, max=94
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

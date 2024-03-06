@@ -1,0 +1,77 @@
+[build-system]
+requires = ["flit_core >=3.7,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "nattka"
+authors = [{name = "Michał Górny", email = "mgorny@gentoo.org"}]
+readme = "README.rst"
+dynamic = ["version", "description"]
+license = {text = "GPL-2.0-or-later"}
+requires-python = ">=3.10"
+dependencies = [
+    "lxml",
+    "pkgcheck",
+    "pkgcore",
+    "requests",
+    "snakeoil",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: No Input/Output (Daemon)",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Testing",
+]
+
+[tool.flit.external-data]
+directory = "data"
+
+[tool.flit.sdist]
+include = [
+    "doc",
+    "test",
+    "tox.ini",
+]
+exclude = [
+    "doc/_build",
+    "test/__pycache__",
+    "test/data/metadata/md5-cache",
+]
+
+[project.optional-dependencies]
+depgraph = ["networkx"]
+test = [
+    "pytest",
+    "vcrpy",
+]
+
+[project.scripts]
+nattka = "nattka.__main__:setuptools_main"
+
+[project.urls]
+Homepage = "https://github.com/mgorny/nattka/"
+
+[tool.mypy]
+disallow_untyped_defs = true
+no_implicit_optional = true
+
+[[tool.mypy.overrides]]
+module = "test.*"
+# requiring explicit types for all test methods would be cumbersome
+disallow_untyped_defs = false
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "lxml.*",
+    "networkx.*",
+    "pkgcheck.*",
+    "pkgcore.*",
+    "snakeoil.*",
+    "vcr",
+]
+ignore_missing_imports = true

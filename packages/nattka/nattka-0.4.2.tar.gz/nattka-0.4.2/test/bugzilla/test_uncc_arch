@@ -1,0 +1,245 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug?id=2&include_fields=assigned_to&include_fields=blocks&include_fields=cc&include_fields=cf_runtime_testing_required&include_fields=cf_stabilisation_atoms&include_fields=component&include_fields=depends_on&include_fields=flags&include_fields=id&include_fields=keywords&include_fields=last_change_time&include_fields=product&include_fields=resolution&include_fields=whiteboard
+  response:
+    body:
+      string: '{"bugs":[{"resolution":"","depends_on":[1],"cc_detail":[{"real_name":"ALPHA
+        arch team","email":"alpha@gentoo.org","id":3,"name":"alpha@gentoo.org"},{"real_name":"HPPA
+        arch team","email":"hppa@gentoo.org","name":"hppa@gentoo.org","id":5}],"id":2,"cf_stabilisation_atoms":"dev-python/unittest-mixins-1.6\r\ndev-python/coverage-4.5.4","cc":["alpha@gentoo.org","hppa@gentoo.org"],"keywords":[],"product":"Gentoo
+        Linux","blocks":[9],"component":"Keywording","flags":[],"cf_runtime_testing_required":"---","assigned_to_detail":{"id":1,"name":"test@example.com","real_name":"Test
+        developer","email":"test@example.com"},"assigned_to":"test@example.com","whiteboard":"","last_change_time":"2022-09-06T19:46:14Z"}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:42 GMT
+      Etag:
+      - q7dshjPlGL2PIeOgpvJlZQ
+      Keep-Alive:
+      - timeout=15, max=100
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug/2/comment
+  response:
+    body:
+      string: '{"comments":{},"bugs":{"2":{"comments":[{"creator":"test@example.com","attachment_id":null,"is_private":false,"text":"","id":2,"count":0,"bug_id":2,"creation_time":"2020-04-03T13:18:10Z","time":"2020-04-03T13:18:10Z","tags":[]}]}}}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:43 GMT
+      Etag:
+      - Vk3udsmTFrEnHNLfeBB6lg
+      Keep-Alive:
+      - timeout=15, max=99
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"ids": [2], "cc": {"remove": ["hppa@gentoo.org"]}, "comment": {"body":
+      "hppa done"}, "status": "IN_PROGRESS"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '110'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.28.1
+    method: PUT
+    uri: http://127.0.0.1:33113/rest/bug/2
+  response:
+    body:
+      string: '{"bugs":[{"last_change_time":"2022-09-06T19:46:44Z","changes":{"status":{"added":"IN_PROGRESS","removed":"CONFIRMED"},"cc":{"removed":"hppa@gentoo.org","added":""}},"id":2,"alias":[]}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:43 GMT
+      Etag:
+      - KpbhnpeiStGWDxlZsK/lbA
+      Keep-Alive:
+      - timeout=15, max=98
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug?id=2&include_fields=assigned_to&include_fields=blocks&include_fields=cc&include_fields=cf_runtime_testing_required&include_fields=cf_stabilisation_atoms&include_fields=component&include_fields=depends_on&include_fields=flags&include_fields=id&include_fields=keywords&include_fields=last_change_time&include_fields=product&include_fields=resolution&include_fields=whiteboard
+  response:
+    body:
+      string: '{"bugs":[{"whiteboard":"","assigned_to_detail":{"email":"test@example.com","name":"test@example.com","id":1,"real_name":"Test
+        developer"},"component":"Keywording","resolution":"","last_change_time":"2022-09-06T19:46:44Z","flags":[],"assigned_to":"test@example.com","blocks":[9],"depends_on":[1],"product":"Gentoo
+        Linux","id":2,"cf_runtime_testing_required":"---","keywords":[],"cc_detail":[{"name":"alpha@gentoo.org","email":"alpha@gentoo.org","real_name":"ALPHA
+        arch team","id":3}],"cf_stabilisation_atoms":"dev-python/unittest-mixins-1.6\r\ndev-python/coverage-4.5.4","cc":["alpha@gentoo.org"]}]}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:44 GMT
+      Etag:
+      - 1PT8UEw14SbakyhM0V8lzQ
+      Keep-Alive:
+      - timeout=15, max=97
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: http://127.0.0.1:33113/rest/bug/2/comment
+  response:
+    body:
+      string: '{"comments":{},"bugs":{"2":{"comments":[{"id":2,"bug_id":2,"text":"","creation_time":"2020-04-03T13:18:10Z","time":"2020-04-03T13:18:10Z","tags":[],"is_private":false,"count":0,"creator":"test@example.com","attachment_id":null},{"is_private":false,"tags":[],"creation_time":"2022-09-06T19:46:44Z","time":"2022-09-06T19:46:44Z","text":"hppa
+        done","bug_id":2,"id":15,"attachment_id":null,"creator":"test@example.com","count":1}]}}}'
+    headers:
+      Access-control-allow-headers:
+      - origin, content-type, accept, x-requested-with
+      Access-control-allow-origin:
+      - '*'
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-security-policy:
+      - frame-ancestors 'self'
+      Date:
+      - Tue, 06 Sep 2022 19:46:44 GMT
+      Etag:
+      - OUkrnwqpndQMaeklcjoBhw
+      Keep-Alive:
+      - timeout=15, max=96
+      Server:
+      - Apache
+      Transfer-Encoding:
+      - chunked
+      X-content-type-options:
+      - nosniff
+      X-frame-options:
+      - SAMEORIGIN
+      X-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
