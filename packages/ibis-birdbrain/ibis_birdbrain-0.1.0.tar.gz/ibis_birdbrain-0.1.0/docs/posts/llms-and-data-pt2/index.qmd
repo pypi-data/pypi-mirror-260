@@ -1,0 +1,155 @@
+---
+title: "Computations and control flow: it's just programming"
+author: "Cody Peterson"
+date: "2023-10-14"
+categories:
+    - "LLMs and data"
+---
+
+## Introduction
+
+The recent Generative AI hype cycle has led to a lot of new terminology to
+understand. In this post, we'll cover some key concepts from the groud up and
+explain the basics of working with LLMs in the context of data.
+
+This post assumes [basic familiarity with Marvin and Ibis](../llms-and-data-pt0)
+and [three approaches to applying LLMs to data](../llms-and-data-pt1).
+
+```{python}
+# | code-fold: true
+import ibis  # <1>
+import marvin  # <1>
+
+from dotenv import load_dotenv  # <1>
+
+load_dotenv()  # <2>
+
+con = ibis.connect("duckdb://penguins.ddb")  # <3>
+t = ibis.examples.penguins.fetch()  # <3>
+t = con.create_table("penguins", t.to_pyarrow(), overwrite=True)  # <3>
+```
+
+1. Import the libraries we need.
+2. Load the environment variable to setup Marvin to call our OpenAI account.
+3. Setup the demo datain an Ibis backend.
+
+First, we'll setup Ibis and Marvin with some simple example data:
+
+```{python}
+import ibis  # <1>
+import marvin  # <1>
+
+from ibis.expr.schema import Schema  # <1>
+from ibis.expr.types.relations import Table  # <1>
+
+ibis.options.interactive = True  # <2>
+marvin.settings.llm_model = "openai/gpt-4"  # <2>
+
+con = ibis.connect("duckdb://penguins.ddb")  # <3>
+t = con.table("penguins")  # <3>
+```
+
+1. Import Ibis and Marvin.
+2. Configure Ibis (interactive) and Marvin (GPT-4).
+3. Connect to the data and load a table into a variable.
+
+## Context
+
+Context is a fancy way of talking about the input to a LLM.
+
+## Calls
+
+We make calls with inputs to functions or systems and get outputs. We can think
+of calling the LLM with our input (context) and getting an output (text).
+
+## Computations
+
+A function or system often computes something. We can be pedantic about calls
+versus computations, but in general the connotation around computations is more
+time and resource intensive than a call. At the end of the day, they will both
+take some computer cycles.
+
+## Retrieval augmented generation (RAG)
+
+Instead of you typing out context for the bot, we can **retrieve** context from
+somewhere, **augment** our strings sent to the bot with this context, and then
+**generate** a response from the bot.
+
+As a contrived example, instead of saying "The capitol of foo is bar", we can
+retrieve the capitol of foo from a database, augment it with our context, and
+then generate a response from the bot. You may notice that [we already did this
+in the firt post in the series -- let's review that code
+again](../llms-and-data-pt0):
+
+```{python}
+from ibis.expr.schema import Schema
+from ibis.expr.types.relations import Table
+
+
+@marvin.ai_fn
+def sql_select(
+    text: str, table_name: str = t.get_name(), schema: Schema = t.schema()
+) -> str:
+    """writes the SQL SELECT statement to query the table according to the text"""
+
+
+query = "the unique combination of species and islands"
+sql = sql_select(query).strip(";")
+sql
+```
+
+Notice that we **retrieved** the table name and schema with calls to the Ibis
+table (`t.get_name()` and `t.schema()`). We then **augment** our context (the
+query in natural language) with this information and **generate** a response
+from the bot.
+
+This works reasonably well for simple SQL queries:
+
+```{python}
+t.sql(sql)
+```
+
+I would argue in this case there wasn't any real **computation** done by our
+**calls** to the Ibis table -- we were just retrieving some relatively static
+metadata -- but we could have done some more complex computations (on any of 18+
+data platforms).
+
+## Thought leadership
+
+TODO: human rewrite
+
+In the realm of Generative AI, particularly when working with Language Learning
+Models (LLMs), understanding the concept of 'context' is crucial. Context, in this
+domain, refers to the inputs that are fed into an LLM, and the corresponding
+outputs they generate. This post breaks down the complexities of this process into
+understandable fragments, including retrieval of context, its augmentation, and,
+thereafter, the generation of a response.
+
+An illustrative example is provided, showcasing a database interaction. It
+demonstrates how the data retrieved can be used to augment the context before the
+bot generates a response. This valuable insight underlines the practical
+application of the theory, reinforcing the understanding of the readers.
+
+We also venture into the difference between simple static metadata retrieval and
+the more intricate computations. This distinction echoes the breadth and depth of
+the processes involved in Generative AI.
+
+As we continue to explore and unravel the potential of Generative AI and LLMs,
+this post serves as a fundamental building block. It creates a pathway for
+enthusiasts and professionals alike to delve deeper into this exciting field. By
+breaking down complex concepts into comprehensible segments, it fosters an
+environment of learning and growth.
+
+This marks just the beginning of our journey into the world of Generative AI. As
+we dig deeper, we will continue to explore, learn and share with our readers. Stay
+tuned for more insightful content in this series. [1]
+
+[1] https://github.com/ibis-project/ibis-birdbrain
+
+## Next steps
+
+You can get involved with [Ibis
+Birdbrain](https://github.com/ibis-project/ibis-birdbrain), our open-source data
+& AI project for building next-generation natural language interfaces to data.
+
+[Read the next post in this series](../llms-and-data-pt3).
