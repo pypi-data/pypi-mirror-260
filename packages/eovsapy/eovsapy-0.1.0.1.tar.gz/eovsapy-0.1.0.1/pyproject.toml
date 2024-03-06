@@ -1,0 +1,119 @@
+[project]
+name = "eovsapy"
+version = "0.1.0.1"
+description = "Python code and files for Expanded Owens Valley Solar Array"
+readme = "README.md"
+requires-python = ">=3.6"
+authors = [
+    { name = "The EOVSA team", email = "sijie.yu@njit.edu" },
+]
+license = { file = "LICENSE.rst" }
+keywords = ["solar physics", "solar", "science", "sun", "radio", "miriad"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "aipy-eovsa",
+    "astropy",
+    "attrs",
+    "certifi",
+    "decorator",
+    "ephem",
+    "importlib-metadata",
+    "importlib-resources",
+    "matplotlib>=3.6",
+    "mysql-connector-python",
+    "numpy",
+    "pandas",
+    "pyodbc",
+    "pyparsing",
+    "python-dateutil",
+    "requests",
+    "scipy",
+    "six",
+    "sunpy",
+    "tk",
+    "tqdm",
+    "urllib3",
+]
+[project.optional-dependencies]
+dev = [
+    "ipython",
+    "ipython-genutils",
+    "PyQt5",
+    "PyQt5-Qt5",
+    "PyQt5-sip",
+]
+
+[project.urls]
+Homepage = "https://github.com/ovro-eovsa/eovsapy"
+Repository = "https://github.com/ovro-eovsa/eovsapy"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools_scm>=6.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[tool.pycodestyle]
+max_line_length = 110
+
+[tool.flake8]
+max-line-length = 110
+exclude = [
+    ".git",
+    ".idea",
+    ".eggs",
+    "__pycache__",
+    "build",
+    "dist",
+    "eovsapy/__init__.py",
+]
+
+[tool.isort]
+balanced_wrapping = true
+skip = "eovsapy/__init__.py"
+default_section = "THIRDPARTY"
+include_trailing_comma = true
+known_first_party = "eovsapy"
+line_length = 110
+multi_line_output = 3
+sections = "STDLIB,THIRDPARTY,ASTROPY,FIRSTPARTY,LOCALFOLDER"
+
+[tool.coverage.run]
+omit = [
+    "eovsapy/*setup*",
+    "eovsapy/extern/*",
+    "eovsapy/shellScript/*",
+    "eovsapy/build/*",
+    "eovsapy/dist/*",
+    "eovsapy/*/tests/*",
+    "eovsapy/version*",
+    "eovsapy/__init__*",
+    "obsolete/"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "except ImportError",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "def main\\(.*\\):",
+    "pragma: py{ignore_python_version}",
+]

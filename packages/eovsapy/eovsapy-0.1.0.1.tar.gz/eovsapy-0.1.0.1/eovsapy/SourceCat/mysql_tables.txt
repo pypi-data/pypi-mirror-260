@@ -1,0 +1,76 @@
+CREATE TABLE `abin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Timestamp` double NOT NULL,
+  `Version` float NOT NULL,
+  `Description` varchar(8000) DEFAULT NULL,
+  `Bin` mediumblob NOT NULL,
+  PRIMARY KEY (`Id`)
+);
+
+#CREATE TABLE `fV66_vD16` (
+#  `Timestamp` double NOT NULL,
+#  `I16` TINYINT NOT NULL,
+#  `Version` float NOT NULL,
+#  `Sche_Data_Chi` float NOT NULL,
+#  PRIMARY KEY (`Timestamp`,`I16`)
+#);
+
+CREATE TABLE `fV66_vD15` (
+  `Timestamp` double NOT NULL,
+  `I15` TINYINT NOT NULL,
+  `Ante_Fron_Wind_State` TINYINT NOT NULL,
+  `Ante_Fron_FEM_HPol_Atte_First` TINYINT NOT NULL,
+  `Ante_Fron_FEM_HPol_Atte_Second` TINYINT NOT NULL,
+  `Ante_Fron_FEM_Clockms` INT NOT NULL,
+  `Ante_Cont_SystemClockMJDay` INT NOT NULL,
+  `Ante_Cont_Azimuth1` INT NOT NULL,
+  `Ante_Cont_AzimuthPositionCorre` INT NOT NULL,
+  `Ante_Cont_Elevation1` INT NOT NULL,
+  `Ante_Cont_ElevationPositionCor` INT NOT NULL,
+  `Ante_Cont_AzimuthPosition` INT NOT NULL,
+  `Ante_Cont_ElevationPosition` INT NOT NULL,
+  `Ante_Cont_RunMode` TINYINT NOT NULL,
+  `Ante_Cont_AzimuthVirtualAxis` INT NOT NULL,
+  `Ante_Cont_ElevationVirtualAxis` INT NOT NULL,
+  `Ante_Cont_RAVirtualAxis` INT NOT NULL,
+  `Ante_Cont_DecVirtualAxis` INT NOT NULL,
+  `Ante_Cont_RAOffset` INT NOT NULL,
+  `Ante_Cont_DecOffset` INT NOT NULL,
+  `Ante_Cont_AzOffset` INT NOT NULL,
+  `Ante_Cont_ElOffset` INT NOT NULL,
+  `Ante_Fron_FEM_HPol_Regi_Level` TINYINT NOT NULL,
+  `Ante_Fron_FEM_VPol_Regi_Level` TINYINT NOT NULL,
+  PRIMARY KEY (`Timestamp`,`I15`)
+);
+
+CREATE TABLE `fV66_vD1` (
+  `Timestamp` double NOT NULL,
+  `FEMA_Powe_RFSwitchStatus` TINYINT NOT NULL,
+  `FEMA_Rece_LoFreqEnabled` TINYINT NOT NULL,
+  `LODM_LO1A_FSeqFile` VARCHAR(32) NOT NULL,
+  `DPPoffsetattn_on` TINYINT NOT NULL,
+  `Sche_Data_Weat_AvgWind` float NOT NULL,
+  PRIMARY KEY (`Timestamp`)
+);
+
+CREATE TABLE `hV37_vD1` (
+  `Timestamp` double NOT NULL,
+  `TimeAtAcc0` double NOT NULL,
+  `Project` varchar(32) NOT NULL,
+  `SourceID` varchar(32) NOT NULL,
+  PRIMARY KEY (`Timestamp`)
+);
+
+CREATE TABLE `hV37_vD50` (
+  `Timestamp` double NOT NULL,
+  `I50` TINYINT NOT NULL,
+  `FSeqList` float NOT NULL,
+  PRIMARY KEY (`Timestamp`, `I50`)
+);
+
+GRANT SELECT, INSERT ON `eOVSA`.`abin` TO 'Python3'@'localhost';
+GRANT SELECT, INSERT ON `eOVSA`.`fV66_vD16` TO 'Python3'@'localhost';
+GRANT SELECT, INSERT ON `eOVSA`.`fV66_vD15` TO 'Python3'@'localhost';
+GRANT SELECT, INSERT ON `eOVSA`.`fV66_vD1` TO 'Python3'@'localhost';
+GRANT SELECT, INSERT ON `eOVSA`.`hV37_vD1` TO 'Python3'@'localhost';
+GRANT SELECT, INSERT ON `eOVSA`.`hV37_vD50` TO 'Python3'@'localhost';
