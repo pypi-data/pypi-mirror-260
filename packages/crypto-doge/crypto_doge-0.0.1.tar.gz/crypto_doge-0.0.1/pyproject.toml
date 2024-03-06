@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crypto-doge"
+version = "0.0.1"
+authors = [
+  { name="Cole Wu" },
+  { name="Ross Shen" },
+]
+description = "A discord bot that can get real-time cryptocurrency information"
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = [ "dependencies" ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Cole9712/crypto_doge"
+Issues = "https://github.com/Cole9712/crypto_doge/issues"
+
+[tool.setuptools.dynamic]
+dependencies = { file = [ "requirements.txt" ] }
+
+[tool.hatch.build.targets.wheel]
+packages = [
+	"src/crypto-doge"
+]
