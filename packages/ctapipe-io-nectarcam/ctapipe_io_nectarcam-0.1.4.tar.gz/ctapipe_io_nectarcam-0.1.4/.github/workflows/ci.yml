@@ -1,0 +1,67 @@
+name: CI
+
+# by not building all branches on push, we avoid the duplicated builds in PRs
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '**'
+  pull_request:
+
+env:
+  NUMBA_NUM_THREADS: 1
+  MPLBACKEND: Agg
+  PYTEST_ADDOPTS: --color=yes
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+        ctapipe-version: [v0.19.3]
+
+    defaults:
+      run:
+        # We need login shells (-l) for micromamba to work.
+        shell: bash -leo pipefail {0}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set Python version
+        env:
+          PYTHON_VERSION: ${{ matrix.python-version }}
+        run: |
+          sed -i -e "s/- python=.*/- python=$PYTHON_VERSION/g" environment.yml
+
+      - name: Create and activate env
+        uses: mamba-org/provision-with-micromamba@v15
+        with:
+          environment-name: "ci"
+          environment-file: environment.yml
+
+      - name: Install dependencies
+        env:
+          PYTHON_VERSION: ${{ matrix.python-version }}
+          CTAPIPE_VERSION: ${{ matrix.ctapipe-version }}
+
+        run: |
+          python --version
+          echo "Installing additional pip packages"
+          # we install ctapipe using pip to be able to select any commit, e.g. the current master
+          pip install \
+             "git+https://github.com/cta-observatory/ctapipe@$CTAPIPE_VERSION" \
+              pytest-cov
+
+          echo "pip install -e ."
+          pip install -e .
+
+      - name: Tests
+        run: |
+          pytest --cov=ctapipe_io_nectarcam --cov-report=xml
+
+      - uses: codecov/codecov-action@v3
