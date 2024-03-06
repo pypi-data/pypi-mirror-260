@@ -1,0 +1,102 @@
+Metadata-Version: 2.1
+Name: django-docker-helper
+Version: 1.0.0.1
+Summary: A Django package to simplify the creation of Dockerfile and docker-compose.yml files.
+Home-page: https://github.com/SakariaNdadi/django-docker-helper
+Author: Sakaria Ndadi
+Author-email: oipapi.ndadi@gmail.com
+License: BSD-3-Clause
+Keywords: django docker docker-compose
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# Django Docker
+
+Django Docker is a Django package that simplifies the creation of Dockerfile and docker-compose.yml files for Django projects.
+
+## Features
+
+- Easily generate Dockerfile and docker-compose.yml files.
+- Interactively configure Docker services.
+- Seamlessly integrate Docker support into your Django projects.
+
+### Current Services
+- PostgeSQL
+- MySQL
+- Redis
+- Rabbitmq
+- Nginx
+
+## Requirements
+- Docker
+
+## Installation
+
+1. You can install Django Docker using pip:
+
+```bash
+pip install django-docker-helper
+```
+
+2. Add "django_docker_helper" to your installed apps
+
+### Creating a Dockerfile
+
+```bash
+python manage.py docker_file generate
+```
+
+### Building the Dockerfile image
+
+```bash
+python manage.py docker_file build
+```
+
+### Creating a docker-compose.yml file
+
+```bash
+python manage.py docker_compose generate
+```
+
+### Building the docker-compose.yml image
+
+```bash
+python manage.py docker_compose up
+```
+
+or
+
+```bash
+python manage.py docker_compose up --build
+```
+
+to build Docker images before starting containers.
+
+### Stopping and removing resources
+
+```bash
+python manage.py docker_compose down
+```
+
+or
+
+```bash
+python manage.py docker_compose down --remove-orphans
+```
+
+remove containers for services not defined in the Compose file
+
+
+# Documentation and addition of more services underway.... 
