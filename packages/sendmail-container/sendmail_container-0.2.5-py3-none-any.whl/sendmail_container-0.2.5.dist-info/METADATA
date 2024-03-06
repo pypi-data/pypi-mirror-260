@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: sendmail-container
+Version: 0.2.5
+Summary: API for sending emails with POST request
+Home-page: https://github.com/Clinical-Genomics/sendmail-container
+Author: Maria Ropat
+Author-email: maria.ropat@scilifelab.se
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: gunicorn
+Requires-Dist: python-multipart
+Requires-Dist: email-validator
+Requires-Dist: pre-commit
+Requires-Dist: pydantic
+Requires-Dist: pydantic[email]
+Requires-Dist: pydantic[dotenv]
+Requires-Dist: pydantic-settings
+Requires-Dist: requests
+
+# sendmail-container
+Containerized mailing service
