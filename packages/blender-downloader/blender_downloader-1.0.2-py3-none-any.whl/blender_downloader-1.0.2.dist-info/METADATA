@@ -1,0 +1,91 @@
+Metadata-Version: 2.1
+Name: blender-downloader
+Version: 1.0.2
+Summary: Blender portable release downloader.
+Project-URL: Source, https://github.com/mondeja/blender-downloader
+Project-URL: Documentation, https://github.com/mondeja/blender-downloader#usage
+Project-URL: Bug tracker, https://github.com/mondeja/blender-downloader/issues
+Project-URL: Changelog, https://github.com/mondeja/blender-downloader/releases
+Author-email: Álvaro Mondéjar Rubio <mondejar1994@gmail.com>
+Maintainer-email: Álvaro Mondéjar Rubio <mondejar1994@gmail.com>
+License-Expression: BSD-3-Clause
+License-File: LICENSE
+Keywords: blender,cli,downloader,installer,portable,release
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Python: >=3.8
+Requires-Dist: appdirs<2,>=1
+Requires-Dist: diskcache<6,>=5
+Requires-Dist: dmglib<1,>=0.9.3; sys_platform == 'darwin'
+Requires-Dist: importlib-metadata-argparse-version<3,>=2
+Requires-Dist: tqdm<5,>=4
+Description-Content-Type: text/markdown
+
+# blender-downloader
+
+[![PyPI][pypi-version-badge-link]][pypi-link]
+[![Python versions][pypi-pyversions-badge-link]][pypi-link]
+[![License][license-image]][license-link]
+[![Tests][tests-image]][tests-link]
+[![Coverage status][coverage-image]][coverage-link]
+
+Multiplatform Python CLI utility that downloads a specific portable release of
+Blender by version/os/bits from official Blender repositories. The minimum
+supported version is v2.57.
+
+## Install
+
+```bash
+pip install blender-downloader
+```
+
+## Usage
+
+> Execute `blender-downloader --help` to see all supported arguments.
+
+### Download release by version number
+
+```bash
+blender-downloader 2.92
+```
+
+### Download current stable release
+
+```bash
+blender-downloader stable
+```
+
+### Download stable release, extract/mount and print `blender` executable location
+
+```bash
+blender-downloader stable --extract --print-blender-executable
+```
+
+### List all available versions to download
+
+```bash
+blender-downloader --list
+```
+
+[pypi-link]: https://pypi.org/project/blender-downloader
+[pypi-version-badge-link]: https://img.shields.io/pypi/v/blender-downloader?logo=pypi&logoColor=white
+[pypi-pyversions-badge-link]: https://img.shields.io/pypi/pyversions/blender-downloader?logo=python&logoColor=white
+[license-image]: https://img.shields.io/pypi/l/blender-downloader?color=light-green&logo=freebsd&logoColor=white
+[license-link]: https://github.com/mondeja/blender-downloader/blob/master/LICENSE
+[tests-image]: https://img.shields.io/github/actions/workflow/status/mondeja/blender-downloader/ci.yml?logo=github&label=tests&branch=master
+[tests-link]: https://github.com/mondeja/blender-downloader/actions?query=workflow%3ACI
+[coverage-image]: https://img.shields.io/codecov/c/github/mondeja/blender-downloader?logo=codecov&logoColor=white
+[coverage-link]: https://app.codecov.io/gh/mondeja/blender-downloader
