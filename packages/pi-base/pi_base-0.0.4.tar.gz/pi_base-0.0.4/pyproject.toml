@@ -1,0 +1,444 @@
+# See:
+#  https://medium.com/@Mr_Pepe/setting-your-python-project-up-for-success-in-2024-365e53f7f31e
+#  https://setuptools.pypa.io/en/latest/userguide/development_mode.html
+#  https://github.com/Mr-Pepe/python-template
+#    pip install cruft ruff cookiecutter && cruft create git@github.com:Mr-Pepe/python-template.git # Broken on Windows!
+# Another notable cookiecutter template: https://github.com/ionelmc/cookiecutter-pylibrary
+
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+# Though we would like to use setuptools_scm for version, it breaks 'excludes' here
+# and completely disables MANIFEST.in. See https://github.com/pypa/setuptools_scm/pull/851
+# Instead, we use zest.releaser and local version in `pi_base/_version.py`.
+# DONT_USE: requires = ["setuptools>=68", "setuptools_scm[toml]>=8.0.4"]
+
+[project]
+name = "pi_base"
+# version = "0.0.1"
+# version is in "pi_base/_version.py"
+dynamic = ["version"]
+authors = [
+  { name="Ilya Ivanchenko", email="iva2k@yahoo.com" },
+]
+description = "Framework for creating Raspberry Pi appliances."
+keywords = ["raspberry pi"]
+readme = "docs/README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Alpha",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+# For an analysis of this field vs pip's requirements files see:
+# https://packaging.python.org/discussions/install-requires-vs-requirements/
+dependencies = [
+  #? "importlib-metadata",
+  # Add runtime dependencies here
+  "pyyaml~=6.0",
+  "pydrive2~=1.14.0",
+  # "click~=8.1.7",
+  # "cliff~=4.6.0",
+  # "pyserial~=3.5",
+]
+
+# [project.optional-dependencies]
+# dev = ["check-manifest"]
+# test = ["coverage"]
+
+[project.urls]
+Homepage = "https://github.com/iva2k/pi-base"
+# TODO: (soon) Documentation = "https://pi-base.readthedocs.org"
+Repository = "https://github.com/iva2k/pi-base"
+Issues = "https://github.com/iva2k/pi-base/issues"
+Changelog = "https://github.com/iva2k/pi-base/blob/main/CHANGELOG.md"
+
+[project.scripts]
+# Provide both underscore and dash versions of CLI:
+pi-base = "pi_base.__main__:main"
+pi_base = "pi_base.__main__:main"
+# `pi_base/__main__.py` file supports calling module as a script: `python pi_base`
+
+[tool.setuptools]
+include-package-data = true
+exclude-package-data = {"*" = [
+  # "pi_base/tests/**",
+  # "pi_base/scripts/**",
+  # "pi_base/remoteiot.com/**"
+]}
+
+[tool.setuptools.package-data]
+# If there are data files included in your packages that need to be installed, specify them here.
+"pi_base" = ["*.txt", "*.sh", "*.cmd"]
+"pi_base.lib" = ["*"]
+
+[tool.setuptools.packages.find]
+namespaces = true
+include = [
+  "pi_base*",
+]
+exclude = [
+  # "pi_base.tests*",
+  # More excludes are in MANIFEST.in
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "pi_base._version.__version__"}
+
+# Enables the usage of setuptools_scm, which kills MANIFEST.in and disables all "exclude"s in this file.
+# [tool.setuptools_scm] # DO NOT USE! (we still can install the package)
+
+[project.optional-dependencies]
+dev = [
+  "pi_base[tox]",
+  "pi_base[version]",
+  "pi_base[format]",
+  "pi_base[lint]",
+  "pi_base[test]",
+  "pi_base[reports]",
+  "pi_base[doc]",
+  "pi_base[release]",
+  "pi_base[build]",
+
+  # For vscode extensions:
+  "esbonio==0.16.4",
+  # "docutils==0.20.1",
+  "doc8==1.1.1",
+  # "rstcheck==6.2.0",
+]
+tox = [
+  "tox==4.13.0",
+]
+version=[
+  "zest-releaser==9.1.3",
+  # "zest-releaser[recommended]==9.1.3", # adds: check-manifest pep440 pyroma wheel trove-classifiers,
+  # and `prerelease`, `fullrelease` run 'check-manifest` and `pyroma` automatically - not what we want (yet) as we're not 100% clean for check-manifest is not 
+]
+format = [
+  "ruff==0.2.1",
+]
+lint = [
+  "ruff==0.2.1",
+  # "pi_base[format]",
+
+  "jinja2==3.1.2",
+  # "mypy==1.5.1",
+  "pyright==1.1.352",
+  "types-docutils",
+  "types-setuptools",
+]
+test = [
+  "pytest==7.4.1",
+  "pytest-randomly==3.15.0",
+  "pytest-cov==4.1.0",
+]
+reports = [
+  "coverage[toml]==7.3.1",
+  "junitparser==3.1.2",
+]
+doc = [
+  "pi_base[version]",
+  "importlib_metadata==7.0.1",
+  "jinja2==3.1.2",
+  "pip-licenses==4.3.2",
+  "sphinx==7.2.6",
+  "sphinx-autodoc-typehints==1.24.0",
+  # Themes (choose one in docs/conf.py):
+  # "sphinx_rtd_theme==2.0.0",
+  "sphinx-book-theme==1.1.2",
+  # "pydata-sphinx-theme==0.15.2",
+  # "furo==2024.1.29",
+  # Add .md to .rst conversion extension/parser to sphinx:
+  "myst-parser==2.0.0",
+]
+release = [
+  "pi_base[version]",
+]
+build = [
+  "build[virtualenv]==1.0.3",
+]
+
+[tool.zest-releaser]
+# Also see `.pypirc` (we moved all zest.releaser settings here)
+create-wheel = false
+push-changes = true
+release = true
+upload-pypi = true
+register = false
+tag-format = "{version}"
+python-file-with-version = "pi_base/_version.py"
+history-file = "CHANGELOG.md"
+history_format = "md"
+run-pre-commit = false
+
+[tool.check-manifest]
+ignore = ["package.json", "lib/swd.*", "lib/cyclone.*"]
+
+[tool.ruff]
+line-length = 200
+src = [
+  "blank",
+  "lib",
+  "pi_base",
+]
+exclude = [
+  "venv.*/",
+  "build/",
+  "dist/",
+  "lib/_import/",
+  "lib/_try1/",
+  "lib/cyclone/cycloneControlSDK_python/",
+  "lib/cyclone/cycloneControlSDK_python.git/",
+  "lib/cyclone/deploy/",
+  "lib/cyclone/downloads/",
+  "lib/swd/blackmagic/",
+  "lib/swd/cables/",
+  "lib/swd/openocd/",
+  "lib/swd/probes/",
+  "lib/swd/pyocd/",
+]
+extend-exclude = [
+  "conf.py",
+]
+target-version = "py39"
+lint.select = ["ALL"]
+lint.ignore = [
+  "COM812",   # Conflicts with the formatter
+  "ISC001",   # Conflicts with the formatter
+  "ANN101",   # "missing-type-self"
+  "PT001",    # https://github.com/astral-sh/ruff/issues/8796#issuecomment-1825907715
+  "PT004",    # https://github.com/astral-sh/ruff/issues/8796#issuecomment-1825907715
+  "PT005",    # https://github.com/astral-sh/ruff/issues/8796#issuecomment-1825907715
+  "PT023",    # https://github.com/astral-sh/ruff/issues/8796#issuecomment-1825907715
+  "TRY301",   # `raise` inside try-except block is allowed.
+
+  ## Temporary disable all violating rules. # TODO: (soon) Re-enable and fix violations:
+  "ANN001",
+  "ANN002",
+  "ANN003",
+  "ANN102",
+  "ANN201",
+  "ANN202",
+  "ANN204",
+  "ANN206",
+  "ARG001",
+  "ARG002",
+  "BLE001",
+  "C901",
+  "D100",
+  "D101",
+  "D102",
+  "D103",
+  "D104",
+  "D105",
+  "D107",
+  "D210",
+  "D417",
+  "DTZ005",
+  "E501",
+  "E722",
+  "EM101",
+  "EM102",
+  "ERA001",
+  "FBT001",
+  "FBT002",
+  "F841",
+  "FIX002",
+  "G003",
+  "G004",
+  "I001",
+  "N801",
+  "N802",
+  "N803",
+  "N806",
+  "N816",
+  "Q000",
+  "RET505",
+  "RUF005",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+  "PTH100",
+  "PTH103",
+  "PTH107",
+  "PTH109",
+  "PTH111",
+  "PTH112",
+  "PTH113",
+  "PTH118",
+  "PTH119",
+  "PTH120",
+  "PTH122",
+  "PTH123",
+  "S602",
+  "S603",
+  "SIM105",
+  "SIM108",
+  "SIM115",
+  "T201",
+  "TD002",
+  "TD003",
+  "TRY002",
+  "TRY003",
+  "TRY300",
+  "TRY400",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = [
+  "S101", # Use of `assert` detected
+  "D103", # Missing docstring in public function
+]
+"**/__init__.py" = [
+  "F401", # Imported but unused
+  "F403", # Wildcard imports
+]
+"docs/**" = [
+  "INP001",   # Requires __init__.py but docs folder is not a package.
+]
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`(https://github.com/astral-sh/ruff/issues/5434)
+keep-runtime-typing = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+disallow_untyped_defs = true # Functions need to be annotated
+warn_unused_ignores = true
+#? show_error_codes = true
+#?? pass_filenames = false # To allow mmultiple files "modpath.py" across sourcetree
+disable_error_code = "misc"
+exclude = [
+  "pi_base-\\d+", # Ignore temporary folder created by setuptools when building an sdist
+  "venv.*/",
+  "build/",
+  "dist/",
+  "lib/_import/",
+  "lib/_try1/",
+  "lib/cyclone/cycloneControlSDK_python/",
+  "lib/cyclone/cycloneControlSDK_python.git/",
+  "lib/cyclone/deploy/",
+  "lib/cyclone/downloads/",
+  "lib/swd/blackmagic/",
+  "lib/swd/cables/",
+  "lib/swd/openocd/",
+  "lib/swd/probes/",
+  "lib/swd/pyocd/",
+]
+
+[[tool.mypy.overrides]]
+module = [
+  # Ignore packages that do not provide type hints here
+  # For example, add "dash.*" to ignore all imports from Dash
+]
+ignore_missing_imports = true
+
+[tool.pyright]
+typeCheckingMode = "basic"
+# typeCheckingMode = "strict"
+include = [
+  "blank",
+  "lib",
+  "pi_base",
+]
+exclude = [
+  "pi_base-\\d+", # Ignore temporary folder created by setuptools when building an sdist
+  "venv.*/",
+  "build/",
+  "dist/",
+  "lib/_import/",
+  "lib/_try1/",
+  "lib/cyclone/cycloneControlSDK_python/",
+  "lib/cyclone/cycloneControlSDK_python.git/",
+  "lib/cyclone/deploy/",
+  "lib/cyclone/downloads/",
+  "lib/swd/blackmagic/",
+  "lib/swd/cables/",
+  "lib/swd/openocd/",
+  "lib/swd/probes/",
+  "lib/swd/pyocd/",
+  "**/node_modules",
+  "**/__pycache__",
+]
+# ignore = ["src/oldstuff"]
+# defineConstant = { DEBUG = true }
+stubPath = ".types"
+pythonVersion = "3.8" # check no python > 3.8 features are used
+# pythonPlatform = "Linux"
+# executionEnvironments = [
+#   { root = "src/web", pythonVersion = "3.5", pythonPlatform = "Windows", extraPaths = [ "src/service_libs" ] },
+#   { root = "src/sdk", pythonVersion = "3.0", extraPaths = [ "src/backend" ] },
+#   { root = "src/tests", extraPaths = ["src/tests/e2e", "src/sdk" ]},
+#   { root = "src" }
+# ]
+reportIncompatibleMethodOverride = false
+reportMissingImports = false
+reportMissingTypeStubs = false
+reportUnknownParameterType = false
+reportUntypedFunctionDecorator = false
+reportImportCycles = false
+reportMissingModuleSource = false
+reportPrivateUsage = false
+reportUnnecessaryIsInstance = false
+reportUnnecessaryComparison = false
+disableBytesTypePromotions = false
+reportMissingTypeArgument = false
+reportUnnecessaryCast = false
+reportUnnecessaryContains = false
+reportPrivateImportUsage = false
+reportUnnecessaryTypeIgnoreComment = false
+
+[tool.pytest.ini_options]
+addopts = """
+  -vv
+  --doctest-modules
+  --import-mode=append
+  --ignore-glob=pi_base-[0-9]*
+  --ignore="docs/_scripts"
+  --cov=pi_base
+  --cov-config=pyproject.toml
+  --cov-report=
+  """
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.paths]
+# Maps coverage measured in site-packages to source files in src
+source = ["pi_base", ".tox/*/lib/python*/site-packages/"]
+
+[tool.coverage.report]
+exclude_also = [
+  "\\.\\.\\.",
+  "if TYPE_CHECKING:"
+  ]
+partial_branches = [
+  "pragma: no branch",
+  "if not TYPE_CHECKING:"
+  ]
+
+[tool.coverage.html]
+directory = "reports/coverage_html"
+
+[tool.coverage.xml]
+output = "reports/coverage.xml"
