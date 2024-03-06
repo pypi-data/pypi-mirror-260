@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: qbee-gpio
+Version: 0.1.0
+Summary: Control an LCD display and amplifier relay for use in an AirPlay Raspberry Pi server.
+Home-page: https://github.com/gpajot/qbee-gpio
+License: MIT
+Author: Gabriel Pajot
+Author-email: gab@les-cactus.co
+Requires-Python: >=3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: asyncinotify (>=4.0,<4.1) ; python_version < "4"
+Requires-Dist: concurrent-tasks (>=1.7,<2)
+Requires-Dist: zenconfig[attrs,yaml] (>=2.1.0,<3)
+Project-URL: Repository, https://github.com/gpajot/qbee-gpio
+Description-Content-Type: text/markdown
+
+QBee gpio controller
+===========
+
+A python script to control an LCD display and relay for use in an AirPlay and/or MPD Raspberry Pi server. Check here for more information on the project: [http://www.instructables.com/id/QBee-AirPlay-MPD-integrated-speaker-Raspberry-Pi-s](http://www.instructables.com/id/QBee-AirPlay-MPD-integrated-speaker-Raspberry-Pi-s).
+
+## Dependencies
+
+* Pyinotify: [http://github.com/seb-m/pyinotify](http://github.com/seb-m/pyinotify)
+
+Optional:
+* https://github.com/mikebrady/shairport-sync
+* Or any other music player
+
+## Features
+
+* Detect sound ouput and turn on the amplifier power supply.
+* Get the track information and display it on a 16-pin LCD (currenlty works for Shairport and MPD).
+* Regularly check temperature and turn on power supply to start the fan.
+* Auto turn off amplifier power supply after set period of inactivity.
+
