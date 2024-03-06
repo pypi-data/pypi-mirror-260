@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mijnbib"
+version = "0.5.5"
+description = "Python API voor de website mijn.bibliotheek.be"
+readme = "README.md"
+authors = [{ name = "Ward Van Heddeghem", email = "wardvh@fastmail.fm" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["mijn bibliotheek", "bibliotheek"]
+dependencies = ["mechanize", "bs4", "requests"]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["black", "isort", "pytest", "ruff"]
+
+[project.urls]
+Homepage = "https://github.com/wvanhed/mijnbib"
+Changelog = "https://github.com/wvanhed/mijnbib/blob/main/changelog.md"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+# addopts = "--doctest-modules --doctest-continue-on-failure"
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 95 # same as Black
+
+[tool.ruff.lint]
+extend-select = [
+    "W", # warning
+    "B", # flake8-bugbear
+    # "SIM", # flake8-simplify, for simplified code
+]
