@@ -1,0 +1,65 @@
+[envs.default]
+dependencies = [
+  "coverage[toml]",
+  "pytest",
+  "pytest-cov",
+  "setuptools",
+]
+[envs.default.scripts]
+test = "pytest {args:tests}"
+cov = "pytest --cov=safpis --cov-branch --cov-report=xml:tests/coverage.xml --junitxml=tests/result.xml {args:tests}"
+
+[version]
+path = "safpis/__about__.py"
+source = "vcs"
+
+[build.hooks.vcs]
+version-file = "_version.py"
+
+[version.raw-options]
+local_scheme = "no-local-version"
+
+[envs.hatch-static-analysis]
+config-path = "ruff_defaults.toml"
+
+[envs.docs]
+description = """
+For building documentation
+"""
+dependencies = [
+  "Sphinx",
+  "setuptools",
+]
+[envs.docs.scripts]
+build = [
+    "sphinx-apidoc --output-dir docs/ safpis",
+    "make --directory docs/ clean",
+    "make --directory docs/ html",
+]
+watch = "watchmedo shell-command  --pattern '*.rst' --command 'make --directory docs html' --recursive --ignore-directories ."
+
+[envs.lint]
+description = """
+For running static tests
+"""
+dependencies = [
+  "mypy>=1.0.0",
+  "ruff>=0.0.243",
+]
+
+[[envs.lint.matrix]]
+python = ["3.11"]
+
+[envs.lint.scripts]
+typing = "mypy --install-types --non-interactive {args} safpis tests"
+linting = "ruff check {args} safpis tests"
+format = "ruff format --check {args} safpis tests"
+style = [
+  "typing",
+  "linting",
+  "format",
+]
+restyle = [
+  "ruff format {args} safpis tests",
+  "style",
+]
