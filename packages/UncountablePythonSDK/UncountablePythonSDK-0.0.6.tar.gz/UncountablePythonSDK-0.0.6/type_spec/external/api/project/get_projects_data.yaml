@@ -1,0 +1,86 @@
+$endpoint:
+    is_sdk: true
+    method: get
+    path: ${external}/project/external_get_projects_data
+    function: main.site.app.external.project.get_projects_data.get_projects_data
+    desc: "Gets either all data associated with a set of projects created in the platform.  Because Uncountables recipe structure is complex, various data values are exploded out to increase efficiency in parsing, and this page is paginated to prevent too large of return values"
+Arguments:
+    type: Object
+    properties:
+        project_ids:
+            type: List<Integer>
+            desc: "The projects to get the data from"
+        offset:
+            type: Optional<Integer>
+            desc: "Used for pagination. All pagination is done in order of Project ID"
+        limit:
+            type: Optional<Integer>
+            desc: "The number of data points to return. If not filled in, it will be set to 100, and cannot be set higher than 100"
+
+Field:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "A unique identifier for the field"
+        name:
+            type: String
+            desc: "The name of the field"
+        value_type:
+            type: String
+            desc: "The type of the field for instance whether it is numeric, text, categorical"
+
+FieldValue:
+    type: Object
+    properties:
+        field_id:
+            type: Integer
+            desc: "The unique ID for the field"
+        row_index:
+            type: Optional<Integer>
+            desc: "For table fields, which row of the table is the value on"
+        value:
+            type: JsonValue
+            desc: "The value for the field"
+
+ProjectDetailed:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "A unique identifier for the project. Used as foreign key to reference elsewhere."
+        name:
+            type: String
+            desc: "The name of the project"
+        material_family_id:
+            type: Integer
+            desc: "A unique identifier for the material family. Used as foreign key to reference elsewhere."
+        project_owner_id:
+            type: Optional<Integer>
+            desc: "The projects owner, as a user ID within the platform"
+        phase_id:
+            type: Optional<Integer>
+            desc: "The phase id corresponding to a phase workflow"
+        values:
+            type: List<FieldValue>
+            desc: "List of fields and values associated with the project"
+
+Phase:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "A unique identifier for the phase. Used as foreign key to reference elsewhere."
+        name:
+            type: String
+            desc: "The name of the phase"
+
+Data:
+    type: Object
+    properties:
+        projects:
+            type: List<ProjectDetailed>
+        phases:
+            type: List<Phase>
+        fields:
+            type: List<Field>

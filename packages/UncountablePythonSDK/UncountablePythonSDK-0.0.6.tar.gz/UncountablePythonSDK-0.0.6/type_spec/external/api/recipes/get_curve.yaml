@@ -1,0 +1,50 @@
+$endpoint:
+    is_sdk: true
+    method: get
+    path: ${external}/recipes/external_get_curve
+    function: main.site.app.external.recipes.get_curve.get_curve
+    desc: "Returns an array of values for the specified curve id."
+Arguments:
+    type: Object
+    properties:
+        recipe_output_id:
+            type: Integer
+            desc: "The recipe output ID to fetch the curve for. This must be a curve recipe output. Recipe Outputs can be found from external_get_recipes_data"
+
+CurveValue:
+    type: Object
+    properties:
+        index:
+            type: Integer
+            desc: "The index of the value in the curve"
+        quantity?:
+            type: Decimal
+            desc: "The value for the curve if the curve is a numeric curve"
+        quantity_timestamp?:
+            type: DateTime
+            desc: "The timestamp value if the curve is a timestamp curve in UTC"
+
+Curve:
+    type: Object
+    properties:
+        id:
+            type: Integer
+            desc: "The unique integer ID of the curve. Used for joining and identification elsewhere"
+        x_type:
+            type: String
+            desc: "The type of axis for the x-axis.  Options include numeric and timestamp"
+        x_values:
+            type: List<CurveValue>
+            desc: "The values for the x-axis"
+        y_type:
+            type: String
+            desc: "The type of axis for the y-axis.  Options include numeric"
+        y_values:
+            type: List<CurveValue>
+            desc: "The values for the y-axis"
+
+Data:
+    type: Object
+    properties:
+        curve:
+            type: Curve

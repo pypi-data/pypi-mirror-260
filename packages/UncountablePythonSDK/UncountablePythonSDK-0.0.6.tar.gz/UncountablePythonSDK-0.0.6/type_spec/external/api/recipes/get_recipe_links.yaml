@@ -1,0 +1,61 @@
+$endpoint:
+    is_sdk: true
+    method: get
+    path: ${external}/recipes/external_get_recipe_links
+    function: main.site.app.external.recipes.get_recipe_links.get_recipe_links
+    desc: "Gets the links for the passed recipes"
+
+RecipeLinkType:
+    type: StringEnum
+    values:
+        user_link:
+            label: Manual Link
+        child:
+            label: "Test Sample"
+        self:
+            label: "Self Link"
+        recipe_as_output:
+            label: "Analytical Sample"
+        control:
+            label: "Control Link"
+        intermediate_recipe:
+            label: "Used as Component Link"
+        previous_experiment:
+            label: "Previous Sample"
+
+Arguments:
+    type: Object
+    properties:
+        recipe_ids:
+            type: List<Integer>
+            desc: "Ids of the Recipes to retrieve links for"
+        depth:
+            type: Integer
+            desc: "How many layers deep to look for links"
+            default: 1
+        link_types:
+            type: Optional<List<RecipeLinkType>>
+            desc: "Optional filter to only desired link types"
+
+RecipeLink:
+    type: Object
+    hashable: true
+    properties:
+        recipe_id_from:
+            type: Integer
+            desc: "Identifier for the recipe"
+        recipe_id_to:
+            type: Integer
+            desc: "Identifier for the calculation"
+        link_type:
+            type: String
+            desc: "The type of the link, e.g. child"
+        name:
+            type: String
+            desc: "The name used for the link.  Max 20"
+
+Data:
+    type: Object
+    properties:
+        recipe_links:
+            type: List<RecipeLink>
