@@ -1,0 +1,23 @@
+###### USER VARIABLES
+# Confluence plugin
+export CONFLUENCE_PRIVATE_API_KEY="$confluence_private_api_key"
+export CONFLUENCE_SPACE_URL="$confluence_space_url"
+export CONFLUENCE_SPACE_KEY="$confluence_space_key"
+export CONFLUENCE_EMAIL_ADDRESS="$confluence_email_address"
+export CONFLUENCE_SPACE_NAME="$confluence_space_name"
+
+# OpenAI plugin
+export OPENAI_API_KEY="$openai_api_key"
+
+###### SYSTEM VARIABLES
+# Docker Compose
+export COMPOSE_PROJECT_NAME="$compose_project_name"
+export ENVRC_TEMPLATE_FILE="./lexi/system/envrc_template.txt"
+export LEXI_POSTGRES_USER="lexi"
+export LEXI_POSTGRES_PASSWORD="anothersupersecret"
+export LEXI_POSTGRES_DB="lexi"
+
+# LiteLLM Configuration
+export LITELLM_UI_USERNAME="$litellm_ui_username"
+export LITELLM_UI_PASSWORD="$litellm_ui_password"
+export LITELLM_LOG="$litellm_log" # Possible values; DEBUG, INFO, None
