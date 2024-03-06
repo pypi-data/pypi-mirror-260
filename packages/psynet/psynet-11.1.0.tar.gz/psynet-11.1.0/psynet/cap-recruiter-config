@@ -1,0 +1,21 @@
+
+ # If you don't want to use a crowdsourcing platform, set recruiter = generic.
+-recruiter = prolific
++# recruiter = prolific
+ currency = $
+ wage_per_hour = 12.0
+ 
+@@ -28,3 +28,13 @@ base_payment = 0.34
+ # debug_recruiter = DevLucidRecruiter
+ # lucid_recruitment_config = file:./lucid_recruitment_config.json
+ # show_reward = false
++
++[CAP-Recruiter]
++# When recruiting with CAP-Recruiter below settings need to be applied,
++# except for `debug_recruiter` which only needs to be set for debug mode.
++
++recruiter = staging-cap-recruiter
++# debug_recruiter = DevCapRecruiter
++# show_reward = false
++
++docker_image_base_name = docker.io/kqmqneyosi8e/cap-recruiter_staging

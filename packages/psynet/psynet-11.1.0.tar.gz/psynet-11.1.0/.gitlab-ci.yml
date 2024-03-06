@@ -1,0 +1,83 @@
+image: docker:25.0.3
+
+services:
+  - docker:25.0.3-dind
+  - postgres:12.2-alpine
+  - redis:latest
+
+variables:
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  POSTGRES_DB: dallinger
+  POSTGRES_USER: dallinger
+  POSTGRES_PASSWORD: ""
+  POSTGRES_HOST_AUTH_METHOD: trust
+  DATABASE_URL: postgresql://dallinger@postgres:5432/dallinger
+  REDIS_URL: redis://redis:6379
+  HEADLESS: "TRUE"
+  DOCKER_REGISTRY_BASE: registry.gitlab.com/psynetdev/psynet
+  DOCKER_IMAGE_CACHE_FROM: "$DOCKER_REGISTRY_BASE:master"
+  DOCKER_LOCAL_TAG: psynet-build
+  DOCKER_REMOTE_TAG: "$DOCKER_REGISTRY_BASE:$CI_COMMIT_REF_NAME"
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+before_script:
+  - export POSTGRES_IP=$(getent hosts postgres  | awk '{ print $1 }')
+  - export REDIS_IP=$(getent hosts redis  | awk '{ print $1 }')
+  - echo $POSTGRES_IP
+  - echo $REDIS_IP
+  - docker image prune --all --force
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker pull $DOCKER_IMAGE_CACHE_FROM || true
+  - docker build --cache-from $DOCKER_IMAGE_CACHE_FROM --tag $DOCKER_LOCAL_TAG .
+
+pre_commit:
+  image: python:3.12.2
+  before_script:
+    - pip install pre-commit
+  script:
+    - pre-commit run --all-files
+
+tests:
+  parallel: 10
+  stage: test
+  script:
+    - docker run
+      --add-host=postgres:$POSTGRES_IP
+      --add-host=redis:$REDIS_IP
+      -e HEADLESS=TRUE -e REDIS_URL -e DATABASE_URL -e POSTGRES_DB -e POSTGRES_USER -e POSTGRES_PASSWORD
+      -e AWS_ACCESS_KEY_ID -e AWS_DEFAULT_REGION -e AWS_SECRET_ACCESS_KEY
+      -e CI_NODE_TOTAL -e CI_NODE_INDEX
+      $DOCKER_LOCAL_TAG bash -c "bash run-ci-tests.sh"
+
+deploy_docker:
+  stage: deploy
+  script:
+    - echo "Pushing Docker image to $DOCKER_REMOTE_TAG..."
+    - docker tag "$DOCKER_LOCAL_TAG" "$DOCKER_REMOTE_TAG"
+    - docker push "$DOCKER_REMOTE_TAG"
+  only:
+    - tags
+    - master
+
+# To do:
+# - Skip tests if the changes are only in the docs directory
+# - The Docker build step in before_script is redundant if we're already using the pushed Docker image here
+pages:
+  image: $DOCKER_REMOTE_TAG
+  stage: deploy
+  needs: [deploy_docker]
+  script:
+    - pip install -U sphinx
+    - pip install furo
+    - pip install polib
+    - pip install sphinx-autodoc-typehints
+    - sphinx-build -b html docs public
+  artifacts:
+    paths:
+    - public
+  only:
+    - master
