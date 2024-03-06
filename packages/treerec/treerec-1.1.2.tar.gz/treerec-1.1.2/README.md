@@ -1,0 +1,99 @@
+# treerec
+
+`treerec` is a Python module which allows the user to record information about a directory tree and its contents. It provides a command-line interface for creating, navigating, updating, and saving "Trees", which record the file structure and metadata of files on the system.
+
+The primary use case is when there are many different devices whose files are being backed up to a single archive. By recording the files present on the devices, and linking the file in their Trees to the archive's Tree, you can keep track of where each file came from, where copies of it are being held, and which one is the most up-to-date.
+
+## Installation
+
+```bash
+pip install treerec
+```
+
+## Usage
+
+`treerec` can be executed from the command line,
+```bash
+python3 -m treerec
+```
+or in a Python interactive session through the `TreeObj_Cursor` class:
+```python
+from treerec import TreeObj_Cursor
+
+C = TreeObj_Cursor()
+C.execute('type command to be executed')
+C.mainloop()  # starts interactive session
+```
+
+For a more complete introduction to using `treerec`, see [Getting Started](https://github.com/JWMerritt/treerec/blob/main/Getting%20Started.md).
+
+While running an interactive session, type `help` to get a list of the most useful commands. Help is also available for each command individually with the `-h` flag.
+
+When you have a Tree loaded, you will be given an interactive prompt:
+```
+   |TreeName>
+```
+By default, a Tree name of `$` represents the host system. You have access to basic directory commands, such as `cd`, `ls`, and `pwd`.
+
+The Tree behaves like a directory tree. The contents of the Tree's files mirror the system's, but the Tree can be traversed independently of the system. By using `ls` on the current tree, you see the contents of the Tree's current directory:
+```
+   |TreeName> ls
+ x [] testdir
+ x    a.txt
+ x    b.txt
+ x    c.txt
+```
+Directories are marked with `[]`, and unrecorded entries are marked with `x`.  
+
+To record files to a Tree, a few variables must be set:
+- Session: every action to a Tree is associated with a named Session, to help keep track of when the changes occurred.
+- On-system: the Tree must be declared "on system"--meaning that the Tree is on the system that it is intended for--so we can be sure that the Tree's directory structure mirrors the system's.
+- Active: the Tree must be active for any changes to take place. This is to prevent any modification to a Tree that is only meant to be viewed.
+
+The "on-system" and "active" properties are indicated next to the Tree name prompt:
+```
+ ao|TreeName>
+ ```
+ 
+To record an entry, use:
+```
+ ao|TreeName> rec a.txt
+```
+The Tree now has unsaved data, indicated next to the Tree name prompt:
+```
+uao|TreeName>
+```
+We can now view the file's metadata, including an SHA256 hash:
+```
+  Name: a.txt
+  Type: file
+  Owner: User
+  Device: TestSystem
+- Tree Path: O:/a.txt
+- Nickname Path: (Root)/f.txt
+- OS Type: nt
+- Created: Sat Dec 30 15:07:41 2023
+- Modified: Sat Dec 30 15:07:41 2023
+- Accessed: Sun Jan  7 16:18:12 2024
+- Hash: 08618b41f001901ae45cba77aaa50ada1b1b7d28368f8af45560af4675388f37
+> Notes: 0
+> Ties: 0
+> History: 1
+> Recorded: Session "TreeName Session" @ Sun Jan 28 16:24:42 2024
+> Last modified: Session "TreeName Session" @ Sun Jan 28 16:24:42 2024
+```
+ 
+ We can also "tie" two files together, to indicate that they should be thought of as the same file, on two different systems:
+ ```
+ a |TreeName> tie a.txt SecondTree a.txt
+```
+
+```
+   |TreeName> ties a.txt
+
+>> a.txt <SecondSystem>
+   P:/a.txt
+   (Root)/a.txt
+   Session: Tying Session
+---------------
+```
