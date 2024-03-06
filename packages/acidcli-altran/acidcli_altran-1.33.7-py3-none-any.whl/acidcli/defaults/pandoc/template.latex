@@ -1,0 +1,174 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+
+\documentclass[
+  paper=a4,
+  ,captions=tableheading
+]{scrartcl}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage{amsmath}
+\usepackage{textcomp} % provide euro and other symbols
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{ulem}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+  filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
+  citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+$if(geometry)$
+  \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+$if(tables)$
+  \usepackage{longtable,booktabs}
+  \usepackage{calc} % for calculating minipage widths
+  % Correct order of tables after \paragraph or \subparagraph
+  \usepackage{etoolbox}
+  \makeatletter
+  \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+  \makeatother
+  % Allow footnotes in longtable head/foot
+  \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+  \makesavenoteenv{longtable}
+$endif$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+
+$if(title)$
+  \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+  \usepackage{etoolbox}
+  \makeatletter
+  \providecommand{\subtitle}[1]{% add subtitle to \maketitle
+    \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+  }
+  \makeatother
+  \subtitle{$subtitle$}
+$endif$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+
+
+%%
+%% Altran specifics
+%%
+
+%
+% (sub)section coloring
+%
+\definecolor{AltranBlue}{HTML}{3095b4}
+\addtokomafont{section}{\color{AltranBlue}}
+\addtokomafont{subsection}{\color{AltranBlue}}
+
+%
+% header and footer
+%
+$if(disable-header-and-footer)$
+$else$
+  \usepackage{lastpage}
+  \renewcommand\pagemark{{\thepage\ | \pageref{LastPage}}}
+
+  \usepackage{fancyhdr}
+  \fancypagestyle{altran-header-footer}{
+    \fancyhead[L]{}
+    \fancyhead[C]{}
+    \fancyhead[R]{\includegraphics[width=6cm]{$images_path$/logo.png}}
+    \fancyfoot[L]{\nouppercase{\leftmark}}
+    \fancyfoot[C]{\textbf{Capgemini Engineering Use Only}}
+    \fancyfoot[R]{\pagemark}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+  }
+
+  \pagestyle{altran-header-footer}
+$endif$
+
+\addtokomafont{section}{\clearpage}
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+%%
+%% End Altran specifics
+%%
+
+\begin{document}
+$if(title)$
+  \maketitle
+  $if(abstract)$
+    \begin{abstract}
+    $abstract$
+    \end{abstract}
+  $endif$
+$endif$
+
+$for(include-before)$
+  $include-before$
+$endfor$
+
+$if(toc)$
+  $if(toc-title)$
+    \renewcommand*\contentsname{$toc-title$}
+  $endif$
+  {
+    \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+    \setcounter{tocdepth}{$toc-depth$}
+    \tableofcontents
+  }
+$endif$
+
+$if(lot)$
+  \listoftables
+$endif$
+
+$if(lof)$
+  \listoffigures
+$endif$
+
+$if(linestretch)$
+  \setstretch{$linestretch$}
+$endif$
+
+$body$
+
+$for(include-after)$
+  $include-after$
+$endfor$
+
+\end{document}

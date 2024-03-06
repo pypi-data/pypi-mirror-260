@@ -1,0 +1,37 @@
+:root {
+    --capgemini-blue: #0070AD;
+    --vibrant-blue: #12ABDB;
+    --deep-purple: #2B0A3D;
+    --dark-grey: #272936;
+    --cool-grey: #E5E5E5;
+    --white: #FFFFFF;
+    {% if primary_color is defined %}
+    --primary-color: #{{primary_color}};
+    {% else %}
+    --primary-color: #2B0A3D;{% endif %}
+    {% if secondary_color is defined %}
+    --secondary-color: #{{secondary_color}};
+    {% else %}
+    --secondary-color: #E5E5E5;
+    {% endif %}
+}
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+.bg-primary {
+    background-color: var(--primary-color)!important;
+}
+.text-primary {
+    color: var(--primary-color)!important;
+}
+.bg-secondary {
+    background-color: var(--secondary-color)!important;
+}
+.img.gray {
+    -webkit-filter: grayscale(100%)!important;
+    filter: grayscale(100%)!important;
+}
+.card {
+    width: 18rem;
+    height: 100%;
+}
