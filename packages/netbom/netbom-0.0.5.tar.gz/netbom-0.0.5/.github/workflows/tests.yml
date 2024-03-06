@@ -1,0 +1,17 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set env
+        run: echo "PYTHONPATH=$PWD/src:$PYTHONPATH" >> "$GITHUB_ENV"
+      - name: install dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Run tests
+        run: make tests
