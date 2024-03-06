@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "credici"
+version = "0.1.7"
+description = "Python library for Credici"
+authors = ["bosketto"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.3.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.21"}
+asyncpg = "^0.28.0"
+pydantic-settings = "^2.1.0"
+psycopg = {extras = ["binary"], version = "^3.1.17"}
+pytest = "^8.0.0"
+pytest-cov = "^4.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
