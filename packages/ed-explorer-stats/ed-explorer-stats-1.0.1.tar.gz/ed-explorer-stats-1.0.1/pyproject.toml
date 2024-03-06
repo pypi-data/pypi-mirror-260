@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ed-explorer-stats"
+description = "Display interesting stats for Elite Dangerous explorers"
+readme = "README.md"
+dependencies = [
+	"colorama",
+]
+dynamic = ["version"]
+classifiers = [
+	"Development Status :: 4 - Beta",
+
+	"Environment :: Console",
+
+	"Intended Audience :: End Users/Desktop",
+
+	"License :: OSI Approved :: MIT License",
+
+	"Natural Language :: English",
+
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.10",
+
+	"Topic :: Games/Entertainment",
+]
+
+[project.urls]
+Homepage = "https://github.com/Treescrub/ED-Explorer-Stats"
+Repository = "https://github.com/Treescrub/ED-Explorer-Stats.git"
+
+[project.scripts]
+explorer-stats = "ed_explorer_stats.exploration_stats:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "ed_explorer_stats.exploration_stats.VERSION"}
