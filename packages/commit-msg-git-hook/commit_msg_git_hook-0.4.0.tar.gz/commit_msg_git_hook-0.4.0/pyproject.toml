@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "commit_msg_git_hook"
+version = "0.4.0"
+authors = [
+  { name="Lucio Meira David", email="lucio.meira@om30.com.br" },
+]
+description = "A set of tools to validate git Conventional Commit messages."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Development Status :: 4 - Beta",
+]
+keywords = ["commit-msg", "git", "git-hook", "git hook", "scan", "ci"]
+
+[project.urls]
+"Homepage" = "https://github.com/OM30/commit-msg-git-hook-package"
+"Bug Tracker" = "https://github.com/OM30/commit-msg-git-hook-package/issues"
