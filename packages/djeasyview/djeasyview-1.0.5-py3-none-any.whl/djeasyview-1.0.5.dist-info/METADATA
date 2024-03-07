@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: djeasyview
+Version: 1.0.5
+Author: Anand Raj
+Author-email: anand98.ar@gmail.com
+License: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: django
+Requires-Dist: djangorestframework
+
+# Dj Easy view CRUD mixins
+
+Makes your CRUD's even more smaller and customizable with dj easy views . 
+
+## Installation
+
+
+```
+pip install djeasyview
+```
+
+## Usage
+
+### List and create
+
+This mixin provides generic implementations for listing and creating resources.
+
+#### Example:
+
+```python
+from djeasyview import DjeasyListCreateView
+from your_app.models import YourModel
+from your_app.serializers import YourModelSerializer
+from rest_framework.permissions import IsAuthenticated
+
+class YourView(DjeasyListCreateView):
+    model = YourModel
+    list_serializer_class = YourModelSerializer
+    create_serializer_class = YourModelSerializer
+    serializer_class = YourModelSerializer
+    queryset = YourModel
+    permission_classes = [IsAuthenticated]
+```
+
+
+
+
+### Retrive , Update , Delete
+
+This mixin provides generic implementations for Retrive , updating and deleting resources.
+
+
+```python
+from djeasyview import DjeasyRetrieveUpdateApiView
+from your_app.models import YourModel
+from your_app.serializers import YourModelSerializer
+from rest_framework.permissions import IsAuthenticated
+
+class YourView(DjeasyRetrieveUpdateApiView):
+    model = YourModel
+    list_serializer_class = YourModelSerializer
+    create_serializer_class = YourModelSerializer
+    serializer_class = YourModelSerializer
+    queryset = YourModel
+    permission_classes = [IsAuthenticated]
+```
