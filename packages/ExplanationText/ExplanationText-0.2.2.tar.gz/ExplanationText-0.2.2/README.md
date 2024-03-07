@@ -1,0 +1,242 @@
+# Explanation Text Generator
+
+#### Update 22.01.24: currently landmark detection doesn't work and returns 'bad image data' error. We are working on fixing that
+
+##### Version of 22nd of January 2024
+
+Class to generate text explanations of image classifications 
+in different modes and with given main and part labels.
+
+## Main Usage
+### Package
+The current version of the package can be installed with pip using the following command:
+```
+pip install ExplanationText==0.2.1
+```
+The Explanation Generator can then be important with:
+```
+from explanation_text import ExplanationGenerator
+```
+### Individual Explanation Generation (GeoGuesser only)
+For a faster generation time, three functions where added to the main class to individually generate explanations
+for overview, medium and detailed. For the two longer versions, a fallback parameter is added. If true, the generator
+doesn't use any language models or the knowledge base to prepare the explanation. Only random template constructions
+are used. As the name suggests, this should only be a fallback variant if the language model takes way to long or can't
+be reached.
+#### Explanation usage
+First setup the generator class. Read more about it [here](#GeoGuessr-Mode-Usage).
+```
+explanation_generator = ExplanationGenerator(<api_token>, <google_api_token>, "ExplanationGeneratorGG")
+```
+Generate overview explanation
+```
+overview_text = explanation_generator.generate_overview_gg(<json_input_data>)
+```
+Generate medium or detailed explanation with optional *fallback* (default value is false)
+```
+medium_text = explanation_generator.generate_medium_gg(<json_input_data>, <fallback>)
+detailed_text = explanation_generator.generate_detailed_gg(<json_input_data>, <fallback>)
+```
+#### Return value
+The return value of the individual generation functions follows the format *{<overview/medium/detailed>:'explanation'}*.
+Example:
+```
+{'overview': 'The location of the image was classified as sweden.'}
+{'medium': 'The image was most likely taken in Sweden. The building that was detected in the image had a [...]'}
+{'detailed': "The image was classified as a swedish country. Sweden, formally the Kingdom of Sweden, is [...]'}
+```
+
+### Init Function
+
+To reduce loading times, you can initialise the language models using the *init_models* function:
+```
+from explanation_text import init_models
+init_models(<api_token>)
+```
+This function also uses the [HuggingFace API Token](https://huggingface.co/docs/hub/security-tokens) and can 
+be called at any time, even before creating an ExplanationGenerator object.
+
+
+### Combined Explanation
+After importing the Explanation Generator, the following two lines of code are sufficient.
+They are described in more details below:
+```
+explanation_generator = ExplanationGenerator(<api_token>, <mode>)
+explanation_text = explanation_generator.generate_explanation(<labels>)
+```
+First you have to create a ExplanationGenerator and set a explanation mode and 
+your [HuggingFace API Token](https://huggingface.co/docs/hub/security-tokens), if you want to use modes that uses their API.
+The different explanation modes can be found [here](#ExplanationModes). 
+If you leave it empty, the GeoGuesser method will be used. 
+Afterward you can call the *generate_explanation* method with your list of labels
+receive an explanation text. In order to generate multiple explanations, 
+*generate_explanation* can also handle lists of labels and returns a list 
+of individual explanation texts.
+You can set two more configurations with the constructor. *minimum_relevance* (default 0)
+filters part labels with a relevance percentage below that value and *maximum_part_count* (default 5)
+sets the number of maximum part labels that should be used for the explanation text.
+
+
+### GeoGuessr Mode Usage
+
+To use the GeoGuessr Mode, the mode has to be set to "ExplanationGeneratorGG". This mode
+is currently the default mode, so you don't have to set it manually.
+In order to use the Landmark Detection feature with this mode, you also have to provide the
+Google API Key in the constructor of the ExplanationGenerator. However, the GeoGuessr
+Mode can also be used without Landmark Detection.
+```
+explanation_generator = ExplanationGenerator(<api_token>, <google_api_token>, "ExplanationGeneratorGG")
+```
+The Google Vision API Key can be created using a free trial account on [Google Cloud Platform](https://cloud.google.com/apis/docs/getting-started?hl=de).
+You simply have to create a new project and enable the Google Vision API. Then you can create
+an API key in the credentials section of the project.
+
+## Input Format
+The following json files are examples of the current format for the labels that serve as 
+input for the explanation generator. 
+In addition to the image (img), the input contains a list of objects. Each object has a label,
+a heatmap and a list of parts. Optionally, the object can also contain a probability.
+Each part contains an image, an optional relevancy, a position and a list of labels.
+The labels are a dictionary with a main label as key and a list of part labels as value.
+Example Portugal:
+```json
+{
+    "img": "base64",
+        "objects" : [
+            {
+                "heatmap": "image",
+                "label": "portugal",
+		        "probability": 0.9,
+                "parts": [
+                  {
+                    "img": "base64",
+                    "relevancy": 0.3,
+                    "rect": "",
+                    "labels": {
+                      "portugal": [
+                        "hills"
+                      ]
+                    }
+                  },
+                  {
+                    "img": "base64",
+                    "relevancy": 0.4,
+                    "rect": "",
+                    "labels": {
+                      "portugal": [
+                        "traffic light"
+                      ]
+                    }
+                  },
+                                    {
+                    "img": "base64",
+                    "relevancy": 0.45,
+                    "rect": "",
+                    "labels": {
+                      "portugal": [
+                        "building"
+                      ]
+                    }
+                  }
+                ]
+            }
+        ]
+    }
+```
+Example Germany:
+```json
+{
+    "img": "base64",
+        "objects" : [
+            {
+                "heatmap": "image",
+                "label": "germany",
+		        "probability": 0.9,
+                "parts": [
+                  {
+                    "img": "base64",
+                    "relevancy": 0.3,
+                    "rect": "",
+                    "labels": {
+                      "germany": [
+                        "apartments"
+                      ]
+                    }
+                  },
+                  {
+                    "img": "base64",
+                    "relevancy": 0.5,
+                    "rect": "",
+                    "labels": {
+                      "germany": [
+                        "traffic light"
+                      ]
+                    }
+                  },
+                                    {
+                    "img": "base64",
+                    "relevancy": 0.5,
+                    "rect": "",
+                    "labels": {
+                      "germany": [
+                        "building"
+                      ]
+                    }
+                  }
+                ]
+            }
+        ]
+    }
+```
+
+
+## Test Bench Usage
+To test the different explanation methods, we created a test bench. Function *test_json_file* can read json files that follow
+the format of the [input format](#input-format), parses them and prints the resulting explanations. In order to compare
+the fallback texts to the language model results, the function *test_json_file_fallback_comparision* can be used.
+If you want to add extra json files for testing, put them into the folder *test_data* and add them to the list of file
+names as seen below. Before committing the file, please run *remove_img_data_from_json* once in order to remove unnecessary
+image data from the file.
+```
+# TestBench Demo
+testBench = TestBench('test_data', "api_keys.json", mode="ExplanationGeneratorGG")
+
+# add new test data filenames here
+example_data_files = ["argentina.json", "australia.json", "france.json", "india.json", "sweden.json"]
+
+# clear img data from test files if necessary
+testBench.remove_img_data_from_json(example_data_files[0])
+
+# run test by setting index
+testBench.test_json_file_fallback_comparision(example_data_files[4])
+```
+
+
+
+### ExplanationGeneratorGG
+This mode is used to generate Explanation Texts for explanations of 
+GeoGuessr images. The structure of the mode and its components can be found in 
+the Language Model V3 PDF file.
+
+Example of current version:
+```
+'overview': 'The image was classified as being located in Germany.', 
+'germany': {
+    'medium': 
+        'The model classified the image as Germany with a high degree of confidence.
+         The location of the image was primarily identified based on the presence of 
+         a traffic light, a building, and apartments. The relevance of the different
+         elements of the image was also taken into consideration, with the traffic light
+         having a high relevance, the building having a moderate relevance, and the 
+         apartments having a low relevance.', 
+    'detailed': 
+        'The model classified the image as Germany with a high degree of certainty.
+         Germany is a country in the western region of Central Europe. The traffic light
+         in the image was relevant for the classification. The image contained buildings
+         that had a high relevancy, and the location of the image was identified due to 
+         the presence of apartments with a medium relevancy. In urban Germany, apartment 
+         buildings are a common sight. They typically line the streets and are three to five
+         storeys high. The apartments are usually bland in color and have a simple layout,
+         with kitchens, bathrooms, and living rooms on different floors.'
+         }
+```
