@@ -1,0 +1,7 @@
+"""Module containing common data to be reused accross modules"""
+from eumdac.__version__ import __title__, __documentation__, __version__
+
+headers = {
+    "referer": __documentation__,
+    "User-Agent": str(__title__ + "/" + __version__),
+}
