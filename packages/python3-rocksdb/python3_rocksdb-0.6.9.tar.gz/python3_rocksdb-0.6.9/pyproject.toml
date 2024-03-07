@@ -1,0 +1,24 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python3_rocksdb"
+version = "0.6.9"
+authors = [
+  { name="Daniel Siegmann", email="dsiegmann@bluewin.ch" },
+]
+description = "Python bindings for RocksDB"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/chainlaboratory/python-rocksdb"
