@@ -1,0 +1,17 @@
+[build-system]
+requires = ["flit_core"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "gguf-container"
+authors = [{name = "calcuis", email = "info@calcu.io"}]
+description = "gguf-container (core + local frontend)"
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version"]
+dependencies = ["gguf-core"]
+
+[project.urls]
+Homepage = "https://github.com/calcuis/container-smart-contract"
+Issues = "https://github.com/calcuis/container-smart-contract/issues"
