@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: anodilib
+Version: 0.1.0
+Summary: Python library ANODI for Time Series Anomaly Detection
+License: Proprietary
+Author: Daniil Kaminskyi
+Author-email: daniil.kaminskyi@tu-dortmund.de
+Requires-Python: >=3.10,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: captum (>=0.7.0,<0.8.0)
+Requires-Dist: dill (>=0.3.7,<0.4.0)
+Requires-Dist: fastai (>=2.7.12,<3.0.0)
+Requires-Dist: ipykernel (>=6.25.2,<7.0.0)
+Requires-Dist: matplotlib (>=3.7.1,<4.0.0)
+Requires-Dist: more-itertools (>=10.1.0,<11.0.0)
+Requires-Dist: nbformat (>=5.8.0,<6.0.0)
+Requires-Dist: numpy (>=1.24.3,<2.0.0)
+Requires-Dist: pandas (>=2.0.1,<3.0.0)
+Requires-Dist: plotly (>=5.14.1,<6.0.0)
+Requires-Dist: pyarrow (>=12.0.0,<13.0.0)
+Requires-Dist: scikit-learn (>=1.2.2,<2.0.0)
+Requires-Dist: scipy (>=1.9.3,<2.0.0)
+Requires-Dist: torch (>=2.0.0,<3.0.0)
+Requires-Dist: tsai (>=0.3.7,<0.4.0)
+Description-Content-Type: text/markdown
+
+# ANODI
+
+This is the Python library **ANODI** for Time Series Anomaly Detection. It offers easy access to algorithms and benchmark data.
+
+## Dev Installation
+
+This package is built using poetry, run the following code to install an editable version of the package for development
+```
+pip install poetry
+poetry install
+```
+
+## Extenstions installation
+
+Look for VSCode Flake8 extension to make sure pipeline doesn't fail at the lint stage
