@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: glue-utils
+Version: 0.1.0
+Summary: Reusable utilities for working with Glue PySpark jobs
+License: MIT
+Author: Noel Llevares
+Author-email: dashmug@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# glue-utils
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+## Description
+
+Reusable utilities for working with Glue PySpark jobs
+
+## Installation
+
+```
+pip install glue-utils
+```
+
+## Usage
+
+```python
+from glue_utils.context import ManagedGlueContext
+
+options = getResolvedOptions(sys.argv, [])
+with ManagedGlueContext(options=options) as glue_context:
+    dyf = extract(
+        glue_context=glue_context,
+        path="s3://awsglue-datasets/examples/us-legislators/all/persons.json",
+    )
+    dyf.printSchema()
+```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
