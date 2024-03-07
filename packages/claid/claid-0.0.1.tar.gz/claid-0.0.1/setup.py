@@ -1,0 +1,44 @@
+from setuptools import setup, find_packages
+
+setup(
+    name='claid',
+    version='0.0.1',    
+    description='A example Python package',
+    url='https://claid.ch',
+    author='Patrick Langer',
+    author_email='planger@ethz.ch',
+    license='Apache 2',
+    packages=find_packages(),
+    include_package_data=True,
+    install_requires=['protobuf',
+                      'grpcio',
+                      'numpy',      
+                      'matplotlib',      
+                      'opencv-python'   
+                      ],
+
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Healthcare Industry',
+        'Intended Audience :: Information Technology',
+        'License :: OSI Approved :: Apache Software License',  
+        'Operating System :: Android',
+        'Operating System :: MacOS',
+        'Operating System :: POSIX :: Linux',        
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: Unix',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+    ],
+    python_requires='>=3.7',
+
+    entry_points='''
+        [console_scripts]
+        claid=claid.claid_cli:main
+    ''',
+
+)
