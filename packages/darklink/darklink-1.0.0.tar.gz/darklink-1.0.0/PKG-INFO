@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: darklink
+Version: 1.0.0
+Summary: A tool to quickly transfer a file to or from a compromised system
+Home-page: https://github.com/vedard/darklink
+License: GPL-3.0-only
+Keywords: security,pentesting,ctf,tool
+Author: vedard
+Requires-Python: >=3.11,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Security
+Requires-Dist: click (>=8.1.7,<9.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Description-Content-Type: text/markdown
+
+# darklink
+
+A tool to quickly transfer a file to or from a compromised system during security assessments.
+
+## Features
+
+Unlike `python3 -m http.server` darklink will:
+
+- Generate the command for you to copy and paste on the compromised host.
+- Expose only the specific file you want to transfer, rather than the entire working directory.
+- Automatically fetch and transfer the latest versions of commonly used tools (e.g., winPEAS, linPEAS, mimikatz).
+- Allow you to exfiltrate files from the compromised host to your machine.
+
+![Tool Transfer](./docs/screenshots/drop-tool.png)
+
+
+## Install
+
+```bash
+pip3 install darklink
+```
+
+## Usage
+
+- Transfering a file
+
+    ```bash
+    darklink drop --file ./exploits/gameoverlay.sh
+    ```
+
+- Transfering one of the provided tools
+
+    ```bash
+    darklink drop --tool sharphound
+    darklink drop --tool linpeas
+    darklink drop --tool chisel --platform linux
+    darklink drop --tool chisel --platform windows --arch 386
+    ```
+
+- Exfiltration
+
+    ```bash
+    darklink exfil --file 20240302144505_BloodHound.zip
+    ```
+
+### Provided tools
+
+| Tool         | Description                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| chisel       | Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH.                                                                          |
+| LaZagne      | The LaZagne project is an open source application used to retrieve lots of passwords stored on a local computer.                                  |
+| LinEnum      | Scripted Local Linux Enumeration & Privilege Escalation Checks.                                                                                   |
+| mimikatz     | A little tool to play with Windows security. It's now well known to extract plaintexts passwords, hash, PIN code and kerberos tickets from memory |
+| winPEAS      | Windows local Privilege Escalation Awesome Script.                                                                                                |
+| linPEAS      | Linux local Privilege Escalation Awesome Script.                                                                                                  |
+| PrivescCheck | Privilege Escalation Enumeration Script for Windows.                                                                                              |
+| pspy         | Monitor linux processes without root permissions.                                                                                                 |
+| RunasCs      | RunasCs is an utility to run specific processes with different permissions than the user's current logon provides using explicit credentials.     |
+| SharpHound   | C# Data Collector for BloodHound.                                                                                                                 |
+| AccessChk    | AccessChk is a command-line tool for viewing the effective permissions on files, registry keys, services, processes, kernel objects, and more.    |
+| Procdump     | This command-line utility is aimed at capturing process dumps of otherwise difficult to isolate and reproduce CPU spikes.                         |
+| PsExec       | Execute processes on remote systems.                                                                                                              |
+

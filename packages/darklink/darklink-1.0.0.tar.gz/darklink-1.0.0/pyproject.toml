@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "darklink"
+version = "1.0.0"
+description = "A tool to quickly transfer a file to or from a compromised system"
+license = "GPL-3.0-only"
+authors = ["vedard"]
+readme = "README.md"
+homepage = "https://github.com/vedard/darklink"
+keywords = ["security", "pentesting", "ctf", "tool"]
+classifiers = [
+    "Topic :: Security"
+]
+
+[tool.poetry.scripts]
+darklink = 'darklink.cli:main'
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.0.0"
+autoflake = "^2.3.0"
+autopep8 = "^2.0.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
