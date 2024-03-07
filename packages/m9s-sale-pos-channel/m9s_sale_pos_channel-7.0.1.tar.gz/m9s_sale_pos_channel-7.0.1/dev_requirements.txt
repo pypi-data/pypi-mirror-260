@@ -1,0 +1,11 @@
+# Install development requirements
+
+tox
+coverage
+coverage-badge
+flake8
+
+-r requirements.txt
+
+# extra_depends must be installed to make the tests happy (test_view)
+git+https://github.com/mbehrle/trytond-sale_margin.git@7.0

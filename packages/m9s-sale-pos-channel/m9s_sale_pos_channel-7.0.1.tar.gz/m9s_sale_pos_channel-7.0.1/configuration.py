@@ -1,0 +1,67 @@
+# The COPYRIGHT file at the top level of this repository contains the full
+# copyright notices and license terms.
+from trytond import backend
+from trytond.model import fields
+from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval, Id
+
+
+def default_func(field_name):
+    @classmethod
+    def default(cls, **pattern):
+        return getattr(
+            cls.multivalue_model(field_name),
+            'default_%s' % field_name, lambda: None)()
+    return default
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'sale.configuration'
+    pos_sequence = fields.MultiValue(fields.Many2One(
+        'ir.sequence.strict', "POS Sequence", required=True,
+        domain=[
+            ('company', 'in',
+                [Eval('context', {}).get('company', -1), None]),
+            ]))
+    ticket_report = fields.Many2One('ir.action.report', "Ticket Report",
+        required=True)
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'pos_sequence':
+            return pool.get('sale.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
+
+    default_pos_sequence = default_func('pos_sequence')
+
+    @classmethod
+    def default_ticket_report(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('sale_pos', 'report_sale_ticket')
+        except KeyError:
+            return None
+
+
+class ConfigurationSequence(metaclass=PoolMeta):
+    __name__ = 'sale.configuration.sequence'
+    pos_sequence = fields.Many2One(
+        'ir.sequence.strict', "Sale POS Sequence", required=True,
+        domain=[
+            ('company', 'in',
+                [Eval('context', {}).get('company', -1), None]),
+            ('sequence_type', '=', Id('sale_pos_channel',
+                    'sequence_type_sale_pos_channel')),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def default_pos_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('sale_pos', 'sequence_sale_pos_channel')
+        except KeyError:
+            return None
