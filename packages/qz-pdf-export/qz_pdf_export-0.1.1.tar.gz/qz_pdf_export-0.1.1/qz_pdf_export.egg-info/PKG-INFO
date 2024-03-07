@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: qz-pdf-export
+Version: 0.1.1
+Summary: 方便快捷的pdf导出工具
+Home-page: 
+Author: qz
+Author-email: 2902934039@qq.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+新加PdfAdmin,如有需要导出pdf的admin直接继承PdfAdmin
+如需在列表添加查看pdf功能，在list_display中添加'pdf_show'字段
+
+```python
+@admin.register(TodoItem)
+class TodoItemAdminBase(PdfAdmin):
+    list_display = ('title', 'assignee', 'created_at', 'updated_at', 'is_completed', 'pdf_show')
+    list_filter = ('created_at', 'updated_at', 'assignee')
+    search_fields = ('title', 'assignee')
+    # pdf要显示的字段
+    # 注：每行最多放两个字段
+    pdf_fields = (('组标题', {('title', 'assignee')}), 'handler', ('时间', {('created_at',)}), 'type')
+    # pdf标题
+    pdf_title = '策略申请表'
+    # 要显示所有选项的字段
+    option_fields = ['type', ]
+    # 左右上方小标题
+    left_tip = '编号AAA'
+    right_tip = '编号BBB'
+    # 如有其他需求，可以自定义pdf_template，继承base_pdf_template.html，添加需要的模块
+```
+
+![img.png](example_png/img.png)
+
