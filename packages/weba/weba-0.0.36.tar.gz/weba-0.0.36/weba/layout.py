@@ -1,0 +1,146 @@
+import json
+import pathlib
+from typing import TYPE_CHECKING, Any, NotRequired, Optional, Unpack
+
+from weba import HTML, HTMLKwargs, env, ui
+
+from bs4 import NavigableString
+
+if TYPE_CHECKING:
+    from bs4 import BeautifulSoup
+
+    from .component import Component, Tag, TagContextManager
+
+
+def load_manifest(name: str) -> dict[str, Any]:
+    if not env.is_prd:
+        return {}
+
+    manifest = pathlib.Path(f"dist/manifest-{name}.json").read_text()
+
+    return json.loads(manifest)
+
+
+class LayoutKwargs(HTMLKwargs):
+    header: NotRequired["Component"]
+    main: NotRequired["Component"]
+    footer: NotRequired["Component"]
+
+
+class Layout(HTML):
+    src = """--html
+        <!doctype html>
+        <html lang="en-US">
+
+        <head>
+            <title>Weba</title>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </head>
+
+        <body>
+            <header/>
+            <main />
+            <footer />
+        </body>
+
+        </html>
+    """
+
+    header: "Tag"
+    main: "Tag"
+    footer: "Tag"
+
+    manifest: dict[str, Any] = load_manifest("main")
+
+    title = "Weba"
+
+    lang = "en-US"
+
+    def __init__(self, *_args: Any, **kwargs: Unpack[LayoutKwargs]):
+        self.lang = kwargs.get("lang", self.__class__.lang)
+        self.title = kwargs.get("title", self.__class__.title)
+        self._last_component: Optional["Component"] = None
+
+    def render(self):
+        super().render()
+
+        if env.is_prd:
+            self.remove_tags("script")
+            self.remove_tags("link")
+
+            # loop over key value pairs in manifest and append to head
+            for _, info in self.manifest.items():
+                js_file = info["file"]
+                css_files = info.get("css", [])
+
+                self.body.append(ui.script(src=f"/{js_file}", type="module"))
+
+                for css_file in css_files:
+                    self.head.append(ui.link(href=f"/{css_file}", rel="stylesheet", type="text/css"))
+
+                # NOTE: Until we have proper critical css detection this will slow down the page load using hx-boost
+                # for css_file in css_files:
+                #     css = pathlib.Path(f"dist/{css_file}").read_text()
+                #     self.head.append(ui.style(css))
+        else:
+            for script in self.select("script"):
+                script["src"] = f"{env.script_dev_url_prefix}/{script['src']}"
+
+    def remove_tags(self, tag_name: str):
+        for tag in self.select(tag_name):
+            tag.decompose()
+
+    def add(self, page: "Component | BeautifulSoup"):
+        # NOTE: If we have already called #add, then we don't need to add it again with #_last_component
+        self._last_component = None
+
+        header = page.find("header", recursive=False)
+        footer = page.find("footer", recursive=False)
+        main = page.find("main", recursive=False) or page
+
+        if self.header and header:
+            self.add_content(self.header, "header", header.extract())
+
+        if self.footer and footer:
+            self.add_content(self.footer, "footer", footer.extract())
+
+        self.add_content(self.main, "main", main)
+
+    def add_content(self, tag: "Tag", tag_name: str, content: "NavigableString | Tag | TagContextManager"):
+        if isinstance(content, NavigableString):
+            content = ui.div(content).find().extract()
+
+        if content.name == tag_name:
+            classes = tag["class"]
+            attrs = tag.attrs or {}
+
+            self.replace_content(tag, content, classes, attrs)
+        else:
+            tag.append(content)
+
+    def replace_content(self, tag: "Tag", content: "Tag | TagContextManager", classes: Any, attrs: dict[str, Any]):
+        classes = content["class"] if content.has_attr("class") else []
+
+        if classes:
+            for class_ in classes:
+                if class_ not in classes:
+                    classes.append(class_)
+
+        child_main_attrs = content.attrs
+
+        tag.replace_with(content)
+        tag.attrs = attrs
+        tag.attrs.update(child_main_attrs)
+        tag["class"] = classes
+
+    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) -> None:
+        # Automatically add the last component if it exists
+        if self._last_component:
+            self.add(self._last_component)
+
+        super().__exit__(exc_type, exc_value, traceback)
+
+    def _add_component(self, component: "Component") -> None:
+        """Method to add a component to the layout."""
+        self._last_component = component
