@@ -1,0 +1,60 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "lingva"
+authors = [
+    {name = "Wichert Akkerman", email = "wichert@wiggy.net"},
+]
+maintainers = [
+    { email = "ark@cho.red", name = "Arkadii Yakovets" },
+]
+
+readme = "README.rst"
+dynamic = ["version", "description"]
+license = {file = "LICENSE"}
+keywords = ["translation", "po", "gettext", "Babel"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: DFSG approved",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "click >= 8.0.3",
+    "polib >= 1.1.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black >= 22.1.0",
+    "flake8 >= 4.0.1",
+    "pytest >=7.0.1",
+]
+chameleonextractor = ["Chameleon"]
+
+[project.scripts]
+polint = "lingva.polint:main"
+pot-create = "lingva.extract:main"
+
+[project.entry-points."lingva.extractors"]
+python = "lingva.extractors.python:PythonExtractor"
+chameleon = "lingva.extractors.xml:ChameleonExtractor"
+xml = "lingva.extractors.xml:ChameleonExtractor"
+zope = "lingva.extractors.xml:ZopeExtractor"
+zcml = "lingva.extractors.zcml:ZCMLExtractor"
+
+
+[project.urls]
+homepage = "https://github.com/vacanza/lingva"
+tracker = "https://github.com/vacanza/lingva/issues"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+norecursedirs = ".git tmp* .eggs bin build include lib share src"
