@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: srspy
+Version: 0.0.3
+Summary: A package for simple experiment run tracing.
+Project-URL: Homepage, https://github.com/nlandolfi/srspy
+Author-email: "N. C. Landolfi" <crews.fixture.0f@icloud.com>
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: numpy
+Requires-Dist: python-dateutil
+Description-Content-Type: text/markdown
+
+srspy
+-----
+
+A package for simple research experiment tracing. Python 3.
+
+```bash
+pip install srspy
+```
+
+For example,
+```python
+from srspy import RunTrace
+
+# ...
+
+r = RunTrace(name="train_model", data={
+    "epochs": epochs,
+    "batch_size": batch_size,
+    "p": p,
+    "λ": lamb,
+    "optimizer": "adam",
+    "lr": 0.0001,
+    "gpu": GPU,
+    "bias": bias,
+}, log_dir="./runs")
+
+# ...
+
+for epoch in ...:
+    # ...
+    r.flush(data={"epoch_loss": epoch_loss})
+
+# ...
+r.close()
+
+# later
+l = RunTraceLog(r.log_file_path)
+losses, timestamps = l.metric("epoch_loss")
+```
