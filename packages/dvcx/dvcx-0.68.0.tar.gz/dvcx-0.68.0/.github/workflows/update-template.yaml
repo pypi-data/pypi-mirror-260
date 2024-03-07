@@ -1,0 +1,22 @@
+name: Update template
+
+on:
+  schedule:
+    - cron: '5 1 * * *'  # every day at 01:05
+
+  workflow_dispatch:
+    inputs:
+      token:
+        description: 'GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Update template
+        uses: iterative/py-template@main
+        with:
+          token: ${{ inputs.token || secrets.GITHUB_TOKEN }}
