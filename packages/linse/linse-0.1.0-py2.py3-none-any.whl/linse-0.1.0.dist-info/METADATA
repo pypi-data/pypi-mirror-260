@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: linse
+Version: 0.1.0
+Summary: Linguistic sequence manipulation
+Home-page: https://github.com/lingpy/linse
+Author: Johann-Mattis List and Robert Forkel
+Author-email: robert_forkel@eva.mpg.de
+License: Apache 2.0
+Keywords: data,linguistics
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: build ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: pytest (>=5) ; extra == 'test'
+Requires-Dist: pytest-mock ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+
+# linse
+
+[![Build Status](https://github.com/lingpy/linse/workflows/tests/badge.svg)](https://github.com/lingpy/linse/actions?query=workflow%3Atests)
+[![PyPI version](https://badge.fury.io/py/lingpy.png)](https://badge.fury.io/py/lingpy)
+
+The `linse` package implements functionality to manipulate **lin**guistic **se**quences,
+i.e. lists of tokens created by segmenting text.
