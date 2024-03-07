@@ -1,0 +1,73 @@
+"""Persistent configuration stored in standard user data directories"""
+from enum import Enum
+import os
+import platform
+import yaml
+from pathlib import Path
+from typing import Optional
+
+from pydantic import BaseModel, ConfigDict
+
+
+def _platform_data_dir() -> Path:
+    if platform.system() == "Windows":
+        return Path(os.environ["LOCALAPPDATA"])
+    else:
+        xdg_data_home = os.environ.get("XDG_DATA_HOME")
+        if xdg_data_home:
+            return Path(xdg_data_home)
+        return Path("~").expanduser() / ".local" / "share"
+
+
+data_dir = _platform_data_dir() / "shroudstone"
+data_dir.mkdir(parents=True, exist_ok=True)
+config_file = data_dir / "config.yaml"
+
+DEFAULT_1v1_FORMAT = "{time:%Y-%m-%d %H.%M} {result:.1} {duration} {us} {f1:.1}v{f2:.1} {them} - {map_name}.SGReplay"
+DEFAULT_GENERIC_FORMAT = "{time:%Y-%m-%d %H.%M} {duration} {players_with_factions} - {map_name}.SGReplay"
+"""Default format string for new 1v1 replay filenames"""
+
+
+class Strategy(Enum):
+    prefer_stormgateworld = "prefer_stormgateworld"
+    """Obtain from Stormgate World if available, otherwise determine from replay."""
+    always_stormgateworld = "always_stormgateworld"
+    """Obtain from Stormgate World if available, otherwise record Unknown."""
+    always_replay = "always_replay"
+    """Always determine from replay."""
+
+    def allows_stormgateworld(self):
+        return (
+            self == Strategy.prefer_stormgateworld
+            or self == Strategy.always_stormgateworld
+        )
+
+    def __str__(self):
+        return self.value
+
+
+
+class Config(BaseModel):
+    replay_dir: Optional[Path] = None
+    replay_name_format_1v1: str = DEFAULT_1v1_FORMAT
+    replay_name_format_generic: str = DEFAULT_GENERIC_FORMAT
+    duration_strategy: Strategy = Strategy.prefer_stormgateworld
+    result_strategy: Strategy = Strategy.prefer_stormgateworld
+
+    @staticmethod
+    def load():
+        if config_file.exists():
+            with config_file.open("rt", encoding="utf-8") as f:
+                content = yaml.load(f, Loader=yaml.SafeLoader)
+                # Migrate old configs:
+                if "replay_name_format" in content:
+                    content["replay_name_format_1v1"] = content["replay_name_format"]
+                return Config.model_validate(content)
+        else:
+            return Config()
+
+    def save(self):
+        with config_file.open("wt", encoding="utf-8") as f:
+            yaml.dump(self.model_dump(mode="json"), f, width=float("inf"))
+
+    model_config = ConfigDict(extra="ignore")
