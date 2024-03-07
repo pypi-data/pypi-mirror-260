@@ -1,0 +1,23 @@
+[project]
+name = "pytest-mitmproxy"
+description = "pytest plugin for mitmproxy tests"
+version = "1.0.4"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=7.0",
+    "mitmproxy>=10.0",
+    "psutil>=5.0",
+]
+
+license = { text = "MIT" }
+authors = [
+    { name = "funcdefmain", email = "741132517@qq.com" },
+]
+readme = "README.md"
+
+[project.scripts]
+"mitm_install_cert" = "pytest_mitmproxy.install_cert:install"
+[project.entry-points.pytest11]
+pytest_mitmproxy = 'pytest_mitmproxy.plugin'
+[tool.pdm]
+distribution = true
