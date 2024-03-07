@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: cellmean
+Version: 1.0.0
+Author: TAWSIF AHMED
+Author-email: sleeping4cat@outlook.com
+Description-Content-Type: text/markdown
+Requires-Dist: scikit-learn
+Requires-Dist: scikit-image
+Requires-Dist: matplotlib
+Requires-Dist: pillow
+
+# Function Usage Guide
+
+This guide provides instructions on how to use two sets of image processing functions in Python. The first set focuses on cell segmentation, while the second set includes functions for denoising images and converting them to grayscale.
+
+## Cell Segmentation Functions
+
+### Required Libraries
+- `os`
+- `numpy`
+- `skimage`
+- `sklearn`
+- `matplotlib`
+
+### Functions:
+1. **cell_segment(image_path, num_clusters=4)**: Segments cells in an image using K-means clustering.
+    - `image_path`: Path to the input image file.
+    - `num_clusters`: Number of clusters for K-means clustering (default is 4).
+    - Returns: Segmented image array.
+
+2. **img_save(segmented_image, save_path, image_path)**: Saves the segmented image to a specified location.
+    - `segmented_image`: Segmented image array.
+    - `save_path`: Path to the folder where the segmented image will be saved.
+    - `image_path`: Path to the original image file.
+
+3. **plot_img(segmented_image)**: Plots the segmented image.
+    - `segmented_image`: Segmented image array.
+
+4. **cell_folder(input_folder, output_folder, num_clusters=4)**: Segments cells in all images within a folder and saves the results.
+    - `input_folder`: Path to the folder containing input images.
+    - `output_folder`: Path to the folder where segmented images will be saved.
+    - `num_clusters`: Number of clusters for K-means clustering (default is 4).
+
+## Image Denoising and Grayscale Conversion Functions
+
+### Required Libraries
+- `numpy`
+- `matplotlib`
+- `skimage`
+- `PIL`
+- `os`
+
+### Functions:
+1. **denoise_images(input_folder, result_folder=None)**: Denoises images in a folder using Non-local Means Denoising.
+    - `input_folder`: Path to the folder containing input images.
+    - `result_folder`: Path to the folder where denoised images will be saved (optional).
+
+2. **img_to_gray(input_folder, result_folder=None)**: Converts images to grayscale.
+    - `input_folder`: Path to the folder containing input images.
+    - `result_folder`: Path to the folder where grayscale images will be saved (optional).
+
+## Example Usage:
+```python
+from cellmean import cell_segment, img_save, plot_img, cell_folder, denoise_images, img_to_gray
+
+# Cell Segmentation
+segmented_image = cell_segment('input_image.jpg')
+plot_img(segmented_image)
+img_save(segmented_image, 'output_folder', 'input_image.jpg')
+cell_folder('input_images_folder', 'output_images_folder', num_clusters=5)
+
+# Image Denoising and Grayscale Conversion
+denoise_images('input_images_folder', result_folder='denoised_images')
+img_to_gray('input_images_folder', result_folder='gray_images')
