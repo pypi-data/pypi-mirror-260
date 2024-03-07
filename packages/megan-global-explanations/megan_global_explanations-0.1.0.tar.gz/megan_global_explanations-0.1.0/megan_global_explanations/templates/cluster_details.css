@@ -1,0 +1,104 @@
+html {
+    font-size: 0.8em;
+    font-family: sans-serif;
+}
+
+@page {
+    size: A4;
+    margin: 1cm;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+div.text {
+    text-align: justify;
+    line-height: 150%;
+    font-size: 0.9em;
+}
+
+
+/*  This is a generic element that will be placed underneath the intermediate headings to provide a bit of an explanation 
+    about what information can be seen in each of the sections. */
+
+div.information {
+    color: gray;
+    text-align: justify;
+    line-height: 120%;
+    font-size: 0.8em;
+    margin-top: -2px;
+    margin-bottom: 10px;
+}
+
+.cluster-title {
+    padding: 5px;
+}
+
+.cluster-subtitle {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.tabular {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabular-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.tabular-item>div {
+    width: 50%;
+}
+
+div.statistics {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+div.stat-item {
+    max-width: 40%;
+    width: 40%;
+}
+
+div.stat-item>div {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+div.examples {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div.example-item {
+    width: 25%;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+/*  PROTOTYPE SECTION
+    The prototype section is mainly a two-column display where on the right side there is the cluster prototype visualization 
+    and on the left side there is the prototype description. Both of these columns are in the prototype-container and should 
+    have the same width. */
+
+div.prototype-container {
+    display: flex;
+    flex-direction: row;
+}
+
+div.prototype-container>div {
+    width: 50%;
+}
