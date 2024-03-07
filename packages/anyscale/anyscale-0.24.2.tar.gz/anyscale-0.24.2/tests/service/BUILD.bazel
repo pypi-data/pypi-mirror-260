@@ -1,0 +1,44 @@
+load("@py_deps//:requirements.bzl", "requirement")
+load("//bazel:python.bzl", "py_tests_with_shim")
+
+filegroup(
+    name = "test_config_files",
+    srcs = glob([
+        "test_config_files/*",
+    ]),
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "test_requirements_files",
+    srcs = glob([
+        "test_requirements_files/*",
+    ]),
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "test_working_dirs",
+    srcs = glob([
+        "test_working_dirs/**/*",
+    ]),
+    visibility = ["//visibility:public"],
+)
+
+py_tests_with_shim(
+    size = "medium",
+    srcs = glob(
+        [
+            "test_*.py",
+        ],
+    ),
+    data = [
+        ":test_config_files",
+        ":test_requirements_files",
+        ":test_working_dirs",
+    ],
+    deps = [
+        "//frontend/cli:anyscale",
+        requirement("pytest"),
+    ],
+)
