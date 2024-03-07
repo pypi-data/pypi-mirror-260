@@ -1,0 +1,86 @@
+Metadata-Version: 2.1
+Name: twinbooster
+Version: 0.2.6
+Summary: Python package for TwinBooster: Synergising Chemical Structures and Bioassay Descriptions for Enhanced Molecular Property Prediction in Drug Discovery
+Author-email: "Maximilian G. Schuh" <m.schuh@tum.de>
+License: MIT License
+        
+        Copyright (c) 2024 Maximilian Schuh
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Repository, https://github.com/maxischuh/TwinBooster
+Requires-Python: ==3.8.*
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: torch ==2.0.1
+Requires-Dist: transformers ==4.30.2
+Requires-Dist: datasets
+Requires-Dist: tqdm
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: joblib
+Requires-Dist: matplotlib
+Requires-Dist: lightgbm ==3.3.5
+Requires-Dist: rdkit ==2023.3.2
+Requires-Dist: pynvml
+Requires-Dist: ConfigSpace
+Requires-Dist: smac
+Requires-Dist: optuna
+Requires-Dist: jupyterlab
+Requires-Dist: pathlib
+
+# Python package for TwinBooster
+
+[![arXiv](https://img.shields.io/badge/arXiv-2401.04478-b31b1b.svg)](https://arxiv.org/abs/2401.04478)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![Python version](https://img.shields.io/badge/python-v.3.8-blue)
+![License](https://img.shields.io/badge/license-MIT-orange)
+
+### Synergising Chemical Structures and Bioassay Descriptions for Enhanced Molecular Property Prediction in Drug Discovery
+
+Maximilian G. Schuh, Davide Boldini, Stephan A. Sieber
+
+@ Technical University of Munich, TUM School of Natural Sciences, Department of Bioscience, Center for Functional Protein Assemblies (CPA)
+
+### Installation
+
+Install the package with ```pip install twinbooster```.
+Then you can download the pretrained models with ```twinbooster.download_models()```.
+For FS-Mol, you can download the data with ```twinbooster.download_data()```.
+All pretraining data can be downloaded with ```twinbooster.download_pretraining_data()```.
+
+An example script can be found here ```./twinbooster/twinbooster_example.ipynb```.
+
+### Citation
+
+If you use TwinBooster in your research, please cite our preprint:
+
+```
+@misc{schuh2024twinbooster,
+      title={TwinBooster: Synergising Large Language Models with Barlow Twins and Gradient Boosting for Enhanced Molecular Property Prediction}, 
+      author={Maximilian G. Schuh and Davide Boldini and Stephan A. Sieber},
+      year={2024},
+      eprint={2401.04478},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.BM}
+}
+```
