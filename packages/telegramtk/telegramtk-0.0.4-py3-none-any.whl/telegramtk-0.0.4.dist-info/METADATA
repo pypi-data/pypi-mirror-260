@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: telegramtk
+Version: 0.0.4
+Summary: Telegram utilities
+Home-page: https://github.com/sdelquin/telegramtk.git
+Author: Sergio Delgado Quintero
+Author-email: sdelquin@gmail.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# telegramtk
+
+**Telegram utilities**
+
+This package provides easy (and sync) access for the Telegram Bot API.
+
+## Installation
+
+```console
+pip install telegramtk
+```
+
+## Setup
+
+```python
+import telegramtk
+
+telegramtk.init('<your-telegram-bot-token-here>')
+```
+
+## Send message
+
+```python
+import telegramtk
+
+telegramtk.send_message(to, msg)
+```
+
+→ `msg` can be "Markdown" formatted.
