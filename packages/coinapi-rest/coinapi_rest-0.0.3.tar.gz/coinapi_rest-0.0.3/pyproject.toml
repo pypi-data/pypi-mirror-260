@@ -1,0 +1,228 @@
+[project]
+name = "coinapi-rest"
+version = "0.0.3"
+description = "CoinAPI Python REST Client"
+authors = [
+    { name = "ljnsn", email = "info@ljnsn.com" },
+]
+dependencies = [
+    "typing-inspect>=0.9.0",
+    "msgspec>=0.18.6",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.1",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+repository = "https://github.com/ljnsn/coinapi-rest"
+keywords = [
+    "cryptocurrency",
+    "crypto",
+    "prices",
+    "coinapi",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+[project.license]
+text = "MIT"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.commitizen]
+name = "cz_gitmoji"
+version_provider = "pep621"
+tag_format = "v$version"
+bump_message = "🔖 bump(release): v$current_version → v$new_version"
+update_changelog_on_bump = true
+
+[tool.mypy]
+mypy_path = [
+    "src",
+    "tests",
+]
+namespace_packages = true
+explicit_package_bases = true
+junit_xml = "reports/mypy.xml"
+strict = true
+disallow_subclassing_any = false
+disallow_untyped_decorators = false
+ignore_missing_imports = true
+pretty = false
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+warn_unreachable = true
+
+[tool.coverage.run]
+branch = true
+command_line = "--module pytest"
+data_file = "reports/.coverage"
+source = [
+    "src",
+]
+
+[tool.coverage.paths]
+source = [
+    "src/",
+    "/home/runner/**/src",
+    "D:\\**\\src",
+]
+
+[tool.coverage.report]
+fail_under = 50
+precision = 1
+show_missing = true
+skip_covered = true
+
+[tool.coverage.xml]
+output = "reports/coverage.xml"
+
+[tool.ruff]
+fix = true
+target-version = "py310"
+src = [
+    "src",
+    "test",
+]
+line-length = 88
+
+[tool.ruff.lint]
+logger-objects = [
+    "loguru",
+]
+select = [
+    "ALL",
+]
+ignore = [
+    "D100",
+    "D107",
+    "D212",
+    "A003",
+    "ANN101",
+    "ANN102",
+    "ANN401",
+    "EM101",
+    "TD002",
+    "TD003",
+    "FIX002",
+    "TRY003",
+    "TCH001",
+    "TCH002",
+    "TCH003",
+    "TD001",
+    "FIX001",
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "E501",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "COM819",
+    "ISC001",
+    "ISC002",
+    "F403",
+    "F405",
+    "RUF002",
+]
+unfixable = [
+    "ERA001",
+    "F401",
+    "F841",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"test_*.py" = [
+    "DTZ001",
+    "FBT001",
+    "S101",
+    "PLR2004",
+    "SLF001",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "coinapi",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.pep8-naming]
+classmethod-decorators = [
+    "classmethod",
+]
+
+[tool.ruff.format]
+line-ending = "lf"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+addopts = "--color=yes --doctest-modules --exitfirst --failed-first --strict-markers --strict-config --verbosity=2 --junitxml=reports/pytest.xml"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::ResourceWarning",
+]
+testpaths = [
+    "src",
+    "tests",
+]
+markers = [
+    "network: mark a test as needing a network connection",
+]
+
+[tool.pdm]
+distribution = true
+package-dir = "src"
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+]
+test = [
+    "pytest>=8.0.0",
+    "pytest-recording>=0.13.1",
+    "coverage>=7.4.3",
+    "syrupy>=0.0.15",
+]
+dev = [
+    "ipython>=8.12.3",
+    "commitizen>=3.16.0",
+    "cz-conventional-gitmoji>=0.2.4",
+    "pre-commit>=3.6.2",
+]
+
+[tool.pdm.scripts]
+lint = "pre-commit run --all-files --color always"
+test = "coverage run -m pytest -m 'not network'"
+test-network = "coverage run -m pytest -m network"
+
+[tool.pdm.scripts.post_test]
+composite = [
+    "coverage report",
+    "coverage xml",
+]
