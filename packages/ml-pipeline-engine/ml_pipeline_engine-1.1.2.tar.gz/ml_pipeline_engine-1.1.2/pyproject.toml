@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "ml-pipeline-engine"
+readme = "README.md"
+version = "1.1.2"
+authors = [
+  "Konyaev Matvey",
+  "Vasiliy Pankov",
+]
+repository = "https://github.com/tochka-public/ml-pipeline-engine"
+homepage = "https://github.com/tochka-public/ml-pipeline-engine"
+description = "Фреймворк для работы с пайплайном ML моделей"
+license = "MIT"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+networkx = ">=3.1,<4.0"
+python-ulid = ">=1.1.0,<2.0"
+cloudpickle = ">=2.2.1,<3.0"
+pyvis = "^0.3.2"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=4.0.0"
+pytest-mock = ">=3.10.0"
+pre-commit = ">=2.0.0"
+flake8 = ">=3.8.3"
+pytest-cov = ">=2.11.0"
+pytest-asyncio = ">=0.18.3"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-s -vv"
+
+[build-system]
+requires = ["setuptools >= 69.0"]  # nice
+build-backend = "setuptools.build_meta"
