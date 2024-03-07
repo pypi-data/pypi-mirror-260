@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: alex-search
+Version: 0.2.1
+Summary: A command-line tool for quickly searching and extracting papers using OpenAlex API
+Home-page: UNKNOWN
+Author: yabets ebren
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/x-rst
+
+Usage
+=====
+
+Installation
+------------
+
+To install Alex Search, you can use pip:
+
+.. code-block:: bash
+
+    pip install alex-search
+
+Search Command
+--------------
+
+The ``search`` command allows you to search for papers using various filters.
+
+Usage:
+
+.. code-block:: bash
+
+    alex-search search [OPTIONS] "Machine learning for fun"
+
+Options:
+
+
+- ``--author``: Filter search results by specific author(s).
+- ``--journal``: Filter search results by specific journal(s).
+- ``--cited-by``: Filter search results by the number of times the paper has been cited by other papers.
+- ``--cited``: Filter search results by the number of times the paper has cited other papers.
+- ``--limit``: Limit the number of search results returned.
+
+
+
+
+
