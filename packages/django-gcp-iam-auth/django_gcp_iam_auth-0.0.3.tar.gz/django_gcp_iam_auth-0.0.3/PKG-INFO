@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: django_gcp_iam_auth
+Version: 0.0.3
+Summary: Allow Django's database wrappers to work with Google Cloud SQL's IAM Auth
+Project-URL: Homepage, https://github.com/rcleveng/django_gcp_iam_auth
+Project-URL: Issues, https://github.com/rcleveng/django_gcp_iam_auth/issues
+Author-email: Rob Clevenger <rob+django_gcp_iam_auth@robsite.org>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.7
+Requires-Dist: django>4.0
+Description-Content-Type: text/markdown
+
+# django_gcp_iam_auth
+
+django db engine for using IAM Authentication with Google Cloud SQL
+
+## Installation
+
+```
+pip install django_gcp_iam_auth
+```
+
+## Usage
+
+Update the DATABASES entry to replace the ENGINE for your connection.
+
+```
+DATABASES["default"]["ENGINE"]  = "django_gcp_iam_auth.postgresql"
+```
