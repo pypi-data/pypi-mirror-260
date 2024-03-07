@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: connectome_interpreter
+Version: 0.4.1
+Summary: A tool for connectomics data interpretation
+Author: Yijie Yin
+Author-email: yy432@cam.ac.uk
+Project-URL: Documentation, https://connectome-interpreter.readthedocs.io/en/latest/
+Keywords: connectomics,neural network,mechanistic interpretability
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: torch
+Requires-Dist: tqdm
+Requires-Dist: plotly
+Requires-Dist: random
+Requires-Dist: matplotlib
+Requires-Dist: itertools
+Provides-Extra: get-ngl-link
+Requires-Dist: nglscenes; extra == "get-ngl-link"
