@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "cfm-task-models"
+version = "0.0.6"
+description = "CFM - model zoo"
+authors = ["Alon Harell <aharell@sfu.ca>"]
+# exclude = ["tests/*"]
+packages = [
+   { include = "cfm_task_models" }
+#    { include = "utils" },
+#    { include = "compressai_local"}
+]
+readme = "README.md"
+
+[tool.poetry.extras]
+extras = []
+
+# [tool.poetry.build]
+# # generate-setup-file = false
+# script = "split_utils/split_utils/miminstaller.py"
+
+[tool.poetry.group.dev.dependencies]
+# defopt = "*"
+# flake8 = "*"
+mypy = "*"
+pytest = "*"
+# poethepoet = "^0.10.0"
+ipykernel = "*"
+notebook = "*"
+# easy-slurm = "*"
+openmim = "*"
+
+[tool.poetry.scripts]
+miminstaller = "cfm_task_models.miminstaller:install_mmdet"
+
+
+[[tool.poetry.source]]
+name = "private"
+url = "https://pypi.org/simple"
+priority = 'secondary'
+
+[tool.poetry.dependencies]
+python = ">=3.9.5,<=3.11"
+cython = "^0"
+tqdm = "4.61.2"
+torchsummary = "1.5.1"
+torch="<2.0.0"
+# tensorboard = "2.6.0"
+scikit-learn = "*"
+pytorch-msssim = "0.2.0"
+# matplotlib = "3.1.1"
+# mlflow-skinny = "^1.8"
+# compressai = "*"
+# boto3 = "*"
+# nvidia_cudnn_cu11 ="*"
+numpy = "*"
+# s3fs = "*"
+# sfu-torch-lib = "0.0.26"
+# pytorch-lightning = "1.7.7"
+# protobuf = "3.20.3"
+Pillow ="*" 
+timm = "*"
+openmim = "*"
+# mmcv-lite = "*"
+# mmdet = "*"
+# mmcv = ">=2.0.0"
+# mmengine = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "openmim>=0.1.1"]
+build-backend = "poetry.core.masonry.api"
