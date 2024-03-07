@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: fengchao
+Version: 2.0.3
+Summary: 大模型框架服务调用SDK.
+Home-page: 
+Author: ijiwei
+Author-email: 
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests==2.31.0
+Requires-Dist: pyJWT==2.8.0
+Requires-Dist: pydantic==2.6.1
+Requires-Dist: tenacity==8.2.3
+Requires-Dist: loguru
+
+
+## ChangLog
+
+### v1.0.2
+* 初版
+
+### v1.1.0
+* 增加base_url自定义
+* 增加错误重试自定义
+* 优化数据结构
+
+### v2.0.0
+* 增加协程功能
+* 增加重试自定义处理模块
+
+### v2.0.1
+* bug修复
+
+### v2.0.3
+* 支持外网
