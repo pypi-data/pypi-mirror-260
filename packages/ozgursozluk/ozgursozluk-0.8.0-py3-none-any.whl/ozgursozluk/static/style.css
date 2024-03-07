@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: var(--main-fg);
+    background-color: var(--main-bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;;
+}
+
+a {
+    color: var(--main-fg);
+}
+
+h1 a {
+    color: black;
+    text-decoration: none;
+}
+
+small {
+    opacity: 0.5;
+    color: var(--main-fg);
+}
+
+small a {
+    text-decoration: none;
+}
+
+input, button, select {
+    outline: none;
+    padding: 0.5rem;
+}
+
+button, select {
+    cursor: pointer;
+}
+
+header div {
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding-right: 0.5rem;
+}
+
+header a {
+    display: inline-block;
+    padding: 0.5rem 0.2rem;
+}
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 450px;
+    text-align: center;
+}
+
+form {
+    padding-top: 0.5rem;
+}
+
+form input, form select {
+    min-width: 35%;
+    box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; 
+}
+
+form input, form select, form button {
+    color: inherit;
+    border: 1px solid var(--border);
+    background-color: var(--button-bg);
+}
+
+.searchbox > form {
+    display: flex;
+}
+
+.searchbox > form input {
+    width: 100%;
+}
+
+.searchbox > form button {
+    margin-left: 0.5rem;
+}
+
+.title {
+    padding-top: 2rem;
+    text-align: center;
+    font-weight: normal;
+}
+
+.ozgur {
+    color: var(--main-fg);
+}
+
+.sozluk {
+    color: var(--title-fg);
+}
+
+.description {
+    margin-top: -15px;
+    text-align: center;
+}
+
+.topic {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.entry_wrapper {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.entry_wrapper .entry {
+    margin: 0;
+}
+
+.entry {
+    display: block;
+    padding: 0.5rem;
+    margin: 1rem 0 1rem 0;
+    text-decoration: none;
+    background-color: var(--entry-bg);
+}
+
+.content {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+.content .b, .content .url {
+    text-decoration: none;
+    color: var(--entry-link-fg);
+}
+
+.entry-datetime {
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.info {
+    display: flex;
+    padding-top: 1rem;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+    justify-content: space-between;
+}
+
+.info > div p {
+    margin: 0;
+    padding: 0;    
+}
+
+.author {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin: 2rem auto 1rem auto;
+    background-color: var(--entry-bg);
+}
+
+.avatar {
+    border: 0;
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem;
+    border-radius: 50%;
+}
+
+.settings {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto 1rem auto;
+    background-color: var(--entry-bg);
+}
+
+form .settings-group {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+form .settings-group > :last-child {
+    margin-left: auto;
+}
+
+.donate {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.5rem;
+    text-align: center;
+    margin: 2rem auto 1rem auto;
+    background-color: var(--entry-bg);
+}
+
+.donate p {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    nav {
+        max-width: none;
+    }
+
+    main, nav {
+        width: 100%;
+    }
+
+    nav, .title, .description {
+        text-align: left;
+    }
+
+    header a, .author a, .info a, .settings a {
+        font-size: larger;
+    }
+
+    form input, form select {
+        width: 30%;
+    }
+
+    .entry_wrapper {
+        grid-template-columns: none;
+    }
+}
+
