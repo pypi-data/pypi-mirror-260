@@ -1,0 +1,20 @@
+takeoff:
+  server_config:
+    max_batch_size: 123
+    batch_duration_millis: 145
+    echo: false
+    port: 4546
+    enable_metrics: true
+    heartbeat_check_interval: 13
+  readers_config:
+    reader1:
+      model_name: opt-125m
+      device: cuda
+      consumer_group: primary
+      backend: fast
+      cuda_visible_devices: "0"
+    reader2:
+      model_name: opt-125m
+      device: cpu
+      consumer_group: primary
+      backend: fast

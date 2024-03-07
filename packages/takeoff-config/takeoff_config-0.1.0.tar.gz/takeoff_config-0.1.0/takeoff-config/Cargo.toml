@@ -1,0 +1,34 @@
+[package]
+name = "takeoff-config"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "gen-openapi"
+path = "src/openapi.rs"
+
+[lib]
+path="src/lib.rs"
+name = "takeoff_config"
+# "cdylib" is necessary to produce a shared library for Python to import from.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+config = "0.13.1"
+serde = {version = "1.0.183", features = ["derive"]}
+serde_json = "1.0.104"
+serde_yaml = "0.9.27"
+anyhow = "1.0.75"
+# Pinned to a later version as upgrading caused some non-trival pain.
+utoipa = "3.5.0"
+uuid = { version = "1.4.1", features = ["v4", "fast-rng", "serde"] }
+pyo3 = { version = "0.20.0", features = ["extension-module"] }
+log = "0.4.14"
+homedir = "0.2.1"
+url = "2.5.0"
+
+[dev-dependencies]
+serial_test = "2.0.0"
+
+[features]
+default = ["pyo3/extension-module"]

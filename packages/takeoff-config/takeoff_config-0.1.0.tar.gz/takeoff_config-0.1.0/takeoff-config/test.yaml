@@ -1,0 +1,30 @@
+takeoff:
+  server_config:
+    max_batch_size: 123
+    batch_duration_millis: 145
+    echo: false
+    port: 4546
+    enable_metrics: true
+    heartbeat_check_interval: 13
+    launch_management_server: false
+    launch_vertex_server: false
+    launch_sagemaker_server: false
+    launch_openai_server: false
+    management_port: 3045
+    vertex_port: 7563
+    openai_port: 7564
+    repository_path: "/path/to/repo"
+    body_size_limit_bytes: 123456
+    allow_remote_images: false
+  readers_config:
+    reader1:
+      model_name: opt-125m
+      device: cuda
+      consumer_group: primary
+      backend: fast
+      cuda_visible_devices: "0"
+    reader2:
+      model_name: opt-125m
+      device: cpu
+      consumer_group: primary
+      backend: fast

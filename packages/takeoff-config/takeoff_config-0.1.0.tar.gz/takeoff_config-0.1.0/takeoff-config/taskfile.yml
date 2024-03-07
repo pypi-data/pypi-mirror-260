@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  install-deps:
+    desc: "Install the python package."
+    cmds:
+      - pip install maturin
+      - pip install -r requirements_test.txt
+
+  test:
+    desc: "Run unit tests for the compiled python package."
+    deps:
+      - install-deps
+    cmds:
+      - pytest tests/unit/ -vv
