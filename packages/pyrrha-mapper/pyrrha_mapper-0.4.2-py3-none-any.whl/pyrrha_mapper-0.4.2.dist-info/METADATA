@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: pyrrha-mapper
+Version: 0.4.2
+Summary: A mapper collection for firmware analysis
+Author-email: Eloïse Brocas <ebrocas@quarkslab.com>
+License: Apache License 2.0
+Project-URL: Homepage, https://github.com/quarkslab/pyrrha
+Project-URL: Source, https://github.com/quarkslab/pyrrha
+Project-URL: Tracker, https://github.com/quarkslab/pyrrha/issues
+Project-URL: Changelog, https://github.com/quarkslab/pyrrha/changleog.md
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Security
+Classifier: Environment :: Console
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click
+Requires-Dist: coloredlogs
+Requires-Dist: lief
+Requires-Dist: numbat >=0.2.0
+Requires-Dist: rich
+Provides-Extra: doc
+Requires-Dist: black ; extra == 'doc'
+Requires-Dist: mkdocs ; extra == 'doc'
+Requires-Dist: mkdocs-autorefs ; extra == 'doc'
+Requires-Dist: mkdocs-glightbox ; extra == 'doc'
+Requires-Dist: mkdocs-material ; extra == 'doc'
+Requires-Dist: mkdocs-section-index ; extra == 'doc'
+
+# Pyrrha: A mapper collection for firmware analysis
+
+Pyrrha is a filesystem cartography and correlation software focusing on visualization. It currently focuses on the relationship between executable files but aims at enabling anyone to map and visualize any relationship types. It uses the open-source code source
+explorer [Sourcetrail](https://github.com/CoatiSoftware/Sourcetrail) to provide users with an easy way to navigate through and search for 
+path to function.
+
+![](img/imports.png)
+<p align="center">
+<b>An example of the symbols and libraries imported by <code>libgcc_s.so.1</code> and of the symbols which reference this library.</b>
+</p>
+
+![](img/symlinks.png)
+<p align="center">
+<b>An example of the symlinks which point on <code>busybox</code>.</b>
+</p>
+
+
+## Installation
+The installation is done in two parts:
+
+- Installing `Pyrrha` as a Python module (`pip install pyrrha-mapper`) or using its Docker image.
+- Installing `Sourcetrail` to be able to visualize Pyrrha's results. You can use [its last release](https://github.com/CoatiSoftware/Sourcetrail/releases/tag/2021.4.19) and its [documentation](https://github.com/CoatiSoftware/Sourcetrail/blob/master/DOCUMENTATION.md#installation).
+
+## Usage
+The usage workflow is composed of two steps which allow you to separate DB creation and result visualization.
+
+1. Run Pyrrha to obtain Sourcetrail compatible files (`*.srctrlprj` for the project file and `*.srctrldb` for the DB file). With the python package, you can just launch the command:
+   ```
+   $ pyrrha
+   Usage: pyrrha [OPTIONS] COMMAND [ARGS]...
+   
+     Mapper collection for firmware analysis.
+   
+   Options:
+     -h, --help  Show this message and exit.
+   
+   Commands:
+     fs  Map PE and ELF files of a filesystem into a sourcetrail-compatible db.
+
+   ```
+   or with the Docker
+   ```
+   $ docker run  --rm -t -v $PWD:/tmp/pyrrha ghcr.io/quarkslab/pyrrha:latest [OPTIONS] COMMAND [ARGS]...
+   ``` 
+2. Visualize your results with Sourcetrail
+   ```
+   $ sourcetrail PROJECT_NAME.srctrlprj
+   ```
+
+The detailed documentation of each mapper is available in the [documentation](https://quarkslab.github.io/pyrrha/mappers/mappers/).
+
+## Publications
+
+Pyrrha has been presented at two conferences listed below. These talks include live demo of the `fs` parser which map links between libraries and executables files.
+
+- [Pyrrha: navigate easily into your system binaries, *Hack.lu'23*. [[slides]](https://github.com/quarkslab/conf-presentations/blob/master/Confs/HackLu23/pyrrha.pdf) [[video]](https://www.youtube.com/watch?v=-dMl-SvQl4k) 
+- Map your Firmware!, *PTS'23*. [[slides]](https://github.com/quarkslab/conf-presentations/blob/master/Confs/PTS23/PTS2023-Talk-14-Pyrrha-map-your-firmware.pdf) [[video]](https://passthesalt.ubicast.tv/videos/2023-map-your-firmware/) 
+
+## Authors
+- Eloïse Brocas (@ebrocas), Quarkslab
