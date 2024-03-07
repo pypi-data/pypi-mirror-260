@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nats-micro"
+authors = [
+    { name = "Guillaume Charbonnier", email = "gu.charbon@gmail.com" },
+]
+description = "NATS Micro implementation for Python"
+readme = "README.md"
+requires-python = ">=3.8,<4.0"
+classifiers = [
+    'Intended Audience :: Developers',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    "License :: OSI Approved :: MIT License",
+]
+dynamic = ["version"]
+dependencies = [
+    "nats-py",
+    "nats-request-many>0.0.1",
+    "nats-connect-opts",
+    "typing-extensions",
+]
+
+[project.optional-dependencies]
+watch = ["watchfiles"]
+build = ["pip-tools", "build", "wheel"]
+dev = [
+    "black",
+    "isort",
+    "invoke",
+    "flake8",
+    "mutmut",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "nats-test-server",
+    "pyright",
+]
+docs = [
+    "requests",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-material",
+    "mkdocs-section-index",
+    "mkdocstrings[python]",
+    "pymdown-extensions",
+    "termynal",
+]
+
+[project.scripts]
+micro = "nats_contrib.micro.cli.root:run"
+
+[tool.setuptools.dynamic]
+version = { attr = "nats_contrib.micro.__about__.__version__" }
+
+[tool.pyright]
+pythonVersion = "3.8"
+include = ["tests", "src", "examples"]
+strict = ["src"]
+exclude = ["**/.venv", "**/node_modules", "**/__pycache__", ".git", "**/build"]
+venv = ".venv"
+venvPath = "."
+typeCheckingMode = "basic"
+reportUnnecessaryTypeIgnoreComment = "warning"
