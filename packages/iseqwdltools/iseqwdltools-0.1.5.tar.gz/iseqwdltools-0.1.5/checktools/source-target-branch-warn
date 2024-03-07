@@ -1,0 +1,14 @@
+git fetch
+
+current_branch=${1:-$(git rev-parse --abbrev-ref HEAD)}
+
+target_branch=${2:-"dev"}
+
+number_author=$(git shortlog origin/${current_branch}..origin/${target_branch} -s)
+
+commits_count=$(awk '{sum+=$1} END {print sum}' <<< $number_author)
+
+if [ "$commits_count" -gt "0" ]; then
+    echo "There is the count of ${commits_count} [commits] between the current branch [${current_branch}] and the target branch [${target_branch}]"
+    exit 38
+fi

@@ -1,0 +1,32 @@
+echo "womtool start..."
+
+token_file='/etc/kubewell/wdlproxy.token'
+curl https://workflows.intelliseq.com/authenticate?token=$(cat $token_file)
+
+wdl_path=$1
+tmp_wdl_path="$wdl_path.tmp"
+sed 's/gitlab.com/workflows.intelliseq.com/' $1 > "$tmp_wdl_path"
+
+cleanup() {
+    echo "Cleaning up and deleting the temporary file"
+    rm -f "$tmp_wdl_path"
+}
+
+trap 'cleanup' EXIT INT
+
+womtool_in_docker="/validatetools/womtool.jar"
+womtool_ver="86"
+womtool_local="womtool-${womtool_ver}.jar"
+
+if [ -f "$womtool_in_docker" ]; then
+    java -jar "$womtool_in_docker" validate "$tmp_wdl_path"
+else
+    wget -nc https://github.com/broadinstitute/cromwell/releases/download/${womtool_ver}/womtool-${womtool_ver}.jar
+    java -jar "$womtool_local" validate "$tmp_wdl_path"
+fi
+
+exit_code=$?
+
+echo "womtool has finished it's job"
+
+exit $exit_code

@@ -1,0 +1,32 @@
+echo "wdlTools start..."
+
+token_file='/etc/kubewell/wdlproxy.token'
+curl https://workflows.intelliseq.com/authenticate?token=$(cat $token_file)
+
+wdl_path=$1
+tmp_wdl_path="$wdl_path.tmp"
+sed 's/gitlab.com/workflows.intelliseq.com/' $1 > "$tmp_wdl_path"
+
+cleanup() {
+    echo "Cleaning up and deleting the temporary file"
+    rm -f "$tmp_wdl_path"
+}
+
+trap 'cleanup' EXIT INT
+
+wdlTools_in_docker=/validatetools/wdlTools.jar
+wdlTools_ver="0.17.16"
+wdlTools_local="wdlTools-${wdlTools_ver}.jar"
+
+if [ -f "$wdlTools_in_docker" ]; then
+    java -jar "$wdlTools_in_docker" check "$tmp_wdl_path"
+else
+    wget -nc https://github.com/dnanexus/wdlTools/releases/download/${wdlTools_ver}/wdlTools-${wdlTools_ver}.jar
+    java -jar "$wdlTools_local" check "$tmp_wdl_path"
+fi
+
+exit_code=$?
+
+echo "wdlTools has finished it's job"
+
+exit $exit_code
