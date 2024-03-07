@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: IBITNormalizer
+Version: 1.2.7
+Summary: Normalizer for Persian texts based on hazm
+Author: MahdiGhaemi
+Author-email: mahdighaemi123@email.com
+Description-Content-Type: text/markdown
+Requires-Dist: hazm
+
+# IBITNormalizer
+Simple persian text-normalizer base on hazm lib
+
+## install
+```
+pip install IBITNormalizer --upgrade
+```
+
+## import
+
+```
+from IBITNormalizer.normalizer import IBITNormalizer
+```
+
+## for lm task
+```
+text = """
+Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ
+Ø§Ø² Ø¨ÛŒØ±ÙˆÙ† Ú†Ø®Ø¨Ø±
+Ú†ÛŒÚ©Ø§Ø±Ø§ Ù…ÛŒÚ©Ù†ÛŒ
+ØªØ§Ø²Ú¯ÛŒØ§ Ù‡ÙˆØ§  Ú†Ù‚Ø¯Ø± Ø³Ø±Ø¯ Ø´Ø¯Ù‡ Ù†Ù‡ ØŸ
+"""
+
+normalizer = IBITNormalizer.forLM()
+print("forLM -> ", normalizer.normalize(text))
+
+output:
+forLM ->  Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ
+Ø§Ø² Ú†Ø®Ø¨Ø±
+Ú†ÛŒÚ©Ø§Ø±Ø§ Ù…ÛŒâ€ŒÚ©Ù†ÛŒ
+ØªØ§Ø²Ú¯ÛŒØ§ Ù‡ÙˆØ§ Ø³Ø±Ø¯ Ù†Ù‡ØŸ
+```
+
+
+## for llm task
+```
+text = """
+Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ
+Ø§Ø² Ø¨ÛŒØ±ÙˆÙ† Ú†Ø®Ø¨Ø±
+Ú†ÛŒÚ©Ø§Ø±Ø§ Ù…ÛŒÚ©Ù†ÛŒ
+ØªØ§Ø²Ú¯ÛŒØ§ Ù‡ÙˆØ§  Ú†Ù‚Ø¯Ø± Ø³Ø±Ø¯ Ø´Ø¯Ù‡ Ù†Ù‡ ØŸ
+"""
+
+normalizer = IBITNormalizer.forLLM()
+print("forLLM -> ", normalizer.normalize(text))
+
+output:
+forLLM ->  Ø³Ù„Ø§Ù… Ø®ÙˆØ¨ÛŒ
+Ø§Ø² Ø¨ÛŒØ±ÙˆÙ† Ú†Ø®Ø¨Ø±
+Ú†ÛŒÚ©Ø§Ø±Ø§ Ù…ÛŒâ€ŒÚ©Ù†ÛŒ
+ØªØ§Ø²Ú¯ÛŒØ§ Ù‡ÙˆØ§ Ú†Ù‚Ø¯Ø± Ø³Ø±Ø¯â€ŒØ´Ø¯Ù‡â€ŒÙ†Ù‡ØŸ
+```
