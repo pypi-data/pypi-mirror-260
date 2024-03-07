@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twinbooster"
+version = "0.2.9"
+description = "Python package for TwinBooster: Synergising Chemical Structures and Bioassay Descriptions for Enhanced Molecular Property Prediction in Drug Discovery"
+authors = [{name = "Maximilian G. Schuh", email = "m.schuh@tum.de"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = "==3.8.*"
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "torch==2.0.1",
+    "transformers==4.30.2",
+    "datasets",
+    "tqdm",
+    "scikit-learn",
+    "scipy",
+    "joblib",
+    "matplotlib",
+    "lightgbm==3.3.5",
+    "rdkit==2023.3.2",
+    "pynvml",
+    "ConfigSpace",
+    "smac",
+    "optuna",
+    "jupyterlab",
+    "pathlib",
+]
+
+[project.urls]
+Repository = "https://github.com/maxischuh/TwinBooster"
+
+[tool.setuptools.package-data]
+"twinbooster" = [
+    # "datasets/fs-mol/fsmol-0.1.json",
+    # "datasets/fs-mol/fsmol_lookup.csv",
+    # "scripts/barlow_twins/best_model/*",
+    # "scripts/lgbm/best_model/*",
+]
+
+keywords = [
+    "machine learning",
+    "deep learning",
+    "transformers",
+    "language models",
+    "cheminformatics",
+    "molecular property prediction",
+    "molecular machine learning",
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
