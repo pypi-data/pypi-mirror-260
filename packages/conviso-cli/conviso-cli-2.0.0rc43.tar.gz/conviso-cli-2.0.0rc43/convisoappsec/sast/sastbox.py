@@ -1,0 +1,266 @@
+import tempfile
+import tarfile
+import docker
+import os
+import click
+import json
+from io import BytesIO
+from contextlib import suppress
+from pathlib import Path
+from convisoappsec.flowcli.context import pass_flow_context
+
+bitbucket = os.getenv('BITBUCKET_CLONE_DIR')
+
+
+class SASTBox(object):
+    REGISTRY = 'docker.convisoappsec.com'
+    REPOSITORY_NAME = 'sastbox_v2'
+    DEFAULT_TAG = 'latest'
+    CONTAINER_REPORTS_DIR = '/tmp'
+    CONTAINER_CODE_DIR = bitbucket or '/code'
+    WORKSPACE_REPORT_PATH = ["tmp"]
+    JSON_REPORT_PATTERN = 'output.sarif'
+    SUCCESS_EXIT_CODE = 1
+    USER_ENV_VAR = "USER"
+
+    def __init__(self, registry=None, repository_name=None, tag=None):
+        self.docker = docker.from_env(
+            version="auto"
+        )
+        self.container = None
+        self.registry = registry or self.REGISTRY
+        self.repository_name = repository_name or self.REPOSITORY_NAME
+        self.tag = tag or self.DEFAULT_TAG
+
+    def login(self, password, username='AWS'):
+        login_args = {
+            'registry': self.REGISTRY,
+            'username': username,
+            'password': password,
+            'reauth': True,
+        }
+
+        login_result = self.docker.login(**login_args)
+        return login_result
+
+    def run_scan_diff(
+            self, code_dir, current_commit, previous_commit, log=None, token=None
+    ):
+        return self._scan_diff(
+            code_dir, current_commit, previous_commit, log, token
+        )
+
+    @property
+    def size(self):
+        try:
+            registry_data = self.docker.images.get_registry_data(
+                self.image
+            )
+            descriptor = registry_data.attrs.get('Descriptor', {})
+            return descriptor.get('size') * 1024 * 1024
+        except docker.errors.APIError:
+            return 6300 * 1024 * 1024
+
+    def pull(self):
+        size = self.size
+        layers = {}
+        for line in self.docker.api.pull(
+                self.repository, tag=self.tag, stream=True, decode=True
+        ):
+            status = line.get('status', '')
+            detail = line.get('progressDetail', {})
+
+            if status == 'Downloading':
+                with suppress(Exception):
+                    layer_id = line.get('id')
+                    layer = layers.get(layer_id, {})
+                    layer.update(detail)
+                    layers[layer_id] = layer
+
+                    for layer in layers.values():
+                        current = layer.get('current')
+                        total = layer.get('total')
+
+                        if (current / total) > 0.98 and not layer.get('done'):
+                            yield current
+                            layer.update({'done': True})
+
+        yield size
+
+    def _scan_diff(self, code_dir, current_commit, previous_commit, log, token):
+
+        environment = {
+            'PREVIOUS_COMMIT': previous_commit,
+            'CURRENT_COMMIT': current_commit,
+            'SASTBOX_REPORTS_DIR': self.CONTAINER_REPORTS_DIR,
+            'SASTBOX_REPORT_PATTERN': 'output.sarif',
+            'SASTBOX_CODE_DIR': self.CONTAINER_CODE_DIR,
+            'REGISTRY_PASSWORD': token,
+            'REGISTRY_URL': self.REGISTRY,
+            'REGISTRY_USERNAME': 'AWS'
+        }
+
+        command = (
+            ''' -c {code_dir} -a -o {report} --dedup --diff={previous_commit},{current_commit}'''.format(
+                code_dir=self.CONTAINER_CODE_DIR, previous_commit=previous_commit, current_commit=current_commit,
+                report='/tmp/output.sarif')
+        )
+
+        volumes = {
+            '/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'rw'},
+            '/tmp': {'bind': '/tmp', 'mode': 'rw'},
+            self.CONTAINER_CODE_DIR: {'bind': self.CONTAINER_CODE_DIR, 'mode': 'rw'}
+        }
+
+        create_args = {
+            'image': self.image,
+            'entrypoint': ['ruby', '/sastbox2-manager/sastbox_cli.rb'],
+            'command': command,
+            'tty': True,
+            'detach': True,
+            'environment': environment,
+            'volumes': volumes,
+        }
+
+        # clean all containers not running
+        for container in self.docker.containers.list(filters={'status': 'exited'}):
+            container.remove(force=True)
+
+        self.container = self.docker.containers.create(**create_args)
+        # previously create source code tar ball
+        source_code_tarball_file = tempfile.TemporaryFile()
+        source_code_tarball = tarfile.open(
+            mode="w|gz", fileobj=source_code_tarball_file
+        )
+
+        source_code_tarball.add(
+            name=code_dir,
+            arcname=self.CONTAINER_CODE_DIR,
+        )
+
+        source_code_tarball.close()
+
+        source_code_tarball_file.seek(0)
+        self.container.put_archive("/", source_code_tarball_file)
+        source_code_tarball_file.close()
+        self.container.start()
+
+        for line in self.container.logs(stream=True):
+            if log:
+                log(line, new_line=False)
+
+        self.recovery_technologies_file()
+
+        wait_result = self.container.wait()
+        status_code = wait_result.get('StatusCode')
+
+        if not status_code == self.SUCCESS_EXIT_CODE:
+            raise RuntimeError(
+                'SASTBox exiting with error status code'
+            )
+
+        chunks, _ = self.container.get_archive(
+            self.CONTAINER_REPORTS_DIR
+        )
+
+        reports_tarball_file = tempfile.TemporaryFile()
+
+        for chunk in chunks:
+            reports_tarball_file.write(chunk)
+
+        tempdir = tempfile.mkdtemp()
+        reports_tarball_file.seek(0)
+        reports_tarball = tarfile.open(mode="r|", fileobj=reports_tarball_file)
+        reports_tarball.extractall(path=tempdir)
+        reports_tarball.close()
+        reports_tarball_file.close()
+        self.container.remove(force=True)
+
+        return self._list_reports_paths(tempdir)
+
+    @property
+    def repository(self):
+        return "{registry}/{repository_name}".format(
+            registry=self.registry,
+            repository_name=self.repository_name,
+        )
+
+    @property
+    def image(self):
+        return "{repository}:{tag}".format(
+            repository=self.repository,
+            tag=self.tag,
+        )
+
+    def __del__(self):
+        with suppress(Exception):
+            self.container.remove(v=True, force=True)
+
+    @classmethod
+    def _list_reports_paths(cls, root_dir):
+        root_dir = root_dir + '/tmp/'
+        sastbox_reports_dir = Path(root_dir)
+
+        for report in sastbox_reports_dir.glob(cls.JSON_REPORT_PATTERN):
+            yield report
+
+    def recovery_technologies_file(self):
+        """ Method to recovery a fingerprint file inside the container with founded technology """
+        try:
+            generator_object, file_info = self.container.get_archive('/tmp/fingerprint.json')
+            file_content = b"".join(generator_object)
+            file_content_stream = BytesIO(file_content)
+            tar = tarfile.open(fileobj=file_content_stream)
+            file_data = tar.extractfile(file_info['name'])
+            content = json.loads(file_data.read())
+            technologies = content['result']['technologies']
+        except Exception as error:
+            msg = "\U0001F4AC Something goes wrong when try to recovery the technologies, continuing ..."
+            log_func(msg)
+
+            technologies = []
+
+        if technologies is None:
+            return
+
+        self.update_asset_technologies(technologies=technologies)
+
+    @staticmethod
+    @pass_flow_context
+    @click.pass_context
+    def update_asset_technologies(flow_context, context, technologies):
+        """
+        Update technologies on asset.
+        Args:
+            flow_context (dict): Flow context containing parameters.
+            context (object): Object containing necessary methods (e.g., create_conviso_graphql_client).
+            technologies (list): List of technologies to be updated.
+        Returns:
+            dict: Response from the API call.
+        """
+
+        # this prevents a broken execution when something goes wrong.
+        try:
+            company_id = flow_context.params.get('company_id')
+            asset_id = flow_context.params.get('asset_id')
+            asset_name = flow_context.params.get('asset_name')
+            unwanted_technologies = {'unknown', 'json', 'text', 'ini', 'diff', 'xml', 'markdown'}
+            updated_technologies = [tech for tech in technologies if tech not in unwanted_technologies]
+            conviso_api = context.create_conviso_graphql_client()
+
+            response = conviso_api.assets.update_asset(
+                company_id=int(company_id),
+                asset_id=asset_id,
+                asset_name=asset_name,
+                technologies=updated_technologies
+            )
+        except Exception as error:
+            msg = "\U0001F4AC Something goes wrong when try to send technologies to the cp, continuing ..."
+            log_func(msg)
+
+            response = None
+
+        return response
+
+def log_func(msg, new_line=True, clear=False):
+    click.echo(msg, nl=new_line, err=True)
