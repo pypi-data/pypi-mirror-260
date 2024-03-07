@@ -1,0 +1,37 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("mvd-bel-Cyrl-Latn-2008")
+def _stage_main(s):
+    s = re.compile("’Е", re.MULTILINE).sub("Je", s)
+    s = re.compile("’е", re.MULTILINE).sub("je", s)
+    s = re.compile("’Ё", re.MULTILINE).sub("Jo", s)
+    s = re.compile("’ё", re.MULTILINE).sub("jo", s)
+    s = re.compile("’Ю", re.MULTILINE).sub("Ju", s)
+    s = re.compile("’ю", re.MULTILINE).sub("ju", s)
+    s = re.compile("’Я", re.MULTILINE).sub("Ja", s)
+    s = re.compile("’я", re.MULTILINE).sub("ja", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])Е", re.MULTILINE).sub("Je", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])е", re.MULTILINE).sub("je", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])Ё", re.MULTILINE).sub("Jo", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])ё", re.MULTILINE).sub("jo", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])Ю", re.MULTILINE).sub("Ju", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])ю", re.MULTILINE).sub("ju", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])Я", re.MULTILINE).sub("Ja", s)
+    s = re.compile("(?<=[АаЕеЁёИиОоУуЭэЮюЯяЬьЎў])я", re.MULTILINE).sub("ja", s)
+    s = re.compile("(?<=[ЗзЛлНнСсЦц])ь", re.MULTILINE).sub("́", s)
+    s = re.compile("(?<=[ЗзЛлНнСсЦц])ʹ", re.MULTILINE).sub("́", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"Е", re.MULTILINE).sub("Je", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"е", re.MULTILINE).sub("je", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"Ё", re.MULTILINE).sub("Jo", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"ё", re.MULTILINE).sub("jo", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"Ю", re.MULTILINE).sub("Ju", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"ю", re.MULTILINE).sub("ju", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"Я", re.MULTILINE).sub("Ja", s)
+    s = re.compile(""+interscript.stdlib.aliases["boundary"]+"я", re.MULTILINE).sub("ja", s)
+    s = interscript.stdlib.parallel_regexp_gsub(s, *_PRE_4220564262014214126)
+    s = re.compile("’", re.MULTILINE).sub("j", s)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("mvd-bel-Cyrl-Latn-2008", "main", _stage_main)
+_PRE_4220564262014214126 = ["(?P<_0>U040E)|(?P<_1>Е(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_2>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Е)|(?P<_3>Ё(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_4>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ё)|(?P<_5>Ж(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_6>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ж)|(?P<_7>Х(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_8>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Х)|(?P<_9>Ц(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_10>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ц)|(?P<_11>Ч(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_12>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ч)|(?P<_13>Ш(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_14>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ш)|(?P<_15>Щ(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_16>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Щ)|(?P<_17>Ю(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_18>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Ю)|(?P<_19>Я(?=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ]))|(?P<_20>(?<=[АБВГДЕЁЖЗІЙКЛМНОПРСТУU040EФХЦЧШЩЫЭЮЯ])Я)|(?P<_21>А)|(?P<_22>Б)|(?P<_23>В)|(?P<_24>Г)|(?P<_25>Д)|(?P<_26>Е)|(?P<_27>Ё)|(?P<_28>Ж)|(?P<_29>З)|(?P<_30>І)|(?P<_31>Й)|(?P<_32>К)|(?P<_33>Л)|(?P<_34>М)|(?P<_35>Н)|(?P<_36>О)|(?P<_37>П)|(?P<_38>Р)|(?P<_39>С)|(?P<_40>Т)|(?P<_41>У)|(?P<_42>Ф)|(?P<_43>Х)|(?P<_44>Ц)|(?P<_45>Ч)|(?P<_46>Ш)|(?P<_47>Щ)|(?P<_48>Ы)|(?P<_49>Э)|(?P<_50>Ю)|(?P<_51>Я)|(?P<_52>а)|(?P<_53>б)|(?P<_54>в)|(?P<_55>г)|(?P<_56>д)|(?P<_57>е)|(?P<_58>ё)|(?P<_59>ж)|(?P<_60>з)|(?P<_61>і)|(?P<_62>й)|(?P<_63>к)|(?P<_64>л)|(?P<_65>м)|(?P<_66>н)|(?P<_67>о)|(?P<_68>п)|(?P<_69>р)|(?P<_70>с)|(?P<_71>т)|(?P<_72>у)|(?P<_73>ў)|(?P<_74>ф)|(?P<_75>х)|(?P<_76>ц)|(?P<_77>ч)|(?P<_78>ш)|(?P<_79>щ)|(?P<_80>ы)|(?P<_81>э)|(?P<_82>ю)|(?P<_83>я)", ["W","IE","IE","IO","IO","ZH","ZH","KH","KH","TS","TS","CH","CH","SH","SH","SHCH","SHCH","IU","IU","IA","IA","A","B","V","G","D","Ie","Io","Zh","Z","I","J","K","L","M","N","O","P","R","S","T","U","F","Kh","Ts","Ch","Sh","Shch","Y","E","Iu","Ia","a","b","v","g","d","ie","io","zh","z","i","j","k","l","m","n","o","p","r","s","t","u","w","f","kh","ts","ch","sh","shch","y","e","iu","ia"]]

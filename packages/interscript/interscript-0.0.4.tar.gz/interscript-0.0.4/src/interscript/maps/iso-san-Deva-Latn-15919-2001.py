@@ -1,0 +1,10 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("iso-san-Deva-Latn-15919-2001")
+def _stage_main(s):
+    s = interscript.stdlib.parallel_replace_tree(s, _PTREE_3180640189174073349)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("iso-san-Deva-Latn-15919-2001", "main", _stage_main)
+_PTREE_3180640189174073349 = {2309:{None:"a"},2310:{None:"ā"},2311:{None:"i"},2312:{None:"ī"},2313:{None:"u"},2314:{None:"ū"},2315:{None:"ṛ"},2400:{None:"ṝ"},2316:{None:"ḷ"},2401:{None:"ḹ"},2319:{None:"e"},2320:{None:"ai"},2323:{None:"o"},2324:{None:"au"},2317:{None:"ê"},2321:{None:"ô"},2325:{None:"ka",2364:{None:"qa"}},2326:{None:"kha",2364:{None:"k͟ha"}},2327:{None:"ga",2364:{None:"ġa"}},2328:{None:"gha"},2329:{None:"ṅa"},2330:{None:"ca"},2331:{None:"cha"},2332:{None:"ja",2364:{None:"za"}},2333:{None:"jha"},2334:{None:"ña"},2335:{None:"ṭa"},2336:{None:"ṭha"},2337:{None:"ḍa",2364:{None:"ṛa"}},2338:{None:"ḍha",2364:{None:"ṛha"}},2339:{None:"ṇa"},2340:{None:"ta",2364:{None:"t̤a"}},2341:{None:"tha"},2342:{None:"da"},2343:{None:"dha"},2344:{None:"na"},2346:{None:"pa"},2347:{None:"pha",2364:{None:"fa"}},2348:{None:"ba"},2349:{None:"bha"},2350:{None:"ma"},2351:{None:"ya",2305:{None:"m̐ya"}},2352:{None:"ra",2305:{None:"m̐ra"}},2354:{None:"la",2305:{None:"m̐la"}},2355:{None:"ḷa",2305:{None:"m̐ḷa"}},2357:{None:"va",2305:{None:"m̐va"},2364:{None:"wa"}},2358:{None:"śa"},2359:{None:"ṣa"},2360:{None:"sa",2364:{None:"s̱a"}},2361:{None:"ha",2364:{None:"ẓa"}},7413:{None:"ẖ"},7414:{None:"ḫ"},2306:{None:"ṁ"},2307:{None:"ḥ"},2305:{None:"m̐"},2365:{None:":’"},2366:{None:"ā"},2367:{None:"i"},2368:{None:"ī"},2369:{None:"u"},2370:{None:"ū"},2402:{None:"ḷ"},2403:{None:"ḹ"},2371:{None:"ṛ"},2372:{None:"ṝ"},2375:{None:"e"},2376:{None:"ai"},2379:{None:"o"},2380:{None:"au"},2377:{None:"ô"},2373:{None:"ê"},2381:{None:""},8205:{None:""},2406:{None:"0"},2407:{None:"1"},2408:{None:"2"},2409:{None:"3"},2410:{None:"4"},2411:{None:"5"},2412:{None:"6"},2413:{None:"7"},2414:{None:"8"},2415:{None:"9"}}

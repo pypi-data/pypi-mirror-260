@@ -1,0 +1,27 @@
+[project]
+name = "interscript"
+version = "0.0.4"
+authors = [
+  { name="Ribose Inc.", email="open.source@ribose.com" },
+]
+description = "Interoperable script conversion systems"
+readme = {file = "README.adoc", content-type = "text/plain"}
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = ["regex"]
+
+[project.urls]
+Homepage = "https://www.interscript.org"
+Issues = "https://github.com/interscript/interscript-python/issues"
+
+[build-system]
+requires = ["setuptools", "wheel", "regex"]
+build-backend = "setuptools.build_meta"

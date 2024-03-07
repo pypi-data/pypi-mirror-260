@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: interscript
+Version: 0.0.4
+Summary: Interoperable script conversion systems
+Author-email: "Ribose Inc." <open.source@ribose.com>
+Project-URL: Homepage, https://www.interscript.org
+Project-URL: Issues, https://github.com/interscript/interscript-python/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Topic :: Text Processing :: Linguistic
+Requires-Python: >=3.8
+Description-Content-Type: text/plain
+License-File: LICENSE.adoc
+Requires-Dist: regex
+
+= Interscript: Interoperable Script Conversion Systems for Python
+
+== Purpose
+
+This repository contains code for the Interscript Python runtime ("Interscript-Python").
+
+This software allows performing script conversions by using the
+https://github.com/interscript/maps[default set of Interscript maps]
+hosted at GitHub.
+
+Interscript is a project for interoperable script conversion systems
+and provides executable runtimes for multiple platforms.
+Full documentation available https://github.com/interscript/interscript/[here].
+
+== Integration
+
+This section provides instructions on how to utilize Interscript-Python
+with your application.
+
+Interscript-Python can be used as a Python library
+
+=== Configuration
+
+[source,shell]
+----
+$ pip install interscript
+----
+
+== Usage
+
+[source,javascript]
+-----
+import interscript
+interscript.load_map('bgnpcgn-ukr-Cyrl-Latn-2019')
+print(interscript.transliterate('bgnpcgn-ukr-Cyrl-Latn-2019', input()))
+-----
+
+== Development
+
+Ensure you have used a bootstrap repository https://github.com/interscript/interscript
+and not just cloned this repo yourself, otherwise `./setup.sh` script won\'t work.
+
+`./setup.sh` script is used to build the maps from the `maps` repository using our Ruby
+Interscript implementation. Those maps are compiled to respective `.py` files inside
+`src/interscript/maps/` directory and are not included in this repository.
+
+=== Running tests
+
+[source,shell]
+---
+$ pip install regex pytest
+$ ./build.sh
+$ pip install -e .
+$ pytest
+---
+
+=== Building package
+
+[source,shell]
+---
+$ pip install regex pytest
+$ ./build.sh
+$ python -m build
+---
+
+=== Publishing package
+
+[source,shell]
+---
+$ twine upload dist/file.whl
+---
+
+== Copyright and license
+
+This is a Ribose project. Copyright Ribose.
