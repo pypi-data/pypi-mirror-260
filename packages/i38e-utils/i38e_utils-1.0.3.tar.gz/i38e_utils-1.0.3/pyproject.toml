@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "i38e-utils"
+version = "1.0.3"
+description = "Various utilities for IBIS applications in data science and engineering"
+authors = ["Luis Valverde <lvalverdeb@gmail.com>"]
+readme = "README.md"
+packages = [{include = "i38e_utils"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+pandas = "^2.1.4"
+dask = "^2024.2.1"
+django = "4.1.13"
+openpyxl = "^3.1.2"
+pydantic = "^2.6.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

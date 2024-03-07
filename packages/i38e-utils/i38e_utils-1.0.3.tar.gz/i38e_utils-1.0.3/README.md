@@ -1,0 +1,114 @@
+## i38e-utils
+
+i38e-utils is a collection of utility functions and classes that I use in my projects. It is a work in progress and will be updated as I add more functionality.
+
+Currently, it includes the following:
+
+DfHelper: A class that provides a set of utility functions for working with pandas DataFrames.
+GeoPyHelper: A class that provides a set of utility functions for working with GeoPy.
+OsmxHelper: A class that provides a set of utility functions for working with Osmnx.
+data_utils: A set of utility functions for working with data.
+date_utils: A set of utility functions for working with dates.
+df_utils: A set of utility functions for working with pandas DataFrames.
+file_utils: A set of utility functions for working with files.
+log_utils: A set of utility functions for working with logs.
+
+## Installation
+
+To install this project, follow these steps:
+
+```bash
+pip install i38e-utils
+```
+
+## Usage
+DfHelper: Dataframe Helper Class
+
+Scenarios:
+
+- Connect to a database table using a Django's ORM connection, query, transform and convert the data to a pandas DataFrame.
+
+```python
+import pandas as pd
+from i38e_utils import DfHelper
+
+phone_mobile_gps_fields = {
+    'id_tracking': 'id',
+    'id_producto': 'product_id',
+    'pk_empleado': 'associate_id',
+    'latitud': 'latitude',
+    'longitud': 'longitude',
+    'fecha_hora_servidor': 'server_dt',
+    'fecha_hora': 'date_time',
+    'accion': 'action',
+    'descripcion': 'description',
+    'imei': 'imei'
+}
+
+
+class GpsCube(DfHelper):
+    df: pd.DataFrame = None
+    live: bool = False
+    save_parquet = True
+    
+    config={
+        'connection_name': 'replica',
+        'table': 'asm_tracking_movil_gps',
+        'field_map': phone_mobile_gps_fields,
+        'legacy_filters': True,
+    }
+
+    def __init__(self, **opts):
+        config = {**self.config, **opts}
+        super().__init__(**config)
+        
+    def load(self, **kwargs):
+        self.df = super().load(**kwargs)
+        self.fix_data()
+        return self.df
+
+    def fix_data(self):
+        self.df['latitude'] = self.df['latitude'].astype(np.float64)
+        self.df['longitude'] = self.df['longitude'].astype(np.float64)```python
+
+gps_cube=GpsCube(live=True, debug=False)
+df=gps_cube.load(date_time__date='2023-03-04')
+# to save to a parquet file
+gps_cube.save_parquet(df, parquet_full_path='gpscube.parquet')
+```
+
+- Use a parquet storage file or folder structure to load data and perform some transformations.
+
+```python
+import pandas as pd
+from i38e_utils import DfHelper
+
+class GpsParquetCube(DfHelper):
+    df: pd.DataFrame = None
+    
+    config={
+        'df_as_dask': True,
+        'parquet_storage_path': '/storage/data/parquet/gps_cube_data/',
+        'parquet_start_date': '2024-01-01',
+        'parquet_end_date': '2024-03-31',
+    }
+
+    def __init__(self, **opts):
+        config = {**self.config, **opts}
+        super().__init__(**config)
+        
+    def load(self, **kwargs):
+        self.df = super().load(**kwargs)
+        return self.df
+
+
+# This would load all the parquet files in the folder structure that match the date range and return a single dask dataframe for employee_id 27 for the month of January.
+params = {
+    'employee_id': 27,
+    'date_time__date__range': ['2024-01-01','2024-01-31']
+}
+
+dask_df = GpsParquetCube().load(**params)
+df = dask_df.compute()
+
+```
