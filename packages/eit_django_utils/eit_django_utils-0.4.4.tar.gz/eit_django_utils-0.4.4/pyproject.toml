@@ -1,0 +1,31 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "eit_django_utils"
+authors = [{name = "Daniel Nall", email = "sdnall@ncsu.edu"}]
+readme = "README.rst"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+requires-python = ">=3.6"
+dynamic = ["version", "description"]
+dependencies = [
+    "Django >=2.2",
+    "django-hijack <= 2.3.0",
+]
+
+
+[project.urls]
+Home = "https://github.ncsu.edu/EIT/eit_django_utils"
+
+
+[tool.ruff]
+# Allow lines to be as long as 120 characters.
+line-length = 120
+
+# use the base config/select + isort checks
+extend-select = ["I"]
+
+[tool.ruff.isort]
+known-first-party = ["eventbrite", "event"]

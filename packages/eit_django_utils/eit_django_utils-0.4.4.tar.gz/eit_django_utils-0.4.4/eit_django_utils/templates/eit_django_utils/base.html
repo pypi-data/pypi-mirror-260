@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% block meta %}{% endblock %}
+
+    <title>EIT: {% block title %}{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.ncsu.edu/brand-assets/bootstrap/css/bootstrap.min.css">
+    <link href="{% static 'eit_django_utils/css/eit_django_utils.css' %}" rel="stylesheet" type="text/css" />
+    <link href="//brand.ncsu.edu/favicon.ico" rel="Shortcut Icon" type="image/x-icon" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+          <div id="ncce-logo-header" class="col-md-12">
+              <a href="http://ces.ncsu.edu">
+              <img alt="NCCE Logo" src="//brand.ces.ncsu.edu/images/logos/ncce-red-wide-ext-transparent_250px.png">
+              </a>
+          </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+  {% block content %}
+    <h1>EIT Django Utils</h1>
+  {% endblock %}
+
+  </div> <!-- end wrapper -->
+
+</body>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.ncsu.edu/brand-assets/bootstrap/js/bootstrap.min.js"></script>
+{% block jsblock %}{% endblock %}
+
+</html>
