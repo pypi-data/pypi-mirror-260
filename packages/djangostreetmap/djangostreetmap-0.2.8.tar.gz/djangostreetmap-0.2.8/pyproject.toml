@@ -1,0 +1,67 @@
+[tool.isort]
+profile = 'black'
+skip = ['env','env3.8','openly','simple_locations', 'typings']
+
+[tool.black]
+line-length = 180
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | migrations
+)\
+'''
+
+[tool.poetry]
+name = "djangostreetmap"
+version = "0.2.8"
+description = "Deliver OpenstreetMap data in GeoJSON and MVT tile formats"
+authors = ["Joshua Brooks <josh.vdbroek@gmail.com>"]
+license = "LGPL-3.0-or-later"
+homepage = "https://github.com/joshbrooks/djangostreetmap"
+readme = "README.md"
+
+packages = [
+  { include = "djangostreetmap" },
+  { include = "maplibre" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+osmflex = "^0.2.0"
+pydantic = "^1.10.0"
+typer = "^0.4.1"
+
+[tool.poetry.group.dev.dependencies]
+Django = "*"
+black = "*"
+mypy = "*"
+isort = "*"
+pre-commit = "*"
+django-stubs = "*"
+types-psycopg2 = "*"
+pytest = "*"
+requests = "*"
+django-cors-headers = "*"
+mypy-extensions = "*"
+pytest-django = "*"
+psycopg2-binary = "*"
+gunicorn = "*"
+flake8 = "*"
+django-extensions = "*"
+coverage = "*"
+pytest-cov = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "tests.test_settings"
