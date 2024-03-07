@@ -1,0 +1,85 @@
+[project]
+name = "zibai-server"
+version = "0.10.0"
+description = "A modern high-performance Python WSGI server."
+authors = [
+    { name = "abersheeran", email = "me@abersheeran.com" },
+]
+dependencies = [
+    "h11>=0.14.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "Apache-2.0"
+
+[project.urls]
+repository = "https://github.com/abersheeran/zibai"
+
+[project.optional-dependencies]
+gevent = [
+    "gevent>=23.9.1",
+]
+reload = [
+    "watchdog>=3.0.0",
+]
+
+[project.scripts]
+zibai = "zibai.__main__:command_line"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.dev-dependencies]
+benchmark = [
+    "waitress>=2.1.2",
+    "gunicorn>=21.2.0",
+]
+test = [
+    "pytest>=7.4.3",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pdm.scripts]
+format = "ruff format ."
+lint = "ruff ."
+test = "pytest --cov=src/zibai"
+
+[tool.ruff]
+extend-select = [
+    "I",
+]
+
+[tool.ruff.lint]
+ignore = [
+    "E731",
+]
+
+[tool.coverage]
+ignores = [
+    "raise NotImplementedError",
+]
+
+[tool.coverage.run]
+omit = [
+    "*/.venv/*",
+    "*/tests/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if False:",
+    "assert False",
+    "if typing.TYPE_CHECKING:",
+    "if TYPE_CHECKING:",
+    "pass",
+    "\\.\\.\\.",
+]
+show_missing = true
+skip_covered = true
