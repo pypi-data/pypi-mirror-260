@@ -1,0 +1,77 @@
+/*
+Define styles for different node categories
+*/
+
+.node{
+    --cate-color: #8d97a0;
+
+    color: var(--text-high);
+    /* text-shadow:  0 0px 5px var(--cate-color); */
+    /* box-shadow: 0 -2px 3px -2px var(--cate-color); */
+    background-color: var(--cate-color);
+    
+}
+
+.node.dragging{
+    box-shadow: 0px 0px 5px 2px #00000074;
+}
+
+.node-label{
+    color: whitesmoke;
+    text-shadow: 0 0px 1px rgba(0, 0, 0, 0.526);
+    
+    font-weight: 600;
+    backdrop-filter: brightness(0.9) saturate(1.1);
+}
+
+.node-border{
+    border-color: var(--cate-color);
+    filter: saturate(1.5) brightness(0.8);
+    border-width: 10px;
+}
+
+.node-icon{
+    fill: #e7e7e7;
+}
+
+
+.node.running .node-label{
+    background-color: rgba(129, 203, 65, 0.45);
+}
+
+.node:not(.running) .node-label{
+
+    transition: background-color 0.2s ease-out;
+}
+
+.hierarchy-node{
+    border-color: black;
+}
+
+.cate-interaction{
+    --cate-color: #FFBF00;
+}
+
+.cate-function{
+    --cate-color: #59C059;
+}
+
+.cate-data{
+    --cate-color: #ffab19;
+}
+
+.cate-test{
+    --cate-color: #36cdd2;
+}
+
+.cate-procedural{
+    --cate-color: #17a0fb;
+}
+
+.cate-torch{
+    --cate-color: #1199fb;
+}
+/* 
+.cate-function-math{
+    --cate-color: #59C059;
+} */
