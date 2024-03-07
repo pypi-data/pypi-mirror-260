@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: PAQLang
+Version: 1.0.3
+Summary: Python Async Queue Language
+Author-email: Sergey Strukov <strukovsv@main.ru>
+Project-URL: Homepage, https://github.com/strukovsv/PAQLang
+Project-URL: Issues, https://github.com/strukovsv/PAQLang/issues
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiofiles ==23.2.1
+Requires-Dist: PyYAML ==6.0.1
+Requires-Dist: ruamel.yaml ==0.18.6
+Requires-Dist: ruamel.yaml.clib ==0.2.8
+Requires-Dist: ruamel.yaml.string ==0.1.1
+Requires-Dist: requests ==2.31.0
+Requires-Dist: boto3 ==1.34.54
+Requires-Dist: environs ==9.5.0
+Provides-Extra: all
+Requires-Dist: httpx ==0.27.0 ; extra == 'all'
+Requires-Dist: chardet ==5.2.0 ; extra == 'all'
+Requires-Dist: cx-Oracle-async ==0.3.3 ; extra == 'all'
+
+# PAQLang
+
+Python Async Queue Language
+
+## Содержание
+
+- [PAQLang](#paqlang)
+  - [Содержание](#содержание)
+  - [Назначение](#назначение)
+  - [Install](#install)
+  - [Документация](#документация)
+  - [Пример обработки текстов](#пример-обработки-текстов)
+
+## Назначение
+Пакет предназначен, для выполнения асинхронных функций на языке Python. Пакет содержит встроенные функции и возможность расширения своих функций
+
+## Install
+
+Установка только встроенных функций 
+pip install PAQLang
+
+Установка с пакетами работы Gitlab и Oracle
+pip install PAQLang[all]
+
+## Документация
+Документацию по встроенным функциям системы можно получить по [этой ссылке](./docs/ru/functions.md).
+
+## Пример обработки текстов
+
+```
+# Задать имя файла лога oracle
+- in: /app/pgm/data/oracle.yaml
+# Прочитать файл и положить содержимое в очередь
+# {"filename": , "text": }
+- freads
+# Распарсить текст файла из атрибута "text" в json
+- to_json: text
+# Вытащить текст атрибута text
+- attr: text
+# Сохранить в файле oracle
+- save: oracle
+
+# Проанализировать файл names лога
+- in: /app/pgm/data/monitor.yaml
+- freads
+- to_json: text
+# Вытащить значение из атрибута line
+- attr: line
+- save: monitor
+```
