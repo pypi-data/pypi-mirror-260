@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: pclib
+Version: 2.0.0b2
+Summary: A torch-like package for building Predictive Coding Neural Networks.
+Author: Joe Griffith
+Author-email: joeagriffith@gmail.com
+Keywords: python,neural networks,deep learning,predictive coding
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+# PCLib
+
+
+PCLib is a python package with a torch-like API for building and training Predictive Coding Networks.<br> 
+Documentation can be found [here](https://joeagriffith.github.io/pclib/).
+
+The package includes a fully-connected layer implementation, as well as a convolutional one. Both are customisable and can be used together or separately for building neural networks.
+
+The package also includes a helper class for constructing fully-connected PCNs. This class has been designed to be extremely customiseable such that the network it builds can be used in a wide range of tasks: supervised/unsupervised, classic/inverted, etc. There is also a CNN class, however it is not customisable in shape. For more detailed explanations, please see the documentation.
+
+## Installation
+```
+pip install pclib
+```
+
+## Example usage
+
+In the examples folder you will find two different classification tasks which demonstrate the usage of this package.
