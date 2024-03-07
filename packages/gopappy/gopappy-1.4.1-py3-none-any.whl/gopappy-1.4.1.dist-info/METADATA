@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: gopappy
+Version: 1.4.1
+Summary: GoDaddy v1 API implementation with secured auth token.
+License: MIT
+Author: Gamaliel Espinoza
+Author-email: gamaliel.espinoza@gmail.com
+Requires-Python: >=3.11,<3.13
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: colorama (>=0.4.6,<0.5.0)
+Requires-Dist: keyring (>=24.3.1,<25.0.0)
+Requires-Dist: pycrypto (>=2.6.1,<3.0.0)
+Requires-Dist: python-decouple (>=3.8,<4.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: typer (>=0.9.0,<0.10.0)
+Description-Content-Type: text/markdown
+
+# gopappy
+
+Inspo from [here](https://github.com/gamikun/gopapi).
+
+## Installation
+```bash
+python -m pip install gopappy
+```
+
+## Usage
+
+### Adding a DNS record to a domain
+```bash
+# A record
+gopappy domain yourdomain.com add-record A subdomain 127.0.0.1
+# Where A can also be CNAME
+# 127.0.0.1 to be replaced with the actual IP
+
+# CNAME
+gopappy domain yourdomain.com add-record A subdomain 127.0.0.1
+# Where A can also be CNAME
+# 127.0.0.1 to be replaced with the actual IP
+```
+### Listing records of a domain
+```bash
+gopappy domain mydomain.com records
+# and if you need to filter by record type
+gopappy domain mydomain.com records -t cname
+```
+
+### Listing all domains in godaddy account
+```bash
+gopappy domains
+# mydomain1.com
+# mydomain2.com
+```
+
+### Check whether a domain is available to purchase or not
+```bash
+gopappy domain acme.com check
+# or with alias
+gopappy domain acme.com available
+```
+
