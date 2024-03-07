@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: gref4hsi
+Version: 0.1.1
+Summary: A Python package for for georeferencing and orthorectifying hyperspectral imagery
+Home-page: https://github.com/havardlovas/gref4hsi
+Author: Haavard Snefjellaa Loevaas
+Author-email: havard.s.lovas@ntnu.no
+License: EUPL-1.2
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >3.7,<3.9
+Description-Content-Type: text/markdown
+License-File: LICENCE.MD
+Requires-Dist: opencv-python
+Requires-Dist: dill
+Requires-Dist: geopandas
+Requires-Dist: h5py
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: open3d
+Requires-Dist: pandas
+Requires-Dist: Pillow
+Requires-Dist: pymap3d
+Requires-Dist: pyproj
+Requires-Dist: pyvista
+Requires-Dist: pyvistaqt
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: shapely
+Requires-Dist: spectral
+Requires-Dist: xmltodict
+Requires-Dist: pykdtree
+Requires-Dist: trimesh
+Requires-Dist: rtree
+Requires-Dist: pyembree
+Requires-Dist: ephem
+
+# gref_hsi
+
+The hyperspectral toolchain is a toolbox for the georeferencing and orthorectification of hyperspectral pushbroom data. It was made with a special emphasis on georeferencing and co-registration of underwater hyperspectral data. However, it is equally simple to use for airborne data.
+
+Installation instructions:
+
+Set up a virtual environment with python 3.8. The following has been confirmed to work with anaconda virtual environment with python=3.8 on a windows 10, dell precision
+
+GDAL and rasterio: These are downloaded as wheel (*.whl) files for python 3.8 to the /dependencies folder. Navigate here cd /dependencies and run the following to install these:
+for %x in (dir *.whl) do python -m pip install %x
+
+For remaining dependencies, run:
+pip install -r requirements.txt
+
+A *.bat script was added for automated installation and testing.
+
+The pyvista function multi_ray_trace depends on the pyembree install and should be tested with /test/test_multi_ray_trace.py. For my machine the test takes 0.35 s. If it does not work, consider installing pyembree with anaconda (for mac and linux):
+conda install -c conda-forge pyembree
+
