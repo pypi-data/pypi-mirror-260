@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: sr-vision
+Version: 0.0.0
+Summary: Segment and Track Object Location
+Author: Alvin Zhu, Yusuke Tanaka
+License: LGPLv3
+Project-URL: GitHub, https://github.com/Suke0811/S-Vision
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Robot Framework
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+Requires-Dist: pyrealsense2 <2.54
+Requires-Dist: numpy
+
+# S.Vision
+
+
+
+
+## Installation
+this library is pip installable
+```bash
+pip install s-vision
+```
+
+### Dev Install
+```bash
+pip install -e .
+```
+
+## Important Note
+Starting [Ver. 1.54.1](https://github.com/IntelRealSense/librealsense/releases/tag/v2.54.1) Intel has dropped supports for T265 entirely. 
+Hence, this library requires pyrealsense2 earlier than Ver. 2.53.1 
+
+1.53 is only available upto Python 3.10
+
+
+
+## Documentation
+For the latest documentation, please visit
+[https://suke0811.github.io/s-vision/](https://suke0811.github.io/s-vision/)
+
+[![Latest Documentation](https://github.com/Suke0811/s-vision/actions/workflows/ci.yml/badge.svg)](https://github.com/Suke0811/Localization_T265/actions/workflows/ci.yml)
+
+
+
