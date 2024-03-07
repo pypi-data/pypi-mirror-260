@@ -1,0 +1,35 @@
+[project]
+name = "asyncapi-contracts"
+dynamic = ["version"]
+license = {"text" = "MIT"}
+description = "Contract driven development of Async API applications in Python"
+authors = [
+    { name = "Guillaume Charbonnier", email = "guillaume.charbonnier@araymond.com" }
+]
+dependencies = [
+    "nats-micro",
+    "typing_extensions",
+    "pydantic>=1",
+    "uvicorn",
+    "starlette",
+]
+
+readme = "README.md"
+requires-python = ">= 3.8"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+
+[tool.hatch.version]
+path = "src/contracts/__about__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/contracts"]
