@@ -1,0 +1,11 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("odni-pus-Arab-Latn-2011")
+def _stage_main(s):
+    s = interscript.stdlib.parallel_regexp_gsub(s, *_PRE_1866679213216185759)
+    s = re.compile("(?<="+interscript.stdlib.aliases["boundary"]+")(?<!"+interscript.stdlib.aliases["boundary"]+"[‘’'])[a-￿]", re.MULTILINE).sub(interscript.stdlib.upper, s)
+    s = re.compile("\\ Al\\-", re.MULTILINE).sub(" al-", s)
+    return s
+
+interscript.stdlib.add_map_stage("odni-pus-Arab-Latn-2011", "main", _stage_main)
+_PRE_1866679213216185759 = ["(?P<_0>ُ?"+interscript.stdlib.aliases["space"]+"?الد[يى]ن)|(?P<_1>"+interscript.stdlib.aliases["space"]+"?اللَّه)|(?P<_2>ُوي"+interscript.stdlib.aliases["boundary"]+")|(?P<_3>(?<="+interscript.stdlib.aliases["space"]+")"+interscript.stdlib.aliases["boundary"]+"ال)|(?P<_4>َوْ)|(?P<_5>َی[ها])|(?P<_6>ِی[ها])|(?P<_7>ْیا)|(?P<_8>وي"+interscript.stdlib.aliases["boundary"]+")|(?P<_9>ِ"+interscript.stdlib.aliases["boundary"]+")|(?P<_10>َا?)|(?P<_11>ُو)|(?P<_12>َي)|(?P<_13>ِ[يى])|(?P<_14>[ېے]"+interscript.stdlib.aliases["boundary"]+")|(?P<_15>بّ)|(?P<_16>پّ)|(?P<_17>[تټط]ّ)|(?P<_18>جّ)|(?P<_19>[حه]ّ)|(?P<_20>[دډ]ّ)|(?P<_21>[رړ]ّ)|(?P<_22>[ذزضظ]ّ)|(?P<_23>[ثسص]ّ)|(?P<_24>فّ)|(?P<_25>قّ)|(?P<_26>كّ)|(?P<_27>کّ)|(?P<_28>[گګ]ّ)|(?P<_29>لّ)|(?P<_30>مّ)|(?P<_31>[نڼ]ّ)|(?P<_32>وّ)|(?P<_33>يّ)|(?P<_34>ىّ)|(?P<_35>ؤو)|(?P<_36>ِ)|(?P<_37>ُ)|(?P<_38>ْ)|(?P<_39>ٙ)|(?P<_40>ئ)|(?P<_41>ب)|(?P<_42>پ)|(?P<_43>[تټط])|(?P<_44>ج)|(?P<_45>چ)|(?P<_46>ځ)|(?P<_47>څ)|(?P<_48>[حه])|(?P<_49>خ)|(?P<_50>[دډ])|(?P<_51>[رړ])|(?P<_52>[ذزضظ])|(?P<_53>[ږژ])|(?P<_54>[ثسص])|(?P<_55>[شښ])|(?P<_56>[ءع])|(?P<_57>غ)|(?P<_58>ف)|(?P<_59>ق)|(?P<_60>ك)|(?P<_61>ک)|(?P<_62>[گګ])|(?P<_63>ل)|(?P<_64>م)|(?P<_65>[نڼ])|(?P<_66>و)|(?P<_67>ي)|(?P<_68>ى)|(?P<_69>ِ)|(?P<_70>ُ)|(?P<_71>آ)|(?P<_72>ا)|(?P<_73>و)|(?P<_74>ې)|(?P<_75>ۍ)|(?P<_76>ی)|(?P<_77>أ)", ["uddin","ullah","uy","al-","aw","aya","ia","ya","oy","-e","a","u","ai","i","ey","bb","pp","tt","jj","hh","dd","rr","zz","ss","ff","qq","kk","kk","gg","ll","mm","nn","ww","yy","yy","u","i","u","","ê","êy","b","p","t","j","ch","dz","ts","h","kh","d","r","z","zh","s","sh","","gh","f","q","k","k","g","l","m","n","w","y","y","i","u","a","a","o","e","ey","a",""]]
