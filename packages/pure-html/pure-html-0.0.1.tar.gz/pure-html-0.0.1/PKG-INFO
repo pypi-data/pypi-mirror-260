@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: pure-html
+Version: 0.0.1
+Summary: Make HTML pure by removing annoying tags and classes for better processing and reading
+Author: Hansimov
+Project-URL: Homepage, https://github.com/Hansimov/pure-html
+Project-URL: Issues, https://github.com/Hansimov/pure-html/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Pure-HTML
+Make HTML pure by removing annoying tags and classes for better processing and reading
+
+## Build and upload
+    
+```sh
+python -m build
+twine upload --repository testpypi dist/*
+```
+
+## Install
+
+```sh
+# pip install --index-url https://test.pypi.org/simple/ --no-deps pure-html
+pip install --upgrade pure-html
+```
