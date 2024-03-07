@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "mosaik-powerplant"
+version = "0.1.0"
+description = "Simulator for Powerplants in mosaik"
+authors = ["Malte Trauernicht <mosaik@offis.de>"]
+license = "MIT"
+readme = ["README.rst", "CHANGELOG", "AUTHORS.txt"]
+packages = [{include = "mosaik_components"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+mosaik-api-v3 = "^3.0.7"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.11.3"
+twine = "^5.0.0"
+
+[tool.poetry.group.test.dependencies]
+mosaik =  "^3.2.0"
+mosaik_csv = "^1.2.0"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
