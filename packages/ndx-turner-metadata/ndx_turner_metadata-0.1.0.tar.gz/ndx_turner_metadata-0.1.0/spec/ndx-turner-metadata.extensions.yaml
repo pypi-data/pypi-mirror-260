@@ -1,0 +1,10 @@
+groups:
+- neurodata_type_def: TurnerLabMetaData
+  neurodata_type_inc: LabMetaData
+  doc: type for storing metadata for Turner lab
+  attributes:
+  - name: MPTP_status
+    dtype: text
+    doc: Indicates whether the subject was treated with MPTP (1-methyl-4-phenyl-1,2,3,6-tetrahydropyridine;
+      a chemical compound known to induce Parkinsonism) with values 'pre-MPTP' or
+      'post-MPTP', reflecting the treatment status of the subject.
