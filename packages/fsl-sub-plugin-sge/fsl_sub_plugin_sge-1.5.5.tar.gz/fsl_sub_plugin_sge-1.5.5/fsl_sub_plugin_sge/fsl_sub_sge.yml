@@ -1,0 +1,77 @@
+method_opts:
+  sge:
+    queues: True # Does this submission method use job queues - normally False only for shell plugin
+    large_job_split_pe: openmp # Which parallel environment should be used to break up large memory jobs
+    copy_environment: True # Replicate current shell environment to running job. Set this to False where
+    # your cluster nodes are different (e.g. different CPU generations) and the cluster
+    # is setup to run hardware optimised software. In this case, if you need environment
+    # variables to be copied to the job's session use the --export
+    has_parallel_envs: True # Grid Engine has parallel environments
+    affinity_type: linear # Method used to bind to CPUs - set to Null to disable
+    # See man qsub for options, this will be passed as the '-binding' option
+    affinity_control: slots # How to configure this affinity options are:
+    #   threads - set to number of threads required (Univa Grid Engine)
+    #   slots - let GE sort it out automatically (Son of/Sun Grid Engine)
+    script_conf: True # Whether to enable --usescript option
+    mail_support: False # Enable Emailing end-user about job status
+    mail_modes: # What mail modes are supported and the queue mail arguments to set
+      b: # Email on job start
+        - b # Mail on job start
+      e: # Email on job end
+        - e # Mail on job end
+      a: # Email on job issue
+        - a # Mail on fail/abort/requeue
+      f: # Email on all events
+        - a # Mail on fail/abort/requeue
+        - e # Mail on job end
+        - b # Mail on job start
+      n: # Never email
+        - n # Mail never
+    mail_mode: n # Default mail mode from above
+    map_ram: True # Whether to split large memory jobs into shared memory PE slots
+    thread_ram_divide: True # Whether to divide up RAM requirements for multi-threaded tasks
+    notify_ram_usage: False # Whether to notify queue of memory requirements
+    # Note - this will tell the cluster to kill your task if you
+    # request more RAM than this
+    set_time_limit: False # Set h_rt (hard run time) to the requested runtime (in minutes)
+    # WARNING, your job will be killed if it exceeds this time
+    set_hard_time: True # Set h_rt (hard run time) to queue length if notify_ram_usage is False
+    # This can help the scheduler back fill reserved slots
+    ram_resources: # Queue complexes that specify RAM usage of a job
+        - m_mem_free
+        - h_vmem
+    job_priorities: True # Does this queue sofware supports job priority setting?
+    min_priority: -1023 # Lowest job priority
+    max_priority: 0 # Highest priority a user can set
+    array_holds: True # Supports array task holds?
+    array_limit: True # Supports array task concurency limits?
+    architecture: False # Enable architecture (e.g. x86_64/powerpc) selection?
+    job_resources: True # Supports job resources?
+    projects: True # Do you need projects support?
+    use_jobscript: True # Do you want to create a job wrapper script? Wrapper scripts are small BASH scripts
+    # that load shell modules, set environment variables, configure the cluster
+    # and then run the job command. Where your cluster must not preserve all environment
+    # variables and you use shell modules you MUST set this to True.
+    keep_jobscript: False # Do you want to keep ALL job scripts used to submit the job to the cluster? The script
+    # will include reproducibility information, e.g. date/time submitted, command line
+    # specified, version of fsl_sub and grid plugin, environment variables passed/inherited
+    # (for systems that must not automatically inherit all variables) and modules loaded
+    # (where a system used modules). Users will not be able to override this.
+    preserve_modules: False # Do you want to load your currently loaded modules in the cluster job?
+    # If your system uses shell modules to configure environment variables then enable
+    # this. Requires jobs scripts, see 'use_jobscript' below.
+    add_module_paths: [] # If you are using wrapper scripts and preserving modules and need to add additional
+    # folders to the MODULESPATH environment variable in the job's environment then
+    # add these paths to add_module_paths
+    allow_nested_queuing: False # Do you want fsl_sub to be able to submit to a cluster when already
+    # running in a batch job. See also FSLSUB_NESTED environment variable.
+coproc_opts:
+  cuda:
+      uses_pe: False # PE provides multiGPU support - Son of Grid Engine doesn't support GPUs
+      # natively so often clusters will be set up with a prolog that allocates
+      # GPUs as per the number of parallel environment requested slots. If
+      # this is the case for your cluster, change this to the name of the parallel
+      # environment. Leave as false on systems that support GPU scheduling (e.g. Univa)
+      set_visible: False # If you would like CUDA_VISIBLE_DEVICES and GPU_DEVICE_ORDINAL to be set by fsl_sub
+      # set this to True - requires use_jobscript (or array task) - your cluster may be setup to do this for you.
+      no_binding: True # Disable CPU core binding for co-processor tasks
