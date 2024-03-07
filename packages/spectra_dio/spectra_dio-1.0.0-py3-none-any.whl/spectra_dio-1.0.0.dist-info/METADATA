@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: spectra_dio
+Version: 1.0.0
+Summary: Control digital input and output of Spectra PowerBox and PowerTwin series industrial computers
+Project-URL: Repository, https://git.u-iot.spectra.de/SpectraAutomation/spectra_dio
+Author-email: spectra_mjk <mjk@spectra.de>
+License: LGPL-3.0-only
+License-File: LICENSE
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: System :: Hardware :: Hardware Drivers
+Requires-Python: >=3.8
+Requires-Dist: portio>=0.5
+Description-Content-Type: text/markdown
+
+# spectra_dio
+
+Python Module for PowerBox / PowerTwin digital I/O 
+
+# Installation
+
+`pip install spectra_dio`
+
+# Example Usage
+
+```python
+import spectra_dio
+
+dio = spectra_dio.DIO(spectra_dio.IOConfig.from_dmi())
+dio.initialize()
+
+# Read digital input status
+print(dio.read_di())
+
+# Set digital output DO0 on
+dio.write_do(0, True)
+```
