@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caluxPy_fi"
+version = "0.1.10"
+authors = [
+  { name="Luis Manuel Tavarez Valenzuela", email = "luima2494@gmail.com" },
+]
+description = "Fixed Income Valuation and Analysis"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+"datetime>=5.3",
+"matplotlib>=3.8.2",
+"numpy>=1.26.4",
+"pandas>=2.2.0",
+"pymongo>=4.6.0",
+"pyodbc>=5.0.1",
+"scipy>=1.11.4",
+"openpyxl>=3.1.2",
+]
