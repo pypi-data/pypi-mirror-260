@@ -1,0 +1,87 @@
+# vim: set expandtab shiftwidth=4 softtabstop=4:
+
+# === UCSF ChimeraX Copyright ===
+# Copyright 2022 Regents of the University of California. All rights reserved.
+# The ChimeraX application is provided pursuant to the ChimeraX license
+# agreement, which covers academic and commercial uses. For more details, see
+# <http://www.rbvi.ucsf.edu/chimerax/docs/licensing.html>
+#
+# This particular file is part of the ChimeraX library. You can also
+# redistribute and/or modify it under the terms of the GNU Lesser General
+# Public License version 2.1 as published by the Free Software Foundation.
+# For more details, see
+# <https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+# EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. ADDITIONAL LIABILITY
+# LIMITATIONS ARE DESCRIBED IN THE GNU LESSER GENERAL PUBLIC LICENSE
+# VERSION 2.1
+#
+# This notice must be embedded in or attached to all copies, including partial
+# copies, of the software or any revisions or derivations thereof.
+# === UCSF ChimeraX Copyright ===
+
+from .chem_group import find_group
+
+# the below in case you want to add your own custom group to group_info...
+from .chem_group import group_info, N, C, O, H, R, X, \
+    single_bond, heavy, non_oxygen_single_bond, RingAtom
+
+from chimerax.core.toolshed import BundleAPI
+
+class ChemGroupAPI(BundleAPI):
+
+    @staticmethod
+    def initialize(session, bundle_info):
+        if session.ui.is_gui:
+           session.ui.triggers.add_handler('ready', lambda *args, ses=session:
+               ChemGroupAPI._add_select_menu_entries(ses))
+
+    @staticmethod
+    def register_selector(selector_name, logger):
+        # 'register_selector' is lazily called when selector is referenced
+        from . import chem_group
+        chem_group.register_selectors(logger)
+
+    @staticmethod
+    def _add_select_menu_entries(session):
+        from chimerax.core.commands import run
+        parent_menus = ['Che&mistry', '&Functional Group']
+        add_submenu = session.ui.main_window.add_select_submenu
+        existing_menus = { None: add_submenu(parent_menus[:-1], parent_menus[-1]) }
+        add_selector = session.ui.main_window.add_menu_selector
+        for label, submenu in [('acyl halide', None), ('aldehyde', None), ('amide', None), ('&amine', ['all', 'aliphatic', 'aliphatic primary', 'aliphatic secondary', 'aliphatic tertiary', 'aliphatic quaternary', 'aromatic', 'aromatic primary', 'aromatic secondary', 'aromatic tertiary', 'aromatic quaternary']), ('aromatic ring', None), ('carbonyl', None), ('carboxylate', None), ('disulfide', None), ('ester', None), ('ether O', None), ('halide', None), ('hydroxyl', None), ('imine', None), ('ketone', None), ('methyl', None), ('nitrile', None), ('nitro', None), ('&nucleoside base', ['adenine', 'cytosine', 'guanine', 'thymine', 'uracil']), ('phosphate', None), ('phosphinyl', None), ('phosphonate', None), ('purines', None), ('pyrimidines', None), ('ribose', None), ('sulfate', None), ('sulfonamide', None), ('sulfonate', None), ('sulfone', None), ('sulfonyl', None), ('thiocarbonyl', None), ('thioether', None), ('thiol', None)]:
+            if submenu is None:
+                menu = existing_menus[None]
+            else:
+                if label in existing_menus:
+                    menu = existing_menus[label]
+                else:
+                    if label[0] == '&':
+                        cap_label = '&' + label[1:].title()
+                    else:
+                        cap_label = label.title()
+                    menu = existing_menus[label] = add_submenu(parent_menus, cap_label)
+            if submenu is None:
+                add_selector(menu, label.title(), label.replace(' ', '-'))
+            else:
+                amine = False
+                for sublabel in submenu:
+                    if sublabel == "all":
+                        amine = True
+                        selector = "amine"
+                    elif amine:
+                        selector = sublabel + " amine"
+                    else:
+                        selector = sublabel
+                    add_selector(menu, sublabel.title(), selector.replace(' ', '-'))
+                if not amine:
+                    add_selector(menu, "All the Above",
+                        "|".join([e.replace(' ', '-') for e in submenu]))
+        # put some "atomic" selectors in our menus because they are a better fit
+        chemistry_menu = add_submenu([], parent_menus[0])
+        add_selector(chemistry_menu, "Protein", "protein")
+        add_selector(chemistry_menu, "Nucleic Acid", "nucleic-acid")
+
+bundle_api = ChemGroupAPI()
