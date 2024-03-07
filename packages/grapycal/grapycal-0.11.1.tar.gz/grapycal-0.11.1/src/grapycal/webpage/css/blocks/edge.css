@@ -1,0 +1,30 @@
+.edge{
+    stroke: var(--z3);
+}
+
+.edge-label{
+    color: #aaaaaa;
+}
+
+
+.edge.hover{
+    stroke: var(--z4);
+}
+
+.edge.selected{
+    stroke: var(--t2);
+}
+
+.edge.data-ready{
+    stroke: var(--t2);
+    opacity: 0.7;
+}
+
+.edge.data-ready.selected{
+    stroke: var(--t3);
+}
+
+.edge:not(.data-ready){
+
+    transition: stroke 0.2s ease-out opacity 0.2s ease-out;
+}

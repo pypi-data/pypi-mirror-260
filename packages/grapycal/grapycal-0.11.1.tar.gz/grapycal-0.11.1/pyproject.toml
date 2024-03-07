@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "grapycal"
+version = "0.11.1"
+description = "A highly interactive visual programming language"
+authors = [
+    "eri24816 <a931eric@gmail.com>",
+    "secminhr <secminhrian@gmail.com>",
+    "peterxcli <peterxcli@gmail.com>",
+    "greenslime1024 <greenslime1024@gmail.com>",
+]
+
+maintainers = [
+    "eri24816 <a931eric@gmail.com>",
+]
+
+license = "BSD-3-Clause"
+readme = "README.md"
+documentation = "https://docs.grapycal.org/"
+
+include = ["src/grapycal/webpage/**/*","src/grapycal/Welcome.grapycal"] # Have to explicitly include here because Poetry by default ignores all files in the .gitignore file.
+
+[tool.poetry.dependencies]
+python = "^3.11"
+objectsync = ">=0.9.2"
+pyyaml = "^6.0"
+dacite = "^1.8.1"
+usersettings = "^1.1.5"
+aiohttp = "^3.9.1"
+toml = "^0.10.2"
+certifi = "^2023.11.17"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "~7.0"
+furo = "~2023.5"
+sphinx-autoapi = "~2.1"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "pep440"
+version_provider = "poetry"
+update_changelog_on_bump = true
+major_version_zero = true
+version_files = [
+    "docs/source/conf.py:release",
+    "src/grapycal/__init__.py:__version__",
+    "../frontend/package.json:version",
+    "../extensions/grapycal_builtin/pyproject.toml:version",
+    "../extensions/grapycal_builtin/pyproject.toml:grapycal",
+    "../test_build.bat:pip",
+    "../test_build_pypi.bat:pip",
+]
+
+pre_bump_hooks = [
+    "pre_bump.bat",
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+grapycal = "grapycal.__main__:main"
