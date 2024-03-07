@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: qci-client
+Version: 3.0.3
+Summary: Client Package for using Qatalyst Optimization Suite
+Author: Quantum Computing Inc.
+Author-email: support@quantumcomputinginc.com
+License: Apache 2.0
+Project-URL: documentation, https://qatalyst.quantumcomputinginc.com
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: <3.13,>=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests <3,>=2.22.1
+Requires-Dist: requests-futures <2,>=1.0.0
+Requires-Dist: networkx <3,>=2.6.3
+Requires-Dist: numpy <2,>=1.21.1
+Requires-Dist: scipy <2,>=1.7.3
+Provides-Extra: dev
+Requires-Dist: black ==23.1.0 ; extra == 'dev'
+Requires-Dist: build <0.11,>=0.10.0 ; extra == 'dev'
+Requires-Dist: check-manifest <0.49,>=0.48 ; extra == 'dev'
+Requires-Dist: coverage[toml] <7,>=6.4.2 ; extra == 'dev'
+Requires-Dist: pylint ==2.16.2 ; extra == 'dev'
+Requires-Dist: pytest <8,>=7.2.1 ; extra == 'dev'
+Requires-Dist: twine <4,>=3.7.1 ; extra == 'dev'
+
+# QCI Client
+
+## Getting started
+
+### Installation
+
+`qci-client` currently supports Python 3.8-12, inclusive, as specified in the
+PEP-621-compliant pyproject.toml.
+
+Install `qci-client` from the [public PyPI server](https://pypi.org/)
+into your Python virtual environment using--
+
+```bash
+pip install qci-client
+```
+
+### Environment Variables
+
+These environment variables must be set in order to access the API--
+
+- QCI_TOKEN - token for Qatalyst API
+<!-- markdown-link-check-disable-next-line -->
+- QCI_API_URL - Example: "https://api.qci-prod.com"
+
+
