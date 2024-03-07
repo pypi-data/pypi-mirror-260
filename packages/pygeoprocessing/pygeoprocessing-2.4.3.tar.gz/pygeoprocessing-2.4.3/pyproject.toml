@@ -1,0 +1,20 @@
+[build-system]
+# these are the minimum packages needed in order to execute the pygeoprocessing build.
+# Setuptools, wheel are from pep508.
+# NOTE: GDAL is *not* require here because the compiled cython module will
+# dynamically import GDAL via python's import system.  This behavior means
+# that we can provide a much easier build experience so long as GDAL is
+# available at runtime.
+requires = [
+    'setuptools', 'wheel', 'setuptools_scm', 'cython<3.0.0', 'oldest-supported-numpy'
+]
+build-backend = "setuptools.build_meta"
+
+
+[tool.pytest.ini_options]
+# Raise warnings to exceptions.
+filterwarnings = ["error", "default::DeprecationWarning", "default::FutureWarning"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "node-and-date"
