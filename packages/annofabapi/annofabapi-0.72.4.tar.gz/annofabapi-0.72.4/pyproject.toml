@@ -1,0 +1,149 @@
+[tool.poetry]
+name = "annofabapi"
+version = "0.72.4"  # `poetry-dynamic-versioning`を使ってGitHubのバージョンタグを取得している。変更不要
+description = "Python Clinet Library of Annofab WebAPI (https://annofab.com/docs/api/)"
+authors = ["Kurusugawa Computer Inc."]
+license = "MIT"
+keywords=["annofab", "api"]
+readme="README.md"
+repository="https://github.com/kurusugawa-computer/annofab-api-python-client"
+classifiers = [
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Topic :: Utilities",
+        "Operating System :: OS Independent",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "*"
+python-dateutil = "*"
+backoff="*"
+dataclasses-json="*"
+more-itertools = "*"
+
+numpy = [
+  {version = ">=1.26", python = ">=3.9", optional=true },
+  {version = "<1.25", python = "=3.8", optional=true },
+]
+pillow={version="*", optional=true }
+
+
+[tool.poetry.extras]
+# 塗りつぶし画像を扱うためのオプション
+segmentation = ["numpy", "pillow"]
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7"
+pytest-xdist = "*"
+pytest-cov = "*"
+
+
+[tool.poetry.group.linter.dependencies]
+# pythonバージョンを指定している理由：lintは開発環境と同じPythonバージョンで実行するため。また古いPythonバージョンにサポートしていないライブラリのバージョンがあるため
+ruff = {version="^0.3", python = ">=3.11"}
+mypy = {version="^1", python = ">=3.11"}
+pylint = {version="^3", python = ">=3.11"}
+
+# type stub package
+types-requests = "*"
+types-python-dateutil = "*"
+types-dataclasses = "*"
+
+
+[tool.poetry.group.documentation.dependencies]
+sphinx = "^7"
+pydata-sphinx-theme = ">=0.13.3"
+
+
+[tool.poetry.group.dev]
+# 開発するときのみ必要なライブラリ。インストールしなくても開発はできるので、オプショナルにする
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+ipython = "*"
+
+
+[tool.mypy]
+# スタブが無いパッケージのエラーは無視させる.サードパーティのライブラリに型情報がないケースもあるため
+ignore_missing_imports = true
+# 型ヒントが付いていない関数もチェックする
+check_untyped_defs = true
+
+plugins = ["numpy.typing.mypy_plugin"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 150
+exclude = ["annofabapi/__init__.py"]
+
+[tool.ruff.lint]
+ignore = [
+#    "G004", # `logging-f-string` : loggingでf-stringを使いたいので無視する
+    "FA100", # `future-rewritable-type-annotation` : Python3.8をサポートしている間は無視する。
+    "PD002", #すでにpandasで`inplace=True`はいろんなところで使っているため
+    "RUF001", # 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF002",# 全角記号など`ambiguous unicode character`も使いたいため
+    "RUF003",# 全角記号など`ambiguous unicode character`も使いたいため
+    "PLC1901", # compare-to-empty-string : `if a == "`のように空文字列で直接比較したいときがあるため
+    "PLR2004", # magic-value-comparison: listのサイズで判定するときがよくあるため
+    "ANN101", # missing-type-self: 引数selfには型ヒントは付けていないため
+    "ANN102", # missing-type-cls: 引数clsには型ヒントは付けていないため
+    "ANN002", # missing-type-args
+    "ANN003", # missing-type-kwargs
+    "ERA", # : 役立つこともあるが、コメントアウトしていないコードも警告されるので無視する
+    "TD", # flake8-todos
+    "FIX", # flake8-fixme
+
+    # いずれ無視しないようにする
+    "ANN201", # missing-return-type-public-function:
+    "ANN202", # missing-return-type-private-function:
+    "PLR",  # pylint Refactor
+
+    # 以下のルールはコードに合っていないので無効化した
+    "RSE", # flake8-raise
+    "D", # pydocstyle, Docstringを中途半端にしか書いていないので、除外する
+    "C90", # mccabe
+    "T20", # flake8-print
+    "SLF", #  flake8-self
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "TRY", # tryceratops
+    "COM", # flake8-commas
+    "S", # flake8-bandit
+    "EM",#flake8-errmsg
+    "EXE", # flake8-executable
+    "ICN", # flake8-import-conventions
+    "RET",#flake8-return
+    "SIM",#flake8-simplify
+    "TCH", # flake8-type-checking
+    "PTH", #pathlibを使わないコードが多いので、除外する
+    "ISC", #flake8-implicit-str-concat
+    "N", # pep8-naming
+    "PT", # flake8-pytest-style
+]
+
+select = [
+    "ALL"
+]
+
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 10
+
+
+
+[tool.poetry-dynamic-versioning]
+enable = false
+format = "{base}"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
