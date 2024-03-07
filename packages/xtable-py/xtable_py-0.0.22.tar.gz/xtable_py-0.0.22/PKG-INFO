@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: xtable-py
+Version: 0.0.22
+Summary: This package wraps the java package xtable into a python cli/library along with it's dependencies. This provides the xtable jar in an easy consumeable format for various CI/CD or workflow management platforms such as Apache Airflow.
+Author-email: Matthias Rudolph <mrudo@amazon.de>
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: jpype1 ==1.5.0
+Requires-Dist: apache-airflow ==2.8.1 ; extra == "airflow"
+Requires-Dist: xtable-py[build,airflow] ; extra == "all"
+Requires-Dist: flit >=3.9.0 ; extra == "build"
+Provides-Extra: airflow
+Provides-Extra: all
+Provides-Extra: build
+
+# `xtable_py`
+This package wraps the java package [xtable](https://onetable.dev) into a python library along with it's dependencies. This provides the xtable jar in an easy consumeable format for various CI/CD or workflow management platforms such as Apache Airflow.
+
+
+## Requirements
+
+* Java 11.0
+* jenv 0.5.6
+
