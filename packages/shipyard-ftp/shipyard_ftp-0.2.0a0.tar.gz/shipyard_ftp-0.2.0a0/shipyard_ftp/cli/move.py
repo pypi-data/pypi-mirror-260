@@ -1,0 +1,161 @@
+import argparse
+import re
+import sys
+from copy import deepcopy
+
+from shipyard_bp_utils import files as shipyard
+from shipyard_templates import ShipyardLogger
+
+from shipyard_ftp.ftp import FtpClient
+
+logger = ShipyardLogger.get_logger()
+
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--source-file-name-match-type",
+        dest="source_file_name_match_type",
+        choices={"exact_match", "regex_match"},
+        default="exact_match",
+        required=False,
+    )
+    parser.add_argument("--source-file-name", dest="source_file_name", required=True)
+    parser.add_argument(
+        "--source-folder-name", dest="source_folder_name", default="", required=False
+    )
+    parser.add_argument(
+        "--destination-folder-name",
+        dest="destination_folder_name",
+        default="",
+        required=False,
+    )
+    parser.add_argument(
+        "--destination-file-name",
+        dest="destination_file_name",
+        default=None,
+        required=False,
+    )
+    parser.add_argument("--host", dest="host", default=None, required=True)
+    parser.add_argument("--port", dest="port", default=21, required=True)
+    parser.add_argument("--username", dest="username", default=None, required=False)
+    parser.add_argument("--password", dest="password", default=None, required=False)
+    return parser.parse_args()
+
+
+def is_file(ftp_client, filename):
+    """
+    Helper function to check if the path in an ftp server is a file or a directory.
+    If it is a directory, ftp.size returns None
+    """
+    try:
+        if ftp_client.size(filename) is not None:
+            return True
+    except Exception as e:
+        return False
+
+
+def get_all_nested_items(client, working_directory, dir_list=None):
+    """
+    Recursive function to get all the nested files and directories on the FTP server.
+    @params:
+        client: FTP client
+        working_directory: the folder path to start the function call
+    """
+    if dir_list is None:
+        dir_list = []
+    dirs = deepcopy(dir_list)
+    paths = client.nlst(working_directory)
+    for path in paths:
+        if not is_file(client, path):
+            # dirs.append(path)
+            dirs = get_all_nested_items(client, path, dir_list=dirs)
+        else:
+            dirs.append(path)
+    return dirs
+
+
+def ftp_create_new_folders(client, destination_path):
+    """
+    Changes working directory to the specified destination path
+    and creates it if it doesn't exist
+    """
+    original_dir = client.pwd()
+    for folder in destination_path.split("/"):
+        try:
+            client.cwd(folder)
+        except Exception:
+            client.mkd(folder)
+            client.cwd(folder)
+    client.cwd(original_dir)
+
+
+def main():
+    args = get_args()
+    host = args.host
+    port = args.port
+    username = args.username
+    password = args.password
+    source_file_name = args.source_file_name
+    source_folder_name = args.source_folder_name
+
+    destination_folder_name = shipyard.clean_folder_name(
+        args.destination_folder_name
+    )
+    source_file_name_match_type = args.source_file_name_match_type
+    ftp_client = FtpClient(host=host, port=port, user=username, pwd=password)
+    # if the source folder name is omitted, then use the current working directory
+    source_folder_name = source_folder_name or ftp_client.client.pwd()
+    if source_file_name_match_type == "exact_match":
+        source_full_path = shipyard.combine_folder_and_file_name(
+            source_folder_name, source_file_name
+        )
+        destination_file = shipyard.determine_destination_file_name(
+            source_full_path=source_full_path,
+            destination_file_name=args.destination_file_name,
+        )
+        destination_full_path = shipyard.combine_folder_and_file_name(
+            destination_folder_name,
+            destination_file,
+        )
+        if len(destination_full_path.split("/")) > 1:
+            path, file_name = destination_full_path.rsplit("/", 1)
+            ftp_create_new_folders(client=ftp_client.client, destination_path=path)
+        ftp_client.move(
+            source_full_path=source_full_path,
+            destination_full_path=destination_full_path,
+        )
+
+
+    elif source_file_name_match_type == "regex_match":
+        file_names = get_all_nested_items(ftp_client.client, source_folder_name)
+        matching_file_names = shipyard.find_all_file_matches(
+            file_names, re.compile(source_file_name)
+        )
+
+        number_of_matches = len(matching_file_names)
+
+        if number_of_matches == 0:
+            logger.info(f'No matches were found for regex "{source_file_name}".')
+            sys.exit(ftp_client.EXIT_CODE_FILE_MATCH_ERROR)
+
+        logger.info(f"{len(matching_file_names)} files found. Preparing to move...")
+
+        for index, key_name in enumerate(matching_file_names, 1):
+            destination_full_path = shipyard.determine_destination_full_path(
+                destination_folder_name=destination_folder_name,
+                destination_file_name=args.destination_file_name,
+                source_full_path=key_name,
+                file_number=None if len(matching_file_names) == 1 else index,
+            )
+            if len(destination_full_path.split("/")) > 1:
+                path, file_name = destination_full_path.rsplit("/", 1)
+                ftp_create_new_folders(client=ftp_client.client, destination_path=path)
+            logger.info(f"Moving file {index} of {len(matching_file_names)}")
+            ftp_client.move(
+                source_full_path=key_name, destination_full_path=destination_full_path
+            )
+
+
+if __name__ == "__main__":
+    main()
