@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load menu_tags static %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block crumbs %}
+    {% with app_template=True %}
+        {% show_breadcrumb 0 "_components/breadcrumb.html" 0 %}
+        <li class="active">Search Results</li>
+    {% endwith %}
+{% endblock %}
+
+{% block body %}
+    <section class="search-bar search-bar--solo">
+        <div class="wrapper wrapper--thin">
+            <h1><span>Search Results{% if request.GET.q %} for "{{ request.GET.q }}"{% endif %}</span></h1>
+
+            <form method="get" action="{% url 'search:index' %}">
+                <input aria-label="Search" placeholder="Search" value="{{ request.GET.q }}" type="text" name="q" class="search-bar__query">
+                <button type="submit" class="search-bar__submit" title="Search"><img src="{% static 'img/search-white.svg' %}" alt="" aria-hidden="true"><span aria-hidden="true">Search</span></button>
+            </form>
+        </div>
+    </section>
+
+    <div class="wrapper wrapper--thin">
+        <div class="search-results">
+            {% for result in search_results %}
+                    <div class="search-results__card">
+                        <a href="{{ result.url }}" title="{{ result.title }}">
+                            <h3>{{ result.title }}</h3>
+                            {% if result.description %}
+                                <p>{{ result.description }}</p>
+                            {% endif %}
+                            {% if result.meta.category %}
+                                <p>{{ result.meta.category }}</p>
+                            {% endif %}
+                            </a>
+                    </div>
+            {% empty %}
+                <p>No results found for '{{ request.GET.q }}'</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
