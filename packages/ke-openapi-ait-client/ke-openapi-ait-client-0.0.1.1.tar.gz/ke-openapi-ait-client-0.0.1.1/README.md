@@ -1,0 +1,108 @@
+OpenAPI网关服务客户端
+=======================
+
+## 功能列表
+
+1. 校验token，获取用户信息
+2. 统一上报操作日志至网关侧
+
+## 使用指南
+
+### 安装
+
+```shell
+pip install ke-openapi-ait-client
+```
+
+### 配置网关域名
+
+通过环境变量设置网关域名
+
+```python
+OPENAPI_HOST = "https://***.com"
+```
+
+### token校验
+
+```python
+from ait_openapi import validate_token, support_model, account_balance_enough
+
+token = "****"
+# 根据token，解析用户身份
+user_name = validate_token(token)
+# 查询当前登陆用户，是否具有指定模型的权限
+supported = support_model(token, 'model_name')
+# 账户余额判断，支持传入指定判断阈值，服务方可以在每次用户请求前，根据本次预估花费，对用户余额进行校验，若余额不足，则可拒绝请求
+
+balance = account_balance_enough(token, cost=1.0)
+```
+
+如果token无效，抛出`AuthorizationException`异常
+
+### 上报操作日志
+
+#### 1. 上报模式
+
+为降低上报操作日志延迟对业务逻辑的影响，上报操作日志采用异步上报模式
+
+##### async异步上报
+
+日志上报，将采用异步io的方式，上报操作日志，这种方式，可以在单线程中，同时处理多个并发非阻塞IO操作
+
+```python
+from ait_openapi import operation_log
+
+
+@operation_log()
+def safety_check(request, *, validate_output: bool):
+    pass
+```
+
+#### 2. 上报参数更新
+
+操作日志记录，需要传递一些动态参数，需导入预定义的contextvar，在请求起始处进行设置, 请求结束时清空contextvar
+
+```python
+from ait_openapi import trace_id_context, caller_id_context, request_url_context
+
+# 整个链路处理前，设置
+t_token = trace_id_context.set("*********")  # trace_id 当前请求链路唯一标识
+c_token = caller_id_context.set("*********")  # caller_id 调用方标识, 通过user_info.username获取
+r_token = request_url_context.set("*********")  # request_url 当前请求url
+# #
+# 请求处理
+# 清空contextvar
+trace_id_context.reset(t_token)
+caller_id_context.reset(c_token)
+request_url_context.reset(r_token)
+```    
+
+##### 2.1 使用middleware设置contextvar, 将自动进行token解析，以及上下文设置
+
+```python
+from ait_openapi.middleware import HttpContextMiddleware, WebSocketHttpContextMiddleware
+from fastapi import FastAPI
+
+app = FastAPI()
+app.add_middleware(HttpContextMiddleware, exclude_path=["/v1/actuator/health/<pattern>"])
+app.add_middleware(WebSocketHttpContextMiddleware, exclude_path=["/v1/actuator/health/<pattern>"])
+```
+
+#### 3. 日志记录配置
+
+日志记录中，op_type字段默认取值为当前方法名称，可通过在装饰器中传入参数进行覆盖。该装饰器可同时用于同步方法以及异步协程的日志上报 
+为了进行调用计费，如果当前操作日志中的信息，需要用于回调计费，则需要在装饰器中传入is_cost_log=True
+
+```python
+from ait_openapi import operation_log
+
+
+@operation_log('safety_check', is_cost_log=False)
+def safety_check(request, *, validate_output: bool):
+    pass
+
+
+@operation_log(is_cost_log=False)
+async def safety_check(request, *, validate_output: bool):
+    pass
+```
