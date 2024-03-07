@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: aiodeepl
+Version: 0.1.5
+Summary: Async API for DeepL Translator
+Home-page: https://github.com/VermiIIi0n/aiodeepl
+License: MIT
+Keywords: utilities
+Author: VermiIIi0n
+Author-email: dungeon.behind0t@icloud.com
+Requires-Python: >=3.12,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Pytest
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Requires-Dist: httpx[http2,socks] (>=0.26.0,<0.28.0)
+Requires-Dist: platformdirs (>=4.2.0,<5.0.0)
+Requires-Dist: pydantic (>=2.6.1,<3.0.0)
+Requires-Dist: ujson (>=5.9.0,<6.0.0)
+Requires-Dist: vermils (>=0.3.4,<0.4.0)
+Project-URL: Issues, https://github.com/VermiIIi0n/aiodeepl/issues
+Description-Content-Type: text/markdown
+
+# Asynchronous API for DeepL Translator
+
+It also shipped with a simple command line interface.
+
+## Installation
+
+```bash
+pip install -U aiodeepl
+```
+
+## API Usage
+
+Documentation is yet complete. Apart from the following example, you can also refer to the `__main__.py` file for more examples.
+
+```python
+import aiodeepl
+
+async def main():
+    translator = aiohttp.Translator(api_key="123")
+    result = await translator.translate("Hello, World!", target_lang="DE")
+    print(result)
+```
+
+## CLI Usage
+
+```bash
+aiodeepl --api-key 123 -t "Hello, World!" -d DE
+```
+
+You can save `api_key` in config file or input it interactively for security.
+
+To translate a document, you can use the following command:
+
+```bash
+aiodeepl --api-key 123 -f README.pdf -d DE -o README_DE.pdf
+```
+
