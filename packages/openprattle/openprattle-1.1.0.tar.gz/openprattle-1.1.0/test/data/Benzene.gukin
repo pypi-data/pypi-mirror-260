@@ -1,0 +1,38 @@
+title
+
+
+#
+# NB: Class I directives (e.g. memory, multiplicity, charge etc) go here
+#
+# For more information see: http://www.cfs.dl.ac.uk/docs/index.shtml
+#
+
+geometry angstrom
+    -1.73905600      3.58846000     -1.30467700   6   C
+    -0.74177600      3.28843000     -2.23495600   6   C
+    -1.96276700      2.73748600     -0.21917200   6   C
+    -1.18753500      1.58342600     -0.06305600   6   C
+     0.03509700      2.13524100     -2.08167300   6   C
+    -0.18715900      1.28163700     -0.99543200   6   C
+    -2.33755900      4.48084900     -1.42655800   1   H
+    -2.73646600      2.97414600      0.49882900   1   H
+    -0.57443100      3.95176900     -3.07252500   1   H
+     0.80756200      1.90409100     -2.80343000   1   H
+     0.41535200      0.38930700     -0.87849700   1   H
+    -1.36379600      0.92661600      0.77915800   1   H
+end
+
+
+basis 6-31G
+
+#
+# NB: Class II directives go here
+#
+# To perform a dft calculation with b3lyp and medium quadrature uncomment the below
+# dft b3lyp
+# dft quadrature medium
+#
+
+runtype scf
+
+enter
