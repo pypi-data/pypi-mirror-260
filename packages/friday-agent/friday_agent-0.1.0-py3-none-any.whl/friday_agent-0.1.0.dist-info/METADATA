@@ -1,0 +1,483 @@
+Metadata-Version: 2.1
+Name: friday-agent
+Version: 0.1.0
+Summary: An self-improving embodied conversational agent seamlessly integrated into the operating system to automate our daily tasks.
+Home-page: https://github.com/OS-Copilot/FRIDAY
+Author: Zhiyong Wu and Chengcheng Han and Zichen Ding and Zhenmin Weng and Zhoumianze Liu and Shunyu Yao and Tao Yu and Lingpeng Kong
+Author-email: wuzhiyong@pjlab.org.cn, hccngu@163.com
+License: MIT
+Keywords: AI,LLMs,Large Language Models,Agent,OS,Operating System
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp ==3.9.1
+Requires-Dist: aiosignal ==1.3.1
+Requires-Dist: alabaster ==0.7.16
+Requires-Dist: annotated-types ==0.6.0
+Requires-Dist: anyio ==3.7.1
+Requires-Dist: asgiref ==3.7.2
+Requires-Dist: async-timeout ==4.0.3
+Requires-Dist: attrs ==23.1.0
+Requires-Dist: Babel ==2.14.0
+Requires-Dist: backoff ==2.2.1
+Requires-Dist: bcrypt ==4.1.2
+Requires-Dist: beautifulsoup4 ==4.12.3
+Requires-Dist: bs4 ==0.0.2
+Requires-Dist: cachetools ==5.3.2
+Requires-Dist: certifi ==2023.11.17
+Requires-Dist: cffi ==1.16.0
+Requires-Dist: charset-normalizer ==3.3.2
+Requires-Dist: chroma-hnswlib ==0.7.3
+Requires-Dist: chromadb ==0.4.20
+Requires-Dist: click ==8.1.7
+Requires-Dist: coloredlogs ==15.0.1
+Requires-Dist: contourpy ==1.2.0
+Requires-Dist: cryptography ==42.0.5
+Requires-Dist: cycler ==0.12.1
+Requires-Dist: dataclasses-json ==0.6.3
+Requires-Dist: datasets ==2.15.0
+Requires-Dist: Deprecated ==1.2.14
+Requires-Dist: dill ==0.3.7
+Requires-Dist: distro ==1.8.0
+Requires-Dist: document ==1.0
+Requires-Dist: docutils ==0.20.1
+Requires-Dist: et-xmlfile ==1.1.0
+Requires-Dist: exceptiongroup ==1.2.0
+Requires-Dist: fastapi ==0.105.0
+Requires-Dist: filelock ==3.13.1
+Requires-Dist: flatbuffers ==23.5.26
+Requires-Dist: fonttools ==4.47.2
+Requires-Dist: frozenlist ==1.4.0
+Requires-Dist: fsspec ==2023.10.0
+Requires-Dist: google-auth ==2.25.2
+Requires-Dist: googleapis-common-protos ==1.62.0
+Requires-Dist: greenlet ==3.0.2
+Requires-Dist: grpcio ==1.60.0
+Requires-Dist: h11 ==0.14.0
+Requires-Dist: httpcore ==1.0.2
+Requires-Dist: httptools ==0.6.1
+Requires-Dist: httpx ==0.25.2
+Requires-Dist: huggingface-hub ==0.19.4
+Requires-Dist: humanfriendly ==10.0
+Requires-Dist: idna ==3.6
+Requires-Dist: imagesize ==1.4.1
+Requires-Dist: importlib-metadata ==6.11.0
+Requires-Dist: importlib-resources ==6.1.1
+Requires-Dist: jaraco.context ==4.3.0
+Requires-Dist: Jinja2 ==3.1.3
+Requires-Dist: jsonpatch ==1.33
+Requires-Dist: jsonpointer ==2.4
+Requires-Dist: kiwisolver ==1.4.5
+Requires-Dist: kubernetes ==28.1.0
+Requires-Dist: langchain ==0.0.349
+Requires-Dist: langchain-community ==0.0.1
+Requires-Dist: langchain-core ==0.0.13
+Requires-Dist: langsmith ==0.0.69
+Requires-Dist: lxml ==4.9.4
+Requires-Dist: markdown-it-py ==3.0.0
+Requires-Dist: MarkupSafe ==2.1.5
+Requires-Dist: marshmallow ==3.20.1
+Requires-Dist: matplotlib ==3.8.2
+Requires-Dist: mdit-py-plugins ==0.4.0
+Requires-Dist: mdurl ==0.1.2
+Requires-Dist: mmh3 ==4.0.1
+Requires-Dist: monotonic ==1.6
+Requires-Dist: more-itertools ==10.2.0
+Requires-Dist: mpmath ==1.3.0
+Requires-Dist: multidict ==6.0.4
+Requires-Dist: multiprocess ==0.70.15
+Requires-Dist: mypy-extensions ==1.0.0
+Requires-Dist: myst-parser ==2.0.0
+Requires-Dist: numpy ==1.26.2
+Requires-Dist: oauthlib ==3.2.2
+Requires-Dist: onnxruntime ==1.16.3
+Requires-Dist: openai ==1.3.7
+Requires-Dist: openpyxl ==3.1.2
+Requires-Dist: opentelemetry-api ==1.21.0
+Requires-Dist: opentelemetry-exporter-otlp-proto-common ==1.21.0
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc ==1.21.0
+Requires-Dist: opentelemetry-instrumentation ==0.42b0
+Requires-Dist: opentelemetry-instrumentation-asgi ==0.42b0
+Requires-Dist: opentelemetry-instrumentation-fastapi ==0.42b0
+Requires-Dist: opentelemetry-proto ==1.21.0
+Requires-Dist: opentelemetry-sdk ==1.21.0
+Requires-Dist: opentelemetry-semantic-conventions ==0.42b0
+Requires-Dist: opentelemetry-util-http ==0.42b0
+Requires-Dist: overrides ==7.4.0
+Requires-Dist: packaging ==23.2
+Requires-Dist: pandas ==2.1.4
+Requires-Dist: pdfminer.six ==20221105
+Requires-Dist: pdfplumber ==0.10.4
+Requires-Dist: pillow ==10.2.0
+Requires-Dist: posthog ==3.1.0
+Requires-Dist: protobuf ==4.25.1
+Requires-Dist: pulsar-client ==3.3.0
+Requires-Dist: pyarrow ==14.0.2
+Requires-Dist: pyarrow-hotfix ==0.6
+Requires-Dist: pyasn1 ==0.5.1
+Requires-Dist: pyasn1-modules ==0.3.0
+Requires-Dist: pycparser ==2.21
+Requires-Dist: pydantic ==2.5.2
+Requires-Dist: pydantic-core ==2.14.5
+Requires-Dist: Pygments ==2.17.2
+Requires-Dist: pyparsing ==3.1.1
+Requires-Dist: pypdfium2 ==4.27.0
+Requires-Dist: PyPika ==0.48.9
+Requires-Dist: pysqlite3 ==0.5.2
+Requires-Dist: python-dateutil ==2.8.2
+Requires-Dist: python-docx ==1.1.0
+Requires-Dist: python-dotenv ==1.0.0
+Requires-Dist: python-pptx ==0.6.23
+Requires-Dist: pytz ==2023.3.post1
+Requires-Dist: PyYAML ==6.0.1
+Requires-Dist: regex ==2023.10.3
+Requires-Dist: requests ==2.31.0
+Requires-Dist: requests-oauthlib ==1.3.1
+Requires-Dist: rsa ==4.9
+Requires-Dist: seaborn ==0.13.2
+Requires-Dist: six ==1.16.0
+Requires-Dist: sniffio ==1.3.0
+Requires-Dist: snowballstemmer ==2.2.0
+Requires-Dist: soupsieve ==2.5
+Requires-Dist: Sphinx ==7.2.6
+Requires-Dist: sphinx-rtd-theme ==2.0.0
+Requires-Dist: sphinxcontrib-applehelp ==1.0.8
+Requires-Dist: sphinxcontrib-devhelp ==1.0.6
+Requires-Dist: sphinxcontrib-htmlhelp ==2.0.5
+Requires-Dist: sphinxcontrib-jquery ==4.1
+Requires-Dist: sphinxcontrib-jsmath ==1.0.1
+Requires-Dist: sphinxcontrib-qthelp ==1.0.7
+Requires-Dist: sphinxcontrib-serializinghtml ==1.1.10
+Requires-Dist: SQLAlchemy ==2.0.23
+Requires-Dist: starlette ==0.27.0
+Requires-Dist: sympy ==1.12
+Requires-Dist: tenacity ==8.2.3
+Requires-Dist: tiktoken ==0.5.2
+Requires-Dist: tokenizers ==0.15.0
+Requires-Dist: tqdm ==4.66.1
+Requires-Dist: typer ==0.9.0
+Requires-Dist: typing-inspect ==0.9.0
+Requires-Dist: typing-extensions ==4.8.0
+Requires-Dist: tzdata ==2023.3
+Requires-Dist: urllib3 ==1.26.18
+Requires-Dist: uvicorn ==0.24.0.post1
+Requires-Dist: uvloop ==0.19.0
+Requires-Dist: watchfiles ==0.21.0
+Requires-Dist: websocket-client ==1.7.0
+Requires-Dist: websockets ==12.0
+Requires-Dist: wolframalpha ==5.0.0
+Requires-Dist: wrapt ==1.16.0
+Requires-Dist: XlsxWriter ==3.1.9
+Requires-Dist: xmltodict ==0.13.0
+Requires-Dist: xxhash ==3.4.1
+Requires-Dist: yarl ==1.9.4
+Requires-Dist: zipp ==3.17.0
+
+# OS-Copilot: Towards Generalist Computer Agents with Self-Improvement
+
+<div align="center">
+
+[[Website]](https://os-copilot.github.io/)
+[[Arxiv]](https://arxiv.org/abs/2402.07456)
+[[PDF]](https://arxiv.org/pdf/2402.07456.pdf)
+<!-- [[Tweet]](https://twitter.com/DrJimFan/status/1662115266933972993?s=20) -->
+
+[![Static Badge](https://img.shields.io/badge/MIT-License-green)](https://github.com/OS-Copilot/FRIDAY/blob/main/LICENSE)
+![Static Badge](https://img.shields.io/badge/python-3.10-blue)
+[![Static Badge](https://img.shields.io/badge/FRIDAY-Frontend-yellow)](https://github.com/OS-Copilot/FRIDAY-front)
+
+
+
+<p align="center">
+  <img src='pic/demo.png' width="100%">
+</p>
+
+</div>
+
+## 📖 Overview
+
+- **OS-Copilot** is a pioneering conceptual framework for building generalist computer agents on Linux and MacOS, which provides a unified interface for app interactions in the heterogeneous OS ecosystem.
+  
+<p align="center">
+  <img src='pic/framework.png' width="75%">
+</p>
+
+- Leveraging OS-Copilot, we built **FRIDAY**, a self-improving AI assistant capable of solving general computer tasks.
+
+<p align="center">
+  <img src='pic/FRIDAY.png' width="75%">
+</p>
+
+## ⚡️ Quickstart
+
+1. **Clone the GitHub Repository:** 
+
+   ```
+   git clone https://github.com/OS-Copilot/FRIDAY.git
+   ```
+
+2. **Set Up Python Environment:** Ensure you have a version 3.10 or higher Python environment. You can create and
+   activate this environment using the following commands, replacing `FRIDAY_env` with your preferred environment
+   name:
+
+   ```
+   conda create -n FRIDAY_env python=3.10 -y
+   conda activate FRIDAY_env
+   ```
+
+3. **Install Dependencies:** Move into the `FRIDAY` directory and install the necessary dependencies by running:
+
+   ```
+   cd FRIDAY
+   pip install -r requirements.txt
+   ```
+
+4. **Set OpenAI API Key:** Configure your OpenAI API key in [.env](.env) and select the model you wish to use.
+
+5. **Execute Your Task:** Run the following command to start FRIDAY. Replace `[query]` with your task as needed. By default, the task is *"Move the text files containing the word 'agent' from the folder named 'document' to the path 'working_dir/agent'"*.  If the task requires using related files, you can use `--query_file_path [file_path]`.
+   ```
+   python run.py --query [query]
+   ```
+
+\* FRIDAY currently only supports single-round conversation.
+
+## 🛠️ FRIDAY-Gizmos
+We maintain an open-source library of toolkits for FRIDAY, which includes tools that can be directly utilized within FRIDAY.
+For a detailed list of tools, please see [FRIDAY-Gizmos](https://github.com/OS-Copilot/FRIDAY-Gizmos). The usage methods are as follows:
+
+1. Find the tool you want to use in [FRIDAY-Gizmos](https://github.com/OS-Copilot/FRIDAY-Gizmos) and download its tool code.
+2. Add the tool to FRIDAY's toolkit:
+```shell
+python friday/core/action_manager.py --add --tool_name [tool_name] --tool_path [tool_path]
+```
+3. If you wish to remove a tool, you can run:
+```shell
+python friday/core/action_manager.py --delete --tool_name [tool_name]
+```
+
+## 💻 User Interface (UI)
+
+**Enhance Your Experience with Our Intuitive Frontend!** This interface is crafted for effortless control of your agents. For more details, visit [FRIDAY Frontend](https://github.com/OS-Copilot/FRIDAY-front).
+
+## ✨ Deploy your own API tools with FastAPI
+All FastAPIs are under： [friday/api](friday/api)
+1. **Prepare your FastAPI file:** Create a new api folder under [friday/api](friday/api) and put your FastAPi python files under that folder.
+2. **Import your FastAPI in API server:** Import your apis in [friday/core/api_server.py](friday/core/api_server.py)：
+```python
+import os
+
+from fastapi import FastAPI
+from friday.core.server_config import ConfigManager
+
+app = FastAPI()
+
+
+from friday.api.bing.bing_service import router as bing_router
+#[TODO] Import your own api here
+
+
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+
+
+class LoggingMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        print(f"Incoming request: {request.method} {request.url}")
+        try:
+            response = await call_next(request)
+        except Exception as e:
+            print(f"Request error: {str(e)}")
+            raise e from None
+        else:
+            print(f"Outgoing response: {response.status_code}")
+        return response
+
+
+app.add_middleware(LoggingMiddleware)
+
+# Create a dictionary that maps service names to their routers
+services = {
+    "bing": bing_router,
+    # [TODO] Add your api router here
+
+}
+
+server_list = [
+    "bing",
+    # [TODO] Add your api's service name here.
+]
+
+# Include only the routers for the services listed in server_list
+for service in server_list:
+    if service in services:
+        app.include_router(services[service])
+
+# proxy_manager = ConfigManager()
+# proxy_manager.apply_proxies()
+
+if __name__ == "__main__":
+    import uvicorn
+    # you can change your port anyway
+    uvicorn.run(app, host="0.0.0.0", port=8079)
+```
+3. **Run API server:**
+Run the server in localhost,or deploy it on your web server:
+```
+python api_server.py
+```
+4. **Update API documentation:** 
+
+Update the API documentation located in [friday/core/openapi.json](friday/core/openapi.json). After launching the API server, you can access the current OpenAPI documentation at `http://localhost:8079/openapi.json`.
+
+Ensure to thoroughly update each API's summary in the documentation to clearly explain its functionality and usage. This is crucial as FRIDAY relies on these descriptions to understand the purpose of each API.
+
+For example:
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {  
+    "/tools/audio2text": {
+      "post": {
+        // [TODO] change the summary to describe the usage of your api.
+        "summary": "A tool that converts audio to natural language text",
+        "operationId": "audio2text_tools_audio2text_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_audio2text_tools_audio2text_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+  },
+  "components": {
+    "schemas": {
+      "Body_audio2text_tools_audio2text_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_audio2text_tools_audio2text_post"
+      },
+      
+      
+    }
+  }
+}
+```
+
+5. **Change the base url of tool_request_util.py:** FRIDAY utilizes the script located at [friday/core/tool_request_util.py](friday/core/tool_request_util.py) to interface with your API tools. After deploying your APIs, make sure to update the base URL in this file to match your API server's URL.
+```python
+import requests
+class ToolRequestUtil:
+    def __init__(self):
+        self.session = requests.session()
+        self.headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
+        # [TODO] Change the base url
+        self.base_url = "http://localhost:8079"
+
+    def request(self, api_path, method, params=None, files=None, content_type="application/json"):
+        """
+        :param api_path: the path of the api
+        :param method: get/post
+        :param params: the params of the api, can be None
+        :param files: files to be uploaded, can be None
+        :param content_type: the content_type of api, e.g., application/json, multipart/form-data, can be None
+        :return: the return of the api
+        """
+        url = self.base_url + api_path
+        try:
+            if method.lower() == "get":
+                if content_type == "application/json":
+                    result = self.session.get(url=url, json=params, headers=self.headers, timeout=60).json()
+                else: 
+                    result = self.session.get(url=url, params=params, headers=self.headers, timeout=60).json()
+            elif method.lower() == "post":
+                if content_type == "multipart/form-data":
+                    result = self.session.post(url=url, files=files, data=params, headers=self.headers).json()
+                elif content_type == "application/json":
+                    result = self.session.post(url=url, json=params, headers=self.headers).json()
+                else:
+                    result = self.session.post(url=url, data=params, headers=self.headers).json()
+            else:
+                print("request method error!")
+                return None
+            return result
+        except Exception as e:
+            print("http request error: %s" % e)
+            return None
+```
+<!-- ## 👨‍💻‍ Contributors
+
+<a href="">
+  <img src="" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks). -->
+
+## 🛡 Disclaimer
+
+OS-Copilot is provided "as is" without warranty of any kind. Users assume full responsibility for any risks associated with its use, including **potential data loss** or **changes to system settings**. The developers of OS-Copilot are not liable for any damages or losses resulting from its use. Users must ensure their actions comply with applicable laws and regulations.
+
+
+## 🏫 Community
+
+Join our community to connect with other agent enthusiasts, share your tools and demos, and collaborate on exciting initiatives. You can find us on [Slack](https://join.slack.com/t/slack-ped8294/shared_invite/zt-2cqebow90-soac9UFKGZ2RcUy8PqjZrA).
+
+
+## 🔎 Citation
+
+```
+@misc{wu2024oscopilot,
+      title={OS-Copilot: Towards Generalist Computer Agents with Self-Improvement}, 
+      author={Zhiyong Wu and Chengcheng Han and Zichen Ding and Zhenmin Weng and Zhoumianze Liu and Shunyu Yao and Tao Yu and Lingpeng Kong},
+      year={2024},
+      eprint={2402.07456},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+```
+
+
+## 📬 Contact
+
+If you have any inquiries, suggestions, or wish to contact us for any reason, we warmly invite you to email us at wuzhiyong@pjlab.org.cn.
