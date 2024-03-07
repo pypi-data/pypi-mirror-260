@@ -1,0 +1,20 @@
+imports:
+    - RL
+Env: World.Environments.Atari.Atari
+task_name: ${env.game}
+env:
+    game: Pong
+discrete: true
+action_repeat: 4
+truncate_episode_steps: 250
+nstep: 10
+train_steps: 500000
+stddev_schedule: 'linear(1.0,0.1,20000)'
+hd_capacity: 1e6
+
+# Atari benefits from two augmentations
+Aug: Utils.Sequential
+aug:
+    _targets_: [RandomShiftsAug, IntensityAug]
+    pad: 4
+    noise: 0.05

@@ -1,0 +1,10 @@
+imports:
+    - RL
+Env: World.Environments.DMC.DMC
+env:
+    task: cheetah_run
+task_name: ${env.task}
+discrete: false
+hd_capacity: 1e6
+
+
