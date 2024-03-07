@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: pyspark-connectby
+Version: 1.1.2
+Summary: connectby hierarchy query in spark
+Author: Chen, Yu
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Description-Content-Type: text/markdown
+
+# pyspark-connectby
+Spark currently does not support hierarchy query `connectBy` as of version 3.5.0. And there is a [PR](https://github.com/apache/spark/pull/40744) opened to support recursive CTE query. But that is still not available yet.  
+
+This is an attempt to add `connectBy` method to [DataFrame](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
+
+# Concept 
+Hierarchy query is one of the important feature that many relational databases, such as [Oracle](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Hierarchical-Queries.html#GUID-0118DF1D-B9A9-41EB-8556-C6E7D6A5A84E), DB2, My SQL, 
+Snowflake, [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_CONNECT_BY_clause.html), etc.,
+would support directly or alternatively by using recursive CTE. 
+
+Example in Redshift:
+```sql
+select id, name, manager_id, level
+from employee
+start with emp_id = 1
+connect by prior emp_id = manager_id;
+```
+
+With this library, you can use `connectBy()` on `Dateframe`:
+
+```python
+from pyspark_connectby import connectBy
+from pyspark.sql import SparkSession
+
+schema = 'emp_id string, manager_id string, name string'
+data = [[1, None, 'Carlos'],
+        [11, 1, 'John'],
+        [111, 11, 'Jorge'],
+        [112, 11, 'Kwaku'],
+        [113, 11, 'Liu'], 
+        [2, None, 'Mat']
+        ]
+spark = SparkSession.builder.getOrCreate()
+df = spark.createDataFrame(data, schema)
+df2 = df.connectBy(prior='emp_id', to='manager_id', start_with='1')
+df2.show()
+```
+With result:
+```
++------+----------+-----+-----------------+----------+------+
+|emp_id|START_WITH|LEVEL|CONNECT_BY_ISLEAF|manager_id|  name|
++------+----------+-----+-----------------+----------+------+
+|     1|         1|    1|            false|      null|Carlos|
+|    11|         1|    2|            false|         1|  John|
+|   111|         1|    3|             true|        11| Jorge|
+|   112|         1|    3|             true|        11| Kwaku|
+|   113|         1|    3|             true|        11|   Liu|
++------+----------+-----+-----------------+----------+------+
+```
+Note the pseudo columns in the query result:
+- START_WITH
+- LEVEL
+- CONNECT_BY_ISLEAF
+
+# Installation
+Python Version >= 3.7 
+```
+$ pip install --upgrade pyspark-connectby
+```
+
+# Usage
+
+```python
+from pyspark_connectby import connectBy
+
+df = ...
+
+df.connectBy(prior='emp_id', to='manager_id', start_with='1')  # start_with `emp_id` as 1
+
+df.transform(connectBy, prior='emp_id', to='manager_id', start_with='1')  # or by using df.transform() method
+
+df.connectBy(prior='emp_id', to='manager_id')  # without start_with, it will go through each node
+
+df.connectBy(prior='emp_id', to='manager_id', start_with=['1', '2'])  # start_with a list of top nodes ids. 
+
+```
+
+
+
