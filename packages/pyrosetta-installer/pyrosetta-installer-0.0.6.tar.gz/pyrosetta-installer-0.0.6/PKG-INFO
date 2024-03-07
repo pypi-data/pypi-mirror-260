@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pyrosetta-installer
+Version: 0.0.6
+Summary: Download PyRosetta wheel package from PyRosetta.org and install it
+Home-page: https://www.pyrosetta.org/
+Author: Sergey Lyskov
+License: Rosetta Software License
+Description-Content-Type: text/markdown
+
+Download PyRosetta wheel package from one of www.PyRosetta.org mirrors and install it.
+
+**Note that USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRE PURCHASE OF A LICENSE.**
+See https://github.com/RosettaCommons/rosetta/blob/main/LICENSE.md or email license@uw.edu for details.
+
+To install PyRosetta, after installing package, run:
+```python -c 'import pyrosetta_installer; pyrosetta_installer.install_pyrosetta()```
+It is also possible to supply optional `serialization=True` argument in case PyRosetta build with serialization and thread support is needed.
+
