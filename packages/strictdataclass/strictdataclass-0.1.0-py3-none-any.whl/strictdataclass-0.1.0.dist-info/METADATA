@@ -1,0 +1,112 @@
+Metadata-Version: 2.1
+Name: strictdataclass
+Version: 0.1.0
+Summary: Auto type cast dataclasses to suggested types.
+Project-URL: Homepage, https://github.com/Braden2n/StrictDataclass
+Project-URL: Documentation, https://github.com/Braden2n/StrictDataclass
+Project-URL: Issues, https://github.com/Braden2n/StrictDataclass/issues
+Project-URL: Repository, https://github.com
+Project-URL: Changelog, https://github.com/Braden2n/StrictDataclass/activity
+Author-email: Braden Toone <braden@toonetown.com>
+Maintainer-email: Braden Toone <braden@toonetown.com>
+License: MIT License
+        
+        Copyright (c) 2024 Braden Douglas Toone
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+License-File: LICENSE
+Keywords: cast,dataclass,inherit,strict,type
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Requires-Dist: any-cast>=0.0.3
+Requires-Dist: instancemethod>=1.5
+Description-Content-Type: text/markdown
+
+# strictdataclass
+
+Sections:
+
+- [Purpose](#purpose)
+- [Contents](#contents)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Declaration](#declaration)
+- [Issues/Limitations](#issueslimitations)
+- [Author](#author)
+- [License](#license)
+
+## Purpose
+
+This package contains the necessary base class structure for strict,
+auto-casting dataclasses for use in an inheritence architecture.
+The inheritable base class has custom double-underscore (dunder),
+convenience, and property methods.
+
+## Contents
+
+This package contains two modules written in pure Python (3.7 or newer)
+with the following code blocks accessible from the root module:
+
+- `StrictDataclass`: Inheritable base class for automatic type casting 
+on instantiation
+- `ObjectTypeNotCastableError`: Error raised when type casting fails
+
+## Installation
+
+This package is distributed to PyPi, and can be installed with either
+of the following commands:
+
+- `pip install strictdataclass`
+- `pip3 install strictdataclass`
+
+## Usage
+
+Inherit the base class `StrictDataclass` in a dataclass-decorated 
+class definition to inherit the type casting properties.
+
+### Declaration
+
+    @dataclass
+    class Foo(StrictDataclass):
+        bar: bool
+        foo: int = 5
+
+## Issues/Limitations
+
+Although there are currently no known cast failing cases or 
+performance issues, this package is in its infancy and has been marked
+as:
+
+***Beta***
+
+## Author
+
+Braden Toone is the sole author and maintainer of this code, and can
+be contacted via email at braden@toonetown.com
+
+## License
+
+This package is licensed under the OSI Approved MIT License for free
+commercial and personal use as stated in the LICENSE file.
