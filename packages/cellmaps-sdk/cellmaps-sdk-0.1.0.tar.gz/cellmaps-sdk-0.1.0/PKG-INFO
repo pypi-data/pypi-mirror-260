@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: cellmaps-sdk
+Version: 0.1.0
+Summary: The SDK for tool builders who wish to integrate their tool into the CellMaps Analysis Workflow IME
+Author-email: Colm Brandon <colm.brandon@ul.ie>
+Project-URL: Homepage, http://example.com
+Project-URL: Documentation, http://example.com
+Project-URL: Repository, http://example.com
+Project-URL: Bug Tracker, http://example.com
+Project-URL: Changelog, http://example.com
+Keywords: Highly-plexed Tissue Imaging,AI
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: jinja2
+Requires-Dist: jinja2-strcase
+Requires-Dist: typing
+Requires-Dist: dataclasses
+Requires-Dist: tifffile
+Requires-Dist: imagecodecs
+Requires-Dist: numpy
+Requires-Dist: pillow
+Requires-Dist: types-pillow
+Requires-Dist: minio
+Requires-Dist: pathlib
+Requires-Dist: dacite
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: mypy
+Requires-Dist: click
+Provides-Extra: r
+Requires-Dist: rpy2; extra == "r"
+Requires-Dist: types-tzlocal; extra == "r"
+Requires-Dist: mypy; extra == "r"
+
+...
+
+Environment Variables;
+_utils = [MINIO_HOST,MINIO_ACCESS_KEY,MINIO_SECRET_KEY]
+data = [REVERSE-PROXY-HOST,REVERSE-PROXY-PORT,MINIO_WORKFLOW_BUCKET]
+process = [JMS_ADDRESS,RABBIT_MQ_HOST]
