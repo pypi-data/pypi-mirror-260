@@ -1,0 +1,60 @@
+[project]
+name = "titanoboa"
+version = "0.1.9"
+description = "A Vyper interpreter"
+#authors = []
+license = { file = "LICENSE" }
+readme = "README.md"
+#homepage = "https://github.com/vyperlang/titanoboa"
+#repository = "https://github.com/vyperlang/titanoboa"
+#documentation =
+
+keywords = ["ethereum", "evm", "smart contract", "development"]
+
+classifiers = ["Topic :: Software Development"]
+
+# Requirements
+dependencies = [
+    "vyper >= 0.3.10",
+    "eth-stdlib>=0.2.7,<0.3.0",
+    "eth-abi",
+    "py-evm>=0.7.0a4",
+    "eth-typing",
+    "hypothesis",
+    "pytest",
+    "pytest-cov",
+
+    # eth-rlp requirement, not installed by default with 3.12
+    "typing-extensions",
+
+    # gas profiling tables
+    "rich",
+
+    # required for forking:
+    "requests",
+
+    # required for networked accounts
+    "eth-account",
+]
+
+[project.optional-dependencies]
+forking-recommended = ["ujson"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[tool.setuptools.packages.find]
+include = ["boa*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "ignore_isolation: Do not preserve state during tests",
+    "gas_profile: Enable gas profiling.",
+    "ignore_profiling: Disable gas profiling.",
+]
+
+[tool.setuptools.package-data]
+boa = ["integrations/**/*.js"]
+
+#[dev-dependencies]
+#black = { version = "^18.3-alpha.0", python = "^3.6" }
