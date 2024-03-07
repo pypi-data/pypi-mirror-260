@@ -1,0 +1,19 @@
+<div class="sidebar-section sidebar-section--collapse">
+<a{% if app.url %} href="{{ app.url }}" {% endif %}
+    class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}_parent"
+    data-popup-section-class="sidebar-popup-section-{{ app.app_label }}"
+    data-order="{{ forloop.counter }}" {% if app.url_blank %} target="_blank" {% endif %}>
+    <span class="sidebar-link-label">
+        
+        {% if app.custom_name %} {{ app.custom_name }}  {% else %} {{ app.label }} {% endif %}
+    </span>
+    <span class="sidebar-left collapsible">
+        <span class="sidebar-left-pin icon-star wcd-pin-toggle"></span>
+    </span>
+
+    <span class="sidebar-right">
+        <span class="sidebar-right-arrow icon-arrow-right"></span>
+    </span>
+
+</a>
+</div>

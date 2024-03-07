@@ -1,0 +1,29 @@
+<div class="sidebar-section">
+  <div class="sidebar-title">
+      <a{% if app.url %} href="{{ app.url }}" {% endif %} class="sidebar-title-link"
+          {% if app.url_blank %} target="_blank" {% endif %}>
+          {% if app.custom_name %} {{ app.custom_name }}  {% else %} {{ app.label }} {% endif %}
+      </a>
+  </div>
+  {% for model in app.items %}
+      {% if model.has_perms %}
+          <div>
+              <a{% if model.url %} href="{{ model.url }}" {% endif %} data-app-label="{{ app.app_label }}_{{ model.name }}"
+                  class="sidebar-link app-item" {% if model.url_blank %} target="_blank" {% endif %}>
+                  <span class="sidebar-link-label">{{ model.label }} </span>
+                  <span class="sidebar-left collapsible">
+                      <span class="sidebar-left-pin icon-star wcd-pin-toggle"></span>
+                      {# <span class="sidebar-left-unpin icon-cross wcd-pin-toggle"></span> #}
+                  </span>
+                  {% if model.counter %}
+                  <span class="sidebar-link-counter"> {{ model.counter }} </span>
+                  {% endif %}
+                  <span class="sidebar-right">
+                      <span class="sidebar-right-arrow icon-arrow-right"></span>
+                  </span>
+
+                  </a>
+          </div>
+      {% endif %}
+  {% endfor %}
+</div>
