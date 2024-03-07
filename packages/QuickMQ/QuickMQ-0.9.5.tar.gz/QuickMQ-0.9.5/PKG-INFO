@@ -1,0 +1,152 @@
+Metadata-Version: 2.1
+Name: QuickMQ
+Version: 0.9.5
+Summary: An easy-to-use RabbitMQ client.
+Author-email: Max Drexler <mndrexler@wisc.edu>
+License: MIT License
+        
+        Copyright (c) [2020] [Max Drexler]
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Repository, https://gitlab.ssec.wisc.edu/mdrexler/easymq
+Project-URL: Issues, https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/issues
+Keywords: rabbitmq
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Typing :: Typed
+Requires-Python: >=3.6.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pika>=1.3.0
+Requires-Dist: dataclasses; python_version < "3.7"
+
+# QuickMQ
+
+An easy-to-use RabbitMQ client.
+
+[![pipeline status](https://gitlab.ssec.wisc.edu/mdrexler/easymq/badges/main/pipeline.svg)](https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/commits/main)
+[![coverage report](https://gitlab.ssec.wisc.edu/mdrexler/easymq/badges/main/coverage.svg)](https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/commits/main)
+[![Latest Release](https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/badges/release.svg)](https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/releases)
+
+## Table of Contents
+
+* [Description](#description)
+* [Installation](#installation)
+* [Features](#features)
+* [Docs](#documentation)
+* [Contributing](#contributing)
+* [Author](#author)
+
+## Description
+
+QuickMQ is a purely python implementation of a RabbitMQ client. QuickMQ abstracts quite a few RabbitMQ concepts like channels, publisher confirms, and message encoding to make interacting with RabbitMQ as easy as possible.  
+
+These abstractions make the package a good fit for anyone looking to quickly and easily interact with RabbitMQ servers.
+
+### What QuickMQ ***Cannot*** Do
+
+* Work queues
+* Transactions
+* Consumer confirmations
+
+QuickMQ is simple on purpose, so if you require the above features or the abstractions don't work well for you, clients like [pika](https://github.com/pika/pika) or [aio-pika](https://github.com/mosquito/aio-pika) might be a better fit.
+
+## Installation
+
+QuickMQ is currently still being tested, but it can be installed from the PyPI index.
+
+```bash
+pip install quickmq
+```
+
+To install the most recent version from GitLab.
+
+```bash
+pip install git+https://gitlab.ssec.wisc.edu/mdrexler/easymq.git
+```
+
+### Requirements
+
+Python >= 3.6
+
+## Features
+
+QuickMQ comes with some useful features, all which are easy to use.
+
+### Multi-Server Actions
+
+With QuickMQ you're able to connect to and publish/listen for messages from multiple servers at the same time.
+
+```python3
+import quickmq.api as mq
+
+mq.connect('server1', 'server2', auth=('user', 'pass'))
+
+mq.publish('Hello World!') # publishes to both servers
+```
+
+### Automatic Reconnection
+
+Server connections can reconnect automatically in case of sporatic drops.
+
+```python3
+import quickmq.api as mq
+
+mq.configure('RECONNECT_TRIES', 3)
+mq.configure('RECONNECT_DELAY', 60)
+# Connections will try to reconnect 3 times,
+# waiting a minute between each attempt
+```
+
+### Command Line Interface
+
+QuickMQ also installs with a CLI for use outside of python scripts.
+
+```bash
+quickmq publish -e exchange -s server(s) -u username -p password
+```
+
+Use `quickmq --help` for more information.
+
+## Documentation
+
+See the GitLab [wiki](https://gitlab.ssec.wisc.edu/mdrexler/easymq/-/wikis/home) for more documentation.
+
+## Contributing
+
+Contributions welcome!  
+
+Docker is required to run tests.  
+To run tests simply use the Makefile:
+
+```bash
+make test
+```
+
+## Author
+
+Created/Maintained by [Max Drexler](mailto:mndrexler@wisc.edu)
+
+## License
+
+MIT License. See LICENSE for more information.
