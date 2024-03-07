@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pyprof"
+version = "0.1.0"
+description = "This package focus on build time profiler for python functions and snippets."
+authors = ["Zeyan Li 李则言 <lizeyan.42@bytedance.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+
+
+[tool.poetry.group.dev.dependencies]
+coverage = ">=5.5,<6.0"
+pytest = "^8.0.2"
+coveralls = "^3.3.1"
+numpy = "^1.26.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
