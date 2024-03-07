@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: telegramtk
+Version: 0.0.3
+Summary: Telegram utilities
+Home-page: https://github.com/sdelquin/tgutils.git
+Author: Sergio Delgado Quintero
+Author-email: sdelquin@gmail.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+
+# tgutils
+
+**Telegram utilities**
+
+This package provides easy (and sync) access for the Telegram Bot API.
+
+## Installation
+
+```console
+pip install tgutils
+```
+
+## Setup
+
+```python
+import tgutils
+
+tgutils.init('<your-telegram-bot-token-here>')
+```
+
+## Send message
+
+```python
+import tgutils
+
+tgutils.send_message(to, msg)
+```
+
+→ `msg` can be "Markdown" formatted.
