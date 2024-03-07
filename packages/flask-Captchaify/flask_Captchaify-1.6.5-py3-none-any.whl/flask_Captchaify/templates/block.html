@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="{{ language }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Access blocked</title>
+        <style>{% if theme == "light" and not is_default_theme %}
+            :root {
+                --background: #f2f2f2;
+                --text: #181818;
+                --main-ancher-color: #0000ad;
+                --ancher-color: #222;
+            }
+
+            #choose-light {
+                display: none;
+            }
+            {% elif theme == "dark" and not is_default_theme %}
+            :root {
+                --background: #121212;
+                --text: #f2f2f2;
+                --main-ancher-color: #00BFFF;
+                --ancher-color: #999;
+            }
+
+            #choose-dark {
+                display: none;
+            }
+            {% else %}
+            :root {
+                --background: #f2f2f2;
+                --text: #181818;
+                --main-ancher-color: #0000ad;
+                --ancher-color: #222;
+            }
+            
+            #choose-light {
+                display: none;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --background: #121212;
+                    --text: #f2f2f2;
+                    --main-ancher-color: #00BFFF;
+                    --ancher-color: #999;
+                }
+
+                #choose-dark {
+                    display: none;
+                }
+
+                #choose-light {
+                    display: unset;
+                }
+            }
+            {% endif %}
+
+            body {
+                font-family: Arial, sans-serif;
+                background-color: var(--background);
+                color: var(--text);
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+    
+            .emoji {
+                height: 100px;
+            }
+    
+            .error-text {
+                font-size: 24px;
+                margin-top: 20px;
+                text-align: center;
+            }
+    
+            .main-link {
+                font-size: 18px;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .main-link a {
+                color: var(--main-ancher-color);
+            }
+    
+            p {
+                text-align: center;
+                max-width: 800px;
+            }
+    
+            .captchaify-text, .captchaify-link {
+                font-size: 12px;
+                margin-top: 10px;
+                text-align: center;
+                font-weight: lighter;
+                color: var(--ancher-color);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img class="emoji" src="{{ emoji }}">
+            <h1 class="error-text">Sorry, but you can't see the requested page.</h1>
+            <p>Greetings! Automated scripts are likely attempting to request this page while you were browsing. If you use anonymizing tools like VPNs or proxies, consider disabling them temporarily for optimal accessibility.</p>
+            <div class="main-link">
+                <a href="/">Back to the main page</a>
+            </div>
+            <span class="captchaify-text">
+                <a class="captchaify-link" href="?captchaify_changelanguage=1&language={{ language }}">🌐Change Language</a> - <span id="choose-dark"><a class="captchaify-link" href="?theme=dark">Dark Mode</a> - </span><span id="choose-light"><a class="captchaify-link" href="?theme=light">Light Mode</a> - </span>DDoS protection from <a class="captchaify-link" href="https://github.com/tn3w/flask_Captchaify" target="_blank">Captchaify</a>
+            </span>
+        </div>
+    </body>
+</html>
