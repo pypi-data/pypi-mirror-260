@@ -1,0 +1,64 @@
+[project]
+name = "PySAGA-cmd"
+version = "1.0.7"
+dynamic = [
+    "dependencies",
+]
+description = "A package that allows you to run SAGA GIS tools using Python."
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = [
+    "PySAGA-cmd",
+]
+license = {text = "MIT"}
+authors = [
+  {name = "Alex-Andrei Cuvuliuc", email = "cuvuliucalexandrei@gmail.com"},
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.optional-dependencies]
+all = [
+    "PySAGA-cmd[extras,dev]",
+]
+extras = [
+    "numpy",
+    "matplotlib",
+    "rasterio",
+    "geopandas",
+    "pyogrio"
+]
+dev = [
+    "twine",
+    "zest.releaser[recommended]",
+    "mypy",
+    "flake8",
+    "Flake8-pyproject",
+    "pytest"
+]
+
+[project.urls]
+Homepage = "https://github.com/alecsandrei/PySAGA-cmd"
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool]
+
+[tool.setuptools.packages.find]
+exclude = ["assets", "data", "data.*", "dist", "examples", "examples.*"]
+
+[tool.zest-releaser]
+python-file-with-version = "PySAGA_cmd/__init__.py"
+tag-format = "v{version}"
+
+[tool.flake8]
+max-line-length = 80
