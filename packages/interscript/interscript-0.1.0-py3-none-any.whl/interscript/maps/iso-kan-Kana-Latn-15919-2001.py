@@ -1,0 +1,10 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("iso-kan-Kana-Latn-15919-2001")
+def _stage_main(s):
+    s = interscript.stdlib.parallel_replace_tree(s, _PTREE_127680901232360241)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("iso-kan-Kana-Latn-15919-2001", "main", _stage_main)
+_PTREE_127680901232360241 = {3205:{None:"a"},3206:{None:"ā"},3207:{None:"i"},3208:{None:"ī"},3209:{None:"u"},3210:{None:"ū"},3211:{None:"ṛ"},3296:{None:"ṝ"},3212:{None:"ḻ"},3297:{None:"ḹ"},3214:{None:"e"},3215:{None:"ē"},3216:{None:"ai"},3218:{None:"o"},3219:{None:"ō"},3220:{None:"au"},3221:{None:"ka"},3222:{None:"kha"},3223:{None:"ga"},3224:{None:"gha"},3225:{None:"ṅa"},3226:{None:"ca"},3227:{None:"cha"},3228:{None:"ja",3260:{None:"za"}},3229:{None:"jha"},3230:{None:"ña"},3231:{None:"ṭa"},3232:{None:"ṭha"},3233:{None:"ḍa"},3234:{None:"ḍha"},3235:{None:"ṇa"},3236:{None:"ta"},3237:{None:"tha"},3238:{None:"da"},3239:{None:"dha"},3240:{None:"na"},3242:{None:"pa"},3243:{None:"pha",3260:{None:"fa"}},3244:{None:"ba"},3245:{None:"bha"},3246:{None:"ma"},3247:{None:"ya",3200:{None:"m̐ya"}},3248:{None:"ra",3200:{None:"m̐ra"}},3249:{None:"ṟa",3200:{None:"m̐ṟa"}},3250:{None:"la",3200:{None:"m̐la"}},3251:{None:"ḷa",3200:{None:"m̐ḷa"}},3253:{None:"va",3200:{None:"m̐va"}},3254:{None:"śa"},3255:{None:"ṣa"},3256:{None:"sa"},3257:{None:"ha"},3203:{None:"ḥ"},3313:{None:"ẖ"},3314:{None:"ḫ"},3200:{None:"m̐"},3201:{None:"m̐"},3261:{None:":’"},3202:{None:"ṁ"},3260:{None:""},3262:{None:"ā"},3263:{None:"i"},3264:{None:"ī"},3265:{None:"u"},3266:{None:"ū"},3267:{None:"ṛ"},3268:{None:"ṝ"},32:{3298:{None:"ḷ"},3299:{None:"ḹ"}},3270:{None:"e"},3271:{None:"ē"},3272:{None:"ai"},3274:{None:"o"},3275:{None:"ō"},3276:{None:"au"},2381:{None:""},2364:{None:""},3277:{None:""},8205:{None:""},8204:{None:""},3303:{None:"1"},3304:{None:"2"},3305:{None:"3"},3306:{None:"4"},3307:{None:"5"},3308:{None:"6"},3309:{None:"7"},3310:{None:"8"},3311:{None:"9"},3302:{None:"0"}}
