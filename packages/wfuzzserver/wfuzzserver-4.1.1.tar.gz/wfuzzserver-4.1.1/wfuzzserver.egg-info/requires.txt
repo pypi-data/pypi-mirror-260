@@ -1,0 +1,29 @@
+chardet
+dicttoxml
+pycurl
+six
+xmltodict
+
+[:python_version < "3.5"]
+configparser
+
+[:python_version <= "3.4"]
+pyparsing<2.4.2
+
+[:python_version >= "3.5"]
+pyparsing>=2.4*
+
+[dev]
+codecov
+coverage
+flake8==3.8.3
+mock
+netaddr
+pip-tools
+pytest
+
+[dev:python_version > "3.5"]
+black==19.10b0
+
+[docs]
+Sphinx
