@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "abi_ds_utils"
+version = "1.2.2"
+description = "Utility modules for working with spark, containers, aws and more."
+authors = ["Martin Matousek"]
+license = "Private"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = "^1.21.14"
+pyspark = "3.3.2"
+pyarrow = ">=7.0.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.17.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
