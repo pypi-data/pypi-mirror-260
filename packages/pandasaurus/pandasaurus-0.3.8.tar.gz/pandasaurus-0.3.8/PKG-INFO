@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: pandasaurus
+Version: 0.3.8
+Summary: Supporting simple queries over ontology annotations in dataframes, using UberGraph queries.
+License: http://www.apache.org/licenses/LICENSE-2.0
+Author: Ismail Ugur Bayindir
+Author-email: ugur@ebi.ac.uk
+Requires-Python: >=3.9,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: docs
+Requires-Dist: oaklib (==0.5.25)
+Requires-Dist: pandas (>=2.0.1,<3.0.0)
+Requires-Dist: rdflib (>=6.3.2,<7.0.0)
+Requires-Dist: sphinx (>=7.2.6,<8.0.0) ; extra == "docs"
+Requires-Dist: sphinx-copybutton (>=0.5.2,<0.6.0) ; extra == "docs"
+Requires-Dist: sphinx-rtd-theme (>=1.3.0,<2.0.0) ; extra == "docs"
+Description-Content-Type: text/markdown
+
+# Pandasaurus
+
+<img src="https://user-images.githubusercontent.com/112839/227489878-d253c381-75fd-4e92-b851-2b36df0fc5ed.png" width=100>
+
+STATUS: BETA
+
+A python library supporting simple queries over ontology annotations in dataframes, using UberGraph queries.
+
+The aim for now is to keep this as a very simple independent Python lib avoiding any complex dependencies.
+
+With the basic library in place, the first planned use for this is as a base for a library that provides simple enrichement and querability to AnnData Cell X Gene matrices following the [CZ single cell curation standard](https://github.com/chanzuckerberg/single-cell-curation/blob/main/schema/3.0.0/schema.md).
+
