@@ -1,0 +1,70 @@
+.method dl,
+.function dl,
+.class dl,
+.method dl dd,
+.function dl dd,
+.class dl dd {
+  margin-bottom: 0;
+}
+
+.sig-object {
+  width: 100%;
+  line-height: 24px !important;
+}
+.py.property {
+  display: block !important;
+}
+
+.sig-param,
+.sig-return-typehint {
+  /* copied from the source of the theme for the other attributes */
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, Courier, monospace;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sig-object em.property:not(:first-of-type):last-of-type {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, Courier, monospace;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sig-param a,
+.sig-return-typehint a,
+.sig-object em.property:last-of-type a {
+  text-decoration: underline;
+}
+
+/* copied as an override... idk what to tell you... */
+html.writer-html4 .rst-content dl:not(.docutils) > dt,
+html.writer-html5
+  .rst-content
+  dl[class]:not(.option-list):not(.field-list):not(.footnote):not(
+    .citation
+  ):not(.glossary):not(.simple)
+  > dt {
+  padding: 10px 12px;
+}
+
+.sig-return-icon {
+  margin: 0 4px;
+}
+
+.sig-paren {
+  padding: 0 4px;
+}
+
+.sig-return-typehint {
+  font-weight: normal;
+}
+
+.hb-param-none {
+  opacity: 0.5;
+}
+
+.hb-param-none-default .o,
+.hb-param-none-default .default_value {
+  opacity: 0.5;
+}
