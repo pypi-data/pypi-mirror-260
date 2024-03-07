@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: appinspector
+Version: 0.1.1
+Summary: client for app-inspector.devsleep.com
+Home-page: https://github.com/codeskyblue/appinspector
+License: MIT
+Author: codeskyblue
+Author-email: codeskyblue@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: adbutils (>=2.2.1,<3.0.0)
+Requires-Dist: construct
+Requires-Dist: fastapi[all] (>=0.109.2,<0.110.0)
+Requires-Dist: lxml
+Requires-Dist: pillow
+Requires-Dist: uvicorn[standard] (>=0.27.1,<0.28.0)
+Description-Content-Type: text/markdown
+
+# appinspector
+[![codecov](https://codecov.io/gh/codeskyblue/appinspector/graph/badge.svg?token=aLTg4VOyQH)](https://codecov.io/gh/codeskyblue/appinspector)
+[![PyPI version](https://badge.fury.io/py/appinspector.svg)](https://badge.fury.io/py/appinspector)
+
+appinspector.devsleep.com client
+
+Based on
+
+- fastapi
+- adbutils
+- tidevice3
+
+# DEVELOP
+```bash
+# install deps
+pip install poetry
+poetry install
+
+# format import
+make format
+
+# run server
+make dev
+```
+
+# LICENSE
+[MIT](LICENSE)
