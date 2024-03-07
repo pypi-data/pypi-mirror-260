@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "django-logging-handlers"
+version = "0.1.2"
+description = "Logging utility for Django"
+authors = ["Adrijan Bjedov <adrijan.bjedov@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "django_logging_handlers" }]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"
+django = ">=2"
+requests = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+isort = "*"
+pylint = "*"
+twine = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
