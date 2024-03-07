@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: imutesting
+Version: 0.0.15
+Summary: This package provides an Extended Kalman Filter (EKF) algorithm for attitude estimation by fusing data from inertial measurement unit (IMU) sensors. It offers robust and accurate estimation of Quaternion and Euler angles representing the orientation of the sensor in 3D space.
+Author-email: Zheng <xujunkai@imumaster.com>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# imumaster
+
+这个库中目前仅适用于一种常见坐标系定义下的惯性传感器姿态，通过EKF算法对传感器数据（九轴——加速度计、陀螺仪、磁力计）进行姿态解算并返回惯性传感器运动过程中解算结果——欧拉角和四元数。
+
+    imu传感器以及地面坐标系均为右手坐标系
+    imu传感器坐标系定义：x轴指向前，y轴指向左，z轴指向上；
+    地面坐标系的定义：x轴指向北，y轴指向西，z轴指向天；
+    欧拉角定义：
+        翻滚角Roll——绕x轴旋转；
+        俯仰角Pitch——绕y轴旋转；
+        偏航角Yaw——绕z轴旋转。
+    
+另外还提供四元数的通用计算函数，如加减乘，共轭，逆，范数，归一化等。
+
+# 姿态解算
+
+## 1.下载软件包：
+
+    pip install imumaster
+
+## 2.引用
+
+    from imumaster import EKF_AHRS
+
+## 3.初始化EKF对象。
+    
+    EKF = EKF_AHRS(sample_dt, g_vector, x_k_minus_1, P_k_minus_1, Q_noise=, R1_noise, R2_noise)
+
+### 参数说明：
+
+sample_dt——采样间隔；
+
+g_vector——重力向量在惯性传感器的感应方向，默认为指向正上方：
+
+    [0,0,1]
+
+x_k_minus_1——EKF解算的状态量，这里采用四元数作为状态量。默认为:
+
+    [1.0, 0.0, 0.0, 0.0]  
+    也可根据加速度和磁力计数据自行计算初始四元数。
+
+P_k_minus_1——状态量的协方差。默认为：
+
+    [[0.001 0.    0.    0.   ]
+     [0.    0.001 0.    0.   ]
+     [0.    0.    0.001 0.   ]
+     [0.    0.    0.    0.001]]
+ 
+Q_noise—— 过程噪声协方差矩阵。默认为：
+
+    [[0.1 0.  0.  0. ]
+     [0.  0.1 0.  0. ]
+     [0.  0.  0.1 0. ]
+     [0.  0.  0.  0.1]]
+
+        #  R2磁力计
+
+R1_noise——加速度计观测噪声协方差矩阵。默认为：
+
+    [[3.8 0.  0. ]
+     [0.  3.8 0. ]
+     [0.  0.  3.8]]
+
+R2_noise——磁力计观测噪声协方差矩阵。默认为：
+
+    [[0.5 0.  0. ]
+     [0.  0.5 0. ]
+     [0.  0.  0.5]]
+
+
+## 4.姿态解算。
+
+    roll, pitch, yaw, quaternion = EKF.ekf_apply(accel, gyro, mag)
+
+### 类型说明
+accel, gyro, mag 分别为包含三个轴向数据的一维数组。
+
+roll, pitch, yaw 分别为浮点数。
+
+quaternion 为四元数一维数组，quaternion = [w, x, y, z]，四元数实部/标量在前。
