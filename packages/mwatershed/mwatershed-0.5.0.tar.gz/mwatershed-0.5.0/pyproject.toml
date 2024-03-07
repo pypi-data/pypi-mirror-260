@@ -1,0 +1,37 @@
+[build-system]
+requires = ["maturin==1.4.0"]
+build-backend = "maturin"
+
+[project]
+authors = [{ name = "William Hunter Patton", email = "pattonw@hhmi.org" }]
+name = "mwatershed"
+version = "0.5.0"
+description = "A rusty mutex watershed"
+readme = "README.md"
+
+requires-python = ">=3.6"
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+]
+
+[deps]
+numpy = ">=1.18.0"
+
+[project.optional-dependencies]
+dev = [
+    "bumpversion",
+    "wheel",
+    "ruff",
+    "black",
+    "Sphinx",
+    "twine",
+    "pytest",
+    "pytest-runner",
+    "matplotlib>=3.1.0",
+]

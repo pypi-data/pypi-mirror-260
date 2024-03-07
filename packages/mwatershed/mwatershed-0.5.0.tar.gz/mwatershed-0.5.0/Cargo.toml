@@ -1,0 +1,26 @@
+[package]
+name = "mwatershed"
+version = "0.5.0"
+edition = "2018"
+
+[dependencies]
+pyo3 = { version = "0.18.1", features = ["extension-module"] }
+numpy = "0.18.0"
+ndarray = "0.15.0"
+itertools = "0.12.0"
+ordered-float = "4.0"
+ndarray-rand = "0.14"
+futures = "0.3"
+disjoint-sets = "0.4.2"
+
+[dev-dependencies]
+criterion = "0.5"
+rand_isaac = "0.3.0"
+
+[lib]
+name = "mwatershed"
+crate-type = ["cdylib", "rlib"]
+
+[[bench]]
+name = "agglom"
+harness = false
