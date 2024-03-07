@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: ctfd-sdk
+Version: 0.1.1
+Summary: Python SDK for CTFd REST API
+Author: Simon Plhak
+Author-email: plhak.s@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: httpx (>=0.27.0,<0.28.0)
+Requires-Dist: python-dotenv (>=1.0.1,<2.0.0)
+Description-Content-Type: text/markdown
+
+# CTFd SDK for Python
+
+## Setup
+
+```bash
+python -m venv env
+source env/bin/activate
+poetry install
+```
+
