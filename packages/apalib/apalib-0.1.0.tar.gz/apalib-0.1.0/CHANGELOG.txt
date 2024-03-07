@@ -1,0 +1,52 @@
+v0.1.0 March 6, 2024
+    + Completed most changes for Residue base class
+    + Modifications to chemistry.json to make it work better
+    + Modifications to Data class to make it more operational as a singleton
+    + Some pretty big bug fixes
+    --> Still a bunch of TO DO items before 1.0.0 release :(
+
+v0.0.10x January 15, 2024
+    + Modified Amino Acid, DNA, and RNA classes to inherit from a base "Residue" class
+    --> HETATM needs some work still. This will be moved at some point with mid-level priority
+    + Tweaks to chemistry.json to make DNA and RNA name fetching easier
+    + Added functions to get the 1-letter codes for DNA, RNA, and AAs using "Data" class
+    + Other small changes and bug fixes
+    --> Several modifications to determine if a residue can have a centroid. Currently, if an alpha carbon and a
+        carbonyl carbon are both missing, the residue does not get a vector and possibly a centroid.
+    --> Will add ability to define a centroid domain and a base for a residue
+
+v0.0.9x
+    + Added (very) rough FASTA fetching support.
+    --> Very much needs to be optimized. Boo the PDB and its jank
+    + Can now save a fetch in RAM. Set "hold_pdb" to True in fetching functions
+    + Added random protein generator
+
+v0.0.7x
+    + Moved more hardcoded data into a json file
+    + Added a "Data" class to access json file
+    + More restructuring
+    + Remade PDB parser to be more stable, faster, and human-readable
+    --> More work must be done for ANISOU, REMARK, etc.\
+    + Modify all class initializations for more consistancy
+    --> Change from class_instance(**kwargs) to class_instance(arg1=None, arg2=None, ...) for all parameters
+
+
+v0.0.2 January 27, 2022 (Pre-release alpha)
+    + Added global CONTAINER object with appropriate getters and setters.
+    + Moved (most) hardcoded data into a json file
+    + Added function to estimate charge of a protein at different pHs
+    --> Will modify to estimate nucleoproteins, riobnucleoproteins, and protein segments
+    + Added SOME test files. More to come
+    * This version is released only for testing and developmental purposes.
+    --> There is NO guarantee of accuracy, efficiency, or functionality for this version.
+    --> The purpose of this version is to ensure the proper upload of the json data file to PyPI
+
+v0.0.1 Oct 12, 2021 (Pre-release alpha)
+    + Added PDB parser. Currently, able to organize atoms into RNA chains, DNA chains, protein chains, and heteroatoms.
+    + Add centroid finder for amino acids.
+    + Added automatic fetch from PDB
+    + Added method to atom class that extracts the probable element from its ID
+    + Added getters and setters for RNA, DNA, AminoAcid, Atom, and Container classes
+----------------------------------------------------------------------------------
+v0.0.0 Oct 8, 2021 (Initiation)
+    Initial creation
