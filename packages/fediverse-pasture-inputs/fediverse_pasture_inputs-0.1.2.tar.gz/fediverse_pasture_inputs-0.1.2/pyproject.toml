@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2024 Helge
+#
+# SPDX-License-Identifier: MIT
+
+[tool.poetry]
+name = "fediverse-pasture-inputs"
+version = "0.1.2"
+description = "Input data to generate interoperability data from the fediverse-pasture"
+repository = "https://codeberg.org/funfedidev/fediverse-pasture-inputs"
+authors = ["Helge <helge.krueger@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fediverse-pasture = "^0.2.7"
+
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
