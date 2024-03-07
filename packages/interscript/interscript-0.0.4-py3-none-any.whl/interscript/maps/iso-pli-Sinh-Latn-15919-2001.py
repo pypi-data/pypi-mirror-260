@@ -1,0 +1,10 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("iso-pli-Sinh-Latn-15919-2001")
+def _stage_main(s):
+    s = interscript.stdlib.parallel_replace_tree(s, _PTREE_2972114779357515741)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("iso-pli-Sinh-Latn-15919-2001", "main", _stage_main)
+_PTREE_2972114779357515741 = {3461:{None:"a"},3462:{None:"ā"},3463:{None:"æ"},3464:{None:"ǣ"},3465:{None:"i"},3466:{None:"ī"},3467:{None:"u"},3468:{None:"ū"},3469:{None:"ṛ"},3470:{None:"ṝ"},3471:{None:"ḻ"},3472:{None:"ḹ"},3473:{None:"e"},3474:{None:"ē"},3475:{None:"ai"},3476:{None:"o"},3477:{None:"ō"},3478:{None:"au"},3535:{None:"ā"},3536:{None:"æ"},3537:{None:"ǣ"},3538:{None:"i"},3539:{None:"ī"},3540:{None:"u"},3542:{None:"ū"},3544:{None:"ṛ"},3570:{None:"ṝ"},3551:{None:"ḻ"},3571:{None:"ḹ"},3545:{None:"e"},3546:{None:"ē"},3547:{None:"ai"},3548:{None:"o"},3549:{None:"ō"},3550:{None:"au"},3482:{None:"ka"},3483:{None:"kha"},3484:{None:"ga"},3485:{None:"gha"},3486:{None:"ṅa"},3487:{None:"ṅga"},3488:{None:"ca"},3489:{None:"cha"},3490:{None:"ja"},3491:{None:"jha"},3492:{None:"ña"},3494:{None:"ñja"},3495:{None:"ṭa"},3496:{None:"ṭha"},3497:{None:"ḍa"},3498:{None:"ḍha"},3499:{None:"ṇa"},3500:{None:"ṇḍa"},3501:{None:"ta"},3502:{None:"tha"},3503:{None:"da"},3504:{None:"dha"},3505:{None:"na"},3507:{None:"nda"},3508:{None:"pa"},3509:{None:"pha"},3510:{None:"ba"},3511:{None:"bha"},3512:{None:"ma"},3513:{None:"mba"},3514:{None:"ya",2689:{None:"m̐ya"}},3515:{None:"ra",2689:{None:"m̐ra"}},3517:{None:"la",2689:{None:"m̐la"}},3525:{None:"ḷa",2689:{None:"m̐ḷa"}},3520:{None:"va",2689:{None:"m̐va"}},3521:{None:"śa"},3522:{None:"ṣa"},3523:{None:"sa"},3524:{None:"ha"},3526:{None:"fa"},2689:{None:"m̐"},3459:{None:"ḥ"},3458:{None:"ṁ"},3558:{None:"0"},3559:{None:"1"},3560:{None:"2"},3561:{None:"3"},3562:{None:"4"},3563:{None:"5"},3564:{None:"6"},3565:{None:"7"},3566:{None:"8"},3567:{None:"9"},2509:{None:""},8205:{None:""},8204:{None:""},3530:{None:""}}
