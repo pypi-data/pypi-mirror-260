@@ -1,0 +1,41 @@
+[build-system]
+requires = [
+  "setuptools >= 42",
+  "setuptools_scm[toml]>=6.0",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "hggit/__version__.py"
+version_scheme = "release-branch-semver"
+
+[tool.black]
+line-length = 80
+exclude = '''
+build/
+| wheelhouse/
+| dist/
+| packages/
+| \.hg/
+| \.mypy_cache/
+| \.venv/
+| tests/
+| hggit/__version__.py
+'''
+skip-string-normalization = true
+
+[tool.pylint.master]
+#
+# Current checks:
+# - W0102: no mutable default argument
+# - C0321: more than one statement on a single line
+#
+# Unique to hg-git:
+# - W1401: anomalous backslash in string
+# - W1402: anomalous unicode escape in string
+# - C0411: third party import order
+#
+reports = "no"
+disable = "all"
+enable = ["W0102", "C0321", "W1401", "W1402", "C0411"]
