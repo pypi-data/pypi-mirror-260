@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: vali-helper
+Version: 1.1.0
+Summary: vali-helper is a util to help define the value checker on a function.
+Author-email: babybabycloud <babybabycloud2020@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2023 babybabyCloud
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: homepage, https://github.com/babybabycloud/vali-helper
+Keywords: validation
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dateutil
+Requires-Dist: python-dateutil ==2.9.0 ; extra == 'dateutil'
+
+# vali-helper
+
+#### Description
+valid-helper is a util that helps define the validation to the parameters of functions
+
+#### Installation
+```bash
+pip install vali_helper
+```
+
+#### Instructions
+This package is very easy to use. There are some pre-defined validation classes. For example, if a function give_money
+has an int parameter money, and it requires the parameter is greater than "0", it can be written in the below following
+form:
+```python
+from vali import *
+
+
+@validator(valis=[GreaterThan(name='money', value=0)])
+def give_money(money: int | float):
+    print(money)
+
+>>> give_money(-10)
+Traceback (most recent call last):
+
+vali.validation.ValiFailError: The validation value must greater than 0, but provided -10
+```
+More examples could be referred to src/vali/tests
