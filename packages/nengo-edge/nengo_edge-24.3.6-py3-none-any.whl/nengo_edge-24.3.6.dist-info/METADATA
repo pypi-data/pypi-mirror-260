@@ -1,0 +1,211 @@
+Metadata-Version: 2.1
+Name: nengo-edge
+Version: 24.3.6
+Summary: Tools for working with NengoEdge
+Home-page: https://github.com/nengo/nengo-edge
+Author: Applied Brain Research
+Author-email: edge-info@appliedbrainresearch.com
+License: MIT license
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Nengo
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+License-File: LICENSE.rst
+Requires-Dist: click >=8.1.3
+Requires-Dist: packaging >=20.9
+Requires-Dist: pyserial >=3.5
+Requires-Dist: rich >=13.3.1
+Requires-Dist: soundfile >=0.12.1
+Requires-Dist: numpy >=1.23.0
+Provides-Extra: all
+Requires-Dist: jupyter >=1.0.0 ; extra == 'all'
+Requires-Dist: nbsphinx >=0.8.11 ; extra == 'all'
+Requires-Dist: nengo-sphinx-theme >=20.9 ; extra == 'all'
+Requires-Dist: numpydoc >=1.4.0 ; extra == 'all'
+Requires-Dist: sounddevice >=0.4.5 ; extra == 'all'
+Requires-Dist: sphinx-click >=5.0.0 ; extra == 'all'
+Requires-Dist: sphinx-tabs >=3.2.0 ; extra == 'all'
+Requires-Dist: tensorflow >=2.10.0 ; extra == 'all'
+Requires-Dist: tensorflow-text >=2.13.0 ; extra == 'all'
+Requires-Dist: mypy >=0.901 ; extra == 'all'
+Requires-Dist: pytest >=7.1.1 ; extra == 'all'
+Requires-Dist: pytest-rng >=1.0.0 ; extra == 'all'
+Requires-Dist: types-click >=7.1.0 ; extra == 'all'
+Provides-Extra: docs
+Requires-Dist: jupyter >=1.0.0 ; extra == 'docs'
+Requires-Dist: nbsphinx >=0.8.11 ; extra == 'docs'
+Requires-Dist: nengo-sphinx-theme >=20.9 ; extra == 'docs'
+Requires-Dist: numpydoc >=1.4.0 ; extra == 'docs'
+Requires-Dist: sounddevice >=0.4.5 ; extra == 'docs'
+Requires-Dist: sphinx-click >=5.0.0 ; extra == 'docs'
+Requires-Dist: sphinx-tabs >=3.2.0 ; extra == 'docs'
+Provides-Extra: optional
+Requires-Dist: tensorflow >=2.10.0 ; extra == 'optional'
+Requires-Dist: tensorflow-text >=2.13.0 ; extra == 'optional'
+Provides-Extra: tests
+Requires-Dist: mypy >=0.901 ; extra == 'tests'
+Requires-Dist: pytest >=7.1.1 ; extra == 'tests'
+Requires-Dist: pytest-rng >=1.0.0 ; extra == 'tests'
+Requires-Dist: types-click >=7.1.0 ; extra == 'tests'
+
+***************
+NengoEdge Tools
+***************
+
+`NengoEdge <https://edge.nengo.ai/>`_ is a cloud-based platform for training and
+deploying high accuracy, low power audio AI models on edge devices. This package
+contains tools and examples to assist in taking a trained model exported from
+NengoEdge and deploying it in your own application.
+
+To get started running NengoEdge models locally,
+set up a Python environment using the installation instructions below.
+Then download the
+`live microphone demo notebook
+<https://www.nengo.ai/nengo-edge/examples/microphone-demo/microphone-demo.ipynb>`_
+and open it with::
+
+  jupyter notebook /path/to/microphone-demo.ipynb
+
+.. image:: https://www.nengo.ai/nengo-edge/_static/demo.png
+   :target: https://www.youtube.com/watch?v=sccLaootrGk
+
+Installation
+============
+
+NengoEdge models use the `TensorFlow <https://www.tensorflow.org/>`_
+machine learning library. If you already have TensorFlow installed,
+then all you need is to::
+
+  pip install nengo-edge
+
+If you do not have TensorFlow installed, see the see the full
+`installation instructions <https://www.nengo.ai/nengo-edge/installation>`_
+for more details.
+
+***************
+Release history
+***************
+
+.. Changelog entries should follow this format:
+
+   version (release date)
+   ======================
+
+   **section**
+
+   - One-line description of change (link to Github issue/PR)
+
+.. Changes should be organized in one of several sections:
+
+   - Added
+   - Changed
+   - Fixed
+   - Deprecated
+   - Removed
+
+24.3.6 (March 6, 2024)
+======================
+
+**Added**
+
+- Updated documentation with new content (additional tutorials, CLI documentation,
+  FAQ section). (`#9`_)
+- Added support for input string processing and NLP model inference in 
+  ``SavedModelRunner``. (`#17`_)
+- Added ``NetworkTokenizer`` class to perform remote calls to a device
+  CLI that supports sentencepiece tokenization. (`#17`_)
+- Added stdio-based CLI runner for ``np_mfcc``. (`#19`_)
+
+**Changed**
+
+- ``SavedModelRunner`` tokenizer now uses ``SentencepieceTokenizer`` instead of
+  ``FastSentencepieceTokenizer`` to ensure compatibility with the core sentencepiece 
+  library. (`#17`_)
+- Moved ``device_modules/network_tokenizer.py`` to ``network_runner.py``. (`#19`_)
+
+**Fixed**
+
+- Fixed model output decoding for ASR. ``SavedModelRunner`` now removes blank
+  tokens and merges repeating tokens before detokenization. (`#17`_)
+
+**Removed**
+
+- Removed support for streaming in ``SavedModelRunner``. (`#19`_)
+
+.. _#9: https://github.com/nengo/nengo-edge/pull/9
+.. _#17: https://github.com/nengo/nengo-edge/pull/17
+.. _#19: https://github.com/nengo/nengo-edge/pull/19
+
+23.9.27 (September 27, 2023)
+============================
+
+**Added**
+
+- Added warning when a downloaded nengo-edge model artifacts' version does not 
+  match local environment nengo-edge version. (`#6`_)
+- Added ``nengo-edge package-dataset`` CLI command, which can be used to validate
+  and package KWS and ASR datasets. (`#10`_)
+- ``SavedModelRunner.run`` now automatically decodes ASR model outputs via the exported 
+  sentencepiece tokenizer. (`#15`_)
+
+**Changed**
+
+- ``SavedModelRunner`` now uses Keras' SavedModel format, instead of the raw
+  TensorFlow SavedModel format. (`#8`_)
+- ``SavedModelRunner`` can now take ragged ``object``-arrays as input. (`#8`_)
+- TensorFlow is now an optional dependency installed with 
+  ``pip install nengo-edge[optional]``. (`#13`_)
+
+.. _#6: https://github.com/nengo/nengo-edge/pull/6
+.. _#8: https://github.com/nengo/nengo-edge/pull/8
+.. _#10: https://github.com/nengo/nengo-edge/pull/10
+.. _#13: https://github.com/nengo/nengo-edge/pull/13
+.. _#15: https://github.com/nengo/nengo-edge/pull/15
+.. _#17: https://github.com/nengo/nengo-edge/pull/17
+
+
+23.7.30 (July 30, 2023)
+=======================
+
+**Added**
+
+- Added ``CoralRunner`` for running models exported for the Coral board. (`#4`_)
+- Added ``DiscoRunner`` for running models exported for the Disco board. (`#4`_)
+- Added ``NordicRunner`` for running models exported for the Nordic board. (`#4`_)
+- Added on-device MFCC extraction code
+  (``device_modules.np_mfcc.LogMelFeatureExtractor``). (`#4`_)
+- Added two new examples demonstrating how to run models exported for the
+  Coral/Disco/Nordic devices. (`#4`_)
+
+**Changed**
+
+- Renamed ``tflite_runner.Runner`` to ``TFLiteRunner``. (`#4`_)
+- Renamed ``saved_model_runner.Runner`` to ``SavedModelRunner``. (`#4`_)
+- ``TFLiteRunner.reset_state`` now takes a ``batch_size`` argument, which can be used
+  to prepare the model to run with different batch sizes. (`#5`_)
+
+.. _#4: https://github.com/nengo/nengo-edge/pull/4
+.. _#5: https://github.com/nengo/nengo-edge/pull/5
+
+23.2.23 (February 23, 2023)
+===========================
+
+**Fixed**
+
+- Fixed an issue causing pip to refuse to install ``nengo-edge``. (`#3`_)
+
+.. _#3: https://github.com/nengo/nengo-edge/pull/3
+
+23.1.31 (January 31, 2023)
+==========================
+
+Initial release
