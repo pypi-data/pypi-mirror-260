@@ -1,0 +1,28 @@
+{% load i18n wagtailcore_tags wagtailadmin_tags %}
+{% if disallowed_sites %}
+<div class="panel">
+    <div class="help-block help-warning">
+        <h1 style="color:hsl(var(--w-color-grey-500-hue))">
+          {% translate 'WARNING: Misconfigured Wagtail Sites' %}
+        </h1>
+        <p>
+          {% translate 'Misconfigured Wagtail Sites lead to unexpected behaviour and failing features. Please fix the misconfigured sites.' %}
+        </p>
+        <p><strong>{% translate 'Allowed Sites:' %}</strong></p>
+        <ul>
+          {% for site in allowed_sites %}
+            <li>{{ site }}</li>
+          {% endfor %}
+        </ul>
+        <p><strong>{% translate 'Misconfigured Sites:' %}</strong></p>
+        <ul>
+          {% for site, pk in disallowed_sites %}
+            <li>
+              {{ site }} <a href="{% url 'wagtailsites:edit' pk %}">Edit</a>
+            </li>
+          {% endfor %}
+        </ul>
+
+    </div>
+</div>
+{% endif %}
