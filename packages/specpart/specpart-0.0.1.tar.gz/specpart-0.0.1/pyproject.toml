@@ -1,0 +1,37 @@
+[build-system]
+requires = ["numpy","setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "specpart"
+version = "0.0.1"
+description = "specpart module for use in wavespectra"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+keywords = ["wave", "spectra", "ocean", "xarray", "statistics", "analysis"]
+authors = [
+  { name = "Wavespectra Developers", email="r.guedes@oceanum.science" },
+]
+maintainers = [
+  {name = "Ruben de Bruin", email = "info@rdbr.nl"},
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "numpy",
+]
+
+
+
+
+[project.urls]
+Homepage = "https://github.com/RubendeBruin/specpart"
+Issues = "https://github.com/RubendeBruin/specpart/issues"
