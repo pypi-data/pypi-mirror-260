@@ -1,0 +1,22 @@
+---
+# The following represents the filename
+# extension to be applied to the SQLite3
+# database file.
+database_file_extension: sqlite3
+
+# Any column names listed here will be
+# ignored by the loader.
+ignore_columns:
+  - FILTER
+  - INFO
+
+table_schema:
+  sample:
+    CHROM: str
+    POS: int
+    ID: str
+    REF: str
+    ALT: str
+    QUAL: int
+    FILTER: str
+    INFO: str
