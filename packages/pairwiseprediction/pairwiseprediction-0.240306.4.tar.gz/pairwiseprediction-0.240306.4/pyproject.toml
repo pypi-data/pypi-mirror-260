@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "pairwiseprediction"
+version = "0.240306.4"
+description = "Handle a regression problem inducing the model on pairs A,B of instances"
+authors = ["davips <dpsabc@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pairwiseprediction", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+scikit-learn = "^1.3.2"
+
+[tool.poetry.group.dev.dependencies]
+autoreadme = "^0.2102.20"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+black = "^22.6.0"
+pdoc3 = "^0.10.0"
+pylint = "^2.7.4"
+testfixtures = "^7.1.0"
+ipython = "^8.9.0"
+setuptools = "^67.7.2"
+dalex = "^1.7.0"
+indexed = "^1.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
