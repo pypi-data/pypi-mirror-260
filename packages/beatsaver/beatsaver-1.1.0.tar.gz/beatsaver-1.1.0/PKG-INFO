@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: beatsaver
+Version: 1.1.0
+Summary: An Unofficial Python Beat Saver API Library.
+Home-page: https://github.com/megamaz/beatsaver-python
+Author: megamaz
+Author-email: raphael.mazuel@gmail.com
+License: MIT license
+Project-URL: Bug Reports, https://github.com/megamaz/beatsaver-python/issues
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.12, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Python BeatSaver API
+This is the unofficial python API for communicating with BeatSaver.\
+Installation:
+```
+python -m pip install beatsaver
+```
+
+# Samples
+### Getting map from ID
+```py
+>>> import beatsaver as bs # easier to type really
+>>> hardestmap = bs.maps.get_map_from_id('25f')
+>>> hardestmap.name
+'DM DOKURO - Reality Check Through The Skull'
+>>> hardestmap.uploader.name
+'rickput'
+>>> # maps that don't exist raise BeatSaverNotFoundException
+>>> try:
+...     doesnotexist = bs.maps.get_map_from_id('z')
+... except bs.models.exceptions.BeatSaverNotFoundException:
+...     print("oops")
+...
+oops
+```
+### Bonus
+```py
+>>> import beatsaver as bs
+>>> rcttc = bs.maps.get_map_from_id('25f')
+>>> class smth:
+...     def __eq__(self, a):
+...         return True
+...
+>>> bad = smth()
+>>> rcttc == bad
+True
+```
