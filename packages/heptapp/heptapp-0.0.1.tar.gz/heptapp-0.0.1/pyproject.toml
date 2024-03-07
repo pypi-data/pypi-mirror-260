@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heptapp"
+description = "A bolierplate for heptagon applications"
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file= "LICENSE.md"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+authors = [
+    {name = "Juan Cerezo", email="juancerezo.pro@gmail.com"},
+]
+
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+namespaces = true
+
+[tool.setuptools.dynamic]
+version = {attr = "heptapp.__version__"}
+
+[tool.pyright]
+typeCheckingMode = "lax"
+
+# ... other project metadata fields as specified in:
+#     https://packaging.python.org/en/latest/specifications/declaring-project-metadata/
