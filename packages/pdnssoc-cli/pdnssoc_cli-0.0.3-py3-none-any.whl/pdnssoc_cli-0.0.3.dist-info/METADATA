@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: pdnssoc-cli
+Version: 0.0.3
+Summary: Correlate dnstap files with MISP
+Home-page: https://github.com/CERN-CERT/pdnssoc-cli
+Author: Christos Arvanitis
+Author-email: arvchristos@protonmail.com
+License: MIT
+Project-URL: Documentation, https://github.com/CERN-CERT/pdnssoc-cli
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown; charset=UTF-8
+License-File: LICENSE.txt
+Requires-Dist: click
+Requires-Dist: jsonlines
+Requires-Dist: cachetools
+Requires-Dist: pymisp
+Requires-Dist: pyyaml
+Requires-Dist: aiofiles
+Requires-Dist: ipaddress
+Requires-Dist: schedule
+Requires-Dist: pytz
+Requires-Dist: jinja2
+Requires-Dist: importlib-metadata ; python_version < "3.8"
+Provides-Extra: testing
+Requires-Dist: setuptools ; extra == 'testing'
+Requires-Dist: pytest ; extra == 'testing'
+
+# pdnssoc-cli
+
+Correlate dnstap files with MISP threat intelligence.
+
+This tool parses JSON and compressed files created by [go-dnscollector](https://github.com/dmachard/go-dnscollector).
+
+
+## Installation
+
+`pdnssoc-cli` can be fetched from the following sources:
+
+### PyPi
+```bash
+pip install pdnssoc-cli
+```
+
+
+
+## Configuration
+
+Configuration can be provided using the ``--config`` flag in yaml format. An example configuration file can be found [here](./config.yml.sample).
+
+
+If no config flag is provided, the default file is `/etc/pdnssoc-cli/config.yml`.
+
+
+## Usage
+
+```
+Usage: python -m pdnssoccli.pdnssoccli [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -c, --config FILE  Read option defaults from the specified yaml file
+                     [default: /etc/pdnssoc-cli/config.yml]
+  --help             Show this message and exit.
+
+Commands:
+  alert       Raise alerts for spotted incidents
+  correlate   Correlate input files and output matches
+  daemonize   Run in daemonized mode according to configuration
+  fetch-iocs  Fetch IOCs from intelligence sources
+```
