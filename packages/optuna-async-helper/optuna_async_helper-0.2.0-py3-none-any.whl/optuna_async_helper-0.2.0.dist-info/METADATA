@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: optuna-async-helper
+Version: 0.2.0
+Summary: A Helper Library for Optuna Async Optimization
+Author-Email: 杜 世橋 Du Shiqiao <lucidfrontier.45@gmail.com>
+License: MIT
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Project-URL: Repository, https://github.com/lucidfrontier45/optuna-async-helper
+Requires-Python: >=3.11
+Requires-Dist: optuna>=3.5.0
+Requires-Dist: joblib>=1.3.2
+Requires-Dist: pydantic>=2.6.1
+Description-Content-Type: text/markdown
+
+# Optuna Async Helper
+A Helper Library for Optuna Async Optimization
+
+# Install
+
+```bash
+pip install optuna-async-helper
+```
+
+# Usage
+
+```python
+from optuna_async_helper import SearchSpace, SearchSpec, optimize
+
+
+def rosenbrock(x: float, y: float) -> float:
+    return (1 - x) ** 2 + 100 * (y - x**2) ** 2
+
+
+search_space: SearchSpace = [
+    SearchSpec(var_name="x", var_type="float", low=-5, high=5),
+    SearchSpec(var_name="y", var_type="float", low=-5, high=5),
+]
+
+with tempfile.TemporaryDirectory() as tempdir:
+    study = optimize(
+        study_name="rosenbrock",
+        storage=f"sqlite:///example.db",
+        objective_func=rosenbrock,
+        search_space=search_space,
+        n_trials=50,
+        batch_size=4,
+    )
+
+    assert study.best_value < 1.0
+    assert abs(study.best_params["x"] - 1) < 1.0
+    assert abs(study.best_params["y"] - 1) < 1.0
+```
+
+For more detail, please check `optimize` and `SearchSpec` definitions.
