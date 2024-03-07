@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "standard": {
+            "format": "[%(asctime)s %(levelname)-4s %(filename)s %(funcName)s l.%(lineno)s] %(message)s"
+            }
+        },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+            "stream" : "ext://sys.stdout"
+        },
+        "file": {
+            "formatter": "standard",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "logs.txt",
+            "maxBytes": 1000000
+        }
+    },
+    "loggers": {
+        "ragtime_logger": {
+            "handlers": ["console", "file"],
+            "level": "DEBUG",
+            "propagate": false
+            }
+    }
+}
