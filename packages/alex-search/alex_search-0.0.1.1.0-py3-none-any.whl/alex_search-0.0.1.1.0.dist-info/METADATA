@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: alex-search
+Version: 0.0.1.1.0
+Summary: A command-line tool for quickly searching and extracting papers using OpenAlex API
+Home-page: UNKNOWN
+Author: yabets ebren
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/x-rst
+Requires-Dist: requests
+Requires-Dist: click
+Requires-Dist: tabulate
+Requires-Dist: jsonlib-python3
+Requires-Dist: csvkit
+
+Usage
+=====
+
+Installation
+------------
+
+To install Alex Search, you can use pip:
+
+.. code-block:: bash
+
+    pip install alex-search
+
+Search Command
+--------------
+
+The ``search`` command allows you to search for papers using various filters.
+
+Usage:
+
+.. code-block:: bash
+
+    alex-search search [OPTIONS] QUERY
+
+Options:
+
+- ``--year-after``: Filter search results to include papers published after the specified year.
+- ``--author``: Filter search results by specific author(s).
+- ``--journal``: Filter search results by specific journal(s).
+- ``--cited-by``: Filter search results by the number of times the paper has been cited by other papers.
+- ``--cited``: Filter search results by the number of times the paper has cited other papers.
+- ``--limit``: Limit the number of search results returned.
+
+Example:
+
+Search for papers published after 2020, authored by John Doe, on the topic of Artificial Intelligence:
+
+.. code-block:: bash
+
+    alex-search search --year-after 2020 --author "John Doe" "Artificial Intelligence"
+
+Export Command
+---------------
+
+The ``export`` command allows you to export search results or paper metadata to a file in the specified format.
+
+Usage:
+
+.. code-block:: bash
+
+    alex-search export [OPTIONS] OUTPUT_FILE
+
+Options:
+
+- ``--format``: Specify the output format (JSON, CSV, BibTeX, etc.).
+
+Example:
+
+Export search results to a JSON file named ``output.json``:
+
+.. code-block:: bash
+
+    alex-search export --format JSON output.json
+
+
+
