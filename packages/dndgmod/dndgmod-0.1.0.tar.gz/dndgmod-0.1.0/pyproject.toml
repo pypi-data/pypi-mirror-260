@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "DnDGMod"
+version = "0.1.0"
+description = "A Dungeons & Degenerate Gamblers Modloader"
+authors = ["Seth Peace <sethevanpeace@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+dndgmod = "dndgmod.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.9.0"}
+pyyaml = "^6.0.1"
+appdirs = "^1.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
