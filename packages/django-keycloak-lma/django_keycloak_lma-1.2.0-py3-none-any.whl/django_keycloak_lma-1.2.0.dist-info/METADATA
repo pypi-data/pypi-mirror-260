@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: django_keycloak_lma
+Version: 1.2.0
+Summary: Modified version of the package django_keycloak (0.1.1)
+Author: Vyacheslav Konovalov
+Description-Content-Type: text/markdown
+Requires-Dist: djangorestframework
+Requires-Dist: python-keycloak-client-pkg
+
+
+INFO:
+
+
+settings.KEYCLOAK_OIDC_PROFILE_MODEL = OpenIdConnectProfile
+
+Available features:
+- basic auth with token request (KeycloakPasswordAuthentication)
+- bearer token auth (KeycloakTokenAuthentication)
+- refresh token method (services/oidc_profile)
+- exchange remote token (services/remote_client)
+- logout (services/oidc_profile)
+- permission check (auth/permissions)
+
+
+Examples of using features: tests/lma
