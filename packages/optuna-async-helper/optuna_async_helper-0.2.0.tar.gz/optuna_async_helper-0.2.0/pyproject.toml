@@ -1,0 +1,116 @@
+[project]
+name = "optuna-async-helper"
+description = "A Helper Library for Optuna Async Optimization"
+authors = [
+    { name = "杜 世橋 Du Shiqiao", email = "lucidfrontier.45@gmail.com" },
+]
+dynamic = []
+requires-python = ">=3.11"
+dependencies = [
+    "optuna>=3.5.0",
+    "joblib>=1.3.2",
+    "pydantic>=2.6.1",
+]
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+version = "0.2.0"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+repository = "https://github.com/lucidfrontier45/optuna-async-helper"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm.version]
+source = "file"
+path = "src/optuna_async_helper/__init__.py"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=24.2.0",
+    "ruff>=0.2.1",
+    "pyright>=1.1.350",
+    "pytest>=8.0.0",
+]
+
+[tool.pdm.scripts]
+black = "black ."
+pyright = "pyright ."
+ruff_lint = "ruff ."
+ruff_fix = "ruff --fix-only ."
+test = "pytest tests"
+
+[tool.pdm.scripts.format]
+composite = [
+    "ruff_fix",
+    "black",
+]
+
+[tool.pdm.scripts.lint]
+composite = [
+    "ruff_lint",
+    "pyright",
+]
+
+[tool.pdm.scripts.check]
+composite = [
+    "format",
+    "lint",
+    "test",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::FutureWarning",
+    "ignore::optuna.exceptions.ExperimentalWarning",
+]
+
+[tool.black]
+target-version = [
+    "py311",
+]
+extend-exclude = "deps"
+
+[tool.ruff]
+target-version = "py311"
+exclude = [
+    "deps",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"*/__init__.py" = [
+    "F401",
+]
+
+[tool.pyright]
+pythonVersion = "3.11"
+ignore = [
+    "deps",
+]
