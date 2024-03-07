@@ -1,0 +1,15 @@
+# Template for logs that hold completed todos / project for a single day.
+#
+# @ = [[template]]
+
+{% set day_after = date + one_day -%}
+{% set day_before = date - one_day -%}
+## {{date.strftime('%Y-%m-%d.%a')}} | Done Tasks / Projects
+##
+## @ = [[done_log_tmpl]]
+## < = [[{{day_before.strftime('%Y%m%d')}}_done.zo]]
+## > = [[{{day_after.strftime('%Y%m%d')}}_done.zo]]
+##
+## 0 = [[{{date.strftime('%Y%m%d')}}.zo]]
+
+
