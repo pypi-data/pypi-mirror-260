@@ -1,0 +1,13 @@
+{% extends "eit_django_utils/base.html" %}
+
+{% block content %}
+
+<div>
+  <div>
+     <h4>Unauthorized Access</h4>
+     <p>There is no Employee associated with Unity ID: {{ user }}.</p>
+     <p>Please contact support</p>
+  </div>
+</div>
+
+{% endblock %}
