@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "botc_tokens"
+description = "A collection of command line utilities for creating, updating, and grouping tokens for Blood on the Clocktower."
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+]
+dependencies = [
+    "wand ~= 0.6.13",
+    "beautifulsoup4 ~= 4.12.0",
+    "html5lib ~= 1.1.0",
+    "rich ~= 12.6.0"
+]
+
+[project.optional-dependencies]
+test = ["tox", "pytest-cov"]
+
+[project.scripts]
+botc_tokens = "botc_tokens:__main__.main"
+
+[tool.setuptools_scm]
+write_to = "src/botc_tokens/__version__.py"
+
+[tool.setuptools.dynamic]
+version = {attr = "botc_tokens.__version__.__version__"}
+
+[tool.pytest.ini_options]
+# addopts = "--cov --cov-branch --cov-report html --cov-report term-missing --cov-fail-under 100"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.yapf]
+column_limit = 120
+
+[tool.isort]
+py_version = "auto"
