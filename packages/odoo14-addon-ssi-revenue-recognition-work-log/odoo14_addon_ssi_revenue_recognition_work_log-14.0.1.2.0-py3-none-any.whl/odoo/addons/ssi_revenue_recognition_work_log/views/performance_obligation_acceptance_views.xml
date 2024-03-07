@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+<record id="performance_obligation_acceptance_view_form" model="ir.ui.view">
+    <field name="name">performance_obligation_acceptance - form</field>
+    <field name="model">performance_obligation_acceptance</field>
+    <field
+            name="inherit_id"
+            ref="ssi_revenue_recognition.performance_obligation_acceptance_view_form"
+        />
+    <field name="mode">extension</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//page[@name='manual']" position="after">
+                <page name="poa_work_log" string="Fullfilment Work Logs">
+                    <field name="allowed_work_log_ids" invisible="1" />
+                    <field
+                            name="poa_work_log_ids"
+                            domain="[('id', 'in', allowed_work_log_ids)]"
+                        />
+                    <group name="work_log_1" colspan="4" col="2">
+                        <group name="work_log_1_1" colspan="1" col="2">
+                            <field name="qty_work_log" />
+                        </group>
+                        <group name="work_log_1_2" colspan="1" col="2">
+                        </group>
+                    </group>
+                </page>
+
+            </xpath>
+        </data>
+    </field>
+</record>
+</odoo>
