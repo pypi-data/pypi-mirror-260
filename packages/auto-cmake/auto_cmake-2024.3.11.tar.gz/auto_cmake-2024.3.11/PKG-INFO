@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: auto_cmake
+Version: 2024.3.11
+Summary: Automate setup of CMake projects
+Home-page: https://github.com/veda-s4dhak/auto-cmake.git
+Author: Veda Sadhak
+Author-email: vedasadhak@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+<h2> Summary: </h2>
+
+Automate setup of CMake projects for large C & C++ projects<br>
+- Automatically indexes .c, .h, .cpp, .hpp files and creates entries in CMakeLists.txt
+- Automatically generates CMakeLists.txt for subdirectories and create library entries in CMakeLists.txt
+
+<h2> Sample Usage: </h2>
+
+Steps:
+
+1) Create a python script that will import AutoCMake
+2) In this file define
+   1) The project name and version
+   2) Directories and paths to include and exclude
+   3) Compiler flags
+   4) Build directory
+   
+```
+import os
+
+from .auto_cmake_exe import AutoCMakeExe
+
+# Configuration
+cmake_config = dict()
+cmake_config['proj_name'] = 'proj_name'
+cmake_config['proj_dir'] = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+cmake_config['version'] = '0.01'
+cmake_config['cmake_version'] = '3.15'
+cmake_config['exclude_folders'] = ['excluded-folder-1', 'excluded-folder-2']
+
+# Generate CMake
+cme = AutoCMakeExe(**cmake_config)
+cme.run()
+```
+
+3) Run the script to generate all the CMakeLists.txt files
+
