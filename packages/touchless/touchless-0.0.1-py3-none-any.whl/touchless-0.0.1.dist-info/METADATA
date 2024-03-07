@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: touchless
+Version: 0.0.1
+Summary: A Python library for building spatial interfaces using gestures, eye tracking, and voice commands.
+Author-email: Mikhail Rozhkov <mnrozhkov@gmail.com>, Alex Kolosov <alexckolosov@gmail.com>
+License: Apache License 2.0
+Project-URL: Homepage, https://github.com/mlrepa/touchless
+Project-URL: Repository, https://github.com/mlrepa/touchless
+Project-URL: Documentation, http://example.com/docs
+Keywords: touchless,spatial-ui,gesture-control,eye-tracking,voice-commands
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: absl-py ==2.1.0
+Requires-Dist: attrs ==23.2.0
+Requires-Dist: matplotlib ==3.8.2
+Requires-Dist: mediapipe ==0.10.10
+Requires-Dist: numpy ==1.26.4
+Requires-Dist: opencv-python ==4.9.0.80
+Requires-Dist: opencv-contrib-python ==4.9.0.80
+Requires-Dist: packaging ==23.2
+Requires-Dist: Pillow ==10.2.0
+Requires-Dist: pydantic ==2.6.3
+Requires-Dist: pyparsing ==3.1.2
+Requires-Dist: python-dateutil ==2.8.2
+Provides-Extra: lint
+Requires-Dist: mypy ==1.8.0 ; extra == 'lint'
+Requires-Dist: pandas-stubs ; extra == 'lint'
+Requires-Dist: types-colorama ; extra == 'lint'
+Requires-Dist: types-psutil ; extra == 'lint'
+Requires-Dist: types-pyinstaller ; extra == 'lint'
+Requires-Dist: types-requests ; extra == 'lint'
+Requires-Dist: types-tabulate ; extra == 'lint'
+Requires-Dist: types-toml ; extra == 'lint'
+Requires-Dist: types-tqdm ; extra == 'lint'
+Requires-Dist: typing-extensions ; extra == 'lint'
+Provides-Extra: tests
+Requires-Dist: pytest <9,>=8 ; extra == 'tests'
+Requires-Dist: pytest-cov >=4.1.0 ; extra == 'tests'
+Requires-Dist: pytest-test-utils ; extra == 'tests'
+
+# touchless
+"Touchless" is a Python library for creating spatial interfaces without physical contact, using gestures, eye tracking, and voice commands. It enables developers to build immersive 3D UIs for VR/AR and beyond, with advanced gesture and voice recognition technology.
