@@ -1,0 +1,35 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("din-tam-Taml-Latn-33903-2016")
+interscript.stdlib.add_map_alias("din-tam-Taml-Latn-33903-2016", "taml_chars_1", "ா")
+interscript.stdlib.add_map_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1", "[ாிீுூெேைொோௌोौ]")
+def _stage_main(s):
+    s = re.compile("க(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("k", s)
+    s = re.compile("ங(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṅ", s)
+    s = re.compile("ச(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("c", s)
+    s = re.compile("ஞ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ñ", s)
+    s = re.compile("ட(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṭ", s)
+    s = re.compile("ண(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṇ", s)
+    s = re.compile("த(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("t", s)
+    s = re.compile("ந(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("n", s)
+    s = re.compile("ப(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("p", s)
+    s = re.compile("ம(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("m", s)
+    s = re.compile("ய(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("y", s)
+    s = re.compile("ர(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("r", s)
+    s = re.compile("ல(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("l", s)
+    s = re.compile("ள(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ḷ", s)
+    s = re.compile("ழ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ḻ", s)
+    s = re.compile("வ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("v", s)
+    s = re.compile("ற(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṟ", s)
+    s = re.compile("ன(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṉ", s)
+    s = re.compile("ஜ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("j", s)
+    s = re.compile("ஶ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ś", s)
+    s = re.compile("ஷ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("ṣ", s)
+    s = re.compile("ஸ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("s", s)
+    s = re.compile("ஹ(?="+interscript.stdlib.get_alias_re("din-tam-Taml-Latn-33903-2016", "taml_chars_1")+")", re.MULTILINE).sub("h", s)
+    s = interscript.stdlib.parallel_replace_tree(s, _PTREE_3051554597687395843)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("din-tam-Taml-Latn-33903-2016", "main", _stage_main)
+_PTREE_3051554597687395843 = {2949:{None:"a"},2950:{None:"ā"},3006:{None:"ā"},2951:{None:"i"},3007:{None:"i"},2952:{None:"ī"},3008:{None:"ī"},2953:{None:"u"},3009:{None:"u"},2954:{None:"ū"},3010:{None:"ū"},3014:{None:"e"},2958:{None:"e"},3015:{None:"ē"},2959:{None:"ē"},2960:{None:"ai"},3016:{None:"ai"},2962:{None:"o"},3018:{None:"o"},3019:{None:"ō"},2963:{None:"ō"},2964:{None:"au"},3020:{None:"au"},2965:{3021:{None:"k"},None:"ka"},2969:{3021:{None:"ṅ"},None:"ṅa"},2970:{3021:{None:"c"},None:"ca"},2974:{3021:{None:"ñ"},None:"ña"},2975:{3021:{None:"ṭ"},None:"ṭa"},2979:{3021:{None:"ṇ"},None:"ṇa"},2980:{3021:{None:"t"},None:"ta"},2984:{3021:{None:"n"},None:"na"},2986:{3021:{None:"p"},None:"pa"},2990:{3021:{None:"m"},None:"ma"},2991:{3021:{None:"y"},None:"ya"},2992:{3021:{None:"r"},None:"ra"},2994:{3021:{None:"l"},None:"la"},2995:{3021:{None:"ḷ"},None:"ḷa"},2996:{3021:{None:"ḻ"},None:"ḻa"},2997:{3021:{None:"v"},None:"va"},2993:{3021:{None:"ṟ"},None:"ṟa"},2985:{3021:{None:"ṉ"},None:"ṉa"},2972:{3021:{None:"j"},None:"ja"},2998:{3021:{None:"ś"},None:"śa"},2999:{3021:{None:"ṣ"},None:"ṣa"},3000:{3021:{None:"s"},None:"sa"},3001:{3021:{None:"h"},None:"ha"},2947:{None:"ḵ"},3047:{None:"1"},3048:{None:"2"},3049:{None:"3"},3050:{None:"4"},3051:{None:"5"},3052:{None:"6"},3053:{None:"7"},3054:{None:"8"},3055:{None:"9"},3046:{None:"0"},3056:{None:"10"},3057:{None:"100"},3058:{None:"1000"},8205:{None:""},8204:{None:""}}

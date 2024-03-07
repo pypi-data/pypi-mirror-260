@@ -1,0 +1,10 @@
+import interscript
+import regex as re
+interscript.stdlib.define_map("iso-tel-Telu-Latn-15919-2001")
+def _stage_main(s):
+    s = interscript.stdlib.parallel_replace_tree(s, _PTREE_1378714240009938666)
+    s = interscript.functions.compose(s, {})
+    return s
+
+interscript.stdlib.add_map_stage("iso-tel-Telu-Latn-15919-2001", "main", _stage_main)
+_PTREE_1378714240009938666 = {3077:{None:"a"},3078:{None:"ā"},3079:{None:"i"},3080:{None:"ī"},3081:{None:"u"},3082:{None:"ū"},3083:{None:"ṛ"},3168:{None:"ṝ"},3084:{None:"ḻ"},3169:{None:"ḹ"},3086:{None:"e"},3087:{None:"ē"},3088:{None:"ai"},3090:{None:"o"},3091:{None:"ō"},3092:{None:"au"},3093:{None:"ka"},3094:{None:"kha"},3095:{None:"ga"},3096:{None:"gha"},3097:{None:"ṅa"},3098:{None:"ca"},3099:{None:"cha"},3100:{None:"ja"},3101:{None:"jha"},3102:{None:"ña"},3103:{None:"ṭa"},3104:{None:"ṭha"},3105:{None:"ḍa"},3106:{None:"ḍha"},3107:{None:"ṇa"},3108:{None:"ta"},3109:{None:"tha"},3110:{None:"da"},3111:{None:"dha"},3112:{None:"na"},3114:{None:"pa"},3115:{None:"pha"},3116:{None:"ba"},3117:{None:"bha"},3118:{None:"ma"},3119:{None:"ya",2433:{None:"m̐ya"}},3120:{None:"ra",2433:{None:"m̐ra"}},3121:{None:"ṛa",2433:{None:"m̐ṛa"}},3122:{None:"la",2433:{None:"m̐la"}},3123:{None:"ḷa",2433:{None:"m̐ḷa"}},3125:{None:"va",2433:{None:"m̐va"}},3126:{None:"śa"},3127:{None:"ṣa"},3128:{None:"sa"},3129:{None:"ha"},3161:{None:"za"},3160:{None:"ĉa"},3162:{None:"ṟa"},3124:{None:"ḻa"},2433:{None:"m̐"},3075:{None:"ḥ"},3074:{None:"ṁ"},3134:{None:"ā"},3135:{None:"i"},3136:{None:"ī"},3137:{None:"u"},3138:{None:"ū"},3139:{None:"ṛ"},3140:{None:"ṝ"},32:{3170:{None:"ḷ"},3171:{None:"ḹ"}},3142:{None:"e"},3143:{None:"ē"},3144:{None:"ai"},3146:{None:"o"},3147:{None:"ō"},3148:{None:"au"},3073:{None:"ň"},3133:{None:":’"},3149:{None:""},3157:{9:{None:""}},3158:{9:{None:""}},2381:{None:""},2364:{None:""},2509:{None:""},8205:{None:""},8204:{None:""},3174:{None:"0"},3175:{None:"1"},3176:{None:"2"},3177:{None:"3"},3178:{None:"4"},3179:{None:"5"},3180:{None:"6"},3181:{None:"7"},3182:{None:"8"},3183:{None:"9"}}
