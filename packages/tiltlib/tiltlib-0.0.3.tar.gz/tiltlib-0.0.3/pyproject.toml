@@ -1,0 +1,27 @@
+[project]
+name = "tiltlib"
+version = "0.0.3"
+authors = [
+  { name="Viljar Femoen", email="viljarjf@stud.ntnu.no" },
+]
+description = "TEM tilt holder scripts"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "numpy",
+    "orix",
+    "matplotlib",
+    "hyperspy",
+    "scipy",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-xdist", "filelock"]
