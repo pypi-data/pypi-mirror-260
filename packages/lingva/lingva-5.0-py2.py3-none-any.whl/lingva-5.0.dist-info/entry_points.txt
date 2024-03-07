@@ -1,0 +1,11 @@
+[console_scripts]
+polint=lingva.polint:main
+pot-create=lingva.extract:main
+
+[lingva.extractors]
+chameleon=lingva.extractors.xml:ChameleonExtractor
+python=lingva.extractors.python:PythonExtractor
+xml=lingva.extractors.xml:ChameleonExtractor
+zcml=lingva.extractors.zcml:ZCMLExtractor
+zope=lingva.extractors.xml:ZopeExtractor
+
