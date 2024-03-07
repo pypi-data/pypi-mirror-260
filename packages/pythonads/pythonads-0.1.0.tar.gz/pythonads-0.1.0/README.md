@@ -1,0 +1,31 @@
+**`PythonAds`** is supporting the Python ecosystem by creating a sustainable, terminal-based ad network, passing 90% of revenues through to developers. 
+
+## How it Works - Developers
+
+PythonAds lets you earn money from your open-source packages by adding a single line of code, which prints a simple text advert. 90% of revenue is passed through to members like you! Here's how to get started:
+
+**(1)** Download the PythonAds package from PyPI:
+
+```shell
+pip install pythonads
+```
+
+**(2)** Import `pythonads` as the first line in your `__init__.py` or equivalent - the main thing is that the PythonAds message shows at the top when your package is imported or run. 
+
+```python
+import pythonads
+```
+
+**(3)** Republish your package to PyPI. Now, whenever someone imports or runs your package, an unobtrusive text advert from a PythonAds sponsor will display. 
+
+**(4)** Head to [PythonAds.dev](https://pythonads.dev) to let us know you've joined the network - we'll check everything's working correctly and then send you a link to begin receiving payouts!
+
+## How it Works - Advertisers
+
+Use PythonAds to reach millions of developers around the world, in their terminals. If someone imports or runs a package which is part of the PythonAds network, their terminal will print a custom message like:
+
+`Sponsored by Your Company, the Most Powerful Data Platform` 
+
+To advertise with PythonAds, head to [PythonAds.dev](https://pythonads.dev).
+
+![PythonAds](https://pythonads.dev/assets/pythonads.png)
