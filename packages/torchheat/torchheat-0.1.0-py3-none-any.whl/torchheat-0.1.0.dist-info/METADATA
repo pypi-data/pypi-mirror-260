@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: torchheat
+Version: 0.1.0
+Summary: Diffusion based distances in PyTorch
+Author: Guillaume Huguet
+License: MIT License
+        
+        Copyright (c) 2024 Guillaume Huguet
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Keywords: torch,diffusion,distances,heat,kernel
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: scipy
+Requires-Dist: numpy
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Provides-Extra: sc
+Requires-Dist: scanpy ; extra == 'sc'
+
+# heatdist
+Implementation of diffusion-based distances in torch.
+
+```python
+from torchheat.heat_kernel import HeatKernelGaussian, HeatKernelKNN
+import torch    
+
+data = torch.randn(100, 5)
+# Heat kernel for a gaussian affinity matrix
+heat_op = HeatKernelGaussian(sigma=1.0, t=1.0)
+dist = heat_op.fit(data, dist_type="var") # ["var", "phate", "diff"]
+
+# Heat kernel for a k-nearest neighbor affinity matrix
+heat_op = HeatKernelKNN(k=5, t=1.0)
+dist = heat_op.fit(data, dist_type="var") # ["var", "phate", "diff"]
+```
+
+Below is an example of distance matrices from a line embedded in two dimensions. The Euclidean distance between the two sets of points highlighted in green does not reflect the true distances on the one dimensional line.
+![image](https://github.com/guillaumehu/torchheat/assets/57917099/89b845a1-1625-4f36-9e8c-d3db62281e2c)
