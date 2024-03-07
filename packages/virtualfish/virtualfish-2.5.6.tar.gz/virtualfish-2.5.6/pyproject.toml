@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "virtualfish"
+version = "2.5.6"
+description = "Fish shell tool for managing Python virtual environments"
+authors = ["Justin Mayer <entroP@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["fish", "shell", "python", "virtual", "environments", "virtualenv"]
+repository = "https://github.com/justinmayer/virtualfish"
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Shells",
+]
+
+[tool.poetry.urls]
+"Documentation" = "https://virtualfish.readthedocs.org/"
+"Tracker" = "https://github.com/justinmayer/virtualfish/issues"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
+packaging = ">=21.3"
+pkgconfig = ">=1.5"
+psutil = ">=5.7"
+virtualenv = ">=20"
+
+[tool.poetry.dev-dependencies]
+black = ">=22"
+flake8 = "^3.9"
+pytest = ">=6.1"
+pytest-sugar = ">=0.9.5"
+pytest-xdist = ">=2.1"
+sphinx = ">=5.1"
+sphinx_rtd_theme = ">=1.0"
+
+[tool.poetry.scripts]
+vf = "virtualfish.loader.cli:main"
+
+[tool.autopub]
+project-name = "VirtualFish"
+git-username = "botpub"
+git-email = "52496925+botpub@users.noreply.github.com"
+append-github-contributor = true
+version-strings = ["docs/conf.py"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
