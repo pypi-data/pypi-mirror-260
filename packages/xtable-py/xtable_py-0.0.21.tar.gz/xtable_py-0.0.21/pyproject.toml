@@ -1,0 +1,39 @@
+[build-system]
+requires = ["flit_core>=3.4"]
+build-backend = "flit_core.buildapi"
+
+
+[project]
+name = "xtable-py"
+version = "0.0.21"
+authors = [
+  { name="Matthias Rudolph", email="mrudo@amazon.de" },
+]
+description = "This package wraps the java package xtable into a python cli/library along with it's dependencies. This provides the xtable jar in an easy consumeable format for various CI/CD or workflow management platforms such as Apache Airflow."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "jpype1 ==1.5.0"
+]
+
+[project.optional-dependencies]
+build = [
+    "flit >=3.9.0"
+]
+airflow = [
+    "apache-airflow ==2.8.1"
+]
+all = [
+    "xtable-py[build,airflow]"
+]
+
+[project.scripts]
+xtable_py = "xtable_py.cli:app"
+
+[project.entry-points."airflow.plugins"]
+xtable_airflow_plugin = "xtable_py.airflow_plugin:xtablePlugin"
