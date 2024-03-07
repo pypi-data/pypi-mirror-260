@@ -1,0 +1,43 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "meritous"
+authors = [{name = "Tom Morton", email = "tom@errant.me.uk"}]
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License", "Development Status :: 4 - Beta", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12"]
+requires-python = ">=3.10"
+readme = "README.md"
+keywords = ["model"]
+dynamic = ["version", "description"]
+dependencies = [
+      "toml",
+      "dotmap"
+]
+
+[tool.flit.module]
+name = "meritous.core"
+
+[project.optional-dependencies]
+test = [
+    "pytest >=5.3.2",
+    "pytest-cov"
+]
+doc = [
+  "sphinx",
+  "sphinx-rtd-theme"
+  ]
+
+[project.urls]
+Home = "https://meritous.readthedocs.io/en/latest/"
+GitHub =  "https://github.com/errant/meritous/"
+
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+[tool.coverage.run]
+branch = true
+source = ["meritous"]
+[tool.coverage.report]
+show_missing = true
