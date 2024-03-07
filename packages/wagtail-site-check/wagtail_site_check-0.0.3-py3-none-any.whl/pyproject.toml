@@ -1,0 +1,91 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wagtail-site-check"
+version = "0.0.3"
+authors = [
+  { name="Coen van der Kamp", email="coen@fourdigits.nl" },
+]
+description = "A Wagtail app to check the configuration of Wagtail Sites."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Wagtail",
+    "Framework :: Wagtail :: 2",
+    "Framework :: Wagtail :: 3",
+    "Framework :: Wagtail :: 4",
+    "Framework :: Wagtail :: 5",
+
+]
+
+[project.urls]
+"Homepage" = "https://github.com/allcaps/wagtail-site-check"
+"Bug Tracker" = "https://github.com/allcaps/wagtail-site-check/issues"
+
+[project.optional-dependencies]
+testing = [
+    "wagtail",
+    "django-webtest",
+    "pytest-cov",
+    "pytest-django",
+    "black",
+    "isort",
+    "flake8",
+    "flake8-pyproject",
+    "flake8-black",
+    "flake8-debugger",
+    "flake8-isort",
+]
+
+[tool.hatch.build]
+include = [
+    "CHANGELOG.md",
+    "LICENSE",
+    "pyproject.toml",
+    "README.md",
+    "wagtailsitecheck/*",
+]
+
+[tool.pytest.ini_options]
+pythonpath="testproject"
+DJANGO_SETTINGS_MODULE = "settings"
+testpaths = "tests"
+addopts = [
+    "--reuse-db",
+    "--cov=.",
+    "--cov-report=html",
+    "--cov-report=xml",
+]
+filterwarnings=[
+    # Package used by wagtail, no fix available yet.
+    # "ignore::DeprecationWarning:l18n.translation",
+]
+
+[tool.coverage.run]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "manage.py",
+]
+
+[tool.isort]
+profile = "black"
+known_first_party = "wagtailsitecheck"
