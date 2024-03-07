@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "strictdataclass"
+version = "0.1.0"
+requires-python = ">=3.7"
+dependencies = [
+    "instancemethod >= 1.5",
+    "any_cast >= 0.0.3",
+]
+authors =[
+    {name = "Braden Toone", email = "braden@toonetown.com"},
+]
+maintainers = [
+    {name = "Braden Toone", email = "braden@toonetown.com"},
+]
+description = "Auto type cast dataclasses to suggested types."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["dataclass", "type", "cast", "strict", "inherit"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3.7",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
+]
+
+[project.urls]
+Homepage = "https://github.com/Braden2n/StrictDataclass"
+Documentation = "https://github.com/Braden2n/StrictDataclass"
+Issues = "https://github.com/Braden2n/StrictDataclass/issues"
+Repository = "https://github.com"
+Changelog = "https://github.com/Braden2n/StrictDataclass/activity"
