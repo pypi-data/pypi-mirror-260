@@ -1,0 +1,33 @@
+[package]
+name = "tea-lazy"
+version= "0.6.8"
+authors= ["Teamon"]
+edition= "2021"
+repository= "https://github.com/Teamon9161/teapy"
+license= "MIT"
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+# default = ["hash", "extend", "ops", "blas"]
+default = ["extend", "ops"]
+
+
+extend = ["hash", "option_dtype", "time"]
+
+hash = []
+arw = []  # todo! impl read_ipc in tea-io
+option_dtype = ["tea-core/option_dtype"]
+ops = ["tea-core/ops"]
+time = ["tea-core/time"]
+blas = ["tea-core/blas", "tea-core/method_1d"]
+
+
+[dependencies]
+tea-core = { path = "../tea-core" }
+tea-hash = { path = "../tea-hash" }
+pyo3 = {version = "0.20.0", features = ["extension-module", "abi3-py38", "macros", "serde"]}
+rayon = "1.5"
+regex = "1"
+parking_lot = "0.12"
+ndarray = {features=['rayon', 'serde'], version="0.15"}

@@ -1,0 +1,75 @@
+[package]
+name = "tea-py"
+version = "0.6.8"
+authors = ["Teamon"]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/Teamon9161/teapy"
+description = "Fast DataDict Library in Python"
+resolver = "2"
+
+
+[features]
+default = ["extend", "methods_extend", "groupby_extend", "lazy_io", "blas"]
+# default = ["lazy"]
+
+# methods includes extend datatype
+methods_extend = ["extend", "methods", "tea-ext/extend"]
+# groupby methods includes extend datatype
+groupby_extend = ["extend", "groupby", "tea-groupby/extend"]
+
+blas = ["tea-core/blas", "tea-lazy/blas", "tea-ext/map", "stat", "lazy"] # linalg
+
+
+extend = ["ops", "lazy_time", "lazy_option_dtype"]
+methods = ["agg", "map", "rolling", "concat", "create"]  # extend methods
+
+
+# lazy
+lazy_io = ["io", "lazy", "tea-io/lazy"]
+lazy_groupby = ["groupby", "lazy", "tea-groupby/lazy"]
+lazy_time = ["time", "lazy", "tea-lazy/time"]
+lazy_option_dtype = ["option_dtype", "lazy", "tea-lazy/option_dtype"]
+
+# dtypes extension
+lazy = ["tea-lazy", "tea-ext/lazy"]
+ops = ["tea-lazy/ops"]
+time = ["tea-core/time", "tea-ext/time", "tea-hash/time"]
+option_dtype = ["tea-core/option_dtype"]
+
+# methods
+create = ["tea-ext/create"]
+concat = ["tea-core/concat", "tea-ext/concat"]
+map = ["tea-ext/map"]
+agg = ["tea-ext/agg"]
+rolling = ["tea-ext/rolling"]
+
+groupby = ["tea-groupby", "agg"]
+
+stat = ["tea-ext/stat"]
+
+# io
+io = ["arw"]
+npy = []
+arw = ["tea-io/arw"]
+
+
+srd = ["tea-core/srd"]
+
+
+[dependencies]
+tea-core = {path = "local_dependencies/tea-core", default-features = false}
+tea-hash = {path = "local_dependencies/tea-hash" }
+tea-lazy = {path = "local_dependencies/tea-lazy", optional = true}
+tea-ext = {path = "local_dependencies/tea-ext", default-features = false}
+tea-groupby = {path = "local_dependencies/tea-groupby", optional = true}
+tea-io = {path = "local_dependencies/tea-io", default-features = false, optional = true}
+pyo3 = {version = "0.20.0", features = ["extension-module", "abi3-py38", "macros", "serde"]}
+numpy = "0.20.0"
+parking_lot = "0.12"
+ahash = { version = "0.8", features = ["std", "runtime-rng"]}
+rayon = "1.5"
+regex = "1"
+once_cell = "1.18"
+ndarray = {features=['rayon', 'serde'], version="0.15"}
+chrono = {version = "0.4.31", features = ["serde"]}

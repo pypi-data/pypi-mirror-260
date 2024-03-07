@@ -1,0 +1,21 @@
+[package]
+name = "tea-hash"
+version= "0.6.8"
+authors= ["Teamon"]
+edition= "2021"
+repository= "https://github.com/Teamon9161/teapy"
+license= "MIT"
+resolver = "2"
+
+[features]
+default = ["time", "ahasher"]
+time = ["tea-dtype/time"]
+
+ahasher = ["ahash"]
+gxhasher = ["gxhash"]  # not implemented yet
+
+[dependencies]
+tea-dtype = {path = "../tea-dtype" }
+ahash = { version = "0.8", features = ["std", "runtime-rng"], optional = true}
+# once_cell = {workspace = true}
+gxhash = {version = "2.2", optional = true}
