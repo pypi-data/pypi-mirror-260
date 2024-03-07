@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: boa-solidity
+Version: 0.1.0
+Summary: Solidity support for Titanoboa
+License: MIT
+Author: z80
+Author-email: z80@ophy.xyz
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: eth-abi (>=5.0.1,<6.0.0)
+Requires-Dist: py-solc-x (>=2.0.2,<3.0.0)
+Requires-Dist: titanoboa (>=0.1.9,<0.2.0)
+Description-Content-Type: text/markdown
+
+# Boa Solidity
+
+Implements solidity support for `Titanoboa`
+
+## Usage
+
+``` python
+import boa
+import boa_solidity
+
+sol_deployer = boa.load_partial_solc("Counter.sol")
+
+sol_contract = sol_deployer.deploy()
+
+# or attach to existing contract (useful when forking mainnet state)
+
+sol_contract = sol_deployer.at(<addr>)
+```
+
+
