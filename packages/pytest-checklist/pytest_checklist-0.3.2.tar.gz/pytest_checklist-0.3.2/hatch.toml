@@ -1,0 +1,30 @@
+[version]
+
+path = "src/pytest_checklist/__about__.py"
+
+[envs.default]
+
+dependencies = [
+    "pytest",
+    "black",
+    "ruff",
+    "mypy",
+    # interactive
+    "ipython",
+    "pdbpp",
+]
+
+[envs.default.scripts]
+format = "black src tests test_data"
+format_check = "black --check src tests test_data"
+lint = "ruff check src tests"
+typecheck = "mypy src"
+test = "pytest tests"
+
+[build.targets.sdist]
+
+packages = ["src/pytest_checklist"]
+exclude = ["*~"]
+# include = [
+#     "src/*.py",
+# ]
