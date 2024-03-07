@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: commitit
+Version: 0.4
+Summary: It is not how good you are, it is about how good people think you are
+Author: Didas G. Junior
+Description-Content-Type: text/markdown
+
+# GitCommitAutomation
+
+This package provides a simple automation tool for generating Git commits in the past. It's designed to help in scenarios where you want to backfill your Git history for a project. The script modifies a file named `data.txt`, adds a new line with a date indicating when the commit should have been made, and then commits this change to the repository with the commit date set to the specified number of days ago.
+
+## Installation
+
+Before installing and using GitCommitAutomation, ensure you have Git installed on your system. You can then download this package, unzip it, and navigate into the package directory. Alternatively
+in your terminal do
+`pip install commitit`
+
+## Usage
+
+To use the GitCommitAutomation script, follow these steps:
+
+1. Create a GitHub repository
+2. Open a terminal or command prompt.
+3. Clone a github repo.
+4. In your repo do `pip install commitit`
+5. Then run the function called `make_commit()`
+
+```bash
+from hcommit import make_commit
+make_commit()
+```
