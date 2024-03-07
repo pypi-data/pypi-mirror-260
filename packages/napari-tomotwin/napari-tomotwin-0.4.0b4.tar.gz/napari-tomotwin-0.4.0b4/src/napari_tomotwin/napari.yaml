@@ -1,0 +1,10 @@
+name: napari-tomotwin
+display_name: TomoTwin
+contributions:
+  commands:
+    - id: napari-tomotwin.UmapTool
+      python_name: napari_tomotwin.load_umap_widget:UmapToolQt
+      title: Refine umap
+  widgets:
+    - command: napari-tomotwin.UmapTool
+      display_name: TomoTwin clustering workflow
