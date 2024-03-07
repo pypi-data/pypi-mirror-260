@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="number">Pick a number: </label>
+        <input type="number" name="number" id="number" />
+      </div>
+      <button id="submit" type="submit">Submit</button>
+    </form>
+    <script>
+      document.getElementById("submit").addEventListener("click", async (e) => {
+        e.preventDefault();
+        const number = document.getElementById("number").value;
+        const response = await fetch("{{ url_for('setNumber') }}", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ number: number }),
+        });
+        const data = await response.json();
+        alert(`Response from server:\n\n${JSON.stringify(data, null, 2)}`);
+      });
+    </script>
+  </body>
+</html>
