@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: pure-html
+Version: 0.1.1
+Summary: Purify HTML by filtering tags and classes
+Author: Hansimov
+Project-URL: Homepage, https://github.com/Hansimov/pure-html
+Project-URL: Issues, https://github.com/Hansimov/pure-html/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: tclogger
+Requires-Dist: beautifulsoup4
+Requires-Dist: markdownify
+
+# Pure-HTML
+Purify HTML by filtering tags and classes
+
+## Install
+
+```sh
+pip install --upgrade pure-html
+```
+
+## Usage
+
+```python
+from pure_html import batch_purify_html
+from pathlib import Path
+
+html_root = Path(__file__).parent / "samples"
+html_paths = list(html_root.glob("*.html"))
+html_path_and_purified_content_list = batch_purify_html(html_paths)
+for item in html_path_and_purified_content_list:
+    html_path = item["html_path"]
+    purified_content = item["purified_content"]
+    print(html_path)
+    print(purified_content)
+```
