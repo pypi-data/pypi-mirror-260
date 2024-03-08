@@ -1,0 +1,1 @@
+from my_env_points.envs.point_env import MyGymPointsEnv
