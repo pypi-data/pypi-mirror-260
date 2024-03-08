@@ -1,0 +1,193 @@
+[tool.poetry]
+name = "appcensus.dynamic_repos"
+version = "1.2.0.105"
+description = "Dynamic Poetry Repositories for AppCensus"
+authors = ["AppCensus <engineering@appcensus.io>"]
+license = "(c) 2022 App Census - All Rights Reserved"
+readme = "README-public.md"
+packages = [{include = "appcensus", from = 'src'}]
+
+[tool.poetry.dependencies]
+python = "^3.8.0"
+poetry = ">=1.7"
+poetry-core = ">=1.6"
+tomlkit = "^0.11.0"
+pydantic = "^2.0.1"
+cryptography = ">=38.0.0"
+pytz = "^2022.5"
+boto3 = "^1.26.0"
+botocore = "^1.29.0"
+tomli = "^2.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.1"
+flake8 = "^5.0"
+pytest-cov = "^4.0"
+shellcheck-py = "^0.8"
+pyupgrade = "^3.1"
+black = "^22.10"
+mypy = "^1.4.1"
+types-pytz = "^2022.5"
+pre-commit = "^2.20"
+poethepoet = "^0.16.5"
+reorder-python-imports = "^3.10.0"
+safety = "^2.3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."poetry.plugin"]
+dynamic_repos = "appcensus.dynamic_repos.plugin:DynamicRepos"
+
+[tool.poetry.plugins."poetry.application.plugin"]
+foo-command = "appcensus.dynamic_repos.plugin:DynamicReposApplication"
+
+# https://commitizen-tools.github.io/commitizen/config/
+[tool.commitizen]
+bump_message = "bump(release): v$current_version → v$new_version"
+tag_format = "v$version"
+update_changelog_on_bump = true
+version = "0.0.0"
+version_files = ["pyproject.toml:version"]
+
+[tool.black]
+line-length = 100
+
+# https://coverage.readthedocs.io/en/latest/config.html#report
+[tool.coverage.report]
+fail_under = 50
+show_missing = true
+skip_covered = true
+
+# https://coverage.readthedocs.io/en/latest/config.html#run
+[tool.coverage.run]
+branch = true
+command_line = "--module pytest src tests"
+data_file = "test-reports/.coverage"
+source = ["src"]
+omit = ["*/rvi_capture.py"]
+
+# https://coverage.readthedocs.io/en/latest/config.html#xml
+[tool.coverage.xml]
+output = "test-reports/coverage.xml"
+
+# https://pycqa.github.io/isort/docs/configuration/profiles/
+[tool.isort]
+known_first_party = "tests"
+line_length = 100
+profile = "black"
+
+# https://mypy.readthedocs.io/en/latest/config_file.html
+[tool.mypy]
+junit_xml = "test-reports/mypy.xml"
+plugins = "pydantic.mypy"
+strict = true
+disallow_subclassing_any = false
+disallow_untyped_decorators = false
+ignore_missing_imports = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+warn_unreachable = true
+allow_untyped_calls = true
+
+# https://pydantic-docs.helpmanual.io/mypy_plugin/#configuring-the-plugin
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+# http://www.pydocstyle.org/en/latest/usage.html#configuration-files
+[tool.pydocstyle]
+convention = "numpy"
+
+# https://docs.pytest.org/en/latest/customize.html#adding-default-options
+[tool.pytest.ini_options]
+addopts = "-W error -W ignore::pytest.PytestUnraisableExceptionWarning -W ignore::DeprecationWarning --doctest-modules --exitfirst --failed-first --strict-config --strict-markers --verbosity=2 --junitxml=test-reports/pytest.xml"
+junit_family = "xunit2"
+testpaths = "tests"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+skipsdist = true
+envlist = py38, py311
+
+[testenv]
+whitelist_externals = poetry
+commands =
+    poetry install -v
+    poetry run pytest
+"""
+
+# https://github.com/nat-n/poethepoet
+[tool.poe.tasks]
+
+  [tool.poe.tasks.docs]
+  help = "Generate this package's docs"
+  cmd = """
+    pdoc
+      --docformat $docformat
+      --output-directory $outputdirectory
+      watts
+    """
+
+    [[tool.poe.tasks.docs.args]]
+    help = "The docstring flavor (default: numpy)"
+    name = "docformat"
+    options = ["--docformat"]
+    default = "numpy"
+
+    [[tool.poe.tasks.docs.args]]
+    help = "The output directory (default: docs)"
+    name = "outputdirectory"
+    options = ["--output-directory"]
+    default = "docs"
+
+  [tool.poe.tasks.lint]
+  help = "Lint this package"
+
+    [[tool.poe.tasks.lint.sequence]]
+    cmd = """
+      pre-commit run
+        --all-files
+        --color always
+      """
+
+    [[tool.poe.tasks.lint.sequence]]
+    shell = "safety check --full-report || true"
+
+  [tool.poe.tasks.build]
+  help = "Build this package"
+  cmd = "poetry build"
+
+  [tool.poe.tasks.test]
+  help = "Test this package"
+  cmd = "pytest --cov=appcensus.dynamic_repos --cov-report html:test-reports/coverage/ --junit-xml=test-reports/pytest-report.xml"
+
+  [tool.poe.tasks.cov]
+  help = "Test this package, calculating coverage"
+
+    [[tool.poe.tasks.cov.sequence]]
+    cmd = "coverage run"
+
+    [[tool.poe.tasks.cov.sequence]]
+    cmd = "coverage report --fail-under=70"
+
+    [[tool.poe.tasks.cov.sequence]]
+    cmd = "coverage xml"
+
+  [tool.poe.tasks.tox]
+  help = "Test this package under different python interpreters"
+
+    [[tool.poe.tasks.tox.sequence]]
+    cmd = "tox"
+
+  [tool.poe.tasks.install_hooks]
+  help = "Update all the pre-commit hooks"
+
+    [[tool.poe.tasks.install_hooks.sequence]]
+    cmd = "pre-commit install -t pre-push -t commit-msg -t pre-commit"
