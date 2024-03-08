@@ -1,0 +1,76 @@
+# WordExcelTools
+
+A tool for quickly generating word documents based on docx and openpyxl
+
+## Install
+
+```sh
+pip install wordexceltools
+```
+
+## Main Functions
+
+```python
+1. add_custom_heading(document, level, text)
+2. add_custom_paragraph(document, text, style=None)
+3. add_custom_table(document, row_count, column_count, style="Table Grid", font_size=10.5, spacing_before=0)
+4. add_figure_caption(document, caption_text)
+5. add_indented_paragraph(document, text)
+6. add_ordered_list(document, items, index_style='number', indentation=1)
+7. add_table_caption(document, caption_text)
+8. docxinitial(doc, text_font_type='宋体', text_font_size=12, text_font_line_spacing=30, text_header='Header', text_footer='Footer')
+9. get_column_keyword_count(sheet, column_name, keyword)
+10. get_column_len(sheet, column_name)
+11. get_column_list(sheet, column_name)
+12. get_column_str_custom(sheet, column_name, separator='、', end_mark='。')
+13. get_columns_keyword_counts(sheet, platform_prefix='prefix', result_suffix='suffix')
+14. get_platform_results(list_test_objs)
+15. get_section_number(paragraph_text)
+16. get_sheet(workbook, sheet_index)
+17. get_sheet_cell_date_value(sheet, row, column)
+18. get_sheet_cell_value(sheet, row, column)
+19. get_sheet_name(sheet_data, sheet_index)
+20. get_sheets_data(source_excel)
+21. get_table_cell_text(table, row_index, column_index)
+22. merge_cells(table, start_row, start_column, end_row, end_column)
+23. merge_cells_by_column(table, column_index)
+24. set_number_to_roman(number)
+25. set_table_alignment(table, start_row=None, start_column=None, end_row=None, end_column=None, horizontal_alignment=WD_ALIGN_PARAGRAPH.CENTER, vertical_alignment=WD_ALIGN_PARAGRAPH.CENTER)
+26. set_table_cell_text(table, row_index, column_index, text)
+27. set_table_style(table, font_size=10.5, spacing_before=0)
+28. setsectionformat(doc)
+```
+
+## Example
+
+```python
+from docx import Document
+import openpyxl
+import wordexceltools
+
+soucrce_excel = "./test.xlsx"
+result_docx = "./test.docx"
+
+doc = Document()
+wb_source = openpyxl.load_workbook(soucrce_excel, data_only=True)
+
+# get sheets data
+sheet_data = wordexceltools.get_sheets_data(soucrce_excel)
+
+# get 1st sheet object
+sheet_0 = wordexceltools.get_sheet(wb_source, 0)
+
+# get 1st sheet name
+sheet_0_name = wordexceltools.get_sheet_name(sheet_data, 0)
+
+# get sheet cell value
+test_cell = wordexceltools.get_sheet_cell_value(sheet_0, 2, 3)
+
+# add title
+wordexceltools.add_custom_heading(document=doc, level=1, text=sheet_0_name)
+
+# add paragraph
+wordexceltools.add_custom_paragraph(document=doc, text=test_cell)
+
+doc.save(result_docx)
+```
