@@ -1,0 +1,2 @@
+class WykopApiError(Exception):
+    pass
