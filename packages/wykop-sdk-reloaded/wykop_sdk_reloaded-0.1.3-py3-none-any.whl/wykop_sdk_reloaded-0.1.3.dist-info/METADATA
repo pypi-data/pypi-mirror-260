@@ -1,0 +1,138 @@
+Metadata-Version: 2.1
+Name: wykop_sdk_reloaded
+Version: 0.1.3
+Summary: Wykop SDK for APIv3 and above.
+Author-email: Łukasz Klim <lukasz.klim92@gmail.com>
+Project-URL: Homepage, https://github.com/lukas346/wykop_sdk_reloaded
+Project-URL: Issues, https://github.com/lukas346/wykop_sdk_reloaded/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Wykop SDK Reloaded
+
+![](https://wykop.pl/cdn/c3201142/comment_ngdZRBR0tJ8YW99kIj66o0KiHeFrapCO.jpg)
+
+SDK umozliwijące komunikację z API (v3) wykopu na podstawie [oficjalnej dokumentacji](https://doc.wykop.pl/#/).
+
+## Instalacja
+
+```bash
+pip install wykop_sdk_reloaded
+```
+
+## Przykładowe uzycie
+
+```python
+from wykop_sdk_reloaded.v3.client import AuthClient, WykopApiClient
+
+auth = AuthClient()
+auth.authenticate_user("<USER_JWT_TOKEN>", "<USER_REFRESH_TOKEN>")
+
+api = WykopApiClient(auth)
+
+# tworzy wpis na mikroblogu
+api.entries_create("michal bialek sami wiecie co #wykop")
+# pobieranie listy ostatnich wpisów z mikrobloga 
+api.entries_list()
+```
+
+```python
+from wykop_sdk_reloaded.v3.client import AuthClient, WykopApiClient
+
+auth = AuthClient()
+"""
+autoryzując się w ten sposob masz tylko dostep do operacji odczytu.
+Reszta wymaga WykopApiClient.authenticate_user()
+""" 
+auth.authenticate_app("<APP_KEY>", "<APP_SECRET>")
+
+api = WykopApiClient(auth)
+
+# pobieranie listy ostatnich wpisów z mikrobloga 
+api.entries_list()
+```
+
+W razie wątpliwości przeczytaj README do końca i rzuć okiem na [testy](https://github.com/lukas346/wykop_sdk_reloaded/blob/main/tests/test_client.py).
+
+## Autoryzacja przez Wykop API
+
+### Utworzenie aplikacji 
+
+By móc korzystać z api wykopu potrzebujecie utworzyć aplikację na stronie [dev.wykop.pl](https://dev.wykop.pl).
+
+
+Klikacie w przycisk "utwórz aplikację". Zaznaczacie uprawnienia wedle uznania.
+
+![](https://i.ibb.co/Yb1C27t/Zrzut-ekranu-2024-03-7-o-12-45-54.png)
+
+Akceptujecie regulamin i klikacie "dodaj aplikację".
+
+Na liście powinna ukazać wam się świezo dodana pozycja:
+
+![](https://i.ibb.co/M11m064/Zrzut-ekranu-2024-03-7-o-12-48-48.png)
+
+Kopiujecie klucz API oraz Sekret i wklejacie go do tego fragmentu kodu:
+```python
+auth = AuthClient()
+auth.authenticate_app("<APP_KEY>", "<APP_SECRET>")
+```
+
+Dzięki temu mozecie wykonywać ządania przez SDK. **Uwaga, by móc tworzyć, edytować, usuwać, głosować i mieć dostęp do powiadomień musicie się dodatkowo zalogować. Ten etap wystarczy do pobierania danych i w sumie nic poza tym.**
+
+### Zalogowanie uzytkownikiem
+
+By móc tworzyć, edytować, usuwać, głosować i mieć dostęp do powiadomień musicie się dodatkowo zalogować. Oto instrukcja jak to zrobić.
+
+
+Gdy juz macie dane aplikacji wywołujecie metodę `.wykop_connect()` klasy `AuthClient` która zwraca Wam link pod który musicie się udać.
+```python
+from wykop_sdk_reloaded.v3.client import AuthClient
+
+auth = AuthClient()
+auth.authenticate_app("<APP_KEY>", "<APP_SECRET>")
+
+# zwraca link do wykopu na który musicie wejsc
+auth.wykop_connect()
+``` 
+
+Link powinien wyglądać tak: `https://wykop.pl/connect/10d711dfc86f361b6a3349dd1b71c19132f88cc1`
+
+Po wejściu powinno wam wyskoczyć okienko łączące wasze konto z aplikacją. Wybierzcie jakie uprawnienia powinien mieć wasz uzytkownik api a następnie kliknijcie "połącz z aplikacją".
+
+![](https://i.ibb.co/1LG7HQL/Zrzut-ekranu-2024-03-7-o-13-03-56.png)
+
+Po kliknięciu zostajecie przekierowani na stronę zdefiniowaną przy tworzeniu aplikacji w polu "Podaj adres zwrotny dla WykopConnect". 
+
+U mnie będzie to: `http://api/?token=eyJ041424iJ3QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImphbmNpb3Bhbi1VzZXItaXAiOiIz42342MTU2NTU0Iiwicm9sZXMiOlsiUk9MRV9VU0VSIl42424ImFwcC1rZXkiOiJ3NTVkOWZhYzg4NTBmYjgwYjA2MDQ0MmE1M2Q0ODk4ODdkIiwiZXhwIjoxNzA5ODk5Njg56XqK2UE3i8h9NJVUjD32OoL3STtkXlkJ_RLFWSFQbuVU&rtoken=3e39e42414248c4c79ee221ef8f10af55252db20139eb5c2617a188115f7c2758`
+
+Wyciągacie z URLa token i rtoken, zapisujecie gdzieś sobie na przykład w pliku `.env` waszej aplikacji i teraz w końcu mozecie korzystac z pelni mozliwosci wykopowego api.
+
+```python
+from wykop_sdk_reloaded.v3.client import AuthClient, WykopApiClient
+
+auth = AuthClient()
+# USER_JWT_TOKEN to token, a USER_REFRESH_TOKEN to rtoken z urla
+auth.authenticate_user("<USER_JWT_TOKEN>", "<USER_REFRESH_TOKEN>")
+
+api = WykopApiClient(auth)
+
+# tworzy wpis na mikroblogu
+api.entries_create("michal bialek sami wiecie co #wykop")
+```
+
+Michal Białek jak zwykle przekombinował ale co mozna poradzic.
+
+## Kontakt
+
+SDK nie jest kompletne, jeśli będzie Wam czegoś brakowało to dodajcie swoje Issue albo PR, które są oczywiście mile widziane.
+
+## Dokumentacja
+
+[Link](http://htmlpreview.github.io/?https://github.com/lukas346/wykop_sdk_reloaded/blob/main/docs/index.html)
+
+
+## Do zrobienia
+* Dodać obsługę odświezania tokenów
