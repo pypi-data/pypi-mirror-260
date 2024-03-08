@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: rework
+Version: 0.17.0
+Summary: A database backed distributed task dispatcher
+Home-page: https://hg.sr.ht/~pythonian/rework
+Author: Aurelien Campeas
+Author-email: aurelien.campeas@pythonian.fr
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Database
+Classifier: Topic :: System :: Distributed Computing
+Classifier: Topic :: Software Development :: Object Brokering
+Description-Content-Type: text/markdown
+Requires-Dist: psutil
+Requires-Dist: colorama
+Requires-Dist: sqlalchemy <2
+Requires-Dist: sqlhelp
+Requires-Dist: psycopg2-binary
+Requires-Dist: click
+Requires-Dist: tzlocal
+Requires-Dist: isodate
+Requires-Dist: inireader
+Requires-Dist: python-icron
+Requires-Dist: pystuck
+Requires-Dist: pyzstd
+Requires-Dist: python-dateutil
+Requires-Dist: psyl
+Requires-Dist: pytz
+Provides-Extra: debug
+Requires-Dist: pystuck ; extra == 'debug'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-sa-pg ; extra == 'test'
+
+The full documentation is there: https://rework.readthedocs.io/en/latest/
