@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "odmfclient"
+authors = [
+  { name="Philipp Kraft", email="philipp.kraft@envr.jlug.de" },
+]
+description = "A Python client for ODMF's REST-API"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+dependencies = [
+    "pandas",
+    "requests",
+    "pyyaml",
+    "pyarrow"
+]
+[tool.setuptools.dynamic]
+
+version = {attr = "odmfclient.__version__"}
+readme = {file = ["README.md"]}
+
+[project.urls]
+"Homepage" = "https://github.com/jlu-ilr-hydro/odmfclient"
+"Bug Tracker" = "https://github.com/jlu-ilr-hydro/odmfclient/issues"
