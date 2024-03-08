@@ -1,0 +1,20 @@
+# [project.urls]
+# "Source Code" = "https://github.com/ERGO-Code/HiGHS"
+# "Bug Tracker" = "https://github.com/ERGO-Code/HiGHS/issues"
+
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = [
+  "setuptools>=42",
+  "pybind11>=2.4",
+  "wheel",
+  "cmake>=3.12",
+  "numpy>=1.7"
+] 
+
+build-backend = "setuptools.build_meta"
+
+[tool.cibuildwheel]
+build = "*"
+skip = "cp3{6,7}-*"
+test-skip = ""
