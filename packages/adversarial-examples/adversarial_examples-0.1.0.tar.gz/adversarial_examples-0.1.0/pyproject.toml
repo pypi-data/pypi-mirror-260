@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "adversarial-examples"
+version = "0.1.0"
+description = "Create adversarial images that make a neural network misclassify them."
+authors = ["Sebastian Sosa <ssosarippe@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^2.2.1"
+torchvision = "^0.17.1"
+ipython = "^8.22.2"
+pillow = "^10.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+flake8 = "^7.0.0"
+ipykernel = "^6.29.3"
+notebook = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
