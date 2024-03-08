@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: minder.research-data-snapshots
+Version: 0.6
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: platformdirs ==4.2.0
+Requires-Dist: requests ==2.31.0
+Requires-Dist: tqdm ==4.66.2
+Provides-Extra: dev
+Requires-Dist: minder.research-data-snapshots[lint,typecheck] ; extra == 'dev'
+Provides-Extra: lint
+Requires-Dist: ruff ; extra == 'lint'
+Provides-Extra: typecheck
+Requires-Dist: pyright ; extra == 'typecheck'
+
+# minder.research-data-snapshots
+
+## Install
+
+```sh
+pip install minder.research-data-snapshots
+```
+
+## Use
+
+First retrieve an access token from <https://research.minder.care/>
+
+```sh
+export RESEARCH_PORTAL_TOKEN_PATH=/path/to/access/token
+```
+
+Then use one of the following methods to retrieve data snapshots
+
+### CLI
+
+```sh
+python -m minder.research_data_snapshots --dataset patients raw_heart_rate --organization ELM4RQF8R9dsU3CZEgtiTW 7LcACpK4u12HH72D1etd5X
+```
+
+Run `python -m minder.research_data_snapshots --help` to see all options
+
+### Library
+
+```python
+from datetime import datetime
+
+import pandas as pd
+
+from minder.research_data_snapshots import download_dataset, download_datasets
+
+path = download_dataset("patients", "ELM4RQF8R9dsU3CZEgtiTW")
+df = pd.read_parquet(path)
+print(df)
+
+paths = download_datasets(["raw_heart_rate"])
+df = (
+    pd.read_parquet(
+        paths,
+        filters=[
+            ("start_date", ">=", datetime.fromisoformat("2023-01-01T00Z")),
+            ("start_date", "<", datetime.fromisoformat("2024-01-01T00Z")),
+        ],
+    )
+    .sort_values("start_date")
+    .reset_index(drop=True)
+)
+print(df)
+```
