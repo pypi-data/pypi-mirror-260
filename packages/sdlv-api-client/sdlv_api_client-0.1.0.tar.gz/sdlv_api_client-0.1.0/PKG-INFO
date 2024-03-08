@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: sdlv_api_client
+Version: 0.1.0
+Summary: API Client Base class
+Author-email: Eriks Karls <eriks@72.lv>
+Project-URL: Homepage, https://pypi.org/package/sdlv_api_client
+Project-URL: Bug Reports, https://git.72.lv/eriks/api_client/issues
+Project-URL: Funding, https://donate.pypi.org
+Project-URL: Say Thanks!, http://saythanks.io/to/example
+Project-URL: Source, https://git.72.lv/eriks/api_client
+Keywords: api,client,api-client
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: ~=3.10
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: requests~=2.31
+Provides-Extra: dev
+Requires-Dist: black~=24.2.0; extra == "dev"
+Requires-Dist: flake8~=7.0.0; extra == "dev"
+Requires-Dist: isort~=5.13.0; extra == "dev"
+Requires-Dist: twine~=5.0.0; extra == "dev"
+Requires-Dist: bump-my-version~=0.18.3; extra == "dev"
+Requires-Dist: build~=1.1.1; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest~=8.0; extra == "test"
