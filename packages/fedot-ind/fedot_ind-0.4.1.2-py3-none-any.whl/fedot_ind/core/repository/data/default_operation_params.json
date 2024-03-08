@@ -1,0 +1,231 @@
+{
+  "rf": {
+    "criterion":"gini",
+    "max_features":0.9,
+    "min_samples_split":5,
+    "min_samples_leaf":5,
+    "bootstrap":false
+  },
+  "mlp":{
+    "max_iter":300,
+    "activation":"relu",
+    "solver":"adam"
+  },
+  "rfr": {
+    "max_features":0.9,
+    "min_samples_split":5,
+    "min_samples_leaf":5,
+    "bootstrap":false
+  },
+  "xgboost": {
+    "eval_metric": "mlogloss",
+    "nthread": -1
+  },
+  "catboost": {
+    "allow_writing_files": false,
+    "verbose": false
+  },
+  "catboostreg": {
+    "allow_writing_files": false,
+    "verbose": false
+  },
+  "lgbm": {
+    "num_leaves": 32,
+    "colsample_bytree": 0.8,
+    "subsample": 0.8,
+    "subsample_freq": 10,
+    "learning_rate": 0.03,
+    "n_estimators": 100
+  },
+  "lgbmreg": {
+    "num_leaves": 32,
+    "colsample_bytree": 0.8,
+    "subsample": 0.8,
+    "subsample_freq": 10,
+    "learning_rate": 0.03,
+    "n_estimators": 100
+  },
+  "lagged": {
+    "window_size": 10
+  },
+  "diff_filter": {
+    "window_size": 3,
+    "poly_degree": 2,
+    "order": 1
+  },
+  "cut": {
+    "cut_part": 0.5
+  },
+  "sparse_lagged": {
+    "window_size": 10,
+    "n_components": 0.5,
+    "sparse_transform": true,
+    "use_svd": false
+  },
+  "ar": {
+    "lag_1": 7,
+    "lag_2": 12
+  },
+  "arima": {
+    "p": 2,
+    "d": 0,
+    "q": 2
+  },
+  "ets": {
+    "error": "add",
+    "trend": null,
+    "seasonal": null,
+    "damped_trend": false,
+    "seasonal_periods": 7
+  },
+  "polyfit": {
+    "degree": 2
+  },
+  "glm": {
+    "family": "gaussian",
+    "link": "identity"
+  },
+  "ransac_lin_reg": {
+    "min_samples": 0.4,
+    "residual_threshold": 10,
+    "max_trials": 100,
+    "max_skips": 1000
+  },
+  "ransac_non_lin_reg": {
+    "min_samples": 0.4,
+    "residual_threshold": 10,
+    "max_trials": 100,
+    "max_skips": 1000
+  },
+  "cgru": {
+    "hidden_size": 200,
+    "learning_rate": 0.001,
+    "cnn1_kernel_size": 10,
+    "cnn1_output_size": 32,
+    "cnn2_kernel_size": 6,
+    "cnn2_output_size": 64,
+    "batch_size": 64,
+    "num_epochs": 50,
+    "optimizer": "adamw",
+    "loss": "mse"
+  },
+  "h2o_regr": {
+    "timeout": 20,
+    "seed": 42,
+    "max_models": 3
+  },
+  "h2o_class": {
+    "timeout": 20,
+    "seed": 42,
+    "max_models": 3
+  },
+  "tpot_class": {
+    "timeout": 2,
+    "generations": 3,
+    "population_size": 3
+  },
+  "tpot_regr": {
+    "timeout": 2,
+    "generations": 3,
+    "population_size": 3
+  },
+  "resample": {
+    "balance": "expand_minority",
+    "replace": false,
+    "balance_ratio": 1
+  },
+  "pca": {
+    "svd_solver": "full",
+    "n_components": 0.7
+  },
+  "kernel_pca": {
+    "n_components": null,
+    "kernel": "rbf"
+  },
+  "ts_naive_average": {
+    "part_for_averaging": 1.0
+  },
+  "locf": {
+    "part_for_repeat": -1
+  },
+  "word2vec_pretrained": {
+    "model_name": "glove-twitter-25"
+  },
+  "tfidf": {
+    "min_df": 0.1,
+    "max_df": 0.9
+  },
+  "fast_ica": {
+    "whiten": "unit-variance"
+  },
+  "eigen_basis": {
+    "window_size": 25,
+    "sv_selector": "median",
+    "rank_regularization": "hard_thresholding"
+  },
+  "wavelet_basis": {
+    "wavelet": "mexh",
+    "n_components": 2
+  },
+  "fourier_basis": {
+    "spectrum_type": "smoothed",
+    "threshold": 20000
+  },
+  "quantile_extractor": {
+    "window_size": 0,
+    "window_mode": false,
+    "var_threshold": 0.01
+  },
+  "recurrence_extractor": {
+    "window_size": 20,
+    "window_mode": true,
+    "min_signal_ratio": 0.5,
+    "max_signal_ratio": 0.75,
+    "rec_metric": "euclidean",
+    "image_mode": false},
+  "ssa_forecaster": {
+    "window_size_method": "hac",
+    "history_lookback": 30
+  },
+  "fedot_cls": {
+    "timeout": 10,
+    "with_tuning": true
+  },
+  "fedot_regr": {
+    "timeout": 10,
+    "with_tuning": true
+  },
+  "minirocket_extractor": {
+    "num_features": 10000
+  },
+  "inception_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "omniscale_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "tst_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "resnet_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "xcm_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "patch_tst_model": {
+    "epochs": 100,
+    "batch_size": 32
+  },
+  "topological_features": {
+    "n_jobs": 2,
+    "window_size_as_share": 0.33,
+    "max_homology_dimension": 1,
+    "metric": "euclidean"
+  }
+}
