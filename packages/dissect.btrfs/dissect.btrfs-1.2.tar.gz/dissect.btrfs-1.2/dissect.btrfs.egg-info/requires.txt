@@ -1,0 +1,11 @@
+dissect.cstruct<4.0.dev,>=3.0.dev
+dissect.util<4.0.dev,>=3.0.dev
+
+[full]
+zstandard
+
+[full:platform_system != "Windows" or platform_python_implementation != "PyPy"]
+python-lzo
+
+[gcrc32]
+google-crc32c
