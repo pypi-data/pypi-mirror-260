@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: grdtiler
+Version: 0.0.1
+Summary: A python package for GRD tiling
+Author-email: Jean Renaud MIADANA <jrenaud495@gmail.com>
+License: MIT License
+Project-URL: Homepage, https://github.com/jean2262/grdtiler
+Keywords: grdtiler
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: holoviews
+Requires-Dist: cartopy
+Requires-Dist: tqdm
+Requires-Dist: shapely
+Requires-Dist: xsar
+Requires-Dist: xbatcher
+Requires-Dist: xsarslc
+Requires-Dist: matplotlib
+Requires-Dist: xarray-safe-rcm
+Requires-Dist: xarray-safe-s1
+Requires-Dist: xradarsat2
+Provides-Extra: all
+Requires-Dist: grdtiler[extra]; extra == "all"
+Provides-Extra: extra
+Requires-Dist: pandas; extra == "extra"
+
+# grdtiling
+
+
+[![image](https://img.shields.io/pypi/v/grdtiling.svg)](https://pypi.python.org/pypi/grdtiler)
+
+[//]: # ([![image]&#40;https://img.shields.io/conda/vn/conda-forge/grdtiling.svg&#41;]&#40;https://anaconda.org/conda-forge/grdtiling&#41;)
+
+
+**A python package for GRD tiling**
+
+
+-   Free software: MIT License
+
+
+## Istallation
+
+```
+pip install grdtiler
+```
+
+## Usage
+
+```
+import grdtiler
+```
