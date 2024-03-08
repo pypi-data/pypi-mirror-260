@@ -1,0 +1,4 @@
+# coding: utf-8
+
+PERSON_TYPE_PERSON = 1
+PERSON_TYPE_DECLARATION = 2
