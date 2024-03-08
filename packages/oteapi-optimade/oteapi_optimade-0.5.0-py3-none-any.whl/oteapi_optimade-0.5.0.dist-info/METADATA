@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: oteapi-optimade
+Version: 0.5.0
+Summary: OTE-API Plugin for OPTIMADE.
+Keywords: OTE,OPTIMADE,OTE-API
+Author-email: Casper Welzel Andersen <casper.w.andersen@sintef.no>
+Requires-Python: >=3.9,<3.12
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Environment :: Plugins
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Requires-Dist: DLite-Python >=0.4.5,<1
+Requires-Dist: optimade[server] ~=1.0
+Requires-Dist: oteapi-core ~=0.6.1
+Requires-Dist: oteapi-dlite >=0.2.0,<1
+Requires-Dist: requests ~=2.31
+Requires-Dist: oteapi-optimade[doc,examples,pre-commit,test] ; extra == "dev"
+Requires-Dist: mike ~=2.0 ; extra == "doc"
+Requires-Dist: mkdocs ~=1.5 ; extra == "doc"
+Requires-Dist: mkdocs-awesome-pages-plugin ~=2.9 ; extra == "doc"
+Requires-Dist: mkdocs-jupyter ~=0.24.6 ; extra == "doc"
+Requires-Dist: mkdocs-material ~=9.5 ; extra == "doc"
+Requires-Dist: mkdocstrings[python-legacy] ~=0.24.1 ; extra == "doc"
+Requires-Dist: oteapi-optimade[examples] ; extra == "doc"
+Requires-Dist: jupyter ~=1.0 ; extra == "examples"
+Requires-Dist: otelib ~=0.4.1 ; extra == "examples"
+Requires-Dist: pre-commit ~=3.6 ; extra == "pre-commit"
+Requires-Dist: pytest ~=8.0 ; extra == "test"
+Requires-Dist: pytest-cov ~=4.1 ; extra == "test"
+Requires-Dist: pyyaml ~=6.0 ; extra == "test"
+Requires-Dist: requests-mock ~=1.11 ; extra == "test"
+Project-URL: Changelog, https://github.com/SINTEF/oteapi-optimade/blob/main/CHANGELOG.md
+Project-URL: Documentation, https://SINTEF.github.io/oteapi-optimade
+Project-URL: Home, https://github.com/SINTEF/oteapi-optimade
+Project-URL: Issue Tracker, https://github.com/SINTEF/oteapi-optimade/issues
+Project-URL: Package, https://pypi.org/project/oteapi-optimade
+Project-URL: Source, https://github.com/SINTEF/oteapi-optimade
+Provides-Extra: dev
+Provides-Extra: doc
+Provides-Extra: examples
+Provides-Extra: pre-commit
+Provides-Extra: test
+
+# OTE-API OPTIMADE
+
+An OTE-API Plugin with OTE strategies.
+
+Further reading:
+
+- [OTE-API Core Documentation](https://emmc-asbl.github.io/oteapi-core)
+- [OTE-API Services Documentation](https://emmc-asbl.github.io/oteapi-services)
+
+## License and copyright
+
+OTE-API OPTIMADE is released under the [MIT license](LICENSE) with copyright &copy; SINTEF.
+
+## Acknowledgment
+
+OTE-API OPTIMADE has been created via the [cookiecutter](https://cookiecutter.readthedocs.io/) [template for OTE-API plugins](https://github.com/EMMC-ASBL/oteapi-plugin-template).
+
+OTE-API OPTIMADE has been supported by the following projects:
+
+- **OntoTrans** (2020-2024) that receives funding from the European Union’s Horizon 2020 Research and Innovation Programme, under Grant Agreement n. 862136.
+
+- **VIPCOAT** (2021-2025) receives funding from the European Union’s Horizon 2020 Research and Innovation Programme - DT-NMBP-11-2020 Open Innovation Platform for Materials Modelling, under Grant Agreement no: 952903.
+
+- **OpenModel** (2021-2025) receives funding from the European Union’s Horizon 2020 Research and Innovation Programme - DT-NMBP-11-2020 Open Innovation Platform for Materials Modelling, under Grant Agreement no: 953167.
+
