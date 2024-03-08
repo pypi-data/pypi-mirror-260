@@ -1,0 +1,108 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "items": {
+        "Custom item": {
+          "customItem": {
+            "body": {
+              "name": "Custom item",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "obstacles": [
+                {
+                  "name": "Obstacle",
+                  "pose": {
+                    "position": {
+                      "y": 0.15,
+                      "z": 0.1
+                    },
+                    "orientation": {}
+                  },
+                  "primitive": {
+                    "sphere": {
+                      "radius": 0.1
+                    }
+                  }
+                },
+                {
+                  "name": "Obstacle",
+                  "pose": {
+                    "position": {
+                      "y": 0.4,
+                      "z": 0.1
+                    },
+                    "orientation": {}
+                  },
+                  "primitive": {
+                    "box": {
+                      "size": {
+                        "x": 0.3,
+                        "y": 0.2,
+                        "z": 0.1
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "Obstacle",
+                  "pose": {
+                    "position": {
+                      "y": -0.15,
+                      "z": 0.1
+                    },
+                    "orientation": {
+                      "x": 1.5707964
+                    }
+                  },
+                  "primitive": {
+                    "cylinder": {
+                      "radius": 0.1,
+                      "height": 0.3
+                    }
+                  }
+                },
+                {
+                  "name": "Obstacle",
+                  "pose": {
+                    "position": {
+                      "y": -0.4,
+                      "z": 0.1
+                    },
+                    "orientation": {
+                      "x": 1.5707964
+                    }
+                  },
+                  "primitive": {
+                    "capsule": {
+                      "radius": 0.1,
+                      "height": 0.3
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "state": {
+      "items": {
+        "Custom item": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          }
+        }
+      }
+    }
+  },
+  "variables": {}
+}
