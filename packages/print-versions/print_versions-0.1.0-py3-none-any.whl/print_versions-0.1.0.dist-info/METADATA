@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: print_versions
+Version: 0.1.0
+Summary: Package for listing versions of python packages used in a Jupyter notebook.
+Project-URL: Homepage, https://github.com/TimPchelintsev/print_versions
+Project-URL: Issues, https://github.com/TimPchelintsev/print_versions/issues
+Author-email: Timofey Pchelintsev <tpchelintsev@gmail.com>
+License-File: LICENSE
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# print_versions
+
+Package for listing versions of python packages used in a Jupyter notebook.
+
+## Installation
+
+```sh
+pip install print-versions
+```
+
+## Usage
+
+Print versions in ```requirements.txt``` format:
+
+```python
+from print_versions import print_versions
+
+import numpy as np
+from pandas import DataFrame
+
+print_versions(globals())
+
+# numpy==1.25.2
+# pandas==1.5.3
+```
+
+Get versions as a dict:
+
+```python
+from print_versions import get_versions
+
+import numpy as np
+from pandas import DataFrame
+
+get_versions(globals())
+
+# {'numpy': '1.25.2', 'pandas': '1.5.3'}
