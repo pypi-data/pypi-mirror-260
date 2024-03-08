@@ -1,0 +1,67 @@
+pipeline {
+    agent none
+    environment {
+        POD_NAME = "common-ms-xx"
+    }
+    stages {
+        stage("Notification started pipeline"){
+            steps {
+                rocketSend (
+                    color: '#FFFF00',
+                    message : "STARTED: Job, '${JOB_NAME}'",
+                )
+            }
+        }
+        stage("DEPLOY DEV"){
+            agent {node {label 'k8s-production-worker'}}
+            when {expression { env.BRANCH_NAME ==~ /^(dev|staging|hotfix|bugfix|feature)(.*)?/ }}
+                 steps {
+                        echo "At this time there is no development environment."
+                 }
+        }
+
+        stage("DEPLOY PRODUCTION"){
+            agent {node {label 'k8s-production-worker'}}
+            when {expression { env.BRANCH_NAME ==~ /^(master)(.*)?/ }}
+            stages {
+                stage("Create Image") {
+                    steps {
+                        script {
+                            def props = readProperties file: './deploy/dockerenv/master.env'
+                            env.prefix = props.PREFIX
+                            env.tag = props.TAG
+                        }
+                        sh "bash deploy/script.sh master docker.i/${env.prefix}-master:${env.tag}"
+                    }
+                }
+                 stage("Remove Pods"){
+                    steps {
+                        sh "kubectl delete pods -l name=${env.POD_NAME} -n vacolba"
+                    }
+                }
+            }
+        }
+
+
+    }
+    post {
+        success {
+            rocketSend (
+                color: '#00FF00',
+                message: "SUCCESS, '${JOB_NAME}'"
+            )
+        }
+        failure {
+        rocketSend (
+                color: '#FF0000',
+                message: "FAILURE, '${JOB_NAME}'"
+            )
+        }
+        aborted{
+        slackSend (
+                color: '#FF0000',
+                message: "ABORTED, '${JOB_NAME}'"
+            )
+        }
+    }
+}
