@@ -1,0 +1,243 @@
+Metadata-Version: 2.1
+Name: masoud
+Version: 1.3.1
+Summary: Think Docker Compose + Ansible inventory + Python-scriptable
+Author-email: satoqz <mail@satoqz.net>
+License-File: LICENSE
+Requires-Python: >=3.12
+Requires-Dist: click>=8.1.7
+Description-Content-Type: text/markdown
+
+# Masoud
+
+> *Masoud (Arabic: مسعود يُقرأ:مَس عُود, lit. 'fortune, happy, prosperous, lucky'*
+
+- [Installation](#installation)
+- [Usage](#service-definitions)
+- [Service API](#service-api)
+
+Here's what I needed and why I created Masoud:
+
+- I needed to deploy several containers to several hosts from a single control plane
+- I needed a configuration format more dynamic than Docker Compose
+- I didn't need a complex general-purpose server-management tool like Ansible or NixOS
+- I didn't need a complex orchestrator like Kubernetes
+
+If you find yourself in the same situation, Masoud is for you!
+
+## Installation
+
+Masoud is available on [PyPI](https://pypi.org/project/masoud/).
+
+You can also install it via [`brew`](https://brew.sh):
+
+```sh
+brew install satoqz/tap/python-masoud
+```
+
+## Usage
+
+First, define your `inventory.toml`:
+
+```toml
+[groups.my-group.hosts]
+my-host = { ssh = "my-user@my-host", nginx_port = 3000 }
+```
+
+Below is the obligatory example for a minimal Nginx service:
+
+```python
+class Nginx(masoud.Service):
+    def name(self) -> str:
+        return "nginx"
+    
+    def image(self) -> str:
+        return "docker.io/nginx:latest"
+    
+    def ports(self) -> list[tuple[int, int]]:
+        external_port = self.host.get_var("nginx_port", int) or 8080
+        return [(external_port, 80)]
+```
+
+> (For a more sophisticated example, see [examples/etcd/etcd-cluster.py](./examples/etcd/etcd-cluster.py)).
+
+You can then create a CLI to manage your Nginx service:
+
+`nginx-cli.py`
+```python
+masoud.cli(services=[Nginx()])
+```
+
+Now deploy and start the service on your host:
+
+```sh
+python3 nginx-cli.py start nginx my-host --deploy
+```
+
+The following are all commands available for service/host management:
+
+```
+Usage:  [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -i, --inventory TEXT  Path to the inventory TOML file (default:
+                        inventory.toml)
+  -g, --group TEXT      Inventory group to operate on, default is set through
+                        `default_group` key
+  --debug
+  --help                Show this message and exit.
+
+Commands:
+  build   Build the docker image for SERVICE, if needed.
+  deploy  Deploy SERVICE on HOSTS.
+  logs    Show logs for SERVICE on HOST.
+  rm      Remove leftover stopped containers for SERVICE on HOSTS.
+  start   Start SERVICE on HOSTS.
+  status  Check status for SERVICE on HOSTS.
+  stop    Stop SERVICE on HOSTS.
+```
+
+Additionally, the [`click`](https://click.palletsprojects.com/) CLI used by Masoud is exposed as `masoud.cli`. This lets you add your own commands to the CLI for convenience:
+
+```python
+@masoud.cli.command
+def hello() -> None:
+    print("Hello, World!")
+```
+
+## Service API
+
+You can override the following methods on `masoud.Service` to customize your service. The minimum required overrides are `name` and `image`.
+
+```python
+def command(self) -> list[str]:
+```
+
+The command that is passed to the container (at the end of the `docker run` command).
+Default: `[]`.
+
+```python
+def container_name(self) -> str:
+```
+
+Container name passed to see `docker run --name`.
+Default: `self.name()`.
+
+```python
+def context(self) -> str | None:
+```
+
+The docker context to use, see `docker --context`.
+Default: `None`.
+
+```python
+def detach(self) -> bool:
+```
+
+Pass the `-d/--detach` flag to `docker run`.
+Default: `True`.
+
+```python
+def do_rm(self) -> bool:
+```
+
+Pass the `--rm` flag to `docker run`. Conflicts with `restart`.
+Default: `False`.
+
+```python
+def docker(self) -> str:
+```
+
+The name/path of the docker command, you can also put `podman` here!
+Default: `"docker".`
+
+```python
+def dockerfile(self) -> tuple[str, str] | None:
+```
+
+Path to the Dockerfile that builds the service's image.
+Keep this empty to pull the image from a registry instead.
+Default: `None`.
+
+```python
+def extra_build_args(self) -> list[str]:
+```
+
+Additional arguments passed to `docker build.`
+Default: `[]`.
+
+```python
+def extra_pull_args(self) -> list[str]:
+```
+
+Additional arguments passed to `docker pull`.
+Default: `[]`.
+
+```python
+def extra_run_args(self) -> list[str]:
+```
+
+Additional arguments passed to `docker run`.
+Default: `[]`.
+
+```python
+def image(self) -> str:
+```
+
+The tag of the docker image used by the service.
+
+```python
+def name(self) -> str:
+```
+
+The name of the service.
+
+```python
+def needs_init(self) -> bool:
+```
+
+Pass the `--init` flag to `docker run`.
+Default: `True`.
+
+```python
+def networks(self) -> list[str]:
+```
+
+List of networks passed to `docker run --network`.
+Default: `[]`.
+
+```python
+def ports(self) -> list[tuple[int | str, int | str]]:
+```
+
+List of `(outer_port, inner_port)` mappings passed to `docker run -p`.
+Default: `[]`.
+
+```python
+def restart(self) -> str | None:
+```
+
+Restart option that is passed to `docker run --restart`.
+Default: `"unless-stopped"`
+
+```python
+def stop_signal(self) -> str | None:
+```
+
+Signal passed to `-s` argument of `docker stop`.
+Default: `None`.
+
+```python
+def stop_timeout(self) -> int | None:
+```
+
+Timeout passed to `-t` argument of `docker stop`.
+Default: `None`.
+
+```python
+def volumes(self) -> list[tuple[str, str] | tuple[str, str, str]]:
+```
+
+List of `(volume, mountpoint, [options])` mappings passed to `docker run -v`.
+Default: `[]`.
+
