@@ -1,0 +1,12 @@
+[console_scripts]
+lantana = lantana.__main__:cli
+
+[markdown.extensions]
+mdx_cards = lantana.extensions.mdx_cards:CardsExtension
+mdx_embedly = lantana.extensions.mdx_embedly:EmbedlyExtension
+mdx_lantana = lantana.extensions.mdx_lantana:LantanaExtension
+mdx_mermaid_precompile = lantana.extensions.mdx_mermaid_precompile:MermaidPrecompileExtension
+mdx_wsid = lantana.extensions.mdx_wsid:WSIDExtension
+
+[mkdocs.themes]
+lantana = lantana
