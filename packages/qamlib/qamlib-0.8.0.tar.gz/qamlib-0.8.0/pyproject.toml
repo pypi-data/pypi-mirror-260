@@ -1,0 +1,34 @@
+[project]
+name = "qamlib"
+description = "A library for interacting with Video4Linux2 (V4L2) video devices"
+license = {file = "LICENSE.LGPL2.1"}
+authors = [
+  { name="Daniel Lundberg Pedersen", email="dlp@qtec.com" },
+]
+requires-python = ">=3.8"
+dependencies = [ "numpy" ]
+dynamic = ["version"]
+readme = {file = "README.md", content-type = "text/markdown"}
+classifiers = [
+    "Programming Language :: C++",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Video :: Capture",
+]
+
+[project.urls]
+Homepage = "https://gitlab.com/qtec/public/qamlib"
+Documentation = "https://qtec.gitlab.io/public/qamlib/index.html"
+Changelog = "https://qtec.gitlab.io/public/qamlib/changelog.html"
+Source = "https://gitlab.com/qtec/public/qamlib"
+Issues = "https://gitlab.com/qtec/public/qamlib/issues"
+
+[build-system]
+build-backend = "mesonpy"
+requires = [
+    "meson-python",
+    "build",
+    "wheel",
+    "pybind11>=2.8.0",
+]
+

@@ -1,0 +1,22 @@
+.vscode
+.devcontainer
+img/
+build/
+
+# Pulled dependencies
+subprojects/nlohmann_json-*/
+subprojects/pybind11_json*/
+subprojects/packagecache/*
+
+# Python related
+*.egg-info
+.cache
+__pycache__
+dist/
+venv/
+# From auditwheel
+wheelhouse/
+
+# Generated docs
+docs/_build/
+docs/doxygen/
