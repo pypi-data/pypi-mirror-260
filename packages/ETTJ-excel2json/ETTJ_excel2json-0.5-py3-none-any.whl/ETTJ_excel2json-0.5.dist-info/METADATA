@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: ETTJ_excel2json
+Version: 0.5
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: et-xmlfile ==1.1.0
+Requires-Dist: numpy ==1.26.4
+Requires-Dist: openpyxl ==3.1.2
+Requires-Dist: pandas ==2.2.1
+Requires-Dist: python-dateutil ==2.9.0.post0
+Requires-Dist: pytz ==2024.1
+Requires-Dist: six ==1.16.0
+Requires-Dist: tzdata ==2024.1
+
+# ETTJ
+
+Convert excel table to json file. I've found this usefull to validate data in my database and i've got only xlsx table.
+---
+
+## Instalation
+>pypi.org soon
+## How to use?
+Program takes a few arguments:
+### positional arguments:
+- excel_file_path
+> Path to a excel file with table.
+- output_path
+> Path you want to save a json file.
+
+### options:
+- -h, --help
+> Show help message and exit
