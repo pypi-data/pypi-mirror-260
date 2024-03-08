@@ -1,0 +1,716 @@
+{
+  "materials": [
+    {
+      "name": "White",
+      "base_rgb": {
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "Grey",
+      "base_rgb": {
+        "red": 0.251,
+        "green": 0.251,
+        "blue": 0.251
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "Red",
+      "base_rgb": {
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "Green",
+      "base_rgb": {
+        "red": 0.0,
+        "green": 1.0,
+        "blue": 0.0
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "Blue",
+      "base_rgb": {
+        "red": 0.039,
+        "green": 0.251,
+        "blue": 0.780
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    }
+  ],
+  "joints": [
+    {
+      "name": "panda_joint1",
+      "parent": "panda_link0",
+      "child": "panda_link1",
+      "pose": {
+        "position": {
+          "z": 0.333
+        },
+        "orientation": {}
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint2",
+      "parent": "panda_link1",
+      "child": "panda_link2",
+      "pose": {
+        "position": {},
+        "orientation": {
+          "x": -1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint3",
+      "parent": "panda_link2",
+      "child": "panda_link3",
+      "pose": {
+        "position": {
+          "y": -0.316
+        },
+        "orientation": {
+          "x": 1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint4",
+      "parent": "panda_link3",
+      "child": "panda_link4",
+      "pose": {
+        "position": {
+          "x": 0.0825
+        },
+        "orientation": {
+          "x": 1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint5",
+      "parent": "panda_link4",
+      "child": "panda_link5",
+      "pose": {
+        "position": {
+          "x": -0.0825,
+          "y": 0.384
+        },
+        "orientation": {
+          "x": -1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint6",
+      "parent": "panda_link5",
+      "child": "panda_link6",
+      "pose": {
+        "position": {},
+        "orientation": {
+          "x": 1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint7",
+      "parent": "panda_link6",
+      "child": "panda_link7",
+      "pose": {
+        "position": {
+          "x": 0.088
+        },
+        "orientation": {
+          "x": 1.570796
+        }
+      },
+      "dof": "ROTARY_1DOF",
+      "axis": {
+        "z": 1.0
+      }
+    },
+    {
+      "name": "panda_joint8",
+      "parent": "panda_link7",
+      "child": "panda_link8",
+      "pose": {
+        "position": {
+          "z": 0.107
+        },
+        "orientation": {}
+      },
+      "axis": {}
+    }
+  ],
+  "bodies": [
+    {
+      "name": "panda_link0",
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node0.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node1.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node2.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node3.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node4.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node5.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node6.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node7.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node8.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node9.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node10.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link0/node11.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link1",
+      "inertia": {
+        "center": {
+          "x": 0.003875,
+          "y": 0.002081,
+          "z": -0.175
+        },
+        "mass": 4.970684,
+        "moments": {
+          "xx": 0.70337,
+          "xy": -0.000139,
+          "xz": 0.006772,
+          "yy": 0.70661,
+          "yz": 0.019169,
+          "zz": 0.009117
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link1/node0.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link2",
+      "inertia": {
+        "center": {
+          "x": -0.003141,
+          "y": -0.02872,
+          "z": 0.003495
+        },
+        "mass": 0.646926,
+        "moments": {
+          "xx": 0.007962,
+          "xy": -0.003925,
+          "xz": 0.010254,
+          "yy": 0.02811,
+          "yz": 0.000704,
+          "zz": 0.025995
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link2/node0.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link3",
+      "inertia": {
+        "center": {
+          "x": 0.027518,
+          "y": 0.039252,
+          "z": -0.066502
+        },
+        "mass": 3.228604,
+        "moments": {
+          "xx": 0.037242,
+          "xy": -0.004761,
+          "xz": -0.011396,
+          "yy": 0.036155,
+          "yz": -0.012805,
+          "zz": 0.01083
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link3/node0.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link3/node1.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link3/node2.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link3/node3.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link4",
+      "inertia": {
+        "center": {
+          "x": -0.05317,
+          "y": 0.104419,
+          "z": 0.027454
+        },
+        "mass": 3.587895,
+        "moments": {
+          "xx": 0.025853,
+          "xy": 0.007796,
+          "xz": -0.001332,
+          "yy": 0.019552,
+          "yz": 0.008641,
+          "zz": 0.028323
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link4/node0.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link4/node1.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link4/node2.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link4/node3.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link5",
+      "inertia": {
+        "center": {
+          "x": -0.011953,
+          "y": 0.041065,
+          "z": -0.038437
+        },
+        "mass": 1.225946,
+        "moments": {
+          "xx": 0.035549,
+          "xy": -0.002117,
+          "xz": -0.004037,
+          "yy": 0.029474,
+          "yz": 0.000229,
+          "zz": 0.008627
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link5/node0.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link5/node1.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link5/node2.stl"
+          },
+          "material": "Grey"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link6",
+      "inertia": {
+        "center": {
+          "x": 0.060149,
+          "y": -0.014117,
+          "z": -0.010517
+        },
+        "mass": 1.666555,
+        "moments": {
+          "xx": 0.001964,
+          "xy": 0.000109,
+          "xz": -0.001158,
+          "yy": 0.004354,
+          "yz": 0.000341,
+          "zz": 0.005433
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node0.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node1.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node2.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node3.stl"
+          },
+          "material": "Red"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node4.stl"
+          },
+          "material": "Green"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node5.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node6.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node7.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node8.stl"
+          },
+          "material": "Blue"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node9.stl"
+          },
+          "material": "Blue"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node10.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node11.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node12.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node13.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node14.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node15.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link6/node16.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link7",
+      "inertia": {
+        "center": {
+          "x": 0.010517,
+          "y": -0.004252,
+          "z": 0.061597
+        },
+        "mass": 0.735522,
+        "moments": {
+          "xx": 0.012516,
+          "xy": -0.000428,
+          "xz": -0.001196,
+          "yy": 0.010027,
+          "yz": -0.000741,
+          "zz": 0.004815
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node0.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node1.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node2.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node3.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node4.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node5.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node6.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/panda/meshes/link7/node7.stl"
+          },
+          "material": "Grey"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "panda_link8",
+      "inertia": {
+        "center": {},
+        "moments": {
+          "xx": 0.001,
+          "yy": 0.001,
+          "zz": 0.001
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "My Robot": {
+          "effector": "My Effector",
+          "toolFrames": {
+            "My Tool Frame": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur3eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      },
+      "effectors": {
+        "My Effector": {
+          "robotiqGripper2f85": {}
+        }
+      },
+      "items": {
+        "My Desk": {
+          "desk": {}
+        }
+      },
+      "cameras": {
+        "Pick Camera": {
+          "intrinsics": {
+            "width": 1280,
+            "height": 720,
+            "focalLengthX": 903.0238,
+            "focalLengthY": 892.96796,
+            "opticalCenterX": 641.15985,
+            "opticalCenterY": 391.05597,
+            "distortionCoefs": {
+              "q": [
+                0.15503378,
+                -0.47499013,
+                0.004618815,
+                8.460732e-05,
+                0.39420512
+              ]
+            }
+          },
+          "realsenseD435i": {
+            "serialNumber": "000000000001",
+            "frameRateFps": 30,
+            "minDepthM": 0.3,
+            "maxDepthM": 1.0
+          }
+        },
+        "Place Camera": {
+          "intrinsics": {
+            "width": 1280,
+            "height": 720,
+            "focalLengthX": 913.71625,
+            "focalLengthY": 901.1647,
+            "opticalCenterX": 644.452,
+            "opticalCenterY": 365.65588,
+            "distortionCoefs": {
+              "q": [
+                0.14641109,
+                -0.49154368,
+                0.004658224,
+                -0.00032531476,
+                0.43965465
+              ]
+            }
+          },
+          "realsenseD435i": {
+            "serialNumber": "000000000002",
+            "frameRateFps": 30,
+            "minDepthM": 0.3,
+            "maxDepthM": 1.0
+          }
+        }
+      },
+      "fiducials": {
+        "Origin Marker": {
+          "visualMarker": {
+            "tagId": 299,
+            "markerLengthM": 0.17
+          }
+        }
+      },
+      "taskRegions": {
+        "Pick Task Region": {
+          "pose": {
+            "position": {},
+            "orientation": {}
+          },
+          "min": {
+            "linear": {
+              "x": -0.2,
+              "y": -0.2
+            },
+            "angular": {}
+          },
+          "max": {
+            "linear": {
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0.2
+            },
+            "angular": {}
+          }
+        },
+        "Place Task Region": {
+          "pose": {
+            "position": {},
+            "orientation": {}
+          },
+          "min": {
+            "linear": {
+              "x": -0.2,
+              "y": -0.2
+            },
+            "angular": {}
+          },
+          "max": {
+            "linear": {
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0.2
+            },
+            "angular": {}
+          }
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "My Robot": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.0,
+              -0.7853982,
+              1.5707964,
+              -0.7853982,
+              -1.5707964,
+              0.0
+            ]
+          }
+        }
+      },
+      "effectors": {
+        "My Effector": {
+          "basePose": {
+            "position": {
+              "x": 0.070079684,
+              "y": 0.131,
+              "z": 0.5601478
+            },
+            "orientation": {
+              "x": -1.2091993,
+              "y": 1.2091993,
+              "z": -1.2091997
+            }
+          },
+          "jointPositions": {
+            "q": [
+              0.01
+            ]
+          }
+        }
+      },
+      "items": {
+        "My Desk": {
+          "basePose": {
+            "position": {},
+            "orientation": {
+              "z": -1.5707964
+            }
+          }
+        }
+      },
+      "cameras": {
+        "Place Camera": {
+          "basePose": {
+            "position": {
+              "y": -0.27939984,
+              "z": 0.7365996
+            },
+            "orientation": {
+              "x": 2.0316234,
+              "y": 2.0316234,
+              "z": 0.35823002
+            }
+          }
+        },
+        "Pick Camera": {
+          "basePose": {
+            "position": {
+              "y": 0.27939984,
+              "z": 0.7365996
+            },
+            "orientation": {
+              "x": 2.0316234,
+              "y": 2.0316234,
+              "z": 0.35823002
+            }
+          }
+        }
+      },
+      "fiducials": {
+        "Origin Marker": {
+          "basePose": {
+            "position": {
+              "x": 0.20954989
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        }
+      },
+      "taskRegions": {
+        "Place Task Region": {
+          "basePose": {
+            "position": {
+              "x": 0.076199956,
+              "y": -0.3809998
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        },
+        "Pick Task Region": {
+          "basePose": {
+            "position": {
+              "x": 0.076199956,
+              "y": 0.3809998
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        }
+      }
+    }
+  },
+  "behaviors": {
+    "My Calibration": {
+      "name": "My Calibration",
+      "sequenceRoutine": {
+        "behaviors": [
+          {
+            "name": "Initialize Robot",
+            "initializeController": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame"
+            }
+          },
+          {
+            "name": "Initialize Cameras",
+            "initializePerception": {}
+          },
+          {
+            "name": "Start Recording",
+            "startRecordingData": {
+              "description": "Calibration Routine"
+            }
+          },
+          {
+            "name": "Move to Midpoint",
+            "gotoTargetPositions": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame",
+              "ranking": "MINIMUM_TIME",
+              "numProposals": 250,
+              "motionLimits": "Motion Limits",
+              "termination": {
+                "timeoutWindowS": 0.5,
+                "timeToCompletionS": 0.2,
+                "jointPositionTol": 0.1,
+                "linearToolPoseTol": 0.005,
+                "angularToolPoseTol": 0.1
+              },
+              "targetGenerators": [
+                "Midpoint Target"
+              ]
+            }
+          },
+          {
+            "name": "Calibrate Pick Camera",
+            "calibrateCameraFromMarkers": {
+              "camera": "Pick Camera",
+              "markers": [
+                "Origin Marker"
+              ]
+            }
+          },
+          {
+            "name": "Calibrate Place Camera",
+            "calibrateCameraFromMarkers": {
+              "camera": "Place Camera",
+              "markers": [
+                "Origin Marker"
+              ]
+            }
+          },
+          {
+            "name": "Sleep",
+            "sleepRoutine": {
+              "durationS": 5.0
+            }
+          },
+          {
+            "name": "Stop Recording",
+            "stopRecordingData": {}
+          },
+          {
+            "name": "Shutdown Cameras",
+            "shutdownPerception": {}
+          },
+          {
+            "name": "Shutdown Robot",
+            "shutdownController": {}
+          }
+        ],
+        "allowFailure": true
+      }
+    }
+  },
+  "variables": {
+    "motionLimits": {
+      "Motion Limits": {
+        "jointVelocity": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "jointAcceleration": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "toolVelocity": {
+          "linear": {},
+          "angular": {}
+        },
+        "toolAcceleration": {
+          "linear": {},
+          "angular": {}
+        }
+      }
+    },
+    "targetGenerators": {
+      "Pick Target": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                1.0471976,
+                0.0,
+                1.3089969,
+                0.2617994,
+                -1.5707964,
+                3.1415927
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      },
+      "Midpoint Target": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                0.0,
+                0.0,
+                1.3089969,
+                0.2617994,
+                -1.5707964,
+                3.1415927
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      },
+      "Place Target": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                -1.0471976,
+                0.0,
+                1.3089969,
+                0.2617994,
+                -1.5707964,
+                3.1415927
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      }
+    }
+  }
+}

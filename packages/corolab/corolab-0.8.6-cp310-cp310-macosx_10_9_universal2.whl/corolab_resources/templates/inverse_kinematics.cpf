@@ -1,0 +1,70 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "My Robot": {
+          "toolFrames": {
+            "My Tool Frame": {
+              "pose": {
+                "position": {},
+                "orientation": {}
+              }
+            }
+          },
+          "ur5eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      },
+      "taskRegions": {
+        "Target Pose": {
+          "pose": {
+            "position": {},
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "My Robot": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              -0.34181684,
+              0.42439082,
+              1.8385044,
+              -3.8332868,
+              -1.5698465,
+              1.9126705
+            ]
+          }
+        }
+      },
+      "taskRegions": {
+        "Target Pose": {
+          "basePose": {
+            "position": {
+              "x": 0.4,
+              "z": 0.4
+            },
+            "orientation": {}
+          }
+        }
+      }
+    }
+  },
+  "variables": {}
+}

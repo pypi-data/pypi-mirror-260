@@ -1,0 +1,214 @@
+{
+  "materials": [
+    {
+      "name": "White",
+      "base_rgb": {
+        "red": 1.0,
+        "green": 1.0,
+        "blue": 1.0
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    },
+    {
+      "name": "Grey",
+      "base_rgb": {
+        "red": 0.251,
+        "green": 0.251,
+        "blue": 0.251
+      },
+      "metallic_coefficient": 0.0,
+      "roughness_coefficient": 0.4,
+      "coat_strength": 1,
+      "coat_roughness": 0,
+      "coat_rgb": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "base_ior": 1.5,
+      "coat_ior": 2.3
+    }
+  ],
+  "joints": [
+    {
+      "name": "finger_joint1",
+      "parent": "hand",
+      "child": "leftfinger",
+      "pose": {
+        "position": {
+          "z": 0.0584
+        },
+        "orientation": {}
+      },
+      "dof": "LINEAR_1DOF",
+      "axis": {
+        "y": 1.0
+      }
+    },
+    {
+      "name": "finger_joint2",
+      "parent": "hand",
+      "child": "rightfinger",
+      "pose": {
+        "position": {
+          "z": 0.0584
+        },
+        "orientation": {}
+      },
+      "dof": "LINEAR_1DOF",
+      "axis": {
+        "y": -1.0
+      }
+    }
+  ],
+  "bodies": [
+    {
+      "name": "hand",
+      "inertia": {
+        "center": {
+          "x": 0.0,
+          "y": 0.0015244,
+          "z": 0.0275912
+        },
+        "mass": 0.73,
+        "moments": {
+          "xx": 0.00278560230025,
+          "xy": 0.0,
+          "xz": 0.0,
+          "yy": 0.000400033405336,
+          "yz": 0.0,
+          "zz": 0.00256378041832
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/hand/node0.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/hand/node1.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/hand/node2.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/hand/node4.stl"
+          },
+          "material": "White"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/hand/node5.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "leftfinger",
+      "inertia": {
+        "center": {
+          "x": 0.0,
+          "y": 0.0145644,
+          "z": 0.0227941
+        },
+        "mass": 0.1,
+        "moments": {
+          "xx": 3.01e-5,
+          "xy": 0.0,
+          "xz": 0.0,
+          "yy": 2.96e-5,
+          "yz": 0.0,
+          "zz": 6.95e-6
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/finger/node0.stl"
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/finger/node1.stl"
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    },
+    {
+      "name": "rightfinger",
+      "inertia": {
+        "center": {
+          "x": 0.0,
+          "y": -0.0145644,
+          "z": 0.0227941
+        },
+        "mass": 0.1,
+        "moments": {
+          "xx": 3.01e-5,
+          "xy": 0.0,
+          "xz": 0.0,
+          "yy": 2.96e-5,
+          "yz": 0.0,
+          "zz": 6.95e-6
+        }
+      },
+      "surfaces": [
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/finger/node0.stl"
+          },
+          "pose": {
+            "position": {},
+            "orientation": {
+              "z": 3.1415
+            }
+          },
+          "material": "Grey"
+        },
+        {
+          "mesh": {
+            "filename": "package://franka_description/hand/meshes/finger/node1.stl"
+          },
+          "pose": {
+            "position": {},
+            "orientation": {
+              "z": 3.1415
+            }
+          },
+          "material": "White"
+        }
+      ],
+      "obstacles": [
+        {}
+      ]
+    }
+  ]
+}

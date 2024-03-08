@@ -1,0 +1,707 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "My Robot": {
+          "effector": "My Effector",
+          "toolFrames": {
+            "My Tool Frame": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur3eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      },
+      "effectors": {
+        "My Effector": {
+          "robotiqGripper2f85": {}
+        }
+      },
+      "items": {
+        "My Desk": {
+          "desk": {}
+        },
+        "Cup": {
+          "taskRegions": [
+            "Grasp Task Region"
+          ],
+          "customItem": {
+            "body": {
+              "name": "Cup",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {
+                      "x": -0.039,
+                      "y": 0.039
+                    },
+                    "orientation": {
+                      "x": 1.57
+                    }
+                  },
+                  "mesh": {
+                    "filename": "package://cup/cup.stl",
+                    "scale": 0.001
+                  },
+                  "material": "blue"
+                }
+              ],
+              "obstacles": [
+                {
+                  "name": "Obstacle",
+                  "pose": {
+                    "position": {
+                      "z": 0.04
+                    },
+                    "orientation": {
+                      "x": 1.57
+                    }
+                  },
+                  "primitive": {
+                    "cylinder": {
+                      "radius": 0.042,
+                      "height": 0.08
+                    }
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "name": "blue",
+                  "baseRgb": {
+                    "red": 0.1,
+                    "green": 0.1,
+                    "blue": 0.8
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 0.1,
+                  "coatRoughness": 0.1,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.0
+                }
+              ]
+            }
+          }
+        }
+      },
+      "cameras": {
+        "Pick Camera": {
+          "intrinsics": {
+            "width": 1280,
+            "height": 720,
+            "focalLengthX": 903.0238,
+            "focalLengthY": 892.96796,
+            "opticalCenterX": 641.15985,
+            "opticalCenterY": 391.05597,
+            "distortionCoefs": {
+              "q": [
+                0.15503378,
+                -0.47499013,
+                0.004618815,
+                8.460732e-05,
+                0.39420512
+              ]
+            }
+          },
+          "realsenseD435i": {
+            "serialNumber": "000000000001",
+            "frameRateFps": 30,
+            "minDepthM": 0.3,
+            "maxDepthM": 1.0
+          }
+        },
+        "Place Camera": {
+          "intrinsics": {
+            "width": 1280,
+            "height": 720,
+            "focalLengthX": 913.71625,
+            "focalLengthY": 901.1647,
+            "opticalCenterX": 644.452,
+            "opticalCenterY": 365.65588,
+            "distortionCoefs": {
+              "q": [
+                0.14641109,
+                -0.49154368,
+                0.004658224,
+                -0.00032531476,
+                0.43965465
+              ]
+            }
+          },
+          "realsenseD435i": {
+            "serialNumber": "000000000002",
+            "frameRateFps": 30,
+            "minDepthM": 0.3,
+            "maxDepthM": 1.0
+          }
+        }
+      },
+      "fiducials": {
+        "Origin Marker": {
+          "visualMarker": {
+            "tagId": 299,
+            "markerLengthM": 0.17
+          }
+        }
+      },
+      "taskRegions": {
+        "Pick Task Region": {
+          "pose": {
+            "position": {},
+            "orientation": {}
+          },
+          "min": {
+            "linear": {
+              "x": -0.2,
+              "y": -0.2
+            },
+            "angular": {}
+          },
+          "max": {
+            "linear": {
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0.2
+            },
+            "angular": {}
+          }
+        },
+        "Grasp Task Region": {
+          "pose": {
+            "position": {
+              "x": 0.05,
+              "z": 0.055
+            },
+            "orientation": {
+              "z": -1.57
+            }
+          },
+          "min": {
+            "linear": {
+              "x": -0.01,
+              "y": -0.01,
+              "z": -0.02
+            },
+            "angular": {}
+          },
+          "max": {
+            "linear": {
+              "x": 0.01,
+              "y": 0.01,
+              "z": 0.02
+            },
+            "angular": {}
+          }
+        },
+        "Place Task Region": {
+          "pose": {
+            "position": {},
+            "orientation": {}
+          },
+          "min": {
+            "linear": {
+              "x": -0.2,
+              "y": -0.2
+            },
+            "angular": {}
+          },
+          "max": {
+            "linear": {
+              "x": 0.2,
+              "y": 0.2,
+              "z": 0.2
+            },
+            "angular": {}
+          }
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "My Robot": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.0,
+              -0.7853982,
+              1.5707964,
+              -0.7853982,
+              -1.5707964,
+              0.0
+            ]
+          }
+        }
+      },
+      "effectors": {
+        "My Effector": {
+          "basePose": {
+            "position": {
+              "x": 0.070079684,
+              "y": 0.131,
+              "z": 0.5601478
+            },
+            "orientation": {
+              "x": -1.2091993,
+              "y": 1.2091993,
+              "z": -1.2091997
+            }
+          },
+          "jointPositions": {
+            "q": [
+              0.01
+            ]
+          }
+        }
+      },
+      "items": {
+        "My Desk": {
+          "basePose": {
+            "position": {},
+            "orientation": {
+              "z": -1.5707964
+            }
+          }
+        },
+        "Cup": {
+          "basePose": {
+            "position": {
+              "x": 0.2,
+              "y": 0.4
+            },
+            "orientation": {
+              "z": 3.14
+            }
+          }
+        }
+      },
+      "cameras": {
+        "Pick Camera": {
+          "basePose": {
+            "position": {
+              "y": 0.27939984,
+              "z": 0.7365996
+            },
+            "orientation": {
+              "x": 2.0316234,
+              "y": 2.0316234,
+              "z": 0.35823002
+            }
+          }
+        },
+        "Place Camera": {
+          "basePose": {
+            "position": {
+              "y": -0.27939984,
+              "z": 0.7365996
+            },
+            "orientation": {
+              "x": 2.0316234,
+              "y": 2.0316234,
+              "z": 0.35823002
+            }
+          }
+        }
+      },
+      "fiducials": {
+        "Origin Marker": {
+          "basePose": {
+            "position": {
+              "x": 0.20954989
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        }
+      },
+      "taskRegions": {
+        "Grasp Task Region": {
+          "basePose": {
+            "position": {
+              "x": 0.2,
+              "y": 0.4
+            },
+            "orientation": {
+              "z": 3.14
+            }
+          }
+        },
+        "Place Task Region": {
+          "basePose": {
+            "position": {
+              "x": 0.076199956,
+              "y": -0.3809998
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        },
+        "Pick Task Region": {
+          "basePose": {
+            "position": {
+              "x": 0.076199956,
+              "y": 0.3809998
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          }
+        }
+      }
+    }
+  },
+  "behaviors": {
+    "My Pick and Place": {
+      "name": "My Pick and Place",
+      "sequenceRoutine": {
+        "behaviors": [
+          {
+            "name": "Initialize Robot",
+            "initializeController": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame"
+            }
+          },
+          {
+            "name": "Initialize Cameras",
+            "initializePerception": {}
+          },
+          {
+            "name": "Move to Midpoint",
+            "gotoTargetPositions": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame",
+              "ranking": "MINIMUM_TIME",
+              "numProposals": 250,
+              "motionLimits": "MotionLimits",
+              "termination": {
+                "timeoutWindowS": 0.5,
+                "timeToCompletionS": 0.2,
+                "jointPositionTol": 0.1,
+                "linearToolPoseTol": 0.005,
+                "angularToolPoseTol": 0.1
+              },
+              "targetGenerators": [
+                "Midpoint Target"
+              ]
+            }
+          },
+          {
+            "name": "Open gripper",
+            "openGripper": {
+              "effector": "My Effector"
+            }
+          },
+          {
+            "name": "Repeat",
+            "repeatRoutine": {
+              "behavior": {
+                "name": "My Episode",
+                "sequenceRoutine": {
+                  "behaviors": [
+                    {
+                      "name": "Start Recording",
+                      "startRecordingData": {
+                        "description": "Pick and Place Routine"
+                      }
+                    },
+                    {
+                      "name": "My Sequence",
+                      "sequenceRoutine": {
+                        "behaviors": [
+                          {
+                            "name": "Move to Pre-Pick",
+                            "gotoTargetPositions": {
+                              "robot": "My Robot",
+                              "tool": "My Tool Frame",
+                              "ranking": "MINIMUM_TIME",
+                              "numProposals": 250,
+                              "motionLimits": "MotionLimits",
+                              "termination": {
+                                "timeoutWindowS": 0.5,
+                                "timeToCompletionS": 0.2,
+                                "jointPositionTol": 0.1,
+                                "linearToolPoseTol": 0.005,
+                                "angularToolPoseTol": 0.1
+                              },
+                              "targetGenerators": [
+                                "Pre-Pick Target"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "Move to Pick",
+                            "gotoTargetPositions": {
+                              "robot": "My Robot",
+                              "tool": "My Tool Frame",
+                              "interpolation": "TOOL",
+                              "ranking": "MINIMUM_TIME",
+                              "numProposals": 250,
+                              "motionLimits": "MotionLimits",
+                              "termination": {
+                                "timeoutWindowS": 0.5,
+                                "timeToCompletionS": 0.2,
+                                "jointPositionTol": 0.1,
+                                "linearToolPoseTol": 0.005,
+                                "angularToolPoseTol": 0.1
+                              },
+                              "targetGenerators": [
+                                "Pick Target"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "Close gripper",
+                            "setEffectorPositions": {
+                              "effector": "My Effector",
+                              "positions": {
+                                "q": [
+                                  0.01
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "name": "Attach Item",
+                            "attachItemToTool": {
+                              "item": "Cup",
+                              "robot": "My Robot"
+                            }
+                          },
+                          {
+                            "name": "Move to Midpoint",
+                            "gotoTargetPositions": {
+                              "robot": "My Robot",
+                              "tool": "My Tool Frame",
+                              "ranking": "MINIMUM_TIME",
+                              "numProposals": 250,
+                              "motionLimits": "MotionLimits",
+                              "termination": {
+                                "timeoutWindowS": 0.5,
+                                "timeToCompletionS": 0.2,
+                                "jointPositionTol": 0.1,
+                                "linearToolPoseTol": 0.005,
+                                "angularToolPoseTol": 0.1
+                              },
+                              "targetGenerators": [
+                                "Midpoint Target"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "Move to Place",
+                            "gotoTargetPositions": {
+                              "robot": "My Robot",
+                              "tool": "My Tool Frame",
+                              "ranking": "MINIMUM_TIME",
+                              "numProposals": 250,
+                              "motionLimits": "MotionLimits",
+                              "termination": {
+                                "timeoutWindowS": 0.5,
+                                "timeToCompletionS": 0.2,
+                                "jointPositionTol": 0.1,
+                                "linearToolPoseTol": 0.005,
+                                "angularToolPoseTol": 0.1
+                              },
+                              "targetGenerators": [
+                                "Place Target"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "Open gripper",
+                            "openGripper": {
+                              "effector": "My Effector"
+                            }
+                          },
+                          {
+                            "name": "Detach Item",
+                            "detachItemFromTool": {
+                              "item": "Cup",
+                              "robot": "My Robot"
+                            }
+                          },
+                          {
+                            "name": "Move to Midpoint",
+                            "gotoTargetPositions": {
+                              "robot": "My Robot",
+                              "tool": "My Tool Frame",
+                              "ranking": "MINIMUM_TIME",
+                              "numProposals": 250,
+                              "motionLimits": "MotionLimits",
+                              "termination": {
+                                "timeoutWindowS": 0.5,
+                                "timeToCompletionS": 0.2,
+                                "jointPositionTol": 0.1,
+                                "linearToolPoseTol": 0.005,
+                                "angularToolPoseTol": 0.1
+                              },
+                              "targetGenerators": [
+                                "Midpoint Target"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "Stop Recording",
+                      "stopRecordingData": {}
+                    }
+                  ],
+                  "allowFailure": true
+                }
+              },
+              "repetitions": 1,
+              "allowFailure": true
+            }
+          },
+          {
+            "name": "Shutdown Cameras",
+            "shutdownPerception": {}
+          },
+          {
+            "name": "Shutdown Robot",
+            "shutdownController": {}
+          }
+        ],
+        "allowFailure": true
+      }
+    }
+  },
+  "variables": {
+    "motionLimits": {
+      "MotionLimits": {
+        "jointVelocity": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "jointAcceleration": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "toolVelocity": {
+          "linear": {},
+          "angular": {}
+        },
+        "toolAcceleration": {
+          "linear": {},
+          "angular": {}
+        }
+      }
+    },
+    "targetGenerators": {
+      "Pick Target": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "Grasp Task Region",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.06
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Pick Target": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "Grasp Task Region",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.12
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Place Target": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "Place Task Region",
+            "sample": true,
+            "offsetPose": {
+              "position": {},
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Midpoint Target": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                0.0,
+                0.0,
+                1.3089969,
+                0.2617994,
+                -1.5707964,
+                3.1415927
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      }
+    }
+  }
+}
