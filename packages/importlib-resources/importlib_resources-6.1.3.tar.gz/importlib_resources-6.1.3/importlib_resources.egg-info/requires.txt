@@ -1,0 +1,24 @@
+
+[:python_version < "3.10"]
+zipp>=3.1.0
+
+[docs]
+sphinx>=3.5
+sphinx<7.2.5
+jaraco.packaging>=9.3
+rst.linker>=1.9
+furo
+sphinx-lint
+jaraco.tidelift>=1.4
+
+[testing]
+pytest>=6
+pytest-checkdocs>=2.4
+pytest-cov
+pytest-enabler>=2.2
+pytest-ruff>=0.2.1
+zipp>=3.17
+jaraco.collections
+
+[testing:platform_python_implementation != "PyPy"]
+pytest-mypy
