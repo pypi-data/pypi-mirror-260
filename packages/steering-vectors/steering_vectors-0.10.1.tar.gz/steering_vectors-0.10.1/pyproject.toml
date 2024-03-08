@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "steering-vectors"
+version = "0.10.1"
+description = "Steering vectors for transformer language models in Pytorch / Huggingface"
+authors = [
+    "David Chanin <chanindav@gmail.com>",
+    "Daniel Tan <dtch009@gmail.com>",
+]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transformers = "^4.35.2"
+tqdm = "^4.1.0"
+scikit-learn = "^1.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.8.0"
+pytest = "^7.4.4"
+furo = "^2023.9.10"
+pygments = "^2.17.2"
+torch = "^2.1.2"
+protobuf = "^4.25.2"
+sentencepiece = "^0.1.99"
+sphinx-autodoc-typehints = "^1.25.2"
+ruff = "^0.2.2"
+
+[tool.ruff]
+exclude = ["dist", "docs"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff.lint]
+extend-select = ["UP", "TID", "I", "F", "E", "ARG"]
+ignore = ["E203", "E501", "E731"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"typing.Union".msg = "Use `|` instead"
+"typing.Optional".msg = "Use `| None` instead"
+"typing.Dict".msg = "Use `dict` instead"
+"typing.List".msg = "Use `list` instead"
+
+[tool.semantic_release]
+version_variables = [
+    "steering_vectors/__init__.py:__version__",
+    "pyproject.toml:version",
+]
+branch = "main"
+build_command = "pip install poetry && poetry build"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
