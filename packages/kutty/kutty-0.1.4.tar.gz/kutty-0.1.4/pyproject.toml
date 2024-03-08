@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "kutty"
+version = "0.1.4"
+description = ""
+authors = ["kuttykishore <kishorekumar.mourougane@epita.fr>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pandas = ">=1.0.5, <2.0.0"
+scipy = ">=1.5.0, <2.0.0"
+numpy = ">=1.18.5, <2.0.0"
+plotly = ">=4.8.2, <6.0.0"
+statsmodels = ">=0.11.1, <0.13.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
