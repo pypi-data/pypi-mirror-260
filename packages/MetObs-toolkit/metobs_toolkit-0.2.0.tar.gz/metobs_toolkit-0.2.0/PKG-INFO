@@ -1,0 +1,103 @@
+Metadata-Version: 2.1
+Name: MetObs-toolkit
+Version: 0.2.0
+Summary: A Meteorological observations toolkit for scientists
+License: LICENSE
+Keywords: meteorology,observations,urban climate
+Author: Thomas Vergauwen
+Author-email: thomas.vergauwen@meteo.be
+Maintainer: Thomas Vergauwen
+Maintainer-email: thomas.vergauwen@meteo.be
+Requires-Python: >=3.9,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: License :: Other/Proprietary License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Requires-Dist: cartopy (>=0.22.0,<0.23.0)
+Requires-Dist: earthengine-api (>=0.1.340,<0.2.0)
+Requires-Dist: geemap (>=0.20.0,<0.21.0)
+Requires-Dist: geopandas (>=0.9.0,<0.10.0)
+Requires-Dist: geos (>=0.2.3,<0.3.0)
+Requires-Dist: mapclassify (>=2.4.0,<3.0.0)
+Requires-Dist: matplotlib (>=3.0.0,<4.0.0)
+Requires-Dist: pandas (>=1.3.0,<2.0.0)
+Requires-Dist: shapely (>=2.0.2,<3.0.0)
+Project-URL: Documentation, https://metobs-toolkit.readthedocs.io/en/latest/index.html
+Description-Content-Type: text/markdown
+
+# MetObs-toolkit
+
+[![PyPI version](https://badge.fury.io/py/metobs-toolkit.svg)](https://badge.fury.io/py/metobs-toolkit)
+[![Documentation Status](https://readthedocs.org/projects/metobs-toolkit/badge/?version=latest)](https://metobs-toolkit.readthedocs.io/en/latest/?badge=latest)
+[![status](https://joss.theoj.org/papers/ffa3a79315bdf4c4793992a1de41193d/status.svg)](https://joss.theoj.org/papers/ffa3a79315bdf4c4793992a1de41193d)
+[![Tests passing](https://github.com/vergauwenthomas/MetObs_toolkit/actions/workflows/main_workflow.yml/badge.svg?branch=master)](https://github.com/vergauwenthomas/MetObs_toolkit/actions/workflows/main_workflow.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10794210.svg)](https://doi.org/10.5281/zenodo.10794210)
+
+
+<img src="https://raw.githubusercontent.com/vergauwenthomas/MetObs_toolkit/master/docs/logo_small.jpeg" alt="drawing" style="width:200px;"/>
+
+
+
+The MetObs-toolkit provides a comprehensive framework for scientists to process raw meteorological data for analysis.
+
+This repo contains all the software for the [metobs_toolkit](https://test.pypi.org/project/metobs-toolkit/).
+
+## Documentation
+
+Documentation can be found [here](https://metobs-toolkit.readthedocs.io/en/latest/index.html).
+
+## Installing the package
+Install the package using pip:
+
+```bash
+pip install metobs-toolkit
+ ```
+To install the PyPi version of the toolkit. To install the github versions one can use these commands:
+
+```bash
+#main versions
+pip install git+https://github.com/vergauwenthomas/MetObs_toolkit.git
+
+#development version
+pip install git+https://github.com/vergauwenthomas/MetObs_toolkit.git@dev
+
+#specific release from github
+pip install git+https://github.com/vergauwenthomas/MetObs_toolkit.git@v0.2.0
+ ```
+For some advanced quality control methods, the [Titanlib package](https://github.com/metno/titanlib) is used. Since the installation of titanlib requires a c++ compiler, we have chosen not to include it in the toolkit. If you want to use the Titanlib functionality you must install both the toolkit and Titanlib:
+
+```bash
+pip install metobs-toolkit titanlib
+ ```
+
+To use the package, import it in Python:
+
+
+```python
+import metobs_toolkit
+
+#Check your version
+metobs_toolkit.__version__
+ ```
+## Exercises and demos
+In the context of a [FAIRNESS (COST action)](https://www.fairness-ca20108.eu/) summer school, a set of well-documented exercises and demos are made.
+
+| Notebook  | Description  |       |
+|:----------|:-------------|------:|
+| [Introduction](https://github.com/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Introduction_01.ipynb) | Introduction to the toolkit | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Introduction_01.ipynb) |
+| [Quality control](https://github.com/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Quality_control_excercise_02.ipynb) | Introduction to quality control methods | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Quality_control_excercise_02.ipynb)|
+| [Filling gaps](https://github.com/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Gap_filling_excercise_03.ipynb) | Introduction to gap filling methods | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Gap_filling_excercise_03.ipynb)|
+| [Analysis](https://github.com/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Urban_analysis_excercise_04.ipynb) | Introduction analysis methods | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/vergauwenthomas/MetObs_toolkit/blob/master/fairness_demo_exercises/Urban_analysis_excercise_04.ipynb)|
+
+
+## Related
+* A graphical user interface for the MetObs-Toolkit: [MetObs_GUI](https://github.com/vergauwenthomas/MetObs_GUI)
+
