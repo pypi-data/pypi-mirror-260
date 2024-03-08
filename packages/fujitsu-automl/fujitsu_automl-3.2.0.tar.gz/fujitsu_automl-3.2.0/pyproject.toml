@@ -1,0 +1,56 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "fujitsu-automl"
+version = "3.2.0"
+description = "Fujitsu AutoML API Client for Python"
+authors = ["Fujitsu Research, Fujitsu Limited"]
+packages = [{ include = "fujitsu_automl" }]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+sapientml = "*"
+sapientml-core = "*"
+msal = "^1.23.0"
+toml = "^0.10.2"
+jsonrpcclient = "^4.0.3"
+
+[tool.poetry.plugins."sapientml.pipeline_generator"]
+fujitsu-automl = "fujitsu_automl:FujitsuAutoMLGenerator"
+
+[tool.poetry.plugins."sapientml.config"]
+fujitsu-automl = "fujitsu_automl:FujitsuAutoMLConfig"
+
+
+[tool.poetry.group.dev.dependencies]
+pysen = "^0.10.5"
+flake8 = ">=6.1,<8.0"
+isort = "^5.12.0"
+black = ">=23.9.1,<25.0.0"
+pre-commit = "^3.4.0"
+
+[tool.pysen]
+version = "3.2.0"
+
+[tool.pysen-cli]
+settings_dir = ".pysen"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = false
+line_length = 120
+py_version = "3.2.0"
+
+[tool.pysen.lint.source]
+includes = ["fujitsu_automl/", "tests/"]
+
+[tool.pytest.ini_options]
+addopts = "-s -x --cov=sapientml"
+testpaths = ["tests"]
+
+[tool.poetry2conda]
+name = "fujitsu-automl"
