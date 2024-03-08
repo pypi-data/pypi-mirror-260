@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: eurelis_kb_framework
+Version: 0.0.12
+Summary: Framework to build and manage knowledge base. Based on Langchain under the hood.
+Author-email: Jérôme DIAZ <j.diaz@eurelis.com>, Vincent LAMBERT <v.lambert@eurelis.com>
+Project-URL: Homepage, https://github.com/Eurelis/Eurelis-KB-Framework
+Project-URL: Bug Tracker, https://github.com/Eurelis/Eurelis-KB-Framework/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: python-dotenv ==1.0.0
+Requires-Dist: langchain ==0.1.0
+Requires-Dist: sqlalchemy ==2.0.21
+Requires-Dist: rich ==13.4.2
+Requires-Dist: click ==8.1.7
+Requires-Dist: numpy ==1.26.0
+Requires-Dist: langchain-community ==0.0.13
+Provides-Extra: chatbot
+Requires-Dist: gradio ==3.47.1 ; extra == 'chatbot'
+Provides-Extra: chroma
+Requires-Dist: chromadb ==0.4.13 ; extra == 'chroma'
+Provides-Extra: huggingface
+Requires-Dist: sentence-transformers ==2.2.2 ; extra == 'huggingface'
+Requires-Dist: transformers ==4.34.1 ; extra == 'huggingface'
+Provides-Extra: markdown
+Requires-Dist: markdown ==3.5.1 ; extra == 'markdown'
+Provides-Extra: mongodb
+Requires-Dist: pymongo ==4.6.1 ; extra == 'mongodb'
+Provides-Extra: openai
+Requires-Dist: langchain-openai ==0.0.2.post1 ; extra == 'openai'
+Provides-Extra: pdf
+Requires-Dist: pypdf ==3.16.4 ; extra == 'pdf'
+Requires-Dist: cryptography ==41.0.7 ; extra == 'pdf'
+Provides-Extra: selfcheck
+Requires-Dist: selfcheckgpt ==0.1.4 ; extra == 'selfcheck'
+Requires-Dist: lark ==1.1.8 ; extra == 'selfcheck'
+Provides-Extra: sitemap
+Requires-Dist: lxml ==4.9.3 ; extra == 'sitemap'
+Requires-Dist: beautifulsoup4 ==4.12.2 ; extra == 'sitemap'
+Provides-Extra: solr
+Requires-Dist: eurelis-langchain-solr-vectorstore ==0.0.1 ; extra == 'solr'
+
+# Eurelis-KB-Framework
+
+![Python : 11](https://img.shields.io/badge/Python-=3.11-green)
+![Code style : black](https://img.shields.io/badge/Code_style-black-black)
+![Linting : pylint](https://img.shields.io/badge/Linting-pylint-yellowgreen)
+
+Framework to build and manage knowledge base. Based on Langchain under the hood.
