@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: ChimeraX
+Version: 0.1.71
+Summary: Analysis and visualization of molecular structures and 3D microscopy
+Author-email: UCSF RBVI <chimerax@cgl.ucsf.edu>
+License: LGPLv2.1
+Project-URL: Home, https://www.rbvi.ucsf.edu/chimerax/
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: Markdown
+License-File: LICENSE.md
+Requires-Dist: appdirs ==1.4.4
+Requires-Dist: beautifulsoup4 ==4.12.3
+Requires-Dist: build ==1.0.3
+Requires-Dist: colorama ==0.4.6
+Requires-Dist: Cython ==3.0.8
+Requires-Dist: filelock ==3.13.1
+Requires-Dist: html2text ==2020.1.16
+Requires-Dist: ihm ==0.43
+Requires-Dist: imagecodecs ==2024.1.1
+Requires-Dist: ipykernel ==6.29.2
+Requires-Dist: ipython ==8.21.0
+Requires-Dist: jedi ==0.19.1
+Requires-Dist: jupyter-client ==8.6.0
+Requires-Dist: lxml ==5.1.0
+Requires-Dist: lz4 ==4.3.3
+Requires-Dist: matplotlib ==3.8.2
+Requires-Dist: msgpack ==1.0.7
+Requires-Dist: nibabel ==5.0.1
+Requires-Dist: netCDF4 ==1.6.5
+Requires-Dist: networkx ==3.2.1
+Requires-Dist: numpy ==1.26.4
+Requires-Dist: ParmEd ==4.2.2
+Requires-Dist: pep517 ==0.13.1
+Requires-Dist: Pillow ==10.2.0
+Requires-Dist: pkginfo ==1.9.6
+Requires-Dist: psutil ==5.9.8
+Requires-Dist: pycollada ==0.8
+Requires-Dist: pydicom ==2.3.0
+Requires-Dist: pynrrd ==1.0.0
+Requires-Dist: pyopenxr ==1.0.3302
+Requires-Dist: tcia-utils ==1.5.1
+Requires-Dist: python-dateutil ==2.8.2
+Requires-Dist: requests ==2.31.0
+Requires-Dist: scipy ==1.12.0
+Requires-Dist: six ==1.16.0
+Requires-Dist: sortedcontainers ==2.4.0
+Requires-Dist: superqt ==0.6.1
+Requires-Dist: tifffile ==2024.1.30
+Requires-Dist: webcolors ==1.13
+Requires-Dist: wheel-filename ==1.4.1
+Requires-Dist: blockdiag ==3.0.0
+Requires-Dist: docutils ==0.20.1
+Requires-Dist: Jinja2 ==3.1.3
+Requires-Dist: Pygments ==2.17.2
+Requires-Dist: Sphinx ==7.2.6
+Requires-Dist: sphinxcontrib-blockdiag ==3.0.0
+Requires-Dist: sphinx-autodoc-typehints ==2.0.0
+Requires-Dist: traitlets ==5.14.1
+Requires-Dist: tables ==3.9.2 ; platform_machine != "arm64"
+Requires-Dist: distro ==1.9.0 ; sys_platform == "linux"
+Requires-Dist: pywin32 ==306 ; sys_platform == "win32"
+Requires-Dist: WMI ==1.5.1 ; sys_platform == "win32"
+Requires-Dist: comtypes ==1.2.1 ; sys_platform == "win32"
+
+# UCSF ChimeraX Molecular Visualization
+
+This package provides a library that implements many of the algorithms and structural 
+manipulations from the ChimeraX molecular visualization and analysis system.  
+It does *not* include any of the GUI components, which must be separately licensed.
+
+[ChimeraX](https://www.rbvi.ucsf.edu/chimerax/) is an application for visualizing and 
+analyzing molecule structures such as proteins, RNA, DNA, lipids as well as gene sequences, 
+electron microscopy maps, X-ray maps, 3D light microscopy and 3D medical imaging scans.  
+It is the successor of the [UCSF Chimera](https://www.cgl.ucsf.edu/chimera/) program.  
+
+[Example images](https://www.rbvi.ucsf.edu/chimerax/gallery.html) and [feature highlights](https://www.rbvi.ucsf.edu/chimerax/features.html) 
+show a few of its capabilities, and [recipes](https://rbvi.github.io/chimerax-recipes/) 
+show example command and Python API use.
