@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: align-trim2
+Version: 0.1.0
+Summary: 
+Author: ChrisKent
+Author-email: chrisgkent@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: pandas (>=2.2.1,<3.0.0)
+Requires-Dist: pysam (>=0.22.0,<0.23.0)
+Description-Content-Type: text/markdown
+
+# Align-trim2
+
+![pytest](https://github.com/ChrisgKent/align_trim2/actions/workflows/pytest.yml/badge.svg)
+
+This is a refactor of the orginal align-trim found in fieldbioinfomatics.
+- This version can accept multi-reference schemes
+- Primerclouds
+- Back compatable with alt primers
+
