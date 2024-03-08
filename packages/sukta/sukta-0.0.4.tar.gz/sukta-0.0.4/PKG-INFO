@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: sukta
+Version: 0.0.4
+Summary: Personalized training loop utilities for ML, RL, Robotics
+Author: akrishna
+Maintainer: akrishna
+License: MIT License
+License-File: LICENSE
+Keywords: common loop utility,slurm utility,utility
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Requires-Dist: aim
+Requires-Dist: dill
+Requires-Dist: kaleido
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: plotly
+Requires-Dist: rich
+Requires-Dist: scipy
+Requires-Dist: tensorflow-cpu
+Provides-Extra: dev
+Requires-Dist: black; extra == 'dev'
+Requires-Dist: build; extra == 'dev'
+Requires-Dist: bumpver; extra == 'dev'
+Requires-Dist: isort; extra == 'dev'
+Requires-Dist: pre-commit; extra == 'dev'
+Requires-Dist: pytest; extra == 'dev'
+Requires-Dist: twine; extra == 'dev'
+Provides-Extra: rl
+Requires-Dist: imagecodecs; extra == 'rl'
+Requires-Dist: numba; extra == 'rl'
+Requires-Dist: zarr; extra == 'rl'
+Provides-Extra: torch
+Requires-Dist: torch; extra == 'torch'
+Requires-Dist: torchvision; extra == 'torch'
+Description-Content-Type: text/markdown
+
+# Sukta
+Personalized repository for common loop patterns and experiment tracking
