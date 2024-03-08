@@ -1,0 +1,1748 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "My Robot": {
+          "effector": "My Gripper",
+          "toolFrames": {
+            "My Tool Frame": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur3eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      },
+      "effectors": {
+        "My Gripper": {
+          "robotiqGripper2f85": {}
+        }
+      },
+      "items": {
+        "elx_assy_assembled-1/elx_housing-1": {
+          "taskRegions": [
+            "elx_assy_assembled-1/elx_housing-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_assy_assembled-1/elx_housing-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_housing.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_board-1": {
+          "taskRegions": [
+            "elx_assy_assembled-1/elx_board-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_assy_assembled-1/elx_board-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_board.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 0.28627452,
+                    "green": 0.6627451,
+                    "blue": 0.32941177
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_board-1": {
+          "taskRegions": [
+            "elx_board-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_board-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_board.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 0.28627452,
+                    "green": 0.6627451,
+                    "blue": 0.32941177
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_housing-1": {
+          "taskRegions": [
+            "elx_housing-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_housing-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_housing.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_battery-1": {
+          "taskRegions": [
+            "elx_assy_assembled-1/elx_battery-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_assy_assembled-1/elx_battery-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_battery.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 1.0,
+                    "green": 0.9372549,
+                    "blue": 0.13725491
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_tray-1": {
+          "taskRegions": [
+            "elx_tray-1/Fiducial Task 3",
+            "elx_tray-1/Fiducial Task 1",
+            "elx_tray-1/Fiducial Task 4",
+            "elx_tray-1/Fiducial Task 2"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_tray-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_tray.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 0.84313726,
+                    "green": 0.8156863,
+                    "blue": 0.7529412
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "elx_battery-1": {
+          "taskRegions": [
+            "elx_battery-1/Pick Task Frame"
+          ],
+          "customItem": {
+            "body": {
+              "name": "elx_battery-1",
+              "inertia": {
+                "center": {},
+                "mass": 1.0,
+                "moments": {
+                  "xx": 0.001,
+                  "yy": 0.001,
+                  "zz": 0.001
+                }
+              },
+              "surfaces": [
+                {
+                  "name": "Surface",
+                  "pose": {
+                    "position": {},
+                    "orientation": {}
+                  },
+                  "mesh": {
+                    "filename": "package://elx_assy/elx_battery.STL",
+                    "scale": 0.001
+                  }
+                }
+              ],
+              "materials": [
+                {
+                  "baseRgb": {
+                    "red": 1.0,
+                    "green": 0.9372549,
+                    "blue": 0.13725491
+                  },
+                  "metallicCoefficient": 0.2,
+                  "roughnessCoefficient": 0.4,
+                  "coatStrength": 1.0,
+                  "coatRoughness": 0.9,
+                  "coatRgb": {
+                    "red": 1.0,
+                    "green": 1.0,
+                    "blue": 1.0
+                  },
+                  "baseIor": 1.5,
+                  "coatIor": 2.2
+                }
+              ]
+            }
+          }
+        },
+        "My Desk": {
+          "desk": {}
+        }
+      },
+      "taskRegions": {
+        "elx_tray-1/Fiducial Task 1": {
+          "pose": {
+            "position": {
+              "x": -0.0469,
+              "y": 0.07103,
+              "z": 0.01605
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_tray-1/Fiducial Task 4": {
+          "pose": {
+            "position": {
+              "x": 0.0469,
+              "y": 0.07103,
+              "z": 0.01605
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_tray-1/Fiducial Task 2": {
+          "pose": {
+            "position": {
+              "x": -0.0469,
+              "y": -0.07103,
+              "z": 0.01605
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_board-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "z": 0.00254
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_tray-1/Fiducial Task 3": {
+          "pose": {
+            "position": {
+              "x": 0.0469,
+              "y": -0.07103,
+              "z": 0.01605
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_assy_assembled-1/elx_battery-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "y": 0.02032
+            },
+            "orientation": {
+              "x": -1.5707964,
+              "y": -0.0,
+              "z": -0.0
+            }
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_housing-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "z": 0.0254
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_assy_assembled-1/elx_board-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "z": 0.00254
+            },
+            "orientation": {
+              "z": 1.5707964
+            }
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_battery-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "y": 0.02032
+            },
+            "orientation": {
+              "x": -1.5707964,
+              "y": -0.0,
+              "z": -0.0
+            }
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        },
+        "elx_assy_assembled-1/elx_housing-1/Pick Task Frame": {
+          "pose": {
+            "position": {
+              "z": 0.0254
+            },
+            "orientation": {}
+          },
+          "min": {
+            "linear": {},
+            "angular": {}
+          },
+          "max": {
+            "linear": {},
+            "angular": {}
+          }
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "My Robot": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.0,
+              0.0,
+              1.5707964,
+              0.0,
+              -1.5707964,
+              0.0
+            ]
+          }
+        }
+      },
+      "effectors": {
+        "My Gripper": {
+          "basePose": {
+            "position": {
+              "x": 0.298,
+              "y": 0.131,
+              "z": 0.304
+            },
+            "orientation": {
+              "x": -2.2214413,
+              "y": 2.2214413,
+              "z": -3.4867352e-07
+            }
+          },
+          "jointPositions": {
+            "q": [
+              0.01
+            ]
+          }
+        }
+      },
+      "items": {
+        "elx_board-1": {
+          "basePose": {
+            "position": {
+              "x": 0.37982643,
+              "y": -0.23598947,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": 6.522599e-16,
+              "y": -4.5126257e-16,
+              "z": -2.6031363
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_board-1": {
+          "basePose": {
+            "position": {
+              "x": 0.36397,
+              "y": 1.6653345e-16,
+              "z": 0.02159
+            },
+            "orientation": {
+              "x": 2.092721e-15,
+              "y": 1.0463606e-15,
+              "z": 3.1415927
+            }
+          }
+        },
+        "elx_housing-1": {
+          "basePose": {
+            "position": {
+              "x": 0.25977185,
+              "y": -0.37411034,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": -5.204277e-17,
+              "y": -7.6963626e-16,
+              "z": -1.8404477
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_housing-1": {
+          "basePose": {
+            "position": {
+              "x": 0.35,
+              "y": 1.6653345e-16,
+              "z": 0.00889
+            },
+            "orientation": {
+              "x": -1.2292137e-15,
+              "y": 3.8249877e-16,
+              "z": -1.5707964
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_battery-1": {
+          "basePose": {
+            "position": {
+              "x": 0.28523,
+              "y": 1.110223e-16,
+              "z": 0.01397
+            },
+            "orientation": {
+              "x": 1.2091995,
+              "y": -1.2091995,
+              "z": -1.2091995
+            }
+          }
+        },
+        "elx_battery-1": {
+          "basePose": {
+            "position": {
+              "x": 0.2627079,
+              "y": -0.25580904,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": 1.5372432,
+              "y": -0.3796917,
+              "z": -0.3796917
+            }
+          }
+        },
+        "My Desk": {
+          "basePose": {
+            "position": {},
+            "orientation": {
+              "z": -1.5707964
+            }
+          }
+        },
+        "elx_tray-1": {
+          "basePose": {
+            "position": {
+              "x": 0.35
+            },
+            "orientation": {}
+          }
+        }
+      },
+      "taskRegions": {
+        "elx_tray-1/Fiducial Task 4": {
+          "basePose": {
+            "position": {
+              "x": 0.35
+            },
+            "orientation": {}
+          }
+        },
+        "elx_assy_assembled-1/elx_board-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.36397,
+              "y": 1.6653345e-16,
+              "z": 0.02159
+            },
+            "orientation": {
+              "x": 2.092721e-15,
+              "y": 1.0463606e-15,
+              "z": 3.1415927
+            }
+          }
+        },
+        "elx_housing-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.25977185,
+              "y": -0.37411034,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": -5.204277e-17,
+              "y": -7.6963626e-16,
+              "z": -1.8404477
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_housing-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.35,
+              "y": 1.6653345e-16,
+              "z": 0.00889
+            },
+            "orientation": {
+              "x": -1.2292137e-15,
+              "y": 3.8249877e-16,
+              "z": -1.5707964
+            }
+          }
+        },
+        "elx_tray-1/Fiducial Task 1": {
+          "basePose": {
+            "position": {
+              "x": 0.35
+            },
+            "orientation": {}
+          }
+        },
+        "elx_tray-1/Fiducial Task 3": {
+          "basePose": {
+            "position": {
+              "x": 0.35
+            },
+            "orientation": {}
+          }
+        },
+        "elx_board-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.37982643,
+              "y": -0.23598947,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": 6.522599e-16,
+              "y": -4.5126257e-16,
+              "z": -2.6031363
+            }
+          }
+        },
+        "elx_assy_assembled-1/elx_battery-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.28523,
+              "y": 1.110223e-16,
+              "z": 0.01397
+            },
+            "orientation": {
+              "x": 1.2091995,
+              "y": -1.2091995,
+              "z": -1.2091995
+            }
+          }
+        },
+        "elx_battery-1/Pick Task Frame": {
+          "basePose": {
+            "position": {
+              "x": 0.2627079,
+              "y": -0.25580904,
+              "z": 0.035
+            },
+            "orientation": {
+              "x": 1.5372432,
+              "y": -0.3796917,
+              "z": -0.3796917
+            }
+          }
+        },
+        "elx_tray-1/Fiducial Task 2": {
+          "basePose": {
+            "position": {
+              "x": 0.35
+            },
+            "orientation": {}
+          }
+        }
+      }
+    }
+  },
+  "behaviors": {
+    "Assemble electronics devices": {
+      "name": "Assemble electronics devices",
+      "sequenceRoutine": {
+        "behaviors": [
+          {
+            "name": "Initialize Robot",
+            "initializeController": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame"
+            }
+          },
+          {
+            "name": "Move to Midpoint",
+            "gotoTargetPositions": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame",
+              "disableCollisionChecking": true,
+              "ranking": "MINIMUM_TIME",
+              "numProposals": 250,
+              "motionLimits": "Motion Limits",
+              "termination": {
+                "timeoutWindowS": 0.5,
+                "timeToCompletionS": 0.2,
+                "jointPositionTol": 0.1,
+                "linearToolPoseTol": 0.005,
+                "angularToolPoseTol": 0.1
+              },
+              "targetGenerators": [
+                "Midpoint"
+              ]
+            }
+          },
+          {
+            "name": "Open gripper",
+            "openGripper": {
+              "effector": "My Gripper"
+            }
+          },
+          {
+            "name": "Assembly sequence",
+            "sequenceRoutine": {
+              "behaviors": [
+                {
+                  "name": "Start Recording",
+                  "startRecordingData": {
+                    "description": "Assemble single unit"
+                  }
+                },
+                {
+                  "name": "Place housing",
+                  "sequenceRoutine": {
+                    "behaviors": [
+                      {
+                        "name": "Open Gripper to Item 0",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.077
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 0"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pick 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pick 0"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Grasp Item 0",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.072
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Attach Item 0",
+                        "attachItemToTool": {
+                          "item": "elx_housing-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 0"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 0"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Place 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Place 0"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Release Item 0",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.077
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Detach Item 0",
+                        "detachItemFromTool": {
+                          "item": "elx_housing-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 0",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 0"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Place board",
+                  "sequenceRoutine": {
+                    "behaviors": [
+                      {
+                        "name": "Open Gripper to Item 1",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.05
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 1"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pick 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pick 1"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Grasp Item 1",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.045
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Attach Item 1",
+                        "attachItemToTool": {
+                          "item": "elx_board-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 1"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 1"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Place 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Place 1"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Release Item 1",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.05
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Detach Item 1",
+                        "detachItemFromTool": {
+                          "item": "elx_board-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 1",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 1"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Place battery",
+                  "sequenceRoutine": {
+                    "behaviors": [
+                      {
+                        "name": "Open Gripper to Item 2",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.049
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pick 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pick 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Grasp Item 2",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.044
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Attach Item 2",
+                        "attachItemToTool": {
+                          "item": "elx_battery-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Pick 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Pick 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Place 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "interpolation": "TOOL",
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Place 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Release Item 2",
+                        "setEffectorPositions": {
+                          "effector": "My Gripper",
+                          "positions": {
+                            "q": [
+                              0.049
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "name": "Detach Item 2",
+                        "detachItemFromTool": {
+                          "item": "elx_battery-1",
+                          "robot": "My Robot"
+                        }
+                      },
+                      {
+                        "name": "Move to Pre-Place 2",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Pre-Place 2"
+                          ]
+                        }
+                      },
+                      {
+                        "name": "Move to Midpoint",
+                        "gotoTargetPositions": {
+                          "robot": "My Robot",
+                          "tool": "My Tool Frame",
+                          "disableCollisionChecking": true,
+                          "ranking": "MINIMUM_TIME",
+                          "numProposals": 250,
+                          "motionLimits": "Motion Limits",
+                          "termination": {
+                            "timeoutWindowS": 0.5,
+                            "timeToCompletionS": 0.2,
+                            "jointPositionTol": 0.1,
+                            "linearToolPoseTol": 0.005,
+                            "angularToolPoseTol": 0.1
+                          },
+                          "targetGenerators": [
+                            "Midpoint"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "Stop Recording",
+                  "stopRecordingData": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "Shutdown Robot",
+            "shutdownController": {}
+          }
+        ],
+        "allowFailure": true
+      }
+    }
+  },
+  "variables": {
+    "motionLimits": {
+      "Motion Limits": {
+        "jointVelocity": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "jointAcceleration": {
+          "q": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ]
+        },
+        "toolVelocity": {
+          "linear": {},
+          "angular": {}
+        },
+        "toolAcceleration": {
+          "linear": {},
+          "angular": {}
+        }
+      }
+    },
+    "targetGenerators": {
+      "Place 1": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_board-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.07
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Place 2": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_battery-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Place 1": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_board-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Pick 0": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_housing-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Midpoint": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                0.0,
+                0.0,
+                1.5707964,
+                0.0,
+                -1.5707964,
+                0.0
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pick 2": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_battery-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.055
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pick 0": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_housing-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.06
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Pick 2": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_battery-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pick 1": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_board-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.07
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Place 2": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_battery-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.055
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Pick 1": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_board-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Place 0": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_housing-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.06
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      },
+      "Pre-Place 0": {
+        "taskRegionTarget": {
+          "poseGenerator": {
+            "taskRegion": "elx_assy_assembled-1/elx_housing-1/Pick Task Frame",
+            "sample": true,
+            "offsetPose": {
+              "position": {
+                "z": 0.1
+              },
+              "orientation": {}
+            }
+          },
+          "seedJointPositions": {
+            "deterministic": {}
+          },
+          "wrapRotations": true
+        }
+      }
+    }
+  }
+}

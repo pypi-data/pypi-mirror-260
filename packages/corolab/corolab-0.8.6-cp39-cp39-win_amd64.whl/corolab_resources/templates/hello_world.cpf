@@ -1,0 +1,140 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "My Robot": {
+          "toolFrames": {
+            "My Tool Frame": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur5eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "My Robot": {
+          "basePose": {
+            "position": {},
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.7853982,
+              0.61086524,
+              1.2217305,
+              -0.2617994,
+              -0.7853982,
+              1.0471976
+            ]
+          }
+        }
+      }
+    }
+  },
+  "behaviors": {
+    "Hello World": {
+      "name": "Hello World",
+      "sequenceRoutine": {
+        "behaviors": [
+          {
+            "name": "Initialize Robot",
+            "initializeController": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame"
+            }
+          },
+          {
+            "name": "Move to Home",
+            "gotoTargetPositions": {
+              "robot": "My Robot",
+              "tool": "My Tool Frame",
+              "disableCollisionChecking": true,
+              "ranking": "MINIMUM_TIME",
+              "numProposals": 250,
+              "motionLimits": "Motion Limits",
+              "termination": {
+                "timeoutWindowS": 0.5,
+                "timeToCompletionS": 0.2,
+                "jointPositionTol": 0.1,
+                "linearToolPoseTol": 0.005,
+                "angularToolPoseTol": 0.1
+              },
+              "targetGenerators": [
+                "Home Position"
+              ]
+            }
+          },
+          {
+            "name": "Shutdown Robot",
+            "shutdownController": {}
+          }
+        ]
+      }
+    }
+  },
+  "variables": {
+    "motionLimits": {
+      "Motion Limits": {
+        "jointVelocity": {
+          "q": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "jointAcceleration": {
+          "q": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            2.0
+          ]
+        },
+        "toolVelocity": {
+          "linear": {},
+          "angular": {}
+        },
+        "toolAcceleration": {
+          "linear": {},
+          "angular": {}
+        }
+      }
+    },
+    "targetGenerators": {
+      "Home Position": {
+        "jointPositionTarget": {
+          "jointPositions": {
+            "deterministic": {
+              "q": [
+                0.0,
+                0.0,
+                1.5707964,
+                0.0,
+                -1.5707964,
+                0.0
+              ]
+            }
+          },
+          "wrapRotations": true
+        }
+      }
+    }
+  }
+}

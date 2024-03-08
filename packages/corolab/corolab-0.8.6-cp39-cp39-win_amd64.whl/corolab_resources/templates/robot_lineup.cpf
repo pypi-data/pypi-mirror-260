@@ -1,0 +1,221 @@
+{
+  "version": "0.8.6",
+  "workspace": {
+    "config": {
+      "robots": {
+        "Franka Panda": {
+          "effector": "Franka Hand",
+          "toolFrames": {
+            "Panda Tool": {
+              "pose": {
+                "position": {
+                  "z": 0.104
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "frankaPandaRobot": {
+            "ipAddress": "192.168.1.1"
+          }
+        },
+        "UR-5e": {
+          "effector": "Robotiq",
+          "toolFrames": {
+            "UR-5e Tool": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur5eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        },
+        "UR-3e": {
+          "toolFrames": {
+            "UR-3e Tool": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur3eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        },
+        "UR-10e": {
+          "toolFrames": {
+            "UR-10e Tool": {
+              "pose": {
+                "position": {
+                  "z": 0.088
+                },
+                "orientation": {
+                  "x": 3.1416
+                }
+              }
+            }
+          },
+          "ur10eRobot": {
+            "ipAddress": "127.0.0.1"
+          }
+        }
+      },
+      "effectors": {
+        "Franka Hand": {
+          "frankaHand": {}
+        },
+        "Robotiq": {
+          "robotiqGripper2f85": {}
+        }
+      },
+      "items": {
+        "My Desk": {
+          "desk": {}
+        }
+      }
+    },
+    "state": {
+      "robots": {
+        "UR-10e": {
+          "basePose": {
+            "position": {
+              "y": -0.35
+            },
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.17453292,
+              -0.7853982,
+              1.9198622,
+              2.1816616,
+              1.5707964,
+              0.0
+            ]
+          }
+        },
+        "Franka Panda": {
+          "basePose": {
+            "position": {
+              "y": -1.05
+            },
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              -0.7853982,
+              -1.0471976,
+              0.0,
+              -2.0943952,
+              0.0,
+              1.0471976,
+              0.0
+            ]
+          }
+        },
+        "UR-5e": {
+          "basePose": {
+            "position": {
+              "y": 0.35
+            },
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              -0.7853982,
+              -0.5235988,
+              1.3962634,
+              -0.34906584,
+              -0.61086524,
+              0.0
+            ]
+          }
+        },
+        "UR-3e": {
+          "basePose": {
+            "position": {
+              "y": 1.05
+            },
+            "orientation": {}
+          },
+          "jointPositions": {
+            "q": [
+              0.7853982,
+              -0.7853982,
+              1.5707964,
+              -0.7853982,
+              -0.7853982,
+              0.0
+            ]
+          }
+        }
+      },
+      "effectors": {
+        "Franka Hand": {
+          "basePose": {
+            "position": {
+              "x": 0.103866495,
+              "y": -1.1538669,
+              "z": 0.7188942
+            },
+            "orientation": {
+              "x": 2.9024525,
+              "y": -1.2022362,
+              "z": -1.88701e-07
+            }
+          },
+          "jointPositions": {
+            "q": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "Robotiq": {
+          "basePose": {
+            "position": {
+              "x": 0.28523117,
+              "y": 0.37011904,
+              "z": 0.8409573
+            },
+            "orientation": {
+              "x": -1.2062498,
+              "y": 1.4775271,
+              "z": -0.6104542
+            }
+          },
+          "jointPositions": {
+            "q": [
+              0.01
+            ]
+          }
+        }
+      },
+      "items": {
+        "My Desk": {
+          "basePose": {
+            "position": {},
+            "orientation": {
+              "z": -1.5707964
+            }
+          }
+        }
+      }
+    }
+  },
+  "variables": {}
+}
