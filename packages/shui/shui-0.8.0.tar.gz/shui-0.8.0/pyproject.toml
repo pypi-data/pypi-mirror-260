@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "shui"
+version = "0.8.0"
+description = "Spark-Hadoop Unix Installer"
+license = "MIT"
+authors = ["James Robinson <james.em.robinson@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/jemrobinson/shui"
+keywords = ["Spark", "Hadoop", "installation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Operating System :: Unix",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+beautifulsoup4 = ">=4.12"
+cleo = ">=2.0"
+importlib-metadata = { version = ">=6.7", python = "<3.8" }
+packaging = ">=23.0"
+pathlib3x = ">=2.0"
+requests = ">=2.31"
+tqdm = ">=4.66"
+url-normalize = ">=1.4"
+urllib3 = ">=2.0"
+
+[tool.poetry.dev-dependencies]
+black = ">=24.0"
+coverage = ">=7.2"
+mypy = ">=1.4"
+pylint = ">=2.13"
+pytest = ">=7.4"
+requests-mock = ">=1.11"
+types-beautifulsoup4 = ">=4.12"
+types-requests = ">=2.31"
+types-setuptools = ">=68.0"
+types-urllib3 = ">=1.26"
+
+[tool.poetry.scripts]
+shui = "shui.cli:main"
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+mypy_path = ".mypy/stubs"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
