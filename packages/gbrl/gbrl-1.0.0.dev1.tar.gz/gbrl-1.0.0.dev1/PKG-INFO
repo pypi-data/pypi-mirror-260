@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: gbrl
+Version: 1.0.0.dev1
+Summary: Gradient Boosted Trees for RL
+Author-email: Benjamin Fuhrer <bfuhrer@nvidia.com>, Chen Tesslr <ctessler@nvidia.com>, Gal Dalal <galal@nvidia.com>
+License-File: LICENSE
+Requires-Dist: pybind11==2.11.1
+Requires-Dist: numpy
+Requires-Dist: torch
+Provides-Extra: sklearn
+Requires-Dist: scikit_learn==1.2.2; extra == "sklearn"

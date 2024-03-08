@@ -1,0 +1,26 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+    "pybind11==2.11.1"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gbrl"
+version = "1.0.0.dev1"
+description = "Gradient Boosted Trees for RL"
+authors = [
+    {name = "Benjamin Fuhrer", email = "bfuhrer@nvidia.com"},
+    {name = "Chen Tesslr", email = "ctessler@nvidia.com"},
+    {name = "Gal Dalal", email = "galal@nvidia.com"}
+]
+dependencies = [
+    "pybind11==2.11.1",
+    "numpy",
+    "torch"
+]
+
+
+[project.optional-dependencies]
+sklearn = ["scikit_learn==1.2.2"]
