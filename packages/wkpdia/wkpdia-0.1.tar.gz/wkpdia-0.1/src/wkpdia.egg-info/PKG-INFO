@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: wkpdia
+Version: 0.1
+Summary: Wikipedia downloader and parser in Python
+Author: Hansimov
+Project-URL: Homepage, https://github.com/Hansimov/wkpdia
+Project-URL: Issues, https://github.com/Hansimov/wkpdia/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: purehtml
+
+# wkpdia
+Wikipedia downloader and parser in Python
+
+## Install
+
+```bash
+pip install wkpdia
+```
+
+## Usage
+
+```bash
+from wkpdia import wkpdia_get
+
+title = "R._Daneel_Olivaw"
+item = wkpdia_get(title)
+print(item["path"])
+print(item["str"])
+```
