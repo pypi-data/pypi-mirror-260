@@ -1,0 +1,23 @@
+// Copyright 2023, Martijn Staal <nllegalcit [at] martijn-staal.nl>
+// SPDX-License-Identifier: EUPL-1.2
+// Available under the EUPL-1.2, or, at your option, any later version.
+// General parser grammer to find all citations in a text
+?start: (handeling | kamerstuk | case_law | text)+
+
+text: punctuation | NUMBER | WORD | WS
+punctuation: APOSTROPHE | QUOTATIONMARK | HYPHEN | PUNCTUATIONMARKS | SYMBOL
+APOSTROPHE: /[‘`'′´’]/
+QUOTATIONMARK: /[‘’“”"«»]/
+HYPHEN: /[-‐‑‒–—―−]/
+PUNCTUATIONMARKS: /[%=&\/\-.,:;_+*?!()­]/ // The space-like character is the Unicode soft-hyphen U+00AD
+NUMBER: /\d+([.,]?\d+)*/
+SYMBOL: /\W/
+
+UNICODE_LETTER: /\w/
+WORD: UNICODE_LETTER+
+
+%import .caselaw.case_law -> case_law
+%import .parlementair.handeling -> handeling
+%import .parlementair.kamerstuk -> kamerstuk
+
+%import unicode.WS

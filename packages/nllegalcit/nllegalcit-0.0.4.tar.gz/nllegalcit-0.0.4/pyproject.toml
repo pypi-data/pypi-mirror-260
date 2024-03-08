@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nllegalcit"
+version = "0.0.4"
+authors = [
+    { name="Martijn Staal", email="nllegalcit@martijn-staal.nl" },
+]
+description = "Python library to find citations to Dutch legal documents in natural language text"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+    "Intended Audience :: Legal Industry",
+    "Intended Audience :: Science/Research",
+]
+dependencies = [
+    "lark>=1.1.8",
+    "requests>=2.31.0",
+    "pypdf>=3.17.2",
+    "cryptography>=41.0.7"
+]
+
+[project.urls]
+Homepage = "https://github.com/mastaal/nllegalcit"
+Issues = "https://github.com/mastaal/nllegalcit/issues"
+Documentation = "https://nllegalcit.martijn-staal.nl/latest"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nllegalcit*"]
+
+[tool.setuptools.package-data]
+"nllegalcit.grammars" = ["*.lark"]

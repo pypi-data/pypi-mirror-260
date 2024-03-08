@@ -1,0 +1,191 @@
+"""
+    nllegalcit/citations.py
+
+    Copyright 2023-2024, Martijn Staal <nllegalcit [at] martijn-staal.nl>
+
+    Available under the EUPL-1.2, or, at your option, any later version.
+
+    SPDX-License-Identifier: EUPL-1.2
+"""
+
+from enum import Enum
+from typing import Optional
+
+
+class Citation():
+    """Base Citation class"""
+
+    #: The underlying text that resulted in this Citation.
+    matched_text: str
+
+
+class CaseLawCitation(Citation):
+    """Generic citation to case law"""
+
+
+class LjnCitation(CaseLawCitation):
+    """CaseLawCitation for LJN citations"""
+
+    #: The LJN code, e.g. AU9722
+    code: str
+
+    def __init__(self, code: str):
+        self.code = code
+
+    def __str__(self) -> str:
+        return f"LJN {self.code}"
+
+    def __repr__(self) -> str:
+        return self.__str__()
+
+    def __eq__(self, __value: object) -> bool:
+        if isinstance(__value, LjnCitation):
+            return self.code == __value.code
+        else:
+            return False
+
+    # TODO: Implement a translation/lookup to EcliCitation
+
+
+class EcliCitation(CaseLawCitation):
+    """CaseLawCitation for ECLI-citations"""
+
+    #: The country code in this ECLI, e.g. NL, DE, FR, EU, CE.
+    country: str
+
+    #: The ECLI abbreviation for the court or body.
+    court: str
+
+    year: int
+    casenumber: str
+
+    def __init__(self, country: str, court: str, year: int, casenumber: str):
+
+        self.country = country
+        self.court = court
+        self.year = year
+        self.casenumber = casenumber
+
+    def __str__(self) -> str:
+        return f"ECLI:{self.country}:{self.court}:{self.year}:{self.casenumber}"
+
+    def __repr__(self) -> str:
+        return self.__str__()
+
+    def __eq__(self, __value: object) -> bool:
+        if isinstance(__value, EcliCitation):
+            return (
+                (self.country == __value.country) and
+                (self.court == __value.court) and
+                (self.year == __value.year) and
+                (self.casenumber == __value.casenumber)
+            )
+        else:
+            return False
+
+
+class Kamer(Enum):
+    TK = "II"
+    EK = "I"
+    VV = "VV"
+
+
+class HandelingCitation(Citation):
+    """Structured representation of a citation of a Handeling"""
+
+    kamer: Kamer
+    vergaderjaar: str
+    vergaderingnummer: int
+    itemnummer: int
+    paginaverwijzing: Optional[str]
+
+    def __init__(
+            self,
+            kamer: str,
+            vergaderjaar: str,
+            vergaderingnummer: int,
+            itemnummer: int,
+            paginaverwijzing=None):
+        self.kamer = kamer  # type: ignore
+        self.vergaderjaar = vergaderjaar
+        self.vergaderingnummer = vergaderingnummer
+        self.itemnummer = itemnummer
+        self.paginaverwijzing = paginaverwijzing
+
+    def __str__(self) -> str:
+        if self.itemnummer != -1:
+            # New style citation
+            return f"HandelingCitation {self.kamer} {self.vergaderjaar}, nr. {self.vergaderingnummer}, item {self.itemnummer}, p. {self.paginaverwijzing}"
+
+        # Old style citation
+        return f"HandelingCitation {self.kamer} {self.vergaderjaar}, nr. {self.vergaderingnummer}, p. {self.paginaverwijzing}"
+
+    def __repr__(self) -> str:
+        return self.__str__()
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, HandelingCitation):
+            return ((self.kamer == other.kamer) and
+                    (self.vergaderjaar == other.vergaderjaar) and
+                    (self.vergaderingnummer == other.vergaderingnummer) and
+                    (self.itemnummer == other.itemnummer) and
+                    (self.paginaverwijzing == other.paginaverwijzing))
+        else:
+            return False
+
+
+class KamerstukCitation(Citation):
+    """Structured representation of a citation of a kamerstuk"""
+
+    kamer: Kamer
+    vergaderjaar: str
+    dossiernummer: str
+    ondernummer: str
+    paginaverwijzing: Optional[str]
+    rijksdossiernummer: Optional[str]
+
+    def __init__(
+            self,
+            kamer: str,
+            vergaderjaar: str,
+            dossiernummer: str,
+            ondernummer: str,
+            paginaverwijzing=None,
+            rijksdossiernummer=None):
+        self.kamer = kamer  # type: ignore
+        self.vergaderjaar = vergaderjaar
+        self.dossiernummer = dossiernummer
+        self.ondernummer = ondernummer
+        self.paginaverwijzing = paginaverwijzing
+        self.rijksdossiernummer = rijksdossiernummer
+
+    def __str__(self) -> str:
+        # There surely must be a better way to do this
+        if self.rijksdossiernummer is not None and self.paginaverwijzing is not None:
+            return (f"KamerstukCitation {self.kamer} {self.vergaderjaar} {self.dossiernummer}"
+                    f" ({self.rijksdossiernummer}) {self.ondernummer} {self.paginaverwijzing}")
+        if self.paginaverwijzing is not None:
+            return (f"KamerstukCitation {self.kamer} {self.vergaderjaar} {self.dossiernummer}"
+                    f"{self.ondernummer} {self.paginaverwijzing}")
+        if self.rijksdossiernummer is not None:
+            return (f"KamerstukCitation {self.kamer} {self.vergaderjaar} {self.dossiernummer}"
+                    f" ({self.rijksdossiernummer}) {self.ondernummer}")
+
+        return f"KamerstukCitation {self.kamer} {self.vergaderjaar} {self.dossiernummer} {self.ondernummer}"
+
+    def __repr__(self) -> str:
+        if self.paginaverwijzing is not None:
+            return f"Kamerstukken {self.kamer} {self.vergaderjaar}, {self.dossiernummer}, nr. {self.ondernummer} p. {self.paginaverwijzing}"
+
+        return f"Kamerstukken {self.kamer} {self.vergaderjaar}, {self.dossiernummer}, nr. {self.ondernummer}"
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, KamerstukCitation):
+            return ((self.kamer == other.kamer) and
+                    (self.vergaderjaar == other.vergaderjaar) and
+                    (self.dossiernummer == other.dossiernummer) and
+                    (self.ondernummer == other.ondernummer) and
+                    (self.paginaverwijzing == other.paginaverwijzing) and
+                    (self.rijksdossiernummer == other.rijksdossiernummer))
+        else:
+            return False
