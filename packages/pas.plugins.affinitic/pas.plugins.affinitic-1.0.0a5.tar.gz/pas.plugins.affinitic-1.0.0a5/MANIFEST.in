@@ -1,0 +1,13 @@
+graft src/pas
+graft docs
+include *.rst
+global-exclude *.pyc *.pyo
+exclude *.cfg
+exclude .coveragerc
+exclude .editorconfig
+exclude .mcli
+exclude Dockerfile
+exclude Makefile
+exclude cookiecutter.json
+exclude news
+recursive-exclude news *
