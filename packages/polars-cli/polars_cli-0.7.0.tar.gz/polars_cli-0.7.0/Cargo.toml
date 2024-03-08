@@ -1,0 +1,42 @@
+[package]
+name = "polars-cli"
+version = "0.7.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/pola-rs/polars-cli"
+description = "CLI interface for running SQL queries with Polars as backend"
+
+[[bin]]
+name = "polars"
+path = "src/main.rs"
+
+[dependencies]
+atty = { version = "0.2" }
+ciborium = { version = "0.2" }
+clap = { version = "4", features = ["derive", "cargo"] }
+nu-ansi-term = { version = "0.50", optional = true }
+once_cell = { version = "1" }
+reedline = { version = "0.30" }
+serde = { version = "1", features = ["derive"] }
+sqlparser = { version = "0.44" }
+tmp_env = { version = "0.1" }
+
+[dependencies.polars]
+version = "0.38"
+features = ["lazy", "sql", "dtype-full", "serde-lazy"]
+
+[target.'cfg(target_os = "linux")'.dependencies]
+jemallocator = { version = "0.5", features = ["disable_initial_exec_tls"] }
+
+[features]
+default = ["highlight", "parquet", "json", "ipc"]
+
+highlight = ["nu-ansi-term"]
+ipc = ["polars/ipc"]
+json = ["polars/json"]
+parquet = ["polars/parquet"]
+
+[profile.release]
+strip = true
+lto = true
+panic = "abort"
