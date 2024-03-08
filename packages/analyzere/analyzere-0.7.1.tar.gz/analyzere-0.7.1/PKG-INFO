@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: analyzere
+Version: 0.7.1
+Summary: 
+Author: Developers
+Author-email: dev@analyzere.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: lazy-object-proxy (>=1.9.0,<2.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: six (>=1.16.0,<2.0.0)
+Description-Content-Type: text/x-rst
+
+Analyze Re Python Client
+========================
+
+This is a Python wrapper for a Analyze Re REST API. It allows you to easily
+utilize the PRIME Re platform in your applications.
+
+Installation
+------------
+
+::
+
+   pip install analyzere
+
+Usage
+-----
+
+Please see http://docs.analyzere.net/?python for the most up-to-date
+documentation.
+
+Package Management
+---------------------
+
+The Analyze Re Python Client uses `Poetry <https://python-poetry.org/>`_ for
+package and dependency management. Poetry can be easily installed
+using either `pip` or `conda`.
+
+Testing
+-------
+
+`poetry run pytest` (or) `poetry run py.test`
+
+Increment version
+-----------------
+
+If you are going to publish a new version increment the version number in the `pyproject.toml` file.
+
+Testing Publication
+-------------------
+
+`poetry build`
+
+`poetry config repositories.testpypi https://test.pypi.org/legacy/`
+
+`poetry publish --repository testpypi --username __token__ --password <token_value>`
+
+
+Publishing
+----------
+
+`poetry build`
+
+`poetry publish --username __token__ --password <token_value>`
+
