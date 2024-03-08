@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: arborize
+Version: 4.0.0b6
+Summary: Write descriptions for NEURON cell models in an Arbor-like manner for both the Arbor and
+Author-email: Robin De Schepper <robingilbert.deschepper@unipv.it>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Requires-Dist: numpy
+Requires-Dist: errr>=1.2.0
+Requires-Dist: morphio>=3.3.6
+Requires-Dist: arbor>=0.9 ; extra == "arbor"
+Requires-Dist: nmodl-glia[arbor]>=4.0.0b6 ; extra == "arbor"
+Requires-Dist: bluepyopt~=1.14 ; extra == "bluepyopt"
+Requires-Dist: dill~=0.3.8 ; extra == "bluepyopt"
+Requires-Dist: sphinx ; extra == "dev"
+Requires-Dist: sphinx_rtd_theme ; extra == "dev"
+Requires-Dist: black==24.1.1 ; extra == "dev"
+Requires-Dist: nrn-patch>=4.0.0b3 ; extra == "neuron"
+Requires-Dist: nmodl-glia[neuron]>=4.0.0b6 ; extra == "neuron"
+Requires-Dist: mpi4py ; extra == "parallel"
+Requires-Dist: coverage~=7.0 ; extra == "test"
+Project-URL: Home, https://github.com/dbbs-lab/arborize
+Provides-Extra: arbor
+Provides-Extra: bluepyopt
+Provides-Extra: dev
+Provides-Extra: neuron
+Provides-Extra: parallel
+Provides-Extra: test
+
+# arborize
+A framework to package NEURON cell models following a clear separation between
+cell model description and its implementation in NEURON. Cell models described
+using this framework are highly portable, testable and distributable.
+
