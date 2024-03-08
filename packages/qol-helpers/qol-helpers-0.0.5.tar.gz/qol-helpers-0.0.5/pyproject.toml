@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qol-helpers"
+version = "0.0.5"
+description = "A package that offers quality of life helpers."
+authors = [{name = "Fletcher F Thompson", email = "fletcherthompsonx@gmail.com"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["utils", "helpers", "quality of life"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "tqdm",
+    "opencv-contrib-python",
+    "pillow",
+    "scikit-learn",
+    "scikit-image"
+]
+
+[project.urls]
+Homepage = "https://github.com/FletcherFT/qol-helpers/"
+
+[tool.setuptools.packages.find]
+# All the following settings are optional:
+where = ["src"]  # ["."] by default
+include = ["qolhelpers*"]  # ["*"] by default
+exclude = ["tests*"]  # empty by default
+namespaces = false  # true by default
