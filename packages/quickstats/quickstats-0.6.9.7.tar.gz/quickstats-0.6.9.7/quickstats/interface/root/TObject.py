@@ -1,0 +1,14 @@
+from typing import Optional, Union
+
+from quickstats import AbstractObject
+
+class TObject(AbstractObject):
+
+    def __init__(self,
+                 verbosity:Optional[Union[int, str]]="INFO",
+                 **kwargs):
+        self.obj = None
+        self.initialize(**kwargs)
+
+    def get(self):
+        return self.obj
