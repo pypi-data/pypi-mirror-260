@@ -1,0 +1,18 @@
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.md
+
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .egg-info
+recursive-exclude * .git
+recursive-exclude * .tox
+recursive-exclude * .cache
+recursive-exclude * .pytest_cache
+recursive-exclude * .vscode
+recursive-exclude * .idea
+
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
