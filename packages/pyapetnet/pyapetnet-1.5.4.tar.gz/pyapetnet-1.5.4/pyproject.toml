@@ -1,0 +1,53 @@
+[project]
+name = "pyapetnet"
+dynamic = []
+description = "CNN for anatomy-guided PET reconstruction"
+authors = [
+    { name = "Georg Schramm", email = "georg.schramm@kuleuven.be" },
+]
+requires-python = ">=3.9,<3.11"
+readme = "README.md"
+dependencies = [
+    "SimpleITK~=2.0",
+    "pymirc~=0.29",
+    "click~=8.0",
+    "tensorflow~=2.13",
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+version = "1.5.4"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+pyapetnet_list_models = "pyapetnet.scripts.list_models:list_models"
+pyapetnet_predict_from_dicom = "pyapetnet.scripts.predict_from_dicom:predict_from_dicom"
+pyapetnet_predict_from_nifti = "pyapetnet.scripts.predict_from_nifti:predict_from_nifti"
+
+[project.urls]
+Homepage = "https://github.com/gschramm/pyapetnet"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.0.1",
+    "tox>=4.13.0",
+    "tox-pdm>=0.7.2",
+]
+
+[tool.pdm.version]
+source = "scm"
+write_to = "pyapetnet/_version.py"
+write_template = "__version__ = '{}'"
