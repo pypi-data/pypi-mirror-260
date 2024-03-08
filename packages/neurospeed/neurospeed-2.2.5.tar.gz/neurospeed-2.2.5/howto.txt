@@ -1,0 +1,19 @@
+build package locally:
+pip install -e . 
+
+
+------------------------------------
+publish package:
+
+you should update the version number inside setup.py 
+
+python setup.py sdist bdist_wheel
+
+python -m twine upload dist/*
+
+
+
+
+
+username: __token__
+password: pypi-AgEIcHlwaS5vcmcCJDNmZWFmZmUyLTAzYTctNGI1NC1hNmI2LTRiNmM1NWE3OWZlMwACKlszLCI1NGViZTBjMy0zZTQ5LTQxYjYtYmQ2YS1mMGE5Y2ExZTJmODciXQAABiC_Q-2D85kzFLuReJCiBTtnH17Ak6GAOKJMTgT6qkx1QA
