@@ -1,0 +1,114 @@
+Metadata-Version: 2.1
+Name: panoptica-genai-protection
+Version: 0.1.0
+Summary: Protecting GenAI from Prompt Injection
+Author: marvin-team@cisco.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 4 - Beta
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: escherauth ==0.3.4
+Requires-Dist: pydantic >=2.5.1
+Requires-Dist: httpx >=0.25.1
+
+# Panoptica GenAI Protection SDK
+A simple python client SDK for integration with Panoptica GenAI Protection.
+___
+GenAI Protection is part of Panoptica, a cloud native application protection platform (CNAPP), and provides protection for LLM-backed systems.
+Specifically, the GenAI Protection SDK inspects both input and output prompts, flagging those it identifies as likely containing malicious content with a high degree of certainty. 
+
+The Python SDK is provided to programmatically integrate your system with our LLM protection software,
+enabling you to verify the safety level of processing a user requested prompt before actually processing it.
+Following this evaluation, the application can then determine the appropriate subsequent steps based on your policy.
+
+## Installation
+```shell
+pip install panoptica_genai_protection
+```
+
+## Usage Example
+Working assumptions:
+- You have generated a key-pair for GenAI Protection in the Panoptica settings screen
+  * The access key is set in the GENAI_PROTECTION_ACCESS_KEY environment variable
+  * The secret key is set in the GENAI_PROTECTION_SECRET_KEY environment variable
+- We denote the call to generating the LLM response as get_llm_response()
+
+GenAIProtectionClient provides the check_llm_prompt method to determine the safety level of a given prompt.
+
+
+### Sample Snippet
+```python
+from panoptica_genai_protection.client import GenAIProtectionClient
+from panoptica_genai_protection.models import Result as InspectionResult
+
+# ... Other code in your module ...
+
+# initialize the client
+genai_protection_client = GenAIProtectionClient()
+
+# Send the prompt for inspection BEFORE sending it to the LLM
+inspection_result = genai_protection_client.check_llm_prompt(
+    chat_request.prompt,
+    api_name="chat_service",   # Name of the service running the LLM
+    api_endpoint_name="/chat", # Name of the endpoint serving the LLM interaction
+    sequence_id=chat_id,       # UUID of the chat, if you don't have one, provide `None`
+    actor="John Doe",          # Name of the "actor" interacting with the LLM service.
+    actor_type="user",         # Actor type, one of {"user", "ip", "bot"}
+)
+  
+if inspection_result.result == InspectionResult.safe:
+    # Prompt is safe, generate an LLM response
+    llm_response = get_llm_response(
+        chat_request.prompt
+    )
+    
+    # Call GenAI protection on LLM response (completion)
+    inspection_result = genai_protection_client.check_llm_response(
+        prompt=chat_request.prompt,
+        response=llm_response,
+        api_name="chat_service",
+        api_endpoint_name="/chat",
+        actor="John Doe",
+        actor_type="user",
+        req_id=inspection_result.reqId,
+        sequence_id=chat_id,
+    )  
+    if inspection_result.result != InspectionResult.safe:
+        # LLM answer is flagged as unsafe, return a predefined error message to the user
+        answer_response = "Something went wrong."
+else:
+    # Prompt is flagged as unsafe, return a predefined error message to the user
+    answer_response = "Something went wrong."
+```
+
+#### Async use:
+You may use the client in async context in two ways:
+```python
+async def my_async_call_to_gen_ai_protection(prompt: str):
+    client = GenAIProtectionClient(as_async=True)
+    return await client.check_llm_prompt_async(
+        prompt=prompt,
+        api_name="test",
+        api_endpoint_name="/test",
+        actor="John Doe",
+        actor_type="user"
+    )
+```
+or
+```python
+async def my_other_async_call_to_gen_ai_protection(prompt: str):
+    async with GenAIProtectionClient() as client:
+      return await client.check_llm_prompt_async(
+          prompt=prompt,
+          api_name="test",
+          api_endpoint_name="/test",
+          actor="John Doe",
+          actor_type="user"
+      )
+```
