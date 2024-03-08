@@ -1,0 +1,627 @@
+{
+  "title": "Pyarmor",
+  "name": "pyarmor",
+  "options": [
+    {
+      "name": "debug",
+      "type": "bool",
+      "style": ["-d", "--debug"],
+      "link": "#cmdoption-pyarmor-d",
+      "comment": "Show more information in the console"
+    },
+    {
+      "name": "version",
+      "type": "bool",
+      "style": ["-v", "--version"],
+      "link": "#cmdoption-pyarmor-v",
+      "comment": "Show version information and exit"
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "style": ["--home"],
+      "link": "#cmdoption-pyarmor-home",
+      "comment": "Set Pyarmor `Home Path`, `Global Path`, `Local Path` and registration file path"
+    }
+  ],
+  "parameters": [],
+  "functions": [
+    {
+      "title": "Register License",
+      "name": "reg",
+      "tags": ["group license"],
+      "options": [
+        {
+          "name": "product",
+          "type": "string",
+          "style": ["-p", "--product"],
+          "link": "#cmdoption-pyarmor-reg-p",
+          "comment": "Set product name bind to license"
+        },
+        {
+          "name": "device",
+          "type": "string",
+          "tags": ["group license"],
+          "style": ["-g", "--device"],
+          "link": "#cmdoption-pyarmor-reg-g",
+          "comment": "device id (1-100) in group license"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "regfile",
+          "type": "string",
+          "comment": "pyarmor-regcode-xxxx.txt or pyarmor-regfile-xxxxx.zip"
+        }
+      ]
+    },
+    {
+      "title": "Generate Obfuscated Scripts",
+      "name": "gen",
+      "tags": ["common", "cross platform", "obfuscation", "runtime key", "runtime package", "restriction", "pack", "filter script"],
+      "options": [
+        {
+          "name": "output",
+          "type": "string",
+          "style": ["-O", "--output"],
+          "tags": ["common"],
+          "default": "dist",
+          "link": "#cmdoption-pyarmor-gen-O",
+          "comment": "Set the output path for all the generated files"
+        },
+        {
+          "name": "recursive",
+          "type": "bool",
+          "style": ["-r", "--recursive"],
+          "tags": ["common"],
+          "link": "#cmdoption-pyarmor-r",
+          "comment": "When obfuscating package, search child packages recursively"
+        },
+        {
+          "name": "exclude",
+          "type": "string",
+          "style": ["--exclude"],
+          "tags": ["filter script"],
+          "link": "#cmdoption-pyarmor-gen-exclude",
+          "comment": "Exclude scripts or packages, this option could be used many times"
+        },
+        {
+          "name": "inside",
+          "type": "bool",
+          "style": ["-i"],
+          "tags": ["runtime package"],
+          "link": "#cmdoption-pyarmor-i",
+          "comment": "Store the runtime files inside obfuscated package"
+        },
+        {
+          "name": "prefix",
+          "type": "string",
+          "style": ["--prefix"],
+          "tags": ["runtime package"],
+          "link": "#cmdoption-pyarmor-gen-prefix",
+          "comment": "Store the runtime package inside specified package"
+        },
+        {
+          "name": "expired",
+          "type": "string",
+          "style": ["-e", "--expired"],
+          "tags": ["runtime key"],
+          "default": "YYYY-MM-DD",
+          "link": "#cmdoption-pyarmor-gen-e",
+          "comment": "Expired date of obfuscated scripts"
+        },
+        {
+          "name": "bind-device",
+          "type": "string",
+          "style": ["-b", "--bind-device"],
+          "tags": ["runtime key"],
+          "link": "#cmdoption-pyarmor-gen-b",
+          "comment": "Bind obfuscated script to specified device"
+        },
+        {
+          "name": "bind-data",
+          "type": "string",
+          "style": ["--bind-data"],
+          "tags": ["runtime key"],
+          "link": "#cmdoption-pyarmor-gen-bind-data",
+          "comment": "Store any private data to runtime key"
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "style": ["--period"],
+          "tags": ["runtime key"],
+          "link": "#cmdoption-pyarmor-gen-period",
+          "comment": "Check `Runtime Key` periodically"
+        },
+        {
+          "name": "outer",
+          "type": "bool",
+          "style": ["--outer"],
+          "tags": ["runtime key"],
+          "link": "#cmdoption-pyarmor-gen-outer",
+          "comment": "Enable `outer key`"
+        },
+        {
+          "name": "platform",
+          "type": "tree",
+          "tags": ["cross platform"],
+          "style": ["-p", "--platform"],
+          "valid": [
+            {
+              "label": "Windows",
+              "value": "windows",
+              "children": [
+                {
+                  "label": "windows.x86_64",
+                  "value": "windows.x86_64"
+                },
+                {
+                  "label": "windows.x86",
+                  "value": "windows.x86"
+                }
+              ]
+            },
+            {
+              "label": "Manu Linux",
+              "value": "linux",
+              "children": [
+                {
+                  "label": "linux.x86_64",
+                  "value": "linux.x86_64"
+                },
+                {
+                  "label": "linux.aarch64",
+                  "value": "linux.aarch64"
+                },
+                {
+                  "label": "linux.armv7",
+                  "value": "linux.armv7"
+                },
+                {
+                  "label": "linux.x86",
+                  "value": "linux.x86"
+                }
+              ]
+            },
+            {
+              "label": "Apple MacOS",
+              "value": "darwin",
+              "children": [
+                {
+                  "label": "Apple Intel (x86_64)",
+                  "value": "darwin.x86_64"
+                },
+                {
+                  "label": "Apple Silcon",
+                  "value": "darwin.arm64"
+                }
+              ]
+            },
+            {
+              "label": "Alpine Linux (musl-c)",
+              "value": "alpine",
+              "children": [
+                {
+                  "label": "alpine.x86_64",
+                  "value": "alpine.x86_64"
+                },
+                {
+                  "label": "alpine.x86",
+                  "value": "alpine.x86"
+                }
+              ]
+            },
+            {
+              "label": "FreeBSD",
+              "value": "freebsd",
+              "children": [
+                {
+                  "label": "freebsd.x86_64",
+                  "value": "freebsd.x86_64"
+                }
+              ]
+            },
+            {
+              "label": "Android",
+              "value": "android",
+              "children": [
+                {
+                  "label": "android.x86_64",
+                  "value": "android.x86_64"
+                },
+                {
+                  "label": "android.aarch64",
+                  "value": "android.aarch64"
+                },
+                {
+                  "label": "android.armv7",
+                  "value": "android.armv7"
+                },
+                {
+                  "label": "android.x86",
+                  "value": "android.x86"
+                }
+              ]
+            }
+          ],
+          "link": "#cmdoption-pyarmor-gen-platform",
+          "comment": "Specify target platform to run obfuscated scripts"
+        },
+        {
+          "name": "private",
+          "type": "bool",
+          "style": ["--private"],
+          "tags": ["restriction"],
+          "link": "#cmdoption-pyarmor-gen-private",
+          "comment": "Enable private mode for scripts"
+        },
+        {
+          "name": "restrict",
+          "type": "bool",
+          "style": ["--restrict"],
+          "tags": ["restriction"],
+          "link": "#cmdoption-pyarmor-gen-restrict",
+          "comment": "Enable restrict mode for package, do not use it to obfuscate scripts"
+        },
+        {
+          "name": "obf-module",
+          "type": "enum",
+          "style": ["--obf-module"],
+          "tags": ["obfuscation"],
+          "valid": "0,1",
+          "default": "1",
+          "link": "#cmdoption-pyarmor-gen-obf-module",
+          "comment": "Enable the whole module obfuscation"
+        },
+        {
+          "name": "obf-code",
+          "type": "enum",
+          "style": ["--obf-code"],
+          "tags": ["obfuscation"],
+          "valid": "0,1,2",
+          "default": "1",
+          "link": "#cmdoption-pyarmor-gen-obf-code",
+          "comment": "Enable each function obfuscation"
+        },
+        {
+          "name": "no-wrap",
+          "type": "bool",
+          "style": ["--no-wrap"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-no-wrap",
+          "comment": "Disable wrap mode"
+        },
+        {
+          "name": "enable-jit",
+          "type": "bool",
+          "style": ["--enable-jit"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-enable-jit",
+          "comment": "Use `JIT` to process some sensitive data to improve security"
+        },
+        {
+          "name": "enable-rft",
+          "type": "bool",
+          "style": ["--enable-rft"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-enable-rft",
+          "comment": "Enable `RFT Mode` to obfuscate the script"
+        },
+        {
+          "name": "enable-bcc",
+          "type": "bool",
+          "style": ["--enable-bcc"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-enable-bcc",
+          "comment": "Enable `BCC Mode` to obfuscate the script"
+        },
+        {
+          "name": "enable-themida",
+          "type": "bool",
+          "style": ["--enable-themida"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-enable-themida",
+          "comment": "Use `Themida`_ to protect extension module in `runtime package`"
+        },
+        {
+          "name": "mix-str",
+          "type": "bool",
+          "style": ["--mix-str"],
+          "tags": ["obfuscation"],
+          "link": "#cmdoption-pyarmor-gen-mix-str",
+          "comment": "Mix the string constant in scripts"
+        },
+        {
+          "name": "assert-call",
+          "type": "bool",
+          "style": ["--assert-call"],
+          "tags": ["restriction"],
+          "link": "#cmdoption-pyarmor-gen-assert-call",
+          "comment": "Assert function is obfuscated"
+        },
+        {
+          "name": "assert-import",
+          "type": "bool",
+          "style": ["--assert-import"],
+          "tags": ["restriction"],
+          "link": "#cmdoption-pyarmor-gen-assert-import",
+          "comment": "Assert module is obfuscated"
+        },
+        {
+          "name": "pack",
+          "type": "string",
+          "style": ["--pack"],
+          "tags": ["pack"],
+          "link": "#cmdoption-pyarmor-gen-pack",
+          "comment": "Repack bundle with obfuscated scripts"
+        },
+        {
+          "name": "use-runtime",
+          "type": "string",
+          "style": ["--use-runtime"],
+          "tags": ["runtime package"],
+          "link": "#cmdoption-pyarmor-gen-use-runtime",
+          "comment": "Use shared runtime package other than generate new one"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "title": "Generate Runtime Key",
+      "name": "gen key",
+      "tags": [],
+      "options": [
+        {
+          "name": "output",
+          "type": "string",
+          "style": ["-O", "--output"],
+          "default": "dist",
+          "link": "#cmdoption-pyarmor-gen-O",
+          "comment": "Set the output path"
+        },
+        {
+          "name": "expired",
+          "type": "string",
+          "style": ["-e", "--expired"],
+          "default": "YYYY-MM-DD",
+          "link": "#cmdoption-pyarmor-gen-e",
+          "comment": "Expired date of obfuscated scripts"
+        },
+        {
+          "name": "bind-device",
+          "type": "string",
+          "style": ["-b", "--bind-device"],
+          "link": "#cmdoption-pyarmor-gen-b",
+          "comment": "Bind obfuscated script to specified device"
+        },
+        {
+          "name": "bind-data",
+          "type": "string",
+          "style": ["--bind-data"],
+          "link": "#cmdoption-pyarmor-gen-bind-data",
+          "comment": "Store any private data to runtime key"
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "style": ["--period"],
+          "link": "#cmdoption-pyarmor-gen-period",
+          "comment": "Check `Runtime Key` periodically"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "title": "Generate Runtime Package",
+      "name": "gen runtime",
+      "tags": [],
+      "options": [
+        {
+          "name": "output",
+          "type": "string",
+          "style": ["-O", "--output"],
+          "default": "dist",
+          "link": "#cmdoption-pyarmor-gen-O",
+          "comment": "Set the output path"
+        },
+        {
+          "name": "expired",
+          "type": "string",
+          "style": ["-e", "--expired"],
+          "default": "YYYY-MM-DD",
+          "link": "#cmdoption-pyarmor-gen-e",
+          "comment": "Expired date of obfuscated scripts"
+        },
+        {
+          "name": "bind-device",
+          "type": "string",
+          "style": ["-b", "--bind-device"],
+          "link": "#cmdoption-pyarmor-gen-b",
+          "comment": "Bind obfuscated script to specified device"
+        },
+        {
+          "name": "bind-data",
+          "type": "string",
+          "style": ["--bind-data"],
+          "link": "#cmdoption-pyarmor-gen-bind-data",
+          "comment": "Store any private data to runtime key"
+        },
+        {
+          "name": "period",
+          "type": "string",
+          "style": ["--period"],
+          "link": "#cmdoption-pyarmor-gen-period",
+          "comment": "Check `Runtime Key` periodically"
+        },
+        {
+          "name": "outer",
+          "type": "bool",
+          "style": ["--outer"],
+          "link": "#cmdoption-pyarmor-gen-outer",
+          "comment": "Enable `outer key`"
+        },
+        {
+          "name": "platform",
+          "type": "tree",
+          "tags": ["cross platform"],
+          "style": ["-p", "--platform"],
+          "valid": [
+            {
+              "label": "Windows",
+              "value": "windows",
+              "children": [
+                {
+                  "label": "windows.x86_64",
+                  "value": "windows.x86_64"
+                },
+                {
+                  "label": "windows.x86",
+                  "value": "windows.x86"
+                }
+              ]
+            },
+            {
+              "label": "Manu Linux",
+              "value": "linux",
+              "children": [
+                {
+                  "label": "linux.x86_64",
+                  "value": "linux.x86_64"
+                },
+                {
+                  "label": "linux.aarch64",
+                  "value": "linux.aarch64"
+                },
+                {
+                  "label": "linux.armv7",
+                  "value": "linux.armv7"
+                },
+                {
+                  "label": "linux.x86",
+                  "value": "linux.x86"
+                }
+              ]
+            },
+            {
+              "label": "Apple MacOS",
+              "value": "darwin",
+              "children": [
+                {
+                  "label": "Apple Intel (x86_64)",
+                  "value": "darwin.x86_64"
+                },
+                {
+                  "label": "Apple Silcon",
+                  "value": "darwin.arm64"
+                }
+              ]
+            },
+            {
+              "label": "Alpine Linux (musl-c)",
+              "value": "alpine",
+              "children": [
+                {
+                  "label": "alpine.x86_64",
+                  "value": "alpine.x86_64"
+                },
+                {
+                  "label": "alpine.x86",
+                  "value": "alpine.x86"
+                }
+              ]
+            },
+            {
+              "label": "FreeBSD",
+              "value": "freebsd",
+              "children": [
+                {
+                  "label": "freebsd.x86_64",
+                  "value": "freebsd.x86_64"
+                }
+              ]
+            },
+            {
+              "label": "Android",
+              "value": "android",
+              "children": [
+                {
+                  "label": "android.x86_64",
+                  "value": "android.x86_64"
+                },
+                {
+                  "label": "android.aarch64",
+                  "value": "android.aarch64"
+                },
+                {
+                  "label": "android.armv7",
+                  "value": "android.armv7"
+                },
+                {
+                  "label": "android.x86",
+                  "value": "android.x86"
+                }
+              ]
+            }
+          ],
+          "link": "#cmdoption-pyarmor-gen-platform",
+          "comment": "Specify target platform to run obfuscated scripts"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "title": "Configure",
+      "name": "cfg",
+      "tags": [],
+      "options": [
+        {
+          "name": "p",
+          "type": "string",
+          "style": ["-p"],
+          "link": "#cmdoption-pyarmor-cfg-p",
+          "comment": "Private settings for special modules in the package"
+        },
+        {
+          "name": "global",
+          "type": "bool",
+          "style": ["-g", "--global"],
+          "link": "#cmdoption-pyarmor-cfg-g",
+          "comment": "Do everything in global settings"
+        },
+        {
+          "name": "reset",
+          "type": "bool",
+          "style": ["-r", "--reset"],
+          "link": "#cmdoption-pyarmor-cfg-r",
+          "comment": "Reset option to default value"
+        }
+      ],
+      "parameters": []
+    }
+  ],
+  "configs": [
+    {
+      "section": "build",
+      "name": "obf-code",
+      "type": "enum",
+      "valid": "0,1,2",
+      "default": "1",
+      "comment": "set the method to obfuscate byte code"
+    }
+  ],
+  "envs": [
+    {
+      "name": "LANG",
+      "comment": "Select runtime error language"
+    },
+    {
+      "name": "PYARMOR_LANG",
+      "comment": "Set language runtime error language"
+    },
+    {
+      "name": "PYARMOR_RKEY",
+      "comment": "Set search path for outer runtime key"
+    }
+  ]
+}

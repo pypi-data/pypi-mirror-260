@@ -1,0 +1,1 @@
+import{G as a,b as n,f as s,t}from"./index-557e0199.js";const o={},r={class:"cb-view"};function c(e,i){return n(),s("div",r,t(e.$gettext("What happens if upgrade to latest version"))+" "+t(e.$gettext("If I don't change anything, which largest version I can upgrade to")),1)}const d=a(o,[["render",c]]);export{d as default};

@@ -1,0 +1,189 @@
+[
+  {
+    "title": "License & Support",
+    "group": "license",
+    "tags": ["license", "support", "upgrade", "docker"],
+    "faq": [
+      {
+        "q": "Which license is right for my project?",
+        "tags": ["license"],
+        "a": [
+          "Hints for all licenses:",
+          "* If using Python 2.7 or Python <= 3.6, then only Pyarmor old license works. All the new licenses only work for Python 3.7+",
+          "* Each license only need pay once, but it may not work in Pyarmor future versions",
+          "Hints for 3 new licenses (Pyarmor Basic, Pro and Gropu license):",
+          "* If need offline obfuscation, only Pyarmor Group license works",
+          "* Pyarmor Basic and Pro license need internet connection to verify license when obfuscating the scripts, and in 24 hours only 100 different devices are allowed for each license",
+          "* In 24 hours, if need more than 100 docker containers to obfuscate your scripts, only Pyarmor Group license works.",
+          "* Pyarmor Basic, Pro and Group licenses don't work for Pyarmor 7."
+        ]
+      },
+      {
+        "q": "Will Pyarmor Pro license upload my scripts to remote server to verify license?",
+        "tags": ["license"],
+        "a": "No. For Pyarmor Basic and Pro License, only Pyarmor License file, serial number of hard disk, Ethernet address, IPv4/IPv6 address, and hostname will be sent to remote server for verification."
+      },
+      {
+        "q": "We have one product, but multiple services into it which will be running as different pods in Kubernetes. Do we need to buy one licence which can be used in all our services, or we need to buy licence per pod?",
+        "tags": ["license"],
+        "a": [
+          "As long as it's really one product in term of Pyarmor EULA, one license is OK. But do not install Pyarmor with license in each pods in Kubernetes, it may not work if there are too many pods to run Pyarmor at the same time. It's recommend to install Pyarmor in a few of build machines, then distribute the obfuscated scripts to all pods."
+        ]
+      },
+      {
+        "q": "I understand your technical support is only through GitHub, but is there any support team to whom we can reach out directly via call or email?",
+        "tags": ["support"],
+        "a": [
+          "Sorry, Pyarmor is a small tool, there is no support team. Generally if you know Python well, look through the content tree of Pyarmor documentation, spend no more than 2 hours reading tutorials, most of problems could be solved.",
+          "And a new command `pyarmor man` is available since Pyarmor v8.5. It's designed to help Pyarmor users to learn and use Pyarmor by web-ui, to find solution quickly when something is wrong, to report bugs and ask questions in standard form in order to save both Pyarmor team's and Pyarmor users' time."
+        ]
+      },
+      {
+        "q": "Is there a model where we can try out the basic version of the licence for a month or so and upgrade to a higher version (if required) by paying the difference?",
+        "tags": ["license"],
+        "a": "Sorry, Pyarmor is a small tool and only cost small money, there is no demo license plan and could not upgrade by paying the difference. Most of features could be verified in trial version, other advanced features, for example, mix-str, bcc mode and rft mode, could be configured to ignore one function or one script so that all the others could work with these advanced features."
+      },
+      {
+        "q": "I am interested to know if the users are entitled to updates to ensure compatibility with future versions of Python.",
+        "tags": ["upgrade"],
+        "a": "No. Pyarmor license works with current Pyarmor version forever, but may not work with future Pyarmor version. I can't make sure current Pyarmor version could support all the future versions of Python, so the answer is no."
+      },
+      {
+        "q": "Is the Internet connection only required to generate the obfuscated script? No internet connection is required on the target device that uses such script?",
+        "tags": ["license"],
+        "a": [
+          "No internet connection is required on target device.",
+          "Pyarmor has no any control or limitation to obfuscated scripts, the behaviors of obfuscated scripts are totally defined by user.",
+          "Please check Pyarmor EULA 3.4.1"
+        ]
+      },
+      {
+        "q": "Our company has a suite of products that we offer together or separately to our clients. Do we need a different license for each of them?",
+        "tags": ["license"],
+        "a": [
+          "For a suite of products, if each product is different totally, for example, a suite `Microsoft Office` includes `Microsoft Excel`, `Microsoft Word`, each product need one license.",
+          "If a suite of products share most of Python scripts, as long as the proportion of the variable part of each product is far less than that of the common part, they’re considered as `one product`.",
+          "If each product in a suite of products is functionally complementary, for example, product `Editor` for editing the file, product `Viewer` for view the file, they’re considered as `one product`.",
+          "Also check `What’s one product` in the doc :doc:`licenses`"
+        ]
+      },
+      {
+        "q": "Which PyArmor 8.0 license for CI, more than 100 runs / day?",
+        "tags": ["docker", "license"],
+        "a": "At this time, only Group License with self-host runner may work, the default runner which has volatile hardwares may not work. For CI with group license, there are 2 workarouds, please check doc :section:`how-to/register.html#using-group-license-in-ci-pipeline Using group license in CI pipeline`"
+      },
+      {
+        "q": "If we buy version 8 license, is it compatible with earlier versions like 6.7.2?",
+        "tags": ["upgrade"],
+        "a": "No. Pyarmor 8 license can't be used with earlier versions, it may report HTTP 401 error or some unknown errors."
+      },
+      {
+        "q": "How long is the current license valid? Is there a published end-of-support schedule?",
+        "tags": ["support", "upgrade"],
+        "a": [
+          "The license is valid for ever with Pyarmor version when purchasing this license, but may not work for future Pyarmor, there is no schedule about in which version current license doesn't work.",
+          "Since the first release Pyarmor changed its license 2 times because the core libraries are rewritten:",
+          "* the initial license issued around year 2010 (I forget the exact date)",
+          "* the second license issued on 2019-10-10",
+          "* this is the third license, issued on 2023-03-10"
+        ]
+      },
+      {
+        "q": "Does the license include access to support and software updates? If so, what is the duration of support and how are updates delivered?",
+        "tags": ["support", "upgrade"],
+        "a": [
+          "Generally the license could be used in the next versions, until there are big changes in one major version, but I have no plan in details. Just run `pip install` to upgrade Pyarmor to latest version, the license will keep work.",
+          "But there is no more technical supports about how to use Pyarmor, Pyarmor is a command line tool, and all the options are full documentations. Pyarmor users need spend some time to learn Pyarmor by himself."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Register License",
+    "group": "register",
+    "tags": [],
+    "faq": [
+      {
+        "q": "ERROR request license token failed (104)",
+        "tags": [],
+        "a": [
+          "Please make sure firewall doesn't block the response of license server. If possible, turn off the firewall to verify it.",
+          "In Windows ``pytransform.pyd`` will connect to ``pyarmor.dashingsoft.com`` port ``80`` to request token for online obfuscation, in other platforms it is ``pytransform3.so``. Refer to firewall documentation to allow it to connect ``pyarmor.dashingsoft.com:80``."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Generate Obfuscated Files",
+    "group": "generate",
+    "tags": [],
+    "faq": []
+  },
+  {
+    "title": "Pack Obfuscated Scripts",
+    "group": "pack",
+    "tags": ["pyarmor 7"],
+    "faq": [
+      {
+        "q": "In the old pyarmor 7, I'm using `pyarmor pack ...`, I could not find any relate information for this in the pyarmor 8. How to solve this?",
+        "tags": ["pyarmor 7"],
+        "a": [
+          "There is no identical pack in Pyarmor 8, Pyarmor 8+ only provide repack function to handle bundle of PyInstaller. Refer to :doc:`tutorial/obfuscation`, and :doc:`topic/repack insight into pack`"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Run Obfuscated Scripts",
+    "group": "run",
+    "tags": ["Termux"],
+    "faq": [
+      {
+        "q": "ImportError: libdl.so: cannot open shared object file: No such file or directory",
+        "tags": ["Termux"],
+        "a": [
+          "When running obfuscated scripts in unmatched platform, it may raise this error.",
+          "In this case checking dependencies by `ldd /path/to/pyarmor_runtime.so` to make sure it works. If not, please select right `--platform` to obfuscate the scripts.",
+          "For example, when obfuscating the scripts in Linux with target platform Termux, somethimes it need specify `--platform linux.aarch64`, not `--platform android.aarch64`, more information refer to :link:`https://github.com/dashingsoft/pyarmor/discussions/1674 Issue 1674`"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Security & Performance & Misc.",
+    "group": "others",
+    "tags": ["security", "reverse"],
+    "faq": [
+      {
+        "q": "Is there any tool could broken Pyarmor?",
+        "tags": ["security", "reverse"],
+        "a": [
+          "Pyarmor team doesn't care about these kind of tools, but focus on researching CPython source to design obfuscation algorithm. Through several irreversible obfuscation methods, Pyarmor makes sure the obfuscated scripts can't be restored by any way.",
+          "Refer to :doc:`how-to/security`, use the highest security options available for you to obfuscate one test script, then try any tool to broken it.",
+          "If it's broken, please report an issue with Python version, Pyarmor version, Platform, Obfuscation options, sample script and broken steps by `pyarmor man`",
+          "Pyarmor is good at protecting Python scripts, but not good at memory protection and anti-debug. If you care about runtime memory data, or runtime key verification, generally it need extra methods to prevent debugger from hacking dynamic libraries. More information check :doc:`how-to/protection`"
+        ]
+      },
+      {
+        "q": "*What is the ECCN or rating of Pyarmor (EAR99,5D99S,5D002 or other type ECCN)?",
+        "tags": [],
+        "a": "EAR99"
+      },
+      {
+        "q": "Does Pyarmor contain any encryption capabilities?",
+        "tags": [],
+        "a": "Pyarmor uses AES/RSA etc., but it hasn’t its own encryption algorithms."
+      },
+      {
+        "q": "What is the country of origin of this package?",
+        "tags": [],
+        "a": "China"
+      },
+      {
+        "q": "Where is the final built for Pyarmor?",
+        "tags": [],
+        "a": "All of Pyarmor packages are published in the `pypi.org`, please refer to :doc:`tutorial/installation`"
+      }
+    ]
+  }
+]

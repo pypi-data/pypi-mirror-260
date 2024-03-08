@@ -1,0 +1,159 @@
+{
+  "tags": {
+    "reg": ["group", "docker", "CI/CD"],
+    "gen": ["bcc mode", "rft mode", "big script"],
+    "run": ["pack", "ImportError"]
+  },
+  "common": {
+    "reg": [
+      {
+        "title": "Using Pyarmor 7.x license in Pyarmor 8",
+        "solutions": [
+          "Always use command `pyarmor-7` instead `pyarmor`",
+          "Or purchase new license"
+        ]
+      },
+      {
+        "title": "Using Basic or Pro license",
+        "solutions": [
+          "Check internet connection to make sure it's online",
+          "Check firewall settings to make sure it doesn't block extension `pytransform3.so` or `pytransform3.pyd`",
+          "The license server only allows 3 requests from same IP in 1 minute, don't run `pyarmor reg` too often",
+          "When using Basic or Pro license in docker or CI/CD pipeline, only 100 runs are allowed in 24 hours"
+        ]
+      },
+      {
+        "title": "Using Group license",
+        "solutions": [
+          "Check device machine id, make sure it's same as machine id in the device registration file",
+          "When using group license for unlimited docker containers, make sure the network mask of docker container is same as of docker host"
+        ]
+      }
+    ],
+    "gen": [
+      {
+        "title": "Suddenly pyarmor doesn't work",
+        "solutions": [
+          "Try to upgrade Pyarmor to latest version",
+          "Create a new path and test a simple script in it"
+        ]
+      }
+    ],
+    "run": [
+      {
+        "title": "The obfuscated scripts work fine in build machine, but failed in another machine",
+        "solutions": [
+          "Make sure Python major/minor version in another machine is same as build machine",
+          "Make sure use the right option `--platform` to generate obfuscated scripts when target machine is different from build platform",
+          "Check this section :section:`tutorial/advanced.html#obfuscating-scripts-for-multiple-python-versions`"
+        ]
+      },
+      {
+        "title": "Failed to run the packed obfuscated scripts",
+        "solutions": [
+          "First use PyInstaller to pack the scripts directly, make sure the final bundle works",
+          "Then only obfuscate the scripts, check it works"
+        ]
+      }
+    ]
+  },
+  "errors": [
+    {
+      "title": "Crash or segmentfault when using `pyarmor`",
+      "groups": ["reg", "gen"],
+      "tags": ["crash", "Apple Silcon"],
+      "solutions": [
+        {
+          "reason": "Install wrong extension module `pytransform3`",
+          "solution": [
+            "The core package `pyarmor.cli.core` is platform dependent, make sure the right one is installed. In linux, check it by command `ldd /path/to/pyarmor/cli/core/pytransorm3.so`",
+            "The extension module `pytransorm3.so` is also bind to Python major/minor version"
+          ]
+        },
+        {
+          "reason": "In Apple Silcon, the codesign of extension module `pytransform3` is invalid",
+          "solution": [
+            "Install the latest pyarmor and re-build the obfuscated scripts",
+            "Use ad-hoc codesign to sign `/path/to/pyarmor/cli/core/pytransform3.so"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Crash or segmentfault when running obfuscated scripts",
+      "groups": ["run"],
+      "tags": ["crash"],
+      "solutions": [
+        {
+          "reason": "Python interpreter is compiled with Py_TRACE_REFS or Py_DEBUG",
+          "solution": "Please re-compile Python interpreter without any flag Py_TRACE_REFS or Py_DEBUG"
+        },
+        {
+          "reason": "The scripts are obfuscated by different Python major/minor version",
+          "solution": "Re-generate the scripts again by same Python"
+        },
+        {
+          "reason": "In Apple Silcon, the codesign of extension module `dist/pyarmor_runtime_xxxx/pyarmor_runtime.so` is invalid",
+          "solution": [
+            "Install the latest pyarmor",
+            "Use ad-hoc codesign to sign `dist/pyarmor_runtime_xxxx/pyarmor_runtime.so"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ImportError: DLL load failed while importing pytransform3",
+      "pattern": "DLL load failed while importing pytransform3",
+      "groups": ["gen", "reg"],
+      "tags": ["ImportError", "pytransform3"],
+      "solutions": [
+        {
+          "reason": "Install unmatched extension module `pytransform3`",
+          "solution": [
+            "Re-install the right package `pyarmor.cli.core`, check it by `ldd /path/to/pyarmor/cli/core/pytransform3.so`"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "out of license",
+      "pattern": "out of license",
+      "groups": ["gen"],
+      "tags": ["bcc mode", "rft mode", "big script"],
+      "solutions": [
+        {
+          "reason": "Using not available features",
+          "solution": "Check :section:`licenses.html#purchasing-license Pyarmor License Types`, and purchase the right Pyarmor License to unlock the limitations"
+        }
+      ]
+    },
+    {
+      "title": "unauthorized use of script",
+      "pattern": "unauthorized use of script",
+      "groups": ["run"],
+      "tags": [],
+      "solutions": [
+        {
+          "reason": "",
+          "solution": ""
+        }
+      ]
+    },
+    {
+      "title": "the format of obfuscated script is incorrect",
+      "pattern": "the format of obfuscated script is incorrect",
+      "groups": ["run"],
+      "tags": [],
+      "solutions": [
+        {
+          "reason": "The obfuscated script is made by other Pyarmor version",
+          "solution": "Re-build the obfuscated scripts by same Python version"
+        },
+        {
+          "reason": "Can not get runtime package path",
+          "solution": "No idea, try to generate the obfuscated scripts by default options"
+        }
+      ]
+    }
+  ]
+}
