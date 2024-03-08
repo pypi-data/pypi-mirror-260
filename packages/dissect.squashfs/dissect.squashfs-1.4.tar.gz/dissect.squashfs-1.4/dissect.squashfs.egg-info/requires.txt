@@ -1,0 +1,9 @@
+dissect.cstruct<4.0.dev,>=3.0.dev
+dissect.util<4.0.dev,>=3.0.dev
+
+[full]
+lz4
+zstandard
+
+[full:platform_system != "Windows" or platform_python_implementation != "PyPy"]
+python-lzo
