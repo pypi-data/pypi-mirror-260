@@ -1,0 +1,79 @@
+Metadata-Version: 2.3
+Name: bourse
+Version: 0.3.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Rust
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Dist: tqdm >=4.66.2
+Requires-Dist: pandas >=2.2.0
+License-File: LICENSE
+Summary: Python API for a Rust stock market simulation library
+Keywords: finance,agent-based modelling,simulation,reinforcement-learning
+Author-email: zombie-einstein <zombie-einstein@proton.me>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+Project-URL: source, https://github.com/zombie-einstein/bourse
+Project-URL: docs, https://zombie-einstein.github.io/bourse/
+Project-URL: documentation, https://zombie-einstein.github.io/bourse/
+
+# Bourse
+
+Rust market-simulator with a Python API
+
+## Python
+
+Full documentation can be found
+[here](https://zombie-einstein.github.io/bourse/).
+
+### Getting Started
+
+Bourse can be installed via pip
+
+```
+pip install bourse
+```
+
+### Examples
+
+See [here](examples/) for simulation examples and
+[the docs](https://zombie-einstein.github.io/bourse/pages/example.html)
+for an annotated example.
+
+## Rust
+
+### Getting Started
+
+The library consists of two core crates:
+
+- `bourse-book` a library implementing a limit order
+  book. Full documentation can be found
+  [here](https://docs.rs/bourse-book/latest/bourse_book/).
+
+- `bourse-de` a discrete-event market simulation library.
+  Full documentation can be found
+  [here](https://docs.rs/bourse-de/latest/bourse_de/)
+
+Both can be installed using cargo
+
+```
+cargo add bourse-book bourse-de
+```
+
+### Examples
+
+Examples can be found in the relevant crates
+[order book](crates/order_book/examples/) and
+[simulation](crates/step_sim/examples/).
+
+Examples can be run via cargo using
+
+```
+cargo run --example ...
+```
+
