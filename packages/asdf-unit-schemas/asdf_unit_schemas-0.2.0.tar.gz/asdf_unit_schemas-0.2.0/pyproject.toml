@@ -1,0 +1,77 @@
+[project]
+name = 'asdf_unit_schemas'
+description = 'DEPRECATED: ASDF schemas for units'
+readme = 'README.md'
+requires-python = '>=3.8'
+license = { file = 'LICENSE' }
+authors = [{ name = 'The ASDF Developers', email = 'help@stsci.edu' }]
+classifiers = [
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Development Status :: 5 - Production/Stable',
+]
+dependencies = [
+]
+dynamic = ['version']
+
+[project.optional-dependencies]
+docs = [
+    'tomli',
+    'sphinx',
+    'sphinx-rtd-theme',
+]
+test = [
+    'pytest',
+    'asdf',
+]
+
+[project.urls]
+'tracker' = 'https://github.com/asdf-format/asdf-unit-schemas/issues'
+'documentation' = 'https://asdf-unit-schemas.readthedocs.io/en/stable'
+'repository' = 'https://github.com/asdf-format/asdf-unit-schemas'
+
+[build-system]
+requires = [
+    "setuptools >=60",
+    "setuptools_scm[toml] >=3.4",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "src/asdf_unit_schemas/_version.py"
+
+[tool.setuptools]
+packages = ["asdf_unit_schemas"]
+
+[tool.setuptools.package-dir]
+'' = "src"
+
+[tool.pytest.ini_options]
+testpaths = """
+    tests
+"""
+addopts = '--color=yes'
+
+[tool.black]
+line-length = 120
+force-exclude = '''
+^/(
+  (
+      \.eggs
+    | \.git
+    | \.pytest_cache
+    | \.tox
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+filter_files = true
+line_length = 120
