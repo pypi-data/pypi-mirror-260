@@ -1,0 +1,31 @@
+[project]
+name = "dekcli"
+version = "0.1.8"
+description = ""
+authors = [
+    { name = "sanzenwin", email = "sanzenwin@gmail.com" },
+]
+dependencies = [
+    "py-gitea<=0.2.8",
+    "dektools<1.0.0",
+    "GitPython<=3.1.41",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+dekcli = "dekcli.click.__entry__:main"
+
+[tool.pdm.build]
+includes = [
+    "dekcli",
+]
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
