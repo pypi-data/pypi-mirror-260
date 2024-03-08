@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: giant-mixins
+Version: 0.3.8
+Summary: A mixins app that provides some standard mixins for Giant projects
+Home-page: https://github.com/giantmade/giant-mixins
+License: MIT
+Keywords: mixins,app
+Author: Will-Hoey
+Author-email: will.hoey@giantmade.com
+Requires-Python: >=3.9,<4.0
+Classifier: Framework :: Django
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides-Extra: cms
+Requires-Dist: django-cms ; extra == "cms"
+Requires-Dist: django-filer (>=2,<4)
+Project-URL: Repository, https://github.com/giantmade/giant-mixins
+Description-Content-Type: text/markdown
+
+# Giant Mixins
+
+Provides commonly used functionality in a neat package to help keep our codebases DRY.
+
+## Installation
+
+To install the standard app with no extras simply run
+
+    $ poetry add giant-mixins
+
+However if your project has django-cms installed then you can make use of the full range of mixins in this app. For this, install the package with the extra dependencies,
+
+    $ poetry add giant-mixins --extras "cms"
+
+You should then add `"mixins"` to the `INSTALLED_APPS` in your settings file.
+
