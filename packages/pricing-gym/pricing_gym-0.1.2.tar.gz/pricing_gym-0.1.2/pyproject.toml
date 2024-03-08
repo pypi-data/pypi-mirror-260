@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pricing_gym"
+authors = [
+    {name = "Joakim B. Andersen", email = "joakim.blach.andersen@maersk.com"},
+]
+description = "A Gym Environment for Dynamic Pricing"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "gymnasium==0.29.1",
+    "scipy==1.11.1"
+]
+version = "0.1.2"
