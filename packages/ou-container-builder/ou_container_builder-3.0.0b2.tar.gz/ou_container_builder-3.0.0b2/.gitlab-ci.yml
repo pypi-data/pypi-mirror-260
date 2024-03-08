@@ -1,0 +1,93 @@
+stages:
+  - build
+  - test
+  - publish
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+
+sast:
+  stage: test
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+build-package:
+  image: python:3.10
+  stage: build
+  script:
+    - pip install hatch
+    - hatch build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 300 seconds
+  rules:
+    - if: $CI_PIPELINE_SOURCE != 'schedule'
+
+demo-tests:
+  image: docker:latest
+  stage: test
+  services:
+    - docker:dind
+  before_script:
+    - until docker info; do sleep 1; done
+    - apk add --no-cache python3 py3-pip curl
+    - pip install dist/*.whl
+  script:
+    - cd tests/demos
+    - ./demo-tests.sh $DEMO
+  parallel:
+    matrix:
+      - DEMO:
+          - code_server
+          - custom_apt_key_dearmor
+          - jupyterlab/v3
+          - jupyterlab/v4
+          - openrefine
+  dependencies:
+    - build-package
+  needs:
+    - build-package
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+tests:
+  image: python:${PYTHON_VERSION}
+  stage: test
+  script:
+    - pip install hatch
+    - hatch run cov-auto
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.10", "3.11"]
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+  coverage: /(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/
+
+trigger-docs:
+  image: curlimages/curl:latest
+  stage: publish
+  script:
+    - curl -X POST -d "token=f4fb791db48804c4a30dfe809720b9600977141e" https://readthedocs.org/api/v2/webhook/ou-container-builder/206795/
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule" && $CI_COMMIT_BRANCH == "default"
+
+publish-package:
+  image: python:3.10
+  stage: publish
+  script:
+    - pip install hatch
+    - hatch publish -u mhall -a "$PYPI_TOKEN"
+  dependencies:
+    - build-package
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+(b[0-9]+)?$/
